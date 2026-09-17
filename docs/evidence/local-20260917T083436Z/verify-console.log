@@ -1,0 +1,13 @@
+{
+  "valid": true,
+  "status": "initial_working_not_confirmatory",
+  "training_enabled": false,
+  "final_test_locked": true
+}
+
+All checks passed!
+
+................................                                         [100%]
+32 passed in 1.24s
+
+artifacts/verification-local-20260917T083436Z/verification.json

@@ -1,5 +1,10 @@
 # Diagnóstico histórico y propuesta de tratamiento — 17 de septiembre de 2026
 
+Actualización posterior: el usuario aprobó explícitamente la política B el
+17 de septiembre de 2026; véase [ADR-004](decisions/ADR-004-segment-proposal.md).
+La implementación y la aceptación de datos siguen pendientes. El texto siguiente
+conserva el diagnóstico y el estado de la propuesta al emitir este informe.
+
 Estado: diagnóstico completado con causas parcialmente identificadas. Política propuesta, NO aplicada. Datos aún no aceptados. No se cambió configuración, fuente, particiones ni datos originales. No hubo entrenamiento ni acceso al test final.
 
 ## Conteos y reglas

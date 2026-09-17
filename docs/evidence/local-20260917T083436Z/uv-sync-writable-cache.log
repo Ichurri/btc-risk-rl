@@ -1,0 +1,71 @@
+Using CPython 3.12.13
+Creating virtual environment at: .venv
+WARN Retry attempt #0. Sleeping 1.451468s before the next attempt
+WARN Retry attempt #0. Sleeping 1.91312743s before the next attempt
+WARN Retry attempt #0. Sleeping 1.302968176s before the next attempt
+WARN Retry attempt #0. Sleeping 1.880330214s before the next attempt
+WARN Retry attempt #0. Sleeping 1.50003005s before the next attempt
+WARN Retry attempt #0. Sleeping 1.929142075s before the next attempt
+WARN Retry attempt #0. Sleeping 1.094635098s before the next attempt
+WARN Retry attempt #0. Sleeping 1.19057578s before the next attempt
+WARN Retry attempt #0. Sleeping 1.859355924s before the next attempt
+WARN Retry attempt #0. Sleeping 1.114145624s before the next attempt
+WARN Retry attempt #0. Sleeping 1.832395978s before the next attempt
+WARN Retry attempt #0. Sleeping 1.018091359s before the next attempt
+WARN Retry attempt #0. Sleeping 1.124802524s before the next attempt
+WARN Retry attempt #0. Sleeping 1.616201187s before the next attempt
+WARN Retry attempt #0. Sleeping 1.359739741s before the next attempt
+WARN Retry attempt #0. Sleeping 1.411425008s before the next attempt
+WARN Retry attempt #0. Sleeping 1.295163635s before the next attempt
+WARN Retry attempt #0. Sleeping 1.436289284s before the next attempt
+WARN Retry attempt #0. Sleeping 1.349435698s before the next attempt
+WARN Retry attempt #0. Sleeping 1.657382202s before the next attempt
+   Building btc-risk-rl @ file:///home/ichurri/Desktop/personal_projects/btc-risk-rl
+WARN Retry attempt #0. Sleeping 1.526071099s before the next attempt
+WARN Retry attempt #1. Sleeping 1.224173763s before the next attempt
+WARN Retry attempt #1. Sleeping 3.5736389s before the next attempt
+WARN Retry attempt #1. Sleeping 2.535015596s before the next attempt
+WARN Retry attempt #1. Sleeping 3.938063801s before the next attempt
+WARN Retry attempt #1. Sleeping 2.972801885s before the next attempt
+WARN Retry attempt #1. Sleeping 3.105666174s before the next attempt
+WARN Retry attempt #1. Sleeping 3.460148596s before the next attempt
+WARN Retry attempt #1. Sleeping 3.411204824s before the next attempt
+WARN Retry attempt #1. Sleeping 2.201427383s before the next attempt
+WARN Retry attempt #1. Sleeping 2.30011285s before the next attempt
+WARN Retry attempt #1. Sleeping 1.872040797s before the next attempt
+WARN Retry attempt #1. Sleeping 3.254794084s before the next attempt
+WARN Retry attempt #1. Sleeping 1.868351417s before the next attempt
+WARN Retry attempt #1. Sleeping 1.550759849s before the next attempt
+WARN Retry attempt #1. Sleeping 1.332610083s before the next attempt
+WARN Retry attempt #1. Sleeping 2.052311721s before the next attempt
+WARN Retry attempt #1. Sleeping 3.801026519s before the next attempt
+WARN Retry attempt #1. Sleeping 3.903979408s before the next attempt
+WARN Retry attempt #1. Sleeping 3.408001576s before the next attempt
+WARN Retry attempt #1. Sleeping 2.187545297s before the next attempt
+WARN Retry attempt #1. Sleeping 3.645797965s before the next attempt
+WARN Retry attempt #2. Sleeping 3.582092451s before the next attempt
+WARN Retry attempt #2. Sleeping 6.594449082s before the next attempt
+WARN Retry attempt #2. Sleeping 7.847911839s before the next attempt
+WARN Retry attempt #2. Sleeping 2.213595716s before the next attempt
+WARN Retry attempt #2. Sleeping 5.708848671s before the next attempt
+WARN Retry attempt #2. Sleeping 7.328591395s before the next attempt
+WARN Retry attempt #2. Sleeping 3.840446189s before the next attempt
+WARN Retry attempt #2. Sleeping 1.84129094s before the next attempt
+WARN Retry attempt #2. Sleeping 1.018227851s before the next attempt
+WARN Retry attempt #2. Sleeping 5.656476204s before the next attempt
+WARN Retry attempt #2. Sleeping 3.807253491s before the next attempt
+WARN Retry attempt #2. Sleeping 5.91512913s before the next attempt
+WARN Retry attempt #2. Sleeping 2.094195971s before the next attempt
+WARN Retry attempt #2. Sleeping 6.279062401s before the next attempt
+  × Failed to download `six==1.17.0`
+  ├─▶ Request failed after 3 retries in 4.7s
+  ├─▶ Failed to fetch:
+  │   `https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl`
+  ├─▶ error sending request for url
+  │   (https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl)
+  ├─▶ client error (Connect)
+  ├─▶ dns error
+  ╰─▶ failed to lookup address information: Temporary failure in name
+      resolution
+
+hint: `six` (v1.17.0) was included because `btc-risk-rl` (v0.1.0) depends on `pandas` (v2.3.3) which depends on `python-dateutil` (v2.9.0.post0) which depends on `six`
