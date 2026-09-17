@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "status": "download_complete_not_quality_accepted",
+  "source": "Binance spot API",
+  "symbol": "BTCUSDT",
+  "interval": "4h",
+  "start_inclusive_ms": 1512086400000,
+  "end_exclusive_ms": 1704067200000,
+  "downloaded_at_utc": "2026-09-17T07:27:08.663638+00:00",
+  "final_test_accessed": false,
+  "pages": [
+    {
+      "file": "page-0000.json",
+      "sha256": "83f724fad8040c7566295dbadd9013247e606e105aaa0e20b454191b81b48dd1",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1512086400000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0001.json",
+      "sha256": "14094a555fdcfb58259fec6099d087ec3512ec5dcc31b04c78d17d36d4592c1c",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1526587200000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0002.json",
+      "sha256": "812f656d5438096ebcbe6a97321f3896eb266ddbcc09722d017964dbe0d07ff2",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1541030400000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0003.json",
+      "sha256": "4723621c5a2466aba285b9e5444bea8ecf7104b522ebb7405bbc816b2aa1c3a5",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1555459200000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0004.json",
+      "sha256": "93b3444e1e4500a528411b59dc75770b8009dba03f52409384a0a8c761cce5f8",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1569902400000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0005.json",
+      "sha256": "855b369ab42b8653f785f2a4a1714f7ee8769a6d20b674f83fe0e26d6bfa388f",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1584316800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0006.json",
+      "sha256": "2af5a9a5d8db720a64d829994250ee5dc40377d971098489a61fc0dcba892910",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1598716800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0007.json",
+      "sha256": "bc9d4e32d08b68033b767d3b3370300dc158231344c02c76e45acfeb2c9e8946",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1613116800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0008.json",
+      "sha256": "b47caf3cd792d28ff5871535434fefc2b3c7ec8a5c2ac814de1defbb3c9624bb",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1627516800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0009.json",
+      "sha256": "7cfc6af96c57c7441bb25fc3bc0d5db50dd3a108d1f45cda65eb2bfb6821cc27",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1641916800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0010.json",
+      "sha256": "0b6ee40334969fba2a26a4895871fa1151f05e3ee8605d354cf7cb77ebd63bf7",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1656316800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0011.json",
+      "sha256": "258ff366fa87e50aee73fe11fd5719becf8754c8b6c4f4a14abe903fc445638e",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1670716800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0012.json",
+      "sha256": "ab2f2f22dec92b7163ea3902897638889ce11a0f09f2a0a12f202c566586adb8",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1685116800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 1000
+    },
+    {
+      "file": "page-0013.json",
+      "sha256": "4864b7b8abdd0b165b888d29932099adf64e9fbeb63147f1cd4ab8356bf05b3b",
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1699516800000,
+        "endTime": 1704067199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "rows": 316
+    }
+  ]
+}

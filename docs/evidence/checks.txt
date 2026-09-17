@@ -1,0 +1,9 @@
+Code commit: f92574e
+pytest: 28 passed in 1.23s
+ruff check: All checks passed
+ruff format --check: 22 files already formatted
+config-check: valid, final locked, training disabled
+Market quality gate: FAILED (16 missing, 20 nonstandard close)
+Recheck: 16 still_missing, 20 unchanged
+Final test accessed: false
+Trainings executed: 0

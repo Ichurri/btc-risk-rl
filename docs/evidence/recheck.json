@@ -1,0 +1,628 @@
+{
+  "performed_at_utc": "2026-09-17T07:35:35.443954+00:00",
+  "raw_manifest_sha256": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807",
+  "final_test_accessed": false,
+  "original_data_modified": false,
+  "counts": {
+    "still_missing": 16,
+    "unchanged": 20
+  },
+  "results": [
+    {
+      "open_time_ms": 1515024000000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1515024000000,
+        "endTime": 1515038399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1515024000000.json",
+      "sha256": "90be4935e97d51db66584823e9f5db77267e112acb3db8976e9e38c85bfa6a40",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1515034814838,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1518048000000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518048000000,
+        "endTime": 1518062399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518048000000.json",
+      "sha256": "065d5602a04c4021a368122d896e70be0f7b887ea188960ad55ea22fcc11345a",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1518049694788,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1518062400000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518062400000,
+        "endTime": 1518076799999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518062400000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1518076800000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518076800000,
+        "endTime": 1518091199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518076800000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1518091200000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518091200000,
+        "endTime": 1518105599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518091200000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1518105600000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518105600000,
+        "endTime": 1518119999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518105600000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1518120000000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518120000000,
+        "endTime": 1518134399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518120000000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1518134400000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518134400000,
+        "endTime": 1518148799999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518134400000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1518148800000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1518148800000,
+        "endTime": 1518163199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1518148800000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1529971200000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1529971200000,
+        "endTime": 1529985599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1529971200000.json",
+      "sha256": "89e9b8cb3d8f091354953b3be551ab0e72ade88d222bd127c321b716fabe781c",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1529978399999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1529985600000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1529985600000,
+        "endTime": 1529999999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1529985600000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1530000000000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1530000000000,
+        "endTime": 1530014399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1530000000000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1530662400000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1530662400000,
+        "endTime": 1530676799999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1530662400000.json",
+      "sha256": "eda0b5432348767bdb3f903b201887a23918438844ec82eca921fd4b344531a4",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1530663745551,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1530676800000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1530676800000,
+        "endTime": 1530691199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1530676800000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1539921600000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1539921600000,
+        "endTime": 1539935999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1539921600000.json",
+      "sha256": "91f1e3f49e6e581f110d33a95437614f12acdd2ea8e14e92614921ded2ed548e",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1539928799999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1542153600000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1542153600000,
+        "endTime": 1542167999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1542153600000.json",
+      "sha256": "4603cb5a1e02dd63c1c9484bc8589e79980fea58b38778c396b75d7662188de4",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1542160799999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1542168000000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1542168000000,
+        "endTime": 1542182399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1542168000000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1552348800000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1552348800000,
+        "endTime": 1552363199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1552348800000.json",
+      "sha256": "d3532cd6f4d2cc2b606a6cb0bd8ac9fbcbe581422fffa874e04b9a9b849a851d",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1552355999999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1552363200000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1552363200000,
+        "endTime": 1552377599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1552363200000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1557878400000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1557878400000,
+        "endTime": 1557892799999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1557878400000.json",
+      "sha256": "21e29dc6fb5ef41c13c7663cf09326d8ab99c5e874a7267cf342f38ef7514e63",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1557889199999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1557892800000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1557892800000,
+        "endTime": 1557907199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1557892800000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1557907200000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1557907200000,
+        "endTime": 1557921599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1557907200000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1565827200000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1565827200000,
+        "endTime": 1565841599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1565827200000.json",
+      "sha256": "44b573f731a1022d15ab7024cacfe1cb5076ed488c531784df9dce12e967df5b",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1565834399999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1565841600000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1565841600000,
+        "endTime": 1565855999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1565841600000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1573603200000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1573603200000,
+        "endTime": 1573617599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1573603200000.json",
+      "sha256": "356a497d62378afdc936b9e59735fdbea7a101f176787180e4d899bc7516de66",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1573610399999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1574640000000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1574640000000,
+        "endTime": 1574654399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1574640000000.json",
+      "sha256": "6499f41a1c8e7cae95e821a4b3954ed3995cb486ceaba9706dbc0d1db0da4ffc",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1574647199999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1582099200000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1582099200000,
+        "endTime": 1582113599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1582099200000.json",
+      "sha256": "c804baf21ac6c3879930f265283b56bbcb8f24a172e67819f425452a31bbf25a",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1582112132286,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1582113600000,
+      "originally_missing": true,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1582113600000,
+        "endTime": 1582127999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1582113600000.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "returned_rows": 0,
+      "status": "still_missing"
+    },
+    {
+      "open_time_ms": 1587772800000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1587772800000,
+        "endTime": 1587787199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1587772800000.json",
+      "sha256": "03fc615a5ddc85e967a8f8e88f4d23bd8d162dfe7bbd90e349f04c5f04c03a64",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1587779999999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1593302400000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1593302400000,
+        "endTime": 1593316799999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1593302400000.json",
+      "sha256": "d4dc9e16031017a00a359915112eb589958aa3485bf2c2e6779f14ab4b6bcd90",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1593309599999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1608552000000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1608552000000,
+        "endTime": 1608566399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1608552000000.json",
+      "sha256": "5a460ebe756689802586011fe545d4251a010dc4e3e29c809140e6d2369be95b",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1608558440521,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1613001600000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1613001600000,
+        "endTime": 1613015999999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1613001600000.json",
+      "sha256": "90d79393cc7c68c456be4879430044a71f82d6fa38b519a0ace31d552ec9cc25",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1613014854773,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1618876800000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1618876800000,
+        "endTime": 1618891199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1618876800000.json",
+      "sha256": "e1da6fc47067db4cec0b37b6ebcab76c0272a583b5300739facf4dbcbc794b76",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1618883999999,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1619323200000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1619323200000,
+        "endTime": 1619337599999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1619323200000.json",
+      "sha256": "2b475e3eedc794da2c380028d83f0ab6f44a72e0f9b747f05fa06edd0b46ea09",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1619323258146,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1628812800000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1628812800000,
+        "endTime": 1628827199999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1628812800000.json",
+      "sha256": "40994385fb542488530f040ca80b4b33fefd556de42978b389fe2e23e75b3301",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1628819999000,
+      "standard_close": false
+    },
+    {
+      "open_time_ms": 1632888000000,
+      "originally_missing": false,
+      "query": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "startTime": 1632888000000,
+        "endTime": 1632902399999,
+        "limit": 1000,
+        "timeZone": "0"
+      },
+      "file": "bar-1632888000000.json",
+      "sha256": "2a34c56f96a11ee44faf76abd26da35fa1dd3e83b2e3c199817948872d0bfc0a",
+      "returned_rows": 1,
+      "status": "unchanged",
+      "close_time_ms": 1632898799999,
+      "standard_close": false
+    }
+  ]
+}

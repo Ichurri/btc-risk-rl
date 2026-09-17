@@ -12,4 +12,26 @@ Al terminar tarea: commit, comandos ejecutados, salida relevante, artefactos,
 estado del conjunto final y siguiente tarea. No atribuir a Debian local las
 pruebas ejecutadas en el entorno de construcción del paquete.
 
-Estado inicial: preparando datos. No agentes ni entrenamientos.
+## Estado de entrega
+- H0 código: b215268, repositorio/configuración/reglas.
+- H1 código: f92574e, datos/características/controles/reconsulta.
+- 28 pruebas pasan; Ruff pasa. Evidencia en docs/evidence/ y docs/hitos/.
+- Datos reales rechazados: 16 huecos, 20 cierres abreviados; persisten en reconsulta.
+- No hay simulador, agente o entrenamiento. Test final sin acceso.
+
+## Siguiente tarea para Codex local o remoto
+Leer ADR-003 y los informes de calidad/reconsulta. Investigar el tratamiento
+de interrupciones de Binance sin rellenar precios y sin unir segmentos.
+Diseñar una regla documentada para segmentos/calentamiento y sus criterios de
+aceptación; conservar el dataset original y las fechas de partición.
+No debilitar la guarda de prueba final. No implementar el simulador hasta
+resolver esta aceptación. No implementar agentes hasta cerrar ADR-002.
+
+## Mensaje mínimo para continuar en otro entorno
+«Trabaja sobre el commit actual de btc-risk-rl. Lee AGENTS.md, docs/HANDOFF.md,
+docs/hitos/H1-datos.md y ADR-003. Continúa la tarea de calidad de datos indicada.
+No entrenes ni accedas al conjunto final. Registra decisiones, pruebas y commit».
+
+Sin remoto configurado: este chat no puede acceder automáticamente a cambios
+en tu disco. Para revisar cambios, proporcionar repo/rama/commit accesibles o
+un archivo actualizado. Los resultados locales deben indicar máquina y versiones.
