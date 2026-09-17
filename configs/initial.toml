@@ -1,0 +1,56 @@
+schema_version = 1
+status = "initial_working_not_confirmatory"
+
+[data]
+symbol = "BTCUSDT"
+interval = "4h"
+timezone = "UTC"
+warmup_start = "2017-12-01T00:00:00Z"
+train_start = "2018-01-01T00:00:00Z"
+validation_start = "2023-01-01T00:00:00Z"
+test_start = "2024-01-01T00:00:00Z"
+test_end = "2026-01-01T00:00:00Z"
+endpoint = "https://api.binance.com/api/v3/klines"
+final_test_locked = true
+missing_bar_policy = "fail"
+secondary_source_status = "pending_coverage_verification"
+
+[features]
+version = "market10_portfolio2_v1"
+return_windows = [1, 6, 42]
+rolling_windows = [6, 42]
+volatility_ddof = 0
+normalization = "train_zscore_no_clip"
+
+[environment]
+initial_cash = 10000.0
+commission = 0.001
+slippage = 0.0005
+episode_steps = 180
+action = "target_btc_weight_after_costs"
+reward = "net_log_equity"
+end_position = "mark_to_market_no_liquidation"
+horizon_mode = "continuing_window_truncation"
+cash_interest = 0.0
+accounting_dtype = "float64"
+
+[research]
+conditions = ["C0", "C5", "C10"]
+tail_fractions = [0.05, 0.10]
+training_enabled = false
+risk_contract_status = "blocked_pending_ADR_002"
+seeds_status = "pilot_required"
+budget_status = "pilot_required"
+trajectory_batch_status = "pilot_required"
+risk_bound_status = "pilot_required"
+ppo_discount_status = "must_resolve_before_agent_implementation"
+
+[hardware_reported]
+os = "Debian"
+cpu = "Intel Core i7-11800H, 8 cores, 16 threads"
+ram_gib_approx = 15
+gpu = "NVIDIA GeForce RTX 3060 Laptop / Max-Q"
+vram_gib_estimate = 6
+vram_verified = false
+compute_hours_per_day = 3
+execution = "local_and_remote"
