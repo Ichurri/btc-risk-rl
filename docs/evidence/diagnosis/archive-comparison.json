@@ -1,0 +1,415 @@
+{
+  "source": "Binance archives, same publisher, derived from klines API; not independent confirmation",
+  "checked_at_utc": "2026-09-17T08:08:58.202260+00:00",
+  "final_test_accessed": false,
+  "results": [
+    {
+      "month": "2018-01",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-01.zip",
+      "status": "verified_checksum",
+      "sha256": "0577a31d3bf500fa54638f87acda7fd7bafca4e5ec3983645403323512385f72",
+      "observations": [
+        {
+          "open_ms": 1515024000000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2018-02",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-02.zip",
+      "status": "verified_checksum",
+      "sha256": "35158247eb814e49ad96bab8c0c7c073b57ddc12b462f0176d1beeda7cefefd2",
+      "observations": [
+        {
+          "open_ms": 1518048000000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": false,
+          "field_differences": [
+            {
+              "index": 6,
+              "api": "1518049694788",
+              "archive": "1518062399999"
+            }
+          ]
+        },
+        {
+          "open_ms": 1518062400000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1518076800000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1518091200000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1518105600000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1518120000000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1518134400000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1518148800000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2018-06",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-06.zip",
+      "status": "verified_checksum",
+      "sha256": "38ce9dbc3a80c20777b7a02745b4d8458476627a13f7e0d188df06b7f5cbfd12",
+      "observations": [
+        {
+          "open_ms": 1529971200000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1529985600000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1530000000000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2018-07",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-07.zip",
+      "status": "verified_checksum",
+      "sha256": "f2a12112d9b149e6ac6efe0ab2b94fba22aaacc173babc8b943f5b8d39e6a185",
+      "observations": [
+        {
+          "open_ms": 1530662400000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1530676800000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2018-10",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-10.zip",
+      "status": "verified_checksum",
+      "sha256": "ca4d90721ebe43d28e86908c04f4e7d7dc24457964af45325b044e33718357fe",
+      "observations": [
+        {
+          "open_ms": 1539921600000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2018-11",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-11.zip",
+      "status": "verified_checksum",
+      "sha256": "82f7148a100e4480c75a4fbdbc72b812aa7837e57b1ae5f5f2f824c13ede97d0",
+      "observations": [
+        {
+          "open_ms": 1542153600000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1542168000000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2019-03",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-03.zip",
+      "status": "verified_checksum",
+      "sha256": "fed5735ec622a9a18ea5a131e7c334642a44e3a27a8fe2710d8009da8e21c6b9",
+      "observations": [
+        {
+          "open_ms": 1552348800000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1552363200000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2019-05",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-05.zip",
+      "status": "verified_checksum",
+      "sha256": "36223d09ae92e83f42e4addfbfc868de1881546ed0c5eee81b258edd531faa90",
+      "observations": [
+        {
+          "open_ms": 1557878400000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1557892800000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1557907200000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2019-08",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-08.zip",
+      "status": "verified_checksum",
+      "sha256": "fe124a8781e9fcde21b5e7ad6215e882ad10d8e2d6e4fcf53fb1c31c13e5f9bf",
+      "observations": [
+        {
+          "open_ms": 1565827200000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1565841600000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2019-11",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-11.zip",
+      "status": "verified_checksum",
+      "sha256": "12c0aac94c70e79c549f92e638cfc39ca6a5fa09cdb767252bc3e8466fe4e6c0",
+      "observations": [
+        {
+          "open_ms": 1573603200000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1574640000000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": false,
+          "field_differences": [
+            {
+              "index": 6,
+              "api": "1574647199999",
+              "archive": "1574654399999"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "month": "2020-02",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-02.zip",
+      "status": "verified_checksum",
+      "sha256": "efd2cb8a08b9238315213ba2ba2ff23ca3a295e07ff29ae75e1115c56f9555b9",
+      "observations": [
+        {
+          "open_ms": 1582099200000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1582113600000,
+          "archive_present": false,
+          "api_present": false,
+          "same_first_11_fields": null,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2020-04",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-04.zip",
+      "status": "verified_checksum",
+      "sha256": "78d5ccf8c51e77ef61e61b39490a6ac1196d577fca26d8e3cb4e9c35030b24ac",
+      "observations": [
+        {
+          "open_ms": 1587772800000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2020-06",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-06.zip",
+      "status": "verified_checksum",
+      "sha256": "26e5e3760f40e93c90042270deb39ec90e416f56154483c882c99bec1244b00e",
+      "observations": [
+        {
+          "open_ms": 1593302400000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2020-12",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-12.zip",
+      "status": "verified_checksum",
+      "sha256": "5872b6b980795386e78a8faffe72a9882de25bf2b4c904bb22f917615f7f6c1f",
+      "observations": [
+        {
+          "open_ms": 1608552000000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2021-02",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-02.zip",
+      "status": "verified_checksum",
+      "sha256": "09151f0b4212d4c45efaaa361c3bf968d2b9113f31c5dcfc20b7480d68356d90",
+      "observations": [
+        {
+          "open_ms": 1613001600000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2021-04",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-04.zip",
+      "status": "verified_checksum",
+      "sha256": "9716e898ced00e72480b430b2efbf5140a2b8b1cd69273f0da9cae619da10944",
+      "observations": [
+        {
+          "open_ms": 1618876800000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        },
+        {
+          "open_ms": 1619323200000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2021-08",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-08.zip",
+      "status": "verified_checksum",
+      "sha256": "f59731ac03359cfeb54e5684e551c28e7f0d7879a0991635fde9a80d49c49193",
+      "observations": [
+        {
+          "open_ms": 1628812800000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    },
+    {
+      "month": "2021-09",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-09.zip",
+      "status": "verified_checksum",
+      "sha256": "317024b76a4469ad0846a32f2ab502f4549b3409aec3eebf4f500c6bec0d63c9",
+      "observations": [
+        {
+          "open_ms": 1632888000000,
+          "archive_present": true,
+          "api_present": true,
+          "same_first_11_fields": true,
+          "field_differences": []
+        }
+      ]
+    }
+  ]
+}

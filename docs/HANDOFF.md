@@ -35,3 +35,17 @@ No entrenes ni accedas al conjunto final. Registra decisiones, pruebas y commit�
 Sin remoto configurado: este chat no puede acceder automáticamente a cambios
 en tu disco. Para revisar cambios, proporcionar repo/rama/commit accesibles o
 un archivo actualizado. Los resultados locales deben indicar máquina y versiones.
+
+## Actualización: diagnóstico, iteración 02
+
+El estado anterior de 28 pruebas queda como evidencia histórica. Ahora hay 32
+pruebas remotas aprobadas y Ruff pasa. Revisar docs/DIAGNOSTICO-HISTORICO.md,
+docs/DEBIAN.md y docs/hitos/H1-diagnostico.md.
+
+36 anomalías en 20 bloques; 18 archivos mensuales corroboran los huecos, con dos
+diferencias exclusivas de close_time. No afirmar causa verificada para todos.
+Política B propuesta: 36 intervalos más 20 reaperturas en cuarentena, segmentos
+contiguos. 7048 inicios posibles de 180 pasos; NO se aplicó la política.
+Próximo paso: registrar la decisión metodológica del usuario y después implementar
+preparación segmentada, verificar características y aceptar datos antes del simulador.
+Verificación Debian local pendiente de resultados del usuario. Sin entrenamientos.
