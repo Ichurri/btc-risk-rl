@@ -1,0 +1,155 @@
+{
+  "status": "failed",
+  "errors": [
+    "Missing 16 complete scheduled bars",
+    "Invalid OHLCV or timestamps in 20 bars"
+  ],
+  "duplicates_removed": 0,
+  "incomplete_removed": 0,
+  "zero_volume_bars": 0,
+  "missing_open_times_utc": [
+    "2018-02-08T04:00:00+00:00",
+    "2018-02-08T08:00:00+00:00",
+    "2018-02-08T12:00:00+00:00",
+    "2018-02-08T16:00:00+00:00",
+    "2018-02-08T20:00:00+00:00",
+    "2018-02-09T00:00:00+00:00",
+    "2018-02-09T04:00:00+00:00",
+    "2018-06-26T04:00:00+00:00",
+    "2018-06-26T08:00:00+00:00",
+    "2018-07-04T04:00:00+00:00",
+    "2018-11-14T04:00:00+00:00",
+    "2019-03-12T04:00:00+00:00",
+    "2019-05-15T04:00:00+00:00",
+    "2019-05-15T08:00:00+00:00",
+    "2019-08-15T04:00:00+00:00",
+    "2020-02-19T12:00:00+00:00"
+  ],
+  "expected_bars": 13332,
+  "actual_bars": 13316,
+  "invalid_ohlcv_or_open_time_count": 0,
+  "nonstandard_close_times": [
+    {
+      "open_time_ms": 1515024000000,
+      "close_time_ms": 1515034814838,
+      "expected_close_time_ms": 1515038399999
+    },
+    {
+      "open_time_ms": 1518048000000,
+      "close_time_ms": 1518049694788,
+      "expected_close_time_ms": 1518062399999
+    },
+    {
+      "open_time_ms": 1529971200000,
+      "close_time_ms": 1529978399999,
+      "expected_close_time_ms": 1529985599999
+    },
+    {
+      "open_time_ms": 1530662400000,
+      "close_time_ms": 1530663745551,
+      "expected_close_time_ms": 1530676799999
+    },
+    {
+      "open_time_ms": 1539921600000,
+      "close_time_ms": 1539928799999,
+      "expected_close_time_ms": 1539935999999
+    },
+    {
+      "open_time_ms": 1542153600000,
+      "close_time_ms": 1542160799999,
+      "expected_close_time_ms": 1542167999999
+    },
+    {
+      "open_time_ms": 1552348800000,
+      "close_time_ms": 1552355999999,
+      "expected_close_time_ms": 1552363199999
+    },
+    {
+      "open_time_ms": 1557878400000,
+      "close_time_ms": 1557889199999,
+      "expected_close_time_ms": 1557892799999
+    },
+    {
+      "open_time_ms": 1565827200000,
+      "close_time_ms": 1565834399999,
+      "expected_close_time_ms": 1565841599999
+    },
+    {
+      "open_time_ms": 1573603200000,
+      "close_time_ms": 1573610399999,
+      "expected_close_time_ms": 1573617599999
+    },
+    {
+      "open_time_ms": 1574640000000,
+      "close_time_ms": 1574647199999,
+      "expected_close_time_ms": 1574654399999
+    },
+    {
+      "open_time_ms": 1582099200000,
+      "close_time_ms": 1582112132286,
+      "expected_close_time_ms": 1582113599999
+    },
+    {
+      "open_time_ms": 1587772800000,
+      "close_time_ms": 1587779999999,
+      "expected_close_time_ms": 1587787199999
+    },
+    {
+      "open_time_ms": 1593302400000,
+      "close_time_ms": 1593309599999,
+      "expected_close_time_ms": 1593316799999
+    },
+    {
+      "open_time_ms": 1608552000000,
+      "close_time_ms": 1608558440521,
+      "expected_close_time_ms": 1608566399999
+    },
+    {
+      "open_time_ms": 1613001600000,
+      "close_time_ms": 1613014854773,
+      "expected_close_time_ms": 1613015999999
+    },
+    {
+      "open_time_ms": 1618876800000,
+      "close_time_ms": 1618883999999,
+      "expected_close_time_ms": 1618891199999
+    },
+    {
+      "open_time_ms": 1619323200000,
+      "close_time_ms": 1619323258146,
+      "expected_close_time_ms": 1619337599999
+    },
+    {
+      "open_time_ms": 1628812800000,
+      "close_time_ms": 1628819999000,
+      "expected_close_time_ms": 1628827199999
+    },
+    {
+      "open_time_ms": 1632888000000,
+      "close_time_ms": 1632898799999,
+      "expected_close_time_ms": 1632902399999
+    }
+  ],
+  "invalid_open_times_ms": [
+    1515024000000,
+    1518048000000,
+    1529971200000,
+    1530662400000,
+    1539921600000,
+    1542153600000,
+    1552348800000,
+    1557878400000,
+    1565827200000,
+    1573603200000,
+    1574640000000,
+    1582099200000,
+    1587772800000,
+    1593302400000,
+    1608552000000,
+    1613001600000,
+    1618876800000,
+    1619323200000,
+    1628812800000,
+    1632888000000
+  ]
+}

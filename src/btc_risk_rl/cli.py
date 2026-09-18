@@ -6,6 +6,8 @@ from btc_risk_rl.config import load_config
 from btc_risk_rl.data.binance import fetch_development
 from btc_risk_rl.data.pipeline import prepare_development
 from btc_risk_rl.data.recheck import recheck_anomalies
+from btc_risk_rl.data.segmented_audit import verify_segmented
+from btc_risk_rl.data.segmented_pipeline import prepare_segmented
 
 
 def main():
@@ -18,6 +20,12 @@ def main():
     prepare = sub.add_parser("prepare-development")
     prepare.add_argument("--raw", type=Path, default=Path("data/raw/development"))
     prepare.add_argument("--output", type=Path, default=Path("data/processed/development"))
+    segmented = sub.add_parser("prepare-segmented-development")
+    segmented.add_argument("--raw", type=Path, default=Path("data/raw/development"))
+    segmented.add_argument("--output", type=Path, default=Path("data/processed/segmented-B"))
+    verify = sub.add_parser("verify-segmented-development")
+    verify.add_argument("--raw", type=Path, default=Path("data/raw/development"))
+    verify.add_argument("--prepared", type=Path, default=Path("data/processed/segmented-B"))
     recheck = sub.add_parser("recheck-anomalies")
     recheck.add_argument("--raw", type=Path, default=Path("data/raw/development"))
     recheck.add_argument("--output", type=Path, default=Path("data/raw/recheck"))
@@ -40,6 +48,16 @@ def main():
     elif args.command == "recheck-anomalies":
         audit = recheck_anomalies(config, args.raw, args.output)
         result = {"counts": audit["counts"], "final_test_accessed": False}
+    elif args.command == "verify-segmented-development":
+        result = verify_segmented(config, args.raw, args.prepared)
+    elif args.command == "prepare-segmented-development":
+        manifest = prepare_segmented(config, args.raw, args.output)
+        result = {
+            "status": manifest["status"],
+            "policy": manifest["policy"],
+            "output": str(args.output),
+            "final_test_accessed": False,
+        }
     else:
         manifest = prepare_development(config, args.raw, args.output)
         result = {

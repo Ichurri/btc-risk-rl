@@ -51,8 +51,25 @@ prepare-development falla deliberadamente si detecta huecos o datos inválidos;
 el detalle queda en quality.json y no se emiten características aceptadas.
 
 La descarga real inicial contiene 16 aperturas ausentes y 20 cierres abreviados.
-Por ello esta entrega NO contiene un dataset aprobado ni un simulador. ADR-003
-describe el bloqueo y el siguiente trabajo. No corregirlo quitando validaciones.
+La ruta estricta sigue rechazando esos datos, como documenta ADR-003. La preparación
+segmentada aprobada en ADR-004 dispone ahora de una ruta separada y aceptación
+técnica de desarrollo. No existe simulador. No retirar las validaciones estrictas.
+
+## Preparación segmentada B (sin red)
+
+```bash
+uv run --frozen btc-risk prepare-segmented-development --output data/processed/segmented-B
+uv run --frozen btc-risk verify-segmented-development --prepared data/processed/segmented-B
+```
+
+La preparación exige un destino nuevo y el histórico original identificado por
+el diagnóstico; no descarga datos ni acepta anomalías nuevas automáticamente.
+El verificador es de solo lectura. Emite máscara auditable, barras retenidas,
+características, parámetros del normalizador, observaciones e índices temporales.
+El ajuste usa cada observación finita de entrenamiento una sola vez; validación
+reutiliza parámetros. Los episodios de 180 transiciones son solo de entrenamiento;
+validación mantiene un único recorrido continuo. Consulte criterios, cobertura,
+evidencias y límites en [H1 segmentado](docs/hitos/H1-preparacion-segmentada.md).
 
 La configuración/CLI no exponen comandos de entrenamiento o prueba final.
 Las pruebas usan fixtures sintéticos, salvo la auditoría real documentada.

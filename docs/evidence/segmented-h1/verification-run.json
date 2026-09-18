@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "context": "local",
+  "time_utc": "2026-09-17T15:05:14.830966+00:00",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "python": "3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]",
+  "base_commit": "108847e16030dba823d89a5c4d094108011153f5",
+  "git_status": " D .python-version\n M README.md\n M docs/DEBIAN.md\n M docs/DIAGNOSTICO-HISTORICO.md\n M docs/decisions/ADR-004-segment-proposal.md\n M src/btc_risk_rl/cli.py\n?? docs/superpowers/\n?? src/btc_risk_rl/data/segmentation.py\n?? src/btc_risk_rl/data/segmented_audit.py\n?? src/btc_risk_rl/data/segmented_pipeline.py\n?? tests/test_segmentation.py\n",
+  "uv": "uv 0.11.18 (x86_64-unknown-linux-gnu)",
+  "cache": "/tmp/btc-risk-rl-uv-cache",
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "btc-risk",
+        "verify-segmented-development",
+        "--prepared",
+        "data/processed/segmented-B-h1"
+      ],
+      "exit_code": 0,
+      "log": "audit-real.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "btc-risk",
+        "prepare-segmented-development",
+        "--output",
+        "artifacts/segmented-h1/reproduction"
+      ],
+      "exit_code": 0,
+      "log": "reproduction.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "python",
+        "scripts/verify_installation.py",
+        "--context",
+        "local"
+      ],
+      "exit_code": 0,
+      "log": "installation-final.log"
+    }
+  ],
+  "source_hashes_before": {
+    "data/raw/development/manifest.json": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807",
+    "data/raw/development/page-0000.json": "83f724fad8040c7566295dbadd9013247e606e105aaa0e20b454191b81b48dd1",
+    "data/raw/development/page-0001.json": "14094a555fdcfb58259fec6099d087ec3512ec5dcc31b04c78d17d36d4592c1c",
+    "data/raw/development/page-0002.json": "812f656d5438096ebcbe6a97321f3896eb266ddbcc09722d017964dbe0d07ff2",
+    "data/raw/development/page-0003.json": "4723621c5a2466aba285b9e5444bea8ecf7104b522ebb7405bbc816b2aa1c3a5",
+    "data/raw/development/page-0004.json": "93b3444e1e4500a528411b59dc75770b8009dba03f52409384a0a8c761cce5f8",
+    "data/raw/development/page-0005.json": "855b369ab42b8653f785f2a4a1714f7ee8769a6d20b674f83fe0e26d6bfa388f",
+    "data/raw/development/page-0006.json": "2af5a9a5d8db720a64d829994250ee5dc40377d971098489a61fc0dcba892910",
+    "data/raw/development/page-0007.json": "bc9d4e32d08b68033b767d3b3370300dc158231344c02c76e45acfeb2c9e8946",
+    "data/raw/development/page-0008.json": "b47caf3cd792d28ff5871535434fefc2b3c7ec8a5c2ac814de1defbb3c9624bb",
+    "data/raw/development/page-0009.json": "7cfc6af96c57c7441bb25fc3bc0d5db50dd3a108d1f45cda65eb2bfb6821cc27",
+    "data/raw/development/page-0010.json": "0b6ee40334969fba2a26a4895871fa1151f05e3ee8605d354cf7cb77ebd63bf7",
+    "data/raw/development/page-0011.json": "258ff366fa87e50aee73fe11fd5719becf8754c8b6c4f4a14abe903fc445638e",
+    "data/raw/development/page-0012.json": "ab2f2f22dec92b7163ea3902897638889ce11a0f09f2a0a12f202c566586adb8",
+    "data/raw/development/page-0013.json": "4864b7b8abdd0b165b888d29932099adf64e9fbeb63147f1cd4ab8356bf05b3b"
+  },
+  "source_hashes_after": {
+    "data/raw/development/manifest.json": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807",
+    "data/raw/development/page-0000.json": "83f724fad8040c7566295dbadd9013247e606e105aaa0e20b454191b81b48dd1",
+    "data/raw/development/page-0001.json": "14094a555fdcfb58259fec6099d087ec3512ec5dcc31b04c78d17d36d4592c1c",
+    "data/raw/development/page-0002.json": "812f656d5438096ebcbe6a97321f3896eb266ddbcc09722d017964dbe0d07ff2",
+    "data/raw/development/page-0003.json": "4723621c5a2466aba285b9e5444bea8ecf7104b522ebb7405bbc816b2aa1c3a5",
+    "data/raw/development/page-0004.json": "93b3444e1e4500a528411b59dc75770b8009dba03f52409384a0a8c761cce5f8",
+    "data/raw/development/page-0005.json": "855b369ab42b8653f785f2a4a1714f7ee8769a6d20b674f83fe0e26d6bfa388f",
+    "data/raw/development/page-0006.json": "2af5a9a5d8db720a64d829994250ee5dc40377d971098489a61fc0dcba892910",
+    "data/raw/development/page-0007.json": "bc9d4e32d08b68033b767d3b3370300dc158231344c02c76e45acfeb2c9e8946",
+    "data/raw/development/page-0008.json": "b47caf3cd792d28ff5871535434fefc2b3c7ec8a5c2ac814de1defbb3c9624bb",
+    "data/raw/development/page-0009.json": "7cfc6af96c57c7441bb25fc3bc0d5db50dd3a108d1f45cda65eb2bfb6821cc27",
+    "data/raw/development/page-0010.json": "0b6ee40334969fba2a26a4895871fa1151f05e3ee8605d354cf7cb77ebd63bf7",
+    "data/raw/development/page-0011.json": "258ff366fa87e50aee73fe11fd5719becf8754c8b6c4f4a14abe903fc445638e",
+    "data/raw/development/page-0012.json": "ab2f2f22dec92b7163ea3902897638889ce11a0f09f2a0a12f202c566586adb8",
+    "data/raw/development/page-0013.json": "4864b7b8abdd0b165b888d29932099adf64e9fbeb63147f1cd4ab8356bf05b3b"
+  },
+  "source_bytes_unchanged": true,
+  "repeated_product_hashes_identical": true,
+  "compared_product_hashes": {
+    "bars.csv": "dbf398582121ccee2cf3aea05fc6bbee7ecaa5cc0d73d26e9cd9d76d0ccc318b",
+    "coverage.json": "6eefcfdf68233c821f66758fe610a6c2b8e8c4d7e15b99fcb9163e18744e64d6",
+    "diagnosis_comparison.json": "d0ead77f7ab8c3eee0c3ae28a7a2d09ae2d7b95e2833c854ca7140c19e62dcb1",
+    "episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+    "features.csv": "86858fa626cbaceed452f7da180a015122cc45ba1d411e791febbb0416d5c816",
+    "fit_observations.csv": "84944d21aa909b4a08e0742b18aec8f021e06f7d23553bc4129e97bbc93544bc",
+    "mask.csv": "01432b21eb2e6535856c51b90ceb801a9942f6a5a118f71047afe106be3d97b9",
+    "observations.csv": "9a76f6a67e0bb5e034caa23c6503d24bfc9e8c2fa824a9efcb31975b0ebf1b93",
+    "quality-original.json": "03f7894cddd3b8bc437ab83ae9c9928340d6a345cf7fd11f8d27f8a9dad9d04a",
+    "scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+    "transitions.csv": "5e07c677e70578e4ea54badce41316d3f0a37dd5ef2ad51dc642287214f4cfc0",
+    "audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8"
+  },
+  "code_hashes": {
+    "src/btc_risk_rl/cli.py": "a94b4517139721d46ef03ee6834e2ef6d8074149f304f060d53e6d0596bb00af",
+    "src/btc_risk_rl/data/segmentation.py": "02aaf8714407a3eff9aa5db683a02c9b3655159fd1ee930e7d55819e93c955ae",
+    "src/btc_risk_rl/data/segmented_audit.py": "817cabd3904103ee8fc773bae727e50f56db99dd9fbd79fcc3b6b4d888f405e4",
+    "src/btc_risk_rl/data/segmented_pipeline.py": "510b6af1471d253522cdd94e7529c3ccdfc85de15f5db6109d7c9cdbdb9ffc24",
+    "tests/test_segmentation.py": "5f024bc74051800770fd5c78ab235b62d8e88da94aa60935431a69c1d4451845",
+    "configs/initial.toml": "7a9ad764c9ac1db1bdf718f472c98ba718810335864ce87c4441be8b69457ddc",
+    "uv.lock": "bb7dc8711e66e69481e071386a535d68b71a76024f0d187e72ba5969c9d46914"
+  },
+  "final_test_accessed": false,
+  "training_executed": false
+}

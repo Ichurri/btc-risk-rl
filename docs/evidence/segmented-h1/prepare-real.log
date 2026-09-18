@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/btc-risk", line 4, in <module>
+    from btc_risk_rl.cli import main
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/cli.py", line 9, in <module>
+    from btc_risk_rl.data.segmented_audit import verify_segmented
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/data/segmented_audit.py", line 11, in <module>
+    from btc_risk_rl.data.segmentation import (
+ImportError: cannot import name 'FEATURES' from 'btc_risk_rl.data.segmentation' (/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/data/segmentation.py)

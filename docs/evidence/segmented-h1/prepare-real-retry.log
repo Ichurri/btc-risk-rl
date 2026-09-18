@@ -1,0 +1,6 @@
+{
+  "status": "accepted",
+  "policy": "B_ADR_004",
+  "output": "data/processed/segmented-B-h1",
+  "final_test_accessed": false
+}

@@ -1,7 +1,8 @@
 # ADR-004: política B de cuarentena y segmentos
 
 Estado: APROBADO metodológicamente el 17 de septiembre de 2026;
-implementación y aceptación de datos pendientes.
+implementado y verificado para desarrollo; evidencia en
+../hitos/H1-preparacion-segmentada.md.
 
 ## Decisión y procedencia
 
@@ -18,20 +19,34 @@ Mantener los originales y las particiones. Validación 2023 continua.
 No aplicar segmentación automáticamente a evaluación ni sumar curvas con reinicios.
 Las causas de todos los bloques no están demostradas; la cuarentena se fundamenta
 en idoneidad para el contrato temporal, no en declarar corruptos todos los datos.
-No modifica ADR-002, no acepta datos ni habilita el simulador.
+La aprobación por sí sola no acepta datos ni modifica ADR-002. La aceptación
+técnica posterior requiere los controles de preparación descritos abajo.
 
-## Aplicación pendiente
+## Contrato de aplicación
 
-Conservar `missing_bar_policy = "fail"` hasta implementar una ruta explícita
-de preparación segmentada. No rellenar huecos ni sustituir datos originales.
+Se conserva `missing_bar_policy = "fail"` en la ruta estricta. La ruta explícita
+`prepare-segmented-development` aplica B sin rellenar huecos ni sustituir originales.
 La máscara derivada debe identificar motivos y segmentos; los indicadores
 deben reiniciarse y calentarse en cada segmento, sin transiciones ni episodios
-que crucen sus límites o las fronteras de las particiones.
+que crucen interrupciones. Todos los objetivos puntuados de un episodio deben
+pertenecer a entrenamiento; ninguno puede alcanzar validación. La observación
+inicial y el calentamiento pueden usar contexto contiguo anterior a una frontera,
+sin puntuar retornos de ese contexto, como especifica el diagnóstico. Validación
+usa una sola trayectoria de objetivos 2023, nunca episodios de 180 pasos.
 
-Antes de aceptar los datos: verificar características causales, definir
-explícitamente las observaciones elegibles para ajustar el normalizador solo
-en entrenamiento, persistirlo y reutilizarlo sin refit, comprobar el índice
-de episodios y reportar cobertura. Los conteos del diagnóstico son evidencia
-de la propuesta, no resultados de una preparación ya implementada.
+El normalizador se ajusta una sola vez por timestamp a todas las observaciones
+de entrenamiento con las diez características finitas, incluidos los segmentos
+cortos sin episodios y estados terminales. No se pondera por frecuencia de aparición
+en episodios. Se excluyen calentamiento anterior a entrenamiento, cuarentena,
+observaciones sin historia suficiente y validación. Media y desviación poblacional
+persistidas; columnas constantes usan escala 1, sin clipping. Validación y auditoría
+recargan los parámetros y no ejecutan ajuste.
+
+La aceptación requiere comprobar las tablas persistidas, causalidad por segmento,
+índice exhaustivo de episodios, hashes de fuentes/productos y coincidencia exacta
+con inventario, reaperturas y cobertura del diagnóstico. Anomalías adicionales,
+fuentes modificadas o validación incompleta bloquean la aceptación. La aceptación
+se limita al desarrollo bajo B y conserva las limitaciones sobre negociabilidad,
+sesgo de selección y riesgo durante interrupciones.
 
 La aprobación no autoriza entrenamientos ni acceso al conjunto final.

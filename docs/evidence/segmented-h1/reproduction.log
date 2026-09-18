@@ -1,0 +1,6 @@
+{
+  "status": "accepted",
+  "policy": "B_ADR_004",
+  "output": "artifacts/segmented-h1/reproduction",
+  "final_test_accessed": false
+}

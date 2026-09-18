@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "accepted",
+  "policy": "B_ADR_004",
+  "acceptance_scope": "development_data_under_policy_B_not_training_authorization",
+  "created_at_utc": "2026-09-17T15:02:05.140965+00:00",
+  "config": {
+    "schema_version": 1,
+    "status": "initial_working_not_confirmatory",
+    "data": {
+      "symbol": "BTCUSDT",
+      "interval": "4h",
+      "timezone": "UTC",
+      "warmup_start": "2017-12-01T00:00:00Z",
+      "train_start": "2018-01-01T00:00:00Z",
+      "validation_start": "2023-01-01T00:00:00Z",
+      "test_start": "2024-01-01T00:00:00Z",
+      "test_end": "2026-01-01T00:00:00Z",
+      "endpoint": "https://api.binance.com/api/v3/klines",
+      "final_test_locked": true,
+      "missing_bar_policy": "fail",
+      "secondary_source_status": "pending_coverage_verification"
+    },
+    "features": {
+      "version": "market10_portfolio2_v1",
+      "return_windows": [
+        1,
+        6,
+        42
+      ],
+      "rolling_windows": [
+        6,
+        42
+      ],
+      "volatility_ddof": 0,
+      "normalization": "train_zscore_no_clip"
+    },
+    "environment": {
+      "initial_cash": 10000.0,
+      "commission": 0.001,
+      "slippage": 0.0005,
+      "episode_steps": 180,
+      "action": "target_btc_weight_after_costs",
+      "reward": "net_log_equity",
+      "end_position": "mark_to_market_no_liquidation",
+      "horizon_mode": "continuing_window_truncation",
+      "cash_interest": 0.0,
+      "accounting_dtype": "float64"
+    },
+    "research": {
+      "conditions": [
+        "C0",
+        "C5",
+        "C10"
+      ],
+      "tail_fractions": [
+        0.05,
+        0.1
+      ],
+      "training_enabled": false,
+      "risk_contract_status": "blocked_pending_ADR_002",
+      "seeds_status": "pilot_required",
+      "budget_status": "pilot_required",
+      "trajectory_batch_status": "pilot_required",
+      "risk_bound_status": "pilot_required",
+      "ppo_discount_status": "must_resolve_before_agent_implementation"
+    },
+    "hardware_reported": {
+      "os": "Debian",
+      "cpu": "Intel Core i7-11800H, 8 cores, 16 threads",
+      "ram_gib_approx": 15,
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop / Max-Q",
+      "vram_gib_estimate": 6,
+      "vram_verified": false,
+      "compute_hours_per_day": 3,
+      "execution": "local_and_remote"
+    }
+  },
+  "sources": {
+    "raw_manifest_sha256": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807",
+    "inventory_sha256": "adca2893cd5d71f2954e61b55b7fcf04ee67155152f52cab3cf84ebcd1d2b312",
+    "impact_sha256": "26ff70e5f03b0ff87eafaba727225a48b1d8801e5cd75cf656f2dba45c8b8cf8"
+  },
+  "files": {
+    "bars.csv": "dbf398582121ccee2cf3aea05fc6bbee7ecaa5cc0d73d26e9cd9d76d0ccc318b",
+    "coverage.json": "6eefcfdf68233c821f66758fe610a6c2b8e8c4d7e15b99fcb9163e18744e64d6",
+    "diagnosis_comparison.json": "d0ead77f7ab8c3eee0c3ae28a7a2d09ae2d7b95e2833c854ca7140c19e62dcb1",
+    "episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+    "features.csv": "86858fa626cbaceed452f7da180a015122cc45ba1d411e791febbb0416d5c816",
+    "fit_observations.csv": "84944d21aa909b4a08e0742b18aec8f021e06f7d23553bc4129e97bbc93544bc",
+    "mask.csv": "01432b21eb2e6535856c51b90ceb801a9942f6a5a118f71047afe106be3d97b9",
+    "observations.csv": "9a76f6a67e0bb5e034caa23c6503d24bfc9e8c2fa824a9efcb31975b0ebf1b93",
+    "quality-original.json": "03f7894cddd3b8bc437ab83ae9c9928340d6a345cf7fd11f8d27f8a9dad9d04a",
+    "scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+    "transitions.csv": "5e07c677e70578e4ea54badce41316d3f0a37dd5ef2ad51dc642287214f4cfc0",
+    "audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8"
+  },
+  "fit_rule": "all_finite_train_observations_once_including_short_segments_and_terminal_states",
+  "training_executed": false,
+  "final_test_accessed": false,
+  "validation_mode": "one_continuous_path_no_forced_liquidation",
+  "secondary_source_verified": false
+}

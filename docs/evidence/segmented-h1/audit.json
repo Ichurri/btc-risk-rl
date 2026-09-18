@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "policy": "B_ADR_004",
+  "source_hashes_verified": {
+    "raw_manifest_sha256": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807",
+    "inventory_sha256": "adca2893cd5d71f2954e61b55b7fcf04ee67155152f52cab3cf84ebcd1d2b312",
+    "impact_sha256": "26ff70e5f03b0ff87eafaba727225a48b1d8801e5cd75cf656f2dba45c8b8cf8"
+  },
+  "persisted_tables_verified": [
+    "bars.csv",
+    "episodes.csv",
+    "features.csv",
+    "fit_observations.csv",
+    "mask.csv",
+    "observations.csv",
+    "transitions.csv"
+  ],
+  "normalizer_refitted": false,
+  "fit_count": 10073,
+  "train_episodes": 7048,
+  "validation_transitions": 2190,
+  "diagnosis_comparison": {
+    "status": "matched",
+    "differences": [],
+    "validation_windows_180": "diagnostic_count_only_not_evaluation_episodes"
+  },
+  "training_executed": false,
+  "final_test_accessed": false
+}

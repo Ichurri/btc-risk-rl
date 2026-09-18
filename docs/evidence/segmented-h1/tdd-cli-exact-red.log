@@ -1,0 +1,31 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_cli_exposes_separate_prepare_and_readonly_verify _____________
+
+    def test_cli_exposes_separate_prepare_and_readonly_verify():
+        import subprocess
+        import sys
+    
+        result = subprocess.run([sys.executable, "-m", "btc_risk_rl.cli", "--help"],
+                                capture_output=True, text=True, check=True)
+>       assert "prepare-segmented-development" in result.stdout
+E       AssertionError: assert 'prepare-segmented-development' in 'usage: cli.py [-h] [--config CONFIG]\n              {config-check,fetch-development,prepare-development,recheck-anoma...velopment,recheck-anomalies}\n\noptions:\n  -h, --help            show this help message and exit\n  --config CONFIG\n'
+E        +  where 'usage: cli.py [-h] [--config CONFIG]\n              {config-check,fetch-development,prepare-development,recheck-anoma...velopment,recheck-anomalies}\n\noptions:\n  -h, --help            show this help message and exit\n  --config CONFIG\n' = CompletedProcess(args=['/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python3', '-m', 'btc_risk_rl.cli...check-anomalies}\n\noptions:\n  -h, --help            show this help message and exit\n  --config CONFIG\n', stderr='').stdout
+
+tests/test_segmentation.py:296: AssertionError
+___________ test_timestamp_tampering_of_one_millisecond_is_rejected ____________
+
+    def test_timestamp_tampering_of_one_millisecond_is_rejected():
+        from btc_risk_rl.data.segmented_audit import same_table
+    
+        expected = pd.DataFrame({"open_time": [1512086400000]})
+        actual = pd.DataFrame({"open_time": [1512086400001]})
+>       with pytest.raises(ValueError, match="mismatch"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_segmentation.py:305: Failed
+=========================== short test summary info ============================
+FAILED tests/test_segmentation.py::test_cli_exposes_separate_prepare_and_readonly_verify
+FAILED tests/test_segmentation.py::test_timestamp_tampering_of_one_millisecond_is_rejected
+2 failed, 18 deselected in 0.46s

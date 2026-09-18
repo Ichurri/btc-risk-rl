@@ -101,3 +101,34 @@ y sus tres logs. El registro identifica el commit base d097f5c y los cambios
 documentales presentes durante la ejecución. El commit de cierre incorpora
 la evidencia local y la aprobación de B; excluye la eliminación previa de
 `.python-version`. El siguiente trabajo sigue siendo la preparación segmentada.
+
+## H1 cerrado: preparación segmentada B, 17 de septiembre de 2026
+
+La ruta explícita `prepare-segmented-development` aplica ADR-004 y
+`verify-segmented-development` audita los productos sin modificarlos ni reajustar
+el normalizador. `missing_bar_policy = "fail"` y la ruta estricta se conservan.
+Los datos de desarrollo están **aceptados técnicamente bajo B**, con las
+limitaciones del [informe del hito](hitos/H1-preparacion-segmentada.md).
+
+- Máscara exacta: 16 ausencias, 20 cierres abreviados y 20 reaperturas; sin imputación.
+- Entrenamiento: 10900 barras retenidas, 21 segmentos, 10054 transiciones,
+  7048 episodios posibles de 180 transiciones en 15 segmentos aptos.
+- Ajuste: 10073 observaciones finitas de entrenamiento, una vez por timestamp;
+  incluye segmentos cortos y estados terminales. Validación solo transforma.
+- Validación: 2190 transiciones continuas, sin episodios de evaluación de 180 pasos.
+- Coincidencia exacta con el escenario B del diagnóstico, incluidos límites
+  por segmento. Reproducción en otro destino: mismos hashes de derivados.
+- Verificación local final: configuración válida, Ruff pasa y 59 pruebas
+  aprobadas en 13.85 s. Originales intactos, hashes antes/después verificados.
+
+Evidencias, versiones y comandos: [docs/evidence/segmented-h1](evidence/segmented-h1/COMMANDS.md).
+Producto fuera de Git: `data/processed/segmented-B-h1/`. El ZIP académico incluye
+los archivos versionados, el producto, las páginas originales de desarrollo y
+un Git bundle; el descriptor de entrega identifica el commit y los hashes.
+La evidencia de ejecución referencia 108847e como base previa al commit del hito
+y registra huellas de los archivos ejecutados. Se conserva fuera del commit la
+eliminación local de `.python-version`.
+
+Siguiente hito: simulador causal float64 con contabilidad y costos exactos sobre
+los índices aceptados. **No se inició el simulador en esta entrega.** ADR-002
+sigue pendiente; no hay PPO/CVaR-PPO ni entrenamientos. Conjunto final sin acceso.
