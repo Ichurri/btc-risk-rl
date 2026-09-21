@@ -132,3 +132,36 @@ eliminación local de `.python-version`.
 Siguiente hito: simulador causal float64 con contabilidad y costos exactos sobre
 los índices aceptados. **No se inició el simulador en esta entrega.** ADR-002
 sigue pendiente; no hay PPO/CVaR-PPO ni entrenamientos. Conjunto final sin acceso.
+
+## H2 cerrado: simulador causal, 21 de septiembre de 2026
+
+Implementados `env/accounting.py`, `env/market.py` y `env/trading.py`:
+observaciones float64 de 10 características y 2 variables de cartera, objetivo
+BTC posterior a costos marcado a apertura de referencia, ejecución en apertura
+siguiente con comisión sobre precio ejecutado, deslizamiento adverso y recompensa
+logarítmica neta que incluye el gap. Sin clipping de acciones o saldos.
+
+El cargador exige aceptación y auditoría H1. Entrenamiento solo por índice
+aceptado de 180 transiciones; validación mantiene 2190 pasos y una sola cartera.
+Los cortes devuelven observación final y truncación, sin venta obligatoria.
+Se distingue fin de ventana, segmento y partición. ADR-002 permanece abierto:
+no se decide descuento, bootstrap ni estimador de riesgo.
+
+Verificación local real: configuración válida, Ruff pasa y **100 pruebas pasan
+en 26.68 s**. Casos sintéticos con oráculo Decimal independiente de 60 dígitos,
+incluidos 120 portafolios aleatorios deterministas. Comprobación funcional real:
+7048 índices revisados, 30 episodios extremos de los 15 segmentos aptos y una
+validación continua; 31 recorridos y 7590 transiciones. Acciones prefijadas sin
+aprendizaje ni selección por resultados. Error máximo de efectivo 3.64e-12 USDT;
+error telescópico máximo 1.67e-15. Fuentes y normalizador intactos.
+
+Informe: [H2-simulador.md](hitos/H2-simulador.md). Evidencias y comandos:
+[simulator-h2/COMMANDS.md](evidence/simulator-h2/COMMANDS.md). Libro completo:
+`artifacts/simulator-h2/real/ledger.csv`, incluido en el ZIP académico junto con
+código, evidencia, datos de desarrollo y Git bundle. La evidencia registra
+57e0885 como commit base y hashes del código ejecutado; DELIVERY.json del ZIP
+identifica el commit de cierre. `.python-version` sigue eliminado localmente,
+fuera de este commit, por el cambio previo del usuario.
+
+Siguiente paso: resolver metodológicamente ADR-002 antes de agentes o entrenamientos.
+No se instaló PyTorch/CUDA, no se modificaron drivers y no se accedió al test final.

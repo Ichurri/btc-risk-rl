@@ -1,0 +1,61 @@
+................................FFF.                                     [100%]
+=================================== FAILURES ===================================
+__________ test_accepted_loader_all_indices_and_continuous_validation __________
+
+accepted_synthetic = (Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', ...ulator-synthetic-accepted0/out'), PosixPath('/tmp/pytest-of-ichurri/pytest-0/simulator-synthetic-accepted0/diagnosis'))
+
+    def test_accepted_loader_all_indices_and_continuous_validation(accepted_synthetic):
+        from btc_risk_rl.config import STEP_MS, utc_ms
+>       from btc_risk_rl.env.market import AcceptedMarket
+E       ImportError: cannot import name 'AcceptedMarket' from 'btc_risk_rl.env.market' (/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/env/market.py)
+
+tests/test_simulator.py:242: ImportError
+___________ test_unaccepted_or_reserved_source_blocked_before_audit ____________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_unaccepted_or_reserved_so0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fb6e31c4440>
+
+    def test_unaccepted_or_reserved_source_blocked_before_audit(config, tmp_path, monkeypatch):
+        import json
+    
+        from btc_risk_rl.config import utc_ms
+        from btc_risk_rl.env import market
+    
+        out, raw = tmp_path / 'out', tmp_path / 'raw'
+        out.mkdir()
+        raw.mkdir()
+        (out / 'manifest.json').write_text(json.dumps({'status': 'pending_verification'}))
+        with pytest.raises(ValueError, match='accepted'):
+>           market.AcceptedMarket(config, raw, out)
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'btc_risk_rl.env.market' has no attribute 'AcceptedMarket'
+
+tests/test_simulator.py:277: AttributeError
+_____________________ test_modified_products_are_rejected ______________________
+
+accepted_synthetic = (Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', ...ulator-synthetic-accepted0/out'), PosixPath('/tmp/pytest-of-ichurri/pytest-0/simulator-synthetic-accepted0/diagnosis'))
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_modified_products_are_rej0')
+
+    def test_modified_products_are_rejected(accepted_synthetic, tmp_path):
+        import shutil
+    
+>       from btc_risk_rl.env.market import AcceptedMarket
+E       ImportError: cannot import name 'AcceptedMarket' from 'btc_risk_rl.env.market' (/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/env/market.py)
+
+tests/test_simulator.py:294: ImportError
+=============================== warnings summary ===============================
+tests/test_simulator.py::test_reset_required_and_gymnasium_contract
+  /home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/lib/python3.12/site-packages/gymnasium/utils/env_checker.py:317: UserWarning: [33mWARN: A Box observation space minimum value is -infinity. This is probably too low.[0m
+    logger.warn(
+
+tests/test_simulator.py::test_reset_required_and_gymnasium_contract
+  /home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/lib/python3.12/site-packages/gymnasium/utils/env_checker.py:321: UserWarning: [33mWARN: A Box observation space maximum value is infinity. This is probably too high.[0m
+    logger.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_simulator.py::test_accepted_loader_all_indices_and_continuous_validation
+FAILED tests/test_simulator.py::test_unaccepted_or_reserved_source_blocked_before_audit
+FAILED tests/test_simulator.py::test_modified_products_are_rejected - ImportE...
+3 failed, 33 passed, 2 warnings in 2.19s

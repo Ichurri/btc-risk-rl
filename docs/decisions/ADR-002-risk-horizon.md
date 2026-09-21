@@ -2,6 +2,14 @@
 
 Estado: ABIERTO; bloquea implementación de PPO/CVaR-PPO y entrenamientos.
 
+Actualización H2 (21-09-2026): el simulador devuelve `truncated=True` al acabar
+una ventana o disponibilidad de datos, conserva la posición y devuelve el estado
+real final. `terminated=False` expresa que no se modeló una terminación económica.
+Se distingue corte de ventana, segmento o partición. Esto **no decide** si habrá
+bootstrap, qué descuento usar ni cómo tratar una interrupción al estimar valor;
+no se debe inferir esa autorización de los flags de Gymnasium. Ver
+../hitos/H2-simulador.md. Los criterios de cierre siguientes siguen pendientes.
+
 El simulador inicial representa inversión continua. Una ventana de 180 pasos
 es una truncación de recolección y no un final económico. No liquida al terminar.
 Su recompensa es r_t=log(E_{t+1}/E_t), común a C0/C5/C10.

@@ -1,0 +1,141 @@
+....................FFFFFFFFFFFF                                         [100%]
+=================================== FAILURES ===================================
+________________ test_observation_next_open_and_gap_accounting _________________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_observation_next_open_and_gap_accounting(config):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:100: ModuleNotFoundError
+_______________ test_no_lookahead_in_observation_or_order_sizing _______________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_no_lookahead_in_observation_or_order_sizing(config):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:125: ModuleNotFoundError
+____ test_full_episode_truncates_without_liquidation_and_reward_telescopes _____
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_full_episode_truncates_without_liquidation_and_reward_telescopes(config):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:143: ModuleNotFoundError
+_____________ test_invalid_action_does_not_mutate_portfolio[-0.01] _____________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+action = -0.01
+
+    @pytest.mark.parametrize('action', [-.01, 1.01, float('nan'), float('inf'), [0, 1], [[.5]]])
+    def test_invalid_action_does_not_mutate_portfolio(config, action):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:167: ModuleNotFoundError
+_____________ test_invalid_action_does_not_mutate_portfolio[1.01] ______________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+action = 1.01
+
+    @pytest.mark.parametrize('action', [-.01, 1.01, float('nan'), float('inf'), [0, 1], [[.5]]])
+    def test_invalid_action_does_not_mutate_portfolio(config, action):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:167: ModuleNotFoundError
+______________ test_invalid_action_does_not_mutate_portfolio[nan] ______________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+action = nan
+
+    @pytest.mark.parametrize('action', [-.01, 1.01, float('nan'), float('inf'), [0, 1], [[.5]]])
+    def test_invalid_action_does_not_mutate_portfolio(config, action):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:167: ModuleNotFoundError
+______________ test_invalid_action_does_not_mutate_portfolio[inf] ______________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+action = inf
+
+    @pytest.mark.parametrize('action', [-.01, 1.01, float('nan'), float('inf'), [0, 1], [[.5]]])
+    def test_invalid_action_does_not_mutate_portfolio(config, action):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:167: ModuleNotFoundError
+____________ test_invalid_action_does_not_mutate_portfolio[action4] ____________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+action = [0, 1]
+
+    @pytest.mark.parametrize('action', [-.01, 1.01, float('nan'), float('inf'), [0, 1], [[.5]]])
+    def test_invalid_action_does_not_mutate_portfolio(config, action):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:167: ModuleNotFoundError
+____________ test_invalid_action_does_not_mutate_portfolio[action5] ____________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+action = [[0.5]]
+
+    @pytest.mark.parametrize('action', [-.01, 1.01, float('nan'), float('inf'), [0, 1], [[.5]]])
+    def test_invalid_action_does_not_mutate_portfolio(config, action):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:167: ModuleNotFoundError
+_______________ test_validation_is_one_continuous_2190_step_path _______________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_validation_is_one_continuous_2190_step_path(config):
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:179: ModuleNotFoundError
+________________ test_path_copy_guards_final_gap_and_partition _________________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_path_copy_guards_final_gap_and_partition(config):
+        from dataclasses import replace
+    
+        from btc_risk_rl.config import STEP_MS, utc_ms
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:196: ModuleNotFoundError
+__________________ test_reset_required_and_gymnasium_contract __________________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_reset_required_and_gymnasium_contract(config):
+        from gymnasium.utils.env_checker import check_env
+    
+>       from btc_risk_rl.env.trading import TradingEnv
+E       ModuleNotFoundError: No module named 'btc_risk_rl.env.trading'
+
+tests/test_simulator.py:215: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_simulator.py::test_observation_next_open_and_gap_accounting
+FAILED tests/test_simulator.py::test_no_lookahead_in_observation_or_order_sizing
+FAILED tests/test_simulator.py::test_full_episode_truncates_without_liquidation_and_reward_telescopes
+FAILED tests/test_simulator.py::test_invalid_action_does_not_mutate_portfolio[-0.01]
+FAILED tests/test_simulator.py::test_invalid_action_does_not_mutate_portfolio[1.01]
+FAILED tests/test_simulator.py::test_invalid_action_does_not_mutate_portfolio[nan]
+FAILED tests/test_simulator.py::test_invalid_action_does_not_mutate_portfolio[inf]
+FAILED tests/test_simulator.py::test_invalid_action_does_not_mutate_portfolio[action4]
+FAILED tests/test_simulator.py::test_invalid_action_does_not_mutate_portfolio[action5]
+FAILED tests/test_simulator.py::test_validation_is_one_continuous_2190_step_path
+FAILED tests/test_simulator.py::test_path_copy_guards_final_gap_and_partition
+FAILED tests/test_simulator.py::test_reset_required_and_gymnasium_contract - ...
+12 failed, 20 passed in 0.25s

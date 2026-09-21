@@ -1,0 +1,115 @@
+{
+  "data": "synthetic",
+  "decimal_precision": 60,
+  "method": "bisection_on_cashflows_220_iterations",
+  "cases": [
+    {
+      "inputs": {
+        "cash": 10000,
+        "btc": 0,
+        "open": 100,
+        "target": 1,
+        "commission": 0.001,
+        "slippage": 0.0005
+      },
+      "expected_by_decimal_bisection": {
+        "cash": 4.003e-56,
+        "btc": 99.85017481269355,
+        "commission": 9.99000999000999,
+        "slippage_cost": 4.992508740634678
+      },
+      "actual": {
+        "cash": 0.0,
+        "btc": 99.85017481269357,
+        "delta_btc": 99.85017481269357,
+        "reference_price": 100.0,
+        "execution_price": 100.05,
+        "commission": 9.990009990009991,
+        "slippage_cost": 4.992508740634679,
+        "equity_before": 10000.0,
+        "equity_after": 9985.017481269357
+      }
+    },
+    {
+      "inputs": {
+        "cash": 10000,
+        "btc": 0,
+        "open": 100,
+        "target": 0.6,
+        "commission": 0.001,
+        "slippage": 0.0005
+      },
+      "expected_by_decimal_bisection": {
+        "cash": 3996.4020392440684,
+        "btc": 59.94603058866103,
+        "commission": 5.997600360395536,
+        "slippage_cost": 2.9973015294330514
+      },
+      "actual": {
+        "cash": 3996.4020392440684,
+        "btc": 59.94603058866102,
+        "delta_btc": 59.94603058866102,
+        "reference_price": 100.0,
+        "execution_price": 100.05,
+        "commission": 5.997600360395534,
+        "slippage_cost": 2.997301529433051,
+        "equity_before": 10000.0,
+        "equity_after": 9991.00509811017
+      }
+    },
+    {
+      "inputs": {
+        "cash": 5000,
+        "btc": 50,
+        "open": 100,
+        "target": 0.2,
+        "commission": 0.001,
+        "slippage": 0.0005
+      },
+      "expected_by_decimal_bisection": {
+        "cash": 7996.400120396107,
+        "btc": 19.991000300990265,
+        "commission": 2.9993995199160226,
+        "slippage_cost": 1.5004499849504866
+      },
+      "actual": {
+        "cash": 7996.400120396107,
+        "btc": 19.99100030099027,
+        "delta_btc": -30.00899969900973,
+        "reference_price": 100.0,
+        "execution_price": 99.95,
+        "commission": 2.9993995199160226,
+        "slippage_cost": 1.5004499849504866,
+        "equity_before": 10000.0,
+        "equity_after": 9995.500150495134
+      }
+    },
+    {
+      "inputs": {
+        "cash": 0,
+        "btc": 100,
+        "open": 100,
+        "target": 0,
+        "commission": 0.001,
+        "slippage": 0.0005
+      },
+      "expected_by_decimal_bisection": {
+        "cash": 9985.005,
+        "btc": 0.0,
+        "commission": 9.995,
+        "slippage_cost": 5.0
+      },
+      "actual": {
+        "cash": 9985.005,
+        "btc": 0.0,
+        "delta_btc": -100.0,
+        "reference_price": 100.0,
+        "execution_price": 99.95,
+        "commission": 9.995000000000001,
+        "slippage_cost": 5.0,
+        "equity_before": 10000.0,
+        "equity_after": 9985.005
+      }
+    }
+  ]
+}

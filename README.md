@@ -53,7 +53,8 @@ el detalle queda en quality.json y no se emiten características aceptadas.
 La descarga real inicial contiene 16 aperturas ausentes y 20 cierres abreviados.
 La ruta estricta sigue rechazando esos datos, como documenta ADR-003. La preparación
 segmentada aprobada en ADR-004 dispone ahora de una ruta separada y aceptación
-técnica de desarrollo. No existe simulador. No retirar las validaciones estrictas.
+técnica de desarrollo. El simulador H2 consume esos índices auditados.
+No retirar las validaciones estrictas.
 
 ## Preparación segmentada B (sin red)
 
@@ -75,3 +76,19 @@ La configuración/CLI no exponen comandos de entrenamiento o prueba final.
 Las pruebas usan fixtures sintéticos, salvo la auditoría real documentada.
 Los datos de desarrollo originales acompañan el paquete en data/raw/ con sus
 huellas; están excluidos de Git. Para reutilizarlos verificar el manifiesto.
+
+## Simulador causal H2
+
+Implementa exposición BTC posterior a costos, ejecución en apertura siguiente,
+comisiones y deslizamiento adverso, contabilidad float64 y recompensa logarítmica
+neta. Entrenamiento usa índices de 180 transiciones; validación es un recorrido
+continuo. Los cortes truncan sin liquidar. No hay agente ni entrenamiento habilitado.
+
+```bash
+uv run --frozen python scripts/verify_simulator.py --context local --output artifacts/simulator-h2/real
+```
+
+El destino debe ser nuevo. Es una comprobación contable con acciones prefijadas,
+no selección de estrategias. Uso, ecuaciones, límites y evidencia en
+[H2 simulador](docs/hitos/H2-simulador.md). ADR-002 mantiene pendientes descuento,
+horizonte y bootstrap antes de implementar PPO/CVaR-PPO.

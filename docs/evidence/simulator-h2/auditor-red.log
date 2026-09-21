@@ -1,0 +1,30 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_rollout_auditor_rejects_corrupt_cashflow _________________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f2711a47bf0>
+
+    def test_rollout_auditor_rejects_corrupt_cashflow(config, monkeypatch):
+        import runpy
+    
+        from btc_risk_rl.env.trading import TradingEnv
+    
+>       audit = runpy.run_path('scripts/verify_simulator.py')['audit_rollout']
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_simulator.py:369: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:286: in run_path
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+fname = 'scripts/verify_simulator.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/verify_simulator.py'
+
+<frozen runpy>:254: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_simulator.py::test_rollout_auditor_rejects_corrupt_cashflow
+1 failed, 36 deselected in 0.12s
