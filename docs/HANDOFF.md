@@ -165,3 +165,27 @@ fuera de este commit, por el cambio previo del usuario.
 
 Siguiente paso: resolver metodológicamente ADR-002 antes de agentes o entrenamientos.
 No se instaló PyTorch/CUDA, no se modificaron drivers y no se accedió al test final.
+
+## Propuesta ADR-002 para revisión — 22 de septiembre de 2026 (UTC)
+
+Sobre H2 `cc913b629694641543e2b54375dbda5d55130544` se preparó
+[la propuesta metodológica y técnica](proposals/ADR-002-propuesta.md), todavía
+**NO ADOPTADA**. Recomienda H=180 finito, gamma=1 y CVaR sobre la misma suma neta
+logarítmica; distingue completitud de trayectoria y procedencia del corte,
+requiere tiempo restante y propone validación continua con horizonte móvil.
+Explicita que esa evaluación mide transferencia operacional, no garantiza la
+restricción de entrenamiento ni optimiza el retorno anual. Incluye alternativas,
+fuentes primarias, gradiente de riesgo, parámetros pendientes y migración futura.
+
+Evidencia nueva: [comandos y resultados](evidence/adr002-proposal/COMMANDS.md).
+Seis grupos sintéticos independientes aprobados; Ruff pasa; **100 pruebas pasan
+en 22.47 s**. Los hashes verifican código/configuración/pruebas/scripts/lock
+idénticos a H2. No se hizo nueva auditoría de mercado ni se atribuyen sus
+resultados anteriores a esta ejecución. `.python-version` sigue eliminado por
+el cambio previo, fuera de esta entrega.
+
+Siguiente paso: revisión académica conjunta del objetivo finito, alcance de la
+restricción y regla de despliegue continuo. ADR-002 permanece abierto. No cambiar
+el contrato del simulador ni implementar agentes hasta revisar la propuesta;
+no entrenar ni acceder al conjunto final. No hubo acceso a datos de mercado en
+esta tarea ni modificaciones a la tesis.

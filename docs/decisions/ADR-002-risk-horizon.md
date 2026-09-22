@@ -47,3 +47,13 @@ intencionalmente de gamma numérico, N, cota y presupuesto.
 Fuentes de referencia:
 https://gymnasium.farama.org/tutorials/gymnasium_basics/handling_time_limits/
 https://www.ijcai.org/proceedings/2022/0510.pdf
+
+## Propuesta para revisión — 22-09-2026
+
+Disponible [ADR-002-propuesta](../proposals/ADR-002-propuesta.md), sobre H2
+`cc913b6`: compara alternativas, recomienda retorno finito común de 180 pasos
+sin descuento, distingue cortes, deriva el mecanismo de riesgo y explicita la
+transferencia a validación continua. Incluye fuentes primarias y cálculos
+sintéticos independientes. **No adoptada**: esta referencia no cambia el contrato
+H2 ni habilita agentes, entrenamientos o acceso al conjunto final. Revisar el
+objetivo finito y su regla de evaluación conjuntamente antes de aprobar cambios.
