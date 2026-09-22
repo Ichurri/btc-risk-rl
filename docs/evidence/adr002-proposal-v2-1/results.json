@@ -1,0 +1,240 @@
+{
+  "status": "passed",
+  "revision": "v2.1",
+  "scope": "synthetic arithmetic/specification only",
+  "utc": "2026-09-22T07:10:53.848453+00:00",
+  "python": "3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "head_at_run": "28cda8b3dc9803f9c2e3e37057865dbb9baa0de9",
+  "groups": {
+    "annualization_and_undefined": [
+      {
+        "returns": [
+          0.02,
+          -0.01,
+          0.01,
+          -0.02
+        ],
+        "DD": 0.011180339887498949,
+        "S_4h": 0.0,
+        "S_annual": 0.0
+      },
+      {
+        "returns": [
+          0.03,
+          -0.01,
+          0.01,
+          -0.02
+        ],
+        "DD": 0.011180339887498949,
+        "S_4h": 0.22360679774997894,
+        "S_annual": 10.464224768228174
+      },
+      {
+        "returns": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DD": 0.0,
+        "S_4h": null,
+        "S_annual": null
+      },
+      {
+        "returns": [
+          0.01,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "DD": 0.0,
+        "S_4h": null,
+        "S_annual": null
+      }
+    ],
+    "paired_centered_one_sided_bootstrap": {
+      "synthetic_blocks_C0_C5_C10": [
+        [
+          10,
+          9,
+          8
+        ],
+        [
+          20,
+          21,
+          20
+        ],
+        [
+          30,
+          33,
+          32
+        ]
+      ],
+      "observed_mean_differences": [
+        "1",
+        "0"
+      ],
+      "centered_differences": [
+        [
+          "-2",
+          "-2"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "2",
+          "2"
+        ]
+      ],
+      "enumerated_draws": 27,
+      "exceedances": [
+        4,
+        17
+      ],
+      "exact_enumeration_p": [
+        "4/27",
+        "17/27"
+      ],
+      "uncentered_exceedances_negative_control": [
+        17,
+        17
+      ],
+      "MC_count_formula_only": [
+        "5/28",
+        "9/14"
+      ],
+      "annualization_preserves_exceedances": true,
+      "undefined_block_policy": "pending; no imputation or selective exclusion implemented"
+    },
+    "holm_two_contrasts_FWER_005": [
+      {
+        "raw_p": [
+          "1/50",
+          "1/25"
+        ],
+        "adjusted_p": [
+          "1/25",
+          "1/25"
+        ],
+        "reject": [
+          true,
+          true
+        ]
+      },
+      {
+        "raw_p": [
+          "3/100",
+          "1/25"
+        ],
+        "adjusted_p": [
+          "3/50",
+          "3/50"
+        ],
+        "reject": [
+          false,
+          false
+        ]
+      },
+      {
+        "raw_p": [
+          "1/25",
+          "1/100"
+        ],
+        "adjusted_p": [
+          "1/25",
+          "1/50"
+        ],
+        "reject": [
+          true,
+          true
+        ]
+      },
+      {
+        "raw_p": [
+          "1/40",
+          "1/20"
+        ],
+        "adjusted_p": [
+          "1/20",
+          "1/20"
+        ],
+        "reject": [
+          true,
+          true
+        ]
+      },
+      {
+        "raw_p": [
+          "4/27",
+          "17/27"
+        ],
+        "adjusted_p": [
+          "8/27",
+          "17/27"
+        ],
+        "reject": [
+          false,
+          false
+        ]
+      }
+    ],
+    "preservation_h2_v2_and_reviewed_sections": {
+      "## 6.": "19bc5b9fa3faa0f450c41f380c5f6748586aa66b9557ef084fd51ebba4dcd99d",
+      "### 7.1": "9167f7bfee5205132bea03ff890116991bc2eef4f622dc95bce8655f77b63e0b",
+      "### 7.3": "27a3a4f66eee3c9ed6608317f5fd37d0d5f5fe686fa6a15975172fa46fa648f3"
+    }
+  },
+  "unchanged_files_sha256": {
+    "configs/initial.toml": "7a9ad764c9ac1db1bdf718f472c98ba718810335864ce87c4441be8b69457ddc",
+    "pyproject.toml": "ecce421e4aef3d14e7e1b7c64aa3ac6e15d15f109a562e7579555a8e969dbf26",
+    "scripts/check_binance_archives.py": "71c3e5cede4b077c72e3dd60b07c5c50611906c64a74620ba7ff6385b55e4052",
+    "scripts/check_hourly_context.py": "d3ac324be0a0e29ef9ea3536965c9c3f6d9daf422f127f7ff7821589d3cb0933",
+    "scripts/diagnose_history.py": "d602050a676d3cadd82713443f50b5f833848ace77393075e8235fda2de493cb",
+    "scripts/verify_installation.py": "ab8cbe7b828ddf68b2d31e7f3f0ff6e29fdb238612929b894392b47c8ca3f261",
+    "scripts/verify_simulator.py": "8bd0136c6f00ba830a6ed1fd82b3b902aaea73efe0cbf4ce83d7a6ff7a021012",
+    "src/btc_risk_rl/__init__.py": "bc16eaed03676dbb9fa92e5d2244a14b2e75ad6f6f784c6c6fdbfd7a5b26e92c",
+    "src/btc_risk_rl/agents/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "src/btc_risk_rl/cli.py": "a94b4517139721d46ef03ee6834e2ef6d8074149f304f060d53e6d0596bb00af",
+    "src/btc_risk_rl/config.py": "29713860c5d9d7bf5e6d42b2daad4589e7849fa22cfdc816072c7429563ce623",
+    "src/btc_risk_rl/data/__init__.py": "1c07648155bef2de8cf11d780ccf0b62504a945ff84e42229d7c31d572605093",
+    "src/btc_risk_rl/data/binance.py": "55af8114fbfd9c4d432716458d19d806dd95f468bf3f89b5644986fdea39418a",
+    "src/btc_risk_rl/data/pipeline.py": "2e4bcc64f0c602130914df01543a9ed8fa996cd072043e18227e63b21e075074",
+    "src/btc_risk_rl/data/quality.py": "9465d6260d93de71d34940d84e3f4a4e14db0d9105fb52840c0558bbbbcfd880",
+    "src/btc_risk_rl/data/recheck.py": "c66009e45275df02beb6fa761df15c4e9d2fdd320a086f3767c99968c16281a0",
+    "src/btc_risk_rl/data/segmentation.py": "02aaf8714407a3eff9aa5db683a02c9b3655159fd1ee930e7d55819e93c955ae",
+    "src/btc_risk_rl/data/segmented_audit.py": "817cabd3904103ee8fc773bae727e50f56db99dd9fbd79fcc3b6b4d888f405e4",
+    "src/btc_risk_rl/data/segmented_pipeline.py": "510b6af1471d253522cdd94e7529c3ccdfc85de15f5db6109d7c9cdbdb9ffc24",
+    "src/btc_risk_rl/env/README.md": "701e9a1340c97541d11dcfd8a938b8ad9e5a24113e6dac711e0755f4b7f34636",
+    "src/btc_risk_rl/env/accounting.py": "0d9ab57fd1ed218cdf32d271805e729444c1d846c38422cb641c071f2b254838",
+    "src/btc_risk_rl/env/market.py": "1f48e55bb81084a9484f762398ee4184950c1ab9e33bbb7e4b805433ba120f32",
+    "src/btc_risk_rl/env/trading.py": "4bd333e3c8588f87120bcde2e02b86adb6981eed382717d0b5e0c31cbcb19af5",
+    "src/btc_risk_rl/evaluation/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "src/btc_risk_rl/experiments/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "src/btc_risk_rl/features/__init__.py": "add17a9dded403a04100138b44afd74dd1091706f3a914f2168891cc86c73aea",
+    "src/btc_risk_rl/features/market.py": "9a3b34de6eab59cd5a098145533b033af1d1b581eb9eb02b8239bae991011008",
+    "src/btc_risk_rl/reporting/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "tests/conftest.py": "3ccd3100bd935613983bd274bb9218eab6bea65db82a5884376ea46cba1577b0",
+    "tests/test_config.py": "95b8979a901c93d368ee0916c3911a4137d6810cac0bf23f07a3035967572941",
+    "tests/test_data.py": "6e89e26121cd2dfe7520e1ff0a3fbca3117ba5e31d6bd435b8e3b40ccedb3b6e",
+    "tests/test_diagnosis.py": "4f912005c81b9bc44cc3df9e148f0eaad4a078e1cf7a83ca491116cb0a844f89",
+    "tests/test_features.py": "d42c4b57286b71028dc50d0dda686b59c3656fd11b3afc4645c8f09656c4aae3",
+    "tests/test_recheck.py": "41726abceecf2ffb5a0e8304b78a1252c8ef8ad5def267c2a45eba1cfde07b7f",
+    "tests/test_segmentation.py": "5f024bc74051800770fd5c78ab235b62d8e88da94aa60935431a69c1d4451845",
+    "tests/test_simulator.py": "d85cf15f7c83d1598b5c5ca9b294e74c4599c5e0e13cd37e769ef105804d79fb",
+    "uv.lock": "bb7dc8711e66e69481e071386a535d68b71a76024f0d187e72ba5969c9d46914",
+    "docs/evidence/adr002-proposal-v2/COMMANDS.md": "4f32f81f6ed2721b8af36ac85310c7be38d38d91fcc37c48109ce99a6ae3e44c",
+    "docs/evidence/adr002-proposal-v2/checks.py": "2be0a33b65e44f25b62c96942a34fd3fed1d6778a63bffc782fb2d573d686109",
+    "docs/evidence/adr002-proposal-v2/package_delivery.py": "f0bd67a9f45438652697e09c2f170cc82499408708dceb22719bddf018a32f55",
+    "docs/evidence/adr002-proposal-v2/pytest.log": "c4c3b28fcbe2ed33cf5aa1b7f811192a638c81dd600b6822cbbb6eae105f935b",
+    "docs/evidence/adr002-proposal-v2/results.json": "312c6e1bbded707ce84276e3893beca944c362c54936809e1f5f08d12c401aa3",
+    "docs/evidence/adr002-proposal-v2/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "docs/evidence/adr002-proposal-v2/v1-reproduction.json": "8392afb4cc5ba5c56c9189bc6657b585c6183cff701066c12776a07746f3efa9",
+    "docs/proposals/ADR-002-propuesta-v2.md": "358d4bc6c6d5f56b81bac46bed36ccd4cdb414609cc7ff44f0d9aa632024b836",
+    "docs/proposals/ADR-002-v2-resumen-academico.md": "7f30d36bf1b3d4c83969fd9052bc5b65f0d1c9be470e6194c2ec55a8429c30c8"
+  },
+  "checks_sha256": "66fb9426a04a3d9f20749b80a55c872c1d303406479a29e3e3fdff32947c245d",
+  "proposal_sha256": "1099bf586a28166e64fb33b017f65a2d65fea3dd35288ad18d39b1b312d5c583"
+}

@@ -219,3 +219,27 @@ Se conserva la eliminación local previa de `.python-version` fuera del commit.
 El ZIP académico contiene snapshot del commit documental, historial Git bundle,
 propuestas/evidencias y descriptor de huellas; no datos de mercado. Próximo paso:
 revisión de v2 antes de cualquier cambio al contrato H2. ADR-002 sigue abierto.
+
+## ADR-002 v2.1 — armonización con la tesis, 22-09-2026 UTC
+
+[Propuesta v2.1](proposals/ADR-002-propuesta-v2-1.md) y
+[resumen académico](proposals/ADR-002-v2-1-resumen-academico.md).
+Estado: **PROPUESTA PARA REVISIÓN, NO ADOPTADA**. V2 (`28cda8b`) permanece intacta.
+La revisión académica comunicada por el usuario considera resueltos Q/A/B y
+la interpretación de transferencia; se conservaron sus secciones byte a byte.
+
+Armonización limitada: Sortino anualizado primario sqrt(2190)*S_4h, retornos
+simples netos, MAR=0, DD sobre todos los períodos, cero DD indefinido. Anualización
+solo como convención de reporte, sin independencia temporal asumida. Plan de
+tesis registrado: diferencias pareadas por bloques de semillas, bootstrap
+unilateral centrado de su media, Holm para C5–C0/C10–C0 y significancia familiar .05.
+Réplicas, remuestras, semillas/bloques, precisión y gestión de indefinidos deben
+cerrarse antes de evaluar confirmatoriamente. Sortino superior no acredita CVaR.
+
+[Evidencia local](evidence/adr002-proposal-v2-1/COMMANDS.md): tres grupos
+sintéticos afectados y uno de preservación aprobados; Ruff pasa y **100 pruebas
+H2 pasan en 21.73 s**. Sin cambios operativos, agentes, entrenamientos o acceso
+a mercado/conjunto final. `.python-version` sigue eliminado localmente por el
+cambio previo, fuera del commit. ZIP con snapshot documental, antecedentes,
+evidencias, Git bundle y descriptor verificado. Próximo paso: revisar v2.1 y
+cerrar los parámetros pendientes, manteniendo ADR-002 abierto.

@@ -66,3 +66,15 @@ Precisa soporte conjunto reloj/cartera, alcance de Sortino continuo, separación
 Q/A/B para eta/actor/auditoría, actualización dual y presupuesto de auxiliares.
 V1 permanece como antecedente. **PROPUESTA PARA REVISIÓN, NO ADOPTADA**: ADR-002
 sigue abierto y H2 conserva observaciones, flags y configuración operativa.
+
+## Armonización v2.1 con la tesis — 22-09-2026
+
+Revisión actual: [propuesta v2.1](../proposals/ADR-002-propuesta-v2-1.md) y
+[resumen académico](../proposals/ADR-002-v2-1-resumen-academico.md).
+**PROPUESTA PARA REVISIÓN, NO ADOPTADA.** V2 se conserva como antecedente.
+Se armonizan Sortino anualizado primario y el plan comunicado por el usuario:
+diferencias pareadas por bloques de semillas, bootstrap unilateral centrado
+sobre la media y Holm para C5–C0/C10–C0, significancia familiar .05.
+Réplicas, remuestras, semillas, precisión y tratamiento de indefinidos siguen
+pendientes antes de la evaluación confirmatoria. No cambian Q/A/B, regla temporal
+ni H2. Un Sortino superior no demuestra cumplimiento CVaR. ADR-002 sigue abierto.
