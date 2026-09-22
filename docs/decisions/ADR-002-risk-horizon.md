@@ -57,3 +57,12 @@ transferencia a validación continua. Incluye fuentes primarias y cálculos
 sintéticos independientes. **No adoptada**: esta referencia no cambia el contrato
 H2 ni habilita agentes, entrenamientos o acceso al conjunto final. Revisar el
 objetivo finito y su regla de evaluación conjuntamente antes de aprobar cambios.
+
+## Segunda propuesta para revisión — 22-09-2026
+
+La versión de revisión actual es [ADR-002 v2](../proposals/ADR-002-propuesta-v2.md),
+con [respuesta académica resumida](../proposals/ADR-002-v2-resumen-academico.md).
+Precisa soporte conjunto reloj/cartera, alcance de Sortino continuo, separación
+Q/A/B para eta/actor/auditoría, actualización dual y presupuesto de auxiliares.
+V1 permanece como antecedente. **PROPUESTA PARA REVISIÓN, NO ADOPTADA**: ADR-002
+sigue abierto y H2 conserva observaciones, flags y configuración operativa.

@@ -1,0 +1,546 @@
+{
+  "status": "passed",
+  "scope": "synthetic algebra and proposal specification only",
+  "utc": "2026-09-22T07:01:24.003009+00:00",
+  "python": "3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "prior_proposal_commit": "082db3e",
+  "head_at_run": "082db3e3eff143999c1ab6e03db8c59d1d090a4b",
+  "v1_reproduced_groups": 6,
+  "v1_results_equal_recorded": true,
+  "new_algebra_groups": {
+    "quantile_ties_fractional_mass": [
+      {
+        "losses": [
+          0.2,
+          0.1,
+          -0.02,
+          -0.1
+        ],
+        "alpha": 0.375,
+        "eta": 0.1,
+        "weights": [
+          1.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "tail_mass": 1.5,
+        "cvar": 0.16666666666666666
+      },
+      {
+        "losses": [
+          0.2,
+          0.2,
+          -0.1,
+          -0.1
+        ],
+        "alpha": 0.375,
+        "eta": 0.2,
+        "weights": [
+          0.75,
+          0.75,
+          0.0,
+          0.0
+        ],
+        "tail_mass": 1.5,
+        "cvar": 0.20000000000000004
+      },
+      {
+        "losses": [
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1
+        ],
+        "alpha": 0.05,
+        "eta": -0.1,
+        "weights": [
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        "tail_mass": 0.2,
+        "cvar": -0.10000000000000002
+      },
+      {
+        "losses": [
+          0.2,
+          0.1,
+          0,
+          -0.1
+        ],
+        "alpha": 0.5,
+        "eta": 0,
+        "weights": [
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "tail_mass": 2.0,
+        "cvar": 0.15000000000000002
+      },
+      {
+        "losses": [
+          0.2,
+          0.1,
+          -0.02,
+          -0.1
+        ],
+        "alpha": 0.05,
+        "eta": 0.2,
+        "weights": [
+          0.2,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tail_mass": 0.2,
+        "cvar": 0.20000000000000004
+      },
+      {
+        "losses": [
+          0.2,
+          0.1,
+          -0.02,
+          -0.1
+        ],
+        "alpha": 0.1,
+        "eta": 0.2,
+        "weights": [
+          0.4,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tail_mass": 0.4,
+        "cvar": 0.20000000000000004
+      }
+    ],
+    "population_vs_empirical_vs_fixed_eta": {
+      "rho_population": 0.05000000000000002,
+      "expected_F_independent_Q": 0.08750000000000002,
+      "expected_empirical_CVaR_Q": -0.025,
+      "possible_F_B": -0.1
+    },
+    "sortino_arithmetic_not_cvar_guarantee": [
+      {
+        "returns_simple": [
+          0.02,
+          -0.01,
+          0.01,
+          -0.02
+        ],
+        "downside": 0.011180339887498949,
+        "sortino": 0.0
+      },
+      {
+        "returns_simple": [
+          0.03,
+          -0.01,
+          0.01,
+          -0.02
+        ],
+        "downside": 0.011180339887498949,
+        "sortino": 0.22360679774997894
+      },
+      {
+        "returns_simple": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "downside": 0.0,
+        "sortino": null
+      }
+    ]
+  },
+  "new_specification_groups": {
+    "joint_support_not_policy_transfer": {
+      "states": [
+        {
+          "h": 1,
+          "equity": 10000,
+          "btc": 0,
+          "cash": 10000,
+          "weight": 0.0,
+          "log_equity": 0.0,
+          "outside_support_at_h1": false
+        },
+        {
+          "h": 0.5,
+          "equity": 11000,
+          "btc": 55,
+          "cash": 5500,
+          "weight": 0.5,
+          "log_equity": 0.09531017980432493,
+          "outside_support_at_h1": false
+        },
+        {
+          "h": 1,
+          "equity": 11000,
+          "btc": 55,
+          "cash": 5500,
+          "weight": 0.5,
+          "log_equity": 0.09531017980432493,
+          "outside_support_at_h1": true
+        },
+        {
+          "h": 1,
+          "equity": 9000,
+          "btc": 67.5,
+          "cash": 2250.0,
+          "weight": 0.75,
+          "log_equity": -0.10536051565782628,
+          "outside_support_at_h1": true
+        },
+        {
+          "h": 1,
+          "equity": 11000,
+          "btc": 0,
+          "cash": 11000,
+          "weight": 0.0,
+          "log_equity": 0.09531017980432493,
+          "outside_support_at_h1": true
+        }
+      ],
+      "witness": {
+        "same_training_support": true,
+        "h": 1,
+        "weight": 0.5,
+        "function_1": 0.25,
+        "function_2": 0.5
+      }
+    },
+    "frozen_coefficients_dual_and_risk_off": {
+      "D": [
+        -0.06000000000000001,
+        -0.03
+      ],
+      "risk_off": [
+        0.02,
+        -0.03
+      ],
+      "audit_eta": 0.25,
+      "F_B": 0.25,
+      "empirical_CVaR_B": 0.2,
+      "lambda_next": 0.403
+    },
+    "sample_roles_and_resource_accounting": {
+      "proposed_trace": [
+        "Q0/pi0",
+        "eta0",
+        "A0/pi0",
+        "actor1",
+        "critic1",
+        "Q1/pi1",
+        "eta1",
+        "B1/pi1",
+        "dual1",
+        "A1/pi1",
+        "actor2",
+        "critic2",
+        "Q2/pi2",
+        "eta2",
+        "B2/pi2",
+        "dual2"
+      ],
+      "cuts_v2": [
+        {
+          "role": "A",
+          "length": 60,
+          "reason": "collection_window",
+          "status_v2": "await_complete",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "A",
+          "length": 60,
+          "reason": "segment_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "A",
+          "length": 60,
+          "reason": "partition_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "A",
+          "length": 179,
+          "reason": "collection_window",
+          "status_v2": "await_complete",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "A",
+          "length": 179,
+          "reason": "segment_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "A",
+          "length": 179,
+          "reason": "partition_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "A",
+          "length": 180,
+          "reason": "collection_window",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "A",
+          "length": 180,
+          "reason": "segment_boundary",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "A",
+          "length": 180,
+          "reason": "partition_boundary",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "Q",
+          "length": 60,
+          "reason": "collection_window",
+          "status_v2": "await_complete",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "Q",
+          "length": 60,
+          "reason": "segment_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "Q",
+          "length": 60,
+          "reason": "partition_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "Q",
+          "length": 179,
+          "reason": "collection_window",
+          "status_v2": "await_complete",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "Q",
+          "length": 179,
+          "reason": "segment_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "Q",
+          "length": 179,
+          "reason": "partition_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "Q",
+          "length": 180,
+          "reason": "collection_window",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "Q",
+          "length": 180,
+          "reason": "segment_boundary",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "Q",
+          "length": 180,
+          "reason": "partition_boundary",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "B",
+          "length": 60,
+          "reason": "collection_window",
+          "status_v2": "await_complete",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "B",
+          "length": 60,
+          "reason": "segment_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "B",
+          "length": 60,
+          "reason": "partition_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "B",
+          "length": 179,
+          "reason": "collection_window",
+          "status_v2": "await_complete",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "B",
+          "length": 179,
+          "reason": "segment_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "B",
+          "length": 179,
+          "reason": "partition_boundary",
+          "status_v2": "reject",
+          "last_masks_v2": null,
+          "cvar": false
+        },
+        {
+          "role": "B",
+          "length": 180,
+          "reason": "collection_window",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "B",
+          "length": 180,
+          "reason": "segment_boundary",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        },
+        {
+          "role": "B",
+          "length": 180,
+          "reason": "partition_boundary",
+          "status_v2": "complete",
+          "last_masks_v2": [
+            0,
+            0
+          ],
+          "cvar": true
+        }
+      ],
+      "trajectories_per_condition": 22,
+      "transitions_per_condition": 3960,
+      "C0_auxiliary_trajectories": 14
+    }
+  },
+  "h2_suite": "separate pytest.log; no H2 code imported by these checks",
+  "unchanged_h2_files_sha256": {
+    "configs/initial.toml": "7a9ad764c9ac1db1bdf718f472c98ba718810335864ce87c4441be8b69457ddc",
+    "pyproject.toml": "ecce421e4aef3d14e7e1b7c64aa3ac6e15d15f109a562e7579555a8e969dbf26",
+    "scripts/check_binance_archives.py": "71c3e5cede4b077c72e3dd60b07c5c50611906c64a74620ba7ff6385b55e4052",
+    "scripts/check_hourly_context.py": "d3ac324be0a0e29ef9ea3536965c9c3f6d9daf422f127f7ff7821589d3cb0933",
+    "scripts/diagnose_history.py": "d602050a676d3cadd82713443f50b5f833848ace77393075e8235fda2de493cb",
+    "scripts/verify_installation.py": "ab8cbe7b828ddf68b2d31e7f3f0ff6e29fdb238612929b894392b47c8ca3f261",
+    "scripts/verify_simulator.py": "8bd0136c6f00ba830a6ed1fd82b3b902aaea73efe0cbf4ce83d7a6ff7a021012",
+    "src/btc_risk_rl/__init__.py": "bc16eaed03676dbb9fa92e5d2244a14b2e75ad6f6f784c6c6fdbfd7a5b26e92c",
+    "src/btc_risk_rl/agents/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "src/btc_risk_rl/cli.py": "a94b4517139721d46ef03ee6834e2ef6d8074149f304f060d53e6d0596bb00af",
+    "src/btc_risk_rl/config.py": "29713860c5d9d7bf5e6d42b2daad4589e7849fa22cfdc816072c7429563ce623",
+    "src/btc_risk_rl/data/__init__.py": "1c07648155bef2de8cf11d780ccf0b62504a945ff84e42229d7c31d572605093",
+    "src/btc_risk_rl/data/binance.py": "55af8114fbfd9c4d432716458d19d806dd95f468bf3f89b5644986fdea39418a",
+    "src/btc_risk_rl/data/pipeline.py": "2e4bcc64f0c602130914df01543a9ed8fa996cd072043e18227e63b21e075074",
+    "src/btc_risk_rl/data/quality.py": "9465d6260d93de71d34940d84e3f4a4e14db0d9105fb52840c0558bbbbcfd880",
+    "src/btc_risk_rl/data/recheck.py": "c66009e45275df02beb6fa761df15c4e9d2fdd320a086f3767c99968c16281a0",
+    "src/btc_risk_rl/data/segmentation.py": "02aaf8714407a3eff9aa5db683a02c9b3655159fd1ee930e7d55819e93c955ae",
+    "src/btc_risk_rl/data/segmented_audit.py": "817cabd3904103ee8fc773bae727e50f56db99dd9fbd79fcc3b6b4d888f405e4",
+    "src/btc_risk_rl/data/segmented_pipeline.py": "510b6af1471d253522cdd94e7529c3ccdfc85de15f5db6109d7c9cdbdb9ffc24",
+    "src/btc_risk_rl/env/README.md": "701e9a1340c97541d11dcfd8a938b8ad9e5a24113e6dac711e0755f4b7f34636",
+    "src/btc_risk_rl/env/accounting.py": "0d9ab57fd1ed218cdf32d271805e729444c1d846c38422cb641c071f2b254838",
+    "src/btc_risk_rl/env/market.py": "1f48e55bb81084a9484f762398ee4184950c1ab9e33bbb7e4b805433ba120f32",
+    "src/btc_risk_rl/env/trading.py": "4bd333e3c8588f87120bcde2e02b86adb6981eed382717d0b5e0c31cbcb19af5",
+    "src/btc_risk_rl/evaluation/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "src/btc_risk_rl/experiments/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "src/btc_risk_rl/features/__init__.py": "add17a9dded403a04100138b44afd74dd1091706f3a914f2168891cc86c73aea",
+    "src/btc_risk_rl/features/market.py": "9a3b34de6eab59cd5a098145533b033af1d1b581eb9eb02b8239bae991011008",
+    "src/btc_risk_rl/reporting/README.md": "2c7e92c6ff56979631e35505dbc964ffcad3e84db1dc4fa4fe4b6457298ca002",
+    "tests/conftest.py": "3ccd3100bd935613983bd274bb9218eab6bea65db82a5884376ea46cba1577b0",
+    "tests/test_config.py": "95b8979a901c93d368ee0916c3911a4137d6810cac0bf23f07a3035967572941",
+    "tests/test_data.py": "6e89e26121cd2dfe7520e1ff0a3fbca3117ba5e31d6bd435b8e3b40ccedb3b6e",
+    "tests/test_diagnosis.py": "4f912005c81b9bc44cc3df9e148f0eaad4a078e1cf7a83ca491116cb0a844f89",
+    "tests/test_features.py": "d42c4b57286b71028dc50d0dda686b59c3656fd11b3afc4645c8f09656c4aae3",
+    "tests/test_recheck.py": "41726abceecf2ffb5a0e8304b78a1252c8ef8ad5def267c2a45eba1cfde07b7f",
+    "tests/test_segmentation.py": "5f024bc74051800770fd5c78ab235b62d8e88da94aa60935431a69c1d4451845",
+    "tests/test_simulator.py": "d85cf15f7c83d1598b5c5ca9b294e74c4599c5e0e13cd37e769ef105804d79fb",
+    "uv.lock": "bb7dc8711e66e69481e071386a535d68b71a76024f0d187e72ba5969c9d46914"
+  },
+  "checked_files_sha256": {
+    "docs/evidence/adr002-proposal-v2/checks.py": "2be0a33b65e44f25b62c96942a34fd3fed1d6778a63bffc782fb2d573d686109",
+    "docs/evidence/adr002-proposal/checks.py": "9fa6ed3d472a421eb91c771ebc51ab0be5274a82b100d404b4eafebd661bb261",
+    "docs/proposals/ADR-002-propuesta-v2.md": "358d4bc6c6d5f56b81bac46bed36ccd4cdb414609cc7ff44f0d9aa632024b836"
+  }
+}

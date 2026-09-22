@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/ichurri/Desktop/personal_projects/btc-risk-rl
+configfile: pyproject.toml
+testpaths: tests
+collected 100 items
+
+tests/test_config.py ....                                                [  4%]
+tests/test_data.py ................                                      [ 20%]
+tests/test_diagnosis.py ....                                             [ 24%]
+tests/test_features.py ......                                            [ 30%]
+tests/test_recheck.py ..                                                 [ 32%]
+tests/test_segmentation.py ...........................                   [ 59%]
+tests/test_simulator.py .........................................        [100%]
+
+============================= 100 passed in 21.72s =============================

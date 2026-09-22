@@ -189,3 +189,33 @@ restricción y regla de despliegue continuo. ADR-002 permanece abierto. No cambi
 el contrato del simulador ni implementar agentes hasta revisar la propuesta;
 no entrenar ni acceder al conjunto final. No hubo acceso a datos de mercado en
 esta tarea ni modificaciones a la tesis.
+
+## ADR-002 v2 — revisión académica incorporada, 22-09-2026 UTC
+
+[Propuesta v2](proposals/ADR-002-propuesta-v2.md) y
+[resumen de respuesta](proposals/ADR-002-v2-resumen-academico.md), sobre v1
+`082db3e` y simulador H2 `cc913b6`. Estado **PROPUESTA PARA REVISIÓN, NO ADOPTADA**.
+V1 y sus evidencias se conservan. Se reconoce explícitamente que h=1 con cartera
+heredada está fuera del soporte conjunto de entrenamiento; se mantiene evaluación
+continua móvil como transferencia operacional, sin garantía CVaR a 30 días.
+El contraste Sortino mide los procedimientos completos, con posible interacción
+entre mecanismo de riesgo y cambio de soporte.
+
+Se define procedimiento único: Q estima eta mediante cuantil empírico, A nuevo
+actualiza actor y luego crítico separado; política nueva genera Q nuevo y B
+independiente; el dual usa F_B al eta de Q. Eta y lambda quedan fijos en las
+épocas PPO. B es diagnóstico y señal dual, no prueba confirmatoria independiente.
+La cota d es común y congelada; el presupuesto incluye auxiliares también en C0.
+Pseudocódigo, reutilización, sesgos, empates y cortes están en la propuesta.
+
+[Evidencia local v2](evidence/adr002-proposal-v2/COMMANDS.md): seis grupos v1
+reproducidos y seis adicionales (tres algebraicos/tres de especificación), Ruff
+pasa y **100 pruebas H2 pasan en 21.72 s**. No se modificó src/configs/tests/scripts,
+lock ni pyproject; huellas iguales a H2. No se cargó ningún dato de mercado,
+no hubo agentes ni entrenamientos y no se accedió al conjunto final. La
+reproducción del chat académico es información del usuario, distinta de estos logs.
+Se conserva la eliminación local previa de `.python-version` fuera del commit.
+
+El ZIP académico contiene snapshot del commit documental, historial Git bundle,
+propuestas/evidencias y descriptor de huellas; no datos de mercado. Próximo paso:
+revisión de v2 antes de cualquier cambio al contrato H2. ADR-002 sigue abierto.
