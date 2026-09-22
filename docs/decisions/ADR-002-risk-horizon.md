@@ -1,3 +1,77 @@
+# ADR-002: contrato finito común y transferencia operacional
+
+**Estado vigente: ADOPTADO — v2.1, 22-09-2026.**
+Autorización explícita del usuario en esta tarea: adoptar v2.1 y adaptar el simulador.
+No autoriza agentes, entrenamientos ni evaluación confirmatoria.
+
+Se adopta íntegramente el contenido metodológico de
+[la propuesta v2.1](../proposals/ADR-002-propuesta-v2-1.md), revisada en
+`e4e2e8fada77f9b1116f3b265368e82c1e82cedd`. Su encabezado «NO ADOPTADA»
+se conserva como antecedente fechado; este registro lo sucede.
+V1, v2, v2.1 y sus evidencias permanecen intactas.
+
+## Decisiones adoptadas
+
+- Distribución inicial uniforme con reemplazo sobre índices H1 de entrenamiento;
+  10000 USDT, cero BTC, H=180 transiciones contiguas de 4h, gamma=1.
+  R=sum(r)=log(E_H/E_0); PPO maximiza E[R]; riesgo usa L=-R, sin clipping.
+  C5/C10 usan fracciones de cola .05/.10 y una misma cota d en log pérdida.
+- Observación añade h=(180-j)/180 como componente 13, sin normalización.
+  Terminalidad del objetivo en H: b=c=0, valor futuro cero, sin venta forzada.
+  Antes de H, b=c=1 para transiciones observadas del mismo episodio.
+- Corte administrativo interno: conservar estado/reloj/identidad y política congelada,
+  esperar y ensamblar H antes de construir targets o muestras de riesgo.
+  Censura temprana por segmento/partición invalida el episodio y exige abortar
+  y diagnosticar el lote; nunca reemplazar selectivamente ni inventar continuidad.
+  El motivo de fin y la terminalidad son campos distintos.
+- Monte Carlo completo, lambda_GAE=1; actor y crítico separados. Calendario Q/A/B,
+  cuantil/empates/masa fraccionaria, valores congelados, auditoría y actualización
+  dual exactamente como §6 de v2.1. Sin normalización de ventajas ni entropía
+  en la referencia. No se implementan esos componentes en este hito.
+- Evaluación continua: una cartera, h=1, w/z reales, sin reinicios periódicos,
+  refit ni aprendizaje. Es transferencia operacional con desplazamiento de soporte;
+  no acredita CVaR a 30 días ni elimina riesgo en interrupciones excluidas.
+- Sortino anualizado primario: sqrt(2190) × S_4h, retornos simples netos,
+  MAR=0 y desviación bajista sobre todos los períodos. Anualización como
+  convención, sin independencia temporal; denominador cero implica indefinido.
+  Diferencias pareadas por bloques de semillas, bootstrap unilateral centrado
+  de la media, Holm para C5–C0/C10–C0, significancia familiar .05.
+  Un Sortino superior no demuestra cumplimiento CVaR.
+- C0/C5/C10 comparten objetivo, datos, reglas temporales y presupuesto incluyendo
+  Q/B auxiliares. Riesgo apagado debe reproducir C0 con multiplicador exactamente cero.
+
+## Parámetros pendientes y puntos de congelación
+
+Antes de implementar agentes: autorización separada, diseño del recolector con
+identidad de política/episodio, pruebas de ensamblaje y calendario, equivalencia
+C0 y serialización versionada. La adopción no levanta estos límites.
+
+Antes de pilotos: fijar protocolo, semillas y presupuesto del piloto y motivación
+económica de d; definir cómo juzgar su factibilidad. Requieren autorización
+separada y no pueden tocar la prueba final.
+
+Antes de comparar condiciones: congelar una sola d para C5/C10, K, N_A/N_Q/N_B,
+arquitecturas separadas, tasas, clip, épocas, precisión de cola, semillas y
+presupuesto común; documentar criterios sin escoger ganadores retrospectivamente.
+Cambios a la estructura adoptada requieren otro ADR.
+
+Antes de evaluación confirmatoria: congelar réplicas, remuestras, bloques/semillas,
+precisión numérica/Monte Carlo, tratamiento inferencial de indefinidos y bloques
+incompletos, y protocolo completo. Hace falta autorización explícita y comando
+separado para el conjunto final. Si validación selecciona parámetros, sus resultados
+son de desarrollo. La adopción estructural no cierra estos parámetros.
+
+## Implementación y compatibilidad
+
+H3 versiona configuración y observación; los productos H1 se reutilizan mediante
+equivalencia explícita y auditada de configuración, sin cambiar sus bytes.
+Contabilidad H2, costos, recompensa, mercado y normalizador se conservan.
+Véase [informe H3](../hitos/H3-contrato-ADR002.md).
+
+---
+
+## Historial anterior a la adopción (conservado)
+
 # ADR-002: compatibilidad riesgo, PPO y horizonte
 
 Estado: ABIERTO; bloquea implementación de PPO/CVaR-PPO y entrenamientos.
