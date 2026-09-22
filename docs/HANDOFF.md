@@ -1,3 +1,46 @@
+# Handoff — estado vigente H3 (22-09-2026)
+
+Repositorio en [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
+Rama de entrega: [codex/adopt-adr002-v2-1](https://github.com/Ichurri/btc-risk-rl/tree/codex/adopt-adr002-v2-1).
+Base revisada e4e2e8f; adopción 10d92fa; código H3 ebb3914.
+Git local y remoto coincidían en la base; no había commits posteriores.
+La eliminación local previa de .python-version se conserva fuera de los commits.
+
+**Vigente:** ADR-002 v2.1 ADOPTADO por autorización explícita del usuario.
+Simulador H3: schema 2, observación 13 con reloj, H=180/gamma=1,
+terminalidad finita sin bootstrap en H; evaluación continua con cartera única
+y h=1. Cortes internos esperan completitud; rutas cortas se rechazan.
+H1 permanece aceptado bajo B; productos originales, scaler, cuentas H2,
+costos y recompensa conservados. Propuestas anteriores y evidencia intactas.
+
+Verificación local nueva: Ruff pasa, **117 pruebas aprobadas**.
+Auditor de desarrollo: **7048 índices, 31 recorridos y 7590 transiciones**,
+incluida validación continua de 2190 con un reset. Datos/scaler sin cambios.
+Regresión contable exacta frente a H2. Son acciones prefijadas y fixtures
+sintéticos, no resultados de agentes. Sin entrenamiento ni acceso final.
+
+Leer [ADR vigente](decisions/ADR-002-risk-horizon.md),
+[informe H3](hitos/H3-contrato-ADR002.md),
+[resumen académico](hitos/H3-resumen-academico.md) y
+[comandos/evidencia](evidence/simulator-h3/COMMANDS.md).
+
+## Siguiente tarea
+
+Solicitar autorización de alcance antes de implementar agentes y recolector:
+identidad y congelación de políticas, ensamblaje H completo, Monte Carlo,
+Q/A/B, eta/empates/masa fraccionaria, señal dual F_B y equivalencia exacta con C0.
+Cerrar protocolo de pilotos antes de ejecutarlos; congelar parámetros comunes
+antes de comparar condiciones y parámetros inferenciales antes de confirmación.
+La adopción actual NO autoriza agentes, entrenamientos o evaluación confirmatoria.
+
+No reabrir automáticamente las decisiones adoptadas ni interpretar los estados
+«abierto/no adoptada» del historial siguiente como vigentes. No modificar la tesis.
+Compartir rama/commit y evidencia desde GitHub; ya no se requieren ZIP por entrega.
+
+---
+
+# Historial conservado (estado anterior a H3)
+
 # Traspaso entre este chat y Codex local/remoto
 
 Leer AGENTS.md y los ADR. Consultar git status y git log antes de editar.

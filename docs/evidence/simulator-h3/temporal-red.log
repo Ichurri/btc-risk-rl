@@ -1,0 +1,239 @@
+FFFF...FFFFFFFFFF                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_horizon_clock_masks_and_terminal_observation[collection_window] _____
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+reason = 'collection_window'
+
+    @pytest.mark.parametrize("reason", ["collection_window", "segment_boundary", "partition_boundary"])
+    def test_horizon_clock_masks_and_terminal_observation(config, reason):
+        path = synthetic_path(config)
+        if reason == "partition_boundary":
+            path = replace(path, times=path.times + utc_ms(config.data.validation_start)
+                           - STEP_MS - path.times[-1])
+        env = TradingEnv(replace(path, end_reason=reason), config)
+        obs, info = env.reset()
+>       assert obs.shape == (13,) and obs.dtype == np.float64
+E       assert ((12,) == (13,)
+E         
+E         At index 0 diff: 12 != 13
+E         Use -v to get more diff)
+
+tests/test_temporal_contract.py:21: AssertionError
+_____ test_horizon_clock_masks_and_terminal_observation[segment_boundary] ______
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+reason = 'segment_boundary'
+
+    @pytest.mark.parametrize("reason", ["collection_window", "segment_boundary", "partition_boundary"])
+    def test_horizon_clock_masks_and_terminal_observation(config, reason):
+        path = synthetic_path(config)
+        if reason == "partition_boundary":
+            path = replace(path, times=path.times + utc_ms(config.data.validation_start)
+                           - STEP_MS - path.times[-1])
+        env = TradingEnv(replace(path, end_reason=reason), config)
+        obs, info = env.reset()
+>       assert obs.shape == (13,) and obs.dtype == np.float64
+E       assert ((12,) == (13,)
+E         
+E         At index 0 diff: 12 != 13
+E         Use -v to get more diff)
+
+tests/test_temporal_contract.py:21: AssertionError
+____ test_horizon_clock_masks_and_terminal_observation[partition_boundary] _____
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+reason = 'partition_boundary'
+
+    @pytest.mark.parametrize("reason", ["collection_window", "segment_boundary", "partition_boundary"])
+    def test_horizon_clock_masks_and_terminal_observation(config, reason):
+        path = synthetic_path(config)
+        if reason == "partition_boundary":
+            path = replace(path, times=path.times + utc_ms(config.data.validation_start)
+                           - STEP_MS - path.times[-1])
+        env = TradingEnv(replace(path, end_reason=reason), config)
+        obs, info = env.reset()
+>       assert obs.shape == (13,) and obs.dtype == np.float64
+E       assert ((12,) == (13,)
+E         
+E         At index 0 diff: 12 != 13
+E         Use -v to get more diff)
+
+tests/test_temporal_contract.py:21: AssertionError
+______ test_collection_checkpoint_waits_without_reset_or_extra_transition ______
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_collection_checkpoint_waits_without_reset_or_extra_transition(config):
+        path = synthetic_path(config)
+        env, control = TradingEnv(path, config), TradingEnv(path, config)
+        with pytest.raises(RuntimeError):
+>           env.collection_checkpoint()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'TradingEnv' object has no attribute 'collection_checkpoint'
+
+tests/test_temporal_contract.py:43: AttributeError
+_________ test_continuous_clock_retains_real_portfolio_across_horizons _________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_continuous_clock_retains_real_portfolio_across_horizons(config):
+        path = synthetic_path(config, "validation")
+        env = TradingEnv(path, config)
+        env.reset()
+        for j in range(1, 2191):
+            obs, _, terminal, cut, info = env.step(1.0)
+>           assert obs[12] == 1 and not terminal and cut == (j == 2190)
+                   ^^^^^^^
+E           IndexError: index 12 is out of bounds for axis 0 with size 12
+
+tests/test_temporal_contract.py:81: IndexError
+_______________ test_versioned_config_enforces_adopted_contract ________________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_versioned_config_enforces_adopted_contract(config):
+>       assert config.schema_version == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'}).schema_version
+
+tests/test_temporal_contract.py:93: AssertionError
+_____________ test_legacy_compatibility_is_explicit_and_read_only ______________
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_legacy_compatibility_is_explicit_and_read_only(config):
+        from copy import deepcopy
+    
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:121: ModuleNotFoundError
+_ test_legacy_bridge_rejects_unapproved_differences[environment-commission-0.002] _
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'environment', key = 'commission', value = 0.002
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+_ test_legacy_bridge_rejects_unapproved_differences[environment-episode_steps-179] _
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'environment', key = 'episode_steps', value = 179
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+_ test_legacy_bridge_rejects_unapproved_differences[environment-horizon_mode-unknown] _
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'environment', key = 'horizon_mode', value = 'unknown'
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+_ test_legacy_bridge_rejects_unapproved_differences[data-train_start-2019-01-01T00:00:00Z] _
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'data', key = 'train_start', value = '2019-01-01T00:00:00Z'
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+_ test_legacy_bridge_rejects_unapproved_differences[features-version-different] _
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'features', key = 'version', value = 'different'
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+_ test_legacy_bridge_rejects_unapproved_differences[research-training_enabled-True] _
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'research', key = 'training_enabled', value = True
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+____ test_legacy_bridge_rejects_unapproved_differences[environment-gamma-1] ____
+
+config = Config(schema_version=1, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+section = 'environment', key = 'gamma', value = 1
+
+    @pytest.mark.parametrize("section,key,value", [
+        ("environment", "commission", .002), ("environment", "episode_steps", 179),
+        ("environment", "horizon_mode", "unknown"), ("data", "train_start", "2019-01-01T00:00:00Z"),
+        ("features", "version", "different"), ("research", "training_enabled", True),
+        ("environment", "gamma", 1),  # old schema may not smuggle new fields
+    ])
+    def test_legacy_bridge_rejects_unapproved_differences(config, section, key, value):
+>       from btc_risk_rl.data.config_compatibility import audit_config_compatibility
+E       ModuleNotFoundError: No module named 'btc_risk_rl.data.config_compatibility'
+
+tests/test_temporal_contract.py:138: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_temporal_contract.py::test_horizon_clock_masks_and_terminal_observation[collection_window]
+FAILED tests/test_temporal_contract.py::test_horizon_clock_masks_and_terminal_observation[segment_boundary]
+FAILED tests/test_temporal_contract.py::test_horizon_clock_masks_and_terminal_observation[partition_boundary]
+FAILED tests/test_temporal_contract.py::test_collection_checkpoint_waits_without_reset_or_extra_transition
+FAILED tests/test_temporal_contract.py::test_continuous_clock_retains_real_portfolio_across_horizons
+FAILED tests/test_temporal_contract.py::test_versioned_config_enforces_adopted_contract
+FAILED tests/test_temporal_contract.py::test_legacy_compatibility_is_explicit_and_read_only
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[environment-commission-0.002]
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[environment-episode_steps-179]
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[environment-horizon_mode-unknown]
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[data-train_start-2019-01-01T00:00:00Z]
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[features-version-different]
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[research-training_enabled-True]
+FAILED tests/test_temporal_contract.py::test_legacy_bridge_rejects_unapproved_differences[environment-gamma-1]
+14 failed, 3 passed in 0.15s

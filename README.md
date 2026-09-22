@@ -1,4 +1,4 @@
-# BTC Risk RL — primera iteración
+# BTC Risk RL
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
@@ -20,9 +20,8 @@ dependencias; registrar Python/SO/dispositivo en cada ejecución. Los 6 GiB de
 VRAM son estimación del usuario, pendientes de medir localmente.
 
 ## Coordinación
-El repositorio incluye historial Git local; no hay proveedor remoto creado.
-Tras elegirlo, añadirlo como origin y sincronizar las ramas. Compartir commit
-y docs/HANDOFF.md entre este chat y Codex. No compartir únicamente cambios
+Repositorio en [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
+Compartir rama, commit y docs/HANDOFF.md entre este chat y Codex. No compartir únicamente cambios
 descritos en una conversación sin archivos y evidencia.
 
 ## Protección
@@ -34,7 +33,10 @@ protocolo con pruebas. Una futura campaña final necesita un flujo separado y re
 ## Estado
 Consultar docs/hitos/ y docs/evidence/ para resultados reales, limitaciones y commits.
 Las carpetas agents/, experiments/ y reporting/ están reservadas; no representan
-funciones ya implementadas. ADR-002 bloquea CVaR-PPO hasta cerrar sus definiciones.
+funciones ya implementadas. [ADR-002 v2.1 está adoptado](docs/decisions/ADR-002-risk-horizon.md);
+H3 adapta el simulador. Agentes, pilotos y entrenamientos requieren autorización
+separada. Hay parámetros por congelar antes de comparar condiciones y de evaluar
+confirmatoriamente; la prueba final permanece protegida.
 
 ## Módulo de datos implementado
 
@@ -53,7 +55,7 @@ el detalle queda en quality.json y no se emiten características aceptadas.
 La descarga real inicial contiene 16 aperturas ausentes y 20 cierres abreviados.
 La ruta estricta sigue rechazando esos datos, como documenta ADR-003. La preparación
 segmentada aprobada en ADR-004 dispone ahora de una ruta separada y aceptación
-técnica de desarrollo. El simulador H2 consume esos índices auditados.
+técnica de desarrollo. El simulador H3 consume esos índices auditados, conservando los productos H1.
 No retirar las validaciones estrictas.
 
 ## Preparación segmentada B (sin red)
@@ -74,21 +76,29 @@ evidencias y límites en [H1 segmentado](docs/hitos/H1-preparacion-segmentada.md
 
 La configuración/CLI no exponen comandos de entrenamiento o prueba final.
 Las pruebas usan fixtures sintéticos, salvo la auditoría real documentada.
-Los datos de desarrollo originales acompañan el paquete en data/raw/ con sus
-huellas; están excluidos de Git. Para reutilizarlos verificar el manifiesto.
+Los datos originales locales están en data/raw/ y excluidos de Git; GitHub
+contiene sus manifiestos y huellas. Para reutilizarlos verificar el manifiesto.
 
-## Simulador causal H2
+## Simulador causal H3 — ADR-002 v2.1 adoptado
 
-Implementa exposición BTC posterior a costos, ejecución en apertura siguiente,
-comisiones y deslizamiento adverso, contabilidad float64 y recompensa logarítmica
-neta. Entrenamiento usa índices de 180 transiciones; validación es un recorrido
-continuo. Los cortes truncan sin liquidar. No hay agente ni entrenamiento habilitado.
+Conserva la contabilidad H2, exposición BTC posterior a costos, ejecución en apertura
+siguiente, costos y recompensa logarítmica neta float64. Configuración schema 2;
+observación de 13 componentes: diez de mercado, peso BTC, log patrimonio relativo
+y reloj. Entrenamiento: H=180, gamma=1, reloj descendente, terminated=True en H,
+sin bootstrap posterior ni liquidación. Validación: cartera continua, h=1 y
+truncated=True solo al final de datos; es transferencia operacional.
 
-```bash
-uv run --frozen python scripts/verify_simulator.py --context local --output artifacts/simulator-h2/real
-```
+Los checkpoints internos conservan estado y esperan H completo; no representan
+muestras parciales de riesgo. Las rutas incompletas de entrenamiento se rechazan.
+La compatibilidad con el manifiesto H1 se audita mediante cambios explícitos de
+configuración, sin refit ni alteración de datos.
 
-El destino debe ser nuevo. Es una comprobación contable con acciones prefijadas,
-no selección de estrategias. Uso, ecuaciones, límites y evidencia en
-[H2 simulador](docs/hitos/H2-simulador.md). ADR-002 mantiene pendientes descuento,
-horizonte y bootstrap antes de implementar PPO/CVaR-PPO.
+    uv run --frozen python scripts/verify_simulator.py --context local --output artifacts/simulator-h3/real
+
+El destino debe ser nuevo; para repetir, elegir otro --output. Es una comprobación
+contable con acciones prefijadas, no selección de estrategias.
+[Contrato y compatibilidad H3](docs/hitos/H3-contrato-ADR002.md),
+[resumen académico](docs/hitos/H3-resumen-academico.md) y
+[evidencias nuevas](docs/evidence/simulator-h3/COMMANDS.md).
+[H2](docs/hitos/H2-simulador.md) se conserva como antecedente: sus observaciones
+y flags no deben suponerse compatibles con H3. No hay agentes ni entrenamientos.
