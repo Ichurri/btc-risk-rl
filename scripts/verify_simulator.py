@@ -37,7 +37,13 @@ LEDGER_FIELDS = [
     "equity_open_after",
     "equity",
     "reward",
+    "terminated",
     "truncated",
+    "objective_terminal",
+    "cvar_eligible",
+    "bootstrap_mask",
+    "trace_mask",
+    "clock",
     "end_reason",
 ]
 
@@ -93,11 +99,22 @@ def audit_rollout(path, config, writer, label):
         close(info["btc"] * p / info["equity_open_after"], target, "post-cost target")
         close(reward, math.log(float(equity) / previous["equity"]), "net log reward")
         close(
-            observation[-2], info["btc"] * path.closes[i + 1] / info["equity"], "portfolio weight"
+            observation[10], info["btc"] * path.closes[i + 1] / info["equity"], "portfolio weight"
         )
-        close(observation[-1], math.log(info["equity"] / initial["equity"]), "log equity state")
+        close(observation[11], math.log(info["equity"] / initial["equity"]), "log equity state")
         check(info["execution_open_time_ms"] == int(path.times[i + 1]), "execution time")
-        check(not terminated and truncated == (i == len(path.times) - 2), "cut semantics")
+        last = i == len(path.times) - 2
+        training = path.partition == "train"
+        check(terminated == (last and training), "objective terminality")
+        check(truncated == (last and not training), "collection/data truncation")
+        check(info["objective_terminal"] == terminated, "objective flag")
+        check(
+            info["cvar_eligible"] == info["trajectory_complete"] == terminated, "risk completeness"
+        )
+        mask = int(not last) if training else None
+        check(info["bootstrap_mask"] == info["trace_mask"] == mask, "learning masks")
+        expected_clock = (180 - i - 1) / 180 if training else 1.0
+        check(observation[12] == expected_clock, "horizon clock")
         check(info["cash"] >= 0 and info["btc"] >= 0, "nonnegative holdings")
         errors.append(abs(info["cash"] - float(expected_cash)))
         rewards.append(reward)
@@ -110,6 +127,8 @@ def audit_rollout(path, config, writer, label):
                     "probe": label,
                     "reward": reward,
                     "truncated": truncated,
+                    "terminated": terminated,
+                    "clock": float(observation[12]),
                 }
             )
         previous = info
@@ -124,8 +143,10 @@ def audit_rollout(path, config, writer, label):
         first_target_ms=int(path.times[1]),
         last_target_ms=int(path.times[-1]),
         end_reason=path.end_reason,
-        terminated=False,
-        truncated=True,
+        terminated=terminated,
+        truncated=truncated,
+        final_clock=float(observation[12]),
+        cvar_eligible=previous["cvar_eligible"],
         final_cash=previous["cash"],
         final_btc=previous["btc"],
         final_equity=previous["equity"],
@@ -180,6 +201,11 @@ def main():
     code = sorted(Path("src/btc_risk_rl/env").glob("*.py")) + [
         Path(__file__),
         Path("tests/test_simulator.py"),
+        Path("tests/test_temporal_contract.py"),
+        Path("src/btc_risk_rl/config.py"),
+        Path("configs/initial.toml"),
+        Path("src/btc_risk_rl/data/config_compatibility.py"),
+        Path("src/btc_risk_rl/data/segmented_audit.py"),
     ]
     result = dict(
         status="passed",
@@ -208,7 +234,12 @@ def main():
         code_hashes={str(p.resolve().relative_to(Path.cwd())): sha256(p) for p in code},
         ledger_sha256=sha256(args.output / "ledger.csv"),
         probes=probes,
-        adr_002="pending_discount_horizon_and_bootstrap",
+        adr_002="adopted_v2_1",
+        contract_version=config.environment.contract_version,
+        observation_version=config.environment.observation_version,
+        gamma=config.environment.gamma,
+        config_compatibility=data.audit["config_compatibility"],
+        data_audit=data.audit,
         training_executed=False,
         final_test_accessed=False,
     )

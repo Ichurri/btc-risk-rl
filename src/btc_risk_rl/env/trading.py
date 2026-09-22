@@ -1,4 +1,4 @@
-"""Causal spot simulator. Collection cuts never liquidate or imply economic terminality."""
+"""Causal spot simulator: finite training objective and continuous transfer evaluation."""
 
 import gymnasium as gym
 import numpy as np
@@ -34,8 +34,8 @@ class TradingEnv(gym.Env):
             raise ValueError("Validation must be one full continuous path")
         self.action_space = spaces.Box(0.0, 1.0, shape=(1,), dtype=np.float64)
         self.observation_space = spaces.Box(
-            np.array([-np.inf] * 10 + [0.0, -np.inf], dtype=np.float64),
-            np.array([np.inf] * 10 + [1.0, np.inf], dtype=np.float64),
+            np.array([-np.inf] * 10 + [0.0, -np.inf, 0.0], dtype=np.float64),
+            np.array([np.inf] * 10 + [1.0, np.inf, 1.0], dtype=np.float64),
             dtype=np.float64,
         )
         self._ready = False
@@ -48,12 +48,15 @@ class TradingEnv(gym.Env):
             self.path.features[i],
             btc * self.path.closes[i] / equity,
             np.log(equity) - np.log(self.initial_cash),
+            (self._steps - i) / self._steps if self.path.partition == "train" else 1.0,
         ].astype(np.float64)
         if not np.isfinite(obs).all():
             raise ValueError("Nonfinite observation")
         return obs, np.float64(equity)
 
     def _info(self):
+        training = self.path.partition == "train"
+        complete = training and self._i == self._steps
         return dict(
             step=self._i,
             observation_open_time_ms=int(self.path.times[self._i]),
@@ -64,7 +67,25 @@ class TradingEnv(gym.Env):
             btc=float(self._btc),
             equity=float(self._equity),
             provenance=self.path.provenance,
-            adr_002_status="pending_discount_and_bootstrap",
+            adr_002_status="adopted_v2_1",
+            contract_version=self.config.environment.contract_version,
+            observation_version=self.config.environment.observation_version,
+            gamma=self.config.environment.gamma,
+            trajectory_start_ms=int(self.path.times[0]),
+            trajectory_end_ms=int(self.path.times[-1]),
+            objective_terminal=complete,
+            trajectory_complete=complete,
+            cvar_eligible=complete,
+            bootstrap_mask=int(not complete) if training else None,
+            trace_mask=int(not complete) if training else None,
+            collection_cut=False,
+            fragment_disposition=(
+                "complete"
+                if complete
+                else "wait_for_complete_episode"
+                if training
+                else "evaluation_only"
+            ),
         )
 
     def reset(self, *, seed=None, options=None):
@@ -76,6 +97,26 @@ class TradingEnv(gym.Env):
         obs, self._equity = self._observation(0, self._cash, self._btc)
         self._ready = True
         return obs, self._info()
+
+    def collection_checkpoint(self):
+        """Snapshot an internal training collection cut; not a Gym transition.
+
+        No reset, reward, action or state mutation. The collector must resume the
+        same realization with the same frozen policy and assemble H before using
+        any targets. Policy identity/rollout storage belongs to the future collector.
+        None masks deliberately prohibit assigning a partial learning target.
+        """
+        if not self._ready or self.path.partition != "train" or self._i == 0:
+            raise RuntimeError("Checkpoint requires an unfinished training trajectory")
+        observation, _ = self._observation(self._i, self._cash, self._btc)
+        info = self._info()
+        info.update(
+            collection_cut=True,
+            end_reason="collection_window",
+            bootstrap_mask=None,
+            trace_mask=None,
+        )
+        return observation, info
 
     def step(self, action):
         if not self._ready:
@@ -101,8 +142,10 @@ class TradingEnv(gym.Env):
             raise ValueError("Nonfinite reward")
         previous_equity = float(self._equity)
         self._i, self._cash, self._btc, self._equity = next_i, trade.cash, trade.btc, equity
-        truncated = next_i == self._steps
-        self._ready = not truncated
+        exhausted = next_i == self._steps
+        terminated = exhausted and self.path.partition == "train"
+        truncated = exhausted and self.path.partition == "validation"
+        self._ready = not exhausted
         info = self._info()
         info.update(
             target_weight=weight,
@@ -115,6 +158,6 @@ class TradingEnv(gym.Env):
             equity_previous_close=previous_equity,
             equity_open_before=trade.equity_before,
             equity_open_after=trade.equity_after,
-            end_reason=self.path.end_reason if truncated else None,
+            end_reason=self.path.end_reason if exhausted else None,
         )
-        return observation, reward, False, truncated, info
+        return observation, reward, terminated, truncated, info

@@ -61,11 +61,15 @@ class EnvConfig(Strict):
     initial_cash: float = Field(gt=0, allow_inf_nan=False)
     commission: float = Field(ge=0, lt=1, allow_inf_nan=False)
     slippage: float = Field(ge=0, lt=1, allow_inf_nan=False)
-    episode_steps: int = Field(gt=0)
+    episode_steps: Literal[180]
     action: Literal["target_btc_weight_after_costs"]
     reward: Literal["net_log_equity"]
     end_position: Literal["mark_to_market_no_liquidation"]
-    horizon_mode: Literal["continuing_window_truncation"]
+    horizon_mode: Literal["finite_objective"]
+    contract_version: Literal["finite_horizon_v2"]
+    observation_version: Literal["market10_portfolio2_clock1_v2"]
+    gamma: Literal[1.0]
+    validation_clock: Literal["constant_one"]
     cash_interest: Literal[0.0]
     accounting_dtype: Literal["float64"]
 
@@ -74,16 +78,16 @@ class ResearchConfig(Strict):
     conditions: tuple[Literal["C0"], Literal["C5"], Literal["C10"]]
     tail_fractions: tuple[Literal[0.05], Literal[0.10]]
     training_enabled: Literal[False]
-    risk_contract_status: Literal["blocked_pending_ADR_002"]
+    risk_contract_status: Literal["adopted_ADR_002_v2_1_agents_not_authorized"]
     seeds_status: str
     budget_status: str
     trajectory_batch_status: str
     risk_bound_status: str
-    ppo_discount_status: str
+    ppo_discount_status: Literal["gamma_1_finite_horizon_adopted"]
 
 
 class Config(Strict):
-    schema_version: Literal[1]
+    schema_version: Literal[2]
     status: Literal["initial_working_not_confirmatory"]
     data: DataConfig
     features: FeatureConfig
