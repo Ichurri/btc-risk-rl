@@ -1,0 +1,218 @@
+{
+  "profile": "accepted_train_collection_only",
+  "provenance": {
+    "code": {
+      "src/btc_risk_rl/__init__.py": "bc16eaed03676dbb9fa92e5d2244a14b2e75ad6f6f784c6c6fdbfd7a5b26e92c",
+      "src/btc_risk_rl/agents/checkpoint.py": "17a67dfe10d07336f09da6c2951fae5c153d0e01597c6c51704a3d82eb74642f",
+      "src/btc_risk_rl/agents/collector.py": "fdd7d781e8417fc60cac923515611d371efb409bd20a19bf57fc844278251164",
+      "src/btc_risk_rl/agents/journal.py": "63cf78daeee6d49c59fbee7c18d2c673cf2e21319857ee59c090ed144ec80d09",
+      "src/btc_risk_rl/agents/market_source.py": "4f664e0ab0751e29cbc670eb966551f8d71ede039a457597d6461c8f6ca8473e",
+      "src/btc_risk_rl/agents/models.py": "cb147acc49f2bf53abdd12ceb2f73268aa884e37ea98207cb1ba0a9dfd8a6a3f",
+      "src/btc_risk_rl/agents/risk.py": "1aaa2028a63eddf3d5d00bb31ce7f5cbabc1a7ba0b3f46af42ee1da42883ba9b",
+      "src/btc_risk_rl/agents/synthetic.py": "2f49818ca0b3717e7840f052d7a55a7769e0f2fc281699983e4a0e7d567e7406",
+      "src/btc_risk_rl/agents/telemetry.py": "ac7658ae01cfe0551a01a87e1c4f771a86dacba9b0d5b4cc0b0fd4dc6defa53f",
+      "src/btc_risk_rl/agents/trainer.py": "ca8abe1511c439e8fe0c2fb9648cfdf00cf938d382f8b1f488c29108f8eea9e5",
+      "src/btc_risk_rl/cli.py": "a94b4517139721d46ef03ee6834e2ef6d8074149f304f060d53e6d0596bb00af",
+      "src/btc_risk_rl/config.py": "355e01ff7ab4762e75d3488356e36680603d4afab35e112f0d36cd2a5b935322",
+      "src/btc_risk_rl/data/__init__.py": "1c07648155bef2de8cf11d780ccf0b62504a945ff84e42229d7c31d572605093",
+      "src/btc_risk_rl/data/binance.py": "55af8114fbfd9c4d432716458d19d806dd95f468bf3f89b5644986fdea39418a",
+      "src/btc_risk_rl/data/config_compatibility.py": "35738d33c8f79e648207f461c677af6811bc465a1084cd6d6232768533cb8d7e",
+      "src/btc_risk_rl/data/pipeline.py": "2e4bcc64f0c602130914df01543a9ed8fa996cd072043e18227e63b21e075074",
+      "src/btc_risk_rl/data/quality.py": "9465d6260d93de71d34940d84e3f4a4e14db0d9105fb52840c0558bbbbcfd880",
+      "src/btc_risk_rl/data/recheck.py": "c66009e45275df02beb6fa761df15c4e9d2fdd320a086f3767c99968c16281a0",
+      "src/btc_risk_rl/data/segmentation.py": "02aaf8714407a3eff9aa5db683a02c9b3655159fd1ee930e7d55819e93c955ae",
+      "src/btc_risk_rl/data/segmented_audit.py": "76ca747aa4a7d962e5b5e405b3cbb7125bdeb7f991f5d0ef00817c399419750f",
+      "src/btc_risk_rl/data/segmented_pipeline.py": "510b6af1471d253522cdd94e7529c3ccdfc85de15f5db6109d7c9cdbdb9ffc24",
+      "src/btc_risk_rl/env/accounting.py": "0d9ab57fd1ed218cdf32d271805e729444c1d846c38422cb641c071f2b254838",
+      "src/btc_risk_rl/env/market.py": "ceb917f55cca00d3cbe0718d3635a623b3653c174e223778b0b6b9f74ada4379",
+      "src/btc_risk_rl/env/trading.py": "3f8ce9a54bb6a609ddf536fb8ddb9bf70e49ddc2326d302a210eda5b9ee10c00",
+      "src/btc_risk_rl/env/training_view.py": "9558dcbd37272d09ee4876ffb4d3792555aaa10bc669402f7d1db13cbb340bfa",
+      "src/btc_risk_rl/features/__init__.py": "add17a9dded403a04100138b44afd74dd1091706f3a914f2168891cc86c73aea",
+      "src/btc_risk_rl/features/market.py": "9a3b34de6eab59cd5a098145533b033af1d1b581eb9eb02b8239bae991011008",
+      "uv.lock": "4227214338aa773eafe365bfb3ead2ec2737ad3b5ff24824a027fa53b57dd32e",
+      "pyproject.toml": "9b7d92440e3140bb644e593cfcf58f187b5b5cef616944b986752ca0eda69a6a"
+    },
+    "packages": {
+      "torch": "2.8.0+cpu",
+      "numpy": "2.5.3",
+      "pandas": "2.3.3",
+      "gymnasium": "1.3.0"
+    },
+    "python": "3.12.13",
+    "machine": "x86_64",
+    "platform": "Linux",
+    "threads": 1,
+    "deterministic": true,
+    "data": {
+      "profile": "accepted_train_collection_only",
+      "manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+      "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "files": {
+        "bars.csv": "dbf398582121ccee2cf3aea05fc6bbee7ecaa5cc0d73d26e9cd9d76d0ccc318b",
+        "coverage.json": "6eefcfdf68233c821f66758fe610a6c2b8e8c4d7e15b99fcb9163e18744e64d6",
+        "diagnosis_comparison.json": "d0ead77f7ab8c3eee0c3ae28a7a2d09ae2d7b95e2833c854ca7140c19e62dcb1",
+        "episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+        "features.csv": "86858fa626cbaceed452f7da180a015122cc45ba1d411e791febbb0416d5c816",
+        "fit_observations.csv": "84944d21aa909b4a08e0742b18aec8f021e06f7d23553bc4129e97bbc93544bc",
+        "mask.csv": "01432b21eb2e6535856c51b90ceb801a9942f6a5a118f71047afe106be3d97b9",
+        "observations.csv": "9a76f6a67e0bb5e034caa23c6503d24bfc9e8c2fa824a9efcb31975b0ebf1b93",
+        "quality-original.json": "03f7894cddd3b8bc437ab83ae9c9928340d6a345cf7fd11f8d27f8a9dad9d04a",
+        "scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+        "transitions.csv": "5e07c677e70578e4ea54badce41316d3f0a37dd5ef2ad51dc642287214f4cfc0",
+        "audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8"
+      },
+      "config_sha256": "ac500085b89f4ce7a28ae2569b476d7e8f1c7fe141b1b6c4c34c779a47d79d73"
+    },
+    "config": {
+      "schema_version": 2,
+      "status": "initial_working_not_confirmatory",
+      "data": {
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "timezone": "UTC",
+        "warmup_start": "2017-12-01T00:00:00Z",
+        "train_start": "2018-01-01T00:00:00Z",
+        "validation_start": "2023-01-01T00:00:00Z",
+        "test_start": "2024-01-01T00:00:00Z",
+        "test_end": "2026-01-01T00:00:00Z",
+        "endpoint": "https://api.binance.com/api/v3/klines",
+        "final_test_locked": true,
+        "missing_bar_policy": "fail",
+        "secondary_source_status": "pending_coverage_verification"
+      },
+      "features": {
+        "version": "market10_portfolio2_v1",
+        "return_windows": [
+          1,
+          6,
+          42
+        ],
+        "rolling_windows": [
+          6,
+          42
+        ],
+        "volatility_ddof": 0,
+        "normalization": "train_zscore_no_clip"
+      },
+      "environment": {
+        "initial_cash": 10000.0,
+        "commission": 0.001,
+        "slippage": 0.0005,
+        "episode_steps": 180,
+        "action": "target_btc_weight_after_costs",
+        "reward": "net_log_equity",
+        "end_position": "mark_to_market_no_liquidation",
+        "horizon_mode": "finite_objective",
+        "contract_version": "finite_horizon_v2",
+        "observation_version": "market10_portfolio2_clock1_v2",
+        "gamma": 1.0,
+        "validation_clock": "constant_one",
+        "cash_interest": 0.0,
+        "accounting_dtype": "float64"
+      },
+      "research": {
+        "conditions": [
+          "C0",
+          "C5",
+          "C10"
+        ],
+        "tail_fractions": [
+          0.05,
+          0.1
+        ],
+        "training_enabled": false,
+        "risk_contract_status": "adopted_ADR_002_v2_1_agents_not_authorized",
+        "seeds_status": "pilot_required",
+        "budget_status": "pilot_required",
+        "trajectory_batch_status": "pilot_required",
+        "risk_bound_status": "pilot_required",
+        "ppo_discount_status": "gamma_1_finite_horizon_adopted"
+      },
+      "hardware_reported": {
+        "os": "Debian",
+        "cpu": "Intel Core i7-11800H, 8 cores, 16 threads",
+        "ram_gib_approx": 15,
+        "gpu": "NVIDIA GeForce RTX 3060 Laptop / Max-Q",
+        "vram_gib_estimate": 6,
+        "vram_verified": false,
+        "compute_hours_per_day": 3,
+        "execution": "local_and_remote"
+      }
+    }
+  },
+  "seed": 20260923,
+  "accepted_starts": 7048,
+  "sampled_ids": [
+    5708,
+    1154,
+    2367
+  ],
+  "trajectories": 3,
+  "transitions": 540,
+  "actor_updates": 0,
+  "critic_updates": 0,
+  "actor_before": "0a0995b8613d3dc88510c47755d8ff4780c4093bf1b4715b04179bee726250c7",
+  "actor_after": "0a0995b8613d3dc88510c47755d8ff4780c4093bf1b4715b04179bee726250c7",
+  "load_and_integrity_seconds": 0.22569851399998697,
+  "telemetry": [
+    {
+      "phase": "frozen_collection",
+      "iteration": 0,
+      "status": "complete",
+      "wall_seconds": 0.26021014599996306,
+      "cpu_seconds": 0.2602060289999999,
+      "rss_peak_bytes": 288628736,
+      "trajectories": 3,
+      "transitions": 540,
+      "actor_updates": 0,
+      "critic_updates": 0
+    }
+  ],
+  "diagnostics": [
+    {
+      "role": "A",
+      "iteration": 0,
+      "profile": "accepted_train_collection_only",
+      "trajectories": 3,
+      "transitions": 540,
+      "mean_exposure": 0.5438034935450278,
+      "commission_total": 1264.888471769683,
+      "slippage_total": 632.4404191807869,
+      "mean_log_return": -0.03859240187302563
+    }
+  ],
+  "trajectories_audit": [
+    {
+      "route": "accepted-train:5708:ede1dde8efbbf7338a62ce208dc15a27ca03114e1276a40424e5ac32b3f58b96",
+      "realization": "h5-frozen-market-probe/0/A/0",
+      "policy": "policy-0:0a0995b8613d3dc88510c47755d8ff4780c4093bf1b4715b04179bee726250c7",
+      "first_ms": 1650643200000,
+      "last_ms": 1653235200000
+    },
+    {
+      "route": "accepted-train:1154:e3f2014b85ddffe3716159d475ac2fd2dbeed26f26bdc7c0253e2395d0351aa2",
+      "realization": "h5-frozen-market-probe/0/A/1",
+      "policy": "policy-0:0a0995b8613d3dc88510c47755d8ff4780c4093bf1b4715b04179bee726250c7",
+      "first_ms": 1544803200000,
+      "last_ms": 1547395200000
+    },
+    {
+      "route": "accepted-train:2367:111f4cf31f3f4c97370eacd290c66832a29c4625f65d370d065c1f7837d3300b",
+      "realization": "h5-frozen-market-probe/0/A/2",
+      "policy": "policy-0:0a0995b8613d3dc88510c47755d8ff4780c4093bf1b4715b04179bee726250c7",
+      "first_ms": 1576267200000,
+      "last_ms": 1578859200000
+    }
+  ],
+  "normalizer_refitted": false,
+  "product_hashes_unchanged": true,
+  "interpretation": "Technical collection only; NOT a validated market training time estimate",
+  "validation_observations_loaded": false,
+  "shared_h1_files_hashed_in_full": true,
+  "status": "passed",
+  "utc": "2026-09-23T04:22:41.661546+00:00",
+  "commit": "3cbd34271cef6931359706823ec6bcb52f839366",
+  "git_status": " D .python-version\n?? docs/evidence/infrastructure-h5/\n",
+  "market_optimization_executed": false,
+  "final_test_accessed": false
+}

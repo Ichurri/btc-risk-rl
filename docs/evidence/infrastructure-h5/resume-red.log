@@ -1,0 +1,72 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_______ test_resume_exact_including_optimizers_samples_and_resources[0] ________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_resume_exact_including_op0')
+pause_after = 0
+
+    @pytest.mark.parametrize("pause_after",[0,1])
+    def test_resume_exact_including_optimizers_samples_and_resources(config,tmp_path,pause_after):
+>       from btc_risk_rl.agents.checkpoint import load_checkpoint,save_checkpoint
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.checkpoint'
+
+tests/test_h5_resume.py:33: ModuleNotFoundError
+_______ test_resume_exact_including_optimizers_samples_and_resources[1] ________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_resume_exact_including_op1')
+pause_after = 1
+
+    @pytest.mark.parametrize("pause_after",[0,1])
+    def test_resume_exact_including_optimizers_samples_and_resources(config,tmp_path,pause_after):
+>       from btc_risk_rl.agents.checkpoint import load_checkpoint,save_checkpoint
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.checkpoint'
+
+tests/test_h5_resume.py:33: ModuleNotFoundError
+_________ test_corrupt_incompatible_and_mid_phase_checkpoint_rejected __________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_corrupt_incompatible_and_0')
+
+    def test_corrupt_incompatible_and_mid_phase_checkpoint_rejected(config,tmp_path):
+>       from btc_risk_rl.agents.checkpoint import load_checkpoint,save_checkpoint
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.checkpoint'
+
+tests/test_h5_resume.py:62: ModuleNotFoundError
+________ test_failed_continuation_cannot_roll_back_to_prior_checkpoint _________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_failed_continuation_canno0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f81b5c29b20>
+
+    def test_failed_continuation_cannot_roll_back_to_prior_checkpoint(config,tmp_path,monkeypatch):
+>       from btc_risk_rl.agents.checkpoint import load_checkpoint,save_checkpoint
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.checkpoint'
+
+tests/test_h5_resume.py:77: ModuleNotFoundError
+______________ test_budget_refuses_unit_and_preserves_save_margin ______________
+
+    def test_budget_refuses_unit_and_preserves_save_margin():
+>       from btc_risk_rl.agents.telemetry import TimeBudget
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.telemetry'
+
+tests/test_h5_resume.py:97: ModuleNotFoundError
+_________ test_no_budget_for_next_iteration_pauses_without_collecting __________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_no_budget_for_next_iterat0')
+
+    def test_no_budget_for_next_iteration_pauses_without_collecting(config,tmp_path):
+>       from btc_risk_rl.agents.telemetry import TimeBudget
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.telemetry'
+
+tests/test_h5_resume.py:112: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_h5_resume.py::test_resume_exact_including_optimizers_samples_and_resources[0]
+FAILED tests/test_h5_resume.py::test_resume_exact_including_optimizers_samples_and_resources[1]
+FAILED tests/test_h5_resume.py::test_corrupt_incompatible_and_mid_phase_checkpoint_rejected
+FAILED tests/test_h5_resume.py::test_failed_continuation_cannot_roll_back_to_prior_checkpoint
+FAILED tests/test_h5_resume.py::test_budget_refuses_unit_and_preserves_save_margin
+FAILED tests/test_h5_resume.py::test_no_budget_for_next_iteration_pauses_without_collecting
+6 failed in 0.85s

@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_stale_checkpoint_writer_cannot_roll_back_completed_continuation _____
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-5/test_stale_checkpoint_writer_c0')
+
+    def test_stale_checkpoint_writer_cannot_roll_back_completed_continuation(config, tmp_path):
+        from btc_risk_rl.agents.checkpoint import load_checkpoint, save_checkpoint
+    
+        old = make(config, tmp_path / "journal")
+        old.run(pause_after=0)
+        save_checkpoint(old, tmp_path / "initial")
+        new = load_checkpoint(tmp_path / "initial", old.collector.source, journal=tmp_path / "journal")
+        new.run()
+>       with pytest.raises(ValueError, match="journal"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_h5_resume.py:176: Failed
+=========================== short test summary info ============================
+FAILED tests/test_h5_resume.py::test_stale_checkpoint_writer_cannot_roll_back_completed_continuation
+1 failed in 2.07s

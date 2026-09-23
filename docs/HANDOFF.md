@@ -1,4 +1,47 @@
-# Handoff — estado vigente H4
+# Handoff — estado vigente H5
+
+Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), origin.
+Rama [codex/h5-infrastructure](https://github.com/Ichurri/btc-risk-rl/tree/codex/h5-infrastructure).
+Base H4 local/remota verificada 19fa2e6; implementación H5 **3cbd342**.
+El commit documental posterior añade evidencias y este handoff. La eliminación
+local previa de .python-version se mantiene fuera de commits. Sin force push.
+
+**Vigente:** ADR-002 v2.1 adoptado, sin cambios metodológicos. H5 autoriza
+infraestructura, aprendizaje pequeño sintético e integración 2018–2022 sin
+optimización. Pilotos, entrenamientos de mercado y evaluación confirmatoria
+siguen bloqueados. PyTorch CPU existente; sin CUDA/drivers ni cambios de tesis.
+
+Entregado: adaptador AcceptedMarket de entrenamiento (7048 inicios), checkpoint
+completo after_q0/after_dual con journal contra rollback, reanudación exacta
+sintética, diagnósticos y control preventivo de tiempo con reserva. Q/A/B único.
+No se habilitó el ejecutor de mercado: run_pilot.py rechaza antes de abrir datos.
+
+Nueva verificación: **164 pruebas y Ruff aprobados**; integración real acotada
+de 3 episodios/540 transiciones con política congelada, **0 actualizaciones**.
+Normalizador/productos H1 invariantes; sin observaciones de validación cargadas
+ni acceso al conjunto final. Los hashes verifican archivos H1 compartidos en
+bytes completos; no equivale a evaluación de validación. No extrapolar tiempos
+de estas comprobaciones a entrenamiento.
+
+## Siguiente tarea
+
+Revisar H5 y [P0 instrumentado](proposals/H5-P0-instrumentado.md). Antes de cualquier
+piloto, el investigador debe fijar especialmente la **cota económica común d**,
+configuración/semillas/tamaños/tasas, criterios de precisión/parada, calibración
+temporal y protocolo autorizado de hasta 3h diarias. Habilitar pilotos requerirá
+un cambio revisado; no basta pasar un JSON con authorized=true. No convertir
+SyntheticSettings ni candidatos H4 en decisiones definitivas.
+
+Leer [informe H5](hitos/H5-infraestructura.md),
+[resumen académico](hitos/H5-resumen-academico.md) y
+[comandos/resultados](evidence/infrastructure-h5/COMMANDS.md).
+H1/H3, guardas, contabilidad y tesis intactos. No ZIP rutinario.
+
+---
+
+## Historial conservado: entrega H4
+
+# Handoff — entrega histórica H4
 
 Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
 Rama de entrega: [codex/h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/codex/h4-agents-collector).

@@ -3,8 +3,9 @@
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
-Repositorio de infraestructura experimental. H4 autoriza actualizaciones pequeñas
-con datos sintéticos; siguen bloqueados entrenamientos de mercado y pilotos.
+Repositorio de infraestructura experimental. H5 autoriza infraestructura, pequeñas
+actualizaciones sintéticas e integración congelada con entrenamiento 2018–2022;
+siguen bloqueados entrenamientos de mercado y pilotos.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 
 ## Debian local / entorno remoto
@@ -33,7 +34,8 @@ protocolo con pruebas. Una futura campaña final necesita un flujo separado y re
 
 ## Estado
 Consultar docs/hitos/ y docs/evidence/ para resultados reales, limitaciones y commits.
-Agentes y recolector H4 implementados para pruebas sintéticas. experiments/ y
+Agentes/recolector H4 y checkpoint/instrumentación H5 verificados; adaptador de
+mercado solo para recolección congelada. experiments/ y
 reporting/ siguen reservados; no representan una campaña experimental implementada. [ADR-002 v2.1 está adoptado](docs/decisions/ADR-002-risk-horizon.md);
 H3 adapta el simulador; H4 implementa PPO/CVaR-PPO y recolector. Pilotos y
 entrenamientos de mercado requieren autorización separada. Hay parámetros por congelar antes de comparar condiciones y de evaluar
@@ -124,3 +126,25 @@ registran el alcance H4. Su training_enabled=false sigue bloqueando mercado.
 [resumen académico](docs/hitos/H4-resumen-academico.md),
 [evidencias](docs/evidence/agents-h4/COMMANDS.md) y
 [propuesta de pilotos, aún no autorizada](docs/proposals/H4-pilotos-3h.md).
+
+## Infraestructura H5
+
+[Informe H5](docs/hitos/H5-infraestructura.md),
+[resumen académico](docs/hitos/H5-resumen-academico.md),
+[evidencias](docs/evidence/infrastructure-h5/COMMANDS.md) y
+[P0 propuesto, no autorizado](docs/proposals/H5-P0-instrumentado.md).
+
+```bash
+uv run --frozen python scripts/verify_infrastructure.py --profile synthetic --output artifacts/h5-synthetic-new
+uv run --frozen python scripts/verify_infrastructure.py --profile market-integration --output artifacts/h5-market-new
+uv run --frozen python scripts/run_pilot.py --protocol protocolo-pendiente.json
+```
+
+El segundo requiere productos locales aceptados en data/processed/segmented-B-h1
+anclados al manifiesto H1 versionado. Muestrea tres episodios prefijados, sin
+optimización. El tercero devuelve bloqueo esperado (exit 2), sin leer datos.
+Checkpoint completo solo en after_q0/after_dual, con journal obligatorio; un
+fallo o una interrupción no permite recuperación selectiva. La reanudación se
+verificó con datos sintéticos y exige compatibilidad de código/runtime/huellas.
+Ningún tiempo sintético ni de recolección congelada dimensiona automáticamente
+un piloto. Cota común d y protocolo de pilotos siguen pendientes de aprobación.
