@@ -8,9 +8,11 @@ import numpy as np
 import torch
 
 from btc_risk_rl.agents.collector import Collector, immutable
+from btc_risk_rl.agents.journal import RunJournal
 from btc_risk_rl.agents.models import Actor, Critic, FrozenPolicy, clipped_objective, fingerprint
 from btc_risk_rl.agents.risk import dual_update, empirical_tail, monte_carlo, variational
-from btc_risk_rl.agents.synthetic import SyntheticSettings
+from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+from btc_risk_rl.agents.telemetry import Telemetry
 
 
 def fixed_digest(fixed):
@@ -32,9 +34,13 @@ class RunAbort(RuntimeError):
 
 
 class SyntheticExperiment:
-    def __init__(self, source, settings, *, condition, risk_enabled=True, run_id):
+    def __init__(self, source, settings, *, condition, risk_enabled=True, run_id, journal=None):
         if type(settings) is not SyntheticSettings or condition not in {"C0", "C5", "C10"}:
             raise ValueError("Explicit synthetic settings and known condition required")
+        if type(source) is not SyntheticMarket:
+            raise PermissionError(
+                "Market optimization blocked pending an authorized pilot protocol"
+            )
         self.collector = Collector(source, seed=settings.seed, run_id=run_id)
         self.settings, self.condition = settings, condition
         self.enabled = condition != "C0" and risk_enabled
@@ -61,16 +67,24 @@ class SyntheticExperiment:
         self.batches, self.fixed, self.events, self.audits = [], [], [], []
         self.phase = "not_started"
         self.actor_updates = self.critic_updates = 0
+        self.next_iteration = self.generation = 0
+        self.boundary = "before_q0"
+        self.initial_q_tail = None
+        self.status = "new"
+        self.telemetry = Telemetry()
+        self.budget = None
+        self.journal = RunJournal(journal, create=True) if journal is not None else None
 
     def _collect(self, policy, role, iteration, count):
         self.phase = role
-        batch = self.collector.collect(
-            policy,
-            role=role,
-            iteration=iteration,
-            count=count,
-            fragment_steps=self.settings.fragment_steps,
-        )
+        with self.telemetry.measure(role, iteration, self.collector, self):
+            batch = self.collector.collect(
+                policy,
+                role=role,
+                iteration=iteration,
+                count=count,
+                fragment_steps=self.settings.fragment_steps,
+            )
         self.batches.append(batch)
         self.events.append(
             dict(
@@ -93,6 +107,21 @@ class SyntheticExperiment:
         g = monte_carlo(np.stack([t.rewards for t in batch]))
         with torch.no_grad():
             values = baseline(tensor(obs)).numpy()
+        with torch.no_grad():
+            recomputed = self.actor.log_prob(
+                tensor(obs), tensor(np.stack([t.actions for t in batch]))
+            )
+        error = float(np.max(np.abs(recomputed.numpy() - np.stack([t.log_probs for t in batch]))))
+        if error > 1e-10:
+            raise ValueError("Frozen log-probabilities inconsistent")
+        self.telemetry.stability.append(
+            dict(
+                phase="targets",
+                iteration=self.next_iteration,
+                old_logprob_max_error=error,
+                critic_mc_mse_before=float(np.mean((g - values) ** 2)),
+            )
+        )
         advantage = g - values
         # Copy exactly in risk-off mode: do not even operate on shortfalls.
         d = advantage.copy()
@@ -131,9 +160,13 @@ class SyntheticExperiment:
         loss.backward()
         if any(p.grad is None or not torch.isfinite(p.grad).all() for p in model.parameters()):
             raise ValueError("Nonfinite/missing gradient")
+        grad_norm = float(
+            torch.sqrt(sum(torch.sum(p.grad.detach() ** 2) for p in model.parameters()))
+        )
         optimizer.step()
         if any(not torch.isfinite(p).all() for p in model.parameters()):
             raise ValueError("Nonfinite updated parameters")
+        return grad_norm
 
     def _update(self, fixed, iteration):
         s = self.settings
@@ -141,15 +174,33 @@ class SyntheticExperiment:
         critic_before = fingerprint(self.critic)
         actor_before = fingerprint(self.actor)
         self.phase = "actor"
-        for ids in self._minibatches(len(fixed["returns"]), s.actor_epochs, iteration, 0):
-            lp = self.actor.log_prob(
-                tensor(fixed["observations"][ids]), tensor(fixed["actions"][ids])
-            )
-            loss = -clipped_objective(
-                lp, tensor(fixed["old_logp"][ids]), tensor(fixed["coefficients"][ids]), s.clip
-            )
-            self._optimizer_step(loss, self.actor, self.actor_optimizer)
-            self.actor_updates += 1
+        with self.telemetry.measure("actor", iteration, self.collector, self):
+            for ids in self._minibatches(len(fixed["returns"]), s.actor_epochs, iteration, 0):
+                lp = self.actor.log_prob(
+                    tensor(fixed["observations"][ids]), tensor(fixed["actions"][ids])
+                )
+                loss = -clipped_objective(
+                    lp, tensor(fixed["old_logp"][ids]), tensor(fixed["coefficients"][ids]), s.clip
+                )
+                grad_norm = self._optimizer_step(loss, self.actor, self.actor_optimizer)
+                ratio = torch.exp(lp.detach() - tensor(fixed["old_logp"][ids]))
+                coeff = tensor(fixed["coefficients"][ids])
+                active = ((ratio > 1 + s.clip) & (coeff > 0)) | ((ratio < 1 - s.clip) & (coeff < 0))
+                self.telemetry.stability.append(
+                    dict(
+                        phase="actor",
+                        iteration=iteration,
+                        loss=float(loss.detach()),
+                        gradient_norm=grad_norm,
+                        ratio_min=float(ratio.min()),
+                        ratio_max=float(ratio.max()),
+                        ratio_clip_fraction=float(
+                            ((ratio < 1 - s.clip) | (ratio > 1 + s.clip)).double().mean()
+                        ),
+                        surrogate_clip_fraction=float(active.double().mean()),
+                    )
+                )
+                self.actor_updates += 1
         if fingerprint(self.critic) != critic_before or fixed_digest(fixed) != before:
             raise ValueError("Actor update altered critic or frozen coefficients")
         self.events.append(
@@ -172,11 +223,20 @@ class SyntheticExperiment:
         policy = FrozenPolicy(self.actor, generation=iteration + 1)
         actor_before = fingerprint(self.actor)
         self.phase = "critic"
-        for ids in self._minibatches(len(fixed["returns"]), s.critic_epochs, iteration, 1):
-            prediction = self.critic(tensor(fixed["observations"][ids]))
-            loss = ((prediction - tensor(fixed["returns"][ids])) ** 2).mean()
-            self._optimizer_step(loss, self.critic, self.critic_optimizer)
-            self.critic_updates += 1
+        with self.telemetry.measure("critic", iteration, self.collector, self):
+            for ids in self._minibatches(len(fixed["returns"]), s.critic_epochs, iteration, 1):
+                prediction = self.critic(tensor(fixed["observations"][ids]))
+                loss = ((prediction - tensor(fixed["returns"][ids])) ** 2).mean()
+                grad_norm = self._optimizer_step(loss, self.critic, self.critic_optimizer)
+                self.telemetry.stability.append(
+                    dict(
+                        phase="critic",
+                        iteration=iteration,
+                        mc_mse=float(loss.detach()),
+                        gradient_norm=grad_norm,
+                    )
+                )
+                self.critic_updates += 1
         if fingerprint(self.actor) != actor_before or fixed_digest(fixed) != before:
             raise ValueError("Critic update altered actor or frozen targets")
         policy.check()
@@ -192,61 +252,107 @@ class SyntheticExperiment:
         )
         return policy
 
-    def run(self):
-        if self.started:
+    def _journal(self, status):
+        if self.journal is not None:
+            self.journal.append(
+                status=status,
+                next_iteration=self.next_iteration,
+                boundary=self.boundary,
+                run_id=self.collector.run_id,
+            )
+
+    def run(self, *, pause_after=None, budget=None):
+        if self.started or self.failed:
             raise ValueError("Run already started; replay/retry not allowed")
+        if pause_after is not None and (
+            type(pause_after) is not int
+            or not self.next_iteration <= pause_after <= self.settings.iterations
+        ):
+            raise ValueError("Invalid planned pause boundary")
+        if self.budget is not None and budget is not None and budget is not self.budget:
+            raise ValueError("Cannot reset a restored budget")
         self.started = True
+        self.budget = budget if budget is not None else self.budget
         s = self.settings
-        iteration = 0
+        iteration = self.next_iteration
         try:
-            policy = FrozenPolicy(self.actor, generation=0)
-            q = self._collect(policy, "Q", 0, s.n_q)
-            initial_q_tail = empirical_tail(self._losses(q), self.alpha)
-            self.eta = initial_q_tail["eta"]
-            for iteration in range(s.iterations):
+            policy = FrozenPolicy(self.actor, generation=self.generation)
+            if self.initial_q_tail is None:
+                if self.budget and not self.budget.can_start("q0", self.collector.source.profile):
+                    self.status = "paused"
+                    return self._report()
+                self.boundary = "in_unit"
+                self._journal("running")
+                q = self._collect(policy, "Q", 0, s.n_q)
+                with self.telemetry.measure("eta", 0, self.collector, self):
+                    self.initial_q_tail = empirical_tail(self._losses(q), self.alpha)
+                    self.eta = self.initial_q_tail["eta"]
+                if self.budget:
+                    self.budget.check_reserve()
+                self.boundary = "after_q0"
+                self._journal("ready")
+            for iteration in range(self.next_iteration, s.iterations):
+                if pause_after == iteration or (
+                    self.budget
+                    and not self.budget.can_start("iteration", self.collector.source.profile)
+                ):
+                    self.status = "paused"
+                    self._journal("ready")
+                    return self._report()
+                self.boundary = "in_unit"
+                self._journal("running")
                 baseline = deepcopy(self.critic).eval().requires_grad_(False)
                 a = self._collect(policy, "A", iteration, s.n_a)
                 fixed = self._targets(a, baseline)
                 policy = self._update(fixed, iteration)
                 q = self._collect(policy, "Q", iteration + 1, s.n_q)
-                tail_q = empirical_tail(self._losses(q), self.alpha)
-                self.eta = tail_q["eta"]
+                with self.telemetry.measure("eta", iteration + 1, self.collector, self):
+                    tail_q = empirical_tail(self._losses(q), self.alpha)
+                    self.eta = tail_q["eta"]
                 b = self._collect(policy, "B", iteration + 1, s.n_b)
-                losses = self._losses(b)
-                tail_b = empirical_tail(losses, self.alpha)
-                f_b = variational(losses, self.alpha, self.eta)
-                previous = self.multiplier
-                self.phase = "dual"
-                self.multiplier = dual_update(
-                    previous, f_b, s.bound, s.dual_lr, enabled=self.enabled
-                )
-                audit = dict(
-                    iteration=iteration + 1,
-                    policy_version=policy.version,
-                    eta=self.eta,
-                    f_b=f_b,
-                    rho_b=tail_b["rho"],
-                    rho_q=tail_q["rho"],
-                    f_violation=f_b - s.bound,
-                    empirical_violation=tail_b["rho"] - s.bound,
-                    lambda_before=previous,
-                    lambda_after=self.multiplier,
-                    q_tail=tail_q,
-                    b_tail=tail_b,
-                    interpretation="empirical_diagnostic_not_population_certificate",
-                )
-                self.audits.append(audit)
-                self.events.append(
-                    dict(
-                        event="dual",
+                with self.telemetry.measure("audit_dual", iteration + 1, self.collector, self):
+                    losses = self._losses(b)
+                    tail_b = empirical_tail(losses, self.alpha)
+                    f_b = variational(losses, self.alpha, self.eta)
+                    previous = self.multiplier
+                    self.phase = "dual"
+                    self.multiplier = dual_update(
+                        previous, f_b, s.bound, s.dual_lr, enabled=self.enabled
+                    )
+                    audit = dict(
                         iteration=iteration + 1,
+                        policy_version=policy.version,
+                        eta=self.eta,
+                        f_b=f_b,
+                        rho_b=tail_b["rho"],
+                        rho_q=tail_q["rho"],
+                        f_violation=f_b - s.bound,
+                        empirical_violation=tail_b["rho"] - s.bound,
                         lambda_before=previous,
                         lambda_after=self.multiplier,
+                        q_tail=tail_q,
+                        b_tail=tail_b,
+                        interpretation="empirical_diagnostic_not_population_certificate",
                     )
-                )
-        except Exception as exc:
+                    self.audits.append(audit)
+                    self.events.append(
+                        dict(
+                            event="dual",
+                            iteration=iteration + 1,
+                            lambda_before=previous,
+                            lambda_after=self.multiplier,
+                        )
+                    )
+                self.next_iteration = self.generation = iteration + 1
+                if self.budget:
+                    self.budget.check_reserve()
+                self.boundary = "after_dual"
+                self._journal("ready")
+        except BaseException as exc:
             self.failed = True
             self.collector.failed = True
+            self.status = "failed"
+            self._journal("failed")
             raise RunAbort(
                 dict(
                     phase=self.phase,
@@ -260,14 +366,20 @@ class SyntheticExperiment:
         expected = s.n_q + s.iterations * (s.n_a + s.n_q + s.n_b)
         if self.collector.trajectories != expected or self.collector.transitions != 180 * expected:
             self.failed = True
+            self._journal("failed")
             raise RunAbort({"error": "Resource accounting mismatch"})
+        self.status = "passed"
+        self._journal("completed")
+        return self._report()
+
+    def _report(self):
         return dict(
-            status="passed",
-            purpose=s.purpose,
+            status=self.status,
+            purpose=self.settings.purpose,
             condition=self.condition,
             risk_enabled=self.enabled,
-            initial_q_tail=initial_q_tail,
-            settings=asdict(s),
+            initial_q_tail=self.initial_q_tail,
+            settings=asdict(self.settings),
             events=self.events,
             audits=self.audits,
             trajectories=self.collector.trajectories,
@@ -276,6 +388,12 @@ class SyntheticExperiment:
             critic_updates=self.critic_updates,
             actor_sha256=fingerprint(self.actor),
             critic_sha256=fingerprint(self.critic),
+            next_iteration=self.next_iteration,
+            boundary=self.boundary,
+            telemetry=self.telemetry.records,
+            stability=self.telemetry.stability,
+            collection_diagnostics=self.collector.diagnostics,
+            budget=self.budget.snapshot() if self.budget else None,
             market_training_executed=False,
             final_test_accessed=False,
         )

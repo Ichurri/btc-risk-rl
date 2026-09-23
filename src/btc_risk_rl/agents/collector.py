@@ -5,6 +5,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from btc_risk_rl.agents.market_source import TrainingMarket
 from btc_risk_rl.agents.synthetic import SyntheticMarket
 from btc_risk_rl.config import STEP_MS, guard_development
 
@@ -127,8 +128,8 @@ class BatchAbort(RuntimeError):
 
 class Collector:
     def __init__(self, source, *, seed, run_id):
-        if type(source) is not SyntheticMarket:
-            raise ValueError("H4 permits only the generated synthetic source")
+        if type(source) not in {SyntheticMarket, TrainingMarket}:
+            raise ValueError("Only synthetic or accepted training collection sources permitted")
         if type(seed) is not int or seed < 0 or not isinstance(run_id, str) or not run_id:
             raise ValueError("Invalid run identity or seed")
         self.source, self.seed, self.run_id = source, seed, run_id
@@ -136,6 +137,7 @@ class Collector:
         self.failed = False
         self.transitions = 0
         self.trajectories = 0
+        self.diagnostics = []
 
     def collect(self, policy, *, role, iteration, count, fragment_steps=180):
         if self.failed:
@@ -160,6 +162,7 @@ class Collector:
             np.random.SeedSequence([self.seed, ROLES[role], iteration, 1])
         )
         result, replica, step = [], 0, 0
+        exposure, fees, slippage = [], [], []
         try:
             policy.check()
             for replica in range(count):
@@ -179,6 +182,9 @@ class Collector:
                     action, logp = policy.sample(obs, actions)
                     obs, reward, terminal, cut, info = env.step(action)
                     self.transitions += 1
+                    exposure.append(float(obs[10]))
+                    fees.append(info["commission"])
+                    slippage.append(info["slippage_cost"])
                     last = step == 179
                     if (
                         terminal != last
@@ -245,6 +251,19 @@ class Collector:
                     error=f"{type(exc).__name__}: {exc}",
                 )
             ) from exc
+        self.diagnostics.append(
+            dict(
+                role=role,
+                iteration=iteration,
+                profile=self.source.profile,
+                trajectories=count,
+                transitions=180 * count,
+                mean_exposure=float(np.mean(exposure)),
+                commission_total=float(sum(fees)),
+                slippage_total=float(sum(slippage)),
+                mean_log_return=float(np.mean([t.rewards.sum() for t in result])),
+            )
+        )
         return tuple(result)
 
 

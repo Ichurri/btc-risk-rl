@@ -11,6 +11,8 @@ from btc_risk_rl.env.trading import TradingEnv
 
 
 class SyntheticMarket:
+    profile = "synthetic"
+
     def __init__(self, config: Config, *, routes=3):
         if type(routes) is not int or not 1 <= routes <= 10:
             raise ValueError("Small synthetic route set required")
@@ -41,6 +43,14 @@ class SyntheticMarket:
         for x in (path.times, path.opens, path.closes, path.features):
             h.update(x.tobytes())
         return f"synthetic-route-{route}:{h.hexdigest()}"
+
+    def identity(self):
+        return dict(
+            profile=self.profile,
+            config_sha256=sha256(self.config.model_dump_json().encode()).hexdigest(),
+            routes=[self.route_identity(i) for i in self.route_ids],
+            scaler_sha256=None,
+        )
 
     def environment(self, route):
         return TradingEnv(self.path(route), self.config)

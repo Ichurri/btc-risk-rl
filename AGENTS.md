@@ -4,7 +4,8 @@
 - Leer README.md, docs/HANDOFF.md y configs/initial.toml antes de modificar código.
 - Este repositorio implementa la tesis de Santiago Andrés Iturri Vargas.
 - Preservar C0 (PPO), C5 y C10 (CVaR-PPO). Mismo entorno y recompensa.
-- H4 autoriza implementar agentes/recolector y actualizaciones pequeñas exclusivamente sintéticas.
+- H5 autoriza infraestructura, aprendizaje pequeño sintético e integración sin optimización
+  sobre entrenamiento aceptado 2018–2022. Validación/final no accesibles al ejecutor.
 - Se permite PyTorch CPU fijado en el lock. No instalar CUDA ni modificar drivers.
 - Siguen prohibidos entrenamientos de mercado, pilotos y evaluación confirmatoria.
 - No modificar la tesis: entregar evidencia para el chat académico.
