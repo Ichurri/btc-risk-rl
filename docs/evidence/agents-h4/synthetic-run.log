@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "purpose": "small_synthetic_updates_not_market_training",
+  "risk_off_exact": true,
+  "total_transitions": 17100,
+  "wall_seconds_measured_synthetic": 9.98312248100001,
+  "torch_cuda_build": null,
+  "market_data_loaded": false,
+  "final_test_accessed": false
+}

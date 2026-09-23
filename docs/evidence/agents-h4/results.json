@@ -1,0 +1,1557 @@
+{
+  "schema_version": "h4_synthetic_verification_v1",
+  "status": "passed",
+  "time_utc": "2026-09-23T00:39:32.020772+00:00",
+  "context": "local",
+  "purpose": "small_synthetic_updates_not_market_training",
+  "command": [
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python3",
+    "scripts/verify_agents.py",
+    "--output",
+    "artifacts/agents-h4/synthetic-run"
+  ],
+  "python": "3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "commit": "a6c391a537b7fcea12e98b8a968ed9ffa9585821",
+  "git_status": " D .python-version\n?? docs/evidence/agents-h4/\n?? docs/hitos/H4-agentes-recolector.md\n?? docs/proposals/H4-pilotos-3h.md\n",
+  "packages": {
+    "torch": "2.8.0+cpu",
+    "numpy": "2.5.3",
+    "gymnasium": "1.3.0",
+    "pytest": "9.1.1",
+    "ruff": "0.16.8"
+  },
+  "torch_cuda_build": null,
+  "threads": 1,
+  "synthetic_settings": {
+    "purpose": "synthetic_tests_only",
+    "hidden": 8,
+    "iterations": 2,
+    "n_a": 2,
+    "n_q": 3,
+    "n_b": 3,
+    "actor_epochs": 2,
+    "critic_epochs": 2,
+    "minibatch": 1,
+    "actor_lr": 0.0001,
+    "critic_lr": 0.001,
+    "dual_lr": 0.1,
+    "clip": 0.2,
+    "bound": 0.0,
+    "seed": 20260922,
+    "fragment_steps": 60
+  },
+  "runs": {
+    "C0": {
+      "status": "passed",
+      "purpose": "synthetic_tests_only",
+      "condition": "C0",
+      "risk_enabled": false,
+      "initial_q_tail": {
+        "eta": 0.04190089064675995,
+        "rho": 0.04190089064675995,
+        "weights": [
+          0.15,
+          0.0,
+          0.0
+        ],
+        "mass": 0.15,
+        "ties": 1,
+        "greater": 0,
+        "n": 3,
+        "quantile_rank": 3
+      },
+      "settings": {
+        "purpose": "synthetic_tests_only",
+        "hidden": 8,
+        "iterations": 2,
+        "n_a": 2,
+        "n_q": 3,
+        "n_b": 3,
+        "actor_epochs": 2,
+        "critic_epochs": 2,
+        "minibatch": 1,
+        "actor_lr": 0.0001,
+        "critic_lr": 0.001,
+        "dual_lr": 0.1,
+        "clip": 0.2,
+        "bound": 0.0,
+        "seed": 20260922,
+        "fragment_steps": 60
+      },
+      "events": [
+        {
+          "event": "Q",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C0/0/Q/0",
+            "h4-synthetic-C0/0/Q/1",
+            "h4-synthetic-C0/0/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "A",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C0/0/A/0",
+            "h4-synthetic-C0/0/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 0,
+          "eta_used": 0.04190089064675995,
+          "lambda_used": 0.0,
+          "alpha": 0.05,
+          "bound": 0.0,
+          "actor_before": "3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_before": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "critic_after": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "fixed_before": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089",
+          "fixed_after": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089"
+        },
+        {
+          "event": "critic",
+          "iteration": 0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_after": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089"
+        },
+        {
+          "event": "Q",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C0/1/Q/0",
+            "h4-synthetic-C0/1/Q/1",
+            "h4-synthetic-C0/1/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C0/1/B/0",
+            "h4-synthetic-C0/1/B/1",
+            "h4-synthetic-C0/1/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 1,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0
+        },
+        {
+          "event": "A",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C0/1/A/0",
+            "h4-synthetic-C0/1/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 1,
+          "eta_used": 0.06298195624331449,
+          "lambda_used": 0.0,
+          "alpha": 0.05,
+          "bound": 0.0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_before": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_before": "2f0c49c014417808f8719c8822588407323d631c59fb3bca64fc0bbff63953b8",
+          "fixed_after": "2f0c49c014417808f8719c8822588407323d631c59fb3bca64fc0bbff63953b8"
+        },
+        {
+          "event": "critic",
+          "iteration": 1,
+          "actor_before": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_after": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+          "fixed_after": "2f0c49c014417808f8719c8822588407323d631c59fb3bca64fc0bbff63953b8"
+        },
+        {
+          "event": "Q",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C0/2/Q/0",
+            "h4-synthetic-C0/2/Q/1",
+            "h4-synthetic-C0/2/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C0/2/B/0",
+            "h4-synthetic-C0/2/B/1",
+            "h4-synthetic-C0/2/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 2,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0
+        }
+      ],
+      "audits": [
+        {
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "eta": 0.06298195624331449,
+          "f_b": 0.06298195624331449,
+          "rho_b": 0.04273058768776039,
+          "rho_q": 0.06298195624331449,
+          "f_violation": 0.06298195624331449,
+          "empirical_violation": 0.04273058768776039,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0,
+          "q_tail": {
+            "eta": 0.06298195624331449,
+            "rho": 0.06298195624331449,
+            "weights": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.04273058768776039,
+            "rho": 0.04273058768776039,
+            "weights": [
+              0.0,
+              0.0,
+              0.15
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        },
+        {
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "eta": 0.041474684389072536,
+          "f_b": 0.2137125573513856,
+          "rho_b": 0.06150439019484289,
+          "rho_q": 0.041474684389072536,
+          "f_violation": 0.2137125573513856,
+          "empirical_violation": 0.06150439019484289,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0,
+          "q_tail": {
+            "eta": 0.041474684389072536,
+            "rho": 0.041474684389072536,
+            "weights": [
+              0.0,
+              0.0,
+              0.15
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.061504390194842884,
+            "rho": 0.06150439019484289,
+            "weights": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        }
+      ],
+      "trajectories": 19,
+      "transitions": 3420,
+      "actor_updates": 8,
+      "critic_updates": 8,
+      "actor_sha256": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+      "critic_sha256": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+      "market_training_executed": false,
+      "final_test_accessed": false,
+      "wall_seconds_measured_synthetic": 2.748568422000062,
+      "sample_sha256": "ae02e8c90e21bf0b8a3f4e6b27c76deade61e814d409d4858096eb1c86213e6d"
+    },
+    "C5": {
+      "status": "passed",
+      "purpose": "synthetic_tests_only",
+      "condition": "C5",
+      "risk_enabled": true,
+      "initial_q_tail": {
+        "eta": 0.04190089064675995,
+        "rho": 0.04190089064675995,
+        "weights": [
+          0.15,
+          0.0,
+          0.0
+        ],
+        "mass": 0.15,
+        "ties": 1,
+        "greater": 0,
+        "n": 3,
+        "quantile_rank": 3
+      },
+      "settings": {
+        "purpose": "synthetic_tests_only",
+        "hidden": 8,
+        "iterations": 2,
+        "n_a": 2,
+        "n_q": 3,
+        "n_b": 3,
+        "actor_epochs": 2,
+        "critic_epochs": 2,
+        "minibatch": 1,
+        "actor_lr": 0.0001,
+        "critic_lr": 0.001,
+        "dual_lr": 0.1,
+        "clip": 0.2,
+        "bound": 0.0,
+        "seed": 20260922,
+        "fragment_steps": 60
+      },
+      "events": [
+        {
+          "event": "Q",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C5/0/Q/0",
+            "h4-synthetic-C5/0/Q/1",
+            "h4-synthetic-C5/0/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "A",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C5/0/A/0",
+            "h4-synthetic-C5/0/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 0,
+          "eta_used": 0.04190089064675995,
+          "lambda_used": 0.0,
+          "alpha": 0.05,
+          "bound": 0.0,
+          "actor_before": "3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_before": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "critic_after": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "fixed_before": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089",
+          "fixed_after": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089"
+        },
+        {
+          "event": "critic",
+          "iteration": 0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_after": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089"
+        },
+        {
+          "event": "Q",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C5/1/Q/0",
+            "h4-synthetic-C5/1/Q/1",
+            "h4-synthetic-C5/1/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C5/1/B/0",
+            "h4-synthetic-C5/1/B/1",
+            "h4-synthetic-C5/1/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 1,
+          "lambda_before": 0.0,
+          "lambda_after": 0.006298195624331449
+        },
+        {
+          "event": "A",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C5/1/A/0",
+            "h4-synthetic-C5/1/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 1,
+          "eta_used": 0.06298195624331449,
+          "lambda_used": 0.006298195624331449,
+          "alpha": 0.05,
+          "bound": 0.0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_before": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_before": "1e95d2e79472afd170eae4dc0e34ea42d87b66015bc02bf3d267626b3b20fc3f",
+          "fixed_after": "1e95d2e79472afd170eae4dc0e34ea42d87b66015bc02bf3d267626b3b20fc3f"
+        },
+        {
+          "event": "critic",
+          "iteration": 1,
+          "actor_before": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_after": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+          "fixed_after": "1e95d2e79472afd170eae4dc0e34ea42d87b66015bc02bf3d267626b3b20fc3f"
+        },
+        {
+          "event": "Q",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C5/2/Q/0",
+            "h4-synthetic-C5/2/Q/1",
+            "h4-synthetic-C5/2/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C5/2/B/0",
+            "h4-synthetic-C5/2/B/1",
+            "h4-synthetic-C5/2/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 2,
+          "lambda_before": 0.006298195624331449,
+          "lambda_after": 0.027669451359470014
+        }
+      ],
+      "audits": [
+        {
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "eta": 0.06298195624331449,
+          "f_b": 0.06298195624331449,
+          "rho_b": 0.04273058768776039,
+          "rho_q": 0.06298195624331449,
+          "f_violation": 0.06298195624331449,
+          "empirical_violation": 0.04273058768776039,
+          "lambda_before": 0.0,
+          "lambda_after": 0.006298195624331449,
+          "q_tail": {
+            "eta": 0.06298195624331449,
+            "rho": 0.06298195624331449,
+            "weights": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.04273058768776039,
+            "rho": 0.04273058768776039,
+            "weights": [
+              0.0,
+              0.0,
+              0.15
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        },
+        {
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "eta": 0.041474684389072536,
+          "f_b": 0.2137125573513856,
+          "rho_b": 0.06150439019484289,
+          "rho_q": 0.041474684389072536,
+          "f_violation": 0.2137125573513856,
+          "empirical_violation": 0.06150439019484289,
+          "lambda_before": 0.006298195624331449,
+          "lambda_after": 0.027669451359470014,
+          "q_tail": {
+            "eta": 0.041474684389072536,
+            "rho": 0.041474684389072536,
+            "weights": [
+              0.0,
+              0.0,
+              0.15
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.061504390194842884,
+            "rho": 0.06150439019484289,
+            "weights": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        }
+      ],
+      "trajectories": 19,
+      "transitions": 3420,
+      "actor_updates": 8,
+      "critic_updates": 8,
+      "actor_sha256": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+      "critic_sha256": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+      "market_training_executed": false,
+      "final_test_accessed": false,
+      "wall_seconds_measured_synthetic": 1.7666964780000853,
+      "sample_sha256": "69501f293c07a92049b5988bbd639a9ba2a15e9ed501bb79073e0a0544c1fdd5"
+    },
+    "C10": {
+      "status": "passed",
+      "purpose": "synthetic_tests_only",
+      "condition": "C10",
+      "risk_enabled": true,
+      "initial_q_tail": {
+        "eta": 0.04190089064675995,
+        "rho": 0.04190089064675995,
+        "weights": [
+          0.3,
+          0.0,
+          0.0
+        ],
+        "mass": 0.3,
+        "ties": 1,
+        "greater": 0,
+        "n": 3,
+        "quantile_rank": 3
+      },
+      "settings": {
+        "purpose": "synthetic_tests_only",
+        "hidden": 8,
+        "iterations": 2,
+        "n_a": 2,
+        "n_q": 3,
+        "n_b": 3,
+        "actor_epochs": 2,
+        "critic_epochs": 2,
+        "minibatch": 1,
+        "actor_lr": 0.0001,
+        "critic_lr": 0.001,
+        "dual_lr": 0.1,
+        "clip": 0.2,
+        "bound": 0.0,
+        "seed": 20260922,
+        "fragment_steps": 60
+      },
+      "events": [
+        {
+          "event": "Q",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C10/0/Q/0",
+            "h4-synthetic-C10/0/Q/1",
+            "h4-synthetic-C10/0/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "A",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C10/0/A/0",
+            "h4-synthetic-C10/0/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 0,
+          "eta_used": 0.04190089064675995,
+          "lambda_used": 0.0,
+          "alpha": 0.1,
+          "bound": 0.0,
+          "actor_before": "3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_before": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "critic_after": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "fixed_before": "a30d4c04f829138ecfe428b8bf4ecd863a608fe05146c33eaf1b2fce1d424fcd",
+          "fixed_after": "a30d4c04f829138ecfe428b8bf4ecd863a608fe05146c33eaf1b2fce1d424fcd"
+        },
+        {
+          "event": "critic",
+          "iteration": 0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_after": "a30d4c04f829138ecfe428b8bf4ecd863a608fe05146c33eaf1b2fce1d424fcd"
+        },
+        {
+          "event": "Q",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C10/1/Q/0",
+            "h4-synthetic-C10/1/Q/1",
+            "h4-synthetic-C10/1/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C10/1/B/0",
+            "h4-synthetic-C10/1/B/1",
+            "h4-synthetic-C10/1/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 1,
+          "lambda_before": 0.0,
+          "lambda_after": 0.006298195624331449
+        },
+        {
+          "event": "A",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C10/1/A/0",
+            "h4-synthetic-C10/1/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 1,
+          "eta_used": 0.06298195624331449,
+          "lambda_used": 0.006298195624331449,
+          "alpha": 0.1,
+          "bound": 0.0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_before": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_before": "e3c45a120f710ec82e9e9d1d56ccd57a3b23562e84a8bebe1d4c140a560d04e2",
+          "fixed_after": "e3c45a120f710ec82e9e9d1d56ccd57a3b23562e84a8bebe1d4c140a560d04e2"
+        },
+        {
+          "event": "critic",
+          "iteration": 1,
+          "actor_before": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_after": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+          "fixed_after": "e3c45a120f710ec82e9e9d1d56ccd57a3b23562e84a8bebe1d4c140a560d04e2"
+        },
+        {
+          "event": "Q",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C10/2/Q/0",
+            "h4-synthetic-C10/2/Q/1",
+            "h4-synthetic-C10/2/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C10/2/B/0",
+            "h4-synthetic-C10/2/B/1",
+            "h4-synthetic-C10/2/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 2,
+          "lambda_before": 0.006298195624331449,
+          "lambda_after": 0.019057557711354357
+        }
+      ],
+      "audits": [
+        {
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "eta": 0.06298195624331449,
+          "f_b": 0.06298195624331449,
+          "rho_b": 0.04273058768776039,
+          "rho_q": 0.06298195624331449,
+          "f_violation": 0.06298195624331449,
+          "empirical_violation": 0.04273058768776039,
+          "lambda_before": 0.0,
+          "lambda_after": 0.006298195624331449,
+          "q_tail": {
+            "eta": 0.06298195624331449,
+            "rho": 0.06298195624331449,
+            "weights": [
+              0.3,
+              0.0,
+              0.0
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.04273058768776039,
+            "rho": 0.04273058768776039,
+            "weights": [
+              0.0,
+              0.0,
+              0.3
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        },
+        {
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "eta": 0.041474684389072536,
+          "f_b": 0.12759362087022907,
+          "rho_b": 0.06150439019484289,
+          "rho_q": 0.041474684389072536,
+          "f_violation": 0.12759362087022907,
+          "empirical_violation": 0.06150439019484289,
+          "lambda_before": 0.006298195624331449,
+          "lambda_after": 0.019057557711354357,
+          "q_tail": {
+            "eta": 0.041474684389072536,
+            "rho": 0.041474684389072536,
+            "weights": [
+              0.0,
+              0.0,
+              0.3
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.061504390194842884,
+            "rho": 0.06150439019484289,
+            "weights": [
+              0.3,
+              0.0,
+              0.0
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        }
+      ],
+      "trajectories": 19,
+      "transitions": 3420,
+      "actor_updates": 8,
+      "critic_updates": 8,
+      "actor_sha256": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+      "critic_sha256": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+      "market_training_executed": false,
+      "final_test_accessed": false,
+      "wall_seconds_measured_synthetic": 1.7898391529997753,
+      "sample_sha256": "868344c9f30586513756ebbd9c615db8c89e67a0aa0f226265060c7aaae24203"
+    },
+    "C5_off": {
+      "status": "passed",
+      "purpose": "synthetic_tests_only",
+      "condition": "C5",
+      "risk_enabled": false,
+      "initial_q_tail": {
+        "eta": 0.04190089064675995,
+        "rho": 0.04190089064675995,
+        "weights": [
+          0.15,
+          0.0,
+          0.0
+        ],
+        "mass": 0.15,
+        "ties": 1,
+        "greater": 0,
+        "n": 3,
+        "quantile_rank": 3
+      },
+      "settings": {
+        "purpose": "synthetic_tests_only",
+        "hidden": 8,
+        "iterations": 2,
+        "n_a": 2,
+        "n_q": 3,
+        "n_b": 3,
+        "actor_epochs": 2,
+        "critic_epochs": 2,
+        "minibatch": 1,
+        "actor_lr": 0.0001,
+        "critic_lr": 0.001,
+        "dual_lr": 0.1,
+        "clip": 0.2,
+        "bound": 0.0,
+        "seed": 20260922,
+        "fragment_steps": 60
+      },
+      "events": [
+        {
+          "event": "Q",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C5_off/0/Q/0",
+            "h4-synthetic-C5_off/0/Q/1",
+            "h4-synthetic-C5_off/0/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "A",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C5_off/0/A/0",
+            "h4-synthetic-C5_off/0/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 0,
+          "eta_used": 0.04190089064675995,
+          "lambda_used": 0.0,
+          "alpha": 0.05,
+          "bound": 0.0,
+          "actor_before": "3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_before": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "critic_after": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "fixed_before": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089",
+          "fixed_after": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089"
+        },
+        {
+          "event": "critic",
+          "iteration": 0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_after": "d09b04091f8e83b310d0057b0f789bb82e1851e6f5e08b81a511bb6a7c9cd089"
+        },
+        {
+          "event": "Q",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C5_off/1/Q/0",
+            "h4-synthetic-C5_off/1/Q/1",
+            "h4-synthetic-C5_off/1/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C5_off/1/B/0",
+            "h4-synthetic-C5_off/1/B/1",
+            "h4-synthetic-C5_off/1/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 1,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0
+        },
+        {
+          "event": "A",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C5_off/1/A/0",
+            "h4-synthetic-C5_off/1/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 1,
+          "eta_used": 0.06298195624331449,
+          "lambda_used": 0.0,
+          "alpha": 0.05,
+          "bound": 0.0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_before": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_before": "2f0c49c014417808f8719c8822588407323d631c59fb3bca64fc0bbff63953b8",
+          "fixed_after": "2f0c49c014417808f8719c8822588407323d631c59fb3bca64fc0bbff63953b8"
+        },
+        {
+          "event": "critic",
+          "iteration": 1,
+          "actor_before": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_after": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+          "fixed_after": "2f0c49c014417808f8719c8822588407323d631c59fb3bca64fc0bbff63953b8"
+        },
+        {
+          "event": "Q",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C5_off/2/Q/0",
+            "h4-synthetic-C5_off/2/Q/1",
+            "h4-synthetic-C5_off/2/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C5_off/2/B/0",
+            "h4-synthetic-C5_off/2/B/1",
+            "h4-synthetic-C5_off/2/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 2,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0
+        }
+      ],
+      "audits": [
+        {
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "eta": 0.06298195624331449,
+          "f_b": 0.06298195624331449,
+          "rho_b": 0.04273058768776039,
+          "rho_q": 0.06298195624331449,
+          "f_violation": 0.06298195624331449,
+          "empirical_violation": 0.04273058768776039,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0,
+          "q_tail": {
+            "eta": 0.06298195624331449,
+            "rho": 0.06298195624331449,
+            "weights": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.04273058768776039,
+            "rho": 0.04273058768776039,
+            "weights": [
+              0.0,
+              0.0,
+              0.15
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        },
+        {
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "eta": 0.041474684389072536,
+          "f_b": 0.2137125573513856,
+          "rho_b": 0.06150439019484289,
+          "rho_q": 0.041474684389072536,
+          "f_violation": 0.2137125573513856,
+          "empirical_violation": 0.06150439019484289,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0,
+          "q_tail": {
+            "eta": 0.041474684389072536,
+            "rho": 0.041474684389072536,
+            "weights": [
+              0.0,
+              0.0,
+              0.15
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.061504390194842884,
+            "rho": 0.06150439019484289,
+            "weights": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "mass": 0.15,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        }
+      ],
+      "trajectories": 19,
+      "transitions": 3420,
+      "actor_updates": 8,
+      "critic_updates": 8,
+      "actor_sha256": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+      "critic_sha256": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+      "market_training_executed": false,
+      "final_test_accessed": false,
+      "wall_seconds_measured_synthetic": 1.8478719539998565,
+      "sample_sha256": "018525c6ec6b957fd5e97dbbd4978e5a9c18d24efafdea66ebce4e1cad462cb7"
+    },
+    "C10_off": {
+      "status": "passed",
+      "purpose": "synthetic_tests_only",
+      "condition": "C10",
+      "risk_enabled": false,
+      "initial_q_tail": {
+        "eta": 0.04190089064675995,
+        "rho": 0.04190089064675995,
+        "weights": [
+          0.3,
+          0.0,
+          0.0
+        ],
+        "mass": 0.3,
+        "ties": 1,
+        "greater": 0,
+        "n": 3,
+        "quantile_rank": 3
+      },
+      "settings": {
+        "purpose": "synthetic_tests_only",
+        "hidden": 8,
+        "iterations": 2,
+        "n_a": 2,
+        "n_q": 3,
+        "n_b": 3,
+        "actor_epochs": 2,
+        "critic_epochs": 2,
+        "minibatch": 1,
+        "actor_lr": 0.0001,
+        "critic_lr": 0.001,
+        "dual_lr": 0.1,
+        "clip": 0.2,
+        "bound": 0.0,
+        "seed": 20260922,
+        "fragment_steps": 60
+      },
+      "events": [
+        {
+          "event": "Q",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C10_off/0/Q/0",
+            "h4-synthetic-C10_off/0/Q/1",
+            "h4-synthetic-C10_off/0/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "A",
+          "iteration": 0,
+          "policy_version": "policy-0:3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "realizations": [
+            "h4-synthetic-C10_off/0/A/0",
+            "h4-synthetic-C10_off/0/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 0,
+          "eta_used": 0.04190089064675995,
+          "lambda_used": 0.0,
+          "alpha": 0.1,
+          "bound": 0.0,
+          "actor_before": "3373214ff5cd8c6981c9d0fab6fa36d910248f9f2c9a5e0a79a7c5ac4945c23b",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_before": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "critic_after": "32b603043ab79c3e3b110cab6f8b239f290c413301108bec45e54b1e546865f6",
+          "fixed_before": "a30d4c04f829138ecfe428b8bf4ecd863a608fe05146c33eaf1b2fce1d424fcd",
+          "fixed_after": "a30d4c04f829138ecfe428b8bf4ecd863a608fe05146c33eaf1b2fce1d424fcd"
+        },
+        {
+          "event": "critic",
+          "iteration": 0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_after": "a30d4c04f829138ecfe428b8bf4ecd863a608fe05146c33eaf1b2fce1d424fcd"
+        },
+        {
+          "event": "Q",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C10_off/1/Q/0",
+            "h4-synthetic-C10_off/1/Q/1",
+            "h4-synthetic-C10_off/1/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C10_off/1/B/0",
+            "h4-synthetic-C10_off/1/B/1",
+            "h4-synthetic-C10_off/1/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 1,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0
+        },
+        {
+          "event": "A",
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "realizations": [
+            "h4-synthetic-C10_off/1/A/0",
+            "h4-synthetic-C10_off/1/A/1"
+          ],
+          "route_ids": [
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 2
+        },
+        {
+          "event": "actor",
+          "iteration": 1,
+          "eta_used": 0.06298195624331449,
+          "lambda_used": 0.0,
+          "alpha": 0.1,
+          "bound": 0.0,
+          "actor_before": "b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_before": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "critic_after": "15373b46e19473753d93b4c921f2b284da9c2b837b1f63b8006f835102946576",
+          "fixed_before": "0e6d87bcf05e8cf4145f69586c748668d57da94721b4aff1c4090efec56971a6",
+          "fixed_after": "0e6d87bcf05e8cf4145f69586c748668d57da94721b4aff1c4090efec56971a6"
+        },
+        {
+          "event": "critic",
+          "iteration": 1,
+          "actor_before": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "actor_after": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "critic_after": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+          "fixed_after": "0e6d87bcf05e8cf4145f69586c748668d57da94721b4aff1c4090efec56971a6"
+        },
+        {
+          "event": "Q",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C10_off/2/Q/0",
+            "h4-synthetic-C10_off/2/Q/1",
+            "h4-synthetic-C10_off/2/Q/2"
+          ],
+          "route_ids": [
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4"
+          ],
+          "count": 3
+        },
+        {
+          "event": "B",
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "realizations": [
+            "h4-synthetic-C10_off/2/B/0",
+            "h4-synthetic-C10_off/2/B/1",
+            "h4-synthetic-C10_off/2/B/2"
+          ],
+          "route_ids": [
+            "synthetic-route-0:ff13810f664ec0388765e4b21585821d1c08617736f147b968b03d41094a72a1",
+            "synthetic-route-1:939bb4eb9b3dca3eb8314aec471dde6c94bf0884b1eefb24d2a2ba4b98a827d4",
+            "synthetic-route-2:79f6c9126e3d5361228473036da107a17ae2a37c27941c89a2cfe2e6acde6c93"
+          ],
+          "count": 3
+        },
+        {
+          "event": "dual",
+          "iteration": 2,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0
+        }
+      ],
+      "audits": [
+        {
+          "iteration": 1,
+          "policy_version": "policy-1:b9f8503bc86771e1ce06f8a5a0de561110b34880c866b51ec3c419a67b839387",
+          "eta": 0.06298195624331449,
+          "f_b": 0.06298195624331449,
+          "rho_b": 0.04273058768776039,
+          "rho_q": 0.06298195624331449,
+          "f_violation": 0.06298195624331449,
+          "empirical_violation": 0.04273058768776039,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0,
+          "q_tail": {
+            "eta": 0.06298195624331449,
+            "rho": 0.06298195624331449,
+            "weights": [
+              0.3,
+              0.0,
+              0.0
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.04273058768776039,
+            "rho": 0.04273058768776039,
+            "weights": [
+              0.0,
+              0.0,
+              0.3
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        },
+        {
+          "iteration": 2,
+          "policy_version": "policy-2:d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+          "eta": 0.041474684389072536,
+          "f_b": 0.12759362087022907,
+          "rho_b": 0.06150439019484289,
+          "rho_q": 0.041474684389072536,
+          "f_violation": 0.12759362087022907,
+          "empirical_violation": 0.06150439019484289,
+          "lambda_before": 0.0,
+          "lambda_after": 0.0,
+          "q_tail": {
+            "eta": 0.041474684389072536,
+            "rho": 0.041474684389072536,
+            "weights": [
+              0.0,
+              0.0,
+              0.3
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "b_tail": {
+            "eta": 0.061504390194842884,
+            "rho": 0.06150439019484289,
+            "weights": [
+              0.3,
+              0.0,
+              0.0
+            ],
+            "mass": 0.3,
+            "ties": 1,
+            "greater": 0,
+            "n": 3,
+            "quantile_rank": 3
+          },
+          "interpretation": "empirical_diagnostic_not_population_certificate"
+        }
+      ],
+      "trajectories": 19,
+      "transitions": 3420,
+      "actor_updates": 8,
+      "critic_updates": 8,
+      "actor_sha256": "d242969fbb6d4412338d2db2f8b4e6f48ce211dc5dd3d50f796bc7ff5a06f44a",
+      "critic_sha256": "03280cce8620c8650cbf4209b1f125e1bfe84d039be9a00e7764ce2766e5f69c",
+      "market_training_executed": false,
+      "final_test_accessed": false,
+      "wall_seconds_measured_synthetic": 1.7967007950001062,
+      "sample_sha256": "12b70acbf340b2f21f0257a5d9ba66fdabb4ebb69f4caeef517ccaca4607cfb8"
+    }
+  },
+  "risk_off_exact": true,
+  "total_transitions": 17100,
+  "wall_seconds_measured_synthetic": 9.98312248100001,
+  "code_hashes": {
+    "src/btc_risk_rl/agents/collector.py": "f68cb26d88110e2ab8160e62d5bc5658f22b279480c26b291024f8939dbc6444",
+    "src/btc_risk_rl/agents/models.py": "cb147acc49f2bf53abdd12ceb2f73268aa884e37ea98207cb1ba0a9dfd8a6a3f",
+    "src/btc_risk_rl/agents/risk.py": "1aaa2028a63eddf3d5d00bb31ce7f5cbabc1a7ba0b3f46af42ee1da42883ba9b",
+    "src/btc_risk_rl/agents/synthetic.py": "fb0d6afcb11f116953c403476e0c56d64f5f9511711b61c9b4f4af5270a02b0a",
+    "src/btc_risk_rl/agents/trainer.py": "fe94b8f74a5a56676c9db692141f058474f984fab625ef934b2e0cdf7b781b74",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/verify_agents.py": "5331da652054ec2cbe90511a6e1b6ca1aea38d4042a0c1bef050af49ee51fc26",
+    "pyproject.toml": "9b7d92440e3140bb644e593cfcf58f187b5b5cef616944b986752ca0eda69a6a",
+    "uv.lock": "4227214338aa773eafe365bfb3ead2ec2737ad3b5ff24824a027fa53b57dd32e",
+    "configs/initial.toml": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+    "tests/test_agent_math.py": "37066430246c3a56dcc86f588b92941d6553f0ffe5131fe9cb2a25d9fe6d2bef",
+    "tests/test_agent_schedule.py": "a04669d213191c09986512f276b3b7781d06e8488f8227ef22b9ac43025ff6f5",
+    "tests/test_collector.py": "5b8e072e76804951c69ac2a905043b42b65ed07de86d5d34ee788b6a34dec923"
+  },
+  "market_data_loaded": false,
+  "market_training_executed": false,
+  "pilots_executed": false,
+  "final_test_accessed": false
+}

@@ -1,6 +1,12 @@
 # ADR-002: contrato finito común y transferencia operacional
 
 **Estado vigente: ADOPTADO — v2.1, 22-09-2026.**
+
+Actualización de alcance H4: el usuario autorizó implementar agentes/recolector
+y ejecutar actualizaciones pequeñas solo sintéticas, con PyTorch CPU.
+No modifica el contrato metodológico ni autoriza mercado, pilotos o evaluación
+confirmatoria. Véase [H4](../hitos/H4-agentes-recolector.md). La autorización
+de adopción H3 que sigue se conserva como antecedente de alcance.
 Autorización explícita del usuario en esta tarea: adoptar v2.1 y adaptar el simulador.
 No autoriza agentes, entrenamientos ni evaluación confirmatoria.
 

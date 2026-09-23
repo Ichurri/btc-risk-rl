@@ -1,3 +1,48 @@
+# Handoff — estado vigente H4
+
+Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
+Rama de entrega: [codex/h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/codex/h4-agents-collector).
+Base H3 verificada local/remota 8f027c5; alcance/dependencias 31b4c87;
+implementación H4 a6c391a. La eliminación previa de .python-version sigue fuera
+de los commits. No hubo retroceso de ramas ni sobrescritura de cambios previos.
+
+**Vigente:** ADR-002 v2.1 adoptado. H4 autoriza agentes/recolector y actualizaciones
+pequeñas exclusivamente sintéticas; NO mercado, pilotos o evaluación confirmatoria.
+AGENTS refleja esta autorización. PyTorch 2.8.0+cpu instalado y fijado, sin CUDA.
+H3 y los productos H1 se conservan; no se leyeron datos reales en H4.
+
+Implementado: actor logística-normal y crítico separados, política congelada,
+identidades de realización/ruta/política, fragmentos completos de 180, MC,
+calendario Q/A/B, eta/masa fraccionaria, dual F_B y equivalencia exacta riesgo
+apagado/C0. Los fallos invalidan la corrida, sin reemplazo selectivo.
+NPZ de trayectorias versionado para auditoría; no checkpoint/reanudación de
+optimizadores. El ejecutor solo acepta rutas fabricadas en código.
+
+Verificación nueva: Ruff pasa; **149 pruebas aprobadas**, 32 nuevas H4.
+Evidencias y actualización sintética adicional en
+[COMMANDS](evidence/agents-h4/COMMANDS.md).
+Leer [informe](hitos/H4-agentes-recolector.md),
+[resumen académico](hitos/H4-resumen-academico.md) y
+[propuesta de pilotos](proposals/H4-pilotos-3h.md).
+
+## Siguiente tarea
+
+Revisar H4 y la propuesta de pilotos; autorizar alcance separado antes de mercado.
+Resolver adaptador de índices aceptados, checkpoint integral/reanudación
+determinista y diagnósticos; después calibrar tiempos con presupuesto máximo de
+3h/día. Cerrar cota económica común, tamaños, tasas, arquitectura y presupuesto
+antes de comparar condiciones. No extrapolar tiempos sintéticos ni seleccionar
+por B favorable. El conjunto final sigue bloqueado.
+
+Los valores SyntheticSettings NO son hiperparámetros de pilotos. La configuración
+initial.toml conserva el perfil histórico H3 y training_enabled=false para mercado.
+No tomar los antiguos «sin agentes» del historial como estado vigente.
+No modificar la tesis ni generar ZIP rutinario.
+
+---
+
+# Historial conservado anterior a H4
+
 # Handoff — estado vigente H3 (22-09-2026)
 
 Repositorio en [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.

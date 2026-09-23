@@ -1,0 +1,55 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+___________ test_fragments_preserve_identity_clock_portfolio_and_rng ___________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_fragments_preserve_identity_clock_portfolio_and_rng(config):
+>       from btc_risk_rl.agents.collector import Collector
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.collector'
+
+tests/test_collector.py:19: ModuleNotFoundError
+________ test_assembly_rejects_mixed_policy_realization_route_and_gaps _________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_assembly_rejects_mixed_policy_realization_route_and_gaps(config):
+>       from btc_risk_rl.agents.collector import assemble
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.collector'
+
+tests/test_collector.py:39: ModuleNotFoundError
+____________________ test_auxiliary_streams_cannot_shift_A _____________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_auxiliary_streams_cannot_shift_A(config):
+>       from btc_risk_rl.agents.collector import Collector
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.collector'
+
+tests/test_collector.py:55: ModuleNotFoundError
+___________ test_batch_failure_aborts_without_selective_replacement ____________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f0a6b827680>
+
+    def test_batch_failure_aborts_without_selective_replacement(config, monkeypatch):
+>       from btc_risk_rl.agents.collector import BatchAbort
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.collector'
+
+tests/test_collector.py:71: ModuleNotFoundError
+______________ test_non_synthetic_source_is_blocked_before_access ______________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_non_synthetic_source_is_blocked_before_access(config):
+>       from btc_risk_rl.agents.collector import Collector
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.collector'
+
+tests/test_collector.py:99: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_collector.py::test_fragments_preserve_identity_clock_portfolio_and_rng
+FAILED tests/test_collector.py::test_assembly_rejects_mixed_policy_realization_route_and_gaps
+FAILED tests/test_collector.py::test_auxiliary_streams_cannot_shift_A - Modul...
+FAILED tests/test_collector.py::test_batch_failure_aborts_without_selective_replacement
+FAILED tests/test_collector.py::test_non_synthetic_source_is_blocked_before_access
+5 failed in 0.06s

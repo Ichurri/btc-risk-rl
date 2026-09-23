@@ -3,7 +3,8 @@
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
-Repositorio de infraestructura experimental; no hay entrenamientos autorizados.
+Repositorio de infraestructura experimental. H4 autoriza actualizaciones pequeñas
+con datos sintéticos; siguen bloqueados entrenamientos de mercado y pilotos.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 
 ## Debian local / entorno remoto
@@ -32,10 +33,10 @@ protocolo con pruebas. Una futura campaña final necesita un flujo separado y re
 
 ## Estado
 Consultar docs/hitos/ y docs/evidence/ para resultados reales, limitaciones y commits.
-Las carpetas agents/, experiments/ y reporting/ están reservadas; no representan
-funciones ya implementadas. [ADR-002 v2.1 está adoptado](docs/decisions/ADR-002-risk-horizon.md);
-H3 adapta el simulador. Agentes, pilotos y entrenamientos requieren autorización
-separada. Hay parámetros por congelar antes de comparar condiciones y de evaluar
+Agentes y recolector H4 implementados para pruebas sintéticas. experiments/ y
+reporting/ siguen reservados; no representan una campaña experimental implementada. [ADR-002 v2.1 está adoptado](docs/decisions/ADR-002-risk-horizon.md);
+H3 adapta el simulador; H4 implementa PPO/CVaR-PPO y recolector. Pilotos y
+entrenamientos de mercado requieren autorización separada. Hay parámetros por congelar antes de comparar condiciones y de evaluar
 confirmatoriamente; la prueba final permanece protegida.
 
 ## Módulo de datos implementado
@@ -101,4 +102,25 @@ contable con acciones prefijadas, no selección de estrategias.
 [resumen académico](docs/hitos/H3-resumen-academico.md) y
 [evidencias nuevas](docs/evidence/simulator-h3/COMMANDS.md).
 [H2](docs/hitos/H2-simulador.md) se conserva como antecedente: sus observaciones
-y flags no deben suponerse compatibles con H3. No hay agentes ni entrenamientos.
+y flags no deben suponerse compatibles con H3. No hay entrenamientos de mercado.
+
+
+## H4 — agentes y recolector, solo sintéticos
+
+Redes separadas CPU float64, acción logística-normal sin clipping, episodios
+completos con política congelada, Monte Carlo H=180 y calendario Q/A/B adoptado.
+La instalación usa PyTorch 2.8.0+cpu desde índice explícito CPU fijado en el lock.
+No requiere CUDA ni cambios de drivers.
+
+    uv run --frozen python scripts/verify_agents.py --output artifacts/agents-h4/synthetic-run
+
+El destino debe ser nuevo. Ejecuta actualizaciones pequeñas de C0/C5/C10 y
+equivalencia con riesgo apagado sobre rutas fabricadas; no admite archivos de
+mercado. Los valores son de prueba, no hiperparámetros aprobados para pilotos.
+La configuración operativa de datos H3 se conserva; AGENTS y SyntheticSettings
+registran el alcance H4. Su training_enabled=false sigue bloqueando mercado.
+
+[Informe H4](docs/hitos/H4-agentes-recolector.md),
+[resumen académico](docs/hitos/H4-resumen-academico.md),
+[evidencias](docs/evidence/agents-h4/COMMANDS.md) y
+[propuesta de pilotos, aún no autorizada](docs/proposals/H4-pilotos-3h.md).

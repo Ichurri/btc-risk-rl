@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "base_h3": "8f027c53696976602260eb498698ef51ffd5d711",
+  "code_commit": "a6c391a537b7fcea12e98b8a968ed9ffa9585821",
+  "torch_version": "2.8.0+cpu",
+  "torch_cuda_build": null,
+  "no_cuda_packages_in_lock": true,
+  "unchanged_h3_paths": [
+    "configs/initial.toml",
+    "src/btc_risk_rl/config.py",
+    "src/btc_risk_rl/env",
+    "src/btc_risk_rl/features",
+    "src/btc_risk_rl/data",
+    "docs/proposals/ADR-002-propuesta-v2-1.md"
+  ],
+  "previous_handoff_preserved": true,
+  "prior_python_version_deletion_preserved": true,
+  "market_data_loaded": false,
+  "pilots_executed": false,
+  "final_test_accessed": false
+}

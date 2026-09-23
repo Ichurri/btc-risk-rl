@@ -1,0 +1,10 @@
+Resolved 34 packages in 5.06s
+Added filelock v4.0.1
+Added fsspec v2026.9.0
+Added jinja2 v3.1.6
+Added markupsafe v3.0.3
+Added mpmath v1.3.0
+Added networkx v3.6.1, v3.7
+Added setuptools v84.0.0
+Added sympy v1.14.0
+Added torch v2.8.0, v2.8.0+cpu
