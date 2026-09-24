@@ -4,6 +4,10 @@
 - Leer README.md, docs/HANDOFF.md y configs/initial.toml antes de modificar código.
 - Este repositorio implementa la tesis de Santiago Andrés Iturri Vargas.
 - Preservar C0 (PPO), C5 y C10 (CVaR-PPO). Mismo entorno y recompensa.
+- P1 aprobado desde 42152c3 autoriza implementar, verificar sintéticamente y ejecutar
+  18 corridas K=2: crítico 2/4 épocas, semillas 510031/510047/510081, orden aprobado.
+  Descontar consumo de otras campañas del día; P0 cerrado no se repite.
+  Rutas nuevas; mismo d, actor y Q/A/B. Validación/final siguen bloqueados.
 - P0-approved-v1 autoriza el piloto acotado sobre entrenamiento aceptado 2018–2022,
   después de verificar sintéticamente ejecutor, supervisor y persistencia.
 - Presupuesto GLOBAL de campaña: 3h/día America/La_Paz, timestamps UTC; varias
@@ -11,7 +15,7 @@
 - Configuración, semillas, orden y K=2 aprobados solo para P0; d=-ln(0.90) común.
   Validación/final no accesibles al ejecutor. No repetir selectivamente fallos.
 - Se permite PyTorch CPU fijado en el lock. No instalar CUDA ni modificar drivers.
-- Fuera de P0 aprobado siguen prohibidos entrenamientos de mercado, pilotos
+- Fuera de P0/P1 aprobados siguen prohibidos entrenamientos de mercado, pilotos
   posteriores y evaluación confirmatoria. Conservar límites y guardas.
 - No modificar la tesis: entregar evidencia para el chat académico.
 - ADR-002 v2.1 está adoptado; H4 autoriza su implementación, sin cambiar su metodología.
