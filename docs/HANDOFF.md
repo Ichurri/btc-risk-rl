@@ -1,3 +1,30 @@
+# Estado vigente — diagnóstico P0 cerrado
+
+Base P0 e0a2dfc verificada contra origin; rama `codex/p0-diagnosis`.
+**Comportamiento explicado; sin defecto operativo demostrado en lo examinado.**
+Reconstrucción congelada de los 18 A originales con hashes de cálculo exactos;
+sin pasos de optimizador, reejecución P0 ni acceso a validación/final.
+
+Las 162 alertas del crítico son 18 mediciones preactualización sobre A entero y
+144 sobre minibatches antes de su paso actual, aunque se escriben después.
+MSE post-A reconstruida disminuye en 18/18 casos, todavía peor que predictor cero.
+C0/C5 de semilla 410031 coinciden porque lambda=0 al inicio y el segundo A tiene
+cero shortfalls pese a lambda positivo. Las otras cinco corridas C5/C10 sí tienen
+penalización y gradiente de riesgo no nulos en la segunda iteración.
+
+**Siguiente paso:** revisión académica del diagnóstico y de la propuesta acotada
+P1 (2 frente a 4 épocas del crítico). P1 no autorizado ni ejecutado; no cambiar d,
+repetir P0 ni iniciar otras corridas. No se puede concluir generalización/CVaR.
+
+[Informe](hitos/P0-diagnostico.md),
+[resumen académico](hitos/P0-diagnostico-resumen-academico.md),
+[evidencias y comandos](evidence/p0-diagnosis/COMMANDS.md).
+16 pruebas analíticas sin aprendizaje y comprobaciones de correspondencia pasan;
+Ruff pasa. Todos los hashes de campaña/código operativo se conservan. La
+eliminación previa de `.python-version` sigue fuera de commits. Tesis intacta.
+
+---
+
 # Estado vigente — P0 completado con advertencias
 
 Campaña `artifacts/p0-approved-v1`: **completed**, nueve corridas K=2, sin fallos
