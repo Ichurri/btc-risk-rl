@@ -1,3 +1,22 @@
+# Estado vigente — P1 aprobado, preparación de ejecución
+
+Autorización de usuario desde diagnóstico 42152c3; registro 7eb9738.
+Rama `codex/p1-critic-epochs`. [Protocolo aprobado](protocols/P1-approved-v1.md)
+y configuración JSON congelada: 18 corridas, K=2, semillas nuevas,
+crítico 2/4 épocas; demás parámetros P0 intactos, d=-ln(.90).
+
+Ejecutor Q/A/B común, métricas de A fijo antes/después, control de igualdad
+inicial de A/actor. Bloqueo GLOBAL compartido y débito de otras campañas del día.
+Conserva 3h/día La Paz/UTC, reserva, topes y 27 sesiones máximas de campaña.
+Solo entrenamiento 2018–2022; P0/diagnóstico conservados; sin validación/final.
+
+Siguiente paso autorizado: ejecutar P1 después de cerrar las pruebas sintéticas
+y registrar resultados en informe/evidencia P1. No modificar parámetros durante
+la campaña ni repetir fallos. No inferir generalización/CVaR del criterio primario.
+Se conserva la eliminación local previa de .python-version fuera de commits.
+
+---
+
 # Estado vigente — diagnóstico P0 cerrado
 
 Base P0 e0a2dfc verificada contra origin; rama `codex/p0-diagnosis`.

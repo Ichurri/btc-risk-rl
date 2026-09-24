@@ -1,0 +1,211 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/ichurri/Desktop/personal_projects/btc-risk-rl
+configfile: pyproject.toml
+testpaths: tests
+collected 193 items
+
+tests/test_agent_math.py .............                                   [  6%]
+tests/test_agent_schedule.py .......                                     [ 10%]
+tests/test_collector.py ............                                     [ 16%]
+tests/test_config.py ....                                                [ 18%]
+tests/test_data.py ................                                      [ 26%]
+tests/test_diagnosis.py ....                                             [ 29%]
+tests/test_features.py ......                                            [ 32%]
+tests/test_h5_market.py ....                                             [ 34%]
+tests/test_h5_resume.py ...........                                      [ 39%]
+tests/test_p0_budget.py ............                                     [ 46%]
+tests/test_p0_integration.py .......F..                                  [ 51%]
+tests/test_p1.py .......                                                 [ 54%]
+tests/test_recheck.py ..                                                 [ 55%]
+tests/test_segmentation.py ...........................                   [ 69%]
+tests/test_simulator.py .........................................        [ 91%]
+tests/test_temporal_contract.py .................                        [100%]
+
+=================================== FAILURES ===================================
+___ test_two_consecutive_synthetic_runs_use_one_global_day_and_exact_budget ____
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-3/test_two_consecutive_synthetic0')
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe51b55a300>
+
+    def test_two_consecutive_synthetic_runs_use_one_global_day_and_exact_budget(
+        tmp_path, config, monkeypatch
+    ):
+        import json
+    
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+        from btc_risk_rl.pilots import runner
+        from btc_risk_rl.pilots.worker import complete_unit
+    
+        settings = replace(SyntheticSettings(), n_a=1, n_q=2, n_b=2, actor_epochs=1, critic_epochs=1)
+        import time
+        from types import SimpleNamespace
+    
+        started = time.monotonic()
+        monkeypatch.setattr(
+            runner,
+            "time",
+            SimpleNamespace(
+                time=lambda: 1790222400.0 + time.monotonic() - started, monotonic=time.monotonic
+            ),
+        )
+        source = SyntheticMarket(config)
+        monkeypatch.setattr(runner, "CAMPAIGN", tmp_path)
+        monkeypatch.setattr(runner, "fingerprint", lambda: "explicit_synthetic_campaign_test")
+        monkeypatch.setattr(runner, "roster", lambda: [(settings.seed, "C0"), (settings.seed, "C5")])
+        monkeypatch.setattr(runner, "preflight", lambda: {"profile": "synthetic"})
+        monkeypatch.setattr(
+            runner,
+            "expected_resources",
+            lambda unit: dict(
+                trajectories=2 if unit == 0 else 5,
+                transitions=360 if unit == 0 else 900,
+                actor_updates=0 if unit == 0 else 1,
+                critic_updates=0 if unit == 0 else 1,
+            ),
+        )
+    
+        def synthetic_worker(*args, **kwargs):
+            state = json.loads((tmp_path / "ledger.jsonl").read_text().splitlines()[-1])
+            pending = state["pending"]
+            condition = runner.roster()[state["cursor"]][1]
+            complete_unit(
+                source,
+                settings,
+                condition=condition,
+                run_id=pending["run_id"],
+                root=tmp_path / pending["run_id"],
+                unit=pending["unit"],
+                previous=pending["previous"],
+            )
+            return dict(status="passed", wall_seconds=0.001)
+    
+        monkeypatch.setattr(runner, "supervise", synthetic_worker)
+>       state = runner.run_campaign()
+                ^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_p0_integration.py:201: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+invoked_at = 1790222400.0000212, p1 = False, external_seconds = 0.0
+
+    def run_campaign(invoked_at=None, *, p1=False, external_seconds=0.0):
+        invoked_at = time.time() if invoked_at is None else invoked_at
+        if p1:
+            from btc_risk_rl.pilots import p1_protocol as protocol
+    
+            campaign = protocol.CAMPAIGN
+            schedule = protocol.entries()
+            identity = fingerprint(protocol.PROTOCOL_SHA)
+        else:
+            campaign = CAMPAIGN
+            schedule = [
+                dict(seed=seed, condition=c, epochs=2, run_id=f"run-{i:02d}-{c}")
+                for i, (seed, c) in enumerate(roster())
+            ]
+            identity = fingerprint()
+        with CampaignLedger(
+            campaign, now=invoked_at, identity=identity, external_seconds=external_seconds
+        ) as ledger:
+            active_start = time.monotonic()
+            enforce_deadline = (
+                ledger.state["status"] != "completed" and time.time() < ledger.day["work_deadline"]
+            )
+            try:
+                if ledger.state["status"] == "completed":
+                    return ledger.state
+                if not enforce_deadline:
+                    ledger.state["pause_reason"] = "daily_window_closed_no_work_started"
+                    return ledger.state
+                checks = preflight(campaign, protocol.approved) if p1 else preflight()
+                ledger.preflight_done(time.time())
+                ledger.state["preflight"] = checks
+                ledger.persist(time.time())
+                while ledger.state["cursor"] < len(schedule):
+                    index = ledger.state["cursor"]
+                    entry = schedule[index]
+                    condition, epochs, run_id = entry["condition"], entry["epochs"], entry["run_id"]
+                    measurement_key = f"{condition}/e{epochs}" if p1 else condition
+                    prior = ledger.state["runs"].get(run_id, {})
+                    unit = prior.get("next_unit", 0)
+                    kind = "q0" if unit == 0 else "iteration"
+                    if ledger.admit(measurement_key, kind, time.time()) == "pause":
+                        ledger.state["pause_reason"] = "shared_daily_window_no_room_for_complete_unit"
+                        ledger.persist(time.time())
+                        print(
+                            json.dumps(
+                                dict(
+                                    status="paused",
+                                    next_run=run_id,
+                                    next_unit=unit,
+                                    resume="same command on a later America/La_Paz day",
+                                )
+                            ),
+                            flush=True,
+                        )
+                        return ledger.state
+                    token = uuid.uuid4().hex
+                    root = campaign / run_id
+                    root.mkdir(exist_ok=True)
+                    ledger.begin(run_id, kind, time.time())
+                    ledger.state["pending"].update(
+                        unit=unit,
+                        previous=prior.get("checkpoint"),
+                        supervisor_pid=os.getpid(),
+                        token=token,
+                    )
+                    ledger.persist(time.time())
+                    remaining = min(CAPS[kind], ledger.day["work_deadline"] - time.time())
+                    env = dict(
+                        os.environ,
+                        OMP_NUM_THREADS="1",
+                        MKL_NUM_THREADS="1",
+                        OPENBLAS_NUM_THREADS="1",
+                        NUMEXPR_NUM_THREADS="1",
+                    )
+                    print(
+                        json.dumps(
+                            dict(status="running", run=run_id, unit=unit, cap_seconds=remaining)
+                        ),
+                        flush=True,
+                    )
+                    supervised = supervise(
+                        [sys.executable, "-m", "btc_risk_rl.pilots.worker", "--token", token]
+                        + (["--p1"] if p1 else []),
+                        output=root / f"supervisor-{unit}.log",
+                        seconds=remaining,
+                        rss_limit=10 * 1024**3,
+                        env=env,
+                        closing_marker=root / f"closing-{unit}.json",
+                        closing_seconds=ledger.day["hard_deadline"] - time.time(),
+                    )
+                    if supervised["status"] != "passed":
+                        partial = partial_failure(ledger, root, unit)
+                        for k, v in partial["partial_resources"].items():
+                            for totals in (
+                                ledger.state["resources"],
+                                ledger.state["runs"][run_id]["resources"],
+                            ):
+                                totals[k] = totals.get(k, 0) + v
+                        ledger.fail(
+                            time.time(), "supervised_unit_failed", supervisor=supervised, **partial
+                        )
+                        print(
+                            json.dumps(dict(status="failed", run=run_id, unit=unit, **partial)),
+                            flush=True,
+                        )
+                        return ledger.state
+                    result = json.loads((root / f"unit-{unit}.json").read_text())
+                    if p1 and unit == 1:
+                        protocol.check_first_pair(campaign, result)
+>                   expected = expected_resources(unit, epochs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                   TypeError: test_two_consecutive_synthetic_runs_use_one_global_day_and_exact_budget.<locals>.<lambda>() takes 1 positional argument but 2 were given
+
+src/btc_risk_rl/pilots/runner.py:194: TypeError
+----------------------------- Captured stdout call -----------------------------
+{"status": "running", "run": "run-00-C0", "unit": 0, "cap_seconds": 1800}
+=========================== short test summary info ============================
+FAILED tests/test_p0_integration.py::test_two_consecutive_synthetic_runs_use_one_global_day_and_exact_budget
+=================== 1 failed, 192 passed in 64.20s (0:01:04) ===================

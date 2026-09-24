@@ -115,20 +115,32 @@ def complete_unit(source, settings, *, condition, run_id, root, unit, previous=N
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--token", required=True)
+    parser.add_argument("--p1", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     torch.set_num_interop_threads(1)
     torch.use_deterministic_algorithms(True)
     if torch.version.cuda is not None:
         raise RuntimeError("P0 requires CPU-only PyTorch")
-    state = json.loads((CAMPAIGN / "ledger.jsonl").read_text().splitlines()[-1])
-    index = state["cursor"]
-    seed, condition = roster()[index]
-    run_id = f"run-{index:02d}-{condition}"
-    settings, permit = P0Settings(seed=seed), Permit(args.token)
+    if args.p1:
+        from btc_risk_rl.pilots import p1_protocol as protocol
+
+        campaign = protocol.CAMPAIGN
+        state = json.loads((campaign / "ledger.jsonl").read_text().splitlines()[-1])
+        row = protocol.entries()[state["cursor"]]
+        seed, condition, run_id = row["seed"], row["condition"], row["run_id"]
+        settings = protocol.P1Settings(seed=seed, critic_epochs=row["epochs"])
+        permit = protocol.P1Permit(args.token)
+    else:
+        campaign = CAMPAIGN
+        state = json.loads((campaign / "ledger.jsonl").read_text().splitlines()[-1])
+        index = state["cursor"]
+        seed, condition = roster()[index]
+        run_id = f"run-{index:02d}-{condition}"
+        settings, permit = P0Settings(seed=seed), Permit(args.token)
     permit.validate(settings, condition, run_id)
     pending = state["pending"]
-    root = CAMPAIGN / run_id
+    root = campaign / run_id
     config = load_config(ROOT / "configs/initial.toml")
     source = TrainingMarket(
         config,

@@ -2,6 +2,7 @@
 
 import fcntl
 import json
+import math
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -16,7 +17,9 @@ def utc(t):
 
 
 class CampaignLedger:
-    def __init__(self, root, *, now, identity):
+    def __init__(self, root, *, now, identity, external_seconds=0.0):
+        if not math.isfinite(external_seconds) or external_seconds < 0:
+            raise ValueError("Invalid external daily debit")
         self.root = Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
         self.lock = (self.root / "campaign.lock").open("a")
@@ -56,7 +59,7 @@ class CampaignLedger:
                 midnight = datetime.combine(
                     date + timedelta(days=1), datetime.min.time(), LA_PAZ
                 ).timestamp()
-                hard = min(now + 10800, midnight)
+                hard = min(now + max(0, 10800 - external_seconds), midnight)
                 self.state["days"][self.day_key] = dict(
                     started_utc_epoch=now,
                     started_utc=utc(now),
@@ -64,8 +67,16 @@ class CampaignLedger:
                     work_deadline=min(now + 9000, hard - 1800),
                     preflight_done=False,
                     active_seconds=0.0,
+                    external_seconds=external_seconds,
                 )
             self.day = self.state["days"][self.day_key]
+            extra = max(0, external_seconds - self.day.get("external_seconds", 0.0))
+            if extra:
+                self.day["hard_deadline"] -= extra
+                self.day["work_deadline"] = min(
+                    self.day["work_deadline"], self.day["hard_deadline"] - 1800
+                )
+                self.day["external_seconds"] = external_seconds
             self.persist(now)
         except BaseException:
             self.lock.close()
@@ -144,7 +155,9 @@ class CampaignLedger:
         ):
             self.fail(now, "unit_time_limit")
             raise ValueError("Unit time limit exceeded")
-        self.state["measurements"].setdefault(f"{condition}/{pending['kind']}", []).append(work_seconds)
+        self.state["measurements"].setdefault(f"{condition}/{pending['kind']}", []).append(
+            work_seconds
+        )
         run = self.state["runs"][pending["run_id"]]
         for key, value in resources.items():
             if value < 0:

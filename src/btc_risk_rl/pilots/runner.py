@@ -16,15 +16,16 @@ from btc_risk_rl.pilots.protocol import CAMPAIGN, PROTOCOL_SHA, ROOT, approved, 
 from btc_risk_rl.pilots.supervisor import supervise
 
 
-def fingerprint():
+def fingerprint(protocol_sha=PROTOCOL_SHA):
     files = sorted((ROOT / "src/btc_risk_rl").rglob("*.py")) + [
         ROOT / "scripts/run_pilot.py",
+        ROOT / "scripts/run_p1.py",
         ROOT / "uv.lock",
         ROOT / "configs/initial.toml",
         ROOT / "docs/evidence/segmented-h1/manifest.json",
     ]
     identity = dict(
-        protocol_sha256=PROTOCOL_SHA,
+        protocol_sha256=protocol_sha,
         code={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
         python=platform.python_version(),
         machine=platform.machine(),
@@ -35,14 +36,14 @@ def fingerprint():
     return identity
 
 
-def preflight():
-    approved()
+def preflight(campaign=CAMPAIGN, approve=approved):
+    approve()
     available = next(
         int(line.split()[1]) * 1024
         for line in Path("/proc/meminfo").read_text().splitlines()
         if line.startswith("MemAvailable:")
     )
-    free = shutil.disk_usage(CAMPAIGN).free
+    free = shutil.disk_usage(campaign).free
     if available < 2 * 1024**3 or free < 5 * 1024**3:
         raise ValueError("Insufficient preflight memory/disk")
     if not importlib.metadata.version("torch").endswith("+cpu"):
@@ -72,19 +73,46 @@ def partial_failure(ledger, root, unit):
     )
 
 
-def expected_resources(unit):
+def expected_resources(unit, critic_epochs=2):
     return dict(
         trajectories=400 if unit == 0 else 864,
         transitions=72000 if unit == 0 else 155520,
         actor_updates=0 if unit == 0 else 8,
-        critic_updates=0 if unit == 0 else 8,
+        critic_updates=0 if unit == 0 else 4 * critic_epochs,
     )
 
 
-def run_campaign(invoked_at=None):
+def run_campaign(invoked_at=None, *, p1=False):
+    """Every public entrypoint takes the same global lock/debit; no budget override."""
+    from btc_risk_rl.pilots.shared_budget import SharedBudget
+
+    if p1:
+        from btc_risk_rl.pilots.p1_protocol import CAMPAIGN as campaign
+    else:
+        campaign = CAMPAIGN
     invoked_at = time.time() if invoked_at is None else invoked_at
-    identity = fingerprint()
-    with CampaignLedger(CAMPAIGN, now=invoked_at, identity=identity) as ledger:
+    with SharedBudget(campaign.parent, campaign.name, now=invoked_at) as shared:
+        return _run_campaign(invoked_at, p1=p1, external_seconds=shared.external_seconds)
+
+
+def _run_campaign(invoked_at=None, *, p1=False, external_seconds=0.0):
+    invoked_at = time.time() if invoked_at is None else invoked_at
+    if p1:
+        from btc_risk_rl.pilots import p1_protocol as protocol
+
+        campaign = protocol.CAMPAIGN
+        schedule = protocol.entries()
+        identity = fingerprint(protocol.PROTOCOL_SHA)
+    else:
+        campaign = CAMPAIGN
+        schedule = [
+            dict(seed=seed, condition=c, epochs=2, run_id=f"run-{i:02d}-{c}")
+            for i, (seed, c) in enumerate(roster())
+        ]
+        identity = fingerprint()
+    with CampaignLedger(
+        campaign, now=invoked_at, identity=identity, external_seconds=external_seconds
+    ) as ledger:
         active_start = time.monotonic()
         enforce_deadline = (
             ledger.state["status"] != "completed" and time.time() < ledger.day["work_deadline"]
@@ -95,18 +123,19 @@ def run_campaign(invoked_at=None):
             if not enforce_deadline:
                 ledger.state["pause_reason"] = "daily_window_closed_no_work_started"
                 return ledger.state
-            checks = preflight()
+            checks = preflight(campaign, protocol.approved) if p1 else preflight()
             ledger.preflight_done(time.time())
             ledger.state["preflight"] = checks
             ledger.persist(time.time())
-            while ledger.state["cursor"] < len(roster()):
+            while ledger.state["cursor"] < len(schedule):
                 index = ledger.state["cursor"]
-                _, condition = roster()[index]
-                run_id = f"run-{index:02d}-{condition}"
+                entry = schedule[index]
+                condition, epochs, run_id = entry["condition"], entry["epochs"], entry["run_id"]
+                measurement_key = f"{condition}/e{epochs}" if p1 else condition
                 prior = ledger.state["runs"].get(run_id, {})
                 unit = prior.get("next_unit", 0)
                 kind = "q0" if unit == 0 else "iteration"
-                if ledger.admit(condition, kind, time.time()) == "pause":
+                if ledger.admit(measurement_key, kind, time.time()) == "pause":
                     ledger.state["pause_reason"] = "shared_daily_window_no_room_for_complete_unit"
                     ledger.persist(time.time())
                     print(
@@ -122,7 +151,7 @@ def run_campaign(invoked_at=None):
                     )
                     return ledger.state
                 token = uuid.uuid4().hex
-                root = CAMPAIGN / run_id
+                root = campaign / run_id
                 root.mkdir(exist_ok=True)
                 ledger.begin(run_id, kind, time.time())
                 ledger.state["pending"].update(
@@ -147,7 +176,8 @@ def run_campaign(invoked_at=None):
                     flush=True,
                 )
                 supervised = supervise(
-                    [sys.executable, "-m", "btc_risk_rl.pilots.worker", "--token", token],
+                    [sys.executable, "-m", "btc_risk_rl.pilots.worker", "--token", token]
+                    + (["--p1"] if p1 else []),
                     output=root / f"supervisor-{unit}.log",
                     seconds=remaining,
                     rss_limit=10 * 1024**3,
@@ -172,13 +202,13 @@ def run_campaign(invoked_at=None):
                     )
                     return ledger.state
                 result = json.loads((root / f"unit-{unit}.json").read_text())
-                expected = expected_resources(unit)
+                expected = expected_resources(unit, epochs) if p1 else expected_resources(unit)
                 if result["resources"] != expected or result["unit"] != unit:
                     raise ValueError("Worker counters mismatch")
                 ledger.finish(
                     time.time(),
                     resources=result["resources"],
-                    condition=condition,
+                    condition=measurement_key,
                     checkpoint=result["checkpoint"],
                     checkpoint_sha256=result["checkpoint_sha256"],
                     supervisor=supervised,
@@ -188,6 +218,8 @@ def run_campaign(invoked_at=None):
                     work_seconds=supervised.get("work_seconds", supervised["wall_seconds"]),
                     work_ended=supervised.get("work_ended", time.time()),
                 )
+                if p1 and unit == 1:
+                    protocol.check_first_pair(campaign, result)
                 print(
                     json.dumps(
                         dict(

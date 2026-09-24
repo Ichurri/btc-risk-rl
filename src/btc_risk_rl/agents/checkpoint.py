@@ -188,6 +188,7 @@ def save_checkpoint(run, path):
 
 def load_checkpoint(path, source, *, journal, permit=None):
     from btc_risk_rl.agents.market_source import TrainingMarket
+    from btc_risk_rl.pilots.p1_protocol import P1Settings
     from btc_risk_rl.pilots.protocol import P0Settings
 
     if type(source) not in {SyntheticMarket, TrainingMarket}:
@@ -213,9 +214,11 @@ def load_checkpoint(path, source, *, journal, permit=None):
         state = torch.load(path / "state.pt", map_location="cpu", weights_only=True)
         run = SyntheticExperiment(
             source,
-            (P0Settings if type(source) is TrainingMarket else SyntheticSettings)(
-                **manifest["settings"]
-            ),
+            (
+                (P1Settings if manifest["profile"] == "authorized_p1_only" else P0Settings)
+                if type(source) is TrainingMarket
+                else SyntheticSettings
+            )(**manifest["settings"]),
             condition=manifest["condition"],
             risk_enabled=manifest["risk_enabled"],
             run_id=manifest["run_id"],

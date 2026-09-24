@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_p1_pair_integrity_rejects_different_initial_A ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_p1_pair_integrity_rejects0')
+
+    def test_p1_pair_integrity_rejects_different_initial_A(tmp_path):
+>       from btc_risk_rl.pilots.p1_protocol import check_first_pair
+E       ImportError: cannot import name 'check_first_pair' from 'btc_risk_rl.pilots.p1_protocol' (/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/p1_protocol.py)
+
+tests/test_p1.py:137: ImportError
+=========================== short test summary info ============================
+FAILED tests/test_p1.py::test_p1_pair_integrity_rejects_different_initial_A
+1 failed in 0.08s

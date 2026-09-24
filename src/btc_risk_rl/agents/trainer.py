@@ -38,16 +38,16 @@ class SyntheticExperiment:
         self, source, settings, *, condition, risk_enabled=True, run_id, journal=None, permit=None
     ):
         from btc_risk_rl.agents.market_source import TrainingMarket
+        from btc_risk_rl.pilots.p1_protocol import P1Permit, P1Settings
         from btc_risk_rl.pilots.protocol import P0Settings, Permit
 
         if condition not in {"C0", "C5", "C10"}:
             raise ValueError("Known condition required")
         if type(source) is TrainingMarket:
-            if (
-                type(settings) is not P0Settings
-                or type(permit) is not Permit
-                or (condition != "C0" and not risk_enabled)
-            ):
+            if (type(settings), type(permit)) not in {
+                (P0Settings, Permit),
+                (P1Settings, P1Permit),
+            } or (condition != "C0" and not risk_enabled):
                 raise PermissionError("Market optimization requires authorized P0 supervisor lease")
             permit.validate(settings, condition, run_id)
         elif type(source) is not SyntheticMarket or type(settings) is not SyntheticSettings:
@@ -183,6 +183,9 @@ class SyntheticExperiment:
     def _update(self, fixed, iteration):
         s = self.settings
         before = fixed_digest(fixed)
+        from btc_risk_rl.agents.fixed_diagnostics import fixed_diagnostic
+
+        self.telemetry.stability.append(fixed_diagnostic(self, fixed, iteration, "before_actor"))
         critic_before = fingerprint(self.critic)
         actor_before = fingerprint(self.actor)
         self.phase = "actor"
@@ -231,6 +234,9 @@ class SyntheticExperiment:
                 fixed_after=fixed_digest(fixed),
             )
         )
+        self.telemetry.stability.append(
+            fixed_diagnostic(self, fixed, iteration, "after_actor_before_critic")
+        )
         # Policy is frozen BEFORE critic updates. No shared parameters.
         policy = FrozenPolicy(self.actor, generation=iteration + 1)
         actor_before = fingerprint(self.actor)
@@ -243,6 +249,8 @@ class SyntheticExperiment:
                 self.telemetry.stability.append(
                     dict(
                         phase="critic",
+                        measurement="pre_current_step_logged_after",
+                        scope="minibatch_complete_trajectories",
                         iteration=iteration,
                         mc_mse=float(loss.detach()),
                         relative_mc_mse=float(loss.detach())
@@ -251,6 +259,7 @@ class SyntheticExperiment:
                     )
                 )
                 self.critic_updates += 1
+        self.telemetry.stability.append(fixed_diagnostic(self, fixed, iteration, "after_critic"))
         if fingerprint(self.actor) != actor_before or fixed_digest(fixed) != before:
             raise ValueError("Critic update altered actor or frozen targets")
         policy.check()
@@ -408,6 +417,7 @@ class SyntheticExperiment:
             stability=self.telemetry.stability,
             collection_diagnostics=self.collector.diagnostics,
             budget=self.budget.snapshot() if self.budget else None,
-            market_training_executed=self.settings.purpose == "authorized_p0_only",
+            market_training_executed=self.settings.purpose
+            in {"authorized_p0_only", "authorized_p1_only"},
             final_test_accessed=False,
         )
