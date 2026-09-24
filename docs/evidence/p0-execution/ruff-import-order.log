@@ -1,0 +1,22 @@
+I001 [*] Import block is un-sorted or un-formatted
+   --> tests/test_p0_integration.py:151:5
+    |
+149 |       tmp_path, config, monkeypatch
+150 |   ):
+151 | /     import json
+152 | |     from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+153 | |     from btc_risk_rl.pilots import runner
+154 | |     from btc_risk_rl.pilots.worker import complete_unit
+    | |_______________________________________________________^
+155 |
+156 |       settings = replace(SyntheticSettings(), n_a=1, n_q=2, n_b=2, actor_epochs=1, critic_epochs=1)
+    |
+help: Organize imports
+    |
+151 |     import json
+152 +
+153 |     from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+    |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

@@ -20,7 +20,7 @@ from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
 from btc_risk_rl.agents.telemetry import TimeBudget
 from btc_risk_rl.agents.trainer import SyntheticExperiment
 
-SCHEMA = "h5_complete_boundary_v1"
+SCHEMA = "p0_complete_boundary_v2"
 
 
 def digest(path):
@@ -165,6 +165,7 @@ def save_checkpoint(run, path):
         state_sha256=digest(path / "state.pt"),
         provenance=provenance(run.collector.source),
         settings=asdict(run.settings),
+        profile=run.settings.purpose,
         condition=run.condition,
         risk_enabled=run.enabled,
         run_id=run.collector.run_id,
@@ -185,9 +186,12 @@ def save_checkpoint(run, path):
     return manifest
 
 
-def load_checkpoint(path, source, *, journal):
-    if type(source) is not SyntheticMarket:
-        raise PermissionError("Market optimization/resume remains blocked")
+def load_checkpoint(path, source, *, journal, permit=None):
+    from btc_risk_rl.agents.market_source import TrainingMarket
+    from btc_risk_rl.pilots.protocol import P0Settings
+
+    if type(source) not in {SyntheticMarket, TrainingMarket}:
+        raise PermissionError("Unknown checkpoint source")
     path = Path(path)
     try:
         manifest = json.loads((path / "manifest.json").read_text())
@@ -209,10 +213,13 @@ def load_checkpoint(path, source, *, journal):
         state = torch.load(path / "state.pt", map_location="cpu", weights_only=True)
         run = SyntheticExperiment(
             source,
-            SyntheticSettings(**manifest["settings"]),
+            (P0Settings if type(source) is TrainingMarket else SyntheticSettings)(
+                **manifest["settings"]
+            ),
             condition=manifest["condition"],
             risk_enabled=manifest["risk_enabled"],
             run_id=manifest["run_id"],
+            permit=permit,
         )
         for name in ("actor", "critic", "actor_optimizer", "critic_optimizer"):
             getattr(run, name).load_state_dict(state[name])

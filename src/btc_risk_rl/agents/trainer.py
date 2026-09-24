@@ -1,4 +1,4 @@
-"""ADR-002 Q/A/B schedule; execution is restricted to small synthetic tests."""
+"""Single ADR-002 Q/A/B schedule for synthetic tests and supervised authorized P0."""
 
 from copy import deepcopy
 from dataclasses import asdict
@@ -30,17 +30,28 @@ def tensor(x):
 class RunAbort(RuntimeError):
     def __init__(self, diagnostic):
         self.diagnostic = diagnostic
-        super().__init__(f"Synthetic run invalidated: {diagnostic}")
+        super().__init__(f"Run invalidated: {diagnostic}")
 
 
 class SyntheticExperiment:
-    def __init__(self, source, settings, *, condition, risk_enabled=True, run_id, journal=None):
-        if type(settings) is not SyntheticSettings or condition not in {"C0", "C5", "C10"}:
-            raise ValueError("Explicit synthetic settings and known condition required")
-        if type(source) is not SyntheticMarket:
-            raise PermissionError(
-                "Market optimization blocked pending an authorized pilot protocol"
-            )
+    def __init__(
+        self, source, settings, *, condition, risk_enabled=True, run_id, journal=None, permit=None
+    ):
+        from btc_risk_rl.agents.market_source import TrainingMarket
+        from btc_risk_rl.pilots.protocol import P0Settings, Permit
+
+        if condition not in {"C0", "C5", "C10"}:
+            raise ValueError("Known condition required")
+        if type(source) is TrainingMarket:
+            if (
+                type(settings) is not P0Settings
+                or type(permit) is not Permit
+                or (condition != "C0" and not risk_enabled)
+            ):
+                raise PermissionError("Market optimization requires authorized P0 supervisor lease")
+            permit.validate(settings, condition, run_id)
+        elif type(source) is not SyntheticMarket or type(settings) is not SyntheticSettings:
+            raise ValueError("Explicit synthetic settings and known source required")
         self.collector = Collector(source, seed=settings.seed, run_id=run_id)
         self.settings, self.condition = settings, condition
         self.enabled = condition != "C0" and risk_enabled
@@ -120,6 +131,7 @@ class SyntheticExperiment:
                 iteration=self.next_iteration,
                 old_logprob_max_error=error,
                 critic_mc_mse_before=float(np.mean((g - values) ** 2)),
+                critic_relative_mse=float(np.mean((g - values) ** 2) / (np.mean(g**2) + 1e-12)),
             )
         )
         advantage = g - values
@@ -233,6 +245,8 @@ class SyntheticExperiment:
                         phase="critic",
                         iteration=iteration,
                         mc_mse=float(loss.detach()),
+                        relative_mc_mse=float(loss.detach())
+                        / (float(np.mean(fixed["returns"][ids] ** 2)) + 1e-12),
                         gradient_norm=grad_norm,
                     )
                 )
@@ -394,6 +408,6 @@ class SyntheticExperiment:
             stability=self.telemetry.stability,
             collection_diagnostics=self.collector.diagnostics,
             budget=self.budget.snapshot() if self.budget else None,
-            market_training_executed=False,
+            market_training_executed=self.settings.purpose == "authorized_p0_only",
             final_test_accessed=False,
         )

@@ -1,0 +1,36 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_____________ test_approved_profile_fixed_and_bound_before_results _____________
+
+    def test_approved_profile_fixed_and_bound_before_results():
+>       from btc_risk_rl.pilots.protocol import P0Settings, approved
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.protocol'
+
+tests/test_p0_integration.py:10: ModuleNotFoundError
+________ test_unit_execution_resume_matches_continuous_and_checkpoints _________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_unit_execution_resume_mat0')
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_unit_execution_resume_matches_continuous_and_checkpoints(tmp_path, config):
+        from btc_risk_rl.agents.models import fingerprint
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+        from btc_risk_rl.agents.trainer import SyntheticExperiment
+>       from btc_risk_rl.pilots.worker import complete_unit
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.worker'
+
+tests/test_p0_integration.py:26: ModuleNotFoundError
+__________________ test_proposal_json_cannot_authorize_worker __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-2/test_proposal_json_cannot_auth0')
+
+    def test_proposal_json_cannot_authorize_worker(tmp_path):
+>       from btc_risk_rl.pilots.protocol import approved
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.protocol'
+
+tests/test_p0_integration.py:53: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_p0_integration.py::test_approved_profile_fixed_and_bound_before_results
+FAILED tests/test_p0_integration.py::test_unit_execution_resume_matches_continuous_and_checkpoints
+FAILED tests/test_p0_integration.py::test_proposal_json_cannot_authorize_worker
+3 failed in 1.29s

@@ -1,3 +1,39 @@
+# Handoff — P0 aprobado, ejecutor verificado
+
+Base aprobada 7a379b7; aprobación registrada en e0e3495. Rama
+`codex/p0-approved-execution`. [Protocolo vigente](protocols/P0-approved-v1.md)
+y [configuración congelada](protocols/P0-approved-v1.json). Propuesta original
+conservada debajo y en docs/proposals.
+
+Autorización: ejecutar P0 en train 2018–2022 tras pruebas sintéticas, d=-ln(.90),
+K=2, tres semillas y orden rotado aprobado. Varias corridas secuenciales comparten
+3h GLOBAL/día America/La_Paz, timestamps UTC; no reiniciar límites ni escoger
+checkpoints por resultado. Validación/final/campañas posteriores bloqueados.
+
+Implementado: ledger canónico append-only con lock, deadlines diarios persistentes,
+contadores por corrida/campaña, subprocess por frontera completa, watchdog
+monotónico/RSS y terminación del hijo si muere el supervisor. Perfil P0 requiere
+protocolo registrado y lease del supervisor. Algoritmo Q/A/B único.
+Checkpoint v2 conserva actor/crítico/Adam/estado/RNG; ledger enlaza las fronteras
+y las sesiones. Un proceso interrumpido invalida campaña, sin reintento selectivo.
+
+Verificación nueva: 186 pruebas pasan, Ruff pasa; incluye C0/C5 reanudados exactos,
+dos corridas sintéticas en un día, presupuestos/reinicio/midnight, corrupción,
+watchdog tiempo/memoria y muerte de supervisor. La revisión encontró y corrigió
+rechazo del flag risk_enabled=False al reanudar C0; C5/C10 no pueden apagar riesgo.
+
+Comando canónico autorizado (sin overrides de parámetros/output):
+`uv run --frozen python scripts/run_pilot.py --protocol docs/protocols/P0-approved-v1.json`.
+Ledger y checkpoints: artifacts/p0-approved-v1. Repetir el mismo comando únicamente
+tras pausa planificada; campaña failed/incomplete requiere diagnóstico y nueva
+revisión, no borrar el ledger. Si no cabe unidad, continuar otro día con igual
+autorización. Conservar .python-version eliminado previamente fuera de commits.
+
+Estado/resultados de la ejecución se registrarán al finalizar o pausar la campaña.
+No atribuir a estas pruebas resultados de mercado.
+
+---
+
 # Handoff — propuesta P0 pendiente de decisión
 
 H5 revisado, base **1118129**. Se preparó el protocolo concreto

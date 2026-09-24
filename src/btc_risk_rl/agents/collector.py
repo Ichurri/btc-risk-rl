@@ -235,6 +235,8 @@ class Collector:
                     raise ValueError("Non-telescoping return")
                 result.append(complete)
                 self.trajectories += 1
+                if getattr(self, "progress", None):
+                    self.progress()
             policy.check()
         except Exception as exc:
             self.failed = True
@@ -259,6 +261,11 @@ class Collector:
                 trajectories=count,
                 transitions=180 * count,
                 mean_exposure=float(np.mean(exposure)),
+                min_exposure=float(np.min(exposure)),
+                max_exposure=float(np.max(exposure)),
+                near_endpoint_fraction=float(
+                    np.mean([a < 1e-6 or a > 1 - 1e-6 for t in result for a in t.actions])
+                ),
                 commission_total=float(sum(fees)),
                 slippage_total=float(sum(slippage)),
                 mean_log_return=float(np.mean([t.rewards.sum() for t in result])),

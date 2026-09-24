@@ -3,9 +3,9 @@
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
-Repositorio de infraestructura experimental. H5 autoriza infraestructura, pequeñas
-actualizaciones sintéticas e integración congelada con entrenamiento 2018–2022;
-siguen bloqueados entrenamientos de mercado y pilotos.
+Repositorio de infraestructura experimental. P0-approved-v1 autoriza exclusivamente
+el piloto técnico acotado sobre entrenamiento aceptado 2018–2022, con presupuesto
+GLOBAL de 3h/día. Validación, prueba final y posteriores campañas siguen bloqueadas.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 
 ## Debian local / entorno remoto
@@ -148,3 +148,20 @@ fallo o una interrupción no permite recuperación selectiva. La reanudación se
 verificó con datos sintéticos y exige compatibilidad de código/runtime/huellas.
 Ningún tiempo sintético ni de recolección congelada dimensiona automáticamente
 un piloto. Cota común d y protocolo de pilotos siguen pendientes de aprobación.
+
+## P0 aprobado
+
+Propuesta 7a379b7 adoptada con d=-ln(.90) y presupuesto diario global compartido.
+[Protocolo](docs/protocols/P0-approved-v1.md) y
+[configuración aprobada exclusivamente para P0](docs/protocols/P0-approved-v1.json).
+
+```bash
+uv run --frozen python scripts/run_pilot.py --protocol docs/protocols/P0-approved-v1.json
+```
+
+Única raíz artifacts/p0-approved-v1; sin overrides de semillas/lotes/límites.
+El mismo comando retoma únicamente pausas válidas bajo la misma autorización.
+Una campaña fallida permanece bloqueada; no borrar registros para reintentar.
+La configuración histórica initial.toml se mantiene intacta para compatibilidad H1;
+la excepción de ejecución es solo el perfil P0 registrado. El resto de JSON
+(incluida la propuesta original) siguen rechazados. No se habilita entrenamiento general.
