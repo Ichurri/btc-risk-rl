@@ -1,0 +1,55 @@
+{"status": "running", "run": "run-00-C0", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-00-C0", "unit": 0, "seconds": 30.01638102900006, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-00-C0", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-00-C0", "unit": 1, "seconds": 67.03297506700028, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-00-C0", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-00-C0", "unit": 2, "seconds": 64.03091297299989, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-01-C5", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-01-C5", "unit": 0, "seconds": 32.018936155999654, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-01-C5", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-01-C5", "unit": 1, "seconds": 65.03308684400008, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-01-C5", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-01-C5", "unit": 2, "seconds": 61.03315632099975, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-02-C10", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-02-C10", "unit": 0, "seconds": 31.017194851000113, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-02-C10", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-02-C10", "unit": 1, "seconds": 64.03166740000006, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-02-C10", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-02-C10", "unit": 2, "seconds": 62.031101845000194, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-03-C5", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-03-C5", "unit": 0, "seconds": 29.019017952000013, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-03-C5", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-03-C5", "unit": 1, "seconds": 62.03185346100008, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-03-C5", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-03-C5", "unit": 2, "seconds": 61.032738322000114, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-04-C10", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-04-C10", "unit": 0, "seconds": 32.02084963800007, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-04-C10", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-04-C10", "unit": 1, "seconds": 61.03262037000013, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-04-C10", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-04-C10", "unit": 2, "seconds": 62.030768560999604, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-05-C0", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-05-C0", "unit": 0, "seconds": 31.019662548999804, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-05-C0", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-05-C0", "unit": 1, "seconds": 61.03306366700008, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-05-C0", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-05-C0", "unit": 2, "seconds": 61.03090022300012, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-06-C10", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-06-C10", "unit": 0, "seconds": 31.01697379799998, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-06-C10", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-06-C10", "unit": 1, "seconds": 63.02992231299959, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-06-C10", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-06-C10", "unit": 2, "seconds": 60.02977838000015, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-07-C0", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-07-C0", "unit": 0, "seconds": 29.017260818000068, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-07-C0", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-07-C0", "unit": 1, "seconds": 59.027652706000026, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-07-C0", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-07-C0", "unit": 2, "seconds": 61.03170633400032, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-08-C5", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-08-C5", "unit": 0, "seconds": 29.019005367000318, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-08-C5", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-08-C5", "unit": 1, "seconds": 58.02920330999996, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-08-C5", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-08-C5", "unit": 2, "seconds": 58.02939567700014, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "completed", "cursor": 9, "resources": {"trajectories": 19152, "transitions": 3447360, "actor_updates": 144, "critic_updates": 144}}

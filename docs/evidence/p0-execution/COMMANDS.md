@@ -42,5 +42,28 @@ exportación pequeña usa solo logs/manifiestos, nunca OHLC ni evaluación:
 UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen python scripts/report_p0.py --output docs/evidence/p0-execution/campaign-results
 ```
 
-El log y resultados de campaña se registrarán por separado. Destinos nuevos,
+El log y resultados de campaña están registrados por separado. Destinos nuevos,
 sin sobrescribir evidencia. La eliminación previa de .python-version no se incluye.
+
+
+## Cierre realmente ejecutado
+
+El comando de campaña anterior se ejecutó con `> docs/evidence/p0-execution/campaign.log 2>&1`.
+Estado final de ledger/log: completed, actualizado 2026-09-24T05:31:20.522467+00:00.
+La exportación anterior usó `> docs/evidence/p0-execution/export.log 2>&1` y terminó
+con código 0. Resultados en campaign-results/results.json; nunca se sobrescribieron.
+
+```bash
+python3 docs/evidence/p0-execution/check_results.py > docs/evidence/p0-execution/closure-checks.log
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen ruff format docs/evidence/p0-execution/check_results.py
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen ruff check docs/evidence/p0-execution/check_results.py > docs/evidence/p0-execution/ruff-closure.log
+```
+
+Comprobación de cierre y Ruff: pasan, código 0. La comprobación solo lee logs,
+configuración y bytes para hashes; no carga mercado ni evalúa políticas. Su JSON
+se crea en modo exclusivo: conservar el original, no borrarlo para repetir.
+El informe y el resumen se derivaron de resultados versionados, sin nuevas corridas.
+
+Verificación documental final: `uv run --frozen ruff check .` → ruff-delivery.log,
+All checks passed; `git diff --check` → código 0. No se repitió pytest tras
+este cierre exclusivamente documental.

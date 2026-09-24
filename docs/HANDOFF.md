@@ -1,3 +1,31 @@
+# Estado vigente — P0 completado con advertencias
+
+Campaña `artifacts/p0-approved-v1`: **completed**, nueve corridas K=2, sin fallos
+ni reintentos. Rama `codex/p0-approved-execution`; ejecutor publicado 0838ac8,
+aprobación e0e3495. El código ejecutado permanece intacto en este cierre documental.
+
+**Siguiente tarea:** revisar las advertencias del crítico y la señal de riesgo con
+las evidencias existentes antes de proponer seguimiento. P0 ya terminó: no volver
+a ejecutarlo. No se autoriza P1, validación, conjunto final ni evaluación confirmatoria.
+
+Tiempo global supervisado 1385.677 s (23 min 5.677 s), día 2026-09-24 La Paz.
+19152 trayectorias / 3447360 transiciones / 144 actualizaciones por red;
+pico RSS trabajador 358.44 MiB. Una sesión por corrida, límites conservados.
+186 pruebas y Ruff aprobados antes de mercado; comprobación posterior de registros,
+contadores, límites y hashes aprobada. 162 advertencias critic_relative_mse:
+cierre operativo completo, estabilidad pendiente de revisión. F_B y rho_B de C5/C10
+superaron d; dos iteraciones no demuestran convergencia ni cumplimiento CVaR.
+
+[Informe P0](hitos/P0-ejecucion.md), [resumen académico](hitos/P0-resumen-academico.md),
+[resultados](evidence/p0-execution/campaign-results/results.json),
+[comandos](evidence/p0-execution/COMMANDS.md). Checkpoints locales fuera de Git;
+hashes y evidencia pequeña versionados. Se conserva la eliminación local previa
+de `.python-version` fuera de commits. Tesis intacta.
+
+---
+
+# Historial conservado
+
 # Handoff — P0 aprobado, ejecutor verificado
 
 Base aprobada 7a379b7; aprobación registrada en e0e3495. Rama
