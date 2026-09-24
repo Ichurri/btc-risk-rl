@@ -1,4 +1,31 @@
-# Handoff — estado vigente H5
+# Handoff — propuesta P0 pendiente de decisión
+
+H5 revisado, base **1118129**. Se preparó el protocolo concreto
+[P0-technical-v1](proposals/P0-protocolo-v1.md) y su
+[configuración candidata NO AUTORIZADA](proposals/P0-candidate.json), en rama
+`codex/p0-protocol-proposal`. Se conserva debajo la entrega H5.
+
+Propuesta: tres bloques de semillas, orden C0/C5/C10 rotado, dos iteraciones
+Q/A/B completas por corrida, N_A=64 y N_Q=N_B=400; CPU float64/un hilo.
+Referencia d común de 5%, 10% o 20% convertida a pérdida logarítmica: selección
+pendiente; 10% se recomienda solo para discusión, sin adoptarla.
+
+Siguiente paso: respuesta del investigador sobre **d y aprobación/ajustes de P0**,
+incluidos topes de primera medición, supervisor y hasta tres sesiones de 3h por
+corrida. La medición inicial tiene límites propuestos, ninguna duración inventada.
+Antes de ejecutar se necesita una autorización explícita y adaptar/probar el
+ejecutor cerrado, watchdog y contadores diarios/acumulados. No resetear
+TimeBudget H5 ni inferir permiso desde un JSON.
+
+Ocho comprobaciones estáticas/algebraicas y Ruff dirigidos pasaron:
+[comandos y límites de evidencia](evidence/p0-proposal/COMMANDS.md). No se
+repitieron verificaciones H5, no se leyó mercado ni se ejecutó aprendizaje.
+Guardas, ADR, código operativo, configuración H3 y tesis intactos; la eliminación
+local previa de .python-version sigue fuera del commit.
+
+---
+
+# Handoff — entrega H5 conservada
 
 Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), origin.
 Rama [codex/h5-infrastructure](https://github.com/Ichurri/btc-risk-rl/tree/codex/h5-infrastructure).
