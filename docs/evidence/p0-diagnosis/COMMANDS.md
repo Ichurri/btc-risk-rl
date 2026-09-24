@@ -51,3 +51,7 @@ archivos originales de campaña están en results.json. Requiere esos artefactos
 para reconstruir. La correspondencia exacta no convierte en originales las
 predicciones post-A ni gradientes adicionales calculados ahora. No hay pesos
 intermedios de minibatch: normas originales disponibles, vectores completos no.
+
+El check del diff staged detectó finales CRLF del exportador CSV como whitespace.
+Se normalizó únicamente metrics.csv a LF, sin cambiar sus valores; nueva
+comprobación check_evidence.py y diff completo contra e0a2dfc pasan.
