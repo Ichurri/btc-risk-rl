@@ -1,0 +1,224 @@
+{
+  "protocol_id": "P2-proposal-v1",
+  "status": "PROPUESTA PARA REVISIÓN, NO AUTORIZADA PARA EJECUCIÓN",
+  "authorized": false,
+  "executable": false,
+  "base_commit": "811d882ccadf3aadb78219dec095a3b17b18dc20",
+  "data": {
+    "partition": "train",
+    "start": "2018-01-01T00:00:00Z",
+    "end_exclusive": "2023-01-01T00:00:00Z",
+    "accepted_starts": 7048,
+    "sampling": "uniform_with_replacement",
+    "normalizer_refit": false,
+    "validation_access": false,
+    "final_access": false
+  },
+  "conditions": {
+    "C0": 0.0,
+    "C5": 0.05,
+    "C10": 0.1
+  },
+  "risk": {
+    "loss": "negative_sum_net_log_rewards",
+    "bound_selected": 0.10536051565782628,
+    "bound_conversion": "-log(1-simple_reference)",
+    "initial_multiplier": 0.0,
+    "selection": "user_approved_before_results_10_percent_log_reference_not_individual_loss_or_drawdown_cap"
+  },
+  "training_candidate": {
+    "horizon": 180,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "bootstrap_after_horizon": false,
+    "iterations": 10,
+    "n_a": 64,
+    "n_q": 400,
+    "n_b": 400,
+    "hidden": 32,
+    "hidden_layers": 1,
+    "activation": "tanh",
+    "separate_actor_critic": true,
+    "action_distribution": "H4_logistic_normal_unchanged",
+    "actor_lr": 0.0001,
+    "critic_lr": 0.001,
+    "dual_lr": 0.1,
+    "clip": 0.2,
+    "actor_epochs": 2,
+    "minibatch_trajectories": 16,
+    "fragment_steps": 60,
+    "optimizer": "Adam",
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "weight_decay": 0.0,
+    "entropy_coefficient": 0.0,
+    "advantage_normalization": false,
+    "gradient_clipping": false,
+    "critic_epochs": 4,
+    "critic_epochs_status": "provisional_candidate_not_confirmatory"
+  },
+  "runtime": {
+    "device": "cpu",
+    "dtype": "float64",
+    "torch_threads": 1,
+    "torch_interop_threads": 1,
+    "blas_threads": 1,
+    "deterministic_algorithms": true,
+    "concurrent_runs": 1
+  },
+  "blocks": [
+    {
+      "seed": 610031,
+      "order": [
+        "C0",
+        "C5",
+        "C10"
+      ]
+    },
+    {
+      "seed": 610047,
+      "order": [
+        "C5",
+        "C10",
+        "C0"
+      ]
+    },
+    {
+      "seed": 610081,
+      "order": [
+        "C10",
+        "C0",
+        "C5"
+      ]
+    }
+  ],
+  "budget_proposal": {
+    "daily_seconds": 10800,
+    "preflight_limit_seconds": 900,
+    "work_limit_seconds": 8100,
+    "closing_reserve_seconds": 1800,
+    "unknown_q0_cap_seconds": 1800,
+    "unknown_iteration_cap_seconds": 2700,
+    "empirical_margin_multiplier": 1.5,
+    "estimate_monotone": true,
+    "estimate_source": "P2_same_condition_complete_QAB_plus_D_units_only",
+    "max_sessions_per_run": 3,
+    "max_campaign_sessions": 27,
+    "rss_stop_bytes": 10737418240,
+    "min_available_memory_bytes": 2147483648,
+    "min_free_disk_bytes": 5368709120,
+    "max_active_campaign_days": 3,
+    "unknown_combined_iteration_D_cap_seconds": 2700,
+    "diagnostic_phase_cap_seconds": 900,
+    "calibration": "first_scheduled_unit_per_condition_no_extra_run_no_parameter_change"
+  },
+  "diagnostics": {
+    "old_logprob_abs_tolerance": 1e-10,
+    "reward_identity_abs_tolerance": 1e-10,
+    "ratio_warning_range": [
+      0.5,
+      2.0
+    ],
+    "active_clip_fraction_warning_above": 0.5,
+    "gradient_l2_warning_above": 100.0,
+    "critic_relative_mse_warning_above": 1.0,
+    "critic_relative_mse_epsilon": 1e-12,
+    "q_b_empirical_cvar_gap_warning_above": 0.05,
+    "effective_tail_mass_warning_below": 20.0,
+    "multiplier_warning_above": 1.0,
+    "near_endpoint_action_threshold": 1e-06,
+    "near_endpoint_fraction_warning_above": 0.01,
+    "warnings_stop_run": false,
+    "favorable_risk_stop": false
+  },
+  "calendar": {
+    "timezone": "America/La_Paz",
+    "timestamps": "UTC",
+    "daily_scope": "global_across_campaigns",
+    "sequential_runs_same_day": true,
+    "concurrency": 1,
+    "restart_resets_budget": false
+  },
+  "diagnostic_candidate": {
+    "role": "D",
+    "n": 64,
+    "every_iteration": true,
+    "iterations": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "horizon": 180,
+    "gamma": 1,
+    "targets": "complete_MC_remaining_net_log_rewards",
+    "policy": "frozen_pi_k_that_generated_A_k",
+    "critics": [
+      "phi_k_before",
+      "phi_k_plus_1_after"
+    ],
+    "schedule": "after_complete_Q_A_B_dual_before_next_iteration",
+    "seed_coordinates": {
+      "starts": [
+        "seed",
+        7002,
+        "k",
+        0
+      ],
+      "actions": [
+        "seed",
+        7002,
+        "k",
+        1
+      ]
+    },
+    "sampling": "uniform_with_replacement_same_7048_starts_no_overlap_rejection",
+    "optimization_allowed": false,
+    "eta_or_dual_updates_allowed": false,
+    "temporal_generalization_claim": false,
+    "store_numeric_trajectories": true
+  },
+  "assessment_candidate": {
+    "early_iterations": [
+      0,
+      1,
+      2
+    ],
+    "late_iterations": [
+      7,
+      8,
+      9
+    ],
+    "relative_epsilon": 1e-12,
+    "near_zero_target_second_moment": 1e-12,
+    "late_relative_max": 1.0,
+    "late_vs_early_multiplier_max": 0.8,
+    "late_normalized_abs_bias_max": 0.25,
+    "late_relative_D_minus_A_max": 0.5,
+    "minimum_seeds_per_condition": 2,
+    "requires_each_condition": true,
+    "complete_runs_required": 9,
+    "early_performance_stop": false,
+    "checkpoint_selection": false,
+    "threshold_status": "proposed_engineering_gates_not_statistical_tests"
+  },
+  "continuation_candidate": {
+    "boundaries": [
+      "after_q0",
+      "after_dual_and_D"
+    ],
+    "no_next_learning_before_D_complete": true,
+    "partial_D_invalidates_batch": true,
+    "source_root": "new_artifacts_p2_path_to_register_only_after_approval",
+    "executor_implemented": false
+  }
+}

@@ -1,3 +1,30 @@
+# Estado vigente — propuesta P2 para revisión, NO autorizada
+
+Antecedente P1 cerrado 811d882, verificado local/origin; rama `codex/p2-proposal`.
+Solo diseño/documentación y comprobaciones estáticas/algebraicas. Sin cambios de
+src/scripts/configs, registros de permisos o ejecutores; sin nuevas trayectorias,
+entrenamiento, validación 2023 ni conjunto final. Evidencias P0/P1 conservadas.
+
+**Recomendación:** nueve corridas K=10, semillas 610031/610047/610081, cuatro épocas
+provisionales del crítico; D=64 por iteración con RNG separado y pi_k que generó A_k.
+Evaluar phi_k y phi_(k+1) sobre el mismo D_k, alineando el post con su política de
+ajuste. Mantener d, Q/A/B, normalizador y todos los demás parámetros P1.
+Tres semillas, no nueve réplicas independientes; no afirmar generalización temporal.
+
+**Siguiente tarea:** revisar K/D/semillas, umbrales técnicos y presupuesto máximo de
+tres días activos con 3h global/día; después decidir autorización explícita de
+implementación/pruebas y ejecución. Esta propuesta NO autoriza esos pasos ni
+congela cuatro épocas para confirmación. No usar la configuración candidata en
+un ejecutor ni registrar su hash como permiso.
+
+[Protocolo y decisiones pendientes](proposals/P2-protocolo-v1.md),
+[configuración NO ejecutable](proposals/P2-candidate-v1.json),
+[resumen académico](proposals/P2-resumen-academico-v1.md),
+[comprobaciones y límites](evidence/p2-proposal/COMMANDS.md).
+La eliminación local previa de .python-version sigue fuera de commits. Tesis intacta.
+
+---
+
 # Estado vigente — P1 cerrado, criterio cumplido
 
 Rama `codex/p1-critic-epochs`. Aprobación 7eb9738, ejecutor 7617d84;
