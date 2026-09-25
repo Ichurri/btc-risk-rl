@@ -1,6 +1,9 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P1 terminó: 18 corridas, criterio técnico cumplido en 3/3 semillas. La autorización
+  se consumió con esta campaña; no repetirla ni inferir autorización de P2.
+  Revisar docs/hitos/P1-epocas-critico.md antes de proponer otro piloto.
 - Leer README.md, docs/HANDOFF.md y configs/initial.toml antes de modificar código.
 - Este repositorio implementa la tesis de Santiago Andrés Iturri Vargas.
 - Preservar C0 (PPO), C5 y C10 (CVaR-PPO). Mismo entorno y recompensa.

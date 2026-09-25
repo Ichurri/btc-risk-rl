@@ -28,3 +28,45 @@ La preparación de P1 se cargará conservadoramente al presupuesto desde la crea
 de su rama (timestamp Git) hasta el lanzamiento, incluyendo desarrollo y pruebas
 en ese intervalo. Recibo inmutable separado de preparación, más débito de P0;
 el supervisor usa únicamente el remanente diario. No son trayectorias de mercado.
+
+## Ejecución autorizada
+
+Antes del lanzamiento se comprobaron los hashes de todos los archivos P0
+anclados por el diagnóstico y la ausencia de ledger P1 previo. preparation.json
+registra el intervalo 20:34:23–20:57:30.837745 UTC del 24/09/2026: 1387.837745 s,
+leído de creación de rama y reloj real. artifacts/p1-preparation-approved-v1/
+ledger.jsonl lo carga al presupuesto compartido junto a 1385.677054 s de P0.
+
+```bash
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen python scripts/run_p1.py --protocol docs/protocols/P1-approved-v1.json > docs/evidence/p1-execution/campaign.log 2>&1
+```
+
+Fuente publicada antes de ejecutar: 7617d84. No cambios de código/configuración
+operativa durante la campaña. Los logs pytest RED conservan whitespace original;
+diff --check de código/documentos excluyendo *.log pasa. Hubo un timeout de
+revisión automática de permisos de git add; reintento autorizado funcionó.
+
+## Cierre realmente ejecutado
+
+Log final: completed, cursor 18; ledger actualizado a
+2026-09-24T21:41:41.392234+00:00. No se volvió a ejecutar run_p1 tras completar.
+
+```bash
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen python scripts/report_p1.py --output docs/evidence/p1-execution/campaign-results > docs/evidence/p1-execution/export.log 2>&1
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen ruff format docs/evidence/p1-execution/check_results.py
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen ruff check docs/evidence/p1-execution/check_results.py --fix
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen python docs/evidence/p1-execution/check_results.py > docs/evidence/p1-execution/closure-checks.log 2>&1
+```
+
+Export y check: exit 0. Comprobación independiente del criterio (tres semillas),
+recursos, límites, hashes de código y 72 artefactos; parámetros de actor/crítico
+de los 18 checkpoint-1 cargados solo para cotejo, sin optimizadores ni aprendizaje.
+Todos los archivos P0 anclados en diagnóstico permanecen intactos. El exportador
+leyó solo logs/manifiestos; la comprobación de cierre además bytes/checkpoints
+existentes, no OHLC ni nuevas trayectorias. Evidencias pequeñas con destinos nuevos.
+
+shared-budget.jsonl es copia exacta del registro global de entrada/salida;
+preparation.json y días de results.json explican el débito diario. Informe y
+resumen se derivaron de estos registros. No se repitió pytest tras los cambios
+exclusivamente documentales del cierre; las 198 pruebas son de esta entrega,
+antes de mercado. Ruff final de entrega en ruff-delivery.log.

@@ -1,3 +1,31 @@
+# Estado vigente — P1 cerrado, criterio cumplido
+
+Rama `codex/p1-critic-epochs`. Aprobación 7eb9738, ejecutor 7617d84;
+18 corridas K=2 completadas sin fallos/reintentos/pausas. Criterio primario
+cumplido en **3/3 semillas**: reducción MSE post-A con cuatro épocas de
+50.74%, 58.70% y 44.44%. A inicial/actor posterior idénticos en todos los pares;
+condiciones repetidas como controles, no nueve réplicas independientes.
+
+**Siguiente tarea:** revisión académica de P1 y definición explícita del próximo
+protocolo. No ejecutar P2, validación/final ni congelar automáticamente cuatro
+épocas como parámetro definitivo. La mejora es in-sample; sigue MSE relativo >1
+en todos los A completos. 465 alertas del crítico; no otras alertas predefinidas.
+
+Recursos: 38304 trayectorias, 6894720 transiciones, 288 pasos actor/432 crítico.
+Brazo2: 144 pasos crítico; brazo4: 288, con iguales trayectorias.
+P1: 2650.523 s (44m10.523s). Total diario P0+preparación+P1: 5424.038 s
+(1h30m24.038s), dentro de 3h. Día 24/09/2026 La Paz, timestamps UTC.
+
+198 pruebas sintéticas/Ruff aprobados antes de mercado. Cierre de solo lectura
+verifica 72 artefactos, 18 pares de hashes actor/crítico, presupuesto, recursos
+y P0 intacto. No se accedió a validación/final; tesis intacta.
+[Informe](hitos/P1-epocas-critico.md), [resumen académico](hitos/P1-resumen-academico.md),
+[resultados](evidence/p1-execution/campaign-results/results.json),
+[comandos](evidence/p1-execution/COMMANDS.md). Checkpoints completos locales.
+La eliminación local previa de .python-version sigue fuera de commits.
+
+---
+
 # Estado vigente — P1 aprobado, preparación de ejecución
 
 Autorización de usuario desde diagnóstico 42152c3; registro 7eb9738.
