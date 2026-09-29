@@ -1,4 +1,4 @@
-"""Single ADR-002 Q/A/B schedule for synthetic tests and supervised authorized P0."""
+"""Single ADR-002 Q/A/B schedule for synthetic and guarded market profiles."""
 
 from copy import deepcopy
 from dataclasses import asdict
@@ -49,22 +49,26 @@ class SyntheticExperiment:
         from btc_risk_rl.agents.market_source import TrainingMarket
         from btc_risk_rl.pilots.p1_protocol import P1Permit, P1Settings
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
+        from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
         from btc_risk_rl.pilots.protocol import P0Settings, Permit
 
         if diagnostic is not None and (
             type(diagnostic) is not Diagnostic
-            or type(source) is not SyntheticMarket
-            or type(settings) is not P2SyntheticSettings
+            or (type(source), type(settings), type(permit)) not in {
+                (SyntheticMarket, P2SyntheticSettings, type(None)),
+                (TrainingMarket, P2MarketSettings, P2MarketPermit),
+            }
         ):
-            raise PermissionError("P2 diagnostics require explicit synthetic profile")
+            raise PermissionError("P2 diagnostics require an explicit authorized profile")
         if condition not in {"C0", "C5", "C10"}:
             raise ValueError("Known condition required")
         if type(source) is TrainingMarket:
             if (type(settings), type(permit)) not in {
                 (P0Settings, Permit),
                 (P1Settings, P1Permit),
+                (P2MarketSettings, P2MarketPermit),
             } or (condition != "C0" and not risk_enabled):
-                raise PermissionError("Market optimization requires authorized P0 supervisor lease")
+                raise PermissionError("Market optimization requires authorized supervisor lease")
             permit.validate(settings, condition, run_id)
         elif type(source) is not SyntheticMarket or type(settings) not in {
             SyntheticSettings,
@@ -75,7 +79,7 @@ class SyntheticExperiment:
         self.settings, self.condition = settings, condition
         self.diagnostic = diagnostic
         if diagnostic is not None:
-            diagnostic.bind(source, settings.seed, run_id)
+            diagnostic.bind(source, settings.seed, run_id, permit=permit)
         self.enabled = condition != "C0" and risk_enabled
         self.alpha = 0.1 if condition == "C10" else 0.05  # C0 diagnostics only
         self.actor = Actor(hidden=settings.hidden, seed=settings.seed)

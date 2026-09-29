@@ -1,4 +1,4 @@
-"""Synthetic P2 infrastructure exerciser. No TrainingMarket constructor or permit."""
+"""P2 supervisor: synthetic exerciser and inactive accepted-training route."""
 
 import argparse
 import json
@@ -41,9 +41,23 @@ def counts(run):
     )
 
 
-def complete_unit(source, settings, *, root, condition, run_id, unit, previous=None):
-    if type(source) is not SyntheticMarket or type(settings) is not P2SyntheticSettings:
-        raise PermissionError("P2 market execution NOT authorized")
+def complete_unit(source, settings, *, root, condition, run_id, unit, previous=None,
+                  permit=None, n_d=None):
+    from btc_risk_rl.agents.market_source import TrainingMarket
+    from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
+    if type(source) is SyntheticMarket and type(settings) is P2SyntheticSettings:
+        if permit is not None:
+            raise PermissionError("Synthetic P2 cannot use market permit")
+        n_d = 2 if n_d is None else n_d
+    elif type(source) is TrainingMarket and type(settings) is P2MarketSettings:
+        if type(permit) is not P2MarketPermit:
+            raise PermissionError("P2 market unit requires registered lease")
+        permit.validate(settings, condition, run_id)
+        n_d = 64 if n_d is None else n_d
+        if n_d != 64:
+            raise ValueError("P2 historical diagnostic must use D=64")
+    else:
+        raise PermissionError("Unknown P2 source/settings profile")
     if type(unit) is not int or not 0 <= unit <= settings.iterations:
         raise ValueError("Invalid unit")
     root = Path(root).resolve()
@@ -59,19 +73,21 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
                 condition=condition,
                 run_id=run_id,
                 journal=root / "journal",
-                diagnostic=Diagnostic(root / "D", n=2),
+                diagnostic=Diagnostic(root / "D", n=n_d),
+                permit=permit,
             )
             before = dict.fromkeys(counts(run), 0)
         else:
             if previous is None:
                 raise ValueError("Complete preceding checkpoint required")
-            run = load_checkpoint(previous, source, journal=root / "journal")
+            run = load_checkpoint(previous, source, journal=root / "journal", permit=permit)
             if (
                 run.settings != settings
                 or run.condition != condition
                 or run.collector.run_id != run_id
                 or run.next_iteration != unit - 1
                 or run.diagnostic is None
+                or run.diagnostic.n != n_d
             ):
                 raise ValueError("Wrong P2 continuation")
             before = counts(run)
@@ -130,17 +146,46 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
 
 def run_synthetic(output, config):
     """Nine tiny fixtures, K10/D2; not the approved market batch sizes or timing."""
+    return _run_campaign(output, config, market=False)
+
+
+def run_market(protocol):
+    """Future campaign route. Current registry rejects before locks, data or outputs."""
+    from btc_risk_rl.pilots.p2_market import CONFIG, MARKET_CAMPAIGN, P2MarketPermit
+    P2MarketPermit.require_registration(protocol)
+    return _run_campaign(MARKET_CAMPAIGN, CONFIG, market=True)
+
+
+def _run_campaign(output, config, *, market):
     entered, active_start = time.time(), time.monotonic()
     root = Path(output).resolve()
-    canonical = SYNTHETIC_ROOT
+    from btc_risk_rl.pilots.p2_market import (
+        ACCEPTED_MANIFEST_SHA,
+        MARKET_CAMPAIGN,
+        PREPARED,
+        PROTOCOL_SHA,
+        P2MarketPermit,
+        P2MarketSettings,
+    )
+    from btc_risk_rl.pilots.p2_market import (
+        roster as market_roster,
+    )
+    if market:
+        P2MarketPermit.require_registration()
+    canonical = MARKET_CAMPAIGN if market else SYNTHETIC_ROOT
     if root != canonical:
         raise ValueError("P2 requires canonical global-budget output: " + str(canonical))
     with SharedBudget(root.parent, root.name, now=entered) as shared:
+        from btc_risk_rl.agents.market_source import TrainingMarket
         cfg = load_config(Path(config))
+        source = (
+            TrainingMarket(cfg, PREPARED, expected_manifest=ACCEPTED_MANIFEST_SHA)
+            if market else SyntheticMarket(cfg)
+        )
         identity = dict(
-            config=str(Path(config).resolve()),
-            code=provenance(SyntheticMarket(cfg)),
-            diagnostic_n=2,
+            profile="p2_market_only" if market else "p2_synthetic_only",
+            config=str(Path(config).resolve()), code=provenance(source),
+            protocol_sha256=PROTOCOL_SHA, diagnostic_n=64 if market else 2,
             runner=file_hash(Path(__file__)),
         )
         with P2Ledger(
@@ -154,7 +199,7 @@ def run_synthetic(output, config):
 
                 preflight(root, approve=lambda: None)
                 ledger.preflight_done(time.time())
-                roster = [
+                roster = market_roster() if market else [
                     (s, c)
                     for s, order in (
                         (610031, ("C0", "C5", "C10")),
@@ -174,9 +219,10 @@ def run_synthetic(output, config):
                         return ledger.state
                     work = root / run_id
                     work.mkdir(exist_ok=True)
-                    settings = P2SyntheticSettings(
-                        seed=seed, iterations=10, hidden=4, n_a=1, n_q=2, n_b=2, actor_epochs=1
-                    )
+                    settings = (P2MarketSettings(seed=seed) if market else
+                        P2SyntheticSettings(seed=seed, iterations=10, hidden=4,
+                                            n_a=1, n_q=2, n_b=2, actor_epochs=1))
+                    token = __import__("uuid").uuid4().hex
                     request = dict(
                         settings=asdict(settings),
                         config=str(Path(config).resolve()),
@@ -185,12 +231,15 @@ def run_synthetic(output, config):
                         run_id=run_id,
                         unit=unit,
                         previous=prior.get("checkpoint"),
+                        token=token if market else None,
                     )
                     request_path = work / f"request-{unit}.json"
                     write_json(request_path, request)
                     ledger.begin(run_id, kind, time.time())
                     ledger.state["pending"].update(
-                        unit=unit, request_sha256=file_hash(request_path)
+                        unit=unit, request_sha256=file_hash(request_path),
+                        token=token if market else None,
+                        supervisor_pid=os.getpid() if market else None,
                     )
                     ledger.persist(time.time())
                     cap = min(CAPS[kind], ledger.day["work_deadline"] - time.time())
@@ -199,7 +248,7 @@ def run_synthetic(output, config):
                             sys.executable,
                             "-m",
                             "btc_risk_rl.pilots.p2_runner",
-                            "--synthetic-request",
+                            "--market-request" if market else "--synthetic-request",
                             str(request_path),
                         ],
                         output=work / f"worker-{unit}.log",
@@ -231,13 +280,17 @@ def run_synthetic(output, config):
                         )
                         return ledger.state
                     payload = json.loads((work / f"unit-{unit}.json").read_text())
+                    n_a, n_q, n_b, n_d = (
+                        settings.n_a, settings.n_q, settings.n_b, 64 if market else 2
+                    )
+                    minibatches = (n_a + settings.minibatch - 1) // settings.minibatch
                     expected = dict(
-                        trajectories=2 if unit == 0 else 5,
-                        transitions=360 if unit == 0 else 900,
-                        diagnostic_trajectories=0 if unit == 0 else 2,
-                        diagnostic_transitions=0 if unit == 0 else 360,
-                        actor_updates=0 if unit == 0 else 1,
-                        critic_updates=0 if unit == 0 else 4,
+                        trajectories=n_q if unit == 0 else n_a+n_q+n_b,
+                        transitions=180*(n_q if unit == 0 else n_a+n_q+n_b),
+                        diagnostic_trajectories=0 if unit == 0 else n_d,
+                        diagnostic_transitions=0 if unit == 0 else 180*n_d,
+                        actor_updates=0 if unit == 0 else settings.actor_epochs*minibatches,
+                        critic_updates=0 if unit == 0 else settings.critic_epochs*minibatches,
                     )
                     if payload["resources"] != expected or payload["unit"] != unit:
                         raise ValueError("P2 worker resource mismatch")
@@ -271,17 +324,41 @@ def run_synthetic(output, config):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--synthetic-request", required=True)
+    requests = parser.add_mutually_exclusive_group(required=True)
+    requests.add_argument("--synthetic-request")
+    requests.add_argument("--market-request")
     args = parser.parse_args()
     torch.set_num_threads(1)
     torch.set_num_interop_threads(1)
     torch.use_deterministic_algorithms(True)
     if torch.version.cuda is not None:
         raise ValueError("CPU-only PyTorch required")
-    request = json.loads(Path(args.synthetic_request).read_text())
-    settings = P2SyntheticSettings(**request.pop("settings"))
-    source = SyntheticMarket(load_config(Path(request.pop("config"))))
-    result = complete_unit(source, settings, **request)
+    if args.market_request:
+        from btc_risk_rl.agents.market_source import TrainingMarket
+        from btc_risk_rl.pilots.p2_market import (
+            ACCEPTED_MANIFEST_SHA,
+            CONFIG,
+            PREPARED,
+            P2MarketPermit,
+            P2MarketSettings,
+        )
+        P2MarketPermit.require_registration()  # Before even reading a request file.
+    request = json.loads(Path(args.market_request or args.synthetic_request).read_text())
+    settings = (P2MarketSettings if args.market_request else P2SyntheticSettings)(
+        **request.pop("settings"))
+    config_path = Path(request.pop("config"))
+    if args.market_request and config_path.resolve() != CONFIG.resolve():
+        raise PermissionError("P2 worker requires canonical training configuration")
+    config = load_config(config_path)
+    if args.market_request:
+        permit = P2MarketPermit(request.pop("token"))
+        permit.validate(settings, request["condition"], request["run_id"])
+        source = TrainingMarket(config, PREPARED, expected_manifest=ACCEPTED_MANIFEST_SHA)
+    else:
+        request.pop("token", None)
+        permit = None
+        source = SyntheticMarket(config)
+    result = complete_unit(source, settings, permit=permit, **request)
     print(
         json.dumps(
             dict(

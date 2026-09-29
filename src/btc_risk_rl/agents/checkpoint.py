@@ -1,4 +1,4 @@
-"""Full checkpoints at after_q0 / after_dual only; journal forbids failed rollback."""
+"""Complete Q0/dual(+D) checkpoints; journal forbids failed rollback."""
 
 import hashlib
 import importlib.metadata
@@ -196,6 +196,8 @@ def load_checkpoint(path, source, *, journal, permit=None):
 
     if type(source) not in {SyntheticMarket, TrainingMarket}:
         raise PermissionError("Unknown checkpoint source")
+    if type(source) is TrainingMarket and permit is None:
+        raise PermissionError("Market checkpoint requires registered supervisor permit")
     path = Path(path)
     try:
         manifest = json.loads((path / "manifest.json").read_text())
@@ -216,6 +218,7 @@ def load_checkpoint(path, source, *, journal, permit=None):
             raise ValueError("Run journal forbids stale/failed/interrupted checkpoint")
         state = torch.load(path / "state.pt", map_location="cpu", weights_only=True)
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
+        from btc_risk_rl.pilots.p2_market import P2MarketSettings
 
         if manifest["profile"] == "p2_synthetic_tests_only" and type(source) is not SyntheticMarket:
             raise PermissionError("P2 market checkpoint blocked")
@@ -225,7 +228,8 @@ def load_checkpoint(path, source, *, journal, permit=None):
         run = SyntheticExperiment(
             source,
             (
-                (P1Settings if manifest["profile"] == "authorized_p1_only" else P0Settings)
+                (P2MarketSettings if manifest["profile"] == "authorized_p2_only"
+                 else P1Settings if manifest["profile"] == "authorized_p1_only" else P0Settings)
                 if type(source) is TrainingMarket
                 else (
                     P2SyntheticSettings
@@ -240,7 +244,7 @@ def load_checkpoint(path, source, *, journal, permit=None):
         )
         if diagnostic is not None:
             run.diagnostic = Diagnostic.restore(
-                diagnostic, source, run.settings.seed, run.collector.run_id
+                diagnostic, source, run.settings.seed, run.collector.run_id, permit=permit
             )
         for name in ("actor", "critic", "actor_optimizer", "critic_optimizer"):
             getattr(run, name).load_state_dict(state[name])

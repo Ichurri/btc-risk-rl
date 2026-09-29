@@ -127,12 +127,13 @@ class BatchAbort(RuntimeError):
 
 
 class Collector:
-    def __init__(self, source, *, seed, run_id):
+    def __init__(self, source, *, seed, run_id, diagnostic_permit=None):
         if type(source) not in {SyntheticMarket, TrainingMarket}:
             raise ValueError("Only synthetic or accepted training collection sources permitted")
         if type(seed) is not int or seed < 0 or not isinstance(run_id, str) or not run_id:
             raise ValueError("Invalid run identity or seed")
         self.source, self.seed, self.run_id = source, seed, run_id
+        self.diagnostic_permit = diagnostic_permit
         self.used = set()
         self.failed = False
         self.transitions = 0
@@ -141,7 +142,9 @@ class Collector:
 
     def collect(self, policy, *, role, iteration, count, fragment_steps=180):
         if role == "D" and type(self.source) is not SyntheticMarket:
-            raise PermissionError("P2 market diagnostics not authorized")
+            if type(self.source) is not TrainingMarket or self.diagnostic_permit is None:
+                raise PermissionError("P2 market diagnostic requires registered permit")
+            self.diagnostic_permit.validate_d(self.source, self.seed, self.run_id)
         if self.failed:
             raise ValueError("Collector belongs to a failed run")
         if role not in ROLES or type(iteration) is not int or iteration < 0:

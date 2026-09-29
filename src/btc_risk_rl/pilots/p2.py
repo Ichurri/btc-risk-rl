@@ -1,4 +1,4 @@
-"""P2 diagnostics, explicitly synthetic-only infrastructure; no market permit."""
+"""P2 diagnostic D for synthetic fixtures and guarded accepted training."""
 
 import json
 import os
@@ -138,10 +138,20 @@ class Diagnostic:
         self.collector = None
         self.a = []
 
-    def bind(self, source, seed, run_id):
-        if type(source) is not SyntheticMarket:
-            raise PermissionError("P2 market diagnostics are not authorized")
-        self.collector = Collector(source, seed=seed, run_id=run_id)
+    def bind(self, source, seed, run_id, permit=None):
+        from btc_risk_rl.agents.market_source import TrainingMarket
+        if type(source) is SyntheticMarket:
+            if permit is not None:
+                raise PermissionError("Synthetic diagnostic does not use a market permit")
+        elif type(source) is TrainingMarket:
+            from btc_risk_rl.pilots.p2_market import P2MarketPermit
+            if type(permit) is not P2MarketPermit:
+                raise PermissionError("P2 market diagnostic requires registered permit")
+            permit.validate_d(source, seed, run_id)
+        else:
+            raise PermissionError("Unknown P2 diagnostic source")
+        self.collector = Collector(source, seed=seed, run_id=run_id,
+                                   diagnostic_permit=permit)
 
     def observe(self, batch, role, iteration):
         entry = dict(role=role, iteration=iteration, paths=footprints(batch))
@@ -301,9 +311,9 @@ class Diagnostic:
         )
 
     @classmethod
-    def restore(cls, state, source, seed, run_id):
+    def restore(cls, state, source, seed, run_id, permit=None):
         obj = cls(state["root"], n=state["n"])
-        obj.bind(source, seed, run_id)
+        obj.bind(source, seed, run_id, permit=permit)
         for k in ("records", "learning", "d_footprints"):
             setattr(obj, k, state[k])
         obj.collector.used = {tuple(x) for x in state["used"]}
@@ -365,10 +375,12 @@ class Diagnostic:
         )
 
 
-def entrypoint(*, profile, output, config):
+def entrypoint(*, profile, output, config, protocol=None):
     # Before config, directories, source constructors or trajectory collection.
+    if profile == "market":
+        from btc_risk_rl.pilots.p2_runner import run_market
+        return run_market(protocol)
     if profile != "synthetic":
-        raise PermissionError("P2 market execution is NOT authorized; infrastructure only")
+        raise PermissionError("P2 market/unknown profile NOT AUTHORIZED")
     from btc_risk_rl.pilots.p2_runner import run_synthetic
-
     return run_synthetic(output, config)

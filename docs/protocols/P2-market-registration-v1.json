@@ -1,0 +1,10 @@
+{
+  "registry_id": "P2-market-registration-v1",
+  "status": "PREPARADO, INACTIVO, REQUIERE AUTORIZACIÓN POSTERIOR",
+  "active": false,
+  "scope": "accepted_training_2018_2022_only",
+  "protocol_sha256": "d5fa2f2726cd6458df3c290e7b58c591f11310c7a9b645c47a5fb6bd419e5238",
+  "accepted_manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+  "approval_record": null,
+  "campaign_permit": null
+}

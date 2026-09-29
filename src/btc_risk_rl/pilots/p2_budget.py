@@ -35,7 +35,7 @@ class P2Ledger(CampaignLedger):
         super().__init__(
             root,
             now=now,
-            identity=dict(profile="p2_synthetic_only", **identity),
+            identity={"profile": "p2_synthetic_only", **identity},
             external_seconds=external_seconds,
         )
         if self.state["status"] == "completed":
