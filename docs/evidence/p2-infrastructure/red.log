@@ -1,0 +1,150 @@
+FFFFFFFFF                                                                [100%]
+=================================== FAILURES ===================================
+________________ test_p2_has_separate_diagnostic_infrastructure ________________
+
+    def test_p2_has_separate_diagnostic_infrastructure():
+        import importlib.util
+>       assert importlib.util.find_spec('btc_risk_rl.pilots.p2') is not None
+E       AssertionError: assert None is not None
+E        +  where None = <function find_spec at 0x7fb58d141800>('btc_risk_rl.pilots.p2')
+E        +    where <function find_spec at 0x7fb58d141800> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from '/home/ichurri/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py'>.util
+
+tests/test_p2.py:25: AssertionError
+_______________________ test_d_does_not_change_learning ________________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_d_does_not_change_learnin0')
+
+    def test_d_does_not_change_learning(config, tmp_path):
+>       off = make(config, tmp_path, enabled=False, name='off')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_p2.py:29:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_d_does_not_change_learnin0')
+enabled = False, iterations = 2, name = 'off'
+
+    def make(config, tmp_path, *, enabled=True, iterations=2, name='run'):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket
+        from btc_risk_rl.agents.trainer import SyntheticExperiment
+>       from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:14: ModuleNotFoundError
+______________________ test_p2_resume_no_regeneration[0] _______________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_p2_resume_no_regeneration0')
+pause = 0
+
+    @pytest.mark.parametrize('pause', [0, 1])
+    def test_p2_resume_no_regeneration(config, tmp_path, pause):
+        from btc_risk_rl.agents.checkpoint import load_checkpoint, save_checkpoint
+>       from btc_risk_rl.pilots.p2 import file_hash
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:61: ModuleNotFoundError
+______________________ test_p2_resume_no_regeneration[1] _______________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_p2_resume_no_regeneration1')
+pause = 1
+
+    @pytest.mark.parametrize('pause', [0, 1])
+    def test_p2_resume_no_regeneration(config, tmp_path, pause):
+        from btc_risk_rl.agents.checkpoint import load_checkpoint, save_checkpoint
+>       from btc_risk_rl.pilots.p2 import file_hash
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:61: ModuleNotFoundError
+______________ test_metrics_and_pooling_are_sums_not_mean_ratios _______________
+
+    def test_metrics_and_pooling_are_sums_not_mean_ratios():
+>       from btc_risk_rl.pilots.p2_metrics import metric, pool, overlap
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2_metrics'
+
+tests/test_p2.py:83: ModuleNotFoundError
+_________________ test_market_block_precedes_paths_or_loaders __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_market_block_precedes_pat0')
+
+    def test_market_block_precedes_paths_or_loaders(tmp_path):
+>       from btc_risk_rl.pilots.p2 import entrypoint
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:101: ModuleNotFoundError
+_________________ test_partial_and_corrupt_d_cannot_checkpoint _________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_partial_and_corrupt_d_can0')
+
+    def test_partial_and_corrupt_d_cannot_checkpoint(config, tmp_path):
+        from btc_risk_rl.agents.checkpoint import save_checkpoint, load_checkpoint
+>       run = make(config, tmp_path)
+              ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_p2.py:110:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_partial_and_corrupt_d_can0')
+enabled = True, iterations = 2, name = 'run'
+
+    def make(config, tmp_path, *, enabled=True, iterations=2, name='run'):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket
+        from btc_risk_rl.agents.trainer import SyntheticExperiment
+>       from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:14: ModuleNotFoundError
+____________________ test_d_failure_invalidates_whole_unit _____________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_d_failure_invalidates_who0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fb547477e00>
+
+    def test_d_failure_invalidates_whole_unit(config, tmp_path, monkeypatch):
+        from btc_risk_rl.agents.checkpoint import save_checkpoint
+        from btc_risk_rl.agents.trainer import RunAbort
+>       run = make(config, tmp_path)
+              ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_p2.py:127:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_d_failure_invalidates_who0')
+enabled = True, iterations = 2, name = 'run'
+
+    def make(config, tmp_path, *, enabled=True, iterations=2, name='run'):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket
+        from btc_risk_rl.agents.trainer import SyntheticExperiment
+>       from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:14: ModuleNotFoundError
+____________ test_ten_iterations_supported_only_explicit_synthetic _____________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-8/test_ten_iterations_supported_0')
+
+    def test_ten_iterations_supported_only_explicit_synthetic(config, tmp_path):
+        from btc_risk_rl.agents.synthetic import SyntheticSettings
+>       from btc_risk_rl.pilots.p2 import P2SyntheticSettings
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p2'
+
+tests/test_p2.py:140: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_p2.py::test_p2_has_separate_diagnostic_infrastructure - Ass...
+FAILED tests/test_p2.py::test_d_does_not_change_learning - ModuleNotFoundErro...
+FAILED tests/test_p2.py::test_p2_resume_no_regeneration[0] - ModuleNotFoundEr...
+FAILED tests/test_p2.py::test_p2_resume_no_regeneration[1] - ModuleNotFoundEr...
+FAILED tests/test_p2.py::test_metrics_and_pooling_are_sums_not_mean_ratios - ...
+FAILED tests/test_p2.py::test_market_block_precedes_paths_or_loaders - Module...
+FAILED tests/test_p2.py::test_partial_and_corrupt_d_cannot_checkpoint - Modul...
+FAILED tests/test_p2.py::test_d_failure_invalidates_whole_unit - ModuleNotFou...
+FAILED tests/test_p2.py::test_ten_iterations_supported_only_explicit_synthetic
+9 failed in 1.01s

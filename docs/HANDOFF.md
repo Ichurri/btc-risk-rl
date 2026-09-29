@@ -1,3 +1,33 @@
+# Estado vigente — P2: infraestructura sintética, mercado bloqueado
+
+Rama `codex/p2-infrastructure`, base `7357aa1` verificada local/origin. El usuario
+aceptó el diseño P2 (9 corridas, K10, semillas 610031/610047/610081, crítico4
+provisional, D64, umbrales §7, hasta3 días/3h globales por día). Autorizó únicamente
+implementación y pruebas sintéticas. **NO autoriza P2 histórico**, validación2023
+ni final2024–2025. P0/P1 cerrados y sus evidencias se conservan.
+
+Implementación: D independiente con pi_k de A y ambos críticos sobre los mismos
+MC; métricas/solapamientos/criterios conjuntos; fronteras after_q0 y
+**after_dual_and_D**; checkpoint, reanudación, contadores y presupuesto global
+persistentes. Q/A/B se conserva en una implementación común. Código `41fcef3`;
+221 pruebas pasadas (94.31 s), Ruff y 282 huellas históricas verificados.
+La CLI rechaza mercado
+antes de cargar datos. No hay P2Permit ni bandera que habilite campaña.
+
+**Siguiente tarea:** revisar [informe y límites](hitos/P2-infraestructura.md),
+[resumen académico/OE3](hitos/P2-resumen-academico.md),
+[contrato y permisos](protocols/P2-infrastructure-v1.md) y
+[pruebas ejecutadas](evidence/p2-infrastructure/COMMANDS.md).
+La ejecución histórica requiere autorización posterior y registrar/conectar el
+perfil de mercado al supervisor antes de la calibración acotada. No inferirla de
+la aceptación de infraestructura ni congelar cuatro épocas como confirmatorias.
+
+El comando futuro está documentado **NO EJECUTADO como campaña**; actualmente
+bloqueado. No repetir P0/P1 ni modificar la tesis. La eliminación local previa de
+`.python-version` sigue fuera de los commits. Sin ZIP.
+
+---
+
 # Estado vigente — propuesta P2 para revisión, NO autorizada
 
 Antecedente P1 cerrado 811d882, verificado local/origin; rama `codex/p2-proposal`.
