@@ -1,3 +1,29 @@
+# Estado vigente — P2: perfil histórico integrado, campaña bloqueada
+
+Base `5e81594` verificada contra `origin/codex/p2-infrastructure`; nueva rama
+`codex/p2-market-integration`. La autorización vigente cubre integración,
+fixtures sintéticos y preflight histórico de **solo lectura**. La campaña P2,
+trayectorias históricas nuevas y actualizaciones con mercado NO están autorizadas.
+
+El perfil conecta `TrainingMarket` con 7048 inicios H1, normalizador persistido y
+las particiones protegidas. Conserva nueve corridas K10, semillas y orden P2,
+crítico4 provisional, D64 y Q/A/B común. El registro de campaña está inactivo y
+anclado por hash; el comando público rechaza mercado antes de cargar datos o
+crear salidas. D exige un permiso de supervisor y generador propio. El preflight
+leyó únicamente entrenamiento y huellas, sin solicitar rutas/episodios. La
+suite final: 234 pruebas y Ruff aprobados. La
+eliminación local previa de `.python-version` sigue ajena a los commits.
+
+**Siguiente tarea:** revisar [informe](hitos/P2-integracion-historica.md),
+[resumen académico](hitos/P2-integracion-resumen-academico.md) y
+[evidencias/comandos](evidence/p2-market-integration/COMMANDS.md). Después se
+necesita autorización explícita y un commit de activación del permiso para medir
+el costo D y, solo entonces, ejecutar P2 dentro de los topes aprobados. Ni el
+JSON ni la CLI por sí solos activan la campaña. No repetir P0/P1, no acceder a
+validación/final, no modificar tesis. Cuatro épocas siguen provisionales.
+
+---
+
 # Estado vigente — P2: infraestructura sintética, mercado bloqueado
 
 Rama `codex/p2-infrastructure`, base `7357aa1` verificada local/origin. El usuario

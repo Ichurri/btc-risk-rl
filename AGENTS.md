@@ -1,6 +1,13 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2 histórico: se autoriza SOLO integrar el perfil de entrenamiento aceptado y
+  verificar controles con fixtures, pruebas sintéticas y preflight de solo lectura.
+  Rama de integración desde `5e81594`. El registro de campaña permanece inactivo:
+  NO iniciar P2, NO generar nuevas trayectorias históricas ni actualizar parámetros
+  con mercado. Requiere autorización posterior, revisión del registro y activación
+  de código por commit separado. Validación/final siguen bloqueados. Ver
+  docs/hitos/P2-integracion-historica.md y docs/protocols/P2-market-registration-v1.json.
 - P2: diseño de 7357aa1 aceptado (9 corridas, K=10, semillas 610031/610047/610081,
   crítico provisional de 4 épocas, D=64, umbrales §7, hasta 3 días activos).
   La autorización vigente permite implementar infraestructura y verificar SOLO con

@@ -1,15 +1,18 @@
 # BTC Risk RL
 
-**Estado vigente:** [infraestructura P2](docs/hitos/P2-infraestructura.md), verificación
-exclusivamente sintética. P0/P1 cerrados; P2 de mercado, validación y final siguen
-bloqueados. Consultar el [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
+**Estado vigente:** [perfil histórico P2 integrado](docs/hitos/P2-integracion-historica.md)
+y verificado con fixtures y preflight de solo lectura. P0/P1 cerrados; la campaña
+P2, validación y final siguen bloqueados. Consultar el [HANDOFF](docs/HANDOFF.md)
+antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
-Repositorio de infraestructura experimental. P0-approved-v1 autoriza exclusivamente
-el piloto técnico acotado sobre entrenamiento aceptado 2018–2022, con presupuesto
-GLOBAL de 3h/día. Validación, prueba final y posteriores campañas siguen bloqueadas.
+Repositorio de infraestructura experimental. P0/P1 fueron campañas acotadas y
+cerradas. La autorización vigente para P2 comprende solo integración y verificaciones
+sin aprendizaje de mercado; su campaña requiere autorización posterior.
+El presupuesto futuro sigue siendo GLOBAL de 3h/día. Validación y prueba final
+siguen bloqueadas.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 
 ## Debian local / entorno remoto
