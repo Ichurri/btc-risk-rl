@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from hashlib import sha256
+from typing import ClassVar
 
 import numpy as np
 
@@ -60,6 +61,8 @@ class SyntheticMarket:
 class SyntheticSettings:
     """Test values ONLY. No approved pilot hyperparameters."""
 
+    expected_purpose: ClassVar[str] = "synthetic_tests_only"
+    max_iterations: ClassVar[int] = 3
     purpose: str = "synthetic_tests_only"
     hidden: int = 8
     iterations: int = 2
@@ -78,11 +81,11 @@ class SyntheticSettings:
     fragment_steps: int = 60
 
     def __post_init__(self):
-        if self.purpose != "synthetic_tests_only":
+        if self.purpose != self.expected_purpose:
             raise ValueError("Only synthetic tests authorized")
         for key, limit in [
             ("hidden", 64),
-            ("iterations", 3),
+            ("iterations", self.max_iterations),
             ("n_a", 16),
             ("n_q", 16),
             ("n_b", 16),

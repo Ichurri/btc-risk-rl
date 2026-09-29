@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2: diseño de 7357aa1 aceptado (9 corridas, K=10, semillas 610031/610047/610081,
+  crítico provisional de 4 épocas, D=64, umbrales §7, hasta 3 días activos).
+  La autorización vigente permite implementar infraestructura y verificar SOLO con
+  datos sintéticos. NO permite P2 sobre mercado ni generar trayectorias históricas.
+  Mercado/validación 2023/final 2024–2025 siguen bloqueados antes de cargar datos.
+  No repetir P0/P1. Conservar d, ADR-002 y Q/A/B. No modificar la tesis.
+  La futura ejecución exige autorización posterior; aprobar infraestructura no
+  registra permiso de campaña. Ver docs/protocols/P2-infrastructure-v1.md.
+
 - P1 terminó: 18 corridas, criterio técnico cumplido en 3/3 semillas. La autorización
   se consumió con esta campaña; no repetirla ni inferir autorización de P2.
   Revisar docs/hitos/P1-epocas-critico.md antes de proponer otro piloto.

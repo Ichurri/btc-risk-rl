@@ -35,12 +35,28 @@ class RunAbort(RuntimeError):
 
 class SyntheticExperiment:
     def __init__(
-        self, source, settings, *, condition, risk_enabled=True, run_id, journal=None, permit=None
+        self,
+        source,
+        settings,
+        *,
+        condition,
+        risk_enabled=True,
+        run_id,
+        journal=None,
+        permit=None,
+        diagnostic=None,
     ):
         from btc_risk_rl.agents.market_source import TrainingMarket
         from btc_risk_rl.pilots.p1_protocol import P1Permit, P1Settings
+        from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
         from btc_risk_rl.pilots.protocol import P0Settings, Permit
 
+        if diagnostic is not None and (
+            type(diagnostic) is not Diagnostic
+            or type(source) is not SyntheticMarket
+            or type(settings) is not P2SyntheticSettings
+        ):
+            raise PermissionError("P2 diagnostics require explicit synthetic profile")
         if condition not in {"C0", "C5", "C10"}:
             raise ValueError("Known condition required")
         if type(source) is TrainingMarket:
@@ -50,10 +66,16 @@ class SyntheticExperiment:
             } or (condition != "C0" and not risk_enabled):
                 raise PermissionError("Market optimization requires authorized P0 supervisor lease")
             permit.validate(settings, condition, run_id)
-        elif type(source) is not SyntheticMarket or type(settings) is not SyntheticSettings:
+        elif type(source) is not SyntheticMarket or type(settings) not in {
+            SyntheticSettings,
+            P2SyntheticSettings,
+        }:
             raise ValueError("Explicit synthetic settings and known source required")
         self.collector = Collector(source, seed=settings.seed, run_id=run_id)
         self.settings, self.condition = settings, condition
+        self.diagnostic = diagnostic
+        if diagnostic is not None:
+            diagnostic.bind(source, settings.seed, run_id)
         self.enabled = condition != "C0" and risk_enabled
         self.alpha = 0.1 if condition == "C10" else 0.05  # C0 diagnostics only
         self.actor = Actor(hidden=settings.hidden, seed=settings.seed)
@@ -96,6 +118,8 @@ class SyntheticExperiment:
                 count=count,
                 fragment_steps=self.settings.fragment_steps,
             )
+        if self.diagnostic is not None:
+            self.diagnostic.observe(batch, role, iteration)
         self.batches.append(batch)
         self.events.append(
             dict(
@@ -324,6 +348,7 @@ class SyntheticExperiment:
                     return self._report()
                 self.boundary = "in_unit"
                 self._journal("running")
+                old_policy = policy
                 baseline = deepcopy(self.critic).eval().requires_grad_(False)
                 a = self._collect(policy, "A", iteration, s.n_a)
                 fixed = self._targets(a, baseline)
@@ -366,10 +391,12 @@ class SyntheticExperiment:
                             lambda_after=self.multiplier,
                         )
                     )
+                if self.diagnostic is not None:
+                    self.diagnostic.finish(self, old_policy, baseline, fixed, iteration)
                 self.next_iteration = self.generation = iteration + 1
                 if self.budget:
                     self.budget.check_reserve()
-                self.boundary = "after_dual"
+                self.boundary = "after_dual_and_D" if self.diagnostic else "after_dual"
                 self._journal("ready")
         except BaseException as exc:
             self.failed = True
@@ -420,4 +447,5 @@ class SyntheticExperiment:
             market_training_executed=self.settings.purpose
             in {"authorized_p0_only", "authorized_p1_only"},
             final_test_accessed=False,
+            diagnostic=self.diagnostic.report() if self.diagnostic else None,
         )

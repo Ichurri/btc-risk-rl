@@ -53,7 +53,9 @@ def validate_state(run):
     n = run.next_iteration
     if run.failed or run.collector.failed or type(n) is not int or not 0 <= n <= s.iterations:
         raise ValueError("Invalid failed/counter checkpoint state")
-    boundary = "after_q0" if n == 0 else "after_dual"
+    boundary = "after_q0" if n == 0 else ("after_dual_and_D" if run.diagnostic else "after_dual")
+    if run.diagnostic is not None:
+        run.diagnostic.validate(run)
     if run.boundary != boundary or run.generation != n or run.initial_q_tail is None:
         raise ValueError("Checkpoint requires a complete Q/A/B boundary")
     used = {(0, "Q")}
@@ -152,13 +154,14 @@ def save_checkpoint(run, path):
             torch_cpu=torch.random.get_rng_state(),
         ),
         budget=run.budget.snapshot() if run.budget else None,
+        diagnostic=run.diagnostic.state() if run.diagnostic else None,
     )
     with (path / "state.pt").open("xb") as f:
         torch.save(state, f)
         f.flush()
         os.fsync(f.fileno())
     manifest = dict(
-        schema_version=SCHEMA,
+        schema_version="p2_complete_boundary_v1" if run.diagnostic else SCHEMA,
         git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         checkpoint_id=checkpoint_id,
         boundary=run.boundary,
@@ -196,9 +199,9 @@ def load_checkpoint(path, source, *, journal, permit=None):
     path = Path(path)
     try:
         manifest = json.loads((path / "manifest.json").read_text())
-        if manifest["schema_version"] != SCHEMA or manifest["state_sha256"] != digest(
-            path / "state.pt"
-        ):
+        if manifest["schema_version"] not in {SCHEMA, "p2_complete_boundary_v1"} or manifest[
+            "state_sha256"
+        ] != digest(path / "state.pt"):
             raise ValueError("Checkpoint schema/hash mismatch")
         if manifest["provenance"] != provenance(source):
             raise ValueError("Incompatible checkpoint code/data/scaler/runtime")
@@ -212,18 +215,33 @@ def load_checkpoint(path, source, *, journal, permit=None):
         ):
             raise ValueError("Run journal forbids stale/failed/interrupted checkpoint")
         state = torch.load(path / "state.pt", map_location="cpu", weights_only=True)
+        from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
+
+        if manifest["profile"] == "p2_synthetic_tests_only" and type(source) is not SyntheticMarket:
+            raise PermissionError("P2 market checkpoint blocked")
+        diagnostic = state.get("diagnostic")
+        if (manifest["schema_version"] == "p2_complete_boundary_v1") != (diagnostic is not None):
+            raise ValueError("Incomplete diagnostic schema")
         run = SyntheticExperiment(
             source,
             (
                 (P1Settings if manifest["profile"] == "authorized_p1_only" else P0Settings)
                 if type(source) is TrainingMarket
-                else SyntheticSettings
+                else (
+                    P2SyntheticSettings
+                    if manifest["profile"] == "p2_synthetic_tests_only"
+                    else SyntheticSettings
+                )
             )(**manifest["settings"]),
             condition=manifest["condition"],
             risk_enabled=manifest["risk_enabled"],
             run_id=manifest["run_id"],
             permit=permit,
         )
+        if diagnostic is not None:
+            run.diagnostic = Diagnostic.restore(
+                diagnostic, source, run.settings.seed, run.collector.run_id
+            )
         for name in ("actor", "critic", "actor_optimizer", "critic_optimizer"):
             getattr(run, name).load_state_dict(state[name])
         required_attrs = {

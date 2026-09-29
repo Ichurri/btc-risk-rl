@@ -10,7 +10,7 @@ from btc_risk_rl.agents.synthetic import SyntheticMarket
 from btc_risk_rl.config import STEP_MS, guard_development
 
 ARRAYS = ("observations", "actions", "log_probs", "rewards", "times", "terminated", "truncated")
-ROLES = {"A": 1, "Q": 2, "B": 3}
+ROLES = {"A": 1, "Q": 2, "B": 3, "D": 7002}
 
 
 def immutable(x):
@@ -140,6 +140,8 @@ class Collector:
         self.diagnostics = []
 
     def collect(self, policy, *, role, iteration, count, fragment_steps=180):
+        if role == "D" and type(self.source) is not SyntheticMarket:
+            raise PermissionError("P2 market diagnostics not authorized")
         if self.failed:
             raise ValueError("Collector belongs to a failed run")
         if role not in ROLES or type(iteration) is not int or iteration < 0:
@@ -214,6 +216,8 @@ class Collector:
                             end_reason=info["end_reason"] if last else "collection_window",
                             **{k: np.array(v) for k, v in arrays.items()},
                         )
+                        if getattr(self, "fragment_sink", None):
+                            self.fragment_sink(f)
                         fragments.append(f)
                         offset = step + 1
                         if not last:
@@ -240,6 +244,8 @@ class Collector:
             policy.check()
         except Exception as exc:
             self.failed = True
+            if getattr(self, "failure_sink", None):
+                self.failure_sink(locals().get("arrays", {}), replica, step, str(exc))
             raise BatchAbort(
                 dict(
                     run_id=self.run_id,

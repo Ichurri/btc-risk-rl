@@ -17,6 +17,7 @@ def utc(t):
 
 
 class CampaignLedger:
+    iterations = 2
     def __init__(self, root, *, now, identity, external_seconds=0.0):
         if not math.isfinite(external_seconds) or external_seconds < 0:
             raise ValueError("Invalid external daily debit")
@@ -53,6 +54,10 @@ class CampaignLedger:
                     units=[],
                     cursor=0,
                 )
+            if getattr(self, "preserve_completed", False) and self.state["status"] == "completed":
+                self.day_key = max(self.state["days"])
+                self.day = self.state["days"][self.day_key]
+                return
             self.day_key = datetime.fromtimestamp(now, LA_PAZ).date().isoformat()
             if self.day_key not in self.state["days"]:
                 date = datetime.fromtimestamp(now, LA_PAZ).date()
@@ -166,7 +171,7 @@ class CampaignLedger:
                 totals[key] = totals.get(key, 0) + value
         if "checkpoint" in evidence:
             run.update(checkpoint=evidence["checkpoint"], next_unit=pending["unit"] + 1)
-            if pending["unit"] == 2:
+            if pending["unit"] == self.iterations:
                 self.state["cursor"] += 1
         self.state["units"].append(
             dict(

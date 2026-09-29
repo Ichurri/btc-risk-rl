@@ -28,6 +28,7 @@ def supervise(
     env=None,
     closing_marker=None,
     closing_seconds=None,
+    phase_marker=None,
 ):
     if seconds <= 0 or rss_limit <= 0:
         raise ValueError("Positive supervisor limits required")
@@ -68,6 +69,10 @@ def supervise(
                 elapsed = time.monotonic() - start
                 peak = max(peak, rss_bytes(child.pid))
                 reason = read_marker()
+                if phase_marker is not None and Path(phase_marker).exists():
+                    phase = json.loads(Path(phase_marker).read_text())
+                    if phase["phase"] == "D" and time.monotonic() - phase["started_monotonic"] > 900:
+                        reason = "diagnostic_time"
                 limit = closing_seconds if closed is not None else seconds
                 if elapsed >= limit:
                     reason = "time"
@@ -90,6 +95,10 @@ def supervise(
                 reason = "child_failure"
             else:
                 reason = read_marker()
+                if phase_marker is not None and Path(phase_marker).exists():
+                    phase = json.loads(Path(phase_marker).read_text())
+                    if phase["phase"] == "D" and time.monotonic() - phase["started_monotonic"] > 900:
+                        reason = "diagnostic_time"
                 if closing_marker is not None and closed is None:
                     reason = "missing_closing_marker"
                 if time.monotonic() - start > (closing_seconds if closed is not None else seconds):

@@ -1,5 +1,9 @@
 # BTC Risk RL
 
+**Estado vigente:** [infraestructura P2](docs/hitos/P2-infraestructura.md), verificación
+exclusivamente sintética. P0/P1 cerrados; P2 de mercado, validación y final siguen
+bloqueados. Consultar el [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
+
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
