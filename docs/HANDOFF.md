@@ -1,4 +1,32 @@
-# Estado vigente — P2 histórico autorizado, preflight previo a ejecución
+# Estado vigente — P2 histórico interrumpido, campaña cerrada por fallo
+
+Rama `codex/p2-execution`. La autorización y activación se publicaron en
+`18bc767`. El preflight activo y la integridad de P0/P1 pasaron. La campaña
+alcanzó cinco corridas K10 completas y una sexta (`run-05-C0`, semilla 610047)
+con Q0 e iteración 1 completas. Durante la iteración 2 se perdió la sesión del
+supervisor; el último progreso conservado está en fase B, sin checkpoint de esa
+unidad. El 30/09/2026 a las 16:32:06 UTC el ledger registró
+`interrupted_supervisor_or_unit` y estado **failed**. No se reanudó ni repitió
+ninguna unidad.
+
+El cierre de solo lectura verificó la cadena de 176 estados, 57 unidades
+completas, sus checkpoints y 3264 archivos D. La unidad parcial queda fuera de
+los contadores cerrados; su progreso se conserva localmente. La causa precisa
+de la desaparición del proceso no está demostrada. Los umbrales conjuntos de P2
+no son evaluables con nueve corridas incompletas. Las advertencias del crítico
+y la marca heredada `market_training_executed=false` se documentan sin cambiar
+el código operativo ni inferir ausencia de aprendizaje.
+
+**Siguiente tarea:** revisar [informe de cierre](hitos/P2-ejecucion-interrumpida.md),
+[resumen académico](hitos/P2-ejecucion-resumen-academico.md) y
+[evidencia](evidence/p2-execution/COMMANDS.md). Decidir un protocolo nuevo antes
+de cualquier ejecución adicional; no reparar ni relanzar esta campaña por
+resultado. Validación 2023, final 2024–2025 y tesis permanecen intactos. La
+eliminación local previa de `.python-version` sigue fuera de los commits.
+
+---
+
+# Estado anterior — P2 histórico autorizado, preflight previo a ejecución
 
 Base de integración `2f01d6c` comprobada contra origin el 30/09/2026. Rama
 `codex/p2-execution`. El usuario autorizó un permiso específico para las nueve

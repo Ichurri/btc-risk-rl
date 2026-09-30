@@ -1,0 +1,46 @@
+{
+  "closed_units": 57,
+  "failure": {
+    "reason": "interrupted_supervisor_or_unit",
+    "utc": "2026-09-30T16:32:06.528428+00:00"
+  },
+  "final_state_hash": "4c0a4782f3aa2b28a932783cd55931d99cea0f701d15151177d31cbf951f9057",
+  "interpretation": "Observed partial progress is not a complete boundary and is excluded from closed resource totals; process-loss cause undetermined.",
+  "last_completed_unit": {
+    "end_utc": "2026-09-30T06:19:30.457104+00:00",
+    "run_id": "run-05-C0",
+    "unit": 1
+  },
+  "ledger_sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+  "partial_artifacts": {
+    "checkpoint-2": false,
+    "failure-2.json": false,
+    "request-2.json": true,
+    "unit-2.json": false,
+    "worker-2.log": true
+  },
+  "partial_progress": {
+    "counters": {
+      "actor_updates": 16,
+      "critic_updates": 32,
+      "diagnostic_trajectories": 64,
+      "diagnostic_transitions": 11520,
+      "trajectories": 1868,
+      "transitions": 336240
+    },
+    "phase": "B",
+    "unit": 2
+  },
+  "partial_worker_log_bytes": 0,
+  "pending": {
+    "kind": "iteration",
+    "request_sha256": "0f274167a35f242ed17d07ff6cfa25ffcb880872f1f823b089c681079beca668",
+    "run_id": "run-05-C0",
+    "start": 1790749170.48108,
+    "supervisor_pid": 6,
+    "token": "c86f7f8b50e14d29a8ffd47b1f24dd15",
+    "unit": 2
+  },
+  "prior_state_hash": "44f5327a0225b6fd9efe0e8283efe3ae113a7cd57ece918a1cdbe8b27495474b",
+  "status": "failed"
+}

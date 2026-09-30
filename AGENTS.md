@@ -1,6 +1,12 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2 histórico quedó **detenido por interrupción del supervisor** el 30/09/2026:
+  cinco corridas K10 completas, una sexta con una iteración completa y la
+  siguiente parcial. El ledger registra `interrupted_supervisor_or_unit` y
+  prohíbe reanudar o repetir selectivamente esta campaña. Consultar
+  `docs/hitos/P2-ejecucion-interrumpida.md` y el HANDOFF antes de cualquier
+  otra acción. La autorización anterior no habilita una campaña de reemplazo.
 - P2 histórico autorizado el 30/09/2026 sobre entrenamiento aceptado 2018–2022,
   desde integración `2f01d6c`. Registrar permiso en commit separado y ejecutar
   solo después de preflight, pruebas sintéticas e integridad P0/P1. Son nueve

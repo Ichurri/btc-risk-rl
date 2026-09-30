@@ -1,0 +1,1 @@
+{"other_campaign_running": false, "p2_campaign_root_exists": false, "prior_campaigns": [{"artifacts_checked": 36, "campaign": "p0", "ledger_anchor_match": true, "mismatches": [], "runs": 9, "status": "completed"}, {"artifacts_checked": 72, "campaign": "p1", "ledger_anchor_match": true, "mismatches": [], "runs": 18, "status": "completed"}], "status": "passed"}
