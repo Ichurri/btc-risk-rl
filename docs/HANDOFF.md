@@ -1,4 +1,33 @@
-# Estado vigente — P2 histórico interrumpido, campaña cerrada por fallo
+# Estado vigente — apagado identificado; propuesta P2R para revisión
+
+Base `a2014e4` verificada local/origin; rama documental
+`codex/p2-shutdown-diagnosis-proposal`. Una investigación posterior de solo
+lectura encontró cierre de GNOME y registro de apagado del equipo a las
+06:20:12 UTC del 30/09/2026, coincidente con el último progreso de la unidad
+2 de `run-05-C0`. La pérdida del supervisor se explica por la salida de la
+sesión/equipo; **no consta quién ni qué ordenó el apagado**. El ledger P2
+permanece `failed`, SHA256
+`e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8`,
+y la parcial se conserva fuera de Git. No hubo reanudación, entrenamientos
+nuevos ni acceso a validación/final.
+
+[Diagnóstico](hitos/P2-perdida-supervisor-diagnostico.md) y
+[evidencia de comandos](evidence/p2-shutdown-investigation/COMMANDS.md).
+La [propuesta P2R](proposals/P2R-protocolo-v1.md) recomienda repetir **las
+nueve corridas completas** en una raíz y permiso nuevos, con supervisor
+independiente del chat, controles de alimentación, mismo diseño científico y
+reglas de presupuesto/interrupción fijadas antes de ejecutar. Está
+**PROPUESTA PARA REVISIÓN, NO AUTORIZADA** para implementación o mercado.
+
+**Siguiente tarea:** revisión del diagnóstico y de P2R por el usuario. Una
+eventual implementación sintética y la ejecución histórica requerirán
+autorizaciones posteriores y separadas. No reutilizar resultados P2 como
+corridas P2R, no modificar la tesis ni tocar validación/final. La eliminación
+local previa de `.python-version` sigue sin incluirse en commits.
+
+---
+
+# Estado anterior — P2 histórico interrumpido, campaña cerrada por fallo
 
 Rama `codex/p2-execution`. La autorización y activación se publicaron en
 `18bc767`. El preflight activo y la integridad de P0/P1 pasaron. La campaña

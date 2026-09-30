@@ -1,6 +1,11 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Investigación posterior a `a2014e4`: los registros de sesión y wtmp sitúan
+  un apagado del equipo a las 02:20:12 America/La_Paz, coincidente con la
+  pérdida del supervisor P2; el iniciador del apagado sigue desconocido.
+  `docs/proposals/P2R-protocolo-v1.md` es **propuesta, NO autorización** de
+  implementación ni ejecución. Preservar ledger/unidad parcial P2 intactos.
 - P2 histórico quedó **detenido por interrupción del supervisor** el 30/09/2026:
   cinco corridas K10 completas, una sexta con una iteración completa y la
   siguiente parcial. El ledger registra `interrupted_supervisor_or_unit` y
