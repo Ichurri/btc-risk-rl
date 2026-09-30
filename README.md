@@ -1,17 +1,16 @@
 # BTC Risk RL
 
-**Estado vigente:** [perfil histórico P2 integrado](docs/hitos/P2-integracion-historica.md)
-y verificado con fixtures y preflight de solo lectura. P0/P1 cerrados; la campaña
-P2, validación y final siguen bloqueados. Consultar el [HANDOFF](docs/HANDOFF.md)
-antes de usar comandos históricos.
+**Estado vigente:** campaña histórica P2 autorizada exclusivamente sobre
+entrenamiento aceptado 2018–2022, con [permiso registrado](docs/protocols/P2-market-approval-2026-09-30.md).
+P0/P1 están cerrados; validación y final siguen bloqueados. Consultar el
+[HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
 Repositorio de infraestructura experimental. P0/P1 fueron campañas acotadas y
-cerradas. La autorización vigente para P2 comprende solo integración y verificaciones
-sin aprendizaje de mercado; su campaña requiere autorización posterior.
-El presupuesto futuro sigue siendo GLOBAL de 3h/día. Validación y prueba final
+cerradas. P2 conserva su diseño aprobado y exige preflight y presupuesto GLOBAL
+de 3h/día. Validación y prueba final
 siguen bloqueadas.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 

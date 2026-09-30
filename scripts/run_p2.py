@@ -1,4 +1,4 @@
-"""P2 infrastructure only. Market command remains blocked before all data access."""
+"""P2 supervisor; market requires a reviewed training-only registration."""
 
 import argparse
 import json

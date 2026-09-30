@@ -1,3 +1,26 @@
+# Estado vigente — P2 histórico autorizado, preflight previo a ejecución
+
+Base de integración `2f01d6c` comprobada contra origin el 30/09/2026. Rama
+`codex/p2-execution`. El usuario autorizó un permiso específico para las nueve
+corridas P2 sobre entrenamiento aceptado 2018–2022; el registro está en
+[P2-market-approval-2026-09-30.md](protocols/P2-market-approval-2026-09-30.md).
+Se conserva el diseño P2, d, ADR-002, Q/A/B, crítico4 provisional y D64.
+Validación 2023, final 2024–2025 y campañas posteriores siguen bloqueadas.
+
+Antes de iniciar: verificar permiso y commit separado, 108 huellas P0/P1,
+configuración/datos/scaler, ausencia de otra campaña y presupuesto diario La Paz.
+La campaña debe pausar en frontera completa si no cabe una unidad. Fallo de
+integridad invalida la corrida/campaña sin reintento selectivo. Checkpoints y
+evidencia se guardan localmente; los resultados pequeños se versionarán.
+La eliminación local previa de `.python-version` permanece fuera de commits.
+
+**Siguiente tarea:** ejecutar preflight activo; solo si pasa, iniciar el comando
+canónico P2 y medir D real dentro de sus topes. Al pausar o cerrar, comprobar
+ledger/checkpoints sin nuevas actualizaciones y publicar informe, resumen OE3
+y estado de integridad. No modificar la tesis.
+
+---
+
 # Estado vigente — P2: perfil histórico integrado, campaña bloqueada
 
 Base `5e81594` verificada contra `origin/codex/p2-infrastructure`; nueva rama

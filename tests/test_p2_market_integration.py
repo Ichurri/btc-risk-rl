@@ -35,18 +35,16 @@ def test_market_cli_rejects_edited_json_before_loader_or_output(tmp_path):
     assert not output.exists()
 
 
-def test_public_market_command_rejects_canonical_protocol_before_loader(tmp_path):
-    from btc_risk_rl.pilots.p2_market import PROTOCOL
-
+def test_public_market_command_rejects_unregistered_protocol_before_loader(tmp_path):
     output = tmp_path / 'never-created'
     proc = subprocess.run([sys.executable, 'scripts/run_p2.py', '--profile', 'market',
-        '--protocol', str(PROTOCOL), '--config', '/missing/config',
+        '--protocol', str(tmp_path / 'unregistered.json'), '--config', '/missing/config',
         '--output', str(output)], capture_output=True, text=True)
     assert proc.returncode == 2 and 'NOT AUTHORIZED' in proc.stderr
     assert not output.exists()
 
 
-def test_permit_inactive_and_direct_training_blocked_without_source_load(accepted_synthetic, monkeypatch):
+def test_registered_permission_still_blocks_direct_training_without_lease(accepted_synthetic, monkeypatch):
     from btc_risk_rl.agents.market_source import TrainingMarket
     from btc_risk_rl.agents.trainer import SyntheticExperiment
     from btc_risk_rl.data.binance import sha256
@@ -56,8 +54,9 @@ def test_permit_inactive_and_direct_training_blocked_without_source_load(accepte
     monkeypatch.setattr(source, 'environment', lambda *_: pytest.fail('trajectory created'))
     with pytest.raises(PermissionError):
         SyntheticExperiment(source, P2MarketSettings(seed=610031), condition='C5', run_id='x')
-    with pytest.raises(PermissionError):
-        P2MarketPermit.require_registration()
+    registration = P2MarketPermit.require_registration()
+    assert registration['active'] is True
+    assert registration['campaign_permit'] == 'p2-market-training-only-2026-09-30'
 
 
 def test_registration_json_edit_cannot_activate_market(tmp_path, monkeypatch):
@@ -187,10 +186,10 @@ def test_market_unit_and_diagnostic_cannot_create_artifacts_without_lease(accept
     assert not (tmp_path/'D').exists()
 
 
-def test_market_entrypoint_stays_blocked_with_canonical_protocol(tmp_path):
+def test_market_entrypoint_rejects_unregistered_protocol(tmp_path):
     from btc_risk_rl.pilots.p2 import entrypoint
-    from btc_risk_rl.pilots.p2_market import PROTOCOL
     output = tmp_path/'never-created'
-    with pytest.raises(PermissionError):
-        entrypoint(profile='market', output=output, config='/missing', protocol=PROTOCOL)
+    with pytest.raises((PermissionError, ValueError, OSError)):
+        entrypoint(profile='market', output=output, config='/missing',
+                   protocol=tmp_path/'unregistered.json')
     assert not output.exists()

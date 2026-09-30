@@ -150,7 +150,7 @@ def run_synthetic(output, config):
 
 
 def run_market(protocol):
-    """Future campaign route. Current registry rejects before locks, data or outputs."""
+    """Run the registered training-only P2 campaign under the global supervisor."""
     from btc_risk_rl.pilots.p2_market import CONFIG, MARKET_CAMPAIGN, P2MarketPermit
     P2MarketPermit.require_registration(protocol)
     return _run_campaign(MARKET_CAMPAIGN, CONFIG, market=True)

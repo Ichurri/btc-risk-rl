@@ -1,21 +1,20 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
-- P2 histórico: se autoriza SOLO integrar el perfil de entrenamiento aceptado y
-  verificar controles con fixtures, pruebas sintéticas y preflight de solo lectura.
-  Rama de integración desde `5e81594`. El registro de campaña permanece inactivo:
-  NO iniciar P2, NO generar nuevas trayectorias históricas ni actualizar parámetros
-  con mercado. Requiere autorización posterior, revisión del registro y activación
-  de código por commit separado. Validación/final siguen bloqueados. Ver
-  docs/hitos/P2-integracion-historica.md y docs/protocols/P2-market-registration-v1.json.
+- P2 histórico autorizado el 30/09/2026 sobre entrenamiento aceptado 2018–2022,
+  desde integración `2f01d6c`. Registrar permiso en commit separado y ejecutar
+  solo después de preflight, pruebas sintéticas e integridad P0/P1. Son nueve
+  corridas K10, tres semillas, C0/C5/C10, crítico4 provisional, D64 y diseño
+  de `P2-infrastructure-v1.json` sin cambios. Máximo global 3h/día La Paz,
+  tres días activos; pausa solo en frontera completa, fallos sin reintento
+  selectivo. Ver `docs/protocols/P2-market-approval-2026-09-30.md`.
+  Validación 2023, final 2024–2025 y campañas posteriores siguen bloqueadas.
 - P2: diseño de 7357aa1 aceptado (9 corridas, K=10, semillas 610031/610047/610081,
   crítico provisional de 4 épocas, D=64, umbrales §7, hasta 3 días activos).
-  La autorización vigente permite implementar infraestructura y verificar SOLO con
-  datos sintéticos. NO permite P2 sobre mercado ni generar trayectorias históricas.
-  Mercado/validación 2023/final 2024–2025 siguen bloqueados antes de cargar datos.
-  No repetir P0/P1. Conservar d, ADR-002 y Q/A/B. No modificar la tesis.
-  La futura ejecución exige autorización posterior; aprobar infraestructura no
-  registra permiso de campaña. Ver docs/protocols/P2-infrastructure-v1.md.
+  La restricción previa de verificación exclusivamente sintética se sustituyó
+  **solo para P2 histórico** por la autorización anterior. No repetir P0/P1.
+  Conservar d, ADR-002 y Q/A/B. No modificar la tesis. Ver
+  docs/protocols/P2-infrastructure-v1.md.
 
 - P1 terminó: 18 corridas, criterio técnico cumplido en 3/3 semillas. La autorización
   se consumió con esta campaña; no repetirla ni inferir autorización de P2.
@@ -34,8 +33,8 @@
 - Configuración, semillas, orden y K=2 aprobados solo para P0; d=-ln(0.90) común.
   Validación/final no accesibles al ejecutor. No repetir selectivamente fallos.
 - Se permite PyTorch CPU fijado en el lock. No instalar CUDA ni modificar drivers.
-- Fuera de P0/P1 aprobados siguen prohibidos entrenamientos de mercado, pilotos
-  posteriores y evaluación confirmatoria. Conservar límites y guardas.
+- Fuera de P0/P1 ya cerrados y P2 aquí autorizado, siguen prohibidos otros
+  entrenamientos de mercado, pilotos y evaluación confirmatoria.
 - No modificar la tesis: entregar evidencia para el chat académico.
 - ADR-002 v2.1 está adoptado; H4 autoriza su implementación, sin cambiar su metodología.
 

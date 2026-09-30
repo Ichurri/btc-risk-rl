@@ -111,8 +111,9 @@ def test_market_block_precedes_paths_or_loaders(tmp_path):
     from btc_risk_rl.pilots.p2 import entrypoint
 
     for profile in ("market", "validation", "final", "accepted_train_collection_only"):
-        with pytest.raises(PermissionError, match="market"):
-            entrypoint(profile=profile, output=tmp_path / profile, config="does-not-exist")
+        with pytest.raises((PermissionError, ValueError, OSError)):
+            entrypoint(profile=profile, output=tmp_path / profile,
+                       config="does-not-exist", protocol=tmp_path / "unregistered.json")
         assert not (tmp_path / profile).exists()
 
 

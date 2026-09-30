@@ -1,4 +1,4 @@
-"""P2 accepted-training profile and read-only preflight; campaign registration is inactive."""
+"""P2 accepted-training profile and separately registered campaign permission."""
 
 import hashlib
 import importlib.metadata
@@ -20,14 +20,14 @@ from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 PROTOCOL = ROOT / "docs/protocols/P2-infrastructure-v1.json"
 PROTOCOL_SHA = "d5fa2f2726cd6458df3c290e7b58c591f11310c7a9b645c47a5fb6bd419e5238"
 REGISTRY = ROOT / "docs/protocols/P2-market-registration-v1.json"
-REGISTRY_SHA = "2052c549132bfb3df3819a17454d28f6e0690d93dfb9bc4eaa621926ba03c1c3"
+REGISTRY_SHA = "2c21392a280fe24ea8f85819770931e8894dc48e57a7f826271b8702a3642416"
 ACCEPTED_MANIFEST = ROOT / "docs/evidence/segmented-h1/manifest.json"
 ACCEPTED_MANIFEST_SHA = "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998"
 PREPARED = ROOT / "data/processed/segmented-B-h1"
 CONFIG = ROOT / "configs/initial.toml"
 CONFIG_SHA = "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269"
 MARKET_CAMPAIGN = ROOT / "artifacts/p2-approved-v1"
-MARKET_ACTIVATED = False  # Requires a later explicit user authorization and reviewed commit.
+MARKET_ACTIVATED = True  # User authorization recorded in P2-market-approval-2026-09-30.md.
 
 
 def digest(path):
@@ -73,7 +73,7 @@ class P2MarketSettings(P0Settings):
 
 
 class P2MarketPermit:
-    """Worker lease: fail closed until a separate registration is reviewed and activated."""
+    """Worker lease: registered P2 only, tied to the active supervisor ledger."""
 
     def __init__(self, token):
         self.token = token
@@ -90,7 +90,11 @@ class P2MarketPermit:
         if (entry.get("protocol_sha256") != PROTOCOL_SHA
                 or entry.get("accepted_manifest_sha256") != ACCEPTED_MANIFEST_SHA
                 or not MARKET_ACTIVATED or entry.get("active") is not True
-                or not entry.get("approval_record") or not entry.get("campaign_permit")):
+                or entry.get("scope") != "accepted_training_2018_2022_only"
+                or entry.get("approval_record")
+                != "docs/protocols/P2-market-approval-2026-09-30.md"
+                or entry.get("campaign_permit") != "p2-market-training-only-2026-09-30"
+                or not (ROOT / entry["approval_record"]).is_file()):
             raise PermissionError("P2 market campaign NOT AUTHORIZED")
         return entry
 
@@ -174,7 +178,7 @@ def inspect_shared_budget(artifacts, *, now):
 
 
 def inspect_preflight(*, now=None):
-    """Development-only read. No permission activation, optimizer or path generation."""
+    """Read-only authorized entrance audit; no optimizer or path generation."""
     from btc_risk_rl.config import load_config
 
     now = time.time() if now is None else now
@@ -183,10 +187,7 @@ def inspect_preflight(*, now=None):
         raise ValueError("P2 market configuration identity changed")
     if digest(REGISTRY) != REGISTRY_SHA:
         raise ValueError("P2 registration identity changed")
-    registry = json.loads(REGISTRY.read_text())
-    if (registry.get("active") is not False or registry.get("approval_record") is not None
-            or registry.get("campaign_permit") is not None):
-        raise ValueError("P2 preflight requires inactive registration")
+    registry = P2MarketPermit.require_registration()
     if digest(ACCEPTED_MANIFEST) != ACCEPTED_MANIFEST_SHA:
         raise ValueError("Accepted H1 manifest anchor changed")
     source = inspect_training_source(load_config(CONFIG), PREPARED,
@@ -207,9 +208,10 @@ def inspect_preflight(*, now=None):
     runtime = dict(python=platform.python_version(), machine=platform.machine(),
                    packages={name: importlib.metadata.version(name)
                              for name in ("torch", "numpy", "pandas", "gymnasium")})
-    return dict(status="ready_for_review_not_execution", design_sha256=PROTOCOL_SHA,
-                registry_sha256=digest(REGISTRY), registry_active=False,
-                market_command_enabled=False, training_source=source,
+    return dict(status="ready_for_authorized_execution", design_sha256=PROTOCOL_SHA,
+                registry_sha256=digest(REGISTRY), registry_active=True,
+                campaign_permit=registry["campaign_permit"],
+                market_command_enabled=True, training_source=source,
                 code_config_lock_hashes=hashes, shared_budget=inspect_shared_budget(
                     ROOT / "artifacts", now=now), resources=dict(
                         available_memory_bytes=mem, free_disk_bytes=disk),
