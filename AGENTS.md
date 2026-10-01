@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2R: el usuario autorizó desde `d7f253b` **solo infraestructura y pruebas
+  sintéticas** de supervisor, journal, guardas, presupuesto e interrupciones.
+  Rama `codex/p2r-infrastructure`. La propuesta P2R v1 sigue sin autorización
+  para campaña histórica: no hay permiso ni ejecutor de mercado P2R. El perfil
+  sintético `scripts/run_p2r.py` es una sonda de ciclo de vida; su ventana de
+  reloj ficticia no es admisión de campaña. `Linger=no` del gestor de usuario
+  impide verificar continuidad tras logout completo; no cambiar configuración
+  del sistema implícitamente. Ver HANDOFF e informe P2R antes de continuar.
 - Investigación posterior a `a2014e4`: los registros de sesión y wtmp sitúan
   un apagado del equipo a las 02:20:12 America/La_Paz, coincidente con la
   pérdida del supervisor P2; el iniciador del apagado sigue desconocido.

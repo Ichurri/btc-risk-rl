@@ -1,4 +1,31 @@
-# Estado vigente — apagado identificado; propuesta P2R para revisión
+# Estado vigente — infraestructura P2R sintética; mercado bloqueado
+
+Base `d7f253b`; rama `codex/p2r-infrastructure`. El usuario autorizó
+implementar y verificar **solo infraestructura sintética** de P2R. El servicio
+`systemd --user` probó separación del proceso lanzador y señal durante una
+unidad; el ledger y los artefactos de P2 conservan sus huellas. La CLI P2R
+rechaza mercado, validación y final antes de crear artefactos. No se generaron
+trayectorias históricas ni hubo actualizaciones de aprendizaje. La propuesta
+P2R v1 permanece sin autorización de ejecución.
+
+El gestor de usuario está activo pero `Linger=no`; no se efectuó logout
+completo. La memoria disponible observada fue menor que 4 GiB, de modo que
+un preflight de mercado tampoco pasaría en este estado. Las pruebas usan
+fixtures de recursos y una ventana de reloj ficticia solo para ensayar señales
+cerca de medianoche. Ver [informe](hitos/P2R-infraestructura.md),
+[ajustes para revisión](proposals/P2R-infraestructura-addendum-v1.md) y
+[comandos/evidencia](evidence/p2r-infrastructure/COMMANDS.md).
+
+**Siguiente tarea:** revisar el informe y decidir ajustes del protocolo.
+Antes de una eventual ejecución histórica se necesitan autorización separada,
+permiso nuevo, runner integrado con P2 Q/A/B+D, huellas y preflight, verificación
+de continuidad tras logout y recursos disponibles. No reanudar P2, no modificar
+la tesis, no acceder a validación ni final. La eliminación local previa de
+`.python-version` sigue fuera de los commits.
+
+---
+
+# Estado anterior — apagado identificado; propuesta P2R para revisión
 
 Base `a2014e4` verificada local/origin; rama documental
 `codex/p2-shutdown-diagnosis-proposal`. Una investigación posterior de solo

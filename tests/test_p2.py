@@ -449,7 +449,7 @@ def test_p2_budget_rejects_backwards_runtime_clock(tmp_path):
 def test_public_synthetic_supervisor_pauses_resumes_shared_budget(tmp_path, monkeypatch):
     import json
     import time
-    from datetime import datetime
+    from datetime import datetime, timedelta
     from pathlib import Path
 
     from btc_risk_rl.pilots import p2_runner
@@ -460,7 +460,12 @@ def test_public_synthetic_supervisor_pauses_resumes_shared_budget(tmp_path, monk
     monkeypatch.setattr(p2_runner, "SYNTHETIC_ROOT", root)
     other = tmp_path / "p0-approved-v1"
     other.mkdir()
-    day = datetime.fromtimestamp(time.time(), LA_PAZ).date().isoformat()
+    local_now = datetime.fromtimestamp(time.time(), LA_PAZ)
+    midnight = datetime.combine(local_now.date() + timedelta(days=1),
+                                datetime.min.time(), LA_PAZ).timestamp()
+    if midnight - time.time() < 3700:
+        pytest.skip("real La Paz midnight leaves no approved Q0 admission window")
+    day = local_now.date().isoformat()
     (other / "ledger.jsonl").write_text(
         json.dumps(dict(status="completed", days={day: {"charged_wall_seconds": 1000}})) + "\n"
     )

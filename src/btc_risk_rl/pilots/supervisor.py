@@ -29,6 +29,8 @@ def supervise(
     closing_marker=None,
     closing_seconds=None,
     phase_marker=None,
+    on_poll=None,
+    stop_requested=None,
 ):
     if seconds <= 0 or rss_limit <= 0:
         raise ValueError("Positive supervisor limits required")
@@ -68,6 +70,11 @@ def supervise(
             while child.poll() is None:
                 elapsed = time.monotonic() - start
                 peak = max(peak, rss_bytes(child.pid))
+                if on_poll is not None:
+                    on_poll(child.pid, elapsed, peak)
+                if stop_requested is not None and stop_requested():
+                    reason = "signal_during_unit"
+                    break
                 reason = read_marker()
                 if phase_marker is not None and Path(phase_marker).exists():
                     phase = json.loads(Path(phase_marker).read_text())
