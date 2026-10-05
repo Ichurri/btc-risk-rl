@@ -13,7 +13,10 @@ no modifica el aprendizaje.
 
 El objetivo es describir la evolución del error de valor sobre A y D en el
 histórico de entrenamiento, con criterios técnicos conjuntos ya fijados para
-P2. D no es un período temporalmente separado: rutas y transiciones pueden
+P2. Para que las razones de la regla conjunta sean informativas, se exige
+`Z>10⁻¹²` **por separado** en D temprana, D tardía y A tardía, tras agregar
+cada ventana; un estabilizador numérico no sustituye ninguna de las tres
+puertas. D no es un período temporalmente separado: rutas y transiciones pueden
 solaparse con aprendizaje. Ni un resultado favorable ni la supervivencia del
 supervisor demostrarían generalización, rentabilidad, cumplimiento
 poblacional de CVaR o validez confirmatoria. La v2 mantiene las fronteras

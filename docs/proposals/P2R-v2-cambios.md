@@ -17,7 +17,13 @@ el diseño científico heredado de P2.
 | Checkpoint previo | V1 ordenaba conservar evidencia y prohibía reintentos | Q0 interrumpida carecía de checkpoint previo. El test sintético de unidad 1 conserva una unidad aceptada, pero falta auditoría explícita de huella antes/después bajo señal real en Q/A/B+D |
 | Apagado | V1 distinguía servicio independiente de garantía energética | P2 se apagó, iniciador desconocido. Ninguna sonda P2R reprodujo apagado físico ni garantiza continuidad ante él; al detectar `running` huérfano, el protocolo lo clasifica como fallo |
 | Presupuesto y datos | V1: 10800 s/día, tres días, train-only y d común | Sin cambios; se ordenan reglas de admisión, débitos externos, topes, reserva, saldos y brechas de permiso/huellas para futuro ejecutor |
-| Evaluación | V1 conservaba criterios P2 sobre D y advertía que no eran confirmatorios | Sin cambios; se incluyen ecuaciones, denominadores y condición conjunta de 2/3 semillas por cada condición en la v2 |
+| Evaluación | V1 conservaba criterios P2 sobre D y advertía que no eran confirmatorios | Sin cambio de umbrales; se incluyen ecuaciones, denominadores, las tres comprobaciones separadas de Z y la condición conjunta de 2/3 semillas por condición |
+
+La precisión previa a la adopción explicita que la condición `Z>10⁻¹²` se
+comprueba en **tres agregados distintos**: D temprana, D tardía y A tardía.
+No cambia el umbral ni la regla de 2/3 semillas; impide declarar éxito si la
+razón de cualquiera de las ventanas utilizadas depende solo del
+estabilizador numérico.
 
 La evidencia de 01–05 sigue en sus informes y manifiestos; la v2 cita sus
 resultados sin reescribir ledgers, journals o artefactos. Las frases antiguas

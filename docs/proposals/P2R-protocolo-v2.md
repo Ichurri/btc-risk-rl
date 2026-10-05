@@ -189,7 +189,11 @@ Para X=A o D y cada versión del crítico, con 64 trayectorias de 180 pasos:
 
 `Z` es segundo momento, no varianza. Agregar primero SSE, G² y conteos de
 las ventanas temprana k={0,1,2} y tardía k={7,8,9}; **no** promediar razones.
-Si `Z≤10⁻¹²`, registrar números pero clasificar la razón como no informativa.
+Cada `Z` pertenece a un lote y una ventana: `Z_D,temprana`, `Z_D,tardía` y
+`Z_A,tardía` son tres denominadores distintos de la regla conjunta. Si alguno
+es `≤10⁻¹²`, registrar sus números pero clasificar la razón correspondiente
+como no informativa; el estabilizador `10⁻¹²` no convierte esa ventana en
+elegible.
 Publicar pre/post en A y D, tercios del horizonte, solapamiento y métricas
 de eta, multiplicador, shortfalls A, gradiente de riesgo y auditorías B.
 Una violación B no implica activación del gradiente de riesgo en A. Publicar
@@ -199,11 +203,14 @@ completa), no conteos brutos. Una advertencia desfavorable no cambia
 hiperparámetros ni detiene selectivamente una corrida.
 
 Solo con **nueve corridas K10 íntegras y sin fallos**, en al menos dos de
-tres semillas de **cada** condición deben cumplirse juntas:
-`Z>10⁻¹²`, `R_D,post,tardía≤1`,
+tres semillas de **cada** condición deben cumplirse juntas las tres puertas
+`Z_D,temprana>10⁻¹²`, `Z_D,tardía>10⁻¹²` y
+`Z_A,tardía>10⁻¹²`, más `R_D,post,tardía≤1`,
 `R_D,post,tardía≤0.8·R_D,post,temprana`,
 `|sesgo_normalizado_D,post,tardía|≤0.25` y
-`R_D,post,tardía−R_A,post,tardía≤0.5`. La semilla/condición es la unidad
+`R_D,post,tardía−R_A,post,tardía≤0.5`. Las tres puertas se evalúan por
+separado para cada semilla/condición; no se sustituye una con otra ni se
+promedia `Z` entre A y D. La semilla/condición es la unidad
 de resumen; tres condiciones de una misma semilla no son réplicas
 independientes. Si las nueve cierran pero no se cumple la regla conjunta,
 resultado `review`; si falta una o la integridad falla, `not_evaluable`.
