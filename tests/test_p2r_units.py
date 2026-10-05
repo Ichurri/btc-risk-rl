@@ -4,6 +4,7 @@ import json
 import os
 import signal
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -172,3 +173,51 @@ def test_corrupt_preceding_checkpoint_fails_without_selective_replay(tmp_path):
     assert not (root / "run-00-C5" / "checkpoint-1").exists()
     with pytest.raises(ValueError, match="failed/incomplete"):
         run(root, power)
+
+
+def test_default_heartbeat_is_recorded_within_five_seconds(tmp_path):
+    power = fixture_power(tmp_path)
+    root = tmp_path / "artifacts" / "p2r-synthetic-heartbeat-clock"
+    result = run_synthetic_units(
+        root, Path("configs/initial.toml"), settings(), "C5", max_units=1,
+        power_root=power, memory_available=4 * 1024**3,
+        disk_free=10 * 1024**3, fixture_window=True,
+        synthetic_hold_seconds=12,
+    )
+    assert result["status"] == "ready" and len(result["units"]) == 1
+    rows = [json.loads(line) for line in (root / "supervisor.jsonl").read_text().splitlines()]
+    heartbeats = [datetime.fromisoformat(row["utc"]) for row in rows
+                  if row["event"] == "heartbeat"]
+    gaps = [(later - earlier).total_seconds()
+            for earlier, later in zip(heartbeats, heartbeats[1:])]
+    assert len(gaps) >= 2
+    assert max(gaps) <= 5.0, gaps
+
+
+def test_late_recorded_heartbeat_invalidates_synthetic_unit(tmp_path, monkeypatch):
+    import btc_risk_rl.pilots.supervisor as supervision
+
+    power = fixture_power(tmp_path)
+    root = tmp_path / "artifacts" / "p2r-synthetic-heartbeat-late"
+    actual_sleep = supervision.time.sleep
+    delayed = False
+
+    def delayed_first_poll(seconds):
+        nonlocal delayed
+        if not delayed:
+            delayed = True
+            return actual_sleep(5.2)
+        return actual_sleep(seconds)
+
+    monkeypatch.setattr(supervision.time, "sleep", delayed_first_poll)
+    with pytest.raises(ValueError, match="heartbeat interval"):
+        run_synthetic_units(
+            root, Path("configs/initial.toml"), settings(), "C5", max_units=1,
+            power_root=power, memory_available=4 * 1024**3,
+            disk_free=10 * 1024**3, fixture_window=True,
+            synthetic_hold_seconds=12,
+        )
+    ledger = json.loads((root / "ledger.jsonl").read_text().splitlines()[-1])
+    assert ledger["status"] == "failed" and not ledger["units"]
+    assert "heartbeat interval" in ledger["failure"]["error"]
+    assert not (root / "run-00-C5" / "checkpoint-0").exists()

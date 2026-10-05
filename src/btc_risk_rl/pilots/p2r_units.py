@@ -207,11 +207,13 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                     phase[0] = "unit"
                     journal.record("unit_started", phase="Q0" if unit == 0 else "Q/A/B+D",
                                    run_id=run_id, unit=unit, counters={}, pid_worker=None)
-                    last_heartbeat = [0.0]
+                    last_heartbeat = [None]
                     availability_lost = [None]
 
                     def tick(pid, elapsed, peak):
-                        if time.monotonic() - last_heartbeat[0] < heartbeat_seconds:
+                        if (last_heartbeat[0] is not None
+                                and time.monotonic() - last_heartbeat[0]
+                                < min(heartbeat_seconds, 4.0)):
                             return
                         worker_phase, counters = read_worker_progress(work, unit,
                                                                        allow_previous=True)
@@ -234,7 +236,14 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                                        cgroup=_cgroup(pid), rss_worker=peak,
                                        rss_supervisor=rss_bytes(os.getpid()),
                                        power=power)
-                        last_heartbeat[0] = time.monotonic()
+                        recorded = journal.last["monotonic"]
+                        if last_heartbeat[0] is not None:
+                            observed = recorded - last_heartbeat[0]
+                            if not 0 <= observed <= 5.0:
+                                raise ValueError(
+                                    f"P2R heartbeat interval exceeded five seconds: {observed:.6f}"
+                                )
+                        last_heartbeat[0] = recorded
 
                     cap = min(CAPS[kind], ledger.day["work_deadline"] - time.time())
                     result = supervise(

@@ -141,6 +141,23 @@ def test_journal_chain_and_recovery(tmp_path):
         P2RJournal(path, campaign="fixture")
 
 
+def test_fixture_default_heartbeat_has_recorded_margin(tmp_path):
+    artifacts = tmp_path / "artifacts"
+    root = artifacts / "p2r-heartbeat-fixture-clock"
+    state = run_fixture_unit(
+        root, [sys.executable, "-c", "import time; time.sleep(11)"],
+        artifacts=artifacts, fixture_window=True,
+    )
+    assert state["status"] == "completed"
+    rows = [json.loads(line) for line in (root / "supervisor.jsonl").read_text().splitlines()]
+    stamps = [datetime.fromisoformat(row["utc"]) for row in rows
+              if row["event"] == "heartbeat"]
+    gaps = [(later - earlier).total_seconds()
+            for earlier, later in zip(stamps, stamps[1:])]
+    assert len(gaps) >= 2
+    assert max(gaps) <= 5.0, gaps
+
+
 def test_progress_markers_report_partial_not_complete(tmp_path):
     assert read_worker_progress(tmp_path, 0) == ("Q0", {})
     (tmp_path / "progress.json").write_text(json.dumps({
