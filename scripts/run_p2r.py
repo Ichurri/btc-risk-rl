@@ -45,6 +45,8 @@ def main():
                                      require_service=True,
                                      synthetic_hold_seconds=args.hold_seconds)
     print(json.dumps(dict(status=result["status"], units=len(result["units"]))))
+    if result["status"] == "failed":
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

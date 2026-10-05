@@ -1,5 +1,6 @@
 """P2R Q0/Q-A-B-D integration uses fabricated SyntheticMarket routes only."""
 
+import importlib.util
 import json
 import os
 import signal
@@ -151,6 +152,23 @@ def test_market_profile_still_rejected_before_output(tmp_path):
     result = __import__("subprocess").run(command, text=True, capture_output=True)
     assert result.returncode != 0 and "NOT AUTHORIZED" in result.stderr
     assert not out.exists()
+
+
+def test_cli_exits_nonzero_when_synthetic_unit_failed(tmp_path, monkeypatch, capsys):
+    import btc_risk_rl.pilots.p2r_units as units
+
+    spec = importlib.util.spec_from_file_location("run_p2r", Path("scripts/run_p2r.py"))
+    run_p2r = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(run_p2r)
+    monkeypatch.setattr(units, "run_synthetic_units",
+                        lambda *args, **kwargs: {"status": "failed", "units": []})
+    monkeypatch.setattr(sys, "argv", ["run_p2r.py", "--profile", "synthetic",
+                                     "--mode", "algorithm", "--output",
+                                     str(tmp_path / "p2r-synthetic-cli-failed")])
+    with pytest.raises(SystemExit) as exit_info:
+        run_p2r.main()
+    assert exit_info.value.code == 1
+    assert json.loads(capsys.readouterr().out) == {"status": "failed", "units": 0}
 
 
 def test_previous_progress_is_not_misreported_as_new_unit(tmp_path):
