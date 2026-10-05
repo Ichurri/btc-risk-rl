@@ -1,6 +1,13 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2R desde `e1e98dd`: autorizado conectar y verificar **solo con datos
+  sintéticos** Q0 y Q/A/B+D, contadores reales, checkpoints completos y
+  fallo irreversible dentro de unidad. Rama `codex/p2r-unit-integration`.
+  `scripts/run_p2r.py --mode algorithm` acepta únicamente perfil sintético;
+  P2R histórico no tiene permiso ni entrada de campaña. No entrenar con mercado,
+  acceder a validación/final, alterar P0/P1/P2 o cambiar configuración del
+  sistema. Ver el nuevo informe P2R y el procedimiento de revisión del host.
 - P2R: el usuario autorizó desde `d7f253b` **solo infraestructura y pruebas
   sintéticas** de supervisor, journal, guardas, presupuesto e interrupciones.
   Rama `codex/p2r-infrastructure`. La propuesta P2R v1 sigue sin autorización

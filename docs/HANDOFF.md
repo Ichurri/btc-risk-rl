@@ -1,4 +1,32 @@
-# Estado vigente — infraestructura P2R sintética; mercado bloqueado
+# Estado vigente — P2R Q0/Q/A/B+D integrado solo en sintético
+
+Base `e1e98dd`; rama `codex/p2r-unit-integration`. La autorización actual
+integra el supervisor independiente con el worker sintético existente de P2:
+Q0 y Q/A/B+D, contadores de trayectorias/transiciones/actualizaciones,
+checkpoints `after_q0` y `after_dual_and_D`, reanudación desde frontera
+completa y fallo permanente si se interrumpe una unidad. La CLI mantiene un
+rechazo temprano del perfil histórico. No hay permiso P2R de mercado ni se
+generaron trayectorias del histórico. P0/P1 y el ledger/unidad parcial de P2
+permanecen intactos. La eliminación local previa de `.python-version` se
+conserva fuera de los commits.
+
+Ver [informe de integración](hitos/P2R-unidades-sinteticas.md),
+[comprobaciones](evidence/p2r-unit-integration/COMMANDS.md) y
+[procedimiento separado para el host](protocols/P2R-host-preflight-review.md).
+La prueba automatizada de señal **no equivale** a logout completo; el último
+estado documentado fue `Linger=no`, y la lectura actual de `loginctl` quedó
+bloqueada por el entorno de herramientas. No se modificó systemd ni se
+rebajaron umbrales.
+
+**Siguiente tarea:** revisar las evidencias y verificar por separado
+`Linger=yes`, logout completo y recursos reales aptos. Una futura campaña
+histórica requeriría autorización específica, permiso y ejecutor train-only
+separados, huellas congeladas y nuevo preflight. No reanudar P2 ni iniciar P2R
+histórico, validación o final. No modificar la tesis.
+
+---
+
+# Estado anterior — infraestructura P2R sintética; mercado bloqueado
 
 Base `d7f253b`; rama `codex/p2r-infrastructure`. El usuario autorizó
 implementar y verificar **solo infraestructura sintética** de P2R. El servicio
