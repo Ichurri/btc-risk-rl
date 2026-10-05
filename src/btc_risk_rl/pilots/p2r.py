@@ -191,7 +191,8 @@ class P2RJournal:
         row = dict(campaign=self.campaign, event=event, previous=self.previous,
                    utc=utc(current), monotonic=time.monotonic(),
                    day=datetime.fromtimestamp(current, LA_PAZ).date().isoformat(),
-                   pid=os.getpid(), **fields)
+                   pid=os.getpid(), invocation_id=os.environ.get("INVOCATION_ID"),
+                   **fields)
         digest = hashlib.sha256(json.dumps(row, sort_keys=True, allow_nan=False).encode()).hexdigest()
         row["sha256"] = digest
         self.path.parent.mkdir(parents=True, exist_ok=True)

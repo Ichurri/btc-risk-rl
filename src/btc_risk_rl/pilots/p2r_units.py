@@ -46,6 +46,18 @@ def _expected(settings, unit):
     )
 
 
+def synthetic_worker_command(request_path, hold_seconds=0):
+    """Build a synthetic-only command; the bounded hold stays under supervise."""
+    if type(hold_seconds) is not int or not 0 <= hold_seconds <= 900:
+        raise ValueError("Invalid synthetic hold seconds")
+    request_path = Path(request_path)
+    if hold_seconds:
+        return [sys.executable, "-m", "btc_risk_rl.pilots.p2r_hold",
+                str(hold_seconds), str(request_path)]
+    return [sys.executable, "-m", "btc_risk_rl.pilots.p2_runner",
+            "--synthetic-request", str(request_path)]
+
+
 def _verify_completion(work, unit, settings, condition, run_id, result, expected_provenance):
     payload_path = work / f"unit-{unit}.json"
     payload = json.loads(payload_path.read_text())
@@ -76,7 +88,7 @@ def _verify_completion(work, unit, settings, condition, run_id, result, expected
 def run_synthetic_units(root, config_path, settings, condition, *, max_units=None,
                         power_root=None, memory_available=None, disk_free=None,
                         fixture_window=False, heartbeat_seconds=5.0,
-                        require_service=False):
+                        require_service=False, synthetic_hold_seconds=0):
     """Run at most ``max_units`` complete synthetic units; never load market data.
 
     ``fixture_window`` and injected sensor readings are test-only. Neither can
@@ -89,6 +101,8 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
         raise ValueError("Invalid synthetic unit limit")
     if not 0 < heartbeat_seconds <= 5:
         raise ValueError("P2R heartbeat must be at most five seconds")
+    if type(synthetic_hold_seconds) is not int or not 0 <= synthetic_hold_seconds <= 900:
+        raise ValueError("Invalid synthetic hold seconds")
     if require_service:
         check_service_context(require_linger=False)
     root = Path(root).resolve()
@@ -105,6 +119,7 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
         code=stable_provenance,
         settings=asdict(settings),
         condition=condition,
+        synthetic_hold_seconds=synthetic_hold_seconds,
         runner_sha256=file_hash(Path(__file__)),
     )
     entered = time.time()
@@ -223,8 +238,7 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
 
                     cap = min(CAPS[kind], ledger.day["work_deadline"] - time.time())
                     result = supervise(
-                        [sys.executable, "-m", "btc_risk_rl.pilots.p2_runner",
-                         "--synthetic-request", str(request_path)],
+                        synthetic_worker_command(request_path, synthetic_hold_seconds),
                         output=work / f"worker-{unit}.log", seconds=cap,
                         rss_limit=10 * 1024**3, poll=min(.2, heartbeat_seconds),
                         env=dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",

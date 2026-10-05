@@ -146,7 +146,7 @@ def test_signal_inside_unit_fails_permanently(tmp_path, monkeypatch, interrupt_u
 def test_market_profile_still_rejected_before_output(tmp_path):
     out = tmp_path / "artifacts" / "p2r-market-forbidden"
     command = [sys.executable, "scripts/run_p2r.py", "--profile", "market",
-               "--mode", "algorithm", "--output", str(out)]
+               "--mode", "algorithm", "--hold-seconds", "900", "--output", str(out)]
     result = __import__("subprocess").run(command, text=True, capture_output=True)
     assert result.returncode != 0 and "NOT AUTHORIZED" in result.stderr
     assert not out.exists()

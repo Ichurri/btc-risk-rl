@@ -12,6 +12,8 @@ def main():
     parser.add_argument("--mode", choices=("fixture", "algorithm"), default="fixture")
     parser.add_argument("--output")
     parser.add_argument("--sleep-seconds", type=float, default=1.0)
+    parser.add_argument("--hold-seconds", type=int, default=0,
+                        help="0–900 seconds inside the supervised synthetic algorithm unit")
     parser.add_argument("--max-units", type=int)
     parser.add_argument("--fixture-window", action="store_true",
                         help="synthetic lifecycle test window only; never a market budget override")
@@ -22,6 +24,8 @@ def main():
         parser.error("Synthetic output required")
     root = Path(args.output).resolve()
     if args.mode == "fixture":
+        if args.hold_seconds:
+            parser.error("Hold is available only for the synthetic algorithm probe")
         if not 0 < args.sleep_seconds <= 60:
             parser.error("Synthetic sleep must be 0–60 seconds")
         from btc_risk_rl.pilots.p2r import run_fixture_unit
@@ -38,7 +42,8 @@ def main():
         result = run_synthetic_units(root, Path("configs/initial.toml"), settings,
                                      "C5", max_units=args.max_units,
                                      fixture_window=args.fixture_window,
-                                     require_service=True)
+                                     require_service=True,
+                                     synthetic_hold_seconds=args.hold_seconds)
     print(json.dumps(dict(status=result["status"], units=len(result["units"]))))
 
 
