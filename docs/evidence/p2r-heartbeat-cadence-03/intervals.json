@@ -1,0 +1,60 @@
+{
+  "all_intervals_within_five_seconds": true,
+  "boundary": "after_q0",
+  "first_heartbeat_utc": "2026-10-05T19:03:38.741432+00:00",
+  "heartbeat_count": 7,
+  "interval_count": 6,
+  "intervals": [
+    {
+      "from_utc": "2026-10-05T19:03:38.741432+00:00",
+      "monotonic_seconds": 4.127039520997641,
+      "to_utc": "2026-10-05T19:03:42.868460+00:00",
+      "utc_seconds": 4.127028,
+      "within_five_seconds": true
+    },
+    {
+      "from_utc": "2026-10-05T19:03:42.868460+00:00",
+      "monotonic_seconds": 4.131619824001973,
+      "to_utc": "2026-10-05T19:03:47.000082+00:00",
+      "utc_seconds": 4.131622,
+      "within_five_seconds": true
+    },
+    {
+      "from_utc": "2026-10-05T19:03:47.000082+00:00",
+      "monotonic_seconds": 4.131779498999094,
+      "to_utc": "2026-10-05T19:03:51.131868+00:00",
+      "utc_seconds": 4.131786,
+      "within_five_seconds": true
+    },
+    {
+      "from_utc": "2026-10-05T19:03:51.131868+00:00",
+      "monotonic_seconds": 4.136020900001313,
+      "to_utc": "2026-10-05T19:03:55.267899+00:00",
+      "utc_seconds": 4.136031,
+      "within_five_seconds": true
+    },
+    {
+      "from_utc": "2026-10-05T19:03:55.267899+00:00",
+      "monotonic_seconds": 4.140068348999193,
+      "to_utc": "2026-10-05T19:03:59.407945+00:00",
+      "utc_seconds": 4.140046,
+      "within_five_seconds": true
+    },
+    {
+      "from_utc": "2026-10-05T19:03:59.407945+00:00",
+      "monotonic_seconds": 4.143721708998783,
+      "to_utc": "2026-10-05T19:04:03.551684+00:00",
+      "utc_seconds": 4.143739,
+      "within_five_seconds": true
+    }
+  ],
+  "invocation_id": "0f328e5678ee4ab49ea8ded6f8c1c16b",
+  "last_heartbeat_to_unit_completed_seconds": 2.434755,
+  "ledger_status": "ready",
+  "max_monotonic_seconds": 4.143721708998783,
+  "max_utc_seconds": 4.143739,
+  "median_monotonic_seconds": 4.133900199500204,
+  "result": "success",
+  "unit_started_to_first_heartbeat_seconds": 0.010087,
+  "unit_started_utc": "2026-10-05T19:03:38.731345+00:00"
+}

@@ -1,4 +1,26 @@
-# Estado vigente — logout sintético Q0 02 aprobado; mercado P2R bloqueado
+# Estado vigente — cadencia P2R corregida y verificada solo en sintético
+
+Desde `76757ed`, `run_synthetic_units` solicita heartbeats con margen de
+4 s y rechaza una unidad si el intervalo **registrado** supera 5 s. La
+[sonda 03](hitos/P2R-cadencia-heartbeat-03.md), una única Q0 sintética breve
+bajo `systemd --user`, terminó `ready`, `Result=success` y checkpoint
+`after_q0` íntegro. Sus seis intervalos entre siete heartbeats fueron
+≤5 s (máximo 4.143739 s UTC). La prueba con sondeo tardío provocó ledger
+`failed`, sin checkpoint aceptado. Ruff pasó; 28 pruebas P2R y 266 pruebas
+totales pasaron. Las huellas de los artefactos 01/02 siguen intactas; la
+raíz 03 es nueva. El cambio de reloj no modifica algoritmo ni datos.
+
+**Siguiente tarea:** revisar el informe y decidir por separado la sonda de
+señal durante unidad, la adopción del protocolo P2R, el ejecutor histórico
+train-only, sus huellas/preflight y una autorización de mercado propia. La
+sonda 03 no demuestra cumplimiento temporal bajo cualquier carga, no
+autoriza P2R histórico ni reanudar P2. Validación y prueba final siguen
+bloqueadas. La eliminación local previa de `.python-version` permanece
+fuera de los commits.
+
+---
+
+# Estado anterior — logout sintético Q0 02 aprobado; mercado P2R bloqueado
 
 La [sonda 02](hitos/P2R-logout-Q0-02-cierre.md) del 05/10/2026 terminó
 `ready`, `Result=success` y checkpoint `after_q0` íntegro. Desde la retirada
