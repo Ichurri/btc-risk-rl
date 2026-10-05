@@ -1,8 +1,10 @@
 # P2R v2 — repetición íntegra y supervisada del diagnóstico P2
 
-**PROPUESTA PARA REVISIÓN ACADÉMICA, NO ADOPTADA. NO AUTORIZA IMPLEMENTAR
-EL EJECUTOR HISTÓRICO NI EJECUTAR P2R SOBRE MERCADO.** Revisión documental
-desde `af14af2`. Consolida [v1](P2R-protocolo-v1.md), su
+**ESTADO: ADOPTADO COMO PROTOCOLO METODOLÓGICO DE DIAGNÓSTICO DE DESARROLLO.
+NO AUTORIZA IMPLEMENTAR EL EJECUTOR HISTÓRICO NI EJECUTAR P2R SOBRE MERCADO.**
+Adopción registrada [por separado](../protocols/P2R-adopcion-metodologica-v2.md)
+tras la precisión de los tres `Z` en `36ed24d`. Consolida
+[v1](P2R-protocolo-v1.md), su
 [anexo de infraestructura](P2R-infraestructura-addendum-v1.md) y las sondas
 sintéticas 01–05. V1 y el anexo se conservan como antecedentes. La adopción
 de ADR-002 y la autorización consumida de P2 no constituyen permiso P2R.
@@ -27,11 +29,11 @@ seleccionaría supervivientes. Ambas alternativas se descartan para P2R.
 La pregunta técnica se mantiene: si, con el contrato aprobado de P2 y cuatro
 épocas **provisionales** del crítico, el error de valor evoluciona en A y en
 D nuevo dentro del histórico de entrenamiento. D comparte período de mercado
-y puede solaparse con A/Q/B; por tanto no es validación temporal. Esta
-propuesta no evalúa Sortino fuera de muestra, rentabilidad, cumplimiento
+y puede solaparse con A/Q/B; por tanto no es validación temporal. Este
+protocolo no evalúa Sortino fuera de muestra, rentabilidad, cumplimiento
 poblacional de CVaR ni eficacia confirmatoria.
 
-## 2. Matriz y contrato científico propuesto
+## 2. Matriz y contrato científico adoptado para diagnóstico
 
 | Bloque de semilla | Orden secuencial, sin concurrencia | Unidades por corrida |
 | --- | --- | --- |
@@ -82,11 +84,11 @@ denominadores; no se filtra D por solapamiento.
 
 ## 3. Decisiones, fundamento, evidencia y brecha
 
-«Adoptado» en ADR-002 y «aceptado para P2» describen antecedentes, **no**
-adopción de este protocolo P2R. «Verificado» aquí se limita al alcance
-indicado por la evidencia.
+«Adoptado» en ADR-002 y «aceptado para P2» describen antecedentes. La
+adopción metodológica P2R es independiente de ambos y **no** autoriza
+ejecución. «Verificado» aquí se limita al alcance indicado por la evidencia.
 
-| Decisión científica o regla de integridad propuesta | Fundamento | Implementación y verificación disponibles | Brecha antes de P2R histórico |
+| Decisión científica o regla de integridad adoptada | Fundamento | Implementación y verificación disponibles | Brecha antes de P2R histórico |
 | --- | --- | --- | --- |
 | Nueve corridas nuevas, tres semillas y orden rotado; separar absolutamente P2 | Evita completar selectivamente una campaña fallida y conserva el bloque semilla/condición | Diseño P2 aceptado; P2 fallido y parcial documentados y preservados | Permiso, raíz y ejecutor P2R propios; comprobar huellas P0/P1/P2 al ingreso |
 | C0/C5/C10 con mismo entorno, recompensa, H=180, gamma=1 y Q/A/B | Comparabilidad exigida por ADR-002; retorno completo de objetivo finito | ADR-002 adoptado; algoritmo P2 reutilizado por unidades sintéticas con equivalencia de estado | Verificar conexión histórica sin alterar Q/A/B |
@@ -218,12 +220,12 @@ Ningún checkpoint se selecciona por rendimiento. Estas tolerancias son
 criterios de ingeniería de desarrollo, no un contraste confirmatorio ni una
 garantía financiera o poblacional de CVaR.
 
-## 7. Brechas y decisión académica solicitada
+## 7. Brechas y autorizaciones pendientes
 
-Antes de considerar **por separado** una implementación histórica: revisar
-esta v2 y resolver si el conjunto de reglas conserva la pregunta técnica de
-P2. Si se adopta después, congelar versión/huellas y construir el ejecutor
-train-only con permiso específico inaccesible por simple edición de JSON o
+La revisión académica aceptó este diseño **solo para diagnóstico de
+desarrollo**. La adopción no habilita construir el ejecutor histórico. Antes
+de solicitar esa autorización separada, deberán congelarse versión/huellas y
+especificarse un ejecutor train-only con permiso inaccesible por simple edición de JSON o
 por el comando público. Verificar sintéticamente identidad, presupuesto,
 equivalencia Q/A/B+D, D sin mutación, ambas fronteras, rechazo de datos
 prohibidos, checkpoint previo ante fallo posterior, señal durante Q/A/B+D y
@@ -233,8 +235,7 @@ que un servicio resiste apagados; **tal afirmación está prohibida**. Si la
 política académica exigiera ensayarlo, necesitaría protocolo separado y
 aceptaría de antemano la pérdida de esa campaña sintética.
 
-Después, y solo con autorización humana nueva, registrar permiso en commit
-separado y decidir si puede iniciarse la primera unidad histórica. Esta v2
-no adopta valores automáticamente, no cambia código, no ejecuta campañas y
-no concede acceso a validación ni al conjunto final. La tesis permanece
-intacta.
+Después, y solo con autorización humana nueva, registrar permiso de campaña
+en commit separado y decidir si puede iniciarse la primera unidad histórica.
+La adopción metodológica no cambia código, no ejecuta campañas y no concede
+acceso a validación ni al conjunto final. La tesis permanece intacta.

@@ -1,9 +1,10 @@
 # P2R v2 — diferencias respecto de v1 y del anexo
 
-La [v2](P2R-protocolo-v2.md) **sustituye la lectura vigente** de la
+La [v2](P2R-protocolo-v2.md), ahora adoptada solo como protocolo de
+diagnóstico de desarrollo, **sustituye la lectura vigente** de la
 [propuesta v1](P2R-protocolo-v1.md) y su
-[anexo](P2R-infraestructura-addendum-v1.md) para revisión académica, sin
-borrar esos antecedentes ni adoptar el protocolo. No altera el algoritmo ni
+[anexo](P2R-infraestructura-addendum-v1.md) tras la revisión académica, sin
+borrar esos antecedentes. No altera el algoritmo ni
 el diseño científico heredado de P2.
 
 | Tema | Texto/estado anterior | Precisión v2 basada en evidencia |

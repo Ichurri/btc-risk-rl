@@ -1,4 +1,4 @@
-"""Read-only cross-checks for the P2R v2 academic proposal."""
+"""Read-only cross-checks for the adopted P2R v2 diagnostic protocol."""
 
 import hashlib
 import json
@@ -11,6 +11,7 @@ DOCUMENTS = (
     ROOT / "docs/proposals/P2R-protocolo-v2.md",
     ROOT / "docs/proposals/P2R-v2-resumen-academico.md",
     ROOT / "docs/proposals/P2R-v2-cambios.md",
+    ROOT / "docs/protocols/P2R-adopcion-metodologica-v2.md",
 )
 EXPECTED_HASHES = {
     "docs/proposals/P2R-protocolo-v1.md":
@@ -92,11 +93,26 @@ def main():
                        for label, path in manifests.items()}
     assert manifest_counts == {"02": 32, "03": 18, "04_05": 28}
 
+    proposal = DOCUMENTS[0].read_text()
+    adoption = DOCUMENTS[3].read_text()
+    gates = ("Z_D,temprana>10⁻¹²", "Z_D,tardía>10⁻¹²", "Z_A,tardía>10⁻¹²")
+    assert all(gate in proposal for gate in gates)
+    assert all(re.search(re.escape(gate.split(">", 1)[0]) + r"\s*>\s*10⁻¹²", adoption)
+               for gate in gates)
+    assert "NO AUTORIZA IMPLEMENTAR" in proposal
+    toy_targets = {"D_early": (0.02, -0.02), "D_late": (0.01, -0.01),
+                   "A_late": (0.0, 0.0)}
+    toy_z = {name: sum(value * value for value in targets) / len(targets)
+             for name, targets in toy_targets.items()}
+    toy_gates = {name: value > 1e-12 for name, value in toy_z.items()}
+    assert toy_gates == {"D_early": True, "D_late": True, "A_late": False}
+    assert not all(toy_gates.values())
+
     links = 0
     for index, document in enumerate(DOCUMENTS):
         text = document.read_text()
-        if index < 2:
-            assert "PROPUESTA PARA REVISIÓN" in text
+        if index in (0, 1, 3):
+            assert "ADOPTADO" in text
         for target in re.findall(r"\[[^]]+\]\(([^)]+)\)", text):
             if "://" in target:
                 continue
@@ -114,6 +130,9 @@ def main():
         "historical_and_source_hashes_checked": checked_hashes,
         "probe_manifest_files_checked": manifest_counts,
         "local_document_links_checked": links,
+        "distinct_z_gates_checked": len(gates),
+        "synthetic_three_z_gate_example": {"z": toy_z, "gates": toy_gates,
+                                           "jointly_eligible": all(toy_gates.values())},
     }
 
 

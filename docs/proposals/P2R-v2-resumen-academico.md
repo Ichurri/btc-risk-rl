@@ -1,7 +1,8 @@
-# Resumen académico — P2R v2 para revisión
+# Resumen académico — P2R v2 adoptado para diagnóstico de desarrollo
 
-**Estado: PROPUESTA PARA REVISIÓN, NO ADOPTADA.**
-[P2R v2](P2R-protocolo-v2.md) propone repetir desde cero las nueve corridas
+**Estado: ADOPTADO COMO PROTOCOLO METODOLÓGICO DE DIAGNÓSTICO DE DESARROLLO;
+EJECUTOR HISTÓRICO Y CAMPAÑA DE MERCADO NO AUTORIZADOS.**
+[P2R v2](P2R-protocolo-v2.md) fija repetir desde cero las nueve corridas
 del diseño P2: semillas 610031/610047/610081, condiciones C0/C5/C10 con
 orden rotado, K=10, Q0 y diez unidades Q/A/B+D por corrida. La campaña P2
 interrumpida por un apagado permanece separada y fallida; sus cinco corridas
@@ -36,9 +37,10 @@ con huellas de un checkpoint previo tras fallo de la unidad siguiente, ni
 continuidad ante apagado físico. Las pruebas automatizadas sintéticas cubren
 parte de esos estados, pero no una campaña histórica bajo el servicio.
 
-Antes de una eventual adopción se debe revisar el contrato científico y
-cerrar las brechas de infraestructura. Después harían falta un ejecutor
-histórico train-only, huellas congeladas, pruebas sintéticas de equivalencia
-y recuperación, preflight vivo y un permiso de campaña P2R nuevo y separado.
-Esta entrega es documental: no habilita ni ejecuta P2R sobre mercado,
+La revisión académica adoptó el contrato de diagnóstico, sin cerrar las
+brechas de infraestructura. Para un paso posterior harían falta autorización
+separada de un ejecutor histórico train-only, huellas congeladas, pruebas
+sintéticas de equivalencia y recuperación, preflight vivo y permiso de
+campaña P2R nuevo y separado. Esta entrega es documental: no habilita ni
+ejecuta P2R sobre mercado,
 validación 2023 o prueba final 2024–2025, y no modifica la tesis.

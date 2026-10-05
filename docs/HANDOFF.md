@@ -1,4 +1,28 @@
-# Estado vigente — P2R v2 propuesta, sin permiso histórico
+# Estado vigente — P2R v2 adoptado como diagnóstico de desarrollo
+
+La revisión académica adoptó metodológicamente P2R v2 tras la precisión
+registrada en `36ed24d`: `Z_D,temprana`, `Z_D,tardía` y `Z_A,tardía` deben
+superar `10⁻¹²` **cada uno** en la regla conjunta. El
+[registro de adopción](protocols/P2R-adopcion-metodologica-v2.md) delimita el
+alcance. Se conservan las nueve corridas nuevas, semillas y orden rotado,
+Q0/Q/A/B+D, fronteras, presupuesto global, datos solo de entrenamiento y
+separación absoluta de P2. Es diagnóstico de desarrollo, no evaluación
+confirmatoria.
+
+**No hay permiso para implementar el ejecutor histórico ni para lanzar P2R
+de mercado.** Validación y final continúan bloqueados. Siguen pendientes
+las comprobaciones de checkpoint previo ante fallo posterior, señal durante
+Q/A/B+D bajo systemd, identidad de datos/código/normalizador, preflight y
+permisos separados de implementación y campaña. Las sondas 01–05 y sus
+huellas permanecen intactas; `.python-version` sigue eliminado solo
+localmente, fuera del commit.
+
+**Siguiente tarea:** revisión de las brechas para una eventual autorización
+de implementación histórica, sin comenzar ese trabajo por esta adopción.
+
+---
+
+# Estado anterior — P2R v2 propuesta, sin permiso histórico
 
 Desde `af14af2` se consolidaron [P2R v1](proposals/P2R-protocolo-v1.md),
 su anexo y las sondas sintéticas 01–05 en la

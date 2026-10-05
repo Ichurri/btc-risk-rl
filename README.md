@@ -3,8 +3,9 @@
 **Estado vigente:** P2 histórico quedó interrumpido por un apagado del equipo;
 su ledger está `failed` y no se reanuda. El
 [diagnóstico](docs/hitos/P2-perdida-supervisor-diagnostico.md) y la
-[propuesta P2R v2, aún no adoptada ni autorizada](docs/proposals/P2R-protocolo-v2.md)
-están para revisión. P0/P1 están cerrados; validación y final siguen bloqueados. Consultar el
+[protocolo P2R v2 adoptado solo como diagnóstico de desarrollo](docs/protocols/P2R-adopcion-metodologica-v2.md)
+constan para revisión técnica; el ejecutor histórico y la campaña P2R no están
+autorizados. P0/P1 están cerrados; validación y final siguen bloqueados. Consultar el
 [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
