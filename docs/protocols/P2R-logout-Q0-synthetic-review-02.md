@@ -1,14 +1,15 @@
 # Propuesta de repetición 02: logout completo P2R (solo sintético)
 
-**PREPARADA, NO INICIADA.** La prueba 01 demostró Q0 tras logout, pero el host
-se suspendió antes del retorno. Esta repetición solo se considera después de
-la [corrección del host propuesta](../hitos/P2R-logout-Q0-diagnostico.md),
-revisión de sus registros y nueva comprobación de recursos. No se ha cambiado
-la configuración del sistema ni creado la unidad 02. Esta prueba usa una única
-Q0 sintética y deja un
-checkpoint `after_q0`. No usa histórico, validación ni conjunto final; no
-concede permiso de campaña P2R. La unidad propuesta es
-`p2r-logout-q0-review-02.service` y su raíz nueva sería
+**EJECUTADA EL 05/10/2026; NO REPETIR EN ESTA UNIDAD NI RAÍZ.** El
+[informe de cierre](../hitos/P2R-logout-Q0-02-cierre.md) registra el resultado,
+los límites y las huellas. Los bloques de abajo conservan el procedimiento
+original de la prueba 02; **no volver a ejecutarlos**. La prueba 01 había
+demostrado Q0 tras logout, pero el host se suspendió antes del retorno.
+Esta repetición siguió la
+[corrección del host propuesta](../hitos/P2R-logout-Q0-diagnostico.md) y usó
+una única Q0 sintética con checkpoint `after_q0`. No usó histórico,
+validación ni conjunto final y no concede permiso de campaña P2R. La unidad fue
+`p2r-logout-q0-review-02.service` y su raíz fue
 `artifacts/p2r-synthetic-logout-q0-review-02`. La espera de 900 segundos
 ocurre **dentro del child supervisado**, antes de ejecutar el worker sintético
 en el mismo PID. El supervisor y sus heartbeats permanecen activos durante

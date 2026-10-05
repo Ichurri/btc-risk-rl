@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Logout Q0 sintético 02 del 05/10/2026: `ready`, checkpoint `after_q0`
+  íntegro, `Result=success`, 139 heartbeats sin sesión interactiva y ningún
+  evento de suspensión durante 3260.921214 s hasta el reingreso. **Cierra
+  solo la sonda sintética de logout**, no habilita P2R histórico. Los 174
+  intervalos entre heartbeats superaron 5 s, por lo que esa cadencia del
+  protocolo queda pendiente de corregir y verificar antes de mercado.
+  Conservar intactas raíces/journals 01 y 02. Ver
+  `docs/hitos/P2R-logout-Q0-02-cierre.md`.
 - Logout Q0 sintético del 05/10/2026: la unidad 01 llegó a `ready`,
   `after_q0` y `Result=success` sin sesión interactiva, pero el host se
   suspendió entre Q0 y el reingreso; por tanto **falló la condición sin

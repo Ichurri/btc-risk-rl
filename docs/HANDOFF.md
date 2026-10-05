@@ -1,4 +1,31 @@
-# Estado vigente — logout sintético Q0: continuidad comprobada, suspensión detectada
+# Estado vigente — logout sintético Q0 02 aprobado; mercado P2R bloqueado
+
+La [sonda 02](hitos/P2R-logout-Q0-02-cierre.md) del 05/10/2026 terminó
+`ready`, `Result=success` y checkpoint `after_q0` íntegro. Desde la retirada
+de la sesión interactiva 40 (15:57:37.582970 UTC) hasta el ingreso de la 54
+(16:51:58.504184 UTC) hubo 139 heartbeats P2R del mismo `InvocationID`
+durante Q0 y **cero eventos de suspensión** en el journal de logind. Las
+raíces originales 01 y 02 permanecen intactas; sus hashes están versionados
+en los respectivos informes. El supervisor terminó antes del reingreso, por
+lo que los heartbeats no cubren todo el intervalo; la ausencia de suspensión
+se establece por logind.
+
+**Límite pendiente:** todos los 174 intervalos entre heartbeats de Q0 02
+superaron el tope ≤5 s de P2R (máximo 5.212391 s). Hay que corregir y
+verificar esa cadencia sintéticamente. También faltan una prueba separada de
+señal durante unidad, revisión/adopción del protocolo P2R, ejecutor histórico
+train-only, huellas y preflight completos, y autorización de mercado propia.
+La prueba sintética **no autoriza** campaña P2R ni reanudar P2. No usar
+validación/final. La eliminación local previa de `.python-version` continúa
+fuera de los commits.
+
+**Siguiente tarea:** revisar el [informe de cierre](hitos/P2R-logout-Q0-02-cierre.md)
+y decidir los trabajos de infraestructura pendientes. No lanzar otra sonda
+ni entrenamiento por este cierre documental.
+
+---
+
+# Estado anterior — logout sintético Q0: continuidad comprobada, suspensión detectada
 
 El 05/10/2026, `p2r-logout-q0-review-01.service` terminó Q0 sintética
 `ready`, con checkpoint `after_q0` y `Result=success` después de retirar la
