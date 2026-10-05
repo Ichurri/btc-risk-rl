@@ -1,4 +1,27 @@
-# Estado vigente — cadencia P2R corregida y verificada solo en sintético
+# Estado vigente — señal durante Q0 P2R sintética verificada
+
+En `codex/p2r-unit-integration`, las sondas nuevas 04/05 enviaron SIGTERM
+al proceso principal durante una Q0 sintética activa. El ledger quedó
+`failed` por `interrupted_supervisor_or_unit`, con cero unidades y cero
+checkpoints aceptados. La sonda 04 descubrió que la CLI terminaba con código
+0 pese al fallo; `08c0fda` corrigió esa salida y la repetición acotada 05
+terminó `Result=exit-code`, estado 1. El
+[informe](hitos/P2R-signal-Q0-sintetica.md) y las
+[evidencias](evidence/p2r-signal-q0/results.json) distinguen las dos
+ejecuciones y conservan las raíces 01–05 intactas. La suite dio 267 pruebas
+pasadas y Ruff pasó; hashes 01–03 revalidados. La eliminación local previa
+de `.python-version` no se versionó.
+
+**Siguiente tarea:** revisión metodológica del protocolo P2R y de los
+requisitos para un ejecutor histórico train-only, sus huellas, guardas y
+permiso explícito de campaña. Esta sonda no habilita P2R histórico ni la
+reanudación de P2. No se accedió a validación ni prueba final. La señal
+durante Q0 no demuestra conservación de un checkpoint anterior ni reacción
+ante apagado físico.
+
+---
+
+# Estado anterior — cadencia P2R corregida y verificada solo en sintético
 
 Desde `76757ed`, `run_synthetic_units` solicita heartbeats con margen de
 4 s y rechaza una unidad si el intervalo **registrado** supera 5 s. La

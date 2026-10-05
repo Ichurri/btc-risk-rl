@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Sonda de señal P2R Q0 **solo sintética** 04/05: SIGTERM al proceso
+  principal durante Q0 produjo ledger `failed`, cero unidades/checkpoints
+  aceptados y fallo irreversible. La sonda 04 reveló que la CLI devolvía 0;
+  `08c0fda` lo corrigió y la repetición 05 dio `Result=exit-code`, estado 1.
+  Preservar las cuatro raíces originales 04/05 y las sondas 01–03. Ver
+  `docs/hitos/P2R-signal-Q0-sintetica.md`. No hay autorización de P2R
+  histórico, validación ni final; la sonda no prueba una interrupción del host
+  ni conservación de un checkpoint previo en una unidad posterior.
 - Cadencia P2R sintética 03 desde `76757ed`: se corrigió el reloj de
   `run_synthetic_units` para solicitar heartbeats con margen de 4 s y
   rechazar intervalos registrados >5 s. Una sola Q0 sintética breve bajo
