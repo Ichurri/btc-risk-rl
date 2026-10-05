@@ -1,6 +1,12 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2R v2 desde `af14af2`: consolidación **documental para revisión**, no
+  adopción ni permiso de ejecutor/mercado. Conserva v1, anexo, P2 fallido y
+  sondas 01–05. El estado actualizado de `Linger`, logout, heartbeat y señal
+  está en `docs/proposals/P2R-protocolo-v2.md`; los párrafos cronológicos de
+  abajo describen su momento y no revocan esta lectura. No ejecutar unidades
+  ni entrenamientos por esta revisión.
 - Sonda de señal P2R Q0 **solo sintética** 04/05: SIGTERM al proceso
   principal durante Q0 produjo ledger `failed`, cero unidades/checkpoints
   aceptados y fallo irreversible. La sonda 04 reveló que la CLI devolvía 0;

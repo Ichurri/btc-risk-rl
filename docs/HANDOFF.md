@@ -1,4 +1,32 @@
-# Estado vigente — señal durante Q0 P2R sintética verificada
+# Estado vigente — P2R v2 propuesta, sin permiso histórico
+
+Desde `af14af2` se consolidaron [P2R v1](proposals/P2R-protocolo-v1.md),
+su anexo y las sondas sintéticas 01–05 en la
+[propuesta P2R v2](proposals/P2R-protocolo-v2.md),
+**PROPUESTA PARA REVISIÓN, NO ADOPTADA**. Se conservaron v1, anexo y
+artefactos originales. La [síntesis académica](proposals/P2R-v2-resumen-academico.md)
+y las [diferencias](proposals/P2R-v2-cambios.md) separan lo verificado de lo
+pendiente. No se ejecutaron unidades ni entrenamientos en este hito.
+
+La repetición propuesta mantiene nueve corridas nuevas, semillas
+610031/610047/610081, C0/C5/C10, Q0 y Q/A/B+D, ambas fronteras, 3 h
+globales/día hasta tres días y solo entrenamiento H1. P2 sigue `failed` y
+absolutamente separado. La prueba 02 observó `Linger=yes` y Q0 tras logout
+completo sin suspensión hasta el reingreso; 03 corrigió la cadencia y 04/05
+probaron SIGTERM en Q0. Faltan señal bajo systemd durante Q/A/B+D,
+conservación por huellas de un checkpoint previo ante fallo posterior,
+ejecutor histórico train-only, permiso propio y preflight de campaña. Un
+servicio de usuario no resiste un apagado físico.
+
+**Siguiente tarea:** revisión académica de la v2. Solo después de una
+decisión expresa correspondería definir implementación histórica y
+autorización de ejecución **separadas**. No usar validación ni prueba final;
+no reanudar P2. La eliminación local previa de `.python-version` continúa
+fuera de los commits.
+
+---
+
+# Estado anterior — señal durante Q0 P2R sintética verificada
 
 En `codex/p2r-unit-integration`, las sondas nuevas 04/05 enviaron SIGTERM
 al proceso principal durante una Q0 sintética activa. El ledger quedó

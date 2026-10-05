@@ -1,0 +1,17 @@
+{
+  "actor_steps": 720,
+  "critic_steps": 1440,
+  "diagnostic_trajectories": 5760,
+  "diagnostic_transitions": 1036800,
+  "historical_and_source_hashes_checked": 10,
+  "kind": "documentary_static_check_no_units_or_market_data",
+  "learning_trajectories": 81360,
+  "learning_transitions": 14644800,
+  "local_document_links_checked": 8,
+  "probe_manifest_files_checked": {
+    "02": 32,
+    "03": 18,
+    "04_05": 28
+  },
+  "runs": 9
+}

@@ -3,7 +3,7 @@
 **Estado vigente:** P2 histórico quedó interrumpido por un apagado del equipo;
 su ledger está `failed` y no se reanuda. El
 [diagnóstico](docs/hitos/P2-perdida-supervisor-diagnostico.md) y la
-[propuesta P2R, aún no autorizada](docs/proposals/P2R-protocolo-v1.md)
+[propuesta P2R v2, aún no adoptada ni autorizada](docs/proposals/P2R-protocolo-v2.md)
 están para revisión. P0/P1 están cerrados; validación y final siguen bloqueados. Consultar el
 [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
