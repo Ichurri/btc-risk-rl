@@ -209,7 +209,7 @@ class P2RJournal:
         self.previous, self.last = digest, row
 
 
-def read_worker_progress(root, unit):
+def read_worker_progress(root, unit, *, allow_previous=False):
     """Use existing P2 progress/phase markers without inventing completed counts."""
     root = Path(root)
     progress, phase = root / "progress.json", root / f"phase-{unit}.json"
@@ -217,6 +217,9 @@ def read_worker_progress(root, unit):
     label = "Q0" if unit == 0 else "unknown"
     if progress.exists():
         row = json.loads(progress.read_text())
+        if (allow_previous and row.get("unit") == unit - 1
+                and isinstance(row.get("counters"), dict)):
+            return label, counters
         if row.get("unit") != unit or not isinstance(row.get("counters"), dict):
             raise ValueError("Invalid worker progress marker")
         counters = row["counters"]
