@@ -1,4 +1,29 @@
-# Estado vigente — P2R Q0/Q/A/B+D integrado solo en sintético
+# Estado vigente — prueba de logout P2R preparada, no iniciada
+
+En `codex/p2r-unit-integration` quedó preparado el
+[procedimiento exacto](protocols/P2R-logout-Q0-synthetic-review.md) para una
+unidad `systemd --user` exclusivamente sintética. Una espera acotada de 900 s
+dentro del child supervisado deja tiempo para logout y reingreso; después
+Q0 produce un checkpoint `after_q0`. La unidad **no se lanzó** y nadie cerró
+la sesión. `InvocationID` aún no existe: se captura inmediatamente después
+del lanzamiento manual y antes de salir. El journal P2R incluirá ese ID.
+
+El usuario informó `Linger=yes` y gestor `running`. La última lectura de
+solo recursos dio `MemAvailable=3981492224` bytes, por debajo de 4 GiB;
+la guarda bloqueó el preflight. No se bajaron umbrales ni se alteró systemd.
+Repetir el preflight al decidir la prueba. No hay permiso histórico P2R;
+P0/P1 y la campaña fallida P2 siguen intactos. La eliminación local previa
+de `.python-version` permanece fuera de los commits.
+
+**Siguiente tarea:** cuando el host cumpla recursos, ejecutar manualmente
+las secciones A y B del procedimiento, cerrar todas las sesiones y luego
+seguir C. Si no se identifica un intervalo sin sesiones con heartbeats de la
+misma invocation, declarar logout no verificado. No lanzar P2R histórico ni
+acceder a validación/final.
+
+---
+
+# Estado anterior — P2R Q0/Q/A/B+D integrado solo en sintético
 
 Base `e1e98dd`; rama `codex/p2r-unit-integration`. La autorización actual
 integra el supervisor independiente con el worker sintético existente de P2:

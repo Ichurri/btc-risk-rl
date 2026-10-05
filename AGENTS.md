@@ -1,6 +1,13 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- En `codex/p2r-unit-integration` se preparó una prueba de logout completo
+  **solo sintética**: unidad `p2r-logout-q0-review-01.service`, espera de
+  900 s dentro del child supervisado y Q0 con checkpoint `after_q0`. Está
+  documentada, **NO INICIADA**. El usuario informó `Linger=yes` y gestor
+  `running`, pendientes de registrar de nuevo al lanzamiento. La última
+  lectura local de `MemAvailable` quedó bajo 4 GiB y bloqueó el preflight;
+  no reducir umbrales. Ver `docs/protocols/P2R-logout-Q0-synthetic-review.md`.
 - P2R desde `e1e98dd`: autorizado conectar y verificar **solo con datos
   sintéticos** Q0 y Q/A/B+D, contadores reales, checkpoints completos y
   fallo irreversible dentro de unidad. Rama `codex/p2r-unit-integration`.
