@@ -27,10 +27,14 @@ posible registrar un `InvocationID` real de una unidad que aún no existe.
   saldo global diario apto. La admisión exige 1800 s para Q0 más 1800 s de
   reserva; el margen adicional cubre preparación y captura inicial. El
   ledger aplicará los débitos de otras campañas y puede rechazar la unidad.
-- Tener una forma de volver a entrar y de observar después el journal de
-  `systemd-logind`. El logout debe cerrar **todas** las sesiones interactivas
-  de este usuario; cerrar solo Codex o el terminal no prueba el requisito.
-  No apagar ni suspender el equipo.
+- Tener una forma de volver a entrar y acceso con `sudo` al journal de
+  `systemd-logind`. El logout debe cerrar **todas** las sesiones de
+  `ichurri` con `Class=user`. La sesión `Class=manager` puede permanecer por
+  `Linger=yes`: no es una sesión interactiva y no debe exigirse su retirada.
+  En la lectura previa del usuario, la sesión `2` era `Class=user` y la `3`
+  era `Class=manager`; los ID se registrarán de nuevo porque pueden cambiar.
+  Cerrar solo Codex o el terminal no prueba el requisito. No apagar ni
+  suspender el equipo.
 
 Lectura local de solo recursos el 05/10/2026 a las 14:13:17 UTC: AC=1,
 batería=98 %, disco libre=184778977280 bytes, pero
@@ -56,6 +60,10 @@ test ! -e "$record"
 test "$(loginctl show-user "$UID" -p Linger --value)" = yes
 test "$(systemctl --user is-system-running)" = running
 test "$(systemctl --user show "$unit" -p LoadState --value)" = not-found
+test "$(id -un)" = ichurri
+logind_probe=$(sudo journalctl -b -u systemd-logind -n 1 --utc \
+  --output=short-iso-precise --no-pager)
+printf '%s\n' "$logind_probe" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}T'
 "$repo/.venv/bin/python" -c 'from pathlib import Path; from btc_risk_rl.pilots.p2r import check_resources; print(check_resources(stage="preflight", disk_path=Path("artifacts")))'
 "$repo/.venv/bin/python" - <<'PY'
 from datetime import datetime, timedelta
@@ -68,6 +76,22 @@ if remaining < 3900:
     raise SystemExit("Less than the 65-minute preparation window")
 PY
 mkdir -m 700 "$record"
+printf '%s\n' "$logind_probe" > "$record/logind-access-before.txt"
+loginctl list-sessions --no-legend | tee "$record/sessions-before.txt"
+: > "$record/interactive-sessions-before.txt"
+: > "$record/manager-sessions-before.txt"
+while read -r sid _; do
+  test -n "$sid" || continue
+  name=$(loginctl show-session "$sid" -p Name --value)
+  class=$(loginctl show-session "$sid" -p Class --value)
+  test "$name" = ichurri || continue
+  case "$class" in
+    user) printf '%s\n' "$sid" >> "$record/interactive-sessions-before.txt" ;;
+    manager) printf '%s\n' "$sid" >> "$record/manager-sessions-before.txt" ;;
+    *) printf 'Unknown session class %s for %s\n' "$class" "$sid" >&2; exit 1 ;;
+  esac
+done < "$record/sessions-before.txt"
+test -s "$record/interactive-sessions-before.txt"
 {
   date -u --iso-8601=seconds
   printf 'unit=%s\nprobe_root=%s\ninvocation_id=NO_ASIGNADO\n' "$unit" "$probe_root"
@@ -76,6 +100,9 @@ mkdir -m 700 "$record"
   loginctl show-user "$UID" -p Linger -p State
   systemctl --user is-system-running
   systemctl --user show "$unit" -p LoadState -p ActiveState -p InvocationID
+  printf 'interactive_session_ids='; paste -sd, "$record/interactive-sessions-before.txt"
+  printf 'manager_session_ids='; paste -sd, "$record/manager-sessions-before.txt"
+  printf 'logind_access=verified_nonempty_with_sudo\n'
   "$repo/.venv/bin/python" - <<'PY'
 from pathlib import Path
 from shutil import disk_usage
@@ -87,7 +114,9 @@ PY
 } | tee "$record/prelaunch.txt"
 ```
 
-El hash del commit y las lecturas quedan en `prelaunch.txt`. Si no aparece
+El hash del commit, los ID/clases de sesiones y las lecturas quedan en
+`prelaunch.txt`. Si `sudo journalctl` falla o devuelve `-- No entries --`,
+si no hay ninguna sesión interactiva `Class=user`, si no aparece
 `initial_state=not_started`, si el sistema no informa `LoadState=not-found` o
 si la guarda de recursos falla, el ensayo no está listo. Se necesita una raíz
 nueva; no borrar ni reutilizar una raíz de una prueba fallida.
@@ -154,10 +183,25 @@ journalctl --user _SYSTEMD_INVOCATION_ID="$invocation_id" \
   --output=short-iso-precise --no-pager \
   | tee "$record/invocation-journal.txt"
 test -s "$record/invocation-journal.txt"
-journalctl -b -u systemd-logind --output=short-iso-precise --no-pager \
-  > "$record/logind-journal.txt" || \
-  printf 'systemd-logind journal inaccessible; logout not verified\n' \
-  | tee -a "$record/logind-journal.txt"
+sudo journalctl -b -u systemd-logind --utc \
+  --output=short-iso-precise --no-pager > "$record/logind-journal.txt"
+test -s "$record/logind-journal.txt"
+grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}T' "$record/logind-journal.txt"
+loginctl list-sessions --no-legend | tee "$record/sessions-after.txt"
+: > "$record/interactive-sessions-after.txt"
+: > "$record/manager-sessions-after.txt"
+while read -r sid _; do
+  test -n "$sid" || continue
+  name=$(loginctl show-session "$sid" -p Name --value)
+  class=$(loginctl show-session "$sid" -p Class --value)
+  test "$name" = ichurri || continue
+  case "$class" in
+    user) printf '%s\n' "$sid" >> "$record/interactive-sessions-after.txt" ;;
+    manager) printf '%s\n' "$sid" >> "$record/manager-sessions-after.txt" ;;
+    *) printf 'Unknown session class %s for %s\n' "$class" "$sid" >&2; exit 1 ;;
+  esac
+done < "$record/sessions-after.txt"
+test -s "$record/interactive-sessions-after.txt"
 sha256sum "$probe_root/supervisor.jsonl" "$probe_root/ledger.jsonl" \
   "$probe_root/run-00-C5/checkpoint-0/state.pt" \
   | tee "$record/hashes.txt"
@@ -194,16 +238,58 @@ assert any(e['event'] == 'unit_completed' and e['phase'] == 'after_q0' for e in 
 assert any(e['event'] == 'supervisor_exit' for e in events)
 print('synthetic Q0 complete; ledger, journal chain, counters and checkpoint verified')
 PY
+"$repo/.venv/bin/python" - "$record" "$probe_root" "$invocation_id" <<'PY' | tee "$record/session-interval-check.txt"
+import json, re, sys
+from datetime import datetime
+from pathlib import Path
+record, root, invocation_id = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3]
+def ids(name):
+    return set((record / name).read_text().split())
+before = ids('interactive-sessions-before.txt')
+after = ids('interactive-sessions-after.txt')
+manager = ids('manager-sessions-before.txt') | ids('manager-sessions-after.txt')
+assert before and after and before.isdisjoint(after)
+removed, created = {}, {}
+for line in (record / 'logind-journal.txt').read_text().splitlines():
+    try:
+        stamp = datetime.fromisoformat(line.split(maxsplit=1)[0])
+    except (ValueError, IndexError):
+        continue
+    if match := re.search(r'\bRemoved session ([^ .]+)\.', line):
+        removed[match.group(1)] = stamp
+    if match := re.search(r'\bNew session ([^ .]+) of user ichurri\.', line):
+        created[match.group(1)] = stamp
+assert before <= removed.keys(), f'Missing removal for interactive sessions: {before - removed.keys()}'
+assert after <= created.keys(), f'Missing creation for returned sessions: {after - created.keys()}'
+last_removed = max(removed[sid] for sid in before)
+first_return = min(created[sid] for sid in after)
+assert last_removed < first_return, 'An interactive session overlapped the return'
+assert not any(last_removed < stamp < first_return and sid not in manager
+               for sid, stamp in created.items()), 'Another user session filled the gap'
+events = [json.loads(line) for line in (root / 'supervisor.jsonl').read_text().splitlines()]
+heartbeats = [e for e in events if e['event'] == 'heartbeat'
+              and e['invocation_id'] == invocation_id
+              and last_removed < datetime.fromisoformat(e['utc']) < first_return]
+assert heartbeats, 'No P2R heartbeat during the interval without interactive sessions'
+print(f'last_interactive_removed_utc={last_removed.isoformat()}')
+print(f'first_interactive_return_utc={first_return.isoformat()}')
+print(f'heartbeats_without_interactive_session={len(heartbeats)}')
+PY
 ```
 
-La condición decisiva de logout no es simplemente que exista el checkpoint:
-en `logind-journal.txt` debe poder identificarse la retirada de la **última**
-sesión de este usuario y su siguiente inicio, y en `supervisor.jsonl` deben
-existir heartbeats con UTC entre esos dos hechos, asociados al mismo
-`InvocationID`/unidad y al ledger de esta raíz. `about-to-logout-utc.txt` y
-`returned-utc.txt` acotan la revisión, pero no sustituyen al registro de
-logind. Si el journal de logind no es accesible, persisten otras sesiones o
-faltan heartbeats durante el intervalo sin sesión, declarar el resultado
-**no verificado**, aunque Q0 termine. Si ledger queda `failed`, conservar
-todo y no reiniciar la misma raíz. No ejecutar en esta prueba la segunda
-sonda de `SIGTERM` sugerida por el protocolo; requiere preparación aparte.
+La condición decisiva de logout no es simplemente que exista el checkpoint.
+`session-interval-check.txt` debe confirmar que **todas** las sesiones
+interactivas `Class=user` registradas antes fueron retiradas, que ninguna
+sesión interactiva de `ichurri` ocupó el intervalo anterior al nuevo login y
+que hubo heartbeats P2R del mismo `InvocationID` en ese intervalo. La sesión
+`Class=manager` puede continuar por `Linger=yes`; no se cuenta como sesión
+interactiva. La comprobación exige entradas reales del journal leído con
+`sudo`, no acepta `-- No entries --` ni una lectura vacía. También hay que
+inspeccionar `logind-journal.txt` y `sessions-before/after.txt` para confirmar
+que los mensajes corresponden al logout realizado: un formato de logind
+distinto o una clase de sesión ambigua dejan el resultado **no verificado**,
+sin relajar la regla silenciosamente. `about-to-logout-utc.txt` y
+`returned-utc.txt` solo acotan la revisión. Si el ledger queda `failed`,
+conservar todo y no reiniciar la misma raíz. No ejecutar en esta prueba la
+segunda sonda de `SIGTERM` sugerida por el protocolo; requiere preparación
+aparte.
