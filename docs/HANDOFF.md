@@ -1,4 +1,24 @@
-# Estado vigente — prueba de logout P2R preparada, no iniciada
+# Estado vigente — logout sintético Q0: continuidad comprobada, suspensión detectada
+
+El 05/10/2026, `p2r-logout-q0-review-01.service` terminó Q0 sintética
+`ready`, con checkpoint `after_q0` y `Result=success` después de retirar la
+última sesión interactiva. Sus 156 heartbeats tras el logout acabaron antes
+de Q0. El equipo se suspendió a las 15:13:47 UTC, después de Q0 y antes del
+nuevo login: **la condición «sin suspensión» falló**. Los artefactos y el
+ledger 01 conservan sus hashes. El temporizador de 900 s del greeter GDM es
+la causa más probable, pero falta identificar el llamador con journal
+privilegiado. Ver [diagnóstico](hitos/P2R-logout-Q0-diagnostico.md).
+
+**Siguiente tarea:** revisar el contexto privilegiado del journal y la
+corrección propuesta para el greeter; no se modificó el host. Si se aplica
+la corrección, hacer preflight nuevo y considerar la [repetición 02, solo
+sintética](protocols/P2R-logout-Q0-synthetic-review-02.md), con unidad y
+raíz nuevas. Esta repetición está preparada, **no iniciada**. No ejecutar
+P2R histórico, no reanudar P2 ni acceder a validación/final.
+
+---
+
+# Estado anterior — prueba de logout P2R preparada, no iniciada
 
 En `codex/p2r-unit-integration` quedó preparado el
 [procedimiento exacto](protocols/P2R-logout-Q0-synthetic-review.md) para una

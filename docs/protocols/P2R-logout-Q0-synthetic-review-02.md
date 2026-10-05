@@ -1,15 +1,15 @@
-# Preparación de la prueba de logout completo P2R (solo sintético)
+# Propuesta de repetición 02: logout completo P2R (solo sintético)
 
-**EJECUTADA EL 05/10/2026; CONSERVAR COMO EVIDENCIA, NO REPETIR EN ESTA RAÍZ.**
-Q0 terminó y dejó el checkpoint esperado, pero el host se suspendió antes del
-nuevo ingreso. Ver [diagnóstico](../hitos/P2R-logout-Q0-diagnostico.md) y
-[propuesta de repetición 02](P2R-logout-Q0-synthetic-review-02.md). Los bloques
-de abajo documentan los comandos de la prueba 01; **no ejecutarlos de nuevo**.
-Esta prueba usa una única Q0 sintética y deja un
+**PREPARADA, NO INICIADA.** La prueba 01 demostró Q0 tras logout, pero el host
+se suspendió antes del retorno. Esta repetición solo se considera después de
+la [corrección del host propuesta](../hitos/P2R-logout-Q0-diagnostico.md),
+revisión de sus registros y nueva comprobación de recursos. No se ha cambiado
+la configuración del sistema ni creado la unidad 02. Esta prueba usa una única
+Q0 sintética y deja un
 checkpoint `after_q0`. No usa histórico, validación ni conjunto final; no
 concede permiso de campaña P2R. La unidad propuesta es
-`p2r-logout-q0-review-01.service` y su raíz nueva sería
-`artifacts/p2r-synthetic-logout-q0-review-01`. La espera de 900 segundos
+`p2r-logout-q0-review-02.service` y su raíz nueva sería
+`artifacts/p2r-synthetic-logout-q0-review-02`. La espera de 900 segundos
 ocurre **dentro del child supervisado**, antes de ejecutar el worker sintético
 en el mismo PID. El supervisor y sus heartbeats permanecen activos durante
 esa espera; el tope Q0 de 1800 segundos y la reserva diaria no cambian.
@@ -40,6 +40,17 @@ posible registrar un `InvocationID` real de una unidad que aún no existe.
   era `Class=manager`; los ID se registrarán de nuevo porque pueden cambiar.
   Cerrar solo Codex o el terminal no prueba el requisito. No apagar ni
   suspender el equipo.
+- Verificar la corrección aprobada de la política de inactividad del greeter:
+  `sleep-inactive-ac-timeout=0` y `sleep-inactive-battery-timeout=0` activos
+  en `/etc/gdm3/greeter.dconf-defaults`, recarga de GDM registrada y nueva
+  sesión de greeter. El archivo por sí solo no prueba eficacia: el journal
+  de la repetición deberá confirmar ausencia de suspensión entre logout y
+  retorno. No modificar ese archivo durante la prueba.
+- Para que la repetición realmente desafíe el temporizador previo de 900 s,
+  el primer reingreso debe ocurrir **al menos 960 s después** de la retirada
+  de la última sesión interactiva. Mantener el equipo conectado a AC y bajo
+  observación; volver a entrar si aparece una suspensión, conservar el fallo
+  y no reutilizar la unidad. Este intervalo se comprueba con logind en C.
 
 Lectura local de solo recursos el 05/10/2026 a las 14:13:17 UTC: AC=1,
 batería=98 %, disco libre=184778977280 bytes, pero
@@ -56,9 +67,9 @@ unidad.
 ```bash
 set -euo pipefail
 repo=/home/ichurri/Desktop/personal_projects/btc-risk-rl
-unit=p2r-logout-q0-review-01.service
-probe_root="$repo/artifacts/p2r-synthetic-logout-q0-review-01"
-record="$repo/artifacts/p2r-logout-q0-review-01-record"
+unit=p2r-logout-q0-review-02.service
+probe_root="$repo/artifacts/p2r-synthetic-logout-q0-review-02"
+record="$repo/artifacts/p2r-logout-q0-review-02-record"
 cd "$repo"
 test ! -e "$probe_root"
 test ! -e "$record"
@@ -66,6 +77,8 @@ test "$(loginctl show-user "$UID" -p Linger --value)" = yes
 test "$(systemctl --user is-system-running)" = running
 test "$(systemctl --user show "$unit" -p LoadState --value)" = not-found
 test "$(id -un)" = ichurri
+grep -qx 'sleep-inactive-ac-timeout=0' /etc/gdm3/greeter.dconf-defaults
+grep -qx 'sleep-inactive-battery-timeout=0' /etc/gdm3/greeter.dconf-defaults
 logind_probe=$(sudo journalctl -b -u systemd-logind -n 1 --utc \
   --output=short-iso-precise --no-pager)
 printf '%s\n' "$logind_probe" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}T'
@@ -108,6 +121,7 @@ test -s "$record/interactive-sessions-before.txt"
   printf 'interactive_session_ids='; paste -sd, "$record/interactive-sessions-before.txt"
   printf 'manager_session_ids='; paste -sd, "$record/manager-sessions-before.txt"
   printf 'logind_access=verified_nonempty_with_sudo\n'
+  sha256sum /etc/gdm3/greeter.dconf-defaults
   "$repo/.venv/bin/python" - <<'PY'
 from pathlib import Path
 from shutil import disk_usage
@@ -173,9 +187,9 @@ pasados los 900 s y el tiempo de cálculo/guardado, sin reiniciar ni repetir.
 ```bash
 set -euo pipefail
 repo=/home/ichurri/Desktop/personal_projects/btc-risk-rl
-unit=p2r-logout-q0-review-01.service
-probe_root="$repo/artifacts/p2r-synthetic-logout-q0-review-01"
-record="$repo/artifacts/p2r-logout-q0-review-01-record"
+unit=p2r-logout-q0-review-02.service
+probe_root="$repo/artifacts/p2r-synthetic-logout-q0-review-02"
+record="$repo/artifacts/p2r-logout-q0-review-02-record"
 cd "$repo"
 date -u --iso-8601=seconds | tee "$record/returned-utc.txt"
 systemctl --user show "$unit" -p ActiveState -p Result -p MainPID \
@@ -245,7 +259,7 @@ print('synthetic Q0 complete; ledger, journal chain, counters and checkpoint ver
 PY
 "$repo/.venv/bin/python" - "$record" "$probe_root" "$invocation_id" <<'PY' | tee "$record/session-interval-check.txt"
 import json, re, sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 record, root, invocation_id = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3]
 def ids(name):
@@ -269,6 +283,7 @@ assert after <= created.keys(), f'Missing creation for returned sessions: {after
 last_removed = max(removed[sid] for sid in before)
 first_return = min(created[sid] for sid in after)
 assert last_removed < first_return, 'An interactive session overlapped the return'
+assert first_return - last_removed >= timedelta(seconds=960), 'Logout interval did not exceed the previous 900-second greeter timeout'
 assert not any(last_removed < stamp < first_return and sid not in manager
                for sid, stamp in created.items()), 'Another user session filled the gap'
 events = [json.loads(line) for line in (root / 'supervisor.jsonl').read_text().splitlines()]
@@ -279,10 +294,23 @@ assert heartbeats, 'No P2R heartbeat during the interval without interactive ses
 print(f'last_interactive_removed_utc={last_removed.isoformat()}')
 print(f'first_interactive_return_utc={first_return.isoformat()}')
 print(f'heartbeats_without_interactive_session={len(heartbeats)}')
+suspensions = []
+for line in (record / 'logind-journal.txt').read_text().splitlines():
+    try:
+        stamp = datetime.fromisoformat(line.split(maxsplit=1)[0])
+    except (ValueError, IndexError):
+        continue
+    if 'The system will suspend now!' in line or "Operation 'suspend' finished" in line:
+        if last_removed < stamp < first_return:
+            suspensions.append(line)
+print(f'suspension_events_during_logout={len(suspensions)}')
+assert not suspensions, 'The host suspended between logout and return; preserve this root as failed'
 PY
 ```
 
 La condición decisiva de logout no es simplemente que exista el checkpoint.
+También se exige **ningún evento de suspensión** entre retirada de la última
+sesión interactiva y primer retorno; la prueba 01 no cumplió esa condición.
 `session-interval-check.txt` debe confirmar que **todas** las sesiones
 interactivas `Class=user` registradas antes fueron retiradas, que ninguna
 sesión interactiva de `ichurri` ocupó el intervalo anterior al nuevo login y
