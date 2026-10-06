@@ -1,4 +1,29 @@
-# Estado vigente — sonda sintética P2R 06 cerrada
+# Estado vigente — ejecutor P2R v2 integrado, campaña bloqueada
+
+La autorización posterior a la sonda 06 permitió **solo** implementar y
+verificar el ejecutor histórico P2R. El supervisor común enlaza nueve
+corridas de entrenamiento aceptado con Q0 y Q/A/B+D, roster, D64,
+preflight, presupuesto compartido, ledger/journal durables y checkpoints
+atómicos. El [informe](hitos/P2R-ejecutor-historico-v2.md),
+[resumen académico](hitos/P2R-ejecutor-resumen-academico.md) y
+[preflight de solo lectura](evidence/p2r-historical-executor/preflight.json)
+documentan la implementación y sus límites. No se ejecutó ninguna unidad
+histórica ni se generaron trayectorias de mercado. El permiso de campaña
+P2R permanece **inactivo en código**; no existe registro aprobado.
+El preflight no cargó observaciones de validación, pero el cargador H1
+calculó huellas de archivos completos que incluyen filas de 2023; revisar
+esta distinción antes de cualquier permiso histórico.
+
+**Siguiente tarea:** revisar ejecutor, huellas, pruebas y preflight. Solo
+una autorización posterior puede registrar/activar el permiso P2R en otro
+commit y considerar la primera unidad histórica. Antes de hacerlo se debe
+repetir el preflight vivo; el snapshot de este hito no concede presupuesto
+futuro. P2 y las sondas 01–06 permanecen intactos. La eliminación local de
+`.python-version` sigue sin versionarse. Validación y final bloqueados.
+
+---
+
+# Estado anterior — sonda sintética P2R 06 cerrada
 
 Desde `d840d6a`, una única unidad `systemd --user` nueva completó Q0 con
 checkpoint `after_q0`; recibió SIGTERM al proceso principal mientras estaba

@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Ejecutor histórico P2R v2: el usuario autorizó **solo implementarlo y
+  verificarlo** tras `ccb010a`. Rama `codex/p2r-historical-executor`.
+  `scripts/run_p2r_market.py` y el trabajador exigen un permiso de campaña
+  independiente, inactivo en código (`MARKET_EXECUTION_ENABLED=False` y sin
+  huella de registro). El preflight puede leer metadatos de entrenamiento
+  aceptado sin generar trayectorias; las pruebas de aprendizaje son solo
+  sintéticas. **No activar permiso, ejecutar unidades históricas, reanudar
+  P2 ni usar validación/final** por esta autorización. Ver HANDOFF e informe
+  del ejecutor.
 - Sonda 06 P2R **solo sintética** desde `d840d6a`: Q0 cerró `after_q0` y
   SIGTERM al proceso principal durante la primera unidad Q/A/B+D produjo
   ledger `failed`, `Result=exit-code`, ninguna aceptación de unidad 1 y

@@ -1,0 +1,2 @@
+P2R market campaign NOT AUTHORIZED
+exit_code=1
