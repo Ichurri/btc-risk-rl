@@ -2,6 +2,7 @@
 
 import io
 import json
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -26,7 +27,7 @@ def prefix(path, time_column, end):
     return pd.read_csv(io.StringIO("".join(lines)), float_precision="round_trip")
 
 
-def load_training_view(cls, config, prepared, expected_manifest):
+def _accepted_h1_manifest(config, prepared, expected_manifest):
     manifest_path = prepared / "manifest.json"
     if sha256(manifest_path) != expected_manifest:
         raise ValueError("Accepted manifest anchor mismatch")
@@ -34,6 +35,11 @@ def load_training_view(cls, config, prepared, expected_manifest):
     if manifest["status"] != "accepted" or manifest["policy"] != "B_ADR_004":
         raise ValueError("Requires accepted policy B")
     compatibility = audit_config_compatibility(manifest["config"], config)
+    return manifest, compatibility
+
+
+def load_training_view(cls, config, prepared, expected_manifest):
+    manifest, compatibility = _accepted_h1_manifest(config, prepared, expected_manifest)
     for name, digest in manifest["files"].items():
         if "/" in name or name in {".", ".."} or sha256(prepared / name) != digest:
             raise ValueError(f"Accepted product hash mismatch: {name}")
@@ -44,7 +50,7 @@ def load_training_view(cls, config, prepared, expected_manifest):
         or audit["train_episodes"] != 7048
     ):
         raise ValueError("Accepted audit mismatch")
-    lo, hi = utc_ms(config.data.train_start), utc_ms(config.data.validation_start)
+    hi = utc_ms(config.data.validation_start)
     if config.data.train_start.year != 2018 or config.data.validation_start.year != 2023:
         raise ValueError("Training range must remain 2018–2022")
     tables = {}
@@ -56,6 +62,87 @@ def load_training_view(cls, config, prepared, expected_manifest):
         ("transitions", "target_ms"),
     ]:
         tables[name] = prefix(prepared / f"{name}.csv", column, hi)
+    return _assemble_training_view(
+        cls, config, prepared, expected_manifest, manifest["files"], compatibility,
+        audit, tables,
+    )
+
+
+def load_training_shard_view(cls, config, prepared, expected_manifest, shard,
+                             expected_shard_manifest):
+    """Use only H1 metadata and a separately pinned training-exclusive product."""
+    if expected_shard_manifest is None:
+        raise ValueError("P2R training-only shard is not registered")
+    prepared, shard = Path(prepared), Path(shard)
+    if shard.is_symlink() or shard.resolve() == prepared.resolve():
+        raise ValueError("P2R training shard linked shared product")
+    shard = shard.resolve()
+    manifest, compatibility = _accepted_h1_manifest(config, prepared, expected_manifest)
+    path = shard / "manifest.json"
+    if sha256(path) != expected_shard_manifest:
+        raise ValueError("P2R training shard manifest hash mismatch")
+    product = json.loads(path.read_text())
+    required = {
+        "bars.csv", "observations.csv", "features.csv", "episodes.csv",
+        "transitions.csv", "scaler.json", "audit.json",
+    }
+    lo, hi = utc_ms(config.data.train_start), utc_ms(config.data.validation_start)
+    if (product.get("schema_version") != "p2r_training_shard_v1"
+            or product.get("status") != "accepted_for_p2r_training_only"
+            or product.get("parent_h1_manifest_sha256") != expected_manifest
+            or product.get("parent_h1_file_sha256") != manifest["files"]
+            or product.get("train_start_ms") != lo
+            or product.get("train_end_exclusive_ms") != hi
+            or set(product.get("files", {})) != required):
+        raise ValueError("P2R training shard provenance/scope mismatch")
+    for name, expected in product["files"].items():
+        candidate = shard / name
+        if candidate.is_symlink() or (
+            name in {"bars.csv", "observations.csv", "features.csv", "episodes.csv",
+                     "transitions.csv"}
+            and candidate.stat().st_dev == (prepared / name).stat().st_dev
+            and candidate.stat().st_ino == (prepared / name).stat().st_ino
+        ):
+            raise ValueError("P2R training shard linked shared product")
+        if sha256(candidate) != expected:
+            raise ValueError(f"P2R training shard hash mismatch: {name}")
+    if (product["files"]["scaler.json"] != manifest["files"]["scaler.json"]
+            or product["files"]["audit.json"] != manifest["files"]["audit.json"]):
+        raise ValueError("P2R scaler/audit differs from accepted H1")
+    audit = json.loads((shard / "audit.json").read_text())
+    tables = {}
+    for name, column in [
+        ("bars", "open_time"), ("observations", "open_time"),
+        ("features", "open_time"), ("episodes", "last_target_ms"),
+        ("transitions", "target_ms"),
+    ]:
+        frame = pd.read_csv(shard / f"{name}.csv", float_precision="round_trip")
+        if (column not in frame or frame.empty or
+                not frame[column].between(lo, hi - 1).all()):
+            # The warmup observation may predate training; it is handled below.
+            if name not in {"bars", "observations", "features"} or frame.empty:
+                raise ValueError("P2R training shard escaped training partition")
+            if column not in frame or (frame[column] >= hi).any():
+                raise ValueError("P2R training shard escaped training partition")
+        tables[name] = frame
+    view = _assemble_training_view(
+        cls, config, shard, expected_manifest, product["files"], compatibility,
+        audit, tables,
+    )
+    view.audit["mode"] = "anchored_H1_p2r_training_shard"
+    view.audit["parent_product_hashes"] = manifest["files"]
+    view.audit["training_shard_manifest_sha256"] = expected_shard_manifest
+    return view
+
+
+def _assemble_training_view(cls, config, prepared, expected_manifest, product_hashes,
+                            compatibility, audit, tables):
+    if (audit["status"] != "passed" or audit["normalizer_refitted"]
+            or audit["train_episodes"] != 7048):
+        raise ValueError("Accepted audit mismatch")
+    lo = utc_ms(config.data.train_start)
+    if config.data.train_start.year != 2018 or config.data.validation_start.year != 2023:
+        raise ValueError("Training range must remain 2018–2022")
     episodes = tables["episodes"]
     if len(episodes) != 7048 or not (episodes.partition == "train").all():
         raise ValueError("Training index mismatch")
@@ -104,6 +191,6 @@ def load_training_view(cls, config, prepared, expected_manifest):
         train_episodes=7048,
         validation_observations_loaded=False,
         config_compatibility=compatibility,
-        product_hashes=manifest["files"],
+        product_hashes=product_hashes,
     )
     return obj

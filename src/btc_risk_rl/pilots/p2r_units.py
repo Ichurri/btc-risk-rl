@@ -371,6 +371,8 @@ def run_historical_units():
         MANIFEST,
         PREPARED,
         PROTOCOL,
+        TRAIN_SHARD,
+        TRAIN_SHARD_MANIFEST_SHA256,
         P2RMarketPermit,
         P2RMarketSettings,
         inspect_preflight,
@@ -380,8 +382,11 @@ def run_historical_units():
     P2RMarketPermit.require_campaign()
     check_service_context(require_linger=True)
     inspect_preflight()  # Read-only identity and host preflight before output exists.
-    source = TrainingMarket(load_config(CONFIG), PREPARED,
-                            expected_manifest=ANCHORS[MANIFEST])
+    source = TrainingMarket(
+        load_config(CONFIG), PREPARED, expected_manifest=ANCHORS[MANIFEST],
+        training_shard=TRAIN_SHARD,
+        expected_shard_manifest=TRAIN_SHARD_MANIFEST_SHA256,
+    )
     rows = roster()
     return _run_units(
         CAMPAIGN, CONFIG, P2RMarketSettings(seed=rows[0][0]), roster=rows,
@@ -393,5 +398,7 @@ def run_historical_units():
         protocol_identity={str(path.relative_to(PROTOCOL.parents[2])): ANCHORS[path]
                            for path in (PROTOCOL, ADOPTION, DESIGN, MANIFEST, CONFIG)}
                           | {str(ENTRYPOINT.relative_to(PROTOCOL.parents[2])):
-                             file_hash(ENTRYPOINT)},
+                             file_hash(ENTRYPOINT),
+                             "p2r_training_shard_manifest_sha256":
+                             TRAIN_SHARD_MANIFEST_SHA256},
     )

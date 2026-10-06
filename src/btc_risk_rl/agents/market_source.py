@@ -10,11 +10,20 @@ from btc_risk_rl.env.trading import TradingEnv
 class TrainingMarket:
     profile = "accepted_train_collection_only"
 
-    def __init__(self, config, prepared, *, expected_manifest):
+    def __init__(self, config, prepared, *, expected_manifest,
+                 training_shard=None, expected_shard_manifest=None):
         self.config = config
-        self._view = AcceptedMarket.training_only(
-            config, prepared, expected_manifest=expected_manifest
-        )
+        if training_shard is None and expected_shard_manifest is None:
+            self._view = AcceptedMarket.training_only(
+                config, prepared, expected_manifest=expected_manifest
+            )
+        elif training_shard is not None and expected_shard_manifest is not None:
+            self._view = AcceptedMarket.training_only_shard(
+                config, prepared, expected_manifest=expected_manifest,
+                shard=training_shard, expected_shard_manifest=expected_shard_manifest,
+            )
+        else:
+            raise ValueError("P2R training-only shard requires a pinned manifest")
         self.route_ids = self._view.episode_ids
         self.audit = self._view.audit
         self._identity = dict(
@@ -24,6 +33,9 @@ class TrainingMarket:
             files=self.audit["product_hashes"],
             config_sha256=sha256(config.model_dump_json().encode()).hexdigest(),
         )
+        if training_shard is not None:
+            self._identity["training_shard_manifest_sha256"] = expected_shard_manifest
+            self._identity["parent_h1_files"] = self.audit["parent_product_hashes"]
 
     def identity(self):
         from copy import deepcopy

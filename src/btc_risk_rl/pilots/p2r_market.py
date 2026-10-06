@@ -14,7 +14,6 @@ from btc_risk_rl.agents.market_source import TrainingMarket
 from btc_risk_rl.config import load_config
 from btc_risk_rl.pilots.budget import LA_PAZ, utc
 from btc_risk_rl.pilots.p2_budget import state_hash
-from btc_risk_rl.pilots.p2_market import inspect_training_source
 from btc_risk_rl.pilots.p2r import DAY_LIMIT, EXCLUDED_DAY
 from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 
@@ -25,6 +24,7 @@ MANIFEST = ROOT / "docs/evidence/segmented-h1/manifest.json"
 CONFIG = ROOT / "configs/initial.toml"
 ENTRYPOINT = ROOT / "scripts/run_p2r_market.py"
 PREPARED = ROOT / "data/processed/segmented-B-h1"
+TRAIN_SHARD = ROOT / "data/processed/p2r-training-h1"
 CAMPAIGN = ROOT / "artifacts/p2r-approved-v2"
 REGISTRATION = ROOT / "docs/protocols/P2R-market-approval.json"
 
@@ -44,6 +44,8 @@ PRIOR_LEDGERS = {
 # This requires a later, explicit approval commit. A JSON or CLI flag cannot flip it.
 MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = None
+# Pin only after a separately reviewed H1-derived training-exclusive export.
+TRAIN_SHARD_MANIFEST_SHA256 = None
 
 
 def digest(path):
@@ -127,6 +129,8 @@ class P2RMarketPermit:
     def require_campaign():
         if not MARKET_EXECUTION_ENABLED or REGISTRATION_SHA256 is None:
             raise PermissionError("P2R market campaign NOT AUTHORIZED")
+        if TRAIN_SHARD_MANIFEST_SHA256 is None:
+            raise PermissionError("P2R training-only shard is not registered")
         if digest(REGISTRATION) != REGISTRATION_SHA256:
             raise PermissionError("P2R market approval hash mismatch")
         entry = json.loads(REGISTRATION.read_text())
@@ -164,6 +168,8 @@ class P2RMarketPermit:
         self.validate(self.settings, self.condition, run_id)
         if (run_id != self.run_id or len(source.route_ids) != 7048
                 or source.identity()["manifest_sha256"] != ANCHORS[MANIFEST]
+                or source.identity().get("training_shard_manifest_sha256")
+                != TRAIN_SHARD_MANIFEST_SHA256
                 or source.audit["normalizer_refitted"]
                 or source.audit["validation_observations_loaded"]):
             raise PermissionError("P2R diagnostic training identity mismatch")
@@ -201,11 +207,34 @@ def inspect_preflight(*, prepared=PREPARED, now=None):
     for name, expected in PRIOR_LEDGERS.items():
         if digest(ROOT / "artifacts" / name / "ledger.jsonl") != expected:
             raise ValueError(f"Prior campaign ledger changed: {name}")
-    source = inspect_training_source(load_config(CONFIG), prepared,
-                                     expected_manifest=ANCHORS[MANIFEST])
+    if TRAIN_SHARD_MANIFEST_SHA256 is None:
+        raise ValueError("P2R training-only shard is not registered")
+    market = TrainingMarket(
+        load_config(CONFIG), prepared, expected_manifest=ANCHORS[MANIFEST],
+        training_shard=TRAIN_SHARD,
+        expected_shard_manifest=TRAIN_SHARD_MANIFEST_SHA256,
+    )
+    episodes = market._view._episodes
+    lo, hi = int(episodes.first_target_ms.min()), int(episodes.last_target_ms.max())
+    if (len(market.route_ids) != 7048 or len(set(market.route_ids)) != 7048
+            or not (episodes.partition == "train").all()
+            or market.audit["normalizer_refitted"]
+            or market.audit["validation_observations_loaded"]):
+        raise ValueError("P2R training shard index/audit mismatch")
+    source = dict(
+        profile=market.profile, accepted_starts=len(market.route_ids),
+        first_target_ms=lo, last_target_ms=hi,
+        manifest_sha256=ANCHORS[MANIFEST],
+        training_shard_manifest_sha256=TRAIN_SHARD_MANIFEST_SHA256,
+        scaler_sha256=market.identity()["files"]["scaler.json"],
+        product_hashes=market.identity()["files"],
+        validation_observations_loaded=False, normalizer_refitted=False,
+        fit_count=market.audit["fit_count"],
+        config_compatibility=market.audit["config_compatibility"],
+        trajectories_generated=0,
+    )
     if source["scaler_sha256"] != source["product_hashes"]["scaler.json"]:
         raise ValueError("P2R scaler identity mismatch")
-    market = TrainingMarket(load_config(CONFIG), prepared, expected_manifest=ANCHORS[MANIFEST])
     memory = next(int(line.split()[1]) * 1024
                   for line in Path("/proc/meminfo").read_text().splitlines()
                   if line.startswith("MemAvailable:"))
@@ -219,6 +248,7 @@ def inspect_preflight(*, prepared=PREPARED, now=None):
         protocol_sha256=ANCHORS[PROTOCOL], adoption_sha256=ANCHORS[ADOPTION],
         design_sha256=ANCHORS[DESIGN], config_sha256=ANCHORS[CONFIG],
         accepted_manifest_sha256=ANCHORS[MANIFEST], source=source,
+        training_shard_manifest_sha256=TRAIN_SHARD_MANIFEST_SHA256,
         provenance=provenance(market), prior_ledgers=PRIOR_LEDGERS,
         shared_budget=inspect_shared_budget(ROOT / "artifacts", now=now),
         power=read_power(), resources=dict(memory_available_bytes=memory,

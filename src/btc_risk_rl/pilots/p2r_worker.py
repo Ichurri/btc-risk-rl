@@ -26,6 +26,8 @@ def main():
         CONFIG,
         MANIFEST,
         PREPARED,
+        TRAIN_SHARD,
+        TRAIN_SHARD_MANIFEST_SHA256,
         P2RMarketSettings,
     )
 
@@ -39,10 +41,15 @@ def main():
         raise PermissionError("P2R worker requires canonical training configuration")
     request.pop("token")
     permit.validate(settings, request["condition"], request["run_id"])
-    source = TrainingMarket(load_config(CONFIG), PREPARED,
-                            expected_manifest=ANCHORS[MANIFEST])
+    source = TrainingMarket(
+        load_config(CONFIG), PREPARED, expected_manifest=ANCHORS[MANIFEST],
+        training_shard=TRAIN_SHARD,
+        expected_shard_manifest=TRAIN_SHARD_MANIFEST_SHA256,
+    )
     if (len(source.route_ids) != 7048
             or source.identity()["manifest_sha256"] != ANCHORS[MANIFEST]
+            or source.identity().get("training_shard_manifest_sha256")
+            != TRAIN_SHARD_MANIFEST_SHA256
             or source.audit["normalizer_refitted"]
             or source.audit["validation_observations_loaded"]):
         raise PermissionError("P2R worker source escaped accepted training")
