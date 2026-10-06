@@ -45,7 +45,7 @@ PRIOR_LEDGERS = {
 MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = None
 # Pin only after a separately reviewed H1-derived training-exclusive export.
-TRAIN_SHARD_MANIFEST_SHA256 = None
+TRAIN_SHARD_MANIFEST_SHA256 = "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
 
 
 def digest(path):
