@@ -1,0 +1,11 @@
+{
+  "accepted_units": 1,
+  "checkpoint0_manifest_sha256": "b80d404a94b744f2fc680367476d51d4a67e0c314ff644dd7b63f775d954e96a",
+  "checkpoint0_state_sha256": "1de2699ae55e1f1d1e8686adada3d9b05fda2193b52adfeb24b2403a511aa157",
+  "checkpoint1_exists": false,
+  "failure_reason": "interrupted_supervisor_or_unit",
+  "ledger_status": "failed",
+  "pending_unit": 1,
+  "read_utc": "2026-10-06T05:06:26.282321+00:00",
+  "signal": 15
+}

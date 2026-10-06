@@ -1,4 +1,24 @@
-# Estado vigente — P2R v2 adoptado como diagnóstico de desarrollo
+# Estado vigente — sonda sintética P2R 06 cerrada
+
+Desde `d840d6a`, una única unidad `systemd --user` nueva completó Q0 con
+checkpoint `after_q0`; recibió SIGTERM al proceso principal mientras estaba
+activa la primera unidad Q/A/B+D. [Informe](hitos/P2R-signal-QABD-06.md) y
+[evidencia](evidence/p2r-signal-qabd-06/results.json): ledger `failed`,
+systemd `Result=exit-code`, ninguna aceptación de la unidad interrumpida y
+SHA-256 de `checkpoint-0` exactamente igual antes y después. La señal cayó
+durante la espera sintética supervisada, antes de los cálculos Q/A/B+D; no
+prueba interrupción dentro de un optimizador ni apagado físico. El checkpoint
+se conserva como evidencia y **no autoriza reanudar** la campaña fallida.
+Las raíces 01–05, P0/P1 y P2 siguen intactas; `.python-version` permanece
+eliminado solo localmente, fuera de los commits.
+
+**Siguiente tarea:** revisión de esta evidencia y de las brechas restantes
+del P2R v2 adoptado. No implementar ni lanzar el ejecutor histórico por esta
+sonda; validación y conjunto final siguen bloqueados.
+
+---
+
+# Estado anterior — P2R v2 adoptado como diagnóstico de desarrollo
 
 La revisión académica adoptó metodológicamente P2R v2 tras la precisión
 registrada en `36ed24d`: `Z_D,temprana`, `Z_D,tardía` y `Z_A,tardía` deben
@@ -10,12 +30,13 @@ separación absoluta de P2. Es diagnóstico de desarrollo, no evaluación
 confirmatoria.
 
 **No hay permiso para implementar el ejecutor histórico ni para lanzar P2R
-de mercado.** Validación y final continúan bloqueados. Siguen pendientes
-las comprobaciones de checkpoint previo ante fallo posterior, señal durante
-Q/A/B+D bajo systemd, identidad de datos/código/normalizador, preflight y
-permisos separados de implementación y campaña. Las sondas 01–05 y sus
-huellas permanecen intactas; `.python-version` sigue eliminado solo
-localmente, fuera del commit.
+de mercado.** Validación y final continúan bloqueados. En ese momento
+seguían pendientes las comprobaciones de checkpoint previo ante fallo
+posterior y señal durante Q/A/B+D bajo systemd, además de identidad de
+datos/código/normalizador, preflight y permisos separados de implementación
+y campaña. La sonda 06 atiende parcialmente las dos primeras brechas, con el
+límite indicado arriba. Las sondas 01–05 y sus huellas permanecen intactas;
+`.python-version` sigue eliminado solo localmente, fuera del commit.
 
 **Siguiente tarea:** revisión de las brechas para una eventual autorización
 de implementación histórica, sin comenzar ese trabajo por esta adopción.

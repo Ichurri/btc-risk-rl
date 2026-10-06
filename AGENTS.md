@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Sonda 06 P2R **solo sintética** desde `d840d6a`: Q0 cerró `after_q0` y
+  SIGTERM al proceso principal durante la primera unidad Q/A/B+D produjo
+  ledger `failed`, `Result=exit-code`, ninguna aceptación de unidad 1 y
+  huella inalterada del checkpoint Q0. La señal llegó durante la espera
+  sintética supervisada, antes de cálculos Q/A/B+D; no prueba un corte de
+  optimizador ni apagado físico. Preservar raíces 01–06. El checkpoint
+  conservado es evidencia, **no permiso de reanudación**. Ver
+  `docs/hitos/P2R-signal-QABD-06.md`. Sigue bloqueado P2R histórico,
+  validación y final.
 - P2R v2 **ADOPTADO solo como protocolo metodológico de diagnóstico de
   desarrollo** tras precisar `Z>10⁻¹²` por separado en D temprana, D tardía y
   A tardía. Ver `docs/protocols/P2R-adopcion-metodologica-v2.md`. La adopción
