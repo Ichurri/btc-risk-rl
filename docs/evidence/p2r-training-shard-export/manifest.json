@@ -1,0 +1,31 @@
+{
+  "derivation": "byte_exact_h1_training_prefix_v1",
+  "files": {
+    "audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8",
+    "bars.csv": "c12d098b5d0d5b27a29da1cd8a955c7a26783e6677034a102a9939b4baa8e690",
+    "episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+    "features.csv": "7ec2c031eb712303cd300fdd74ebe62eba9bb0b8dd6e8936ebbf313874314194",
+    "observations.csv": "d5014b99cf0367ea77169c933f51761c0d2e7b8874789ec3a4991cb878c1b0a7",
+    "scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+    "transitions.csv": "f7827e0a742e9126f747e340640cb23e570a98c616caa8df330d21a2c4530fb9"
+  },
+  "parent_h1_file_sha256": {
+    "audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8",
+    "bars.csv": "dbf398582121ccee2cf3aea05fc6bbee7ecaa5cc0d73d26e9cd9d76d0ccc318b",
+    "coverage.json": "6eefcfdf68233c821f66758fe610a6c2b8e8c4d7e15b99fcb9163e18744e64d6",
+    "diagnosis_comparison.json": "d0ead77f7ab8c3eee0c3ae28a7a2d09ae2d7b95e2833c854ca7140c19e62dcb1",
+    "episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+    "features.csv": "86858fa626cbaceed452f7da180a015122cc45ba1d411e791febbb0416d5c816",
+    "fit_observations.csv": "84944d21aa909b4a08e0742b18aec8f021e06f7d23553bc4129e97bbc93544bc",
+    "mask.csv": "01432b21eb2e6535856c51b90ceb801a9942f6a5a118f71047afe106be3d97b9",
+    "observations.csv": "9a76f6a67e0bb5e034caa23c6503d24bfc9e8c2fa824a9efcb31975b0ebf1b93",
+    "quality-original.json": "03f7894cddd3b8bc437ab83ae9c9928340d6a345cf7fd11f8d27f8a9dad9d04a",
+    "scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+    "transitions.csv": "5e07c677e70578e4ea54badce41316d3f0a37dd5ef2ad51dc642287214f4cfc0"
+  },
+  "parent_h1_manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+  "schema_version": "p2r_training_shard_v1",
+  "status": "accepted_for_p2r_training_only",
+  "train_end_exclusive_ms": 1672531200000,
+  "train_start_ms": 1514764800000
+}

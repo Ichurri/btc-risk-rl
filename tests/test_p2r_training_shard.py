@@ -75,9 +75,10 @@ def synthetic_shard(config, prepared, shard):
     return digest(shard / "manifest.json")
 
 
-def test_preflight_requires_registered_training_shard_without_opening_h1_tables():
+def test_preflight_requires_registered_training_shard_without_opening_h1_tables(monkeypatch):
     from btc_risk_rl.pilots import p2r_market
 
+    monkeypatch.setattr(p2r_market, "TRAIN_SHARD_MANIFEST_SHA256", None)
     forbidden = {p2r_market.PREPARED / name for name in TABLES}
     with opened_paths_forbidden(forbidden) as opened:
         with pytest.raises(ValueError, match="training-only shard.*registered"):
