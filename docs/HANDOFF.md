@@ -1,4 +1,26 @@
-# Estado vigente — derivado H1 exclusivo de entrenamiento P2R auditado
+# Estado vigente — preparación final P2R v2 revisada, campaña bloqueada
+
+La [revisión final](hitos/P2R-preparacion-final-v2.md) desde `dc6285c`
+ejecutó 288 pruebas y Ruff, cotejó el manifiesto derivado con el ancla
+`cd6b686`, verificó los 12 hashes H1 y las huellas P0/P1/P2, y repitió el
+[preflight vigilado](evidence/p2r-final-readiness/preflight-opens.json):
+cero aperturas de CSV H1 compartidos, cero trayectorias y cero
+actualizaciones. El hash H1 completo fue una lectura de integridad separada
+del preflight. Las lecturas de alimentación, recursos, Linger y presupuesto
+están fechadas y son instantáneas. El informe contiene el procedimiento de
+lanzamiento/parada **para revisión, no ejecutado** y los límites que pueden
+impedir completar nueve corridas.
+
+**Siguiente tarea:** revisión humana del informe y, solo si se decide
+autorizar la campaña, registrar permiso específico en un commit separado y
+repetir el preflight inmediatamente antes de cualquier unidad. Actualmente
+`MARKET_EXECUTION_ENABLED=False`, sin registro ni raíz P2R histórica. No
+reanudar P2; validación y prueba final protegidas. La eliminación local
+previa de `.python-version` permanece sin versionar.
+
+---
+
+# Estado anterior — derivado H1 exclusivo de entrenamiento P2R auditado
 
 La [exportación auditada](hitos/P2R-training-shard-export.md) creó
 `data/processed/p2r-training-h1` sin filas de 2023, conservando el
