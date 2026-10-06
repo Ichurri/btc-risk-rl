@@ -42,9 +42,10 @@ def counts(run):
 
 
 def complete_unit(source, settings, *, root, condition, run_id, unit, previous=None,
-                  permit=None, n_d=None):
+                  permit=None, n_d=None, atomic_checkpoint=False):
     from btc_risk_rl.agents.market_source import TrainingMarket
     from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
+    from btc_risk_rl.pilots.p2r_market import P2RMarketPermit, P2RMarketSettings
     if type(source) is SyntheticMarket and type(settings) is P2SyntheticSettings:
         if permit is not None:
             raise PermissionError("Synthetic P2 cannot use market permit")
@@ -56,6 +57,13 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
         n_d = 64 if n_d is None else n_d
         if n_d != 64:
             raise ValueError("P2 historical diagnostic must use D=64")
+    elif type(source) is TrainingMarket and type(settings) is P2RMarketSettings:
+        if type(permit) is not P2RMarketPermit:
+            raise PermissionError("P2R market unit requires registered lease")
+        permit.validate(settings, condition, run_id)
+        n_d = 64 if n_d is None else n_d
+        if n_d != 64 or not atomic_checkpoint:
+            raise ValueError("P2R market unit requires D=64 and atomic checkpoint")
     else:
         raise PermissionError("Unknown P2 source/settings profile")
     if type(unit) is not int or not 0 <= unit <= settings.iterations:
@@ -113,7 +121,7 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
         os.rename(root / f"closing-{unit}.tmp", marker)
         point = root / f"checkpoint-{unit}"
         start = time.monotonic()
-        manifest = save_checkpoint(run, point)
+        manifest = save_checkpoint(run, point, atomic=atomic_checkpoint)
         from btc_risk_rl.pilots.p2_metrics import learning_rates
 
         result = dict(

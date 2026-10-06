@@ -1,5 +1,6 @@
 """P2R Q0/Q-A-B-D integration uses fabricated SyntheticMarket routes only."""
 
+import hashlib
 import importlib.util
 import json
 import os
@@ -119,6 +120,8 @@ def test_signal_inside_unit_fails_permanently(tmp_path, monkeypatch, interrupt_u
     if interrupt_unit:
         state = run(root, power, max_units=1)
         assert len(state["units"]) == 1
+        checkpoint = root / "run-00-C5" / "checkpoint-0" / "state.pt"
+        prior_sha = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
     actual_supervise = units.supervise
 
     def signal_on_first_poll(*args, **kwargs):
@@ -141,6 +144,9 @@ def test_signal_inside_unit_fails_permanently(tmp_path, monkeypatch, interrupt_u
     assert failed["failure"]["reason"] == "interrupted_supervisor_or_unit"
     assert len(failed["units"]) == interrupt_unit
     assert not (root / "run-00-C5" / f"checkpoint-{interrupt_unit}").exists()
+    if interrupt_unit:
+        assert hashlib.sha256(checkpoint.read_bytes()).hexdigest() == prior_sha
+        assert failed["units"][0]["checkpoint_sha256"] == prior_sha
     with pytest.raises(ValueError, match="failed/incomplete"):
         run(root, power)
 

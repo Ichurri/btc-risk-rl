@@ -145,7 +145,8 @@ class Diagnostic:
                 raise PermissionError("Synthetic diagnostic does not use a market permit")
         elif type(source) is TrainingMarket:
             from btc_risk_rl.pilots.p2_market import P2MarketPermit
-            if type(permit) is not P2MarketPermit:
+            from btc_risk_rl.pilots.p2r_market import P2RMarketPermit
+            if type(permit) not in {P2MarketPermit, P2RMarketPermit}:
                 raise PermissionError("P2 market diagnostic requires registered permit")
             permit.validate_d(source, seed, run_id)
         else:

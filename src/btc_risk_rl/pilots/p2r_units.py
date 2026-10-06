@@ -10,6 +10,7 @@ import os
 import signal
 import sys
 import time
+import uuid
 from dataclasses import asdict
 from pathlib import Path
 
@@ -32,10 +33,10 @@ from btc_risk_rl.pilots.supervisor import rss_bytes, supervise
 from btc_risk_rl.pilots.worker import write_json
 
 
-def _expected(settings, unit):
+def _expected(settings, unit, diagnostic_n=2):
     batches = math.ceil(settings.n_a / settings.minibatch)
     learning = settings.n_q if unit == 0 else settings.n_a + settings.n_q + settings.n_b
-    diagnostic = 0 if unit == 0 else 2
+    diagnostic = 0 if unit == 0 else diagnostic_n
     return dict(
         trajectories=learning,
         transitions=180 * learning,
@@ -58,7 +59,8 @@ def synthetic_worker_command(request_path, hold_seconds=0):
             "--synthetic-request", str(request_path)]
 
 
-def _verify_completion(work, unit, settings, condition, run_id, result, expected_provenance):
+def _verify_completion(work, unit, settings, condition, run_id, result,
+                       expected_provenance, diagnostic_n=2):
     payload_path = work / f"unit-{unit}.json"
     payload = json.loads(payload_path.read_text())
     point = work / f"checkpoint-{unit}"
@@ -66,7 +68,7 @@ def _verify_completion(work, unit, settings, condition, run_id, result, expected
     worker_provenance = manifest.get("provenance", {})
     boundary = "after_q0" if unit == 0 else "after_dual_and_D"
     if (payload.get("status") != "passed" or payload.get("unit") != unit
-            or payload.get("resources") != _expected(settings, unit)
+            or payload.get("resources") != _expected(settings, unit, diagnostic_n)
             or payload.get("checkpoint") != str(point)
             or payload.get("checkpoint_sha256") != file_hash(point / "state.pt")
             or manifest.get("state_sha256") != payload["checkpoint_sha256"]
@@ -85,18 +87,13 @@ def _verify_completion(work, unit, settings, condition, run_id, result, expected
     return payload, boundary
 
 
-def run_synthetic_units(root, config_path, settings, condition, *, max_units=None,
-                        power_root=None, memory_available=None, disk_free=None,
-                        fixture_window=False, heartbeat_seconds=5.0,
-                        require_service=False, synthetic_hold_seconds=0):
-    """Run at most ``max_units`` complete synthetic units; never load market data.
-
-    ``fixture_window`` and injected sensor readings are test-only. Neither can
-    be supplied to a historical runner because this function requires the exact
-    synthetic settings type and constructs SyntheticMarket itself.
-    """
-    if type(settings) is not P2SyntheticSettings or condition not in {"C0", "C5", "C10"}:
-        raise PermissionError("P2R unit integration accepts synthetic profile only")
+def _run_units(root, config_path, settings, *, roster, source, settings_for,
+               command_for, profile, diagnostic_n, max_units=None,
+               power_root=None, memory_available=None, disk_free=None,
+               fixture_window=False, heartbeat_seconds=5.0,
+               require_service=False, require_linger=False, synthetic_hold_seconds=0,
+               protocol_identity=None):
+    """Shared unit supervisor for synthetic probes and guarded historical P2R."""
     if max_units is not None and (type(max_units) is not int or max_units < 0):
         raise ValueError("Invalid synthetic unit limit")
     if not 0 < heartbeat_seconds <= 5:
@@ -104,28 +101,28 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
     if type(synthetic_hold_seconds) is not int or not 0 <= synthetic_hold_seconds <= 900:
         raise ValueError("Invalid synthetic hold seconds")
     if require_service:
-        check_service_context(require_linger=False)
+        check_service_context(require_linger=require_linger)
     root = Path(root).resolve()
-    if not root.name.startswith("p2r-synthetic-"):
-        raise ValueError("P2R synthetic units require a separate p2r-synthetic-* root")
     config_path = Path(config_path).resolve()
-    source = SyntheticMarket(load_config(config_path))
     stable_provenance = {key: value for key, value in provenance(source).items()
                          if key not in {"threads", "deterministic"}}
     identity = dict(
-        profile="p2r_synthetic_units",
+        profile=profile,
         config=str(config_path),
         config_sha256=file_hash(config_path),
         code=stable_provenance,
         settings=asdict(settings),
-        condition=condition,
+        roster=[list(row) for row in roster],
+        diagnostic_n=diagnostic_n,
         synthetic_hold_seconds=synthetic_hold_seconds,
         runner_sha256=file_hash(Path(__file__)),
+        protocol_identity=protocol_identity,
     )
     entered = time.time()
     active_start = time.monotonic()
-    run_id = f"run-00-{condition}"
-    with P2RSharedBudget(root.parent, root.name, now=entered, synthetic_fixture=True) as shared:
+    run_id = f"run-00-{roster[0][1]}"
+    with P2RSharedBudget(root.parent, root.name, now=entered,
+                         synthetic_fixture=profile == "p2r_synthetic_units") as shared:
         root.mkdir(exist_ok=True)
         journal = P2RJournal(root / "supervisor.jsonl", campaign=root.name)
         journal.record("supervisor_started", phase="preflight", run_id=run_id,
@@ -166,12 +163,18 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                     ledger.persist(time.time())
                 ledger.preflight_done(time.time())
                 completed_here = 0
-                while ledger.state["runs"].get(run_id, {}).get("next_unit", 0) <= settings.iterations:
+                while ledger.state["cursor"] < len(roster):
+                    index = ledger.state["cursor"]
+                    seed, condition = roster[index]
+                    settings = settings_for(seed)
+                    run_id = f"run-{index:02d}-{condition}"
                     if max_units is not None and completed_here >= max_units:
                         journal.record("paused", phase="between_units", run_id=run_id,
                                        unit=None, counters={}, reason="synthetic_unit_limit")
                         return ledger.state
                     unit = ledger.state["runs"].get(run_id, {}).get("next_unit", 0)
+                    if unit > settings.iterations:
+                        raise ValueError("P2R run unit cursor exceeded adopted horizon")
                     current_unit[0] = unit
                     work = root / run_id
                     work.mkdir(exist_ok=True)
@@ -195,14 +198,17 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                     prior = ledger.state["runs"].get(run_id, {}).get("checkpoint")
                     if unit > 0 and not prior:
                         raise ValueError("Complete preceding checkpoint required")
+                    token = uuid.uuid4().hex if profile == "p2r_market_units" else None
                     request = dict(settings=asdict(settings), config=str(config_path),
                                    root=str(work), condition=condition, run_id=run_id,
-                                   unit=unit, previous=prior, token=None)
+                                   unit=unit, previous=prior, token=token,
+                                   atomic_checkpoint=True)
                     request_path = work / f"request-{unit}.json"
                     write_json(request_path, request)
                     ledger.begin(run_id, kind, time.time())
                     ledger.state["pending"].update(unit=unit,
-                        request_sha256=file_hash(request_path), supervisor_pid=os.getpid())
+                        request_sha256=file_hash(request_path), supervisor_pid=os.getpid(),
+                        token=token)
                     ledger.persist(time.time())
                     phase[0] = "unit"
                     journal.record("unit_started", phase="Q0" if unit == 0 else "Q/A/B+D",
@@ -247,7 +253,7 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
 
                     cap = min(CAPS[kind], ledger.day["work_deadline"] - time.time())
                     result = supervise(
-                        synthetic_worker_command(request_path, synthetic_hold_seconds),
+                        command_for(request_path),
                         output=work / f"worker-{unit}.log", seconds=cap,
                         rss_limit=10 * 1024**3, poll=min(.2, heartbeat_seconds),
                         env=dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
@@ -268,14 +274,9 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                                        run_id=run_id, unit=unit, counters=latest[0],
                                        reason=result["reason"])
                         return ledger.state
-                    payload, boundary = _verify_completion(work, unit, settings, condition,
-                                                           run_id, result, identity["code"])
-                    ledger.finish(time.time(), resources=payload["resources"],
-                                  condition=condition, checkpoint=payload["checkpoint"],
-                                  checkpoint_sha256=payload["checkpoint_sha256"],
-                                  work_seconds=result["work_seconds"],
-                                  work_ended=result["work_ended"], supervisor=result,
-                                  availability_lost=availability_lost[0])
+                    payload, boundary = _verify_completion(
+                        work, unit, settings, condition, run_id, result,
+                        identity["code"], diagnostic_n)
                     if interrupted["signum"] is not None:
                         ledger.fail(time.time(), "interrupted_supervisor_or_unit",
                                     signum=interrupted["signum"])
@@ -283,12 +284,29 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                                        unit=unit, counters=latest[0],
                                        reason="signal_during_commit")
                         return ledger.state
-                    phase[0] = "between_units"
-                    journal.record("unit_completed", phase=boundary, run_id=run_id,
-                                   unit=unit, counters=payload["resources"],
-                                   checkpoint_sha256=payload["checkpoint_sha256"],
-                                   supervisor=result)
+                    # A signal delivered during this short commit is processed only
+                    # after the complete ledger boundary and journal are durable.
+                    old_mask = signal.pthread_sigmask(signal.SIG_BLOCK,
+                                                       {signal.SIGTERM, signal.SIGINT})
+                    try:
+                        ledger.finish(time.time(), resources=payload["resources"],
+                                      condition=condition, checkpoint=payload["checkpoint"],
+                                      checkpoint_sha256=payload["checkpoint_sha256"],
+                                      work_seconds=result["work_seconds"],
+                                      work_ended=result["work_ended"], supervisor=result,
+                                      availability_lost=availability_lost[0])
+                        phase[0] = "between_units"
+                        journal.record("unit_completed", phase=boundary, run_id=run_id,
+                                       unit=unit, counters=payload["resources"],
+                                       checkpoint_sha256=payload["checkpoint_sha256"],
+                                       supervisor=result)
+                    finally:
+                        signal.pthread_sigmask(signal.SIG_SETMASK, old_mask)
                     completed_here += 1
+                    if interrupted["signum"] is not None:
+                        journal.record("paused", phase="between_units", run_id=run_id,
+                                       unit=unit + 1, counters={}, reason="signal")
+                        return ledger.state
                     if availability_lost[0] is not None:
                         journal.record("paused", phase="between_units", run_id=run_id,
                                        unit=unit + 1, counters={},
@@ -316,3 +334,64 @@ def run_synthetic_units(root, config_path, settings, condition, *, max_units=Non
                                status=ledger.state["status"])
                 for s, handler in old.items():
                     signal.signal(s, handler)
+
+
+def run_synthetic_units(root, config_path, settings, condition, *, max_units=None,
+                        power_root=None, memory_available=None, disk_free=None,
+                        fixture_window=False, heartbeat_seconds=5.0,
+                        require_service=False, synthetic_hold_seconds=0):
+    """Synthetic-only adapter over the same supervised unit and ledger engine."""
+    if type(settings) is not P2SyntheticSettings or condition not in {"C0", "C5", "C10"}:
+        raise PermissionError("P2R unit integration accepts synthetic profile only")
+    root = Path(root).resolve()
+    if not root.name.startswith("p2r-synthetic-"):
+        raise ValueError("P2R synthetic units require a separate p2r-synthetic-* root")
+    source = SyntheticMarket(load_config(Path(config_path).resolve()))
+    return _run_units(
+        root, config_path, settings, roster=[(settings.seed, condition)], source=source,
+        settings_for=lambda _seed: settings,
+        command_for=lambda request: synthetic_worker_command(request, synthetic_hold_seconds),
+        profile="p2r_synthetic_units", diagnostic_n=2, max_units=max_units,
+        power_root=power_root, memory_available=memory_available, disk_free=disk_free,
+        fixture_window=fixture_window, heartbeat_seconds=heartbeat_seconds,
+        require_service=require_service, synthetic_hold_seconds=synthetic_hold_seconds,
+    )
+
+
+def run_historical_units():
+    """P2R-only train executor, gated before loading accepted data or creating output."""
+    from btc_risk_rl.agents.market_source import TrainingMarket
+    from btc_risk_rl.pilots.p2r_market import (
+        ADOPTION,
+        ANCHORS,
+        CAMPAIGN,
+        CONFIG,
+        DESIGN,
+        ENTRYPOINT,
+        MANIFEST,
+        PREPARED,
+        PROTOCOL,
+        P2RMarketPermit,
+        P2RMarketSettings,
+        inspect_preflight,
+        roster,
+    )
+
+    P2RMarketPermit.require_campaign()
+    check_service_context(require_linger=True)
+    inspect_preflight()  # Read-only identity and host preflight before output exists.
+    source = TrainingMarket(load_config(CONFIG), PREPARED,
+                            expected_manifest=ANCHORS[MANIFEST])
+    rows = roster()
+    return _run_units(
+        CAMPAIGN, CONFIG, P2RMarketSettings(seed=rows[0][0]), roster=rows,
+        source=source, settings_for=lambda seed: P2RMarketSettings(seed=seed),
+        command_for=lambda request: [sys.executable, "-m",
+                                     "btc_risk_rl.pilots.p2r_worker", str(request)],
+        profile="p2r_market_units", diagnostic_n=64,
+        require_service=True, require_linger=True,
+        protocol_identity={str(path.relative_to(PROTOCOL.parents[2])): ANCHORS[path]
+                           for path in (PROTOCOL, ADOPTION, DESIGN, MANIFEST, CONFIG)}
+                          | {str(ENTRYPOINT.relative_to(PROTOCOL.parents[2])):
+                             file_hash(ENTRYPOINT)},
+    )

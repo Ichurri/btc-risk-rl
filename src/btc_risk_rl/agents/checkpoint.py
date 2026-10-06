@@ -109,10 +109,11 @@ def validate_state(run):
                     raise ValueError("Invalid optimizer moments")
 
 
-def save_checkpoint(run, path):
+def save_checkpoint(run, path, *, atomic=False):
     path = Path(path)
     if path.exists():
         raise FileExistsError(path)
+    stage = path.with_name(f"{path.name}.partial-{uuid.uuid4().hex}") if atomic else path
     validate_state(run)
     if run.journal is None or run.status not in {"paused", "passed"}:
         raise ValueError("Checkpoint requires planned pause/completion and a run journal")
@@ -120,7 +121,7 @@ def save_checkpoint(run, path):
         raise ValueError("Run journal does not permit checkpointing")
     t0 = time.monotonic()
     run.journal.append(status="checkpointing", next_iteration=run.next_iteration)
-    path.mkdir(parents=True, exist_ok=False)
+    stage.mkdir(parents=True, exist_ok=False)
     checkpoint_id = uuid.uuid4().hex
     attrs = (
         "eta",
@@ -156,7 +157,7 @@ def save_checkpoint(run, path):
         budget=run.budget.snapshot() if run.budget else None,
         diagnostic=run.diagnostic.state() if run.diagnostic else None,
     )
-    with (path / "state.pt").open("xb") as f:
+    with (stage / "state.pt").open("xb") as f:
         torch.save(state, f)
         f.flush()
         os.fsync(f.fileno())
@@ -165,7 +166,7 @@ def save_checkpoint(run, path):
         git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         checkpoint_id=checkpoint_id,
         boundary=run.boundary,
-        state_sha256=digest(path / "state.pt"),
+        state_sha256=digest(stage / "state.pt"),
         provenance=provenance(run.collector.source),
         settings=asdict(run.settings),
         profile=run.settings.purpose,
@@ -175,11 +176,18 @@ def save_checkpoint(run, path):
         journal=str(run.journal.path),
         checkpoint_wall_seconds=time.monotonic() - t0,
     )
-    with (path / "manifest.json").open("x") as f:
+    with (stage / "manifest.json").open("x") as f:
         json.dump(manifest, f, indent=2, allow_nan=False)
         f.write("\n")
         f.flush()
         os.fsync(f.fileno())
+    if atomic:
+        os.rename(stage, path)
+        parent_fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(parent_fd)
+        finally:
+            os.close(parent_fd)
     run.journal.append(
         status="paused",
         checkpoint_id=checkpoint_id,
@@ -219,6 +227,7 @@ def load_checkpoint(path, source, *, journal, permit=None):
         state = torch.load(path / "state.pt", map_location="cpu", weights_only=True)
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
         from btc_risk_rl.pilots.p2_market import P2MarketSettings
+        from btc_risk_rl.pilots.p2r_market import P2RMarketSettings
 
         if manifest["profile"] == "p2_synthetic_tests_only" and type(source) is not SyntheticMarket:
             raise PermissionError("P2 market checkpoint blocked")
@@ -228,7 +237,8 @@ def load_checkpoint(path, source, *, journal, permit=None):
         run = SyntheticExperiment(
             source,
             (
-                (P2MarketSettings if manifest["profile"] == "authorized_p2_only"
+                (P2RMarketSettings if manifest["profile"] == "authorized_p2r_only"
+                 else P2MarketSettings if manifest["profile"] == "authorized_p2_only"
                  else P1Settings if manifest["profile"] == "authorized_p1_only" else P0Settings)
                 if type(source) is TrainingMarket
                 else (
