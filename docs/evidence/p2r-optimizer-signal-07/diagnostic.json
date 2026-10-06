@@ -1,0 +1,23 @@
+{
+  "accepted_units": 1,
+  "checkpoint_0_manifest_sha256": "93aa5aa8a8ea447cc7698177a3be180b75bcb901ffacb17d4b3563844d5e77ef",
+  "checkpoint_0_state_sha256": "cd588cec51a21d7375d3b6c0d6f788c9d4b081bb5d8ec322be28ed6958a76ba9",
+  "checkpoint_1_exists": false,
+  "controller_result": "failed assertion because wrapper exited 0 despite ledger failed; wrapper corrected for probe 08",
+  "failure_reason": "interrupted_supervisor_or_unit",
+  "final_optimizer_marker": {
+    "iterations": 951,
+    "norm": 17.969986349671235,
+    "phase": "optimizer_gradient_norm_after_backward_before_adam_step",
+    "pid": 39,
+    "utc_epoch": 1791305103.9430552
+  },
+  "kind": "synthetic_optimizer_probe_07_harness_exit_expectation_error",
+  "ledger_sha256": "75c232169796e75dc78cf6fc55e53dfc81d3f5a0ce04500dc43163d0d629a9e0",
+  "ledger_status": "failed",
+  "pending_unit": 1,
+  "root": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-synthetic-optimizer-signal-07",
+  "signal_event_utc": "2026-10-06T16:45:03.920382+00:00",
+  "supervisor_journal_sha256": "1196e2bc29f59095cee085c7e02e6f5f9621294aef8ad5112d6ebc616a9b2896",
+  "supervisor_log": "{\"status\": \"failed\", \"accepted_units\": 1}"
+}

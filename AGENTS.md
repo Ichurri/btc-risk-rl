@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Revisión P2R posterior a `93515ef`: autorizado **solo** aislar físicamente
+  el preflight/cargador de los CSV H1 con filas 2023 y ejecutar una sonda
+  de señal **sintética** durante cálculo de gradientes en Q/A/B+D.
+  P2R ahora exige un derivado exclusivo de entrenamiento aún **no creado
+  ni registrado**; preflight histórico falla cerrado. Sondas nuevas 07/08:
+  conservar raíces y evidencias, sin reinterpretar 07 como éxito de su
+  controlador. Ver `docs/hitos/P2R-preflight-optimizer-signal.md` y
+  `docs/protocols/P2R-training-shard-contract-v1.md`. No exportar el
+  derivado histórico, activar permiso, entrenar mercado, acceder a
+  validación/final ni reanudar campañas fallidas por este hito.
 - Ejecutor histórico P2R v2: el usuario autorizó **solo implementarlo y
   verificarlo** tras `ccb010a`. Rama `codex/p2r-historical-executor`.
   `scripts/run_p2r_market.py` y el trabajador exigen un permiso de campaña

@@ -1,0 +1,68 @@
+{
+  "accepted_units": 1,
+  "checkpoint_0_after": {
+    "manifest.json": "40d3a901a031932bb412b7285d797688bd1ada81401aefe51b1f4a8a97d50554",
+    "state.pt": "1dff3594469d14c1f4f8b731db1ab5323d10d6062ec4eb5601e4a97e4207b39f"
+  },
+  "checkpoint_0_before": {
+    "manifest.json": "40d3a901a031932bb412b7285d797688bd1ada81401aefe51b1f4a8a97d50554",
+    "state.pt": "1dff3594469d14c1f4f8b731db1ab5323d10d6062ec4eb5601e4a97e4207b39f"
+  },
+  "checkpoint_1_exists": false,
+  "failure": {
+    "observed_counters": {
+      "actor_updates": 0,
+      "critic_updates": 0,
+      "diagnostic_trajectories": 0,
+      "diagnostic_transitions": 0,
+      "trajectories": 3,
+      "transitions": 540
+    },
+    "reason": "interrupted_supervisor_or_unit",
+    "signum": 15,
+    "supervisor": {
+      "pid": 39,
+      "reason": "signal_during_unit",
+      "returncode": -15,
+      "rss_peak_bytes": 331919360,
+      "status": "failed",
+      "wall_seconds": 1.7473334710002746,
+      "work_ended": 1791305132.6180904,
+      "work_seconds": 1.7473334710002746
+    },
+    "utc": "2026-10-06T16:45:32.618176+00:00"
+  },
+  "fixture_only": true,
+  "historical_market_trajectories": 0,
+  "kind": "p2r_synthetic_signal_during_optimizer_gradient_calculation",
+  "launched_utc": "2026-10-06T16:45:29.621572+00:00",
+  "ledger_sha256": "62d76df9c5e29f934b02738d5e3576d615bfc61aad87c488f22c4c2da9cd98b9",
+  "ledger_status": "failed",
+  "marker_utc": "2026-10-06T16:45:32.565459+00:00",
+  "optimizer_marker": {
+    "iterations": 301,
+    "norm": 17.969986349671235,
+    "phase": "optimizer_gradient_norm_after_backward_before_adam_step",
+    "pid": 39,
+    "utc_epoch": 1791305132.5654588
+  },
+  "pending": {
+    "kind": "iteration",
+    "request_sha256": "c871a9caef371a5d22b12935f9c013c5e42acbd0303677218d9173ec7575c40b",
+    "run_id": "run-00-C5",
+    "start": 1791305130.8631828,
+    "supervisor_pid": 23,
+    "token": null,
+    "unit": 1
+  },
+  "root": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-synthetic-optimizer-signal-08",
+  "signal": "SIGTERM to supervisor main PID",
+  "signal_number": 15,
+  "signal_utc": "2026-10-06T16:45:32.567042+00:00",
+  "supervisor_exit_code": 1,
+  "supervisor_journal_sha256": "1d1bb9bc360af78fd7deb1ae01a97b98207d72e06190eb8863bb68dddad9b9d8",
+  "supervisor_pid": 23,
+  "unit_1_result_exists": false,
+  "worker_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "worker_pid": 39
+}

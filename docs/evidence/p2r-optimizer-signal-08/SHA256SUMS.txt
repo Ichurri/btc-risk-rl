@@ -1,0 +1,8 @@
+62d76df9c5e29f934b02738d5e3576d615bfc61aad87c488f22c4c2da9cd98b9  artifacts/p2r-synthetic-optimizer-signal-08/ledger.jsonl
+1d1bb9bc360af78fd7deb1ae01a97b98207d72e06190eb8863bb68dddad9b9d8  artifacts/p2r-synthetic-optimizer-signal-08/supervisor.jsonl
+02f0c58600e017734a436ae54d6eb2df03ec8ad53474aec468bb8ffc82ae02f9  artifacts/p2r-synthetic-optimizer-signal-08/probe-supervisor.log
+7325b3ecff003d564d9abd8afaad48495da775313eecdb7ec2019689888d5a2e  artifacts/p2r-synthetic-optimizer-signal-08/run-00-C5/journal/events.jsonl
+a7e4d058b84fe244d15c91f7199493bca7265662d0b135d398d8ddae6a7465db  artifacts/p2r-synthetic-optimizer-signal-08/run-00-C5/optimizer-calculation.json
+1dff3594469d14c1f4f8b731db1ab5323d10d6062ec4eb5601e4a97e4207b39f  artifacts/p2r-synthetic-optimizer-signal-08/run-00-C5/checkpoint-0/state.pt
+40d3a901a031932bb412b7285d797688bd1ada81401aefe51b1f4a8a97d50554  artifacts/p2r-synthetic-optimizer-signal-08/run-00-C5/checkpoint-0/manifest.json
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  artifacts/p2r-synthetic-optimizer-signal-08/run-00-C5/worker-1.log

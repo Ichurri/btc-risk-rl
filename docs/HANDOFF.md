@@ -1,4 +1,28 @@
-# Estado vigente — ejecutor P2R v2 integrado, campaña bloqueada
+# Estado vigente — preflight P2R aislado y sonda de optimizador sintética
+
+Desde `93515ef` se corrigió la ruta P2R que antes verificaba hashes de
+CSV H1 completos con filas de 2023. El ejecutor y su preflight exigen
+ahora un [derivado exclusivo de entrenamiento](protocols/P2R-training-shard-contract-v1.md)
+con hashes propios y ancla H1. **El derivado histórico no existe ni tiene
+huella registrada**: preflight falla cerrado antes de abrir los CSV
+compartidos. La vigilancia de aperturas y los rechazos de enlaces se
+verificaron solo con fixtures sintéticos. Una [sonda sintética de señal
+durante cálculo de gradientes](hitos/P2R-preflight-optimizer-signal.md)
+terminó `failed`, conservó Q0 por hash y no aceptó la unidad parcial.
+La raíz 07 muestra un error del envoltorio de prueba; la 08 verificó la
+salida 1. El [resumen académico](hitos/P2R-preflight-optimizer-resumen-academico.md)
+y las evidencias pequeñas están versionados.
+
+**Siguiente tarea:** revisar el contrato de exportación y la sonda.
+Una exportación auditada del prefijo H1, el registro de su hash y una
+autorización independiente de campaña son pasos pendientes; este hito
+no los concede. P0/P1/P2 y sondas 01–06 intactos. No reanudar campañas
+fallidas, no ejecutar P2R histórico ni consultar validación o prueba
+final. La eliminación local de `.python-version` sigue sin versionarse.
+
+---
+
+# Estado anterior — ejecutor P2R v2 integrado, campaña bloqueada
 
 La autorización posterior a la sonda 06 permitió **solo** implementar y
 verificar el ejecutor histórico P2R. El supervisor común enlaza nueve
