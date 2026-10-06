@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Exportación H1→P2R autorizada el 06/10/2026: derivado exclusivo de
+  entrenamiento creado y auditado fila por fila; huella del manifiesto
+  fijada en un commit independiente. La lectura puntual de CSV H1
+  compartidos, incluidos bytes 2023, fue solo para hash e igualdad del
+  prefijo. El preflight posterior vigilado no abre esos CSV. Ver
+  `docs/hitos/P2R-training-shard-export.md`. **Sigue sin permiso de campaña**:
+  `MARKET_EXECUTION_ENABLED=False`, sin registro aprobado; no lanzar
+  unidades, entrenamiento histórico, validación ni prueba final.
 - Revisión P2R posterior a `93515ef`: autorizado **solo** aislar físicamente
   el preflight/cargador de los CSV H1 con filas 2023 y ejecutar una sonda
   de señal **sintética** durante cálculo de gradientes en Q/A/B+D.

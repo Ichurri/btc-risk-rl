@@ -89,6 +89,16 @@ def test_preflight_requires_registered_training_shard_without_opening_h1_tables(
     ]}))
 
 
+def test_open_guard_rejects_attempt_to_read_shared_synthetic_table(
+    accepted_synthetic,
+):
+    _, _, prepared, _ = accepted_synthetic
+    shared = prepared / "bars.csv"
+    with opened_paths_forbidden({shared}):
+        with pytest.raises(AssertionError, match="Shared validation-containing"):
+            shared.read_bytes()
+
+
 def test_synthetic_training_shard_loads_without_opening_shared_tables(
     accepted_synthetic, tmp_path,
 ):

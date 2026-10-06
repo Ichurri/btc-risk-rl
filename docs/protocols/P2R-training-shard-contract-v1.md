@@ -1,8 +1,10 @@
 # P2R — contrato de producto exclusivo de entrenamiento H1
 
-**Estado:** infraestructura implementada; derivado histórico y su registro
-**pendientes de revisión**. Este documento no autoriza exportar datos,
-activar el permiso P2R ni ejecutar la campaña.
+**Estado de este contrato al redactarse:** infraestructura implementada;
+derivado histórico pendiente. La exportación y el anclaje autorizados
+posteriormente constan en el [informe del hito](../hitos/P2R-training-shard-export.md).
+Este contrato por sí mismo no autoriza activar el permiso P2R ni ejecutar
+la campaña.
 
 ## Dependencia comprobada
 

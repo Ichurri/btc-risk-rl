@@ -1,4 +1,26 @@
-# Estado vigente — preflight P2R aislado y sonda de optimizador sintética
+# Estado vigente — derivado H1 exclusivo de entrenamiento P2R auditado
+
+La [exportación auditada](hitos/P2R-training-shard-export.md) creó
+`data/processed/p2r-training-h1` sin filas de 2023, conservando el
+calentamiento y las 7.048 rutas aceptadas. La lectura puntual de los CSV H1
+compartidos se limitó a hashes y cotejo byte/fila del prefijo, autorizados
+para este hito. La [segunda auditoría](evidence/p2r-training-shard-export/re-audit.json)
+confirmó recuentos, exclusiones, segmentos, rutas y normalizador sin refit.
+El manifiesto derivado quedó fijado en `cd6b686`; el
+[preflight con vigilancia de aperturas](evidence/p2r-training-shard-export/preflight-opens.json)
+registró cero aperturas de los cinco CSV H1 compartidos, cero trayectorias,
+cero actualizaciones y estado `read_only_ready_campaign_disabled`.
+
+**Siguiente tarea:** revisión del informe, código y evidencias del
+derivado. El permiso P2R sigue inactivo y la campaña requiere autorización
+y registro separados, más preflight repetido en ese momento. No reanudar
+P2 fallido ni ejecutar unidades por este hito. H1, P0/P1/P2 y sondas
+anteriores permanecen intactos. La eliminación local de `.python-version`
+sigue sin versionarse. Validación y prueba final permanecen protegidas.
+
+---
+
+# Estado anterior — preflight P2R aislado y sonda de optimizador sintética
 
 Desde `93515ef` se corrigió la ruta P2R que antes verificaba hashes de
 CSV H1 completos con filas de 2023. El ejecutor y su preflight exigen
