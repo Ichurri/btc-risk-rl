@@ -8,6 +8,7 @@ import numpy as np
 import torch
 
 from btc_risk_rl.agents.collector import Collector, immutable
+from btc_risk_rl.agents.critic_objective import critic_objective
 from btc_risk_rl.agents.journal import RunJournal
 from btc_risk_rl.agents.market_marker import market_training_executed
 from btc_risk_rl.agents.models import Actor, Critic, FrozenPolicy, clipped_objective, fingerprint
@@ -52,12 +53,14 @@ class SyntheticExperiment:
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
         from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
         from btc_risk_rl.pilots.p2r_market import P2RMarketPermit, P2RMarketSettings
+        from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
         from btc_risk_rl.pilots.protocol import P0Settings, Permit
 
         if diagnostic is not None and (
             type(diagnostic) is not Diagnostic
             or (type(source), type(settings), type(permit)) not in {
                 (SyntheticMarket, P2SyntheticSettings, type(None)),
+                (SyntheticMarket, P3SyntheticSettings, type(None)),
                 (TrainingMarket, P2MarketSettings, P2MarketPermit),
                 (TrainingMarket, P2RMarketSettings, P2RMarketPermit),
             }
@@ -77,6 +80,7 @@ class SyntheticExperiment:
         elif type(source) is not SyntheticMarket or type(settings) not in {
             SyntheticSettings,
             P2SyntheticSettings,
+            P3SyntheticSettings,
         }:
             raise ValueError("Explicit synthetic settings and known source required")
         self.collector = Collector(source, seed=settings.seed, run_id=run_id)
@@ -276,20 +280,27 @@ class SyntheticExperiment:
         with self.telemetry.measure("critic", iteration, self.collector, self):
             for ids in self._minibatches(len(fixed["returns"]), s.critic_epochs, iteration, 1):
                 prediction = self.critic(tensor(fixed["observations"][ids]))
-                loss = ((prediction - tensor(fixed["returns"][ids])) ** 2).mean()
-                grad_norm = self._optimizer_step(loss, self.critic, self.critic_optimizer)
-                self.telemetry.stability.append(
-                    dict(
-                        phase="critic",
-                        measurement="pre_current_step_logged_after",
-                        scope="minibatch_complete_trajectories",
-                        iteration=iteration,
-                        mc_mse=float(loss.detach()),
-                        relative_mc_mse=float(loss.detach())
-                        / (float(np.mean(fixed["returns"][ids] ** 2)) + 1e-12),
-                        gradient_norm=grad_norm,
-                    )
+                beta = s.critic_beta if hasattr(s, "critic_beta") else 0
+                loss, mse, penalty = critic_objective(
+                    prediction, tensor(fixed["returns"][ids]), beta=beta
                 )
+                grad_norm = self._optimizer_step(loss, self.critic, self.critic_optimizer)
+                row = dict(
+                    phase="critic",
+                    measurement="pre_current_step_logged_after",
+                    scope="minibatch_complete_trajectories",
+                    iteration=iteration,
+                    mc_mse=float(mse.detach()),
+                    relative_mc_mse=float(mse.detach())
+                    / (float(np.mean(fixed["returns"][ids] ** 2)) + 1e-12),
+                    gradient_norm=grad_norm,
+                )
+                if beta:
+                    row.update(
+                        critic_penalty=float(penalty.detach()),
+                        critic_objective=float(loss.detach()),
+                    )
+                self.telemetry.stability.append(row)
                 self.critic_updates += 1
         self.telemetry.stability.append(fixed_diagnostic(self, fixed, iteration, "after_critic"))
         if fingerprint(self.actor) != actor_before or fixed_digest(fixed) != before:

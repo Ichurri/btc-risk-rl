@@ -228,9 +228,12 @@ def load_checkpoint(path, source, *, journal, permit=None):
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
         from btc_risk_rl.pilots.p2_market import P2MarketSettings
         from btc_risk_rl.pilots.p2r_market import P2RMarketSettings
+        from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
 
-        if manifest["profile"] == "p2_synthetic_tests_only" and type(source) is not SyntheticMarket:
-            raise PermissionError("P2 market checkpoint blocked")
+        if manifest["profile"] in {
+            "p2_synthetic_tests_only", "p3_synthetic_tests_only"
+        } and type(source) is not SyntheticMarket:
+            raise PermissionError("Synthetic checkpoint cannot load against market")
         diagnostic = state.get("diagnostic")
         if (manifest["schema_version"] == "p2_complete_boundary_v1") != (diagnostic is not None):
             raise ValueError("Incomplete diagnostic schema")
@@ -244,6 +247,8 @@ def load_checkpoint(path, source, *, journal, permit=None):
                 else (
                     P2SyntheticSettings
                     if manifest["profile"] == "p2_synthetic_tests_only"
+                    else P3SyntheticSettings
+                    if manifest["profile"] == "p3_synthetic_tests_only"
                     else SyntheticSettings
                 )
             )(**manifest["settings"]),
