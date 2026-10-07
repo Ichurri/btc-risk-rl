@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- P2R v2 histórico **autorizado el 07/10/2026 solo como diagnóstico de
+  desarrollo** sobre el derivado H1 exclusivo de entrenamiento 2018–2022.
+  Registro fijado en `docs/protocols/P2R-market-approval.json` y commit
+  `38fc54b`; raíz nueva `artifacts/p2r-approved-v2`, bajo
+  `p2r-market-v2-session-01.service`. Nueve corridas nuevas, sin incorporar P2,
+  sin cambiar protocolo ni seleccionar checkpoints. Ver
+  `docs/hitos/P2R-ejecucion-historica-v2.md`. El supervisor aplica
+  3 h globales/día America/La_Paz, hasta tres días activos, admisión por
+  unidad, pausas solo en frontera completa y fallo irreversible dentro de
+  unidad. **No iniciar otra campaña, no reanudar una fallida ni acceder a
+  validación 2023 o prueba final 2024–2025.** Los párrafos históricos de abajo
+  describen autorizaciones anteriores y no revocan esta autorización
+  específica.
 - Exportación H1→P2R autorizada el 06/10/2026: derivado exclusivo de
   entrenamiento creado y auditado fila por fila; huella del manifiesto
   fijada en un commit independiente. La lectura puntual de CSV H1

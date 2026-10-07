@@ -1,4 +1,26 @@
-# Estado vigente — presupuesto P2R analizado, campaña bloqueada
+# Estado vigente — P2R v2 histórico autorizado y en curso
+
+El usuario autorizó el 07/10/2026 la campaña P2R v2 como **diagnóstico de
+desarrollo** exclusivo de entrenamiento 2018–2022. El registro y permiso
+fijados están en `38fc54b`; se repitieron preflight, huellas, suite completa
+(289 pruebas) y Ruff antes de lanzar la raíz nueva
+`artifacts/p2r-approved-v2`. La sesión independiente es
+`p2r-market-v2-session-01.service`,
+`InvocationID=98473fe6e319417e8fe84abceb1bcd53`. Q0 y la primera
+Q/A/B+D de `run-00-C0` cerraron íntegras. Esta última midió 66,285994 s
+de pared y 4,724537 s de D. Ver el
+[informe en curso](hitos/P2R-ejecucion-historica-v2.md) y los
+[comandos/evidencias](evidence/p2r-market-2026-10-07/COMMANDS.md).
+
+**Siguiente tarea:** vigilar el ledger y journal hasta cierre o pausa válida,
+sin alterar protocolo ni presupuesto. Si aparece `failed`, conservar todo y
+no reanudar. Si se consumen tres días activos sin 99 unidades, mantener
+`incomplete`. P2 permanece `failed` y separado; validación y prueba final
+siguen protegidas. `.python-version` continúa eliminado solo localmente.
+
+---
+
+# Estado anterior — presupuesto P2R analizado, campaña bloqueada
 
 El [análisis temporal P0/P1/P2](hitos/P2R-analisis-presupuesto-P0-P1-P2.md)
 usa solo ledgers y JSON de unidades completas, con huellas verificadas.
