@@ -1,0 +1,16 @@
+{
+  "actor_updates": 1440,
+  "critic_updates": 2880,
+  "diagnostic_trajectories": 11520,
+  "diagnostic_transitions": 2073600,
+  "doubling_scenario_seconds": 13786.191349506378,
+  "learning_trajectories": 162720,
+  "learning_transitions": 29289600,
+  "max_active_days": 3,
+  "max_global_daily_seconds": 10800,
+  "max_work_seconds_if_three_full_days": 24300,
+  "p2r_measured_charged_seconds": 6893.095674753189,
+  "runs": 18,
+  "status": "proposal_not_authorized",
+  "units": 198
+}

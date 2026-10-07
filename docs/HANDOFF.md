@@ -1,4 +1,4 @@
-# Estado vigente — P2R v2 histórico cerrado operativamente; revisión pendiente
+# Estado vigente — P2R descriptivo adjudicado; P3 solo propuesto
 
 El usuario autorizó el 07/10/2026 la campaña P2R v2 como **diagnóstico de
 desarrollo** exclusivo de entrenamiento 2018–2022. El registro y permiso
@@ -19,16 +19,21 @@ La [revisión de solo lectura del metadato](hitos/P2R-metadato-entrenamiento-rev
 demostró que el generador heredado excluye `authorized_p2r_only`: los 99
 reportes marcan `false`, aunque las 90 unidades Q/A/B+D tienen pasos de
 optimizador y cambios de pesos respaldados por checkpoints. El supervisor
-no verificaba ese campo. El resultado numérico permanece `review`; la
-propuesta de decisión metodológica **no está adoptada**.
+no verificaba ese campo. La
+[adjudicación](protocols/P2R-adjudicacion-metadato-v1.md) reconoce que
+faltó la verificación previa, mantiene el resultado numérico `review` y
+limita P2R a diagnóstico **descriptivo de desarrollo**. No declara
+cumplido retrospectivamente el preflight ni aceptación confirmatoria.
+El [análisis tardío](hitos/P2R-error-valor-tardio.md) y su evidencia
+fundamentan la [propuesta P3](proposals/P3-protocolo-v1.md), todavía
+**no autorizada para implementación ni ejecución**.
 
-**Siguiente tarea:** revisión académica de la desviación respecto de §5 del
-protocolo P2R v2, que exigía corregir/verificar el campo antes de congelar
-el ejecutor. La aceptación metodológica formal sigue suspendida. No reabrir
-P2R ni repetir corridas; cualquier corrección prospectiva requiere hito
-separado sin reescribir artefactos. P2 permanece `failed` y separado;
-validación y final siguen protegidas. `.python-version` continúa eliminado
-solo localmente.
+**Siguiente tarea:** revisión académica del diseño P3, su intervención y
+criterio antes de autorizar implementación. La corrección prospectiva del
+marcador y su rechazo por el supervisor son condiciones de entrada de
+P3; no se implementaron aquí. No reabrir P2R ni repetir corridas o editar
+sus reportes. P2 permanece `failed` y separado; validación y final siguen
+protegidas. `.python-version` continúa eliminado solo localmente.
 
 ---
 

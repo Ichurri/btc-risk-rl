@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Adjudicación P2R posterior a `75b450c`: el usuario ordenó conservar
+  `review`, reconocer que faltó corregir/verificar
+  `market_training_executed` antes de congelar el ejecutor y clasificar
+  las nueve corridas **solo como diagnóstico descriptivo de desarrollo**.
+  Ver `docs/protocols/P2R-adjudicacion-metadato-v1.md`. No se convalida
+  retrospectivamente el preflight ni se editan los 99 reportes. El
+  análisis de MSE tardía y `docs/proposals/P3-protocolo-v1.md` son solo
+  lectura y propuesta: **P3 no está autorizado para implementar ni
+  ejecutar**. Corrección prospectiva del marcador pendiente, P2R cerrado,
+  P2 fallido intacto, sin validación ni prueba final.
 - P2R v2 histórico **ejecutado y cerrado operativamente el 07/10/2026 solo
   como diagnóstico de desarrollo** sobre el derivado H1 exclusivo de
   entrenamiento 2018–2022.
