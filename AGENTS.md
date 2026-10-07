@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Hito P3 posterior a `eed4b74`: el usuario autorizó únicamente implementar
+  y verificar **con datos sintéticos** la pérdida del crítico β=0/1 de P3
+  v1.1. β=0 conserva MSE; β=1 añade `mean(V²)` en los mismos minibatches A
+  y targets Monte Carlo congelados. Ver `docs/hitos/P3-critico-sintetico.md`.
+  No hay ejecutor ni permiso histórico P3; P0/P1/P2/P2R y sus artefactos
+  permanecen intactos. **No entrenar con mercado ni abrir validación/final.**
+  Esta autorización sustituye la prohibición cronológica de implementar
+  βV² solo para este hito sintético.
 - Hito prospectivo P3 posterior a `699d8da`: el usuario autorizó **solo**
   corregir `market_training_executed` y verificar sintéticamente el rechazo
   supervisor de reportes incoherentes antes de aceptar unidades. Ver
@@ -8,8 +16,8 @@
   fuente `accepted_train_collection_only` y pasos completados de **ambos**
   optimizadores; Q0 es `false`. La prueba de perfil histórico usa sobres
   sintéticos, no datos de mercado. Los 99 reportes P2R y P0/P1/P2 siguen
-  intactos. **No implementar aún βV², activar P3 ni ejecutar entrenamiento
-  histórico; validación y final siguen protegidas.** La prohibición de
+  intactos. **No activar P3 ni ejecutar entrenamiento histórico;
+  validación y final siguen protegidas.** La prohibición de
   implementación del párrafo cronológico siguiente fue sustituida
   únicamente para este hito acotado.
 - Adjudicación P2R posterior a `75b450c`: el usuario ordenó conservar

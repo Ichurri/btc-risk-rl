@@ -1,4 +1,26 @@
-# Estado vigente — marcador P3 y guarda supervisor verificados sintéticamente
+# Estado vigente — intervención β del crítico P3 verificada solo con sintéticos
+
+La autorización posterior a `eed4b74` permitió implementar la pérdida
+`MSE + β mean(V²)` de P3 v1.1 **solo** sobre rutas sintéticas. El perfil
+P3 tiene β=0/1 explícito; β=0 conserva exactamente parámetros y estados
+de ambos optimizadores frente a una referencia previa a la edición. β=1
+modifica únicamente los pasos del crítico sobre el mismo A y targets
+congelados; la primera actualización del actor coincide entre brazos.
+El checkpoint sintético conserva el brazo y los contadores. Consultar
+[informe](hitos/P3-critico-sintetico.md),
+[evidencias](evidence/p3-critic-synthetic/COMMANDS.md) y
+[resumen académico](hitos/P3-critico-resumen-academico.md).
+
+**Siguiente tarea:** revisar el hito y, solo con autorización posterior,
+integrar un ejecutor histórico P3 que identifique ambos brazos, aplique el
+protocolo y verifique preflight, permiso, presupuesto y checkpoints. No se
+habilitó una campaña; no se cargaron rutas de mercado ni validación/final.
+P2R conserva sus 99 reportes y `review` descriptivo; P2 sigue `failed`.
+La eliminación local previa de `.python-version` continúa sin versionar.
+
+---
+
+# Estado anterior — marcador P3 y guarda supervisor verificados sintéticamente
 
 Desde `699d8da`, el usuario autorizó solo la implementación prospectiva
 del marcador `market_training_executed` y su cotejo supervisor. El
