@@ -7,11 +7,13 @@
   las nueve corridas **solo como diagnóstico descriptivo de desarrollo**.
   Ver `docs/protocols/P2R-adjudicacion-metadato-v1.md`. No se convalida
   retrospectivamente el preflight ni se editan los 99 reportes. El
-  análisis de MSE tardía y la propuesta P3
-  `docs/proposals/P3-protocolo-v1-1.md` (v1 preservada) son solo
-  lectura y propuesta: **P3 no está autorizado para implementar ni
-  ejecutar**. La v1.1 corrige la comparación con predictor cero y define
-  razones pareadas exactas; sus comprobaciones son algebraicas sintéticas.
+  análisis de MSE tardía motivó P3 v1.1, **adoptado solo como protocolo
+  metodológico exploratorio de desarrollo** en
+  `docs/protocols/P3-adopcion-metodologica-v1-1.md` tras la aclaración
+  `e30708a` (v1 preservada). **Esta adopción no autoriza implementar ni
+  ejecutar P3**. La v1.1 corrige la comparación con predictor cero y
+  define razones pareadas exactas; sus comprobaciones son algebraicas
+  sintéticas.
   Corrección prospectiva del marcador pendiente, P2R cerrado,
   P2 fallido intacto, sin validación ni prueba final.
 - P2R v2 histórico **ejecutado y cerrado operativamente el 07/10/2026 solo

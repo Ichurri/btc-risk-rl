@@ -1,4 +1,12 @@
-# Estado vigente — P3 v1.1 para revisión, sin permiso de campaña
+# Estado vigente — P3 v1.1 adoptado metodológicamente, sin implementación
+
+La [adopción metodológica](protocols/P3-adopcion-metodologica-v1-1.md) acepta el [protocolo v1.1](proposals/P3-protocolo-v1-1.md) tras la aclaración `e30708a`. Es únicamente un diagnóstico exploratorio de desarrollo: β=0/1, tres semillas nuevas, C0/C5/C10, 18 corridas K10 y comparación pareada con razones exactas, puertas de Z por brazo y presupuesto común. Los umbrales provienen de P2R y no constituyen evidencia confirmatoria. P2R mantiene `review` solo descriptivo y sus 99 reportes intactos; P2 permanece fallido.
+
+**Siguiente tarea:** solicitar y registrar por separado autorización para implementar y verificar sintéticamente el marcador `market_training_executed`, la guarda del supervisor y la infraestructura P3. Esta adopción **no autoriza implementar ni ejecutar P3**, lanzar unidades históricas, usar validación 2023 ni abrir la prueba final 2024–2025. Una campaña posterior necesitará permiso específico, huellas y preflight. La eliminación local previa de `.python-version` permanece ajena a este hito.
+
+---
+
+# Estado anterior — P3 v1.1 para revisión, sin permiso de campaña
 
 La [propuesta P3 v1.1](proposals/P3-protocolo-v1-1.md) corrige la regla
 que en v1 podía aprobar un predictor cero cuando `Z` era pequeño, aun
