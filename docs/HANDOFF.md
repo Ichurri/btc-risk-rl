@@ -15,15 +15,20 @@ checkpoints coinciden. Ver el
 [informe de cierre](hitos/P2R-ejecucion-historica-v2.md) y los
 [comandos/evidencias](evidence/p2r-market-2026-10-07/COMMANDS.md).
 
-**Siguiente tarea:** revisión académica de una discrepancia de metadatos
-preexistente: los 99 reportes dicen `market_training_executed=false` porque
-el generador heredado solo reconoce P0/P1. P2R v2 exigía corregir o verificar
-ese campo antes de congelar el ejecutor; no se hizo. La regla numérica da
-`review` (1/3 semillas por condición), pero la aceptación metodológica
-formal queda pendiente de esa revisión de integridad. No reabrir P2R ni
-repetir corridas; cualquier corrección del reporte será un hito nuevo sin
-reescribir artefactos. P2 permanece `failed` y separado; validación y final
-siguen protegidas. `.python-version` continúa eliminado solo localmente.
+La [revisión de solo lectura del metadato](hitos/P2R-metadato-entrenamiento-revision.md)
+demostró que el generador heredado excluye `authorized_p2r_only`: los 99
+reportes marcan `false`, aunque las 90 unidades Q/A/B+D tienen pasos de
+optimizador y cambios de pesos respaldados por checkpoints. El supervisor
+no verificaba ese campo. El resultado numérico permanece `review`; la
+propuesta de decisión metodológica **no está adoptada**.
+
+**Siguiente tarea:** revisión académica de la desviación respecto de §5 del
+protocolo P2R v2, que exigía corregir/verificar el campo antes de congelar
+el ejecutor. La aceptación metodológica formal sigue suspendida. No reabrir
+P2R ni repetir corridas; cualquier corrección prospectiva requiere hito
+separado sin reescribir artefactos. P2 permanece `failed` y separado;
+validación y final siguen protegidas. `.python-version` continúa eliminado
+solo localmente.
 
 ---
 
