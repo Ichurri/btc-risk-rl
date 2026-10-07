@@ -60,23 +60,30 @@ Ambos brazos usan el derivado H1 exclusivo de entrenamiento 2018–2022,
 7.048 inicios uniformes con reemplazo, normalizador fijo, mismo H3,
 costos/recompensa, ADR-002, d=`−ln(0.90)` común a C5/C10, actor y
 arquitectura 32/tanh, tasas, minibatch16, actor2 épocas, crítico4 épocas
-**todavía provisionales**, Q0=400, cada k A64/Q400/B400 y D64. D conserva
-π_k congelada, RNG propio, ambos críticos sobre los mismos objetivos,
-y no alimenta ningún gradiente ni decisión de parada. C0 conserva Q/B
-auxiliares y λ=0; ambas β consumen idénticos tamaños y número de pasos.
+**todavía provisionales**, Q0=400, cada k A64/Q400/B400 y D64. En cada
+brazo, D se genera con su propia π_k congelada y un RNG separado. El
+crítico **de ese mismo brazo**, antes y después de actualizarlo, se
+evalúa sobre las mismas observaciones y objetivos Monte Carlo de su D.
+La frase «ambos críticos» se refiere a esos dos estados del crítico
+dentro de un brazo; no exige que β=0 y β=1 compartan trayectorias ni
+objetivos D. D no alimenta ningún gradiente ni decisión de parada. C0
+conserva Q/B auxiliares y λ=0; ambas β consumen idénticos tamaños y
+número de pasos.
 Totales si cierra la matriz: **162.720 trayectorias y 29.289.600
 transiciones de aprendizaje**; **11.520 y 2.073.600 de D**; 1.440 pasos
 de actor y 2.880 de crítico. Registrar costos de D y del nuevo término
 por brazo, sin atribuir tiempos a componentes no medidos.
 
 El RNG por semilla/rol/k permite cotejar inicios Q/A/B/D entre brazos en
-la misma condición. Antes de actualizar el primer crítico deben coincidir
+la misma condición, sin garantizar que sus trayectorias coincidan. Antes
+de actualizar el primer crítico deben coincidir
 Q0, A inicial y actor después del primer paso de actor; comprobarlo
 sintéticamente y en reportes. Desde k≥1 el crítico tratado altera las
-ventajas y puede cambiar las políticas, acciones y objetivos: el contraste
-posterior mide el **efecto total** de adoptar esa pérdida en el sistema,
-no un efecto aislado del crítico bajo política fija. D de cada brazo debe
-corresponder a su propia π_k. No mezclar resultados de P2R ni contar las
+ventajas y puede cambiar las políticas, trayectorias y objetivos de
+β=0 y β=1: el contraste posterior mide el **efecto total** de adoptar
+esa pérdida en el sistema,
+no un efecto aislado del crítico bajo política fija. Cada D debe evaluar
+la política π_k de su propio brazo. No mezclar resultados de P2R ni contar las
 tres condiciones de una semilla como tres réplicas independientes.
 
 ## Métricas y decisión fijadas antes de ejecutar
