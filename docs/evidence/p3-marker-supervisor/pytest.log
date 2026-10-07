@@ -1,0 +1,34 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/ichurri/Desktop/personal_projects/btc-risk-rl
+configfile: pyproject.toml
+testpaths: tests
+collected 312 items
+
+tests/test_agent_math.py .............                                   [  4%]
+tests/test_agent_schedule.py .......                                     [  6%]
+tests/test_collector.py ............                                     [ 10%]
+tests/test_config.py ....                                                [ 11%]
+tests/test_data.py ................                                      [ 16%]
+tests/test_diagnosis.py ....                                             [ 17%]
+tests/test_features.py ......                                            [ 19%]
+tests/test_h5_market.py ....                                             [ 21%]
+tests/test_h5_resume.py ...........                                      [ 24%]
+tests/test_p0_budget.py ............                                     [ 28%]
+tests/test_p0_integration.py ..........                                  [ 31%]
+tests/test_p1.py ............                                            [ 35%]
+tests/test_p2.py .......................                                 [ 42%]
+tests/test_p2_market_integration.py .............                        [ 47%]
+tests/test_p2r_historical_executor.py .............                      [ 51%]
+tests/test_p2r_infrastructure.py ..................                      [ 57%]
+tests/test_p2r_logout_preparation.py ....                                [ 58%]
+tests/test_p2r_training_shard.py ......                                  [ 60%]
+tests/test_p2r_training_shard_export.py ...                              [ 61%]
+tests/test_p2r_units.py ...........                                      [ 64%]
+tests/test_p3_marker_supervisor.py .......................               [ 72%]
+tests/test_recheck.py ..                                                 [ 72%]
+tests/test_segmentation.py ...........................                   [ 81%]
+tests/test_simulator.py .........................................        [ 94%]
+tests/test_temporal_contract.py .................                        [100%]
+
+======================= 312 passed in 225.10s (0:03:45) ========================

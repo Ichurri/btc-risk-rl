@@ -1,6 +1,17 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Hito prospectivo P3 posterior a `699d8da`: el usuario autorizó **solo**
+  corregir `market_training_executed` y verificar sintéticamente el rechazo
+  supervisor de reportes incoherentes antes de aceptar unidades. Ver
+  `docs/hitos/P3-marcador-supervisor-sintetico.md`. El marcador requiere
+  fuente `accepted_train_collection_only` y pasos completados de **ambos**
+  optimizadores; Q0 es `false`. La prueba de perfil histórico usa sobres
+  sintéticos, no datos de mercado. Los 99 reportes P2R y P0/P1/P2 siguen
+  intactos. **No implementar aún βV², activar P3 ni ejecutar entrenamiento
+  histórico; validación y final siguen protegidas.** La prohibición de
+  implementación del párrafo cronológico siguiente fue sustituida
+  únicamente para este hito acotado.
 - Adjudicación P2R posterior a `75b450c`: el usuario ordenó conservar
   `review`, reconocer que faltó corregir/verificar
   `market_training_executed` antes de congelar el ejecutor y clasificar

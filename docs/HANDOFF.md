@@ -1,4 +1,28 @@
-# Estado vigente — P3 v1.1 adoptado metodológicamente, sin implementación
+# Estado vigente — marcador P3 y guarda supervisor verificados sintéticamente
+
+Desde `699d8da`, el usuario autorizó solo la implementación prospectiva
+del marcador `market_training_executed` y su cotejo supervisor. El
+[informe del hito](hitos/P3-marcador-supervisor-sintetico.md), las
+[evidencias](evidence/p3-marker-supervisor/COMMANDS.md) y el
+[resumen académico](hitos/P3-marcador-resumen-academico.md) explican el
+alcance. La regla exige fuente aceptada exclusivamente de entrenamiento
+y pasos completados del actor **y** del crítico. Q0 informa `false`;
+la iteración sintética también informa `false`. El supervisor contrasta
+perfil, reporte, recursos y contadores del checkpoint antes de aceptar
+la frontera; un marcador manipulado falla con ledger `failed`, sin
+aceptación de la unidad y con el checkpoint Q0 anterior intacto.
+
+**Siguiente tarea:** revisar esta infraestructura y decidir por separado
+si se autoriza implementar la pérdida βV² y el resto de P3. Todavía no
+hay permiso de campaña histórica P3. Las pruebas del perfil de
+entrenamiento son sobres **sintéticos**, sin trayectorias históricas.
+P2R conserva sus 99 reportes y `review` solo descriptivo; P2 sigue
+`failed`. Validación y final no se abren. La eliminación local previa de
+`.python-version` se preservó sin versionar.
+
+---
+
+# Estado anterior — P3 v1.1 adoptado metodológicamente, sin implementación
 
 La [adopción metodológica](protocols/P3-adopcion-metodologica-v1-1.md) acepta el [protocolo v1.1](proposals/P3-protocolo-v1-1.md) tras la aclaración `e30708a`. Es únicamente un diagnóstico exploratorio de desarrollo: β=0/1, tres semillas nuevas, C0/C5/C10, 18 corridas K10 y comparación pareada con razones exactas, puertas de Z por brazo y presupuesto común. Los umbrales provienen de P2R y no constituyen evidencia confirmatoria. P2R mantiene `review` solo descriptivo y sus 99 reportes intactos; P2 permanece fallido.
 
