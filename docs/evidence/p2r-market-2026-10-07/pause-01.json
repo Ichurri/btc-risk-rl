@@ -1,0 +1,16 @@
+{
+  "campaign": "p2r-approved-v2",
+  "checkpoint_9_sha256": "aed5b00c68c6741746ccb82ba0c658aaed20c4bf2fb26d6adfddd212dde0d634",
+  "cursor": 0,
+  "day_local": "2026-10-07",
+  "day_wall_charged_seconds": 791.119772195816,
+  "journal_sha256_at_pause": "f0ae2f76f96e1dab6409a4c519112e2163c4a18129bc86d9a981f23f323d2a8a",
+  "ledger_sha256_at_pause": "d18aa7f12f2d7a9da3317a13fa736ab3128c6a4f462825716fd57b53f73b8457",
+  "pending": null,
+  "run_id": "run-00-C0",
+  "session_01_invocation_id": "98473fe6e319417e8fe84abceb1bcd53",
+  "session_02_invocation_id": "7887fd6ad3164da08959f337e05bc3c2",
+  "status": "ready",
+  "units_accepted": 10,
+  "warning": "availability_lost_after_unit after units 8 and 9; the guard reports insufficient memory or disk"
+}

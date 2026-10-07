@@ -1,6 +1,7 @@
 # P2R v2 — campaña histórica autorizada, diagnóstico de desarrollo
 
-**Estado provisional al 07/10/2026:** campaña en curso. El usuario autorizó
+**Estado provisional al 07/10/2026:** campaña pausada válidamente tras dos
+sesiones. El usuario autorizó
 las nueve corridas nuevas de P2R v2 solo sobre el derivado H1 de entrenamiento
 2018–2022. El permiso quedó fijado en el commit `38fc54b`, separado de la
 evidencia de ejecución. P2 conserva su estado `failed` y ninguna unidad o
@@ -31,3 +32,27 @@ frontera completa y fallo irreversible para una unidad interrumpida. Si se
 agotan tres días activos sin 99 unidades íntegras, debe quedar `incomplete`.
 Este resultado de desarrollo sobre el histórico de entrenamiento no demuestra
 generalización temporal, rentabilidad ni cumplimiento poblacional de CVaR.
+
+## Pausa de recursos tras la décima unidad aceptada
+
+La primera sesión aceptó Q0 y k=0…7, hasta `unit=8`. Durante esa unidad el
+journal anotó `availability_lost` a las 05:43:51.855808 UTC; el supervisor
+aceptó el checkpoint completo y salió en `ready` a las 05:45:00 UTC,
+`Result=success`. Un nuevo preflight leyó CA conectada, batería 97 %,
+4.570.796.032 B de memoria disponible y 182.038.847.488 B de disco libre;
+permitió la segunda sesión
+`p2r-market-v2-session-02.service`,
+`InvocationID=7887fd6ad3164da08959f337e05bc3c2`. Ésta aceptó
+`unit=9` y pausó de igual modo a las 05:48:15 UTC.
+
+El ledger quedó `ready`, cursor 0, 10 unidades aceptadas, `pending=null`;
+su débito diario de pared era 791,119772 s y el checkpoint `unit=9` tenía
+SHA-256 `aed5b00c68c6741746ccb82ba0c658aaed20c4bf2fb26d6adfddd212dde0d634`.
+El aviso de la guarda combina memoria y disco: no registró el valor exacto
+en el instante de cruce. El disco midió más de 181 GB después de ambas
+pausas, por lo que la presión de memoria es la explicación más probable,
+no una medición directa del valor transitorio. No se borró ni repitió unidad.
+La [instantánea de pausa](../evidence/p2r-market-2026-10-07/pause-01.json)
+conserva huellas del ledger y journal de ese momento. Falta una sesión
+admisible para `run-00-C0`; conviene recuperar margen de memoria antes de
+usarla, manteniendo los umbrales del protocolo.

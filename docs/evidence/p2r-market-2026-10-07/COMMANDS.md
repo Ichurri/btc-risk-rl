@@ -47,3 +47,22 @@ El lanzamiento devolvió `InvocationID=98473fe6e319417e8fe84abceb1bcd53`.
 La unidad Q0 fue aceptada y la primera Q/A/B+D está registrada en
 [`first-unit.json`](first-unit.json). Su tiempo de pared completo y el de D
 son mediciones nuevas de P2R, no extrapolaciones de P2.
+
+Tras `availability_lost_after_unit` en la primera sesión se comprobó un
+ledger `ready`, `pending=null`, checkpoint completo y nuevo preflight.
+Se ejecutó la continuación válida:
+
+```bash
+systemd-run --user --unit=p2r-market-v2-session-02.service --service-type=exec \
+  --description='P2R v2 approved development diagnostic, valid-boundary continuation' \
+  --working-directory=/home/ichurri/Desktop/personal_projects/btc-risk-rl \
+  --setenv=PYTHONUNBUFFERED=1 \
+  /home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python \
+  /home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_p2r_market.py
+```
+
+`InvocationID=7887fd6ad3164da08959f337e05bc3c2`. La segunda sesión
+aceptó `unit=9` y volvió a pausar por disponibilidad entre unidades.
+La [instantánea](pause-01.json) se comprobó contra SHA-256 del ledger,
+journal y checkpoint; el estado sigue recuperable solo desde frontera
+completa. No hubo repetición de unidad ni de corrida.

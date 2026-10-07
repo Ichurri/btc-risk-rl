@@ -1,4 +1,4 @@
-# Estado vigente — P2R v2 histórico autorizado y en curso
+# Estado vigente — P2R v2 histórico autorizado, pausado en frontera completa
 
 El usuario autorizó el 07/10/2026 la campaña P2R v2 como **diagnóstico de
 desarrollo** exclusivo de entrenamiento 2018–2022. El registro y permiso
@@ -8,12 +8,19 @@ fijados están en `38fc54b`; se repitieron preflight, huellas, suite completa
 `p2r-market-v2-session-01.service`,
 `InvocationID=98473fe6e319417e8fe84abceb1bcd53`. Q0 y la primera
 Q/A/B+D de `run-00-C0` cerraron íntegras. Esta última midió 66,285994 s
-de pared y 4,724537 s de D. Ver el
+de pared y 4,724537 s de D. Dos sesiones cerraron por guarda de recursos
+entre unidades. El ledger quedó `ready`, sin `pending`, tras 10 unidades
+aceptadas de `run-00-C0` (Q0 y k=0…8); faltan k=9 y las ocho corridas
+restantes. Se registraron dos sesiones para esta corrida, cuyo máximo es tres.
+El débito de pared del día es 791,120 s de 10.800 s. No iniciar otra sesión
+si la presión de memoria persiste; volver a verificar recursos y saldo.
+Ver el
 [informe en curso](hitos/P2R-ejecucion-historica-v2.md) y los
 [comandos/evidencias](evidence/p2r-market-2026-10-07/COMMANDS.md).
 
-**Siguiente tarea:** vigilar el ledger y journal hasta cierre o pausa válida,
-sin alterar protocolo ni presupuesto. Si aparece `failed`, conservar todo y
+**Siguiente tarea:** recuperar margen de memoria del host, repetir el
+preflight y continuar la misma raíz solo desde esta frontera válida, sin
+alterar protocolo ni presupuesto. Si aparece `failed`, conservar todo y
 no reanudar. Si se consumen tres días activos sin 99 unidades, mantener
 `incomplete`. P2 permanece `failed` y separado; validación y prueba final
 siguen protegidas. `.python-version` continúa eliminado solo localmente.
