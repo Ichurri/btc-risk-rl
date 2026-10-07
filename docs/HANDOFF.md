@@ -1,4 +1,27 @@
-# Estado vigente — preparación final P2R v2 revisada, campaña bloqueada
+# Estado vigente — presupuesto P2R analizado, campaña bloqueada
+
+El [análisis temporal P0/P1/P2](hitos/P2R-analisis-presupuesto-P0-P1-P2.md)
+usa solo ledgers y JSON de unidades completas, con huellas verificadas.
+P2 midió 6 Q0 y 51 Q/A/B+D cerradas (medianas 29,038 y 69,067 s),
+incluidas 51 D por 248,335 s; no aporta tiempo global fiable después de
+la interrupción ni costo del nuevo supervisor P2R histórico. Los
+[escenarios](evidence/p2r-budget-analysis/results.json) contrastan 99
+unidades con 24.300 s máximos de trabajo en tres días, separando tiempos
+medidos de sobrecostos supuestos. El
+[resumen académico](hitos/P2R-presupuesto-resumen-academico.md) conserva
+los límites de interpretación.
+
+**Siguiente tarea:** revisión académica del análisis de factibilidad.
+No se activó `MARKET_EXECUTION_ENABLED`, no se creó raíz/registro P2R y
+no hubo entrenamiento. Una campaña posterior exige autorización separada;
+su regla de presupuesto sigue siendo admisión por unidad, pausa antes de
+abrir una que no cabe y fallo irreversible si se interrumpe una activa.
+P0/P1/P2 y las sondas permanecen intactos; `.python-version` continúa
+eliminado solo localmente.
+
+---
+
+# Estado anterior — preparación final P2R v2 revisada, campaña bloqueada
 
 La [revisión final](hitos/P2R-preparacion-final-v2.md) desde `dc6285c`
 ejecutó 288 pruebas y Ruff, cotejó el manifiesto derivado con el ancla

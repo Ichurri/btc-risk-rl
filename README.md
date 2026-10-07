@@ -6,9 +6,13 @@ su ledger está `failed` y no se reanuda. El
 [protocolo P2R v2 adoptado solo como diagnóstico de desarrollo](docs/protocols/P2R-adopcion-metodologica-v2.md)
 constan para revisión técnica. El [ejecutor histórico P2R](docs/hitos/P2R-ejecutor-historico-v2.md)
 está implementado y verificado sin entrenamiento de mercado; su permiso de
-campaña permanece inactivo. Su [preflight aislado](docs/hitos/P2R-preflight-optimizer-signal.md)
-exige un derivado exclusivo de entrenamiento aún pendiente de exportación
-auditada. P0/P1 están cerrados; validación y final siguen bloqueados. Consultar el
+campaña permanece inactivo. El
+[derivado H1 exclusivo de entrenamiento](docs/hitos/P2R-training-shard-export.md)
+fue exportado y auditado; el preflight aislado no abre los CSV H1 compartidos.
+La [revisión de preparación](docs/hitos/P2R-preparacion-final-v2.md) y el
+[análisis de presupuesto](docs/hitos/P2R-analisis-presupuesto-P0-P1-P2.md)
+no conceden permiso de campaña. P0/P1 están cerrados; validación y final
+siguen bloqueados. Consultar el
 [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
