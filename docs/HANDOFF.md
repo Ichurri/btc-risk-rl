@@ -1,28 +1,28 @@
-# Estado vigente — P2R v2 histórico autorizado, pausado en frontera completa
+# Estado vigente — P2R v2 histórico cerrado operativamente; revisión pendiente
 
 El usuario autorizó el 07/10/2026 la campaña P2R v2 como **diagnóstico de
 desarrollo** exclusivo de entrenamiento 2018–2022. El registro y permiso
 fijados están en `38fc54b`; se repitieron preflight, huellas, suite completa
 (289 pruebas) y Ruff antes de lanzar la raíz nueva
-`artifacts/p2r-approved-v2`. La sesión independiente es
-`p2r-market-v2-session-01.service`,
-`InvocationID=98473fe6e319417e8fe84abceb1bcd53`. Q0 y la primera
-Q/A/B+D de `run-00-C0` cerraron íntegras. Esta última midió 66,285994 s
-de pared y 4,724537 s de D. Dos sesiones cerraron por guarda de recursos
-entre unidades. El ledger quedó `ready`, sin `pending`, tras 10 unidades
-aceptadas de `run-00-C0` (Q0 y k=0…8); faltan k=9 y las ocho corridas
-restantes. Se registraron dos sesiones para esta corrida, cuyo máximo es tres.
-El débito de pared del día es 791,120 s de 10.800 s. No iniciar otra sesión
-si la presión de memoria persiste; volver a verificar recursos y saldo.
-Ver el
-[informe en curso](hitos/P2R-ejecucion-historica-v2.md) y los
+`artifacts/p2r-approved-v2`. Tres sesiones `systemd --user` terminaron
+con `Result=success`: dos pausaron entre unidades completas por guarda de
+recursos, y la tercera cerró las nueve corridas. El ledger marca
+`completed`, cursor 9, **99 unidades aceptadas**, ninguna pendiente; cargó
+6.893,096 s de 10.800 s el 07/10/2026 La Paz. La primera Q/A/B+D midió
+66,285994 s de pared y 4,724537 s de D. El auditor releyó las cadenas,
+99 checkpoints y 5.760 archivos D; todas las huellas de código de
+checkpoints coinciden. Ver el
+[informe de cierre](hitos/P2R-ejecucion-historica-v2.md) y los
 [comandos/evidencias](evidence/p2r-market-2026-10-07/COMMANDS.md).
 
-**Siguiente tarea:** recuperar margen de memoria del host, repetir el
-preflight y continuar la misma raíz solo desde esta frontera válida, sin
-alterar protocolo ni presupuesto. Si aparece `failed`, conservar todo y
-no reanudar. Si se consumen tres días activos sin 99 unidades, mantener
-`incomplete`. P2 permanece `failed` y separado; validación y prueba final
+**Siguiente tarea:** revisión académica de una discrepancia de metadatos
+preexistente: los 99 reportes dicen `market_training_executed=false` porque
+el generador heredado solo reconoce P0/P1. P2R v2 exigía corregir o verificar
+ese campo antes de congelar el ejecutor; no se hizo. La regla numérica da
+`review` (1/3 semillas por condición), pero la aceptación metodológica
+formal queda pendiente de esa revisión de integridad. No reabrir P2R ni
+repetir corridas; cualquier corrección del reporte será un hito nuevo sin
+reescribir artefactos. P2 permanece `failed` y separado; validación y final
 siguen protegidas. `.python-version` continúa eliminado solo localmente.
 
 ---

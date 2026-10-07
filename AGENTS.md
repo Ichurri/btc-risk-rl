@@ -1,16 +1,21 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
-- P2R v2 histórico **autorizado el 07/10/2026 solo como diagnóstico de
-  desarrollo** sobre el derivado H1 exclusivo de entrenamiento 2018–2022.
+- P2R v2 histórico **ejecutado y cerrado operativamente el 07/10/2026 solo
+  como diagnóstico de desarrollo** sobre el derivado H1 exclusivo de
+  entrenamiento 2018–2022.
   Registro fijado en `docs/protocols/P2R-market-approval.json` y commit
-  `38fc54b`; raíz nueva `artifacts/p2r-approved-v2`, con sesiones de
-  `systemd --user` registradas en el informe. Nueve corridas nuevas, sin incorporar P2,
+  `38fc54b`; raíz `artifacts/p2r-approved-v2`, con tres sesiones de
+  `systemd --user` registradas en el informe. Nueve corridas nuevas y 99
+  unidades cerradas, sin incorporar P2,
   sin cambiar protocolo ni seleccionar checkpoints. Ver
   `docs/hitos/P2R-ejecucion-historica-v2.md`. El supervisor aplica
   3 h globales/día America/La_Paz, hasta tres días activos, admisión por
   unidad, pausas solo en frontera completa y fallo irreversible dentro de
-  unidad. **No iniciar otra campaña, no reanudar una fallida ni acceder a
+  unidad. El ledger está `completed`; no volver a lanzarlo. La regla
+  numérica da `review`, pero la aceptación formal queda pendiente por el
+  marcador heredado `market_training_executed=false` en los 99 reportes.
+  Ver HANDOFF. **No iniciar otra campaña, no reanudar una fallida ni acceder a
   validación 2023 o prueba final 2024–2025.** Los párrafos históricos de abajo
   describen autorizaciones anteriores y no revocan esta autorización
   específica.

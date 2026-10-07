@@ -66,3 +66,45 @@ aceptó `unit=9` y volvió a pausar por disponibilidad entre unidades.
 La [instantánea](pause-01.json) se comprobó contra SHA-256 del ledger,
 journal y checkpoint; el estado sigue recuperable solo desde frontera
 completa. No hubo repetición de unidad ni de corrida.
+
+La memoria disponible subió después a 6.353.022.976 B. Un nuevo
+`inspect_preflight()` confirmó derivado, CA/batería, memoria, disco,
+`Linger=yes`, gestor y presupuesto. Se ejecutó:
+
+```bash
+systemd-run --user --unit=p2r-market-v2-session-03.service --service-type=exec \
+  --description='P2R v2 approved development diagnostic, valid-boundary continuation' \
+  --working-directory=/home/ichurri/Desktop/personal_projects/btc-risk-rl \
+  --setenv=PYTHONUNBUFFERED=1 \
+  /home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python \
+  /home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_p2r_market.py
+```
+
+Devolvió
+`InvocationID=24fd4f1c433e4c27adb2a47de154b789`. El journal registra
+`completed` a las 07:29:57 UTC y `Result=success`.
+
+Comprobaciones de cierre **sin nuevas trayectorias ni optimización**:
+
+```bash
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen python \
+  docs/evidence/p2r-market-2026-10-07/checks.py \
+  > docs/evidence/p2r-market-2026-10-07/results.json
+UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen ruff check .
+TZ=UTC journalctl --user \
+  -u p2r-market-v2-session-01.service \
+  -u p2r-market-v2-session-02.service \
+  -u p2r-market-v2-session-03.service \
+  -o short-iso-precise --no-pager \
+  > docs/evidence/p2r-market-2026-10-07/systemd-journal.txt
+```
+
+El auditor cerró con `completed`, cursor 9, 99 checkpoints y 5.760
+archivos D verificados, 0 `unit_failed`, máximo heartbeat 4,228481 s.
+Ruff dio `All checks passed!`. El cálculo numérico del criterio dio
+`review` (1/3 semillas por condición); la aceptación formal queda pendiente
+por el marcador `market_training_executed=false` en 99/99 reportes.
+Una segunda lectura del auditor a `/tmp/p2r-closing-check.json` y `cmp`
+con `results.json` coincidió byte a byte. No se repitió la suite completa
+después de los cambios solo documentales; la última suite completa sobre el
+código de campaña, antes del lanzamiento, fue 289/289.

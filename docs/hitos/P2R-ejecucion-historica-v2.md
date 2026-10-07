@@ -1,7 +1,10 @@
 # P2R v2 — campaña histórica autorizada, diagnóstico de desarrollo
 
-**Estado provisional al 07/10/2026:** campaña pausada válidamente tras dos
-sesiones. El usuario autorizó
+**Cierre operativo al 07/10/2026:** `completed`, nueve corridas nuevas,
+99 unidades íntegras y un día activo. **Interpretación metodológica pendiente
+de revisión:** el marcador heredado `market_training_executed` contradice la
+ejecución observada y no cumplió la corrección/verificación previa exigida en
+P2R v2. El usuario autorizó
 las nueve corridas nuevas de P2R v2 solo sobre el derivado H1 de entrenamiento
 2018–2022. El permiso quedó fijado en el commit `38fc54b`, separado de la
 evidencia de ejecución. P2 conserva su estado `failed` y ninguna unidad o
@@ -26,10 +29,9 @@ El [registro de comandos](../evidence/p2r-market-2026-10-07/COMMANDS.md) y
 la [medición de unidad](../evidence/p2r-market-2026-10-07/first-unit.json)
 permiten cotejar estos números con el ledger y `unit-1.json` locales.
 
-La medición de D es diagnóstico de viabilidad, no cambia la admisión,
-los umbrales, d ni los hiperparámetros. La campaña sigue las pausas solo en
-frontera completa y fallo irreversible para una unidad interrumpida. Si se
-agotan tres días activos sin 99 unidades íntegras, debe quedar `incomplete`.
+La medición de D fue diagnóstico de viabilidad y no cambió la admisión,
+los umbrales, d ni los hiperparámetros. Las pausas fueron solo en fronteras
+completas; no se aceptó ninguna unidad interrumpida.
 Este resultado de desarrollo sobre el histórico de entrenamiento no demuestra
 generalización temporal, rentabilidad ni cumplimiento poblacional de CVaR.
 
@@ -53,6 +55,79 @@ en el instante de cruce. El disco midió más de 181 GB después de ambas
 pausas, por lo que la presión de memoria es la explicación más probable,
 no una medición directa del valor transitorio. No se borró ni repitió unidad.
 La [instantánea de pausa](../evidence/p2r-market-2026-10-07/pause-01.json)
-conserva huellas del ledger y journal de ese momento. Falta una sesión
-admisible para `run-00-C0`; conviene recuperar margen de memoria antes de
-usarla, manteniendo los umbrales del protocolo.
+conserva huellas del ledger y journal de ese momento. La memoria disponible
+subió después a 6.353.022.976 B y un nuevo preflight permitió la tercera
+sesión, `p2r-market-v2-session-03.service`,
+`InvocationID=24fd4f1c433e4c27adb2a47de154b789`. Completó `unit=10`
+de `run-00-C0` y las ocho corridas restantes sin nueva pausa.
+
+## Cierre y presupuesto medido
+
+La sesión 03 cerró a las **07:29:57.107013 UTC**. El ledger terminó
+`completed`, cursor 9, 99 unidades aceptadas, `pending=null`. `systemd --user`
+registró `Result=success` en las tres sesiones; las dos primeras terminaron
+`ready` en frontera completa y la tercera `completed`. La cadena del ledger
+y del journal, los 99 checkpoints y los 5.760 archivos diagnósticos D fueron
+releídos y verificados por hash con el
+[auditor de cierre](../evidence/p2r-market-2026-10-07/checks.py). El
+[resultado íntegro](../evidence/p2r-market-2026-10-07/results.json) y el
+[journal systemd](../evidence/p2r-market-2026-10-07/systemd-journal.txt)
+están versionados; ledger y artefactos grandes siguen en la raíz local.
+
+| Corrida | Semilla | Condición | Pared de 11 unidades, s | D de 10 iteraciones, s |
+|---|---:|---|---:|---:|
+| run-00-C0 | 610031 | C0 | 739,329 | 49,976 |
+| run-01-C5 | 610031 | C5 | 726,030 | 49,480 |
+| run-02-C10 | 610031 | C10 | 731,310 | 49,759 |
+| run-03-C5 | 610047 | C5 | 729,074 | 49,397 |
+| run-04-C10 | 610047 | C10 | 737,377 | 49,420 |
+| run-05-C0 | 610047 | C0 | 732,386 | 49,263 |
+| run-06-C10 | 610081 | C10 | 725,302 | 49,451 |
+| run-07-C0 | 610081 | C0 | 722,666 | 49,591 |
+| run-08-C5 | 610081 | C5 | 732,820 | 49,657 |
+
+El día `2026-10-07` America/La_Paz cargó **6.893,096 s** de los 10.800 s
+globales; 6.587,363 s fueron actividad de las sesiones. Quedaron
+3.906,904 s sin usar al cierre, no transferibles como permiso de otra
+campaña. Las nueve Q0 sumaron 268,193 s de pared; las 90 Q/A/B+D,
+6.308,101 s; D sola sumó 445,994 s. El ledger contabilizó **81.360
+trayectorias y 14.644.800 transiciones de aprendizaje** por separado de
+**5.760 trayectorias y 1.036.800 transiciones D**; 720 actualizaciones del
+actor y 1.440 del crítico. No hubo unidades fallidas: dos eventos de
+disponibilidad produjeron dos pausas válidas. Los 1.547 intervalos de
+heartbeat auditados por sesión/unidad tuvieron máximo 4,228481 s, bajo 5 s.
+El pico RSS de worker en los registros fue 669.433.856 B; `systemd` informó
+2,5 GB de pico de memoria de la sesión 03, magnitudes con alcances distintos.
+
+## Regla técnica y limitación de trazabilidad
+
+El cálculo numérico **predefinido** de la regla conjunta da `review`: solo
+la semilla 610081 cumple todas las puertas y umbrales en C0, C5 y C10
+(1/3 por condición, frente a 2/3 exigidos). En 610031 y 610047, la razón
+MSE D tardía frente al predictor cero queda por encima de 1 en las tres
+condiciones; las demás puertas de escala, mejora, sesgo y brecha pasan.
+Hubo 69 advertencias D/post de MSE relativa >1 entre 90 oportunidades.
+Las trayectorias D fueron nuevas realizaciones, pero compartieron el mismo
+histórico de entrenamiento: 2.823/5.760 inicios coincidieron con algún
+inicio de aprendizaje y 1.036.590/1.036.800 ocurrencias de transición
+coincidieron. No constituyen generalización temporal.
+
+**No se declara aceptación metodológica formal** del diagnóstico: los 99
+informes de unidad dicen `market_training_executed=false` porque el código
+heredado de `src/btc_risk_rl/agents/trainer.py` solo marca `true` para P0/P1.
+P2R v2 pidió corregir o verificar ese metadato **antes** de congelar el
+ejecutor histórico, condición que esta ejecución no satisfizo. Los contadores,
+checkpoints, manifiestos del derivado exclusivo de entrenamiento y el
+supervisor muestran que sí hubo aprendizaje histórico P2R; no se cambia el
+campo a posteriori ni se repite la campaña para ocultar la discrepancia.
+Por tanto, `review` es el resultado **numérico condicional**; la decisión
+formal debe quedar pendiente de revisión de esta brecha de integridad.
+
+Los checkpoints registran tres hashes de commit (`38fc54b`, `0d20766`,
+`b185088`) porque se publicaron documentos durante la ejecución; el auditor
+verificó que **todas** las huellas de archivos de código en los 99
+checkpoints son idénticas. Las huellas P0/P1/P2 permanecieron iguales. No
+hubo acceso a la prueba final según los 99 informes; la ruta de datos fue
+el derivado de entrenamiento, con preflight sin aperturas de CSV compartidos.
+Esto no convierte la campaña en evaluación confirmatoria ni demuestra
+rentabilidad, generalización o cumplimiento poblacional de CVaR.

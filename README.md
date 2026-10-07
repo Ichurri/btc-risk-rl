@@ -1,19 +1,15 @@
 # BTC Risk RL
 
-**Estado vigente:** P2 histórico quedó interrumpido por un apagado del equipo;
-su ledger está `failed` y no se reanuda. El
-[diagnóstico](docs/hitos/P2-perdida-supervisor-diagnostico.md) y el
-[protocolo P2R v2 adoptado solo como diagnóstico de desarrollo](docs/protocols/P2R-adopcion-metodologica-v2.md)
-constan para revisión técnica. El [ejecutor histórico P2R](docs/hitos/P2R-ejecutor-historico-v2.md)
-está implementado y verificado sin entrenamiento de mercado; su permiso de
-campaña permanece inactivo. El
-[derivado H1 exclusivo de entrenamiento](docs/hitos/P2R-training-shard-export.md)
-fue exportado y auditado; el preflight aislado no abre los CSV H1 compartidos.
-La [revisión de preparación](docs/hitos/P2R-preparacion-final-v2.md) y el
-[análisis de presupuesto](docs/hitos/P2R-analisis-presupuesto-P0-P1-P2.md)
-no conceden permiso de campaña. P0/P1 están cerrados; validación y final
-siguen bloqueados. Consultar el
-[HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
+**Estado vigente:** P2 histórico quedó `failed` tras un apagado y no se
+reanuda. La campaña nueva [P2R v2](docs/hitos/P2R-ejecucion-historica-v2.md)
+cerró operativamente sus nueve corridas y 99 unidades el 07/10/2026,
+exclusivamente sobre entrenamiento 2018–2022. Es diagnóstico de desarrollo,
+no evaluación confirmatoria. La regla numérica conjunta da `review`, pero
+la aceptación formal está pendiente de revisar el marcador heredado
+`market_training_executed=false` en los reportes. P2R usa el derivado H1
+exclusivo de entrenamiento; el preflight vigilado no abrió CSV H1
+compartidos. No se autoriza otra campaña, validación 2023 ni prueba final. Consultar
+el [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
 decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
