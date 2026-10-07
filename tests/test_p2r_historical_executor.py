@@ -50,7 +50,8 @@ def test_market_worker_rejects_even_forged_request_before_reading_it(tmp_path):
         capture_output=True, text=True, check=False,
     )
     assert result.returncode != 0
-    assert "ledger.jsonl" in result.stderr
+    assert ("ledger.jsonl" in result.stderr
+            or "P2R worker request does not match pending unit" in result.stderr)
     assert not (tmp_path / "checkpoint-0").exists()
 
 

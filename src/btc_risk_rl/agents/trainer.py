@@ -9,6 +9,7 @@ import torch
 
 from btc_risk_rl.agents.collector import Collector, immutable
 from btc_risk_rl.agents.journal import RunJournal
+from btc_risk_rl.agents.market_marker import market_training_executed
 from btc_risk_rl.agents.models import Actor, Critic, FrozenPolicy, clipped_objective, fingerprint
 from btc_risk_rl.agents.risk import dual_update, empirical_tail, monte_carlo, variational
 from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
@@ -451,8 +452,9 @@ class SyntheticExperiment:
             stability=self.telemetry.stability,
             collection_diagnostics=self.collector.diagnostics,
             budget=self.budget.snapshot() if self.budget else None,
-            market_training_executed=self.settings.purpose
-            in {"authorized_p0_only", "authorized_p1_only"},
+            market_training_executed=market_training_executed(
+                self.collector.source.profile, self.actor_updates, self.critic_updates,
+            ),
             final_test_accessed=False,
             diagnostic=self.diagnostic.report() if self.diagnostic else None,
         )

@@ -14,7 +14,10 @@ import uuid
 from dataclasses import asdict
 from pathlib import Path
 
+import torch
+
 from btc_risk_rl.agents.checkpoint import provenance
+from btc_risk_rl.agents.market_marker import market_training_executed
 from btc_risk_rl.agents.synthetic import SyntheticMarket
 from btc_risk_rl.config import load_config
 from btc_risk_rl.pilots.budget import CAPS
@@ -84,7 +87,64 @@ def _verify_completion(work, unit, settings, condition, run_id, result,
             or manifest.get("run_id") != run_id
             or result["status"] != "passed"):
         raise ValueError("P2R incomplete or incompatible worker result")
+    _verify_report_and_checkpoint(point, payload, unit, settings, condition,
+                                  boundary, expected_provenance, diagnostic_n)
     return payload, boundary
+
+
+def _optimizer_steps(optimizer):
+    """Return the common completed Adam step, rejecting absent or divergent state."""
+    states = optimizer["state"].values()
+    if not states:
+        return 0
+    steps = [value["step"].item() for value in states]
+    if any(type(step) not in {int, float} or step < 0 or int(step) != step
+           for step in steps) or len(set(steps)) != 1:
+        raise ValueError("P2R checkpoint optimizer counters inconsistent")
+    return int(steps[0])
+
+
+def _verify_report_and_checkpoint(point, payload, unit, settings, condition,
+                                  boundary, expected_provenance, diagnostic_n):
+    """Reject false metadata and counters before the ledger accepts a boundary."""
+    try:
+        source_profile = expected_provenance["data"]["profile"]
+        if (source_profile, settings.purpose) not in {
+            ("synthetic", "p2_synthetic_tests_only"),
+            ("accepted_train_collection_only", "authorized_p2r_only"),
+        }:
+            raise ValueError("P2R source/settings profile mismatch")
+        report = payload["report"]
+        state = torch.load(point / "state.pt", map_location="cpu", weights_only=True)
+        attrs = state["attrs"]
+        collector = state["collector"]
+        diagnostic = state["diagnostic"]
+        batches = math.ceil(settings.n_a / settings.minibatch)
+        actor = unit * settings.actor_epochs * batches
+        critic = unit * settings.critic_epochs * batches
+        trajectories = settings.n_q + unit * (settings.n_a + settings.n_q + settings.n_b)
+        expected_counters = dict(actor_updates=actor, critic_updates=critic,
+                                 next_iteration=unit, boundary=boundary)
+        if (any(type(attrs.get(key)) is not type(value) or attrs[key] != value
+                for key, value in expected_counters.items())
+                or any(type(report.get(key)) is not type(value) or report[key] != value
+                       for key, value in expected_counters.items())
+                or _optimizer_steps(state["actor_optimizer"]) != actor
+                or _optimizer_steps(state["critic_optimizer"]) != critic
+                or collector["trajectories"] != trajectories
+                or collector["transitions"] != 180 * trajectories
+                or diagnostic["trajectories"] != unit * diagnostic_n
+                or diagnostic["transitions"] != 180 * unit * diagnostic_n
+                or report.get("trajectories") != trajectories
+                or report.get("transitions") != 180 * trajectories):
+            raise ValueError("P2R report/checkpoint optimizer counters inconsistent")
+        if report.get("purpose") != settings.purpose or report.get("condition") != condition:
+            raise ValueError("P2R report source/settings profile mismatch")
+        expected_marker = market_training_executed(source_profile, actor, critic)
+        if report.get("market_training_executed") is not expected_marker:
+            raise ValueError("P2R market training marker inconsistent")
+    except (KeyError, TypeError, AttributeError, RuntimeError, OSError) as exc:
+        raise ValueError(f"P2R incomplete report/checkpoint: {exc}") from exc
 
 
 def _run_units(root, config_path, settings, *, roster, source, settings_for,
