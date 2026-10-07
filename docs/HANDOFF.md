@@ -1,4 +1,28 @@
-# Estado vigente — P2R descriptivo adjudicado; P3 solo propuesto
+# Estado vigente — P3 v1.1 para revisión, sin permiso de campaña
+
+La [propuesta P3 v1.1](proposals/P3-protocolo-v1-1.md) corrige la regla
+que en v1 podía aprobar un predictor cero cuando `Z` era pequeño, aun
+superando `10⁻¹²`. El criterio usa `MSE≤0,95Z`, razones exactas por
+brazo para las diferencias pareadas y una comprobación adicional de `Z`
+para el último tercio de D tardía de **ambos** brazos. Las
+[diferencias frente a v1](proposals/P3-v1-1-cambios.md), el
+[resumen académico](hitos/P3-v1-1-resumen-academico.md) y las
+[comprobaciones algebraicas](evidence/p3-v1-1-algebra/COMMANDS.md)
+acompañan el documento completo. La v1 sigue disponible y P2R y sus
+99 reportes no se alteraron.
+
+**Siguiente tarea:** revisión académica de P3 v1.1. P3 sigue siendo
+diagnóstico exploratorio de desarrollo y **no está autorizado** para
+implementación ni ejecución. La corrección prospectiva de
+`market_training_executed` y el rechazo supervisor de reportes
+incoherentes son requisitos previos de una implementación futura.
+P2R conserva `review` solo descriptivo; P2 permanece fallido. No abrir
+validación 2023 ni prueba final 2024–2025. La eliminación local previa
+de `.python-version` permanece ajena a este hito.
+
+---
+
+# Estado anterior — P2R descriptivo adjudicado; P3 solo propuesto
 
 El usuario autorizó el 07/10/2026 la campaña P2R v2 como **diagnóstico de
 desarrollo** exclusivo de entrenamiento 2018–2022. El registro y permiso

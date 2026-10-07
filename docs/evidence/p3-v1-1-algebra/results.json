@@ -1,0 +1,58 @@
+{
+  "scope": "synthetic_algebra_only_no_market_no_training",
+  "epsilon": "1E-12",
+  "zero_predictor_above_epsilon": {
+    "z": "1E-11",
+    "mse": "1E-11",
+    "old_ratio": "0.9090909090909090909090909091",
+    "old_rule_passes": true,
+    "new_exact_rule_passes": false,
+    "information_gate_passes": true
+  },
+  "zero_predictor_below_epsilon": {
+    "z": "1E-13",
+    "old_ratio": "0.09090909090909090909090909091",
+    "new_exact_rule_passes": false,
+    "information_gate_passes": false
+  },
+  "paired_distinct_targets": {
+    "beta0_ratio": "0.9",
+    "beta1_ratio": "0.8",
+    "paired_difference": "-0.1",
+    "raw_mse_difference": "0.7"
+  },
+  "last_third": {
+    "beta0_late_z": "2E-12",
+    "beta0_third3_z": "0",
+    "beta1_late_z": "3E-12",
+    "late_gate_passes_both": true,
+    "third3_gate_passes_both": false
+  },
+  "undefined": {
+    "ratio_at_z0": null,
+    "bias_at_z0": null,
+    "small_positive_z_defined_but_ineligible": true
+  },
+  "seed_blocks": {
+    "conditions": [
+      [
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true
+      ],
+      [
+        false,
+        false,
+        false
+      ]
+    ],
+    "passing_blocks": 2,
+    "advance_if_integrity_passes": true
+  },
+  "checks": "passed"
+}
