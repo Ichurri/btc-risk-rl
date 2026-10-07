@@ -1,4 +1,4 @@
-"""P2R historical profile and read-only entrance audit; campaign remains disabled."""
+"""P2R historical profile and independently pinned campaign authorization."""
 
 import hashlib
 import json
@@ -41,10 +41,11 @@ PRIOR_LEDGERS = {
     "p2-approved-v1": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
 }
 
-# This requires a later, explicit approval commit. A JSON or CLI flag cannot flip it.
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
-# Pin only after a separately reviewed H1-derived training-exclusive export.
+# The specific P2R v2 development campaign was approved on 2026-10-07.
+# A changed JSON or CLI flag alone cannot extend this authorization.
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "ee5bac3d9d5d1b58d9fff69f9433761074e1ae5c84d3755af1a4aebc9e4e81e8"
+# H1-derived training-exclusive export, pinned in cd6b686.
 TRAIN_SHARD_MANIFEST_SHA256 = "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
 
 
@@ -260,7 +261,7 @@ def inspect_preflight(*, prepared=PREPARED, now=None):
 
 
 def run_market_units():
-    """Historical executor entrance, permanently blocked until separate approval."""
+    """Historical executor entrance for the one pinned P2R v2 campaign."""
     P2RMarketPermit.require_campaign()  # Before data access or artifact creation.
     from btc_risk_rl.pilots.p2r_units import run_historical_units
 

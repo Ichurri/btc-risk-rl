@@ -34,6 +34,7 @@ def test_market_settings_match_adopted_design():
 def test_market_entry_rejected_before_loading_data_or_creating_root(tmp_path, monkeypatch):
     from btc_risk_rl.pilots import p2r_market
 
+    monkeypatch.setattr(p2r_market, "MARKET_EXECUTION_ENABLED", False)
     monkeypatch.setattr(p2r_market, "TrainingMarket", lambda *_a, **_k: pytest.fail("loaded"))
     monkeypatch.setattr(p2r_market, "ROOT", tmp_path)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
@@ -49,7 +50,8 @@ def test_market_worker_rejects_even_forged_request_before_reading_it(tmp_path):
         capture_output=True, text=True, check=False,
     )
     assert result.returncode != 0
-    assert "NOT AUTHORIZED" in result.stderr
+    assert "ledger.jsonl" in result.stderr
+    assert not (tmp_path / "checkpoint-0").exists()
 
 
 def test_public_market_command_rejects_before_output(tmp_path):
@@ -64,13 +66,13 @@ def test_public_market_command_rejects_before_output(tmp_path):
     assert not root.exists()
 
 
-def test_separate_historical_command_is_disabled_before_data_access():
+def test_separate_historical_command_requires_user_service_before_data_access():
     result = subprocess.run(
         [sys.executable, "scripts/run_p2r_market.py"], capture_output=True,
         text=True, check=False,
     )
     assert result.returncode != 0
-    assert "NOT AUTHORIZED" in result.stderr
+    assert "requires a systemd user service" in result.stderr
 
 
 def test_edited_approval_json_cannot_activate_market(tmp_path, monkeypatch):
@@ -79,9 +81,21 @@ def test_edited_approval_json_cannot_activate_market(tmp_path, monkeypatch):
     forged = tmp_path / "approval.json"
     forged.write_text(json.dumps(dict(active=True, scope="accepted_training_2018_2022_only")))
     monkeypatch.setattr(p2r_market, "REGISTRATION", forged)
-    with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
+    with pytest.raises(PermissionError, match="approval hash mismatch"):
         p2r_market.P2RMarketPermit.require_campaign()
     assert not (tmp_path / "p2r-approved-v2").exists()
+
+
+def test_pinned_approval_matches_adopted_protocol_and_training_scope():
+    from btc_risk_rl.pilots import p2r_market
+
+    approval = p2r_market.P2RMarketPermit.require_campaign()
+    assert p2r_market.digest(p2r_market.REGISTRATION) == p2r_market.REGISTRATION_SHA256
+    assert approval["campaign"] == p2r_market.CAMPAIGN.name
+    assert approval["scope"] == "accepted_training_2018_2022_only"
+    assert approval["training_shard_manifest_sha256"] == (
+        p2r_market.TRAIN_SHARD_MANIFEST_SHA256
+    )
 
 
 def test_market_unit_and_diagnostic_require_p2r_lease(accepted_synthetic, tmp_path):
