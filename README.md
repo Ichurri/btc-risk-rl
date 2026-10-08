@@ -1,14 +1,18 @@
 # BTC Risk RL
 
-**Estado vigente:** P2 histórico quedó `failed` tras un apagado y no se
-reanuda. La campaña nueva [P2R v2](docs/hitos/P2R-ejecucion-historica-v2.md)
+**Estado vigente:** [P3 v1.1](docs/hitos/P3-ejecucion-historica-v1.md)
+está autorizada y en ejecución supervisada solo como diagnóstico de
+desarrollo sobre entrenamiento 2018–2022. No lanzar otra sesión sin
+comprobar antes el ledger y el estado de `systemd --user`. P2 histórico
+quedó `failed` tras un apagado y no se reanuda. La campaña
+[P2R v2](docs/hitos/P2R-ejecucion-historica-v2.md)
 cerró operativamente sus nueve corridas y 99 unidades el 07/10/2026,
 exclusivamente sobre entrenamiento 2018–2022. Es diagnóstico de desarrollo,
 no evaluación confirmatoria. La regla numérica conjunta da `review`, pero
 la aceptación formal está pendiente de revisar el marcador heredado
 `market_training_executed=false` en los reportes. P2R usa el derivado H1
 exclusivo de entrenamiento; el preflight vigilado no abrió CSV H1
-compartidos. No se autoriza otra campaña, validación 2023 ni prueba final. Consultar
+compartidos. La autorización P3 no incluye validación 2023 ni prueba final. Consultar
 el [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de

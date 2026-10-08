@@ -1,4 +1,30 @@
-# Estado vigente — infraestructura P3 verificada sin campaña histórica
+# Estado vigente — P3 v1.1 histórico autorizado y en ejecución supervisada
+
+El usuario autorizó el 08/10/2026 la campaña P3 v1.1 como diagnóstico
+de desarrollo, limitada al derivado H1 exclusivo de entrenamiento. El
+permiso, huellas y raíz `artifacts/p3-approved-v1` quedaron fijados en
+`618a08f`. El preflight posterior pasó con CA conectada, memoria/disco,
+`Linger=yes`, gestor activo, 10.800 s de saldo y 7.048 inicios; no abrió
+CSV H1 compartidos. `p3-market-v1-session-01.service`, invocation ID
+`8b3d6b175bd34b78a655010d46cccf3d`, inició a las 15:53:47 UTC.
+Q0 y la primera Q/A/B+D de `run-00-C0-b0` fueron aceptadas con
+checkpoints completos y marcador correcto. **La campaña está en curso:**
+no interpretar una sesión activa como cierre ni lanzar otra concurrente.
+Consultar siempre el ledger y el estado de systemd antes de continuar.
+Ver [informe](hitos/P3-ejecucion-historica-v1.md) y
+[evidencia inicial](evidence/p3-market-2026-10-08/COMMANDS.md).
+
+**Siguiente tarea:** seguir la sesión hasta una pausa válida o cierre;
+si pausa en `ready`, repetir preflight vigente antes de una nueva sesión
+con la misma autorización y sin alterar parámetros. Si queda `failed`
+o `incomplete`, preservar evidencia y no reanudar. Máximo global 3 h/día
+America/La_Paz y tres días activos. P0/P1/P2/P2R intactos, sin
+validación ni prueba final. La eliminación local previa de
+`.python-version` sigue sin versionar.
+
+---
+
+# Estado anterior — infraestructura P3 verificada sin campaña histórica
 
 Desde `a1d9032`, la autorización permitió integrar el perfil P3
 independiente con el supervisor Q0/Q/A/B+D, 18 corridas K10, dos brazos

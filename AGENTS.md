@@ -1,6 +1,20 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Campaña histórica P3 v1.1 autorizada el 08/10/2026 **solo como
+  diagnóstico de desarrollo** sobre el derivado H1 exclusivo de
+  entrenamiento 2018–2022. Permiso independiente fijado en
+  `docs/protocols/P3-market-approval.json` y commit `618a08f`; raíz nueva
+  `artifacts/p3-approved-v1`. La sesión inicial
+  `p3-market-v1-session-01.service` está supervisada por `systemd --user`.
+  Ver `docs/hitos/P3-ejecucion-historica-v1.md` y el último ledger antes
+  de actuar. Conservar 18 corridas K10, orden y brazos β, Q0/Q/A/B+D,
+  tres horas globales por día America/La_Paz, hasta tres días activos,
+  admisión y pausas solo en fronteras completas; un fallo dentro de
+  unidad es irreversible. **No usar validación 2023 ni prueba final
+  2024–2025, no reutilizar P2R y no repetir por resultados.** Esta
+  autorización sustituye las prohibiciones cronológicas de campaña
+  únicamente para P3 v1.1.
 - Hito P3 posterior a `a1d9032`: el usuario autorizó **solo implementar y
   verificar sintéticamente la infraestructura del ejecutor histórico P3**.
   Perfil, supervisor, presupuesto y métricas P3 quedan separados de P2R;

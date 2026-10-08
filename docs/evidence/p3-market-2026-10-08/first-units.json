@@ -1,0 +1,56 @@
+{
+  "beta": 0,
+  "campaign": "p3-approved-v1",
+  "condition": "C0",
+  "invocation_id": "8b3d6b175bd34b78a655010d46cccf3d",
+  "run_id": "run-00-C0-b0",
+  "scope": "first_two_accepted_historical_P3_units_no_extrapolation",
+  "seed": 710031,
+  "service": "p3-market-v1-session-01.service",
+  "units": [
+    {
+      "D_wall_seconds": 0,
+      "algorithm_seconds": 24.671395632999975,
+      "boundary": "after_q0",
+      "checkpoint_sha256": "3dfdb1ec3b99e64125caa08c3f44c22a64fcde7209f6f278fc3f8e9fe37be34c",
+      "end_utc": "2026-10-08T15:54:16.070749+00:00",
+      "ledger_wall_seconds": 26.96871829032898,
+      "market_training_executed": false,
+      "report_sha256": "6b76ff18178ada58dac97f0d30956297a13dd240b75fa6188876beb1ff0aa5f8",
+      "resources": {
+        "actor_updates": 0,
+        "critic_updates": 0,
+        "diagnostic_trajectories": 0,
+        "diagnostic_transitions": 0,
+        "trajectories": 400,
+        "transitions": 72000
+      },
+      "save_seconds": 0.06354438300013499,
+      "start_epoch": 1791474829.102031,
+      "unit": 0,
+      "work_seconds": 26.282919472000003
+    },
+    {
+      "D_wall_seconds": 4.41963986199994,
+      "algorithm_seconds": 56.01628238700005,
+      "boundary": "after_dual_and_D",
+      "checkpoint_sha256": "ee14bc64644d2cb2f919faf872394642d4b52c852cf2dbdc7e53353f6b71bc5d",
+      "end_utc": "2026-10-08T15:55:15.220776+00:00",
+      "ledger_wall_seconds": 59.002779722213745,
+      "market_training_executed": true,
+      "report_sha256": "bca8778a768b2b97d6b9edc0b3d436c39df28e8885012b0730f1590e6a4a1095",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 0.22001282099995478,
+      "start_epoch": 1791474856.2179964,
+      "unit": 1,
+      "work_seconds": 57.776845315999935
+    }
+  ]
+}
