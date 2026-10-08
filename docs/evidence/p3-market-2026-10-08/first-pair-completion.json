@@ -1,0 +1,43 @@
+{
+  "condition": "C0",
+  "runs": [
+    {
+      "D_wall_seconds": 45.85853541100005,
+      "accepted_units": 11,
+      "beta": 0,
+      "final_checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "final_report_sha256": "cdc7ba090d2818ce2f8730b624f42b8e5cdce4399be8ea49c59dbee2c46e6e10",
+      "market_training_executed": true,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-00-C0-b0",
+      "wall_seconds": 702.3483650684357
+    },
+    {
+      "D_wall_seconds": 48.020343058000435,
+      "accepted_units": 11,
+      "beta": 1,
+      "final_checkpoint_sha256": "a4b0f5f1ea049b419ad21239225110859eb1e6acdac4053b620965739bab3cef",
+      "final_report_sha256": "1d63aadf7760f85925ae1d8952cb6c77595012319c41c4722643d06542033682",
+      "market_training_executed": true,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-01-C0-b1",
+      "wall_seconds": 732.0868675708771
+    }
+  ],
+  "scope": "first_complete_pair_cost_and_integrity_only_not_P3_decision",
+  "seed": 710031
+}

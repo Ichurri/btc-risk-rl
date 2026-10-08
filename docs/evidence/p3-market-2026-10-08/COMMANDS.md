@@ -58,6 +58,10 @@ La comprobación de identidad inicial entre β=0/1 quedó en
 [first-pair-identity.json](first-pair-identity.json): Q0/η, inicios A y
 primer actor coincidieron; el crítico cambió. No es selección por
 resultado ni prueba de mejora de D.
+La [primera pareja completa](first-pair-completion.json) conserva
+recuentos, tiempos y huellas de los dos brazos C0; se sumó D una sola
+vez desde el reporte final de cada corrida, porque la telemetría de
+reportes intermedios es acumulativa.
 Los ledgers, journals, logs y checkpoints completos están en la raíz
 local `artifacts/p3-approved-v1`, fuera de Git. La sesión seguía activa
 al redactar esta evidencia; `Result=success` mientras está `running`

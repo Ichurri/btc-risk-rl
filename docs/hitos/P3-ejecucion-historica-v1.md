@@ -40,6 +40,13 @@ identidad inicial encontró Q0/η, inicios A y actor tras la primera
 actualización iguales entre brazos; el crítico difirió, como corresponde
 a las dos pérdidas. Las etiquetas de realización son distintas. Ver
 [first-pair-identity.json](../evidence/p3-market-2026-10-08/first-pair-identity.json).
+La primera pareja C0 terminó después: β=0 registró 702,348 s de pared
+y 45,859 s de D; β=1 registró 732,087 s y 48,020 s. Cada brazo aceptó
+once unidades, 9.040 trayectorias de aprendizaje, 640 D, 80 pasos de
+actor y 160 de crítico. El cursor pasó a C5 sin reutilizar corridas.
+La [instantánea de la pareja](../evidence/p3-market-2026-10-08/first-pair-completion.json)
+contiene las huellas finales. Estos costos no cambian los parámetros ni
+permiten aplicar aún la regla conjunta de P3.
 
 La sesión continúa; este informe **no adjudica** las 18 corridas, no
 presenta resultados de métricas P3 ni extrapola tiempos. El supervisor
