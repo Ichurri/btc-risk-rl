@@ -1,4 +1,28 @@
-# Estado vigente — intervención β del crítico P3 verificada solo con sintéticos
+# Estado vigente — infraestructura P3 verificada sin campaña histórica
+
+Desde `a1d9032`, la autorización permitió integrar el perfil P3
+independiente con el supervisor Q0/Q/A/B+D, 18 corridas K10, dos brazos
+β, presupuesto compartido, comprobación prospectiva del marcador y
+decisión exacta de P3 v1.1. Las pruebas de unidades y reportes usan
+datos sintéticos. El preflight de solo lectura verificó el derivado H1
+exclusivo de entrenamiento, 7.048 inicios, huellas y archivos abiertos:
+no abrió CSV H1 compartidos, validación ni final. En esa medición la
+memoria libre fue inferior al mínimo operativo de 4 GiB; una campaña
+quedaría bloqueada. Ver [informe](hitos/P3-ejecutor-historico-infraestructura.md),
+[evidencias](evidence/p3-historical-infrastructure/COMMANDS.md) y
+[resumen académico](hitos/P3-ejecutor-historico-resumen-academico.md).
+
+**Siguiente tarea:** revisión del ejecutor y preflight; una campaña
+histórica P3 requerirá autorización **separada**, registro y huellas en
+commit propio, recursos/servicio/budget medidos de nuevo y raíz nueva.
+`MARKET_EXECUTION_ENABLED=False` para P3, sin registro ni entrenamiento
+histórico. P2R conserva sus 99 reportes y `review` descriptivo; P2 sigue
+`failed`. La eliminación local previa de `.python-version` continúa
+sin versionar.
+
+---
+
+# Estado anterior — intervención β del crítico P3 verificada solo con sintéticos
 
 La autorización posterior a `eed4b74` permitió implementar la pérdida
 `MSE + β mean(V²)` de P3 v1.1 **solo** sobre rutas sintéticas. El perfil

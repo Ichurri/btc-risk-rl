@@ -1,6 +1,17 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Hito P3 posterior a `a1d9032`: el usuario autorizó **solo implementar y
+  verificar sintéticamente la infraestructura del ejecutor histórico P3**.
+  Perfil, supervisor, presupuesto y métricas P3 quedan separados de P2R;
+  el preflight puede leer únicamente el derivado H1 exclusivo de
+  entrenamiento y metadatos para comprobar huellas. Ver
+  `docs/hitos/P3-ejecutor-historico-infraestructura.md`. La bandera P3
+  permanece desactivada y no hay registro de aprobación ni raíz histórica
+  P3. **No ejecutar entrenamiento de mercado, activar permiso, abrir
+  validación 2023 ni prueba final 2024–2025.** P0/P1/P2/P2R y sus
+  artefactos permanecen intactos. Esta autorización sustituye las
+  prohibiciones cronológicas de implementación solo para este hito.
 - Hito P3 posterior a `eed4b74`: el usuario autorizó únicamente implementar
   y verificar **con datos sintéticos** la pérdida del crítico β=0/1 de P3
   v1.1. β=0 conserva MSE; β=1 añade `mean(V²)` en los mismos minibatches A
