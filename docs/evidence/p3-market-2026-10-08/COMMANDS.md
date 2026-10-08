@@ -54,6 +54,10 @@ journalctl --user -u p3-market-v1-session-01.service -o short-iso-precise --no-p
 `systemd-run` devolvió `InvocationID=8b3d6b175bd34b78a655010d46cccf3d`.
 La instantánea [first-units.json](first-units.json) conserva tiempos,
 recursos, marcadores y huellas de Q0 y la primera iteración aceptadas.
+La comprobación de identidad inicial entre β=0/1 quedó en
+[first-pair-identity.json](first-pair-identity.json): Q0/η, inicios A y
+primer actor coincidieron; el crítico cambió. No es selección por
+resultado ni prueba de mejora de D.
 Los ledgers, journals, logs y checkpoints completos están en la raíz
 local `artifacts/p3-approved-v1`, fuera de Git. La sesión seguía activa
 al redactar esta evidencia; `Result=success` mientras está `running`

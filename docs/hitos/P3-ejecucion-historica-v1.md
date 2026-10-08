@@ -33,6 +33,13 @@ supervisor. Su tiempo de pared en ledger fue 59,003 s; el algoritmo
 midió 56,016 s, guardado 0,220 s y D 4,420 s. Estos tiempos son solo
 diagnóstico de viabilidad de esa unidad. Las huellas están en
 [first-units.json](../evidence/p3-market-2026-10-08/first-units.json).
+Después, el primer brazo β=0 completó sus once unidades en 702,348 s de
+pared; el reporte final suma 45,859 s de D sobre diez registros únicos.
+El cursor pasó al segundo brazo β=1. La comprobación predefinida de
+identidad inicial encontró Q0/η, inicios A y actor tras la primera
+actualización iguales entre brazos; el crítico difirió, como corresponde
+a las dos pérdidas. Las etiquetas de realización son distintas. Ver
+[first-pair-identity.json](../evidence/p3-market-2026-10-08/first-pair-identity.json).
 
 La sesión continúa; este informe **no adjudica** las 18 corridas, no
 presenta resultados de métricas P3 ni extrapola tiempos. El supervisor
