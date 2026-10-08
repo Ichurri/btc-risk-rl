@@ -63,6 +63,40 @@ recuentos, tiempos y huellas de los dos brazos C0; se sumó D una sola
 vez desde el reporte final de cada corrida, porque la telemetría de
 reportes intermedios es acumulativa.
 Los ledgers, journals, logs y checkpoints completos están en la raíz
-local `artifacts/p3-approved-v1`, fuera de Git. La sesión seguía activa
-al redactar esta evidencia; `Result=success` mientras está `running`
-no es un resultado final de systemd.
+local `artifacts/p3-approved-v1`, fuera de Git. En las capturas iniciales,
+`Result=success` mientras la unidad estaba `running` no era un resultado
+final de systemd. La sesión terminó después en pausa `ready`.
+
+Comandos ejecutados para cerrar **solo la sesión 01**, sin recolectar
+trayectorias ni hacer pasos de optimizador:
+
+```bash
+systemctl --user show p3-market-v1-session-01.service \
+  -p ActiveState -p SubState -p Result -p InvocationID -p ExecMainStatus
+uv run --frozen python docs/evidence/p3-market-2026-10-08/session01-audit.py \
+  > docs/evidence/p3-market-2026-10-08/session01-closure.json
+journalctl --user -u p3-market-v1-session-01.service \
+  -o short-iso-precise --no-pager \
+  > docs/evidence/p3-market-2026-10-08/systemd-session01.txt
+uv run --frozen ruff check docs/evidence/p3-market-2026-10-08/session01-audit.py
+uv run --frozen python docs/evidence/p3-market-2026-10-08/session01-audit.py \
+  | cmp - docs/evidence/p3-market-2026-10-08/session01-closure.json
+sha256sum docs/evidence/p3-market-2026-10-08/systemd-session01.txt \
+  docs/evidence/p3-market-2026-10-08/session01-closure.json
+git diff --check
+```
+
+El primer Ruff señaló solo el orden de imports del nuevo auditor; se
+normalizó con `ruff check --fix` y el segundo pasó. La repetición de la
+auditoría fue idéntica byte a byte. Resultado: ledger `ready`, 10/18
+corridas, 116/198 unidades, 351 estados enlazados, 2.171 eventos del
+journal enlazados y 116 pares reporte/checkpoint cotejados. El SHA-256
+de `session01-closure.json` es
+`8ef84e09488234c4155f46d1fd0e1addbfdf65ebfca355d12ccb490b0738e96c`;
+el de `systemd-session01.txt` es
+`8bad51eb503bbd540c381f51d59a76a8841d2763e4df46b4c89042fd9e6296ac`.
+No se repitió la suite Pytest: no cambió código operativo desde las 341
+pruebas previas al permiso. Los hashes de prefijo, el costo por corrida,
+los recursos y la razón exacta de la pausa están en
+[session01-closure.json](session01-closure.json) y el
+[informe del hito](../../hitos/P3-ejecucion-historica-v1.md).

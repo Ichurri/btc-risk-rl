@@ -6,7 +6,10 @@
   entrenamiento 2018–2022. Permiso independiente fijado en
   `docs/protocols/P3-market-approval.json` y commit `618a08f`; raíz nueva
   `artifacts/p3-approved-v1`. La sesión inicial
-  `p3-market-v1-session-01.service` está supervisada por `systemd --user`.
+  `p3-market-v1-session-01.service` cerró en pausa presupuestaria válida:
+  ledger `ready`, 10/18 corridas completas, 116 unidades aceptadas y
+  ninguna unidad pendiente. La campaña sigue abierta; consultar el último
+  ledger y repetir preflight otro día antes de otra sesión `systemd --user`.
   Ver `docs/hitos/P3-ejecucion-historica-v1.md` y el último ledger antes
   de actuar. Conservar 18 corridas K10, orden y brazos β, Q0/Q/A/B+D,
   tres horas globales por día America/La_Paz, hasta tres días activos,

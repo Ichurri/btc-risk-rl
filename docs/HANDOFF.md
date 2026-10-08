@@ -1,4 +1,4 @@
-# Estado vigente — P3 v1.1 histórico autorizado y en ejecución supervisada
+# Estado vigente — P3 v1.1 pausado en frontera completa tras la sesión 01
 
 El usuario autorizó el 08/10/2026 la campaña P3 v1.1 como diagnóstico
 de desarrollo, limitada al derivado H1 exclusivo de entrenamiento. El
@@ -6,18 +6,24 @@ permiso, huellas y raíz `artifacts/p3-approved-v1` quedaron fijados en
 `618a08f`. El preflight posterior pasó con CA conectada, memoria/disco,
 `Linger=yes`, gestor activo, 10.800 s de saldo y 7.048 inicios; no abrió
 CSV H1 compartidos. `p3-market-v1-session-01.service`, invocation ID
-`8b3d6b175bd34b78a655010d46cccf3d`, inició a las 15:53:47 UTC.
-La primera pareja C0 de 710031 (β=0/1) cerró sus 22 unidades con
-checkpoints completos y marcadores correctos; el cursor pasó a C5.
-**La campaña está en curso:**
-no interpretar una sesión activa como cierre ni lanzar otra concurrente.
-Consultar siempre el ledger y el estado de systemd antes de continuar.
+`8b3d6b175bd34b78a655010d46cccf3d`, inició a las 15:53:47 UTC y
+cerró a las 18:07:25 UTC del 08/10/2026 por admisión presupuestaria.
+El ledger está `ready`, con 10/18 corridas completas, 116/198 unidades
+aceptadas, ninguna pendiente y ningún fallo. La undécima corrida
+`run-10-C0-b1` quedó en `after_dual_and_D` tras la unidad 5; sigue la 6.
+El débito del día fue 8.016,088 s. La cadena del ledger, la del journal
+y los hashes de los 116 reportes y checkpoints se comprobaron de forma
+solo lectura. **La campaña no está terminada.** El servicio está inactivo
+después de salir con `ready`; no confundir ese cierre de sesión con el
+cierre de P3. Consultar siempre el último ledger y el estado de systemd.
 Ver [informe](hitos/P3-ejecucion-historica-v1.md) y
-[evidencia inicial](evidence/p3-market-2026-10-08/COMMANDS.md).
+[cierre de sesión 01](evidence/p3-market-2026-10-08/session01-closure.json).
 
-**Siguiente tarea:** seguir la sesión hasta una pausa válida o cierre;
-si pausa en `ready`, repetir preflight vigente antes de una nueva sesión
-con la misma autorización y sin alterar parámetros. Si queda `failed`
+**Siguiente tarea:** en un día posterior America/La_Paz, repetir preflight
+completo y verificar presupuesto compartido, recursos, Git y ausencia de
+otra campaña activa; solo entonces iniciar una sesión `systemd --user`
+nueva con la misma autorización, raíz y parámetros, desde `ready`.
+No volver a iniciar unidades el 08/10. Si queda `failed`
 o `incomplete`, preservar evidencia y no reanudar. Máximo global 3 h/día
 America/La_Paz y tres días activos. P0/P1/P2/P2R intactos, sin
 validación ni prueba final. La eliminación local previa de
