@@ -9,9 +9,11 @@ las semillas, el orden y el presupuesto quedaron fijados antes de
 observar resultados P3.
 
 El preflight histórico pasó y la primera sesión `systemd --user` empezó.
-Q0 y la primera Q/A/B+D cerraron con checkpoints completos y marcador
-coherente; D64 de esa primera iteración tomó 4,420 s de pared. La campaña
-está en curso. No hay todavía contraste entre brazos, decisión de avance
-ni evidencia confirmatoria. La interpretación final requerirá las
+La primera pareja C0 de 710031 cerró sus 22 unidades con checkpoints
+completos, 9.040 trayectorias de aprendizaje y 640 D por brazo.
+La identidad inicial esperada entre brazos se verificó; el término β
+modificó el crítico. La campaña está en curso. Aun con esa pareja
+completa, no hay decisión conjunta de avance ni evidencia confirmatoria.
+La interpretación final requerirá las
 18 corridas y todas las puertas y diferencias de P3 v1.1, con la semilla
 como bloque independiente y la razón exacta frente al predictor cero.

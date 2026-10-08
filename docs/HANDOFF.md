@@ -7,8 +7,9 @@ permiso, huellas y raíz `artifacts/p3-approved-v1` quedaron fijados en
 `Linger=yes`, gestor activo, 10.800 s de saldo y 7.048 inicios; no abrió
 CSV H1 compartidos. `p3-market-v1-session-01.service`, invocation ID
 `8b3d6b175bd34b78a655010d46cccf3d`, inició a las 15:53:47 UTC.
-Q0 y la primera Q/A/B+D de `run-00-C0-b0` fueron aceptadas con
-checkpoints completos y marcador correcto. **La campaña está en curso:**
+La primera pareja C0 de 710031 (β=0/1) cerró sus 22 unidades con
+checkpoints completos y marcadores correctos; el cursor pasó a C5.
+**La campaña está en curso:**
 no interpretar una sesión activa como cierre ni lanzar otra concurrente.
 Consultar siempre el ledger y el estado de systemd antes de continuar.
 Ver [informe](hitos/P3-ejecucion-historica-v1.md) y
