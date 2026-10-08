@@ -85,6 +85,9 @@ def _verify_completion(work, unit, settings, condition, run_id, result,
             or manifest.get("settings") != asdict(settings)
             or manifest.get("condition") != condition
             or manifest.get("run_id") != run_id
+            or (hasattr(settings, "critic_beta")
+                and (type(payload.get("beta")) is not int
+                     or payload["beta"] != settings.critic_beta))
             or result["status"] != "passed"):
         raise ValueError("P2R incomplete or incompatible worker result")
     _verify_report_and_checkpoint(point, payload, unit, settings, condition,
@@ -111,7 +114,9 @@ def _verify_report_and_checkpoint(point, payload, unit, settings, condition,
         source_profile = expected_provenance["data"]["profile"]
         if (source_profile, settings.purpose) not in {
             ("synthetic", "p2_synthetic_tests_only"),
+            ("synthetic", "p3_synthetic_tests_only"),
             ("accepted_train_collection_only", "authorized_p2r_only"),
+            ("accepted_train_collection_only", "authorized_p3_only"),
         }:
             raise ValueError("P2R source/settings profile mismatch")
         report = payload["report"]
@@ -140,6 +145,12 @@ def _verify_report_and_checkpoint(point, payload, unit, settings, condition,
             raise ValueError("P2R report/checkpoint optimizer counters inconsistent")
         if report.get("purpose") != settings.purpose or report.get("condition") != condition:
             raise ValueError("P2R report source/settings profile mismatch")
+        if hasattr(settings, "critic_beta"):
+            report_settings = report.get("settings")
+            if (not isinstance(report_settings, dict)
+                    or type(report_settings.get("critic_beta")) is not int
+                    or report_settings != asdict(settings)):
+                raise ValueError("P3 report arm/settings mismatch")
         expected_marker = market_training_executed(source_profile, actor, critic)
         if report.get("market_training_executed") is not expected_marker:
             raise ValueError("P2R market training marker inconsistent")
@@ -152,7 +163,7 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
                power_root=None, memory_available=None, disk_free=None,
                fixture_window=False, heartbeat_seconds=5.0,
                require_service=False, require_linger=False, synthetic_hold_seconds=0,
-               protocol_identity=None):
+               protocol_identity=None, ledger_type=P2Ledger, completion_assessment=None):
     """Shared unit supervisor for synthetic probes and guarded historical P2R."""
     if max_units is not None and (type(max_units) is not int or max_units < 0):
         raise ValueError("Invalid synthetic unit limit")
@@ -178,18 +189,20 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
         runner_sha256=file_hash(Path(__file__)),
         protocol_identity=protocol_identity,
     )
+    if len(roster[0]) == 3:
+        identity["settings_by_run"] = [asdict(settings_for(*row)) for row in roster]
     entered = time.time()
     active_start = time.monotonic()
-    run_id = f"run-00-{roster[0][1]}"
+    run_id = f"run-00-{roster[0][1]}" + (f"-b{roster[0][2]}" if len(roster[0]) == 3 else "")
     with P2RSharedBudget(root.parent, root.name, now=entered,
-                         synthetic_fixture=profile == "p2r_synthetic_units") as shared:
+                         synthetic_fixture=profile in {"p2r_synthetic_units", "p3_synthetic_units"}) as shared:
         root.mkdir(exist_ok=True)
         journal = P2RJournal(root / "supervisor.jsonl", campaign=root.name)
         journal.record("supervisor_started", phase="preflight", run_id=run_id,
                        unit=None, counters={}, external_seconds=shared.external_seconds)
         try:
-            ledger = P2Ledger(root, now=entered, identity=identity,
-                              external_seconds=shared.external_seconds)
+            ledger = ledger_type(root, now=entered, identity=identity,
+                                 external_seconds=shared.external_seconds)
         except ValueError as exc:
             journal.record("recovery_rejected", phase="preflight", run_id=run_id,
                            unit=None, counters={}, reason=str(exc))
@@ -225,9 +238,11 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
                 completed_here = 0
                 while ledger.state["cursor"] < len(roster):
                     index = ledger.state["cursor"]
-                    seed, condition = roster[index]
-                    settings = settings_for(seed)
-                    run_id = f"run-{index:02d}-{condition}"
+                    row = roster[index]
+                    seed, condition = row[:2]
+                    beta = row[2] if len(row) == 3 else None
+                    settings = settings_for(*row) if beta is not None else settings_for(seed)
+                    run_id = f"run-{index:02d}-{condition}" + (f"-b{beta}" if beta is not None else "")
                     if max_units is not None and completed_here >= max_units:
                         journal.record("paused", phase="between_units", run_id=run_id,
                                        unit=None, counters={}, reason="synthetic_unit_limit")
@@ -258,11 +273,13 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
                     prior = ledger.state["runs"].get(run_id, {}).get("checkpoint")
                     if unit > 0 and not prior:
                         raise ValueError("Complete preceding checkpoint required")
-                    token = uuid.uuid4().hex if profile == "p2r_market_units" else None
+                    token = uuid.uuid4().hex if profile in {"p2r_market_units", "p3_market_units"} else None
                     request = dict(settings=asdict(settings), config=str(config_path),
                                    root=str(work), condition=condition, run_id=run_id,
                                    unit=unit, previous=prior, token=token,
                                    atomic_checkpoint=True)
+                    if beta is not None:
+                        request["beta"] = beta
                     request_path = work / f"request-{unit}.json"
                     write_json(request_path, request)
                     ledger.begin(run_id, kind, time.time())
@@ -352,6 +369,8 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
                         ledger.finish(time.time(), resources=payload["resources"],
                                       condition=condition, checkpoint=payload["checkpoint"],
                                       checkpoint_sha256=payload["checkpoint_sha256"],
+                                      **({"report_sha256": file_hash(work / f"unit-{unit}.json")}
+                                         if beta is not None else {}),
                                       work_seconds=result["work_seconds"],
                                       work_ended=result["work_ended"], supervisor=result,
                                       availability_lost=availability_lost[0])
@@ -372,6 +391,11 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
                                        unit=unit + 1, counters={},
                                        reason="availability_lost_after_unit")
                         return ledger.state
+                if completion_assessment is not None:
+                    assessment = completion_assessment(root, ledger.state)
+                    if assessment["decision"] == "not_evaluable":
+                        raise ValueError("P3 completed unit matrix has invalid assessment")
+                    ledger.state["assessment"] = assessment
                 ledger.state["status"] = "completed"
                 ledger.persist(time.time())
                 return ledger.state

@@ -54,6 +54,7 @@ class SyntheticExperiment:
         from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
         from btc_risk_rl.pilots.p2r_market import P2RMarketPermit, P2RMarketSettings
         from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
+        from btc_risk_rl.pilots.p3_market import P3MarketPermit, P3MarketSettings
         from btc_risk_rl.pilots.protocol import P0Settings, Permit
 
         if diagnostic is not None and (
@@ -63,6 +64,7 @@ class SyntheticExperiment:
                 (SyntheticMarket, P3SyntheticSettings, type(None)),
                 (TrainingMarket, P2MarketSettings, P2MarketPermit),
                 (TrainingMarket, P2RMarketSettings, P2RMarketPermit),
+                (TrainingMarket, P3MarketSettings, P3MarketPermit),
             }
         ):
             raise PermissionError("P2 diagnostics require an explicit authorized profile")
@@ -74,6 +76,7 @@ class SyntheticExperiment:
                 (P1Settings, P1Permit),
                 (P2MarketSettings, P2MarketPermit),
                 (P2RMarketSettings, P2RMarketPermit),
+                (P3MarketSettings, P3MarketPermit),
             } or (condition != "C0" and not risk_enabled):
                 raise PermissionError("Market optimization requires authorized supervisor lease")
             permit.validate(settings, condition, run_id)

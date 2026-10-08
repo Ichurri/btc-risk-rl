@@ -166,7 +166,7 @@ def test_hardlink_to_shared_table_is_rejected_before_open(accepted_synthetic, tm
 def test_registered_synthetic_preflight_opens_only_metadata_and_shard(
     accepted_synthetic, tmp_path, monkeypatch,
 ):
-    from btc_risk_rl.pilots import p2r_market
+    from btc_risk_rl.pilots import p2r, p2r_market
 
     config, _, prepared, _ = accepted_synthetic
     shard = tmp_path / "preflight-shard"
@@ -177,6 +177,9 @@ def test_registered_synthetic_preflight_opens_only_metadata_and_shard(
     monkeypatch.setattr(p2r_market, "MANIFEST", prepared / "manifest.json")
     monkeypatch.setitem(p2r_market.ANCHORS, p2r_market.MANIFEST,
                         digest(prepared / "manifest.json"))
+    # This test isolates file access; live host memory/disk belongs to the
+    # separate resource guard tests and can vary during a full suite run.
+    monkeypatch.setattr(p2r, "check_resources", lambda **_: "ready")
     forbidden = {prepared / name for name in TABLES}
     with opened_paths_forbidden(forbidden) as opened:
         report = p2r_market.inspect_preflight(prepared=prepared)

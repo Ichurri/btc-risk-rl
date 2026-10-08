@@ -146,7 +146,8 @@ class Diagnostic:
         elif type(source) is TrainingMarket:
             from btc_risk_rl.pilots.p2_market import P2MarketPermit
             from btc_risk_rl.pilots.p2r_market import P2RMarketPermit
-            if type(permit) not in {P2MarketPermit, P2RMarketPermit}:
+            from btc_risk_rl.pilots.p3_market import P3MarketPermit
+            if type(permit) not in {P2MarketPermit, P2RMarketPermit, P3MarketPermit}:
                 raise PermissionError("P2 market diagnostic requires registered permit")
             permit.validate_d(source, seed, run_id)
         else:

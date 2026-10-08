@@ -82,7 +82,7 @@ def check_service_context(*, invocation_id=None, cgroup=None, linger=None,
         cgroup = _cgroup(os.getpid())
     unit = cgroup.strip().split("/")[-1] if cgroup else ""
     if (not invocation_id or not cgroup or "user.slice" not in cgroup
-            or not unit.startswith("p2r-") or not unit.endswith(".service")):
+            or not unit.startswith(("p2r-", "p3-")) or not unit.endswith(".service")):
         raise ValueError("P2R requires a systemd user service, not a chat/terminal child")
     if require_linger:
         if linger is None:
