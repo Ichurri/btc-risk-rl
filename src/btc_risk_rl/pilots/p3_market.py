@@ -35,9 +35,10 @@ ANCHORS = {
 }
 TRAIN_SHARD_MANIFEST_SHA256 = "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
 
-# A future approval must be registered separately and pinned in reviewed code.
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+# P3 v1.1 historical development campaign approved on 2026-10-08.
+# This pins one independent registration; it does not extend P2R permission.
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "66675a4931ae8aea2175c20c1c38f2cba2d5db0512ecc84da61ef6dfeba54597"
 
 
 def digest(path):
