@@ -79,3 +79,17 @@ como resultados reales, sin alterar el supervisor, las guardas ni los datos
 para hacer pasar la suite. La evidencia de origen P0/P1/P2/P2R/P3 quedó en
 el checkout original; el único cambio local preexistente allí era la
 eliminación de `.python-version`, preservada.
+
+## Revisión de legibilidad
+
+La revisión posterior mantiene los cálculos y la lectura de fuentes. El
+encabezado visible dice únicamente «Resultados experimentales»; se retiraron
+los rótulos «Guía para el tutor» e «Ingeniería del Proyecto». Las figuras
+usan dos columnas en escritorio, una en pantallas estrechas, ejes y valores
+más grandes y una separación visual entre métrica, lote, origen y límite.
+Los estados se expresan en español y siguen derivándose del ledger. Las
+capturas nuevas y la huella del HTML están en
+[`visual-refresh.json`](../evidence/experiment-report/visual-refresh.json).
+La suite general no se repitió porque el cargador y los algoritmos no
+cambiaron; se ejecutaron las cinco pruebas del informe, Ruff y una auditoría
+estática del HTML.

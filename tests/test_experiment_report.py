@@ -120,3 +120,6 @@ def test_incompatible_metrics_are_kept_separate(tmp_path):
     assert "unidad:</b> pérdida logarítmica" in html
     assert "unidad:</b> multiplicador sin dimensión" in html
     assert "src=\"http" not in html and "<script" not in html
+    assert "<h1>Resultados experimentales</h1>" in html
+    assert "Guía para el tutor" not in html
+    assert "INGENIERÍA DEL PROYECTO" not in html

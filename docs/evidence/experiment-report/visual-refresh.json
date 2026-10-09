@@ -1,0 +1,28 @@
+{
+  "base_commit": "8fa1d7c6e479ccc59369ac8aca8f3739788b0a26",
+  "checks": {
+    "full_suite": "not repeated; earlier 341 passed, 5 unrelated failures recorded in results.json",
+    "repeat_build": "same HTML SHA-256 on two consecutive builds",
+    "report_tests": "5 passed",
+    "ruff": "All checks passed",
+    "static_html": "55 figures; 0 scripts; only internal anchors; requested labels absent; P3 en pausa and P2 interrumpido",
+    "visual_review": "Firefox headless screenshots at 1440 px and 800 px inspected"
+  },
+  "original_ledger_sha256": {
+    "P0": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+    "P1": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+    "P2": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+    "P2R": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+    "P3": "cff406928d2ff5655599c5fb1c99465c3a13bbb8aeb505fa39e1291724c446ce"
+  },
+  "output_sha256": {
+    "tesis-experimentos.html": "d30a6ce1d948f0afc64632ba33691e9a89e4d65b31bf6b7e3ad52b9def212cc0",
+    "vista-800.png": "cf11235f4431bfb14a2ec9cdda1ca85f9222b86f04bb131a75f81dd2a859ea20",
+    "vista-inicial-v2.png": "7e85bb8c0c030e4a049aa7f9cbf5d1f42db996016edfea83d43c2f252ec82fb1",
+    "vista-p1-v2.png": "f17a73322bd391d0b0d48562f7a6d0795cf74ce2a029717b8ccb52f94dd761ed",
+    "vista-p3-pares-v2.png": "29636d1991e3b0db52e2125fc93e3da63facbbac3181d412f26ca041af4c3514",
+    "vista-p3-v2.png": "10d35536f3a816036523b83c7b3cce20b675e5439b1d6e94aef9093bfe12d724"
+  },
+  "outputs": "$HOME/Desktop/personal_projects/btc-risk-rl-reportes; outside Git and original artifacts",
+  "scope": "offline_visual_refresh_only"
+}

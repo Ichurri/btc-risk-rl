@@ -204,27 +204,36 @@ def _num(value: float, digits: int = 3) -> str:
 
 def _figure(title: str, svg: str, *, metric: str, unit: str, population: str,
             n: str, source: str, limit: str = "") -> str:
-    return (f'<figure><h4>{_esc(title)}</h4>{svg}<figcaption><b>Métrica:</b> {_esc(metric)} '
-            f'· <b>unidad:</b> {_esc(unit)} · <b>población/lote:</b> {_esc(population)} '
-            f'· <b>n:</b> {_esc(n)} · <b>origen:</b> <code>{_esc(source)}</code>'
-            f'{(" · " + _esc(limit)) if limit else ""}</figcaption></figure>')
+    caveat = f'<p class="chart-limit">{_esc(limit)}</p>' if limit else ""
+    return (f'<figure><h4>{_esc(title)}</h4>{svg}<figcaption>'
+            f'<p class="chart-facts"><b>Métrica:</b> {_esc(metric)} '
+            f'· <b>unidad:</b> {_esc(unit)}</p>'
+            f'<p class="chart-context"><b>Lote:</b> {_esc(population)} '
+            f'· <b>n:</b> {_esc(n)}</p>'
+            f'<p class="chart-source"><b>origen:</b> <code>{_esc(source)}</code></p>'
+            f'{caveat}</figcaption></figure>')
 
 
 def _bars(rows: list[tuple[str, float]], *, max_value: float | None = None,
           color: str = "#227a87", suffix: str = "") -> str:
     if not rows:
         return '<p class="missing">Datos no disponibles.</p>'
-    width = 620
+    width = 545
     top = max_value or max(value for _, value in rows) or 1
     digits = 4 if top < 1 else (0 if top >= 1000 else 1)
-    out = [f'<svg viewBox="0 0 760 {len(rows) * 34 + 12}" role="img" aria-label="Gráfico de barras">']
+    out = [f'<svg viewBox="0 0 760 {len(rows) * 48 + 18}" role="img" aria-label="Gráfico de barras">']
     for i, (label, value) in enumerate(rows):
-        y = i * 34 + 7
+        y = i * 48 + 9
         bar = max(0, min(width, width * value / top))
-        out.append(f'<text x="0" y="{y + 15}" class="axis">{_esc(label)}</text>'
-                   f'<rect x="105" y="{y}" width="{width}" height="21" rx="4" fill="#e5ebe9"/>'
-                   f'<rect x="105" y="{y}" width="{bar:.1f}" height="21" rx="4" fill="{color}"/>'
-                   f'<text x="{min(725, 112 + bar):.1f}" y="{y + 15}" class="value">'
+        inside = bar > 460
+        text_x = 660 if inside else 148 + bar
+        anchor = "end" if inside else "start"
+        value_class = "value-in" if inside else "value"
+        out.append(f'<text x="0" y="{y + 20}" class="axis">{_esc(label)}</text>'
+                   f'<rect x="135" y="{y}" width="{width}" height="28" rx="5" fill="#e5ebe9"/>'
+                   f'<rect x="135" y="{y}" width="{bar:.1f}" height="28" rx="5" fill="{color}"/>'
+                   f'<text x="{text_x:.1f}" y="{y + 20}" text-anchor="{anchor}" '
+                   f'class="{value_class}">'
                    f'{_esc(_num(value, digits) + suffix)}</text>')
     out.append("</svg>")
     return "".join(out)
@@ -235,32 +244,32 @@ def _line(points: list[tuple[int, float]], *, color: str = "#227a87") -> str:
         return '<p class="missing">Datos no disponibles.</p>'
     hi = max(v for _, v in points) or 1
     xhi = max(x for x, _ in points) or 1
-    coords = " ".join(f"{55 + 630*x/xhi:.1f},{155 - 125*v/hi:.1f}" for x, v in points)
-    dots = "".join(f'<circle cx="{55 + 630*x/xhi:.1f}" cy="{155 - 125*v/hi:.1f}" '
-                   f'r="4" fill="{color}"/>' for x, v in points)
-    return (f'<svg viewBox="0 0 760 190" role="img" aria-label="Evolución por iteración">'
-            '<line x1="55" y1="155" x2="695" y2="155" stroke="#758785"/>'
-            '<line x1="55" y1="25" x2="55" y2="155" stroke="#758785"/>'
-            f'<text x="0" y="32" class="axis">{_esc(_num(hi, 3))}</text>'
-            f'<text x="55" y="178" class="axis">0</text><text x="680" y="178" '
+    coords = " ".join(f"{70 + 600*x/xhi:.1f},{190 - 145*v/hi:.1f}" for x, v in points)
+    dots = "".join(f'<circle cx="{70 + 600*x/xhi:.1f}" cy="{190 - 145*v/hi:.1f}" '
+                   f'r="6" fill="{color}"/>' for x, v in points)
+    return (f'<svg viewBox="0 0 760 235" role="img" aria-label="Evolución por iteración">'
+            '<line x1="70" y1="190" x2="680" y2="190" stroke="#758785"/>'
+            '<line x1="70" y1="35" x2="70" y2="190" stroke="#758785"/>'
+            f'<text x="0" y="43" class="axis">{_esc(_num(hi, 3))}</text>'
+            f'<text x="70" y="220" class="axis">0</text><text x="645" y="220" '
             f'class="axis">k={xhi}</text><polyline points="{coords}" fill="none" '
-            f'stroke="{color}" stroke-width="3"/>{dots}</svg>')
+            f'stroke="{color}" stroke-width="4"/>{dots}</svg>')
 
 
 def _paired_bars(pairs: list[dict]) -> str:
     top = max(max(p["mse_b0"], p["mse_b1"]) for p in pairs) or 1
-    out = [f'<svg viewBox="0 0 760 {len(pairs) * 58 + 20}" role="img" '
+    out = [f'<svg viewBox="0 0 760 {len(pairs) * 76 + 20}" role="img" '
            'aria-label="MSE D pareada por semilla y condición">']
     for index, pair in enumerate(pairs):
-        y = 12 + index * 58
+        y = 12 + index * 76
         label = f'{pair["seed"]}/{pair["condition"]} k{pair["iteration"]}'
-        out.append(f'<text x="0" y="{y + 24}" class="axis">{_esc(label)}</text>')
-        for offset, arm, color in ((0, "mse_b0", "#227a87"), (23, "mse_b1", "#bb6c38")):
+        out.append(f'<text x="0" y="{y + 30}" class="axis">{_esc(label)}</text>')
+        for offset, arm, color in ((0, "mse_b0", "#227a87"), (31, "mse_b1", "#bb6c38")):
             value = pair[arm]
-            width = 440 * value / top
-            out.append(f'<rect x="135" y="{y + offset}" width="{width:.1f}" height="17" '
-                       f'rx="3" fill="{color}"/><text x="{143 + width:.1f}" '
-                       f'y="{y + offset + 13}" class="value">β={0 if arm.endswith("0") else 1} '
+            width = 390 * value / top
+            out.append(f'<rect x="165" y="{y + offset}" width="{width:.1f}" height="24" '
+                       f'rx="4" fill="{color}"/><text x="{175 + width:.1f}" '
+                       f'y="{y + offset + 18}" class="value">β={0 if arm.endswith("0") else 1} '
                        f'{_num(value, 5)}</text>')
     out.append("</svg>")
     return "".join(out)
@@ -281,6 +290,16 @@ def _median_series(campaign: Campaign, batch: str, value: str,
     return [(k, statistics.median(values)) for k, values in sorted(grouped.items())], len(runs)
 
 
+def _status_label(status: str) -> str:
+    return {
+        "completed": "completado",
+        "failed": "interrumpido",
+        "ready": "en pausa",
+        "running": "en curso",
+        "incomplete": "incompleto",
+    }.get(status, status)
+
+
 def _overview(campaigns: list[Campaign]) -> str:
     labels = {
         "P0": ("Piloto inicial de infraestructura Q/A/B", "Corridas técnicas completas; no evalúa rentabilidad."),
@@ -292,13 +311,13 @@ def _overview(campaigns: list[Campaign]) -> str:
     cards = []
     for c in campaigns:
         title, message = labels[c.name]
-        status = "interrumpido" if c.name == "P2" else c.state["status"]
+        status = _status_label(c.state["status"])
         if c.name == "P2R":
-            status = f'{c.state["status"]} · {c.closure["numerical_technical_decision"]} numérico'
+            status += f' · {c.closure["numerical_technical_decision"]} numérico'
         cards.append(f'<article class="card"><span class="tag">{c.name}</span><h3>{_esc(title)}</h3>'
                      f'<p class="status">{_esc(status)} · {c.complete_runs}/{CAMPAIGNS[c.name][1]} '
                      f'corridas completas</p><p>{_esc(message)}</p></article>')
-    return '<section id="inicio"><h2>Guía para el tutor</h2><div class="cards">' + "".join(cards) + (
+    return '<section id="inicio" aria-label="Resumen de campañas"><div class="cards">' + "".join(cards) + (
         '</div><p class="callout">Estos pilotos usan entrenamiento 2018–2022. No demuestran '
         'rentabilidad, superioridad frente a C0, generalización temporal ni cumplimiento '
         'poblacional de CVaR. No se muestran resultados fuera de muestra.</p></section>')
@@ -383,11 +402,13 @@ def _campaign_section(c: Campaign) -> str:
                       sorted(values_by_k.items())]
             n_arm = sum(run_id.endswith(f"-{arm}") for run_id in c.reports) if arm != "all" \
                 else len(c.reports)
-            content.append(_figure(f"Crítico: MSE sobre A por iteración ({arm})",
+            title_arm = f" ({arm})" if arm != "all" else ""
+            population_arm = f", brazo {arm}" if arm != "all" else ""
+            content.append(_figure(f"Crítico: MSE sobre A por iteración{title_arm}",
                            _line(series),
                            metric="MSE MC antes de ajustar" if c.name == "P0" else
                            "MSE MC después de ajustar", unit="retorno logarítmico²",
-                           population=f"A de entrenamiento, brazo {arm}; "
+                           population=f"A de entrenamiento{population_arm}; "
                            + ("pre-ajuste" if c.name == "P0" else "post-ajuste, A fijo"),
                            n=f"{n_arm} corridas con reporte",
                            source=f"{prefix}/<run>/unit-<última aceptada>.json → report.stability",
@@ -489,7 +510,7 @@ def _campaign_section(c: Campaign) -> str:
     provenance = "".join(f"<li><code>{_esc(s)}</code></li>" for s in c.sources)
     checks = "".join(f"<li>{_esc(s)}</li>" for s in c.checks)
     heading = (f'<section id="{c.name.lower()}" class="campaign"><div class="section-head">'
-               f'<span class="tag">{c.name}</span><h2>{c.name} · {_esc(c.state["status"])}'
+               f'<span class="tag">{c.name}</span><h2>{c.name} · {_esc(_status_label(c.state["status"]))}'
                f'</h2></div><p class="meta">Ledger SHA-256: <code>{c.ledger_sha256}</code> '
                f'· corte UTC: {_esc(c.state.get("updated_utc", "—"))}</p>')
     return (heading + '<div class="grid">' + "".join(content) + '</div>'
@@ -501,30 +522,56 @@ def _campaign_section(c: Campaign) -> str:
 def render_report(campaigns: list[Campaign]) -> str:
     cut = max((str(c.state.get("updated_utc", "")) for c in campaigns), default="")
     css = """
-    :root{font-family:system-ui,DejaVu Sans,sans-serif;color:#19312e;background:#f4f5f0}
-    *{box-sizing:border-box}body{margin:0}header{background:#123c3c;color:#fff;padding:3rem max(2rem,calc((100vw - 1200px)/2))}
-    header h1{font-size:clamp(2rem,4vw,3.5rem);margin:.4rem 0}header p{max-width:65ch;line-height:1.6}
-    nav{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}a{color:inherit}nav a{color:#d8eecb}
-    main{max-width:1200px;margin:auto;padding:2rem}section{margin:2.5rem 0}.cards,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem}
-    .card,figure,details{background:#fff;border:1px solid #d6dfd8;border-radius:12px;padding:1.3rem;box-shadow:0 2px 8px #15342b0a}
-    .card h3{font-size:1.2rem;margin:.8rem 0}.card p{line-height:1.5}.tag{display:inline-block;background:#d8e7d6;color:#154735;padding:.25rem .6rem;border-radius:4px;font-weight:700}
-    .status{font-weight:700;color:#8a5235}.callout{background:#fff2d8;border-left:5px solid #bc742f;padding:1rem;line-height:1.5}
-    .note,.missing{background:#e8eef0;padding:1rem;border-radius:8px;line-height:1.5}.missing{border:1px dashed #79949b}
-    .section-head{display:flex;align-items:center;gap:1rem}.section-head h2{margin:0}.campaign{border-top:2px solid #c9d9ce;padding-top:2rem}
-    .meta{overflow-wrap:anywhere;color:#52615e}figure{margin:0;min-width:0}figure h4{margin:0 0 1rem}svg{display:block;width:100%;height:auto;max-height:320px}
-    .axis{font-size:13px;fill:#354a47}.value{font-size:12px;fill:#19312e;font-weight:700}figcaption{font-size:.83rem;line-height:1.5;color:#4c5d58;margin-top:.8rem;overflow-wrap:anywhere}
-    code{overflow-wrap:anywhere}details{margin-top:1rem}table{border-collapse:collapse;width:100%;font-size:.82rem}td,th{text-align:left;border-bottom:1px solid #dce4dc;padding:.45rem}th{background:#edf3ed}
+    :root{font-family:system-ui,DejaVu Sans,sans-serif;color:#19312e;background:#f5f6f2}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-size:1rem;line-height:1.55}
+    header{background:#123c3c;color:#fff;padding:2rem 1.5rem 1.7rem}
+    .header-inner{max-width:1280px;margin:auto}
+    header h1{font-size:clamp(2.3rem,3.5vw,3.2rem);line-height:1.12;margin:0 0 .55rem}
+    header p{max-width:74ch;line-height:1.6;margin:.3rem 0;color:#eef5ef}
+    header .cut{font-size:.9rem;color:#c8dfd9;margin-top:.75rem}
+    nav{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.15rem}
+    nav a{color:#fff;text-decoration:none;background:#245b58;padding:.35rem .8rem;border-radius:7px;font-weight:650}
+    nav a:hover,nav a:focus-visible{background:#3b746c;outline:2px solid #cde9dc}
+    main{max-width:1280px;margin:auto;padding:1.5rem}
+    section{margin:1.5rem 0 3rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1rem}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;align-items:stretch}
+    .grid>.note,.grid>.missing,.grid>.callout{align-self:start}
+    .card,figure,details{background:#fff;border:1px solid #cbd8d1;border-radius:12px;padding:1.5rem;box-shadow:0 2px 8px #15342b0a}
+    .card h3{font-size:1.35rem;line-height:1.25;margin:.75rem 0}.card p{margin:.7rem 0;line-height:1.55}
+    .tag{display:inline-block;background:#d8e7d6;color:#154735;padding:.24rem .6rem;border-radius:5px;font-weight:750}
+    .status{font-weight:750;color:#84452b;font-variant-numeric:tabular-nums}
+    .callout{background:#fff2d8;border-left:5px solid #bc742f;padding:1.1rem 1.3rem;line-height:1.6}
+    .note,.missing{background:#e8eef0;padding:1.1rem;border-radius:8px;line-height:1.6}
+    .missing{border:1px dashed #79949b}
+    .section-head{display:flex;align-items:center;gap:1rem}.section-head h2{margin:0;font-size:1.8rem}
+    .campaign{border-top:2px solid #c9d9ce;padding-top:2.1rem}
+    .meta{overflow-wrap:anywhere;color:#4b6059;font-size:.93rem;margin:.5rem 0 1.25rem}
+    figure{margin:0;min-width:0}figure h4{font-size:1.25rem;line-height:1.3;margin:0 0 1.2rem}
+    svg{display:block;width:100%;height:auto;overflow:visible}
+    .axis{font-size:19px;fill:#304744}.value{font-size:18px;fill:#19312e;font-weight:750}
+    .value-in{font-size:18px;fill:#fff;font-weight:750}
+    figcaption{color:#344b44;margin-top:1.1rem;overflow-wrap:anywhere;line-height:1.55}
+    figcaption p{margin:.4rem 0}.chart-facts{font-size:1rem;color:#19312e}
+    .chart-context{font-size:.96rem}.chart-source{font-size:.9rem;border-top:1px solid #dce5de;padding-top:.65rem}
+    .chart-limit{font-size:.92rem;color:#52625b}
+    code{overflow-wrap:anywhere;font-size:.92em}details{margin-top:1.2rem}summary{font-weight:650;cursor:pointer}
+    table{border-collapse:collapse;width:100%;font-size:.96rem;font-variant-numeric:tabular-nums}
+    td,th{text-align:left;border-bottom:1px solid #dce4dc;padding:.65rem .5rem}
+    th{background:#edf3ed}td{white-space:nowrap}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}main{padding:1rem}}
+    @media(max-width:600px){.cards{grid-template-columns:1fr}.card,figure,details{padding:1.1rem}table{font-size:.82rem}}
     @media print{header{padding:1rem}main{padding:.5rem}.card,figure,details{break-inside:avoid;box-shadow:none}}
     """
     nav = "".join(f'<a href="#{c.name.lower()}">{c.name}</a>' for c in campaigns)
     return ('<!doctype html><html lang="es"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
             '<title>Resultados experimentales · tesis BTC</title><style>' + css +
-            '</style></head><body><header><p>INGENIERÍA DEL PROYECTO · INFORME LOCAL</p>'
-            '<h1>Resultados experimentales</h1><p>Resumen auditable de pilotos sobre entrenamiento '
-            '2018–2022. HTML autónomo: sin servidor, Internet, fuentes ni bibliotecas externas.</p>'
-            f'<p>Corte máximo de ledger UTC {_esc(cut)}</p><nav><a href="#inicio">Guía inicial</a>{nav}</nav>'
-            '</header><main>' + _overview(campaigns) +
+            '</style></head><body><header><div class="header-inner">'
+            '<h1>Resultados experimentales</h1><p>Pilotos P0–P3 sobre entrenamiento '
+            '2018–2022. Son diagnósticos de desarrollo, sin evaluación fuera de muestra.</p>'
+            f'<p class="cut">Corte máximo de ledger UTC {_esc(cut)}</p>'
+            f'<nav aria-label="Campañas"><a href="#inicio">Resumen</a>{nav}</nav>'
+            '</div></header><main>' + _overview(campaigns) +
             "".join(_campaign_section(c) for c in campaigns) +
             '</main></body></html>')
 
