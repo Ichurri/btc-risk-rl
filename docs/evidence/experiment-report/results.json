@@ -1,0 +1,71 @@
+{
+  "campaigns": {
+    "P0": {
+      "accepted_units": 27,
+      "complete_runs": 9,
+      "ledger_sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+      "status": "completed",
+      "updated_utc": "2026-09-24T05:31:20.522467+00:00"
+    },
+    "P1": {
+      "accepted_units": 54,
+      "complete_runs": 18,
+      "ledger_sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+      "status": "completed",
+      "updated_utc": "2026-09-24T21:41:41.392234+00:00"
+    },
+    "P2": {
+      "accepted_units": 57,
+      "complete_runs": 5,
+      "ledger_sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+      "status": "failed",
+      "updated_utc": "2026-09-30T16:32:06.528428+00:00"
+    },
+    "P2R": {
+      "accepted_units": 99,
+      "complete_runs": 9,
+      "ledger_sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+      "status": "completed",
+      "updated_utc": "2026-10-07T07:29:57.107013+00:00"
+    },
+    "P3": {
+      "accepted_units": 116,
+      "complete_runs": 10,
+      "ledger_sha256": "cff406928d2ff5655599c5fb1c99465c3a13bbb8aeb505fa39e1291724c446ce",
+      "status": "ready",
+      "updated_utc": "2026-10-08T18:07:25.129063+00:00"
+    }
+  },
+  "checked_utc": "2026-10-09T11:05:30.754806+00:00",
+  "checks": {
+    "full_suite": "341 passed, 5 failed in 243.29s",
+    "full_suite_failure_classes": [
+      "legacy supervisor process race on /proc",
+      "two P2R preflights require untracked ledgers absent from isolated worktree",
+      "two P3 guard tests expect pre-approval failure semantics although current branch has approved campaign"
+    ],
+    "new_tests": "5 passed in 0.03s",
+    "original_artifacts_modified": false,
+    "repeat_build": "HTML SHA-256 identical on two consecutive builds with unchanged ledgers",
+    "ruff": "All checks passed!",
+    "static_html": "55 figures, zero scripts, local anchors only, P2/P2R/P3 labels checked",
+    "validation_or_final_opened": false
+  },
+  "commands": [
+    "PYTHONPATH=src python3 scripts/build_experiment_report.py --source-root \"$HOME/Desktop/personal_projects/btc-risk-rl\" --output \"$HOME/Desktop/personal_projects/btc-risk-rl-reportes/tesis-experimentos.html\"",
+    "PYTHONPATH=src /home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/pytest -q tests/test_experiment_report.py",
+    "PYTHONPATH=src /home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/pytest -q",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/ruff check .",
+    "firefox --headless --screenshot <outside-artifacts>/vista-completa.png --window-size 1440,12000 file://<outside-artifacts>/tesis-experimentos.html",
+    "ffmpeg -loglevel error -y -i <outside-artifacts>/vista-completa.png -vf crop=1440:1000:0:<offset> <outside-artifacts>/vista-*.png"
+  ],
+  "output_location": "$HOME/Desktop/personal_projects/btc-risk-rl-reportes/",
+  "output_sha256": {
+    "tesis-experimentos.html": "e74a5a17f9b048018a7f0dbc9f06fd6d728fc5eddbe16217f452b4cbfc39f7f3",
+    "vista-inicial.png": "8f461b0110ea6a6853b140bf3a3b5ca9bffc4a82f513884ee26d54508509544b",
+    "vista-p1.png": "75b14e07687bcd46dbde19a1f46395e5ebbe391884be2723e6469ae9b4185c81",
+    "vista-p3-pares.png": "5d7e12eef3df15f9ccde92162aae89ef6e4b797a09674c916bc85977000caa59",
+    "vista-p3.png": "6c659d278f90a25fc9c06bf3d6b858c23bcce1bb12b8e82157379b840cd02852"
+  },
+  "scope": "offline_read_only_training_2018_2022"
+}

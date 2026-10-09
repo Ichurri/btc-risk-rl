@@ -182,3 +182,25 @@ Una campaña fallida permanece bloqueada; no borrar registros para reintentar.
 La configuración histórica initial.toml se mantiene intacta para compatibilidad H1;
 la excepción de ejecución es solo el perfil P0 registrado. El resto de JSON
 (incluida la propuesta original) siguen rechazados. No se habilita entrenamiento general.
+
+## Informe experimental local y sin conexión
+
+Desde la rama `codex/thesis-results-report`, en el checkout que contiene este
+generador, se regenera con **un comando** (Python 3.11+; solo biblioteca
+estándar, sin dependencias ni recursos web):
+
+```bash
+PYTHONPATH=src python3 scripts/build_experiment_report.py --source-root "$HOME/Desktop/personal_projects/btc-risk-rl" --output "$HOME/Desktop/personal_projects/btc-risk-rl-reportes/tesis-experimentos.html"
+```
+
+`--source-root` es el checkout que conserva los artefactos originales. El
+archivo HTML se abre directamente en Firefox con `file://`; no requiere
+servidor. El comando solo lee los ledgers y reportes de unidades aceptadas de
+P0/P1/P2/P2R/P3 y los cierres pequeños de `docs/evidence`. Verifica la cadena
+de hashes cuando existe, la huella del cierre y la coherencia de cada reporte
+con el checkpoint aceptado. Nunca abre CSV, checkpoints, validación ni prueba
+final. Detecta el estado de P3 en el ledger en cada regeneración; un HTML
+anterior es una fotografía y debe regenerarse para ver avances nuevos.
+
+La [nota de interpretación](docs/hitos/visualizacion-experimentos-local.md)
+enumera los gráficos, fuentes, límites y verificaciones.
