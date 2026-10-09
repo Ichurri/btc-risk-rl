@@ -121,3 +121,29 @@ la campaña completa las 18 corridas, sus resultados serán diagnóstico
 de desarrollo sobre el histórico de entrenamiento, **no evidencia
 confirmatoria** de generalización temporal, rentabilidad ni cumplimiento
 poblacional de CVaR.
+
+## Preflight de sesión 02 bloqueado — 09/10/2026
+
+A las 04:04:04 UTC (00:04:04 America/La_Paz), un nuevo preflight **de
+solo lectura** confirmó el permiso y las huellas fijadas, 7.048 inicios,
+perfil `accepted_train_collection_only`, presupuesto global del día de
+10.800 s sin débito externo y cero intentos de abrir CSV H1 compartidos.
+Solo se abrió el manifiesto H1 compartido y los productos permitidos del
+derivado exclusivo de entrenamiento; no se generaron trayectorias ni se
+actualizaron parámetros. La memoria disponible era 8.278.441.984 B y
+el disco libre 170.801.852.416 B. El gestor `systemd --user` estaba
+`running`, `Linger=yes`; Git local coincidía con origin en `9b0d9f3`.
+
+La guarda de alimentación **falló**: CA desconectada (`ADP1/online=0`)
+y batería 37 %, menor que el 50 % mínimo de preflight. El resultado
+registrado es `read_only_resources_blocked`, motivo `AC not connected`.
+No se lanzó `p3-market-v1-session-02.service`; el ledger permaneció
+`ready`, 10/18 corridas y 116 unidades aceptadas, sin unidad pendiente.
+Ver [evidencia y rutas abiertas](../evidence/p3-market-2026-10-09/preflight-blocked.json)
+y [comandos](../evidence/p3-market-2026-10-09/COMMANDS.md). Su SHA-256 es
+`a8ce02af8fed4a312a8bc69bbc19d6eb2dde634a651ad84cd94e938424fdc712`.
+Este bloqueo del host no invalida las unidades ya aceptadas; tampoco
+autoriza rebajar umbrales ni omitir un nuevo preflight. Tras conectar CA
+y cargar la batería hasta ≥50 %, se podrá intentar de nuevo dentro del
+día y de la autorización existentes, siempre que todas las demás
+guardas sigan pasando.

@@ -10,6 +10,9 @@
   ledger `ready`, 10/18 corridas completas, 116 unidades aceptadas y
   ninguna unidad pendiente. La campaña sigue abierta; consultar el último
   ledger y repetir preflight otro día antes de otra sesión `systemd --user`.
+  El preflight de las 00:04 America/La_Paz del 09/10 quedó bloqueado:
+  `ADP1/online=0`, batería 37 %; no se lanzó la sesión 02 ni se modificó
+  el ledger. Exigir CA y batería ≥50 % antes de volver a intentar.
   Ver `docs/hitos/P3-ejecucion-historica-v1.md` y el último ledger antes
   de actuar. Conservar 18 corridas K10, orden y brazos β, Q0/Q/A/B+D,
   tres horas globales por día America/La_Paz, hasta tres días activos,

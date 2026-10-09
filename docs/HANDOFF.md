@@ -1,4 +1,4 @@
-# Estado vigente — P3 v1.1 pausado en frontera completa tras la sesión 01
+# Estado vigente — P3 v1.1 en pausa; sesión 02 bloqueada por alimentación
 
 El usuario autorizó el 08/10/2026 la campaña P3 v1.1 como diagnóstico
 de desarrollo, limitada al derivado H1 exclusivo de entrenamiento. El
@@ -19,11 +19,20 @@ cierre de P3. Consultar siempre el último ledger y el estado de systemd.
 Ver [informe](hitos/P3-ejecucion-historica-v1.md) y
 [cierre de sesión 01](evidence/p3-market-2026-10-08/session01-closure.json).
 
-**Siguiente tarea:** en un día posterior America/La_Paz, repetir preflight
-completo y verificar presupuesto compartido, recursos, Git y ausencia de
+El preflight de solo lectura del 09/10/2026 a las 00:04 La Paz verificó
+las huellas, 7.048 inicios, presupuesto nuevo de 10.800 s y ausencia de
+CSV compartidos abiertos, pero **bloqueó el inicio**: CA desconectada y
+batería 37 % (mínimo de inicio 50 %). `Linger=yes`, gestor activo,
+memoria y disco no fueron los bloqueos. No existe sesión 02 ni nuevas
+trayectorias o pasos; el ledger continúa `ready` en 10/18. Ver
+[preflight bloqueado](evidence/p3-market-2026-10-09/preflight-blocked.json).
+
+**Siguiente tarea:** conectar CA y alcanzar batería ≥50 %; entonces,
+durante el día 09/10 America/La_Paz, repetir preflight completo y
+verificar presupuesto compartido, recursos, Git y ausencia de
 otra campaña activa; solo entonces iniciar una sesión `systemd --user`
 nueva con la misma autorización, raíz y parámetros, desde `ready`.
-No volver a iniciar unidades el 08/10. Si queda `failed`
+No lanzar con el resultado bloqueado. Si queda `failed`
 o `incomplete`, preservar evidencia y no reanudar. Máximo global 3 h/día
 America/La_Paz y tres días activos. P0/P1/P2/P2R intactos, sin
 validación ni prueba final. La eliminación local previa de
