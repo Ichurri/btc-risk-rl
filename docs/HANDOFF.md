@@ -1,4 +1,29 @@
-# Estado vigente — P3 v1.1 en pausa; sesión 02 bloqueada por alimentación
+# Estado vigente — P3 v1.1 cerrada como diagnóstico de desarrollo
+
+El 13/10/2026 a las 15:54:10 UTC la campaña P3 v1.1 quedó
+`completed`: 18/18 corridas K10, 198/198 unidades aceptadas y ninguna
+pendiente. La sesión 02 de `systemd --user` cerró con código 0 después
+de continuar desde la unidad 6 de `run-10-C0-b1`. Dos días activos
+debitaron 8.016,088 s y 5.257,683 s, cada uno bajo el máximo global de
+10.800 s. El resultado predefinido fue **`review`** (0/3 bloques de
+semilla superaron la regla conjunta). Las nueve parejas tuvieron señal
+`Z` elegible, pero β=1 no cumplió la comparación exacta con el predictor
+cero en D tardía ni el umbral pareado de mejora D tardía.
+
+La [auditoría](evidence/p3-market-2026-10-13/final-closure.json)
+verificó las cadenas de ledger/journal y los 198 reportes y
+checkpoints; el [informe](hitos/P3-cierre-historico-v1.md) separa los
+tiempos, recursos, advertencias y límites de interpretación. P3 aporta
+solo diagnóstico de desarrollo sobre entrenamiento 2018–2022, no
+evidencia confirmatoria de generalización, rentabilidad o cumplimiento
+CVaR. **No reanudar ni repetir P3.** La siguiente tarea es la revisión
+académica del cierre y la definición separada de un eventual protocolo
+posterior; validación y conjunto final continúan protegidos. La
+eliminación local previa de `.python-version` no se incluyó.
+
+---
+
+# Estado anterior — P3 v1.1 en pausa; sesión 02 bloqueada por alimentación
 
 El usuario autorizó el 08/10/2026 la campaña P3 v1.1 como diagnóstico
 de desarrollo, limitada al derivado H1 exclusivo de entrenamiento. El

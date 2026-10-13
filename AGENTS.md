@@ -1,14 +1,23 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
-- Campaña histórica P3 v1.1 autorizada el 08/10/2026 **solo como
+- P3 v1.1 histórico **cerró el 13/10/2026 como diagnóstico de desarrollo**:
+  ledger `completed`, 18/18 corridas y 198/198 unidades aceptadas en dos
+  días activos; resultado predefinido `review`. Ver
+  `docs/hitos/P3-cierre-historico-v1.md` y la auditoría en
+  `docs/evidence/p3-market-2026-10-13/`. No volver a lanzar P3 ni
+  seleccionar checkpoints por resultado. Validación 2023, prueba final
+  2024–2025 y evaluación confirmatoria continúan fuera de este permiso.
+- Registro anterior al cierre: campaña histórica P3 v1.1 autorizada el
+  08/10/2026 **solo como
   diagnóstico de desarrollo** sobre el derivado H1 exclusivo de
   entrenamiento 2018–2022. Permiso independiente fijado en
   `docs/protocols/P3-market-approval.json` y commit `618a08f`; raíz nueva
   `artifacts/p3-approved-v1`. La sesión inicial
   `p3-market-v1-session-01.service` cerró en pausa presupuestaria válida:
   ledger `ready`, 10/18 corridas completas, 116 unidades aceptadas y
-  ninguna unidad pendiente. La campaña sigue abierta; consultar el último
+  ninguna unidad pendiente. La campaña seguía abierta en ese momento;
+  consultar el último
   ledger y repetir preflight otro día antes de otra sesión `systemd --user`.
   El preflight de las 00:04 America/La_Paz del 09/10 quedó bloqueado:
   `ADP1/online=0`, batería 37 %; no se lanzó la sesión 02 ni se modificó

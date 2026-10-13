@@ -1,7 +1,8 @@
 # P3 v1.1 — campaña histórica autorizada, pausa válida tras sesión 01
 
-**Estado de este informe:** primera sesión cerrada y verificada; campaña
-abierta, **sin resultado de campaña**.
+**Estado de este informe:** registro histórico de la primera sesión;
+la campaña cerró posteriormente. Ver el
+[informe final](P3-cierre-historico-v1.md) antes de usar sus resultados.
 El usuario autorizó el 08/10/2026 una campaña P3 nueva, separada de P2R,
 solo para diagnóstico de desarrollo sobre el derivado H1 exclusivo de
 entrenamiento 2018–2022. La [aprobación fijada](../protocols/P3-market-approval.json)
