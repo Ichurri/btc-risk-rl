@@ -1,4 +1,21 @@
-# Estado vigente — P3 v1.1 cerrada como diagnóstico de desarrollo
+# Estado vigente — diagnóstico pareado de P3 para revisión
+
+La revisión de solo lectura desde `0142d4a` reprodujo las nueve
+comparaciones β=0/β=1 de D tardía con 3.456 trayectorias D originales y
+54 parejas de checkpoints pre/post. En las nueve, β=1 no cumple
+`MSE_D≤0,95 Z_D` ni `ΔD≤−0,05`; no apareció un defecto de cálculo o
+instrumentación en el camino auditado. El informe
+[P3-diagnostico-pares.md](hitos/P3-diagnostico-pares.md) distingue la
+contracción observada del crítico de las hipótesis causales y propone
+**para revisión**, sin ejecutarlo, un único diagnóstico cruzado de solo
+lectura sobre D ya aceptada. P3 permanece `completed`/`review` como
+diagnóstico de desarrollo; no reanudarla ni usar validación o final para
+diseñar otra intervención. La eliminación local previa de
+`.python-version` sigue sin versionar.
+
+---
+
+# Estado anterior — P3 v1.1 cerrada como diagnóstico de desarrollo
 
 El 13/10/2026 a las 15:54:10 UTC la campaña P3 v1.1 quedó
 `completed`: 18/18 corridas K10, 198/198 unidades aceptadas y ninguna
