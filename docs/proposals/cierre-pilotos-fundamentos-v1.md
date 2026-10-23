@@ -1,0 +1,25 @@
+# Fundamentos y trazabilidad — propuesta de cierre de pilotos v1
+
+**DOCUMENTO DE APOYO PARA REVISIÓN; NO ADOPCIÓN.** La tesis fuente es el [Google Doc indicado por el investigador](https://docs.google.com/document/d/1dNp8MbiV0Zqpu6S9-5u6vnL-R-v4YbYaR8g6232EBQ8/edit?usp=sharing), lectura del 23/10/2026 (modificación registrada 05:00:04 UTC). Se citan secciones, no una copia local: la versión de Drive ya incluye P3 y el diagnóstico cruzado. No se editó el documento. La [propuesta completa](cierre-pilotos-evaluacion-fuera-muestra-v1.md) formula las recomendaciones propias.
+
+| Punto | Tesis / contrato | Evidencia disponible y consecuencia |
+| --- | --- | --- |
+| Separación y validez | Tesis §§2.7.1–2.7.2 y 3.8.4–3.8.5: entrenamiento, validación y prueba cronológicos; selección solo en validación, final una vez tras congelación. ADR-001/004 protegen particiones y normalizador. | P0–P3 y D se limitan a 2018–2022. No hay resultado 2023 o 2024–2025 que pueda emplearse ahora. |
+| Tratamientos y retorno | Tesis §§3.8.2–3.8.3; [ADR-002](../decisions/ADR-002-risk-horizon.md): H180 y retorno logarítmico neto; C0/C5/C10 comparten entorno; d común. | Contrato adoptado; no redefinir objetivo o reloj para hacer favorable una comparación. Evaluación continua `h=1` mide transferencia operacional. |
+| Crítico y pilotos | [P0](../protocols/P0-approved-v1.md), [P1](../hitos/P1-epocas-critico.md), [P2](../hitos/P2-ejecucion-interrumpida.md), [P2R](../protocols/P2R-adjudicacion-metadato-v1.md), [P3](../hitos/P3-cierre-historico-v1.md), [cruce](../hitos/P3-diagnostico-cruzado-D.md). Tesis §4.3 recoge sus límites. | Cuatro épocas redujo MSE A en P1, no demostró precisión D; β1 no avanzó P3. P2 no es evaluable; P2R `review` solo descriptivo. Ninguno es una réplica final ni selecciona checkpoint. |
+| Sortino e inferencia | Tesis §§2.8 y 3.9; ADR-002 fija `sqrt(2190)`, retornos simples netos 4 h, MAR=0, semidesviación sobre todos los períodos, bootstrap pareado unilateral centrado y Holm 0,05. | Fijado el estimando principal y dos contrastes. Número de réplicas, remuestras, semillas, precisión y tratamiento de indefinidos requieren ratificación antes del final. |
+| CPCV | Tesis §§2.7.3 y 3.8.4 lo incluye como análisis **auxiliar** de desarrollo con purga, embargo y reentrenamiento por partición; §4.3.3 declara que falta. | No basta particionar retornos de políticas ya entrenadas. N/g, ventanas de información, cobertura y costo siguen pendientes de implementación/verificación. |
+| PBO/DSR | Tesis §§2.7.4 y 3.8.4: solo con insumos y supuestos requeridos. | PBO exige universo comparable de alternativas y ranking selección/OOS; DSR corrige Sharpe y requiere historial de búsqueda y momentos de retorno. No inventar valores ni convertirlos en pruebas de Sortino/CVaR. |
+| Final protegido | Tesis §§3.8.5, 4.3.4 y 4.4; AGENTS.md. | 2024–2025 aún intocado para esta propuesta; apertura requiere metodología congelada, controles y permiso específicos. |
+
+La propuesta añade **decisiones propias**, aún no aceptadas por la tesis ni por el usuario: cerrar pilotos, no llevar β1, candidato β0/critic4/K10; doce semillas nuevas; checkpoint terminal fijo; despliegue determinista `sigmoid(μ)`; 19.999 remuestras con semilla `910031`; regla conservadora ante Sortino indefinido; ejemplo CPCV 5 bloques/2 de prueba. Se someten a revisión justamente porque P3 `review` y la tesis no los determinan automáticamente.
+
+Fuentes primarias usadas para contrastar el diseño, sin presentar sus recomendaciones como resultados de este proyecto:
+
+- [Bailey et al., *The Probability of Backtest Overfitting*](https://escholarship.org/uc/item/4w1110bb): PBO/CSCV evalúa el rango fuera de muestra de una estrategia seleccionada entre alternativas comparables.
+- [Bailey y López de Prado, *The Deflated Sharpe Ratio*](https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf): corrección de Sharpe por multiplicidad y no normalidad; no define la hipótesis primaria de Sortino.
+- [López de Prado, *Advances in Financial Machine Learning*, Wiley](https://www.wiley.com/en-ae/Advances%2Bin%2BFinancial%2BMachine%2BLearning-p-9781119482086), cap. 12: CPCV con purga y embargo como distribución auxiliar de caminos de backtest, no sustituto de un corte final cronológico.
+- [Henderson et al., *Deep Reinforcement Learning That Matters*](https://ojs.aaai.org/index.php/AAAI/article/view/11694) y [Agarwal et al., *Deep RL at the Edge of the Statistical Precipice*](https://arxiv.org/abs/2108.13264): variación por semilla y necesidad de incertidumbre entre réplicas; no fijan un número universal adecuado para esta tesis.
+- [Holm, *A Simple Sequentially Rejective Multiple Test Procedure*](https://www.ime.usp.br/~abe/lista/pdf4R8xPVzCnX.pdf): ajuste secuencial de los dos contrastes primarios.
+
+**Límites de la revisión documental:** no se ejecutó una prueba de potencia, CPCV, PBO, DSR, una política ni un bootstrap con datos de mercado; las cifras de costo y resultados citadas proceden exclusivamente de cierres previos. La viabilidad de 36 corridas y del CPCV propuesto sigue abierta.

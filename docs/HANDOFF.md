@@ -1,4 +1,21 @@
-# Estado vigente — diagnóstico cruzado de P3 para revisión
+# Estado vigente — propuesta documental de cierre de pilotos y evaluación
+
+Se preparó la [propuesta v1](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1.md)
+y su [matriz de fundamentos](proposals/cierre-pilotos-fundamentos-v1.md)
+contrastando la tesis **vigente en Google Drive** (lectura 23/10/2026) con
+ADR-002 y los cierres P0–P3. Recomienda cerrar los pilotos y somete a revisión
+un candidato común β=0/crítico4/K10, 12 bloques nuevos de semilla, selección
+terminal fija de checkpoint, validación 2023 solo para desarrollo, inferencia
+pareada y controles CPCV/PBO/DSR con sus requisitos. **La propuesta no está
+adoptada ni autoriza entrenamiento o evaluación.** P3 permanece
+`completed`/`review`; P2 sigue `failed` y P2R conserva `review` numérico con
+alcance descriptivo. La siguiente tarea es confrontar el texto con la tesis
+y decidir los puntos abiertos antes de usar 2023. Prueba final 2024–2025
+protegida. La eliminación local previa de `.python-version` no se versionó.
+
+---
+
+# Estado anterior — diagnóstico cruzado de P3 para revisión
 
 Se completó **solo con lectura** el cruce fijado en
 [P3-diagnostico-pares.md](hitos/P3-diagnostico-pares.md): críticos
