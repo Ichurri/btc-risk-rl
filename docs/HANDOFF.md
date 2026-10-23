@@ -1,4 +1,23 @@
-# Estado vigente — diagnóstico pareado de P3 para revisión
+# Estado vigente — diagnóstico cruzado de P3 para revisión
+
+Se completó **solo con lectura** el cruce fijado en
+[P3-diagnostico-pares.md](hitos/P3-diagnostico-pares.md): críticos
+posteriores β=0/1 sobre ambos D aceptados de `k=7,8,9`, en los nueve
+pares semilla–condición. El [informe](hitos/P3-diagnostico-cruzado-D.md)
+y los [resultados](evidence/p3-cross-diagnostic/results.json) conservan
+las matrices 2×2 y resumen por bloque. Las diagonales reproducen las
+mediciones aceptadas; el signo de la diferencia entre críticos se
+mantiene en ambos D de cada par: β=1 tiene menor MSE solo en el bloque
+710047, y por margen pequeño. El cruce es descriptivo y parcialmente
+fuera de política; **P3 sigue `completed`/`review`**. No se ha decidido
+cerrar los pilotos ni congelar un protocolo de evaluación. La siguiente
+tarea es revisar este diagnóstico en el chat académico, sin lanzar
+campañas, usar validación/final ni seleccionar checkpoints. La
+eliminación local previa de `.python-version` continúa sin versionar.
+
+---
+
+# Estado anterior — diagnóstico pareado de P3 para revisión
 
 La revisión de solo lectura desde `0142d4a` reprodujo las nueve
 comparaciones β=0/β=1 de D tardía con 3.456 trayectorias D originales y
