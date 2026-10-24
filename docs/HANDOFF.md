@@ -1,4 +1,23 @@
-# Estado vigente — propuesta documental de cierre de pilotos y evaluación
+# Estado vigente — propuesta v1.1 de cierre de pilotos y evaluación
+
+La [propuesta v1.1](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-1.md)
+preserva la v1 y propone **para revisión**, no como metodología adoptada,
+una configuración común β=0/crítico4/K10 fijada antes de 2023. El bloque
+2023 tendría una sola función de viabilidad predefinida, sin seleccionar
+hiperparámetros; el [texto exacto para armonizar la tesis](proposals/cierre-pilotos-texto-tesis-v1-1.md)
+no se aplicó al Google Doc. La [auditoría indexada](evidence/pilot-closure-v1-1/cpcv-index-results.json)
+calculó cobertura y escenarios de costo de CPCV solo con índices del
+entrenamiento. La alternativa walk-forward propuesta exige revisión
+académica expresa porque ofrece menos control que CPCV. El efecto mínimo
+`ΔSortino_anualizado=0,50`, número de réplicas, presupuesto y lista de
+semillas permanecen pendientes; **12 no queda fijado**. P3 sigue
+`completed`/`review`, P2 `failed`, P2R `review` descriptivo. No se abrió
+validación 2023 ni prueba final; no se entrenó ni se modificaron pilotos.
+La eliminación local previa de `.python-version` permanece fuera del commit.
+
+---
+
+# Estado anterior — propuesta documental de cierre de pilotos y evaluación
 
 Se preparó la [propuesta v1](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1.md)
 y su [matriz de fundamentos](proposals/cierre-pilotos-fundamentos-v1.md)
