@@ -1,4 +1,4 @@
-"""P3 historical supervisor entry, disabled until separate reviewed approval."""
+"""P3 historical supervisor entry; completed campaign is closed to new work."""
 
 import json
 

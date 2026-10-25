@@ -1,4 +1,24 @@
-# Estado vigente — propuesta v1.1 de cierre de pilotos y evaluación
+# Estado vigente — permiso P3 cerrado prospectivamente
+
+Desde `842fdd1`, el permiso operativo P3 pasó a
+`MARKET_EXECUTION_ENABLED=False`. Los comandos histórico público y del
+trabajador rechazan otra ejecución **antes de leer una solicitud, cargar
+mercado o crear artefactos**; el registro de aprobación de 2026-10-08 y su
+huella siguen intactos para auditar la campaña cerrada. La auditoría de
+198 reportes/checkpoints reproduce el cierre y la huella agregada de los
+47.487 archivos P3 coincide antes y después. Ver
+[informe](hitos/P3-permiso-cierre-prospectivo.md) y
+[comandos/evidencia](evidence/p3-permit-closure/COMMANDS.md). Pruebas focales
+6/6, suite completa 347/347 y Ruff pasaron. P3 conserva `completed`/`review`
+como diagnóstico de desarrollo; ninguna nueva campaña queda autorizada.
+Validación 2023 y prueba final 2024–2025 siguen protegidas. La siguiente
+tarea metodológica es revisar la propuesta de cierre de pilotos y evaluación
+v1.1, no ejecutar P3. La eliminación local previa de `.python-version`
+permanece sin versionar.
+
+---
+
+# Estado anterior — propuesta v1.1 de cierre de pilotos y evaluación
 
 La [propuesta v1.1](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-1.md)
 preserva la v1 y propone **para revisión**, no como metodología adoptada,

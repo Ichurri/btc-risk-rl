@@ -1,6 +1,12 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- El permiso operativo de P3 v1.1 quedó **cerrado prospectivamente** tras
+  la campaña completada: `MARKET_EXECUTION_ENABLED=False`. El registro de
+  aprobación de 2026-10-08 y su huella siguen intactos para auditoría;
+  ni el comando público ni el trabajador pueden iniciar otra unidad. Ver
+  `docs/hitos/P3-permiso-cierre-prospectivo.md`. Esta clausura no reinterpreta
+  el resultado `review`, ni autoriza validación, prueba final o nueva campaña.
 - P3 v1.1 histórico **cerró el 13/10/2026 como diagnóstico de desarrollo**:
   ledger `completed`, 18/18 corridas y 198/198 unidades aceptadas en dos
   días activos; resultado predefinido `review`. Ver

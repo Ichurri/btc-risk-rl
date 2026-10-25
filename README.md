@@ -1,9 +1,10 @@
 # BTC Risk RL
 
-**Estado vigente:** [P3 v1.1](docs/hitos/P3-ejecucion-historica-v1.md)
-está autorizada y en ejecución supervisada solo como diagnóstico de
-desarrollo sobre entrenamiento 2018–2022. No lanzar otra sesión sin
-comprobar antes el ledger y el estado de `systemd --user`. P2 histórico
+**Estado vigente:** [P3 v1.1](docs/hitos/P3-cierre-historico-v1.md)
+cerró como diagnóstico de desarrollo el 13/10/2026 con resultado `review`.
+Su [permiso operativo está cerrado prospectivamente](docs/hitos/P3-permiso-cierre-prospectivo.md):
+el registro histórico sigue disponible para auditoría, pero el comando
+público y el trabajador rechazan nuevas unidades. P2 histórico
 quedó `failed` tras un apagado y no se reanuda. La campaña
 [P2R v2](docs/hitos/P2R-ejecucion-historica-v2.md)
 cerró operativamente sus nueve corridas y 99 unidades el 07/10/2026,

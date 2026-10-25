@@ -81,7 +81,7 @@ def run_synthetic_units(root, config_path, rows, settings_for_row, *, max_units=
 
 
 def run_historical_units():
-    """Guarded P3 training-only executor; authorization remains disabled."""
+    """Guarded P3 training-only executor; campaign execution is now closed."""
     from btc_risk_rl.agents.market_source import TrainingMarket
     from btc_risk_rl.pilots.p2r import check_service_context
     from btc_risk_rl.pilots.p3_market import (

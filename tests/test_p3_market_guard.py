@@ -11,25 +11,35 @@ from btc_risk_rl.pilots import p3_market
 from btc_risk_rl.pilots.p2_budget import state_hash
 
 
-def test_public_and_worker_commands_fail_before_loading_or_creating_artifacts(tmp_path, monkeypatch):
+def test_closed_public_and_worker_commands_fail_before_loading_or_creating_artifacts(
+    tmp_path, monkeypatch,
+):
     monkeypatch.setattr(p3_market, "CAMPAIGN", tmp_path / "p3-approved-v1")
     monkeypatch.setattr(p3_market, "TrainingMarket", lambda *_a, **_k: pytest.fail("market loaded"), raising=False)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         p3_market.run_market_units()
     assert not p3_market.CAMPAIGN.exists()
     for command in ([sys.executable, "scripts/run_p3_market.py"],
-                    [sys.executable, "-m", "btc_risk_rl.pilots.p3_worker", str(tmp_path / "forged.json")]):
+                    [sys.executable, "-m", "btc_risk_rl.pilots.p3_worker",
+                     str(tmp_path / "nonexistent-request.json")]):
         result = subprocess.run(command, capture_output=True, text=True, check=False)
         assert result.returncode != 0 and "NOT AUTHORIZED" in result.stderr
+        assert "No such file" not in result.stderr
     assert not p3_market.CAMPAIGN.exists()
 
 
-def test_editing_approval_json_cannot_activate_p3(tmp_path, monkeypatch):
+def test_forged_approval_cannot_reopen_closed_campaign_or_be_read(tmp_path, monkeypatch):
     forged = tmp_path / "P3-market-approval.json"
     forged.write_text(json.dumps(dict(active=True, scope="accepted_training_2018_2022_only")))
     monkeypatch.setattr(p3_market, "REGISTRATION", forged)
+    monkeypatch.setattr(p3_market, "digest", lambda *_: pytest.fail("approval was read"))
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         p3_market.P3MarketPermit.require_campaign()
+
+
+def test_historical_registration_remains_pinned_for_read_only_audit():
+    assert p3_market.REGISTRATION_SHA256 == p3_market.digest(p3_market.REGISTRATION)
+    assert p3_market.REGISTRATION.exists()
 
 
 def test_market_lease_binds_seed_condition_beta_pending_hash_and_parent(tmp_path, monkeypatch):
