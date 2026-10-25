@@ -65,6 +65,18 @@ class Actor(nn.Module):
         # No clipping or selective resampling: log_prob rejects saturation.
         return float(action), float(self.log_prob(x, action))
 
+    @torch.no_grad()
+    def deterministic_action(self, observation):
+        """Median of the logistic-normal action, with no sampling or clipping."""
+        x = torch.as_tensor(np.array(observation, copy=True), dtype=torch.float64)
+        if x.ndim != 1:
+            raise ValueError("Deterministic action requires one observation")
+        mu, _ = self.parameters_at(x)
+        action = torch.sigmoid(mu)
+        if not torch.isfinite(action) or not 0 < action.item() < 1:
+            raise ValueError("Deterministic action must lie strictly inside (0,1)")
+        return float(action)
+
 
 class Critic(nn.Module):
     def __init__(self, *, hidden, seed):
@@ -99,6 +111,10 @@ class FrozenPolicy:
 
     def sample(self, observation, rng):
         return self._actor.sample(observation, rng)
+
+    def deterministic_action(self, observation):
+        self.check()
+        return self._actor.deterministic_action(observation)
 
 
 def clipped_objective(logp, old_logp, coefficients, clip):

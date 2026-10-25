@@ -1,4 +1,23 @@
-# Estado vigente — propuesta v1.2 de evaluación para revisión
+# Estado vigente — calibración técnica de costos v1.2, sin adopción
+
+En `codex/oos-v1-2-cost-calibration` se midieron por separado los dos refits
+*walk-forward* con el derivado H1 exclusivo de entrenamiento, una carga fija
+de checkpoint P3 y recorridos de **datos sintéticos** equivalentes en longitud
+a los cuatro trayectos previstos. Se implementó y probó la acción determinista
+`sigmoid(μ)`, sin clipping ni RNG. [Informe](hitos/OOS-v1-2-calibracion-costos.md),
+[resumen académico](hitos/OOS-v1-2-calibracion-resumen-academico.md) y
+[costos reproducibles](evidence/oos-v1-2-cost-calibration/results.json).
+El presupuesto de 20 días conserva 27.206 s de margen **solo si** se cumplen
+las tasas extrapoladas P3 y los topes aún no medidos. La ruta completa de
+evaluación real y la duración de entrenamientos nuevos siguen pendientes;
+la propuesta v1.2 **no está adoptada**. No se abrió 2023/final, no se entrenó,
+no se creó permiso ni se alteraron P0–P3. La eliminación local previa de
+`.python-version` permanece sin versionar. Siguiente paso: revisión académica
+de las mediciones y de las brechas, no lanzamiento de campaña.
+
+---
+
+# Estado anterior — propuesta v1.2 de evaluación para revisión
 
 La [propuesta v1.2](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md)
 parte de la v1.1, **sin adoptarla**: 36 bloques nuevos C0/C5/C10 con

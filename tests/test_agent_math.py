@@ -130,6 +130,34 @@ def test_saturated_actions_abort_without_clipping_or_resampling():
         actor.sample(np.zeros(13), rng)
 
 
+def test_deterministic_median_sigmoid_mu_is_finite_reproducible_and_rng_free():
+    import torch
+
+    from btc_risk_rl.agents.models import Actor, FrozenPolicy, fingerprint
+
+    actor = Actor(hidden=2, seed=3)
+    with torch.no_grad():
+        for parameter in actor.parameters():
+            parameter.zero_()
+        actor.net[-1].bias[0] = 1.0
+    policy = FrozenPolicy(actor, generation=4)
+    before_rng = torch.random.get_rng_state().clone()
+    before_digest = fingerprint(actor)
+    observation = np.zeros(13, dtype=np.float64)
+    expected = 1 / (1 + math.exp(-1))
+    assert actor.deterministic_action(observation) == pytest.approx(expected)
+    assert policy.deterministic_action(observation) == pytest.approx(expected)
+    assert policy.deterministic_action(observation) == policy.deterministic_action(observation)
+    assert fingerprint(actor) == before_digest
+    assert torch.equal(torch.random.get_rng_state(), before_rng)
+    with pytest.raises(ValueError, match="Nonfinite observation"):
+        policy.deterministic_action(np.full(13, float("nan")))
+    with torch.no_grad():
+        actor.net[-1].bias[0] = 1000.0
+    with pytest.raises(ValueError, match="strictly inside"):
+        actor.deterministic_action(observation)
+
+
 def test_log_density_score_matches_independent_finite_difference():
     import torch
 
