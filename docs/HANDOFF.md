@@ -1,4 +1,25 @@
-# Estado vigente — permiso P3 cerrado prospectivamente
+# Estado vigente — propuesta v1.2 de evaluación para revisión
+
+La [propuesta v1.2](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md)
+parte de la v1.1, **sin adoptarla**: 36 bloques nuevos C0/C5/C10 con
+β=0/crítico4/K10 como diseño candidato y `δ=+0,50` Sortino anualizado
+como efecto mínimo propuesto. El [presupuesto reproducible](evidence/pilot-closure-v1-2/results.json)
+usa duraciones P3 β0 medidas solo como base de extrapolación: 108
+corridas principales y 18 auxiliares en dos cortes purgados exigirían
+al menos 17 días activos de tres horas globales bajo topes no medidos;
+se propone revisar un máximo de 20 días. La variante de 36 semillas
+en cada corte necesitaría al menos 35 días y queda fuera de ese tope.
+El [texto exacto de armonización de tesis](proposals/cierre-pilotos-texto-tesis-v1-2.md)
+y el [resumen académico](proposals/cierre-pilotos-resumen-academico-v1-2.md)
+son propuestas, no cambios al Google Doc. CPCV y selección mediante
+2023 continúan escritos en la tesis vigente y requieren decisión
+académica expresa. No se entrenó, evaluó ni abrió 2023/final. P3
+permanece `completed`/`review` con permiso operativo cerrado. La
+eliminación local previa de `.python-version` sigue sin versionar.
+
+---
+
+# Estado anterior — permiso P3 cerrado prospectivamente
 
 Desde `842fdd1`, el permiso operativo P3 pasó a
 `MARKET_EXECUTION_ENABLED=False`. Los comandos histórico público y del
