@@ -61,6 +61,14 @@ raíz y auditar la primera unidad antes de proseguir. La prueba actual no mide
 tiempos de entrenamiento en 2021/2022 ni cambia la conclusión condicional
 del presupuesto de 20 días de la v1.2.
 
+Se ejecutaron 16 pruebas focales y la suite completa (376 aprobadas), además
+de Ruff. El preflight versionado tiene SHA-256
+`79e9b0a0b3d7633b62b51e5d2895be573fd4b6f1df24503b295fe992cfa176eb`.
+La raíz P3 conservó la huella agregada
+`73949350733bf3f8e3939e2dfcf7a28920668e738b0e5d910bd070a010fdcbec`;
+los cinco ledgers P0/P1/P2/P2R/P3 y el manifiesto del derivado H1 coincidieron
+con sus huellas previas.
+
 ## Evidencia y comandos
 
 Consultar [`COMMANDS.md`](../evidence/oos-v1-2-wf-cost-executor/COMMANDS.md)
