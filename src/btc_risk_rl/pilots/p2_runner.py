@@ -48,6 +48,7 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
     from btc_risk_rl.pilots.p2r_market import P2RMarketPermit, P2RMarketSettings
     from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
     from btc_risk_rl.pilots.p3_market import P3MarketPermit, P3MarketSettings
+    from btc_risk_rl.pilots.wf_cost import WFCostPermit, WFCostSettings
     if type(source) is SyntheticMarket and type(settings) in {P2SyntheticSettings, P3SyntheticSettings}:
         if permit is not None:
             raise PermissionError("Synthetic P2 cannot use market permit")
@@ -73,6 +74,13 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
         n_d = 64 if n_d is None else n_d
         if n_d != 64 or not atomic_checkpoint:
             raise ValueError("P3 market unit requires D=64 and atomic checkpoint")
+    elif type(source) is TrainingMarket and type(settings) is WFCostSettings:
+        if type(permit) is not WFCostPermit:
+            raise PermissionError("WF cost market unit requires registered lease")
+        permit.validate(settings, condition, run_id)
+        n_d = 64 if n_d is None else n_d
+        if n_d != 64 or not atomic_checkpoint:
+            raise ValueError("WF cost unit requires D=64 and atomic checkpoint")
     else:
         raise PermissionError("Unknown P2 source/settings profile")
     if type(unit) is not int or not 0 <= unit <= settings.iterations:
@@ -145,7 +153,7 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
             warnings=warnings(report),
             report=report,
         )
-        if type(settings) in {P3SyntheticSettings, P3MarketSettings}:
+        if type(settings) in {P3SyntheticSettings, P3MarketSettings, WFCostSettings}:
             result["beta"] = settings.critic_beta
         write_json(root / f"unit-{unit}.json", result)
         return result

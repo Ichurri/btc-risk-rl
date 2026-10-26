@@ -82,7 +82,8 @@ def check_service_context(*, invocation_id=None, cgroup=None, linger=None,
         cgroup = _cgroup(os.getpid())
     unit = cgroup.strip().split("/")[-1] if cgroup else ""
     if (not invocation_id or not cgroup or "user.slice" not in cgroup
-            or not unit.startswith(("p2r-", "p3-")) or not unit.endswith(".service")):
+            or not unit.startswith(("p2r-", "p3-", "oos-wf-cost-"))
+            or not unit.endswith(".service")):
         raise ValueError("P2R requires a systemd user service, not a chat/terminal child")
     if require_linger:
         if linger is None:
@@ -115,7 +116,9 @@ class P2RSharedBudget:
         self.external_seconds = 0.0
         self.sources = []
         try:
-            for path in sorted(self.root.glob("p*-approved-v*/ledger.jsonl")):
+            external = set(self.root.glob("p*-approved-v*/ledger.jsonl"))
+            external.update(self.root.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
+            for path in sorted(external):
                 if path.parent.name == campaign_name:
                     continue
                 lines = path.read_text().splitlines()

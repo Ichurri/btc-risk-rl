@@ -117,6 +117,7 @@ def _verify_report_and_checkpoint(point, payload, unit, settings, condition,
             ("synthetic", "p3_synthetic_tests_only"),
             ("accepted_train_collection_only", "authorized_p2r_only"),
             ("accepted_train_collection_only", "authorized_p3_only"),
+            ("accepted_train_collection_only", "wf_cost_only"),
         }:
             raise ValueError("P2R source/settings profile mismatch")
         report = payload["report"]

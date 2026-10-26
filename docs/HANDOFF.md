@@ -1,4 +1,21 @@
-# Estado vigente — evaluador sintético completo v1.2; costo de cortes propuesto
+# Estado vigente — ejecutor aislado del estudio de costos, permiso cerrado
+
+En `codex/oos-wf-cost-executor` se añadió la infraestructura del estudio de
+costos de dos cortes: 22 unidades previstas, reconstrucción de fuente por
+corte desde H1 exclusivo de entrenamiento, admisión conservadora, ledger y
+supervisor separados. **No se ejecutó ninguna unidad**: el permiso específico
+permanece apagado, no existe registro de aprobación ni la raíz reservada.
+El [preflight auditado](hitos/OOS-v1-2-costo-cortes-ejecutor.md) fue de solo
+lectura; `systemd --user` está `degraded` en la medición de este momento y
+requiere corrección/recomprobación antes de cualquier solicitud de ejecución.
+El protocolo de 22 unidades y v1.2 siguen **sin adoptar ni activar**;
+validación 2023 y prueba final permanecen cerradas. Conservar la eliminación
+local previa de `.python-version`. Siguiente paso: revisión del ejecutor,
+sus límites y el protocolo; un lanzamiento necesitará autorización separada.
+
+---
+
+# Estado anterior — evaluador sintético completo v1.2; costo de cortes propuesto
 
 En `codex/oos-v1-2-synthetic-evaluator` se implementó una ruta **solo
 sintética** de evaluación continua: verifica checkpoint y normalizador H1

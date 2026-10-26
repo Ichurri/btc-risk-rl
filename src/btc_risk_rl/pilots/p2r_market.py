@@ -74,7 +74,9 @@ def inspect_shared_budget(artifacts, *, now):
     day = datetime.fromtimestamp(now, LA_PAZ).date().isoformat()
     sources = []
     spent = 0.0
-    for path in sorted(root.glob("p*-approved-v*/ledger.jsonl")):
+    external = set(root.glob("p*-approved-v*/ledger.jsonl"))
+    external.update(root.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
+    for path in sorted(external):
         state = json.loads(path.read_text().splitlines()[-1])
         if state["status"] == "running":
             raise ValueError("Another campaign running or interrupted")

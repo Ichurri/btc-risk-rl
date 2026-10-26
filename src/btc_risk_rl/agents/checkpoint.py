@@ -230,6 +230,7 @@ def load_checkpoint(path, source, *, journal, permit=None):
         from btc_risk_rl.pilots.p2r_market import P2RMarketSettings
         from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
         from btc_risk_rl.pilots.p3_market import P3MarketSettings
+        from btc_risk_rl.pilots.wf_cost import WFCostSettings
 
         if manifest["profile"] in {
             "p2_synthetic_tests_only", "p3_synthetic_tests_only"
@@ -241,7 +242,8 @@ def load_checkpoint(path, source, *, journal, permit=None):
         run = SyntheticExperiment(
             source,
             (
-                (P3MarketSettings if manifest["profile"] == "authorized_p3_only"
+                (WFCostSettings if manifest["profile"] == "wf_cost_only"
+                 else P3MarketSettings if manifest["profile"] == "authorized_p3_only"
                  else P2RMarketSettings if manifest["profile"] == "authorized_p2r_only"
                  else P2MarketSettings if manifest["profile"] == "authorized_p2_only"
                  else P1Settings if manifest["profile"] == "authorized_p1_only" else P0Settings)

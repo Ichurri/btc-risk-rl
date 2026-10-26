@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Infraestructura aislada de **medición de costo de entrenamiento por cortes**
+  posterior a `6a01893`: roster fijo de dos C10 (2021/2022), 22 unidades,
+  cortes reconstruidos solo desde el derivado H1 exclusivo de entrenamiento,
+  ledger, admisión y guardas independientes. El permiso de mercado permanece
+  **desactivado**; el comando público y el trabajador rechazan antes de leer
+  solicitudes o crear la raíz reservada. El preflight es de solo lectura.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-ejecutor.md`. **No ejecutar unidades
+  de entrenamiento**, no habilitar v1.2, no abrir 2023 ni final. P0–P3
+  conservados. El protocolo de 22 unidades sigue siendo propuesta para revisión.
 - Ruta de evaluación continua **exclusivamente sintética** posterior a
   `1d976d9`: checkpoint P3 fijo verificado, normalizador del derivado H1
   exclusivo de entrenamiento, `sigmoid(μ)`, contabilidad y métricas, con
