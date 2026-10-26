@@ -138,7 +138,7 @@ def test_supervisor_death_kills_worker(tmp_path):
         while time.monotonic() < deadline:
             try:
                 status = Path(f"/proc/{pid}/status").read_text()
-            except FileNotFoundError:
+            except (FileNotFoundError, ProcessLookupError):
                 return
             if "State:\tZ" in status:
                 return
