@@ -1,4 +1,29 @@
-# Estado vigente — calibración técnica de costos v1.2, sin adopción
+# Estado vigente — evaluador sintético completo v1.2; costo de cortes propuesto
+
+En `codex/oos-v1-2-synthetic-evaluator` se implementó una ruta **solo
+sintética** de evaluación continua: verifica checkpoint y normalizador H1
+de entrenamiento, calcula características fabricadas, usa `sigmoid(μ)`, una
+cartera, contabilidad H3, métricas, trazas, auditoría y cierre bajo supervisor.
+Cinco unidades nuevas `systemd --user` midieron pared externa, memoria y
+disco; tres recorridos de 2.190 pasos reprodujeron la misma huella.
+[Informe](hitos/OOS-v1-2-evaluador-sintetico.md),
+[resumen académico](hitos/OOS-v1-2-evaluador-sintetico-resumen-academico.md) y
+[evidencia](evidence/oos-v1-2-synthetic-evaluation/results.json).
+
+Se dejó **solo como propuesta, no autorizada**, una medición de entrenamiento
+en los cortes 2021/2022: dos semillas nuevas, C10, 22 unidades exactas, raíz
+aislada sin crear y tope acumulado de 5.400 s dentro del presupuesto diario
+global. Ver [protocolo](proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md).
+La propuesta fuera de muestra v1.2 sigue **sin adoptar**. La medición de
+procesos fabricados no certifica que 20 días basten para entrenamiento o
+evaluación histórica. No se activó permiso ni se abrió 2023/final. P0–P3
+siguen intactos y el permiso P3 cerrado. La eliminación local previa de
+`.python-version` permanece sin versionar. Siguiente paso: revisión del
+protocolo y de las mediciones, antes de solicitar cualquier ejecución.
+
+---
+
+# Estado anterior — calibración técnica de costos v1.2, sin adopción
 
 En `codex/oos-v1-2-cost-calibration` se midieron por separado los dos refits
 *walk-forward* con el derivado H1 exclusivo de entrenamiento, una carga fija

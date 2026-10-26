@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Ruta de evaluación continua **exclusivamente sintética** posterior a
+  `1d976d9`: checkpoint P3 fijo verificado, normalizador del derivado H1
+  exclusivo de entrenamiento, `sigmoid(μ)`, contabilidad y métricas, con
+  supervisor y cierre auditado. Ver
+  `docs/hitos/OOS-v1-2-evaluador-sintetico.md`. El protocolo de costo de
+  entrenamiento por cortes es **propuesta no autorizada**: no crear su raíz,
+  lanzar unidades, habilitar v1.2, abrir validación 2023 o prueba final.
+  La propuesta fuera de muestra v1.2 sigue sin adoptarse; P3 permanece
+  cerrado. Conservar P0–P3 y sus artefactos intactos.
 - El permiso operativo de P3 v1.1 quedó **cerrado prospectivamente** tras
   la campaña completada: `MARKET_EXECUTION_ENABLED=False`. El registro de
   aprobación de 2026-10-08 y su huella siguen intactos para auditoría;
