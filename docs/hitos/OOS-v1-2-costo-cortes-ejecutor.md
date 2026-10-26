@@ -75,3 +75,31 @@ Consultar [`COMMANDS.md`](../evidence/oos-v1-2-wf-cost-executor/COMMANDS.md)
 y [`preflight.json`](../evidence/oos-v1-2-wf-cost-executor/preflight.json).
 Este informe recoge únicamente comprobaciones realmente ejecutadas; las
 huellas y resultados finales se fijan en la evidencia versionada.
+
+## Preflight posterior a la corrección de `swaync` (26/10/2026)
+
+Se incorporó como evidencia **nueva** el JSON local
+[`preflight-after-swaync.json`](../evidence/oos-v1-2-wf-cost-executor/preflight-after-swaync.json),
+procedente de `/tmp/oos-wf-cost-preflight-after-swaync.json` y con SHA-256
+`875f56ba04d5f4f3146aebe62edce337ca7d15c57f032b9ba55a2dd645a870f5`.
+El [preflight anterior](../evidence/oos-v1-2-wf-cost-executor/preflight.json)
+permanece íntegro, SHA-256
+`79e9b0a0b3d7633b62b51e5d2895be573fd4b6f1df24503b295fe992cfa176eb`.
+No se reinterpreta su resultado `degraded`: ambas son mediciones de momentos
+distintos.
+
+La nueva captura registra `systemd --user=running`, entradas y presupuesto
+íntegros, y **un solo bloqueo**: `Cost-study campaign has no active approval`.
+La comprobación actual con `systemctl --user is-enabled swaync.service`
+devolvió `masked` (código de salida 1), por lo que `swaync.service` quedó
+enmascarado para este usuario; `systemctl --user --failed` mostró cero
+unidades fallidas. `loginctl` indicó `Linger=yes`. La captura registra CA,
+batería 95 %, memoria disponible de 9.166.114.816 B y disco libre de
+152.850.419.712 B. Son lecturas del momento, no una garantía futura del host.
+
+El permiso del estudio sigue `False`, sin huella de registro; la raíz
+reservada no existe. El nuevo JSON declara cero trayectorias y cero pasos de
+optimizador, ninguna apertura de CSV H1 compartidos y 29 archivos abiertos
+registrados. Su auditoría cotejó huellas de código, entradas y ledgers.
+**No se habilitó ni ejecutó ninguna unidad.** Un eventual lanzamiento aún
+exigiría autorización separada y otro preflight contemporáneo.

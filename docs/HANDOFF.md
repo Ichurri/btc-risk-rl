@@ -1,4 +1,20 @@
-# Estado vigente — ejecutor aislado del estudio de costos, permiso cerrado
+# Estado vigente — segundo preflight de costos, permiso cerrado
+
+El 26/10/2026 se versionó un [segundo preflight](evidence/oos-v1-2-wf-cost-executor/preflight-after-swaync.json)
+tras enmascarar `swaync.service` para el usuario. La nueva captura registra
+`systemd --user=running`; la comprobación directa confirmó `masked` y cero
+unidades fallidas. Entradas, huellas y presupuesto pasaron; el **único bloqueo
+restante** es la ausencia de permiso específico. La raíz de campaña no existe
+y no se lanzó entrenamiento. El [preflight previo](evidence/oos-v1-2-wf-cost-executor/preflight.json)
+con estado `degraded` se conserva sin cambios. Ver el
+[informe actualizado](hitos/OOS-v1-2-costo-cortes-ejecutor.md) para SHA-256,
+alcance y comandos. Estas comprobaciones son una foto del momento; cualquier
+ejecución futura requeriría autorización y un preflight nuevo. P0–P3 y la
+eliminación local de `.python-version` se conservan.
+
+---
+
+# Estado anterior — ejecutor aislado del estudio de costos, permiso cerrado
 
 En `codex/oos-wf-cost-executor` se añadió la infraestructura del estudio de
 costos de dos cortes: 22 unidades previstas, reconstrucción de fuente por

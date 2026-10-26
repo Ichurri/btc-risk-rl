@@ -1,5 +1,47 @@
 # Comandos y resultados — infraestructura aislada WF costo
 
+## Preflight posterior a `swaync` (evidencia nueva)
+
+El archivo `/tmp/oos-wf-cost-preflight-after-swaync.json` ya existía al
+iniciar esta revisión. Se incorporó byte por byte como
+`preflight-after-swaync.json`; no se volvió a ejecutar el preflight ni se
+sobrescribió `preflight.json`. Comandos ejecutados:
+
+```bash
+git status --short --branch
+git rev-parse HEAD
+git rev-parse origin/codex/oos-wf-cost-executor
+sha256sum /tmp/oos-wf-cost-preflight-after-swaync.json \
+  docs/evidence/oos-v1-2-wf-cost-executor/preflight.json
+systemctl --user is-system-running
+systemctl --user is-enabled swaync.service
+systemctl --user --failed --no-pager
+loginctl show-user "$USER" -p Linger -p State
+uv run --frozen python docs/evidence/oos-v1-2-wf-cost-executor/checks.py
+cp /tmp/oos-wf-cost-preflight-after-swaync.json \
+  docs/evidence/oos-v1-2-wf-cost-executor/preflight-after-swaync.json
+uv run --frozen python docs/evidence/oos-v1-2-wf-cost-executor/checks_after_swaync.py
+uv run --frozen ruff check docs/evidence/oos-v1-2-wf-cost-executor/checks_after_swaync.py
+sha256sum docs/evidence/oos-v1-2-wf-cost-executor/preflight-after-swaync.json
+git diff --check
+```
+
+Antes de la incorporación, HEAD y origin coincidían en `813c647` y solo
+figuraba la eliminación local previa de `.python-version`. SHA-256 de la
+nueva evidencia: `875f56ba04d5f4f3146aebe62edce337ca7d15c57f032b9ba55a2dd645a870f5`;
+la anterior conservó `79e9b0a0b3d7633b62b51e5d2895be573fd4b6f1df24503b295fe992cfa176eb`.
+`systemctl --user is-system-running` devolvió `running` (0);
+`is-enabled swaync.service` devolvió `masked` (1, salida esperada para una
+unidad enmascarada), y `--failed` mostró cero unidades. `Linger=yes`.
+El nuevo JSON reporta `blocked` únicamente por falta de aprobación, permiso
+inactivo, raíz ausente, cero trayectorias y pasos, y ninguna apertura de CSV
+H1 compartidos. La comprobación estática de ambos JSON y las huellas de
+código, entradas y ledgers devolvió `passed_read_only`; Ruff y
+`git diff --check` pasaron. No se repitió la suite de entrenamiento ni se
+inició una unidad.
+
+---
+
 Rama `codex/oos-wf-cost-executor`. Código verificado en `e0f843c`.
 La evidencia corresponde al 26/10/2026, America/La_Paz; el preflight
 registró `2026-10-26T17:39:26.920499+00:00`.
