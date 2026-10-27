@@ -30,7 +30,9 @@ DESIGN = ROOT / "docs/protocols/OOS-v1-2-wf-cost-executor-v1.json"
 TRAIN_SHARD = ROOT / "data/processed/p2r-training-h1"
 CAMPAIGN = ROOT / "artifacts/oos-v12-wf-cost-only-01"
 SHARD_MANIFEST_SHA256 = "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
-MARKET_EXECUTION_ENABLED = True
+# Closed prospectively after the second service failed its identity guard
+# before unit 1. Keep the historical registration hash for audit only.
+MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = "b36e32521f43af3f0b7b363f2555d1bee19fa5200c3cee30b5e8987068984369"
 REGISTRATION = ROOT / "docs/protocols/OOS-v1-2-wf-cost-approval.json"
 ROSTER = (("2021", 276696733, "C10"), ("2022", 498614892, "C10"))

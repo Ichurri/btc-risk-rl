@@ -54,7 +54,8 @@ def test_preflight_summary_is_read_only_and_reports_blockers(tmp_path, monkeypat
     assert "AC not connected" in result["blockers"]
     assert not root.exists()
     assert not (tmp_path / "root" / "ledger.jsonl").exists()
-    assert json.loads(json.dumps(result))["market_execution_enabled"] is True
+    assert json.loads(json.dumps(result))["market_execution_enabled"] is False
+    assert "Cost-study campaign has no active approval" in result["blockers"]
 
 
 def test_protected_input_names_rejected(tmp_path):
@@ -90,17 +91,25 @@ def test_settings_match_fixed_cost_study_and_reject_other_seeds():
         WFCostSettings(seed=610031)
 
 
-def test_registered_cost_study_permit_matches_frozen_inputs():
-    entry = wf_cost.require_campaign()
+def test_completed_q0_study_stays_closed_after_preunit_identity_failure():
+    assert wf_cost.MARKET_EXECUTION_ENABLED is False
+    with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
+        wf_cost.require_campaign()
+    entry = json.loads(wf_cost.REGISTRATION.read_text())
     assert entry["campaign"] == "oos-v12-wf-cost-only-01"
+    assert entry["active"] is True  # Historical approval remains immutable.
+    assert wf_cost.digest(wf_cost.REGISTRATION) == wf_cost.REGISTRATION_SHA256
     assert entry["scope"] == "cost_measurement_training_folds_only"
     assert entry["protocol_sha256"] == wf_cost.digest(wf_cost.PROTOCOL)
     assert entry["design_sha256"] == wf_cost.digest(wf_cost.DESIGN)
     assert entry["training_shard_manifest_sha256"] == wf_cost.SHARD_MANIFEST_SHA256
 
 
-def test_public_gate_rejects_when_permit_is_disabled_without_creating_root(monkeypatch):
-    root = wf_cost.CAMPAIGN
+def test_public_gate_rejects_when_permit_is_disabled_without_creating_root(
+    tmp_path, monkeypatch
+):
+    root = tmp_path / "new-campaign"
+    monkeypatch.setattr(wf_cost, "CAMPAIGN", root)
     assert not root.exists()
     monkeypatch.setattr(wf_cost, "MARKET_EXECUTION_ENABLED", False)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
