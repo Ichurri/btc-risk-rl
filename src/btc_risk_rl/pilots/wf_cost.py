@@ -81,6 +81,18 @@ class WFCostLedger(P2Ledger):
     iterations = 10
 
     def __init__(self, root, *, identity, now, external_seconds=0):
+        if "roster" in identity:
+            rows = identity["roster"]
+            if not isinstance(rows, (tuple, list)):
+                raise ValueError("WF cost roster identity has invalid shape")
+            canonical = []
+            for row in rows:
+                if (not isinstance(row, (tuple, list)) or len(row) != 3
+                        or type(row[0]) is not str or type(row[1]) is not int
+                        or type(row[2]) is not str):
+                    raise ValueError("WF cost roster identity has invalid shape")
+                canonical.append(list(row))
+            identity = {**identity, "roster": canonical}
         super().__init__(root, identity=identity, now=now,
                          external_seconds=external_seconds)
         if self.state["status"] == "completed":

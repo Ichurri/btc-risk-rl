@@ -1,10 +1,100 @@
-"""The unapproved two-fold cost executor must fail closed."""
+"""Isolated WF cost executor boundaries, including synthetic reentry."""
 
+import hashlib
 import json
+import subprocess
+import sys
 
 import pytest
 
 from btc_risk_rl.pilots import wf_cost
+
+_SYNTHETIC_REENTRY = """
+import json
+import sys
+from pathlib import Path
+from btc_risk_rl.pilots.wf_cost import WFCostLedger, digest, roster
+
+root = Path(sys.argv[1])
+mode = sys.argv[2]
+identity = {"fixture": "cross_process_q0", "roster": roster()}
+if mode == "alter_seed":
+    identity["roster"] = (("2021", 276696734, "C10"), ("2022", 498614892, "C10"))
+elif mode == "alter_condition":
+    identity["roster"] = (("2021", 276696733, "C5"), ("2022", 498614892, "C10"))
+elif mode == "alter_order":
+    identity["roster"] = tuple(reversed(identity["roster"]))
+elif mode == "alter_length":
+    identity["roster"] = identity["roster"][:1]
+with WFCostLedger(root, identity=identity, now=1000 if mode == "q0" else 1011) as ledger:
+    if mode == "q0":
+        ledger.preflight_done(1001)
+        ledger.begin_unit("2021", 0, 1002)
+        point = root / "wf-2021/checkpoint-0"
+        point.mkdir(parents=True)
+        (point / "state.pt").write_bytes(b"synthetic q0 only")
+        (point / "manifest.json").write_text(json.dumps({
+            "schema_version": "p2_complete_boundary_v1", "boundary": "after_q0",
+            "state_sha256": digest(point / "state.pt"),
+            "profile": "wf_cost_only", "run_id": "wf-2021", "condition": "C10",
+        }))
+        ledger.accept_unit("2021", 0, 1010, point, report={
+            "market_training_executed": False, "actor_updates": 0,
+            "critic_updates": 0, "boundary": "after_q0",
+        })
+        assert ledger.state["status"] == "ready"
+        assert len(ledger.state["units"]) == 1
+        assert ledger.state["pending"] is None
+    else:
+        ledger.preflight_done(1012)
+        assert ledger.admit_unit("2021", 1, 1013) == "start"
+        print("unit_1_admitted")
+"""
+
+
+def _synthetic_reentry(root, mode):
+    return subprocess.run(
+        [sys.executable, "-c", _SYNTHETIC_REENTRY, str(root), mode],
+        capture_output=True, text=True, check=False,
+    )
+
+
+def test_q0_accept_close_new_process_admits_unit_one(tmp_path):
+    root = tmp_path / "synthetic"
+    initial = _synthetic_reentry(root, "q0")
+    assert initial.returncode == 0, initial.stderr
+    first = json.loads((root / "ledger.jsonl").read_text().splitlines()[-1])
+    assert first["status"] == "ready"
+    assert first["pending"] is None
+    assert len(first["units"]) == 1
+    assert first["identity"]["roster"] == [list(row) for row in wf_cost.roster()]
+
+    second = _synthetic_reentry(root, "admit")
+    assert second.returncode == 0, second.stderr
+    assert second.stdout.strip() == "unit_1_admitted"
+    later = json.loads((root / "ledger.jsonl").read_text().splitlines()[-1])
+    assert later["status"] == "ready"
+    assert later["pending"] is None
+    assert len(later["units"]) == 1
+
+
+@pytest.mark.parametrize("change", ["alter_seed", "alter_condition", "alter_order",
+                                     "alter_length"])
+def test_changed_roster_rejected_after_q0_without_changing_ledger(tmp_path, change):
+    root = tmp_path / "synthetic"
+    initial = _synthetic_reentry(root, "q0")
+    assert initial.returncode == 0, initial.stderr
+    ledger_path = root / "ledger.jsonl"
+    before = hashlib.sha256(ledger_path.read_bytes()).hexdigest()
+    checkpoint = root / "wf-2021/checkpoint-0/state.pt"
+    checkpoint_before = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+
+    altered = _synthetic_reentry(root, change)
+    assert altered.returncode != 0
+    assert "Campaign identity mismatch" in altered.stderr
+    assert hashlib.sha256(ledger_path.read_bytes()).hexdigest() == before
+    assert hashlib.sha256(checkpoint.read_bytes()).hexdigest() == checkpoint_before
+    assert not (root / "wf-2021/checkpoint-1").exists()
 
 
 def test_fixed_roster_and_caps():
