@@ -1,4 +1,21 @@
-# Estado vigente — bitácora WF de sesiones, solo sintética
+# Estado vigente — reemplazo íntegro WF propuesto, sin permiso
+
+Desde `a5b6929` se preparó una
+[propuesta para revisión](proposals/OOS-v1-2-costo-cortes-reemplazo-v1.md)
+de **22 unidades nuevas** sobre dos C10, con raíz `...02` y aprobación
+distinta. El manifiesto candidato hereda por huella todo el protocolo y
+diseño original salvo esas dos identidades. La prueba sintética cubre raíz
+nueva, Q0 aceptada, pausa, reingreso en otro proceso y fallos anteriores al
+ledger. El [preflight estático](evidence/oos-v1-2-wf-cost-replacement/preflight.json)
+verifica las huellas de la campaña parcial y termina `blocked`: no existe
+permiso ni perfil ejecutor nuevo. **No se creó la raíz `...02`, no se activó
+ningún gate y no se ejecutó entrenamiento de mercado.** La campaña parcial
+`...01` conserva sus artefactos y su interpretación. La eliminación local
+de `.python-version` sigue sin incorporar.
+
+---
+
+# Estado anterior — bitácora WF de sesiones, solo sintética
 
 Desde `c59855b`, la infraestructura WF inicia una bitácora durable antes de
 preflight y carga de cortes, registra fallos anteriores al ledger y añade a

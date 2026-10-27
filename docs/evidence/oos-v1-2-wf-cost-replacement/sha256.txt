@@ -1,0 +1,3 @@
+f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4  docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md
+66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0  docs/protocols/OOS-v1-2-wf-cost-executor-v1.json
+86f5fe1c77e842d276696338d44594ed738af84d5f6ef4e5163e6b3888039c36  docs/protocols/OOS-v1-2-wf-cost-replacement-proposal-v1.json

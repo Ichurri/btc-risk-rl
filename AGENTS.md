@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Propuesta de reemplazo íntegro del estudio WF tras `a5b6929`:
+  `docs/proposals/OOS-v1-2-costo-cortes-reemplazo-v1.md` propone raíz
+  `artifacts/oos-v12-wf-cost-only-02/` y registro de autorización distinto,
+  ambos **ausentes**. Conserva las dos C10, semillas, cortes, 22 unidades,
+  orden y límites del diseño original. Solo se verificaron sintéticamente
+  Q0→pausa→reingreso y fallos previos al ledger; el preflight estático queda
+  `blocked`. **No hay perfil ejecutor nuevo ni permiso de mercado.** El gate
+  original sigue `MARKET_EXECUTION_ENABLED=False`; no reanudar `...01`,
+  entrenar con mercado ni abrir validación/final por esta propuesta.
 - Bitácora WF **prospectiva y verificada solo sintéticamente** desde
   `c59855b`: inicio durable antes de reconstruir cortes, cierre incluso ante
   fallos previos al ledger, cargo de tiempo sin solaparlo con el ledger,
