@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Bitácora WF **prospectiva y verificada solo sintéticamente** desde
+  `c59855b`: inicio durable antes de reconstruir cortes, cierre incluso ante
+  fallos previos al ledger, cargo de tiempo sin solaparlo con el ledger,
+  reparto por día `America/La_Paz` y bloqueo de sesiones sin cierre.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-bitacora-sesiones.md`.
+  El permiso continúa `MARKET_EXECUTION_ENABLED=False`; la campaña parcial
+  `artifacts/oos-v12-wf-cost-only-01/` no se reanuda ni repite. No ejecutar
+  entrenamiento de mercado, abrir validación ni prueba final por este hito.
 - Corrección **prospectiva y solo sintética** del reingreso WF desde
   `7106fef`: `WFCostLedger` normaliza únicamente la representación del
   roster (tuplas Python/listas JSON) antes de la comparación íntegra de

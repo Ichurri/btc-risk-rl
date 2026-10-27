@@ -1,4 +1,20 @@
-# Estado vigente — reingreso WF corregido solo para estudios futuros
+# Estado vigente — bitácora WF de sesiones, solo sintética
+
+Desde `c59855b`, la infraestructura WF inicia una bitácora durable antes de
+preflight y carga de cortes, registra fallos anteriores al ledger y añade a
+la admisión solo el tiempo no cubierto por el ledger. La medición se divide
+por día `America/La_Paz`; un cierre ausente o fallido impide reingreso y
+produce un cargo conservador para el presupuesto compartido. El
+[informe](hitos/OOS-v1-2-costo-cortes-bitacora-sesiones.md) y las
+[evidencias](evidence/oos-v1-2-wf-session-journal/) documentan las pruebas
+sintéticas. **No se reanudó el estudio histórico.** Su permiso continúa
+desactivado y sus huellas permanecen iguales. La bitácora nueva no cambia
+la contabilidad ni el dictamen del estudio parcial. La eliminación local
+de `.python-version` sigue ajena a esta entrega.
+
+---
+
+# Estado anterior — reingreso WF corregido solo para estudios futuros
 
 Desde `7106fef` se corrigió prospectivamente la comparación del roster:
 `WFCostLedger` acepta equivalencia entre tuplas Python y listas JSON con los
