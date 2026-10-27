@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Corrección **prospectiva y solo sintética** del reingreso WF desde
+  `7106fef`: `WFCostLedger` normaliza únicamente la representación del
+  roster (tuplas Python/listas JSON) antes de la comparación íntegra de
+  identidad; un roster con valores distintos sigue rechazado. Se probaron
+  Q0 aceptada, cierre del proceso y admisión de unidad 1 en otro proceso,
+  usando fixtures. El permiso sigue `MARKET_EXECUTION_ENABLED=False` y
+  **no se reanuda ni repite** `artifacts/oos-v12-wf-cost-only-01/`.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-reingreso-prospectivo.md`.
+  El tiempo perdido antes de abrir el ledger requiere una contabilidad
+  independiente en cualquier diseño futuro; esta corrección no la activa.
 - Estudio de costos WF autorizado el 26/10/2026 (America/La_Paz) mediante
   registro específico `docs/protocols/OOS-v1-2-wf-cost-approval.json`, pero
   **detenido tras Q0**. La primera sesión `systemd --user` aceptó exactamente

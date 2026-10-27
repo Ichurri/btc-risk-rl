@@ -1,4 +1,20 @@
-# Estado vigente — estudio de costos WF detenido tras Q0
+# Estado vigente — reingreso WF corregido solo para estudios futuros
+
+Desde `7106fef` se corrigió prospectivamente la comparación del roster:
+`WFCostLedger` acepta equivalencia entre tuplas Python y listas JSON con los
+mismos valores, y mantiene el rechazo de cualquier roster alterado. Una
+prueba sintética en procesos separados cubre Q0 aceptada → cierre → nuevo
+proceso → admisión de unidad 1; otras cuatro variantes alteradas se rechazan
+sin cambiar el ledger. El [informe](hitos/OOS-v1-2-costo-cortes-reingreso-prospectivo.md)
+documenta pruebas y la brecha de tiempo cuando una sesión falla antes de
+abrir el ledger. El permiso operativo sigue **desactivado**. No se retomó
+ni repitió la campaña parcial, cuyo ledger, Q0, journal y registro de
+autorización conservan sus huellas. No se abrió validación ni prueba final;
+la eliminación local previa de `.python-version` permanece sin incorporar.
+
+---
+
+# Estado anterior — estudio de costos WF detenido tras Q0
 
 El estudio autorizado para 22 unidades en dos cortes llegó solo a
 `wf-2021/Q0`: primera sesión `systemd --user` exitosa, checkpoint
