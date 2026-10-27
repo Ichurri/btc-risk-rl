@@ -22,6 +22,7 @@ from btc_risk_rl.agents.synthetic import SyntheticSettings
 from btc_risk_rl.pilots.budget import LA_PAZ, utc
 from btc_risk_rl.pilots.p2_budget import P2Ledger
 from btc_risk_rl.pilots.protocol import ROOT
+from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
 
 PROTOCOL = ROOT / "docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md"
 V12 = ROOT / "docs/proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md"
@@ -80,7 +81,12 @@ class WFCostLedger(P2Ledger):
 
     iterations = 10
 
-    def __init__(self, root, *, identity, now, external_seconds=0):
+    def __init__(self, root, *, identity, now, external_seconds=0,
+                 session_journal=None, session_token=None):
+        if (session_journal is None) != (session_token is None):
+            raise ValueError("WF session journal and token must be supplied together")
+        self.session_journal = session_journal
+        self.session_token = session_token
         if "roster" in identity:
             rows = identity["roster"]
             if not isinstance(rows, (tuple, list)):
@@ -110,15 +116,29 @@ class WFCostLedger(P2Ledger):
         current = max(0.0, now - self.day["started_utc_epoch"])
         previous = sum(row.get("charged_wall_seconds", 0.0)
                        for day, row in self.state["days"].items() if day != self.day_key)
+        if self.session_journal is not None:
+            charges = self.session_journal.charges(
+                self.state, now=now, active_token=self.session_token)
+            if charges.blocked:
+                raise ValueError("WF session debit blocked by failed or unclosed session")
+            current += charges.extra_by_day.get(self.day_key, 0.0)
+            previous += sum(value for day, value in charges.extra_by_day.items()
+                            if day != self.day_key)
         return current, previous + current
 
     def admit_unit(self, fold, unit, now):
         if self.state["status"] != "ready" or not self.day["preflight_done"]:
             raise ValueError("WF cost preflight and ready boundary required")
+        if datetime.fromtimestamp(now, LA_PAZ).date().isoformat() != self.day_key:
+            return "pause"
         if (fold, unit) != units()[len(self.state["units"])]:
             raise ValueError("WF cost roster or unit order changed")
         current, cumulative = self._seconds(now)
-        decision = admit(BudgetState(tuple(self.state["days"]), current, cumulative,
+        active_days = set(self.state["days"])
+        if self.session_journal is not None:
+            active_days.update(self.session_journal.charges(
+                self.state, now=now, active_token=self.session_token).session_days)
+        decision = admit(BudgetState(tuple(sorted(active_days)), current, cumulative,
                                      self.day["external_seconds"] + current),
                          self.day_key, unit)
         if decision == "start" and self.day["work_deadline"] - now < unit_cap(unit):
@@ -235,7 +255,8 @@ def admit(state: BudgetState, day: str, unit: int) -> str:
         state.daily_own, state.cumulative, state.global_spent
     )):
         raise ValueError("Invalid budget debit")
-    if day not in state.active_days and len(state.active_days) >= 2:
+    if len(state.active_days) > 2 or (day not in state.active_days
+                                      and len(state.active_days) >= 2):
         return "incomplete"
     own = state.daily_own if day in state.active_days else 0.0
     if state.cumulative + cap > 5400:
@@ -423,8 +444,13 @@ def inspect_budget(*, now: float | None = None) -> dict:
 
     now = time.time() if now is None else now
     day = datetime.fromtimestamp(now, LA_PAZ).date().isoformat()
-    sources, spent, active = [], 0.0, []
-    for path in sorted((ROOT / "artifacts").glob("p*-approved-v*/ledger.jsonl")):
+    sources, spent, active, wf_ledger_spent = [], 0.0, [], {}
+    artifacts = ROOT / "artifacts"
+    ledgers = set(artifacts.glob("p*-approved-v*/ledger.jsonl"))
+    ledgers.update(artifacts.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
+    for path in sorted(ledgers):
+        if path.parent == CAMPAIGN:
+            continue
         raw = path.read_bytes()
         state = json.loads(raw.splitlines()[-1])
         if state.get("state_hash") and state["state_hash"] != state_hash(state):
@@ -441,9 +467,32 @@ def inspect_budget(*, now: float | None = None) -> dict:
         if not isinstance(seconds, (int, float)) or not math.isfinite(seconds) or seconds < 0:
             raise ValueError(f"Invalid campaign debit: {path}")
         spent += seconds
+        if path.parent.name.startswith("oos-v12-wf-cost-only-"):
+            wf_ledger_spent[path.parent] = seconds
         sources.append(dict(path=str(path), sha256=hashlib.sha256(raw).hexdigest(),
                             status=state.get("status"), charged_today_seconds=seconds,
                             reason="incomplete_debit" if incomplete else "measured"))
+    for path in sorted(artifacts.glob("oos-v12-wf-cost-only-*/sessions.jsonl")):
+        if path.parent == CAMPAIGN:
+            continue
+        ledger_path = path.parent / "ledger.jsonl"
+        ledger_state = (json.loads(ledger_path.read_text().splitlines()[-1])
+                        if ledger_path.exists() else {})
+        with WFCostSessionJournal(path, campaign=path.parent.name,
+                                  read_only=True) as sessions:
+            charge = sessions.charges(ledger_state, now=now)
+        if day not in charge.session_days:
+            continue
+        already = wf_ledger_spent.get(path.parent, 0.0)
+        remaining = max(0.0, 10800 - already)
+        seconds = (remaining if charge.blocked else
+                   min(charge.extra_by_day.get(day, 0.0), remaining))
+        spent += seconds
+        sources.append(dict(path=str(path), sha256=digest(path),
+                            status="blocked" if charge.blocked else "closed",
+                            charged_today_seconds=seconds,
+                            reason="failed_or_unclosed_session" if charge.blocked
+                                   else "session_gap"))
     return dict(ok=not active, day_la_paz=day, global_spent=spent,
                 remaining_before_reserve=max(0.0, 10800 - spent - 2700),
                 active_campaigns=active, sources=sources)

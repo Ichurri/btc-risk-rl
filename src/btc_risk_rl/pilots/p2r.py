@@ -118,6 +118,7 @@ class P2RSharedBudget:
         try:
             external = set(self.root.glob("p*-approved-v*/ledger.jsonl"))
             external.update(self.root.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
+            wf_ledger_spent = {}
             for path in sorted(external):
                 if path.parent.name == campaign_name:
                     continue
@@ -141,8 +142,33 @@ class P2RSharedBudget:
                 if not isinstance(spent, (int, float)) or not math.isfinite(spent) or spent < 0:
                     raise ValueError("Invalid external daily consumption")
                 self.external_seconds += spent
+                if path.parent.name.startswith("oos-v12-wf-cost-only-"):
+                    wf_ledger_spent[path.parent] = spent
                 self.sources.append(dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                                          seconds=spent, reason=reason, day=self.day))
+            # A WF supervisor may have failed before creating its unit ledger.
+            # Its independent session journal still consumes the shared day.
+            from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
+
+            for path in sorted(self.root.glob("oos-v12-wf-cost-only-*/sessions.jsonl")):
+                if path.parent.name == campaign_name:
+                    continue
+                ledger_path = path.parent / "ledger.jsonl"
+                ledger_state = (json.loads(ledger_path.read_text().splitlines()[-1])
+                                if ledger_path.exists() else {})
+                with WFCostSessionJournal(path, campaign=path.parent.name) as sessions:
+                    charge = sessions.charges(ledger_state, now=now)
+                if self.day not in charge.session_days:
+                    continue
+                measured = charge.extra_by_day.get(self.day, 0.0)
+                already = wf_ledger_spent.get(path.parent, 0.0)
+                remaining = max(0.0, DAY_LIMIT - already)
+                spent = remaining if charge.blocked else min(measured, remaining)
+                self.external_seconds += spent
+                self.sources.append(dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                                         seconds=spent, reason=("failed_or_unclosed_session"
+                                                                if charge.blocked else "session_gap"),
+                                         day=self.day))
             self.record("entered")
         except BaseException:
             self.lock.close()
