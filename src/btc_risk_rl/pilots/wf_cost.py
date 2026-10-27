@@ -1,8 +1,8 @@
-"""Isolated, unapproved 22-unit walk-forward training-cost study contract.
+"""Isolated 22-unit walk-forward training-cost study contract.
 
 This module offers a read-only preflight and pure admission rules. The public
-execution boundary is deliberately closed before loading a market source or
-creating a campaign root. Historical execution requires a separate approval.
+execution boundary verifies a pinned, study-specific registration before
+loading a market source or creating a campaign root.
 """
 
 from __future__ import annotations
@@ -30,8 +30,8 @@ DESIGN = ROOT / "docs/protocols/OOS-v1-2-wf-cost-executor-v1.json"
 TRAIN_SHARD = ROOT / "data/processed/p2r-training-h1"
 CAMPAIGN = ROOT / "artifacts/oos-v12-wf-cost-only-01"
 SHARD_MANIFEST_SHA256 = "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "b36e32521f43af3f0b7b363f2555d1bee19fa5200c3cee30b5e8987068984369"
 REGISTRATION = ROOT / "docs/protocols/OOS-v1-2-wf-cost-approval.json"
 ROSTER = (("2021", 276696733, "C10"), ("2022", 498614892, "C10"))
 EXPECTED = {"2021": (3639, 5764), "2022": (4678, 7703)}

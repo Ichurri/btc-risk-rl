@@ -1,8 +1,6 @@
 """The unapproved two-fold cost executor must fail closed."""
 
 import json
-import subprocess
-import sys
 
 import pytest
 
@@ -20,6 +18,7 @@ def test_public_gate_rejects_before_any_root_or_source_access(tmp_path, monkeypa
     root = tmp_path / "cost-root"
     monkeypatch.setattr(wf_cost, "CAMPAIGN", root)
     monkeypatch.setattr(wf_cost, "TRAIN_SHARD", tmp_path / "missing-shard")
+    monkeypatch.setattr(wf_cost, "MARKET_EXECUTION_ENABLED", False)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         wf_cost.run_historical_units()
     assert not root.exists()
@@ -55,7 +54,7 @@ def test_preflight_summary_is_read_only_and_reports_blockers(tmp_path, monkeypat
     assert "AC not connected" in result["blockers"]
     assert not root.exists()
     assert not (tmp_path / "root" / "ledger.jsonl").exists()
-    assert json.loads(json.dumps(result))["market_execution_enabled"] is False
+    assert json.loads(json.dumps(result))["market_execution_enabled"] is True
 
 
 def test_protected_input_names_rejected(tmp_path):
@@ -91,16 +90,21 @@ def test_settings_match_fixed_cost_study_and_reject_other_seeds():
         WFCostSettings(seed=610031)
 
 
-def test_public_and_worker_commands_reject_before_request_or_root():
+def test_registered_cost_study_permit_matches_frozen_inputs():
+    entry = wf_cost.require_campaign()
+    assert entry["campaign"] == "oos-v12-wf-cost-only-01"
+    assert entry["scope"] == "cost_measurement_training_folds_only"
+    assert entry["protocol_sha256"] == wf_cost.digest(wf_cost.PROTOCOL)
+    assert entry["design_sha256"] == wf_cost.digest(wf_cost.DESIGN)
+    assert entry["training_shard_manifest_sha256"] == wf_cost.SHARD_MANIFEST_SHA256
+
+
+def test_public_gate_rejects_when_permit_is_disabled_without_creating_root(monkeypatch):
     root = wf_cost.CAMPAIGN
     assert not root.exists()
-    for command in ([sys.executable, "scripts/run_oos_wf_cost.py", "--run"],
-                    [sys.executable, "-m", "btc_risk_rl.pilots.wf_cost_worker",
-                     "/nonexistent/forged-request.json"]):
-        result = subprocess.run(command, capture_output=True, text=True, check=False)
-        assert result.returncode != 0
-        assert "NOT AUTHORIZED" in result.stderr
-        assert "nonexistent" not in result.stderr
+    monkeypatch.setattr(wf_cost, "MARKET_EXECUTION_ENABLED", False)
+    with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
+        wf_cost.run_historical_units()
     assert not root.exists()
 
 
