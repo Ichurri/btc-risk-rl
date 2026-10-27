@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Estudio de costos WF autorizado el 26/10/2026 (America/La_Paz) mediante
+  registro específico `docs/protocols/OOS-v1-2-wf-cost-approval.json`, pero
+  **detenido tras Q0**. La primera sesión `systemd --user` aceptó exactamente
+  una unidad `wf-2021/Q0` y pausó para auditoría; la segunda sesión falló
+  **antes de iniciar la unidad 1** por representación distinta del roster
+  (`list` JSON frente a `tuple` Python) al reabrir el ledger. El ledger
+  persiste `ready`/1 unidad/sin `pending`, pero eso **no autoriza reanudar**:
+  el permiso operativo se cerró prospectivamente con
+  `MARKET_EXECUTION_ENABLED=False`. Preservar íntegros raíz, ledger,
+  checkpoint Q0 y journals. Ver `docs/hitos/OOS-v1-2-costo-cortes-ejecucion-parcial.md`.
+  No repetir selectivamente, corregir huellas para forzar continuación,
+  activar v1.2 ni abrir validación/final. El registro original conserva su
+  huella para auditoría.
 - Infraestructura aislada de **medición de costo de entrenamiento por cortes**
   posterior a `6a01893`: roster fijo de dos C10 (2021/2022), 22 unidades,
   cortes reconstruidos solo desde el derivado H1 exclusivo de entrenamiento,

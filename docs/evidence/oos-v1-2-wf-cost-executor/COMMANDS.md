@@ -1,5 +1,105 @@
 # Comandos y resultados — infraestructura aislada WF costo
 
+## Estudio autorizado del 26/10/2026, detenido tras Q0
+
+El permiso específico quedó en
+[`OOS-v1-2-wf-cost-approval.json`](../../protocols/OOS-v1-2-wf-cost-approval.json)
+con SHA-256
+`b36e32521f43af3f0b7b363f2555d1bee19fa5200c3cee30b5e8987068984369`.
+La pausa obligatoria después de la primera Q0 se probó primero con una
+prueba fallida por ausencia de la función y luego con 17/17 pruebas focales.
+Tras registrar el permiso, las pruebas focales pasaron 18/18. Antes de
+lanzar, la suite completa dio **378/378 en 261,37 s** y Ruff pasó.
+
+Comandos de preflight y captura ejecutados (las salidas fueron `ready`, sin
+bloqueos):
+
+```bash
+uv run --frozen python scripts/audit_oos_wf_cost_preflight.py \
+  > /tmp/oos-wf-cost-preflight-approved-20261026.json
+uv run --frozen python docs/evidence/oos-v1-2-wf-cost-executor/checks_approved.py
+uv run --frozen pytest -q tests/test_oos_wf_cost_executor.py
+uv run --frozen pytest -q
+uv run --frozen ruff check .
+uv run --frozen python scripts/audit_oos_wf_cost_preflight.py \
+  > /tmp/oos-wf-cost-preflight-launch-20261026.json
+sha256sum /tmp/oos-wf-cost-preflight-launch-20261026.json
+```
+
+SHA-256 del preflight aprobado: `ca4ec844028da895d3ea695dac20427b2c423d9081abf88951d3a82ca9fbf458`.
+SHA-256 de la captura inmediatamente anterior al lanzamiento:
+`1d05822bc8b125d7e4a0f57f11f8d2928ef14d92343f6c1a2018238222012291`.
+Ambas registraron gestor `running`, CA, batería ≥50 %, memoria/disco sobre
+los mínimos, huellas de entrada íntegras, presupuesto sin otra campaña y
+raíz aún ausente. No abrieron CSV H1 compartidos.
+
+Único lanzamiento de la primera sesión:
+
+```bash
+systemd-run --user --unit=oos-wf-cost-20261026-session-01 \
+  --property=Type=exec --property=Restart=no \
+  --property=WorkingDirectory=/home/ichurri/Desktop/personal_projects/btc-risk-rl \
+  --property=RuntimeMaxSec=3600 \
+  /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost.py --run
+```
+
+La sesión `5c405d0855a14923bd4c9481fa73130e` cerró `Result=success` tras
+Q0 y una pausa `first_q0_audit`, con ledger `ready`, una unidad aceptada y
+sin `pending`. Se verificaron en solo lectura cadena de ledger y journal,
+reporte, checkpoint, contadores, optimizadores y ausencia de unidad 1; el
+resultado quedó en [`q0-audit.json`](q0-audit.json). El SHA-256 del ledger
+en esa frontera fue
+`b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6`.
+
+Tras la auditoría se repitió el preflight, también `ready`, con salida
+[`preflight-after-q0-20261026.json`](preflight-after-q0-20261026.json)
+(SHA-256 `25983e48c21b00e90004a5ffcc1101ce4ee73fae74823b6f8ebd2678d7d40a7c`).
+Se lanzó **una sola** segunda sesión desde la frontera completa:
+
+```bash
+uv run --frozen python scripts/audit_oos_wf_cost_preflight.py \
+  > /tmp/oos-wf-cost-preflight-after-q0-20261026.json
+systemd-run --user --unit=oos-wf-cost-20261026-session-02 \
+  --property=Type=exec --property=Restart=no \
+  --property=WorkingDirectory=/home/ichurri/Desktop/personal_projects/btc-risk-rl \
+  --property=RuntimeMaxSec=3600 \
+  /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost.py --run
+journalctl --user -u oos-wf-cost-20261026-session-02.service \
+  --output=short-iso-precise --no-pager
+```
+
+La segunda sesión, `InvocationID=6513bcb4dbf34444a38d8acc712cdafb`,
+terminó `Result=exit-code`, código 1, por `Campaign identity mismatch`
+**antes de iniciar unidad 1**. La reconstrucción de solo lectura mostró que
+únicamente `identity.roster` difería en tipo `tuple`/`list`; normalizada a
+JSON, toda la identidad coincidía. Ese resultado quedó en
+[`session-02-identity-diff.json`](session-02-identity-diff.json).
+Tras cerrar prospectivamente el permiso, se ejecutaron:
+
+```bash
+uv run --frozen python docs/evidence/oos-v1-2-wf-cost-executor/audit_after_failure.py \
+  > docs/evidence/oos-v1-2-wf-cost-executor/audit-after-failure.json
+uv run --frozen python docs/evidence/oos-v1-2-wf-cost-executor/audit_identity_mismatch.py \
+  > docs/evidence/oos-v1-2-wf-cost-executor/identity-recheck-after-closure.json
+uv run --frozen python scripts/run_oos_wf_cost.py --run
+uv run --frozen python -m btc_risk_rl.pilots.wf_cost_worker \
+  /nonexistent/forged-request.json
+uv run --frozen pytest -q tests/test_oos_wf_cost_executor.py
+uv run --frozen ruff check .
+sha256sum artifacts/oos-v12-wf-cost-only-01/ledger.jsonl \
+  artifacts/oos-v12-wf-cost-only-01/wf-2021/checkpoint-0/state.pt
+```
+
+Ambos comandos operativos devolvieron código 1 con `NOT AUTHORIZED` antes de
+leer una solicitud o iniciar otra unidad; las pruebas focales pasaron 18/18,
+Ruff pasó y los hashes de ledger/checkpoint siguieron iguales. La auditoría
+después del cierre usa los bytes del código de autorización fijados en Git
+para reconstruir su identidad histórica: el flag prospectivamente cerrado
+no se confunde con el código que produjo Q0. La suite completa posterior
+al cierre pasó **378/378 en 259,54 s** con el permiso desactivado.
+
+---
+
 ## Preflight posterior a `swaync` (evidencia nueva)
 
 El archivo `/tmp/oos-wf-cost-preflight-after-swaync.json` ya existía al

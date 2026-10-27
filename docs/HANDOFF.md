@@ -1,4 +1,26 @@
-# Estado vigente — segundo preflight de costos, permiso cerrado
+# Estado vigente — estudio de costos WF detenido tras Q0
+
+El estudio autorizado para 22 unidades en dos cortes llegó solo a
+`wf-2021/Q0`: primera sesión `systemd --user` exitosa, checkpoint
+`after_q0` íntegro, ledger `ready` con 1/22 aceptada y sin `pending`.
+La pausa de auditoría funcionó. Al iniciar una sesión nueva, el supervisor
+falló **antes de la unidad 1** por `Campaign identity mismatch`: la identidad
+persistida contiene una lista JSON y el código reconstruía una tupla Python;
+las demás entradas coincidieron. No se generó una trayectoria ni un paso de
+optimizador de la segunda unidad. Se conservan la unidad Q0, el ledger y los
+journals. El permiso operativo se cerró prospectivamente; el registro de
+autorización permanece inalterado. **No reanudar esta raíz aunque el ledger
+diga `ready`**. El gestor `systemd --user` está ahora `degraded` por la
+unidad 02 fallida; se conserva ese estado como evidencia. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-ejecucion-parcial.md)
+y [evidencias](evidence/oos-v1-2-wf-cost-executor/). El estudio no midió
+Q/A/B+D y no resuelve el presupuesto v1.2. P0–P3 siguen intactos; no se
+abrió validación 2023 ni prueba final. La eliminación local previa de
+`.python-version` permanece sin versionar.
+
+---
+
+# Estado anterior — segundo preflight de costos, permiso cerrado
 
 El 26/10/2026 se versionó un [segundo preflight](evidence/oos-v1-2-wf-cost-executor/preflight-after-swaync.json)
 tras enmascarar `swaync.service` para el usuario. La nueva captura registra

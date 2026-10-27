@@ -1,0 +1,24 @@
+2026-10-26T22:40:49.872920-04:00 debian systemd[1449]: Starting oos-wf-cost-20261026-session-02.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost.py --run...
+2026-10-26T22:40:49.897610-04:00 debian systemd[1449]: Started oos-wf-cost-20261026-session-02.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost.py --run.
+2026-10-26T22:40:52.607676-04:00 debian uv[62998]: Traceback (most recent call last):
+2026-10-26T22:40:52.607676-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost.py", line 28, in <module>
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     main()
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost.py", line 19, in main
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     state = run_historical_units()
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:             ^^^^^^^^^^^^^^^^^^^^^^
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost.py", line 338, in run_historical_units
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     return run_units()
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:            ^^^^^^^^^^^
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_units.py", line 137, in run_units
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     with WFCostLedger(CAMPAIGN, now=entered, identity=identity,
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost.py", line 82, in __init__
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     super().__init__(root, identity=identity, now=now,
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/p2_budget.py", line 35, in __init__
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     super().__init__(
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/budget.py", line 38, in __init__
+2026-10-26T22:40:52.608091-04:00 debian uv[62998]:     raise ValueError("Campaign identity mismatch")
+2026-10-26T22:40:52.608510-04:00 debian uv[62998]: ValueError: Campaign identity mismatch
+2026-10-26T22:40:52.832909-04:00 debian systemd[1449]: oos-wf-cost-20261026-session-02.service: Main process exited, code=exited, status=1/FAILURE
+2026-10-26T22:40:52.832978-04:00 debian systemd[1449]: oos-wf-cost-20261026-session-02.service: Failed with result 'exit-code'.
+2026-10-26T22:40:52.833146-04:00 debian systemd[1449]: oos-wf-cost-20261026-session-02.service: Consumed 4.140s CPU time, 395.9M memory peak.

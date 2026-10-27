@@ -1,0 +1,7 @@
+Result=exit-code
+ExecMainStartTimestamp=Mon 2026-10-26 22:40:49 -04
+ExecMainExitTimestamp=Mon 2026-10-26 22:40:52 -04
+ExecMainPID=62994
+ExecMainStatus=1
+ActiveState=failed
+SubState=failed
