@@ -152,6 +152,33 @@ def test_unit_acceptance_rejects_forged_marker_and_preserves_prior_checkpoint(tm
         WFCostLedger(root, identity={"fixture": True}, now=1100)
 
 
+def test_first_q0_complete_boundary_requires_audit_pause(tmp_path):
+    from btc_risk_rl.pilots.wf_cost import WFCostLedger
+    from btc_risk_rl.pilots.wf_cost_units import first_q0_audit_pause
+
+    root = tmp_path / "cost"
+    with WFCostLedger(root, identity={"fixture": True}, now=1000) as ledger:
+        ledger.preflight_done(1001)
+        assert not first_q0_audit_pause(ledger.state)
+        ledger.begin_unit("2021", 0, 1002)
+        checkpoint = root / "wf-2021/checkpoint-0"
+        checkpoint.mkdir(parents=True)
+        (checkpoint / "state.pt").write_bytes(b"complete Q0")
+        (checkpoint / "manifest.json").write_text(json.dumps({
+            "schema_version": "p2_complete_boundary_v1", "boundary": "after_q0",
+            "state_sha256": wf_cost.digest(checkpoint / "state.pt"),
+            "profile": "wf_cost_only", "run_id": "wf-2021", "condition": "C10",
+        }))
+        ledger.accept_unit("2021", 0, 1010, checkpoint, report={
+            "market_training_executed": False, "actor_updates": 0,
+            "critic_updates": 0, "boundary": "after_q0",
+        })
+        assert first_q0_audit_pause(ledger.state)
+        assert ledger.state["status"] == "ready"
+        assert len(ledger.state["units"]) == 1
+        assert ledger.state["pending"] is None
+
+
 def test_synthetic_ledger_accepts_exactly_twenty_two_complete_units(tmp_path):
     from btc_risk_rl.pilots.wf_cost import WFCostLedger
 

@@ -101,6 +101,12 @@ def _record_fold_manifests(sources):
             write_json(path, payload)
 
 
+def first_q0_audit_pause(state):
+    """Require a supervised session boundary after the first accepted Q0."""
+    return (state["status"] == "ready" and len(state["units"]) == 1
+            and state["pending"] is None)
+
+
 def run_units():
     """Run only under a registered user service; never called by preflight."""
     inputs, budget = _launch_readiness()
@@ -250,6 +256,11 @@ def run_units():
                     finally:
                         signal.pthread_sigmask(signal.SIG_SETMASK, prior_mask)
                     current["phase"] = "between_units"
+                    if first_q0_audit_pause(ledger.state):
+                        journal.record("paused", phase="between_units",
+                                       run_id=f"wf-{fold}", unit=None, counters={},
+                                       reason="first_q0_audit")
+                        return ledger.state
                 return ledger.state
             except BaseException as exc:
                 if ledger.state["status"] not in {"failed", "incomplete"}:
