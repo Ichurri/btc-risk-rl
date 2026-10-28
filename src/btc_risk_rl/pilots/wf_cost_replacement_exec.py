@@ -44,6 +44,19 @@ MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = None
 
 
+def _code_file_sha256(path):
+    raw = Path(path).read_bytes()
+    if Path(path).name == "wf_cost_replacement_exec.py":
+        lines = raw.splitlines(keepends=True)
+        matched = [i for i, line in enumerate(lines)
+                   if line.startswith(b"REGISTRATION_SHA256 = ")]
+        if len(matched) != 1:
+            raise ValueError("WF replacement approval digest declaration changed")
+        lines[matched[0]] = b"REGISTRATION_SHA256 = <pinned approval>\n"
+        raw = b"".join(lines)
+    return hashlib.sha256(raw).hexdigest()
+
+
 def code_sha256():
     """Pin executable Python and dependency lock without opening market data."""
     files = sorted((ROOT / "src/btc_risk_rl").rglob("*.py")) + [
@@ -51,7 +64,7 @@ def code_sha256():
         ROOT / "scripts/audit_oos_wf_cost_replacement_preflight.py",
         ROOT / "pyproject.toml", ROOT / "uv.lock",
     ]
-    mapping = {str(path.relative_to(ROOT)): digest(path) for path in files}
+    mapping = {str(path.relative_to(ROOT)): _code_file_sha256(path) for path in files}
     return hashlib.sha256(json.dumps(mapping, sort_keys=True).encode()).hexdigest()
 
 

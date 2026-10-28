@@ -22,6 +22,16 @@ def test_replacement_gate_is_independent_and_closed(tmp_path, monkeypatch):
     assert replacement.MARKET_EXECUTION_ENABLED is False
 
 
+def test_code_hash_masks_only_registration_digest_literal(tmp_path):
+    source = tmp_path / "wf_cost_replacement_exec.py"
+    source.write_text("MARKET_EXECUTION_ENABLED = True\nREGISTRATION_SHA256 = None\n")
+    before = replacement._code_file_sha256(source)
+    source.write_text("MARKET_EXECUTION_ENABLED = True\nREGISTRATION_SHA256 = 'a' * 64\n")
+    assert replacement._code_file_sha256(source) == before
+    source.write_text("MARKET_EXECUTION_ENABLED = False\nREGISTRATION_SHA256 = 'a' * 64\n")
+    assert replacement._code_file_sha256(source) != before
+
+
 def test_forged_approval_cannot_enable_replacement(tmp_path, monkeypatch):
     approval = tmp_path / "approval.json"
     approval.write_text(json.dumps({"active": True, "campaign": "oos-v12-wf-cost-only-02"}))
