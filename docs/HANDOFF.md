@@ -1,4 +1,25 @@
-# Estado vigente — reemplazo íntegro WF propuesto, sin permiso
+# Estado vigente — ejecutor WF `...02` verificado sintéticamente; sin permiso
+
+En `codex/oos-wf-cost-replacement-executor` se implementó el perfil
+`artifacts/oos-v12-wf-cost-only-02/` separado de `...01`: puerta de aprobación
+y trabajador propios, supervisor con bitácora durable de sesiones, ledger de
+22 unidades y reingreso con roster normalizado. El [informe](hitos/OOS-v1-2-costo-cortes-reemplazo-ejecutor.md)
+y la [evidencia](evidence/oos-v1-2-wf-cost-replacement-executor/preflight.json)
+documentan el ciclo sintético Q0 → pausa → proceso nuevo → admisión de unidad
+1, los fallos antes del ledger y un preflight vigilado que solo abre el
+derivado H1 exclusivo de entrenamiento. El perfil nuevo sigue **desactivado**:
+no existe su registro de aprobación ni su raíz histórica; CLI y trabajador
+rechazan una ejecución. No hubo entrenamiento de mercado ni acceso a
+validación/final. La campaña parcial `...01` y su gate cerrado conservan sus
+huellas; la eliminación local de `.python-version` permanece ajena.
+
+Siguiente decisión: revisar ejecutor y evidencia. Una futura medición
+histórica requiere autorización independiente, registro fijado y preflight
+nuevo; este hito no la habilita.
+
+---
+
+# Estado anterior — reemplazo íntegro WF propuesto, sin permiso
 
 Desde `a5b6929` se preparó una
 [propuesta para revisión](proposals/OOS-v1-2-costo-cortes-reemplazo-v1.md)

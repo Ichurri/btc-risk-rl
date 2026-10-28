@@ -1,13 +1,25 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Perfil aislado WF `...02` implementado tras `37cc06e` **solo para
+  verificación sintética**. Su permiso de mercado sigue apagado en código,
+  `REGISTRATION_SHA256=None`, el registro independiente
+  `docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json` y la raíz real
+  `artifacts/oos-v12-wf-cost-only-02/` permanecen ausentes. El comando público
+  y el trabajador rechazan antes de solicitudes, datos o artefactos. La
+  bitácora y el reingreso se probaron en `tmp_path`; el preflight vigilado
+  abre solo el derivado H1 exclusivo de entrenamiento y metadatos. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-reemplazo-ejecutor.md`. **No activar
+  permiso, crear raíz histórica, ejecutar entrenamiento ni abrir 2023/final.**
+  La campaña parcial `...01`, su gate cerrado, ledger, Q0 y autorización
+  original permanecen congelados.
 - Propuesta de reemplazo íntegro del estudio WF tras `a5b6929`:
   `docs/proposals/OOS-v1-2-costo-cortes-reemplazo-v1.md` propone raíz
   `artifacts/oos-v12-wf-cost-only-02/` y registro de autorización distinto,
   ambos **ausentes**. Conserva las dos C10, semillas, cortes, 22 unidades,
   orden y límites del diseño original. Solo se verificaron sintéticamente
   Q0→pausa→reingreso y fallos previos al ledger; el preflight estático queda
-  `blocked`. **No hay perfil ejecutor nuevo ni permiso de mercado.** El gate
+  `blocked`. En esa entrega **no había perfil ejecutor nuevo ni permiso de mercado**. El gate
   original sigue `MARKET_EXECUTION_ENABLED=False`; no reanudar `...01`,
   entrenar con mercado ni abrir validación/final por esta propuesta.
 - Bitácora WF **prospectiva y verificada solo sintéticamente** desde
