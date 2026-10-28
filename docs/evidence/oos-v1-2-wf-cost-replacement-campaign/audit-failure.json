@@ -1,0 +1,20 @@
+{
+  "campaign": "oos-v12-wf-cost-only-02",
+  "checkpoints_accepted": 0,
+  "ended_utc": "2026-10-28T03:47:05.865252+00:00",
+  "gate_closed": true,
+  "invocation_id": "3bb524765d3c4b669fcad7f2ee4b18f4",
+  "ledger_exists": false,
+  "reason": "WF cost root exists without a valid ledger",
+  "reentry_blocked": true,
+  "registration_sha256": "c0d6973d98951dabe1cbc0cfef2f79304c2662cba01e09ff58276547c453f242",
+  "session_chain_valid": true,
+  "session_days": [
+    "2026-10-27"
+  ],
+  "session_sha256": "72e790c0daf96a8da188e47b3791d759de625d170813fdc98c60d6ae888cb276",
+  "session_wall_seconds": 0.3242373466491699,
+  "started_utc": "2026-10-28T03:47:05.541014+00:00",
+  "status": "failed_before_q0",
+  "units_started": 0
+}

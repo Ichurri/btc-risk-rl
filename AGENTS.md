@@ -1,11 +1,23 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Campaña WF de reemplazo `...02` autorizada en `743e51b` y **detenida antes
+  de Q0** el 27/10/2026 (America/La_Paz). El preflight previo fue `ready`,
+  pero la primera sesión `systemd --user` falló al comprobar su propia raíz:
+  la bitácora la había creado y aún no existía ledger. Solo hay
+  `sessions.jsonl` cerrado `failed` y su lock; **cero unidades, cero
+  checkpoints y ningún ledger**. Preservar intacta esta raíz y su journal.
+  El permiso `...02` quedó cerrado prospectivamente en `279e6ab`; el JSON
+  de aprobación y su huella siguen como evidencia histórica, no autorizan
+  reingreso. El cargo conservador de una sesión fallida se mantiene para el
+  día local. Ver `docs/hitos/OOS-v1-2-costo-cortes-reemplazo-fallo-inicial.md`.
+  No corregir y reintentar esta raíz, ni activar v1.2, abrir 2023/final o
+  tocar `...01`.
 - Perfil aislado WF `...02` implementado tras `37cc06e` **solo para
   verificación sintética**. Su permiso de mercado sigue apagado en código,
   `REGISTRATION_SHA256=None`, el registro independiente
   `docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json` y la raíz real
-  `artifacts/oos-v12-wf-cost-only-02/` permanecen ausentes. El comando público
+  `artifacts/oos-v12-wf-cost-only-02/` permanecían ausentes en esa entrega. El comando público
   y el trabajador rechazan antes de solicitudes, datos o artefactos. La
   bitácora y el reingreso se probaron en `tmp_path`; el preflight vigilado
   abre solo el derivado H1 exclusivo de entrenamiento y metadatos. Ver

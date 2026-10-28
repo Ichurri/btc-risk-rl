@@ -1,4 +1,28 @@
-# Estado vigente — ejecutor WF `...02` verificado sintéticamente; sin permiso
+# Estado vigente — WF `...02` falló antes de Q0; permiso cerrado
+
+La campaña íntegra `...02` recibió autorización independiente en `743e51b`.
+La suite previa aprobó 415 pruebas (una omitida) y Ruff; el
+[preflight inmediato](evidence/oos-v1-2-wf-cost-replacement-campaign/preflight-launch.json)
+fue `ready`: huellas, CA, batería, memoria, disco, `Linger`, gestor y
+presupuesto pasaron, sin abrir datos protegidos. La primera sesión
+`systemd --user` falló **antes de Q0**: el supervisor creó la raíz para la
+bitácora y su guarda la rechazó por no tener todavía ledger. El
+[informe](hitos/OOS-v1-2-costo-cortes-reemplazo-fallo-inicial.md) y la
+[auditoría](evidence/oos-v1-2-wf-cost-replacement-campaign/audit-failure.json)
+conservan cronología, huellas, journal y recursos. En la raíz real `...02`
+solo hay una bitácora cerrada `failed` y su lock; no hay ledger, unidades,
+trayectorias ni checkpoints aceptados. **No reanudar ni repetir esta raíz.**
+
+El gate se cerró prospectivamente en `279e6ab`. La autorización JSON sigue
+intacta para auditoría, y `...01` mantiene su gate y artefactos congelados.
+Una corrección futura requeriría un diseño y una raíz nuevos, junto con
+pruebas de primer arranque que cubran el orden de bitácora y ledger. No se
+activó la evaluación v1.2 ni se abrió validación/final. La eliminación local
+de `.python-version` sigue sin incorporar.
+
+---
+
+# Estado anterior — ejecutor WF `...02` verificado sintéticamente; sin permiso
 
 En `codex/oos-wf-cost-replacement-executor` se implementó el perfil
 `artifacts/oos-v12-wf-cost-only-02/` separado de `...01`: puerta de aprobación

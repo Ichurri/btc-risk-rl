@@ -1,0 +1,20 @@
+2026-10-27T23:47:04.303484-04:00 debian systemd[1456]: Starting oos-wf-cost-20261027-replacement-session-01.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_replacement.py --run...
+2026-10-27T23:47:04.307137-04:00 debian systemd[1456]: Started oos-wf-cost-20261027-replacement-session-01.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_replacement.py --run.
+2026-10-27T23:47:05.881278-04:00 debian uv[118189]: Traceback (most recent call last):
+2026-10-27T23:47:05.881278-04:00 debian uv[118189]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_replacement.py", line 28, in <module>
+2026-10-27T23:47:05.881278-04:00 debian uv[118189]:     main()
+2026-10-27T23:47:05.881278-04:00 debian uv[118189]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_replacement.py", line 19, in main
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:     state = run_historical_units()
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:             ^^^^^^^^^^^^^^^^^^^^^^
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_exec.py", line 204, in run_historical_units
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:     return run_units()
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:            ^^^^^^^^^^^
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_units.py", line 123, in run_units
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:     inputs, budget = _launch_readiness()
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:                      ^^^^^^^^^^^^^^^^^^^
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_units.py", line 57, in _launch_readiness
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]:     raise ValueError("WF cost root exists without a valid ledger")
+2026-10-27T23:47:05.881870-04:00 debian uv[118189]: ValueError: WF cost root exists without a valid ledger
+2026-10-27T23:47:06.118866-04:00 debian systemd[1456]: oos-wf-cost-20261027-replacement-session-01.service: Main process exited, code=exited, status=1/FAILURE
+2026-10-27T23:47:06.118937-04:00 debian systemd[1456]: oos-wf-cost-20261027-replacement-session-01.service: Failed with result 'exit-code'.
+2026-10-27T23:47:06.119107-04:00 debian systemd[1456]: oos-wf-cost-20261027-replacement-session-01.service: Consumed 3.251s CPU time, 360M memory peak.

@@ -1,0 +1,9 @@
+Result=exit-code
+ExecMainStartTimestamp=Tue 2026-10-27 23:47:04 -04
+ExecMainExitTimestamp=Tue 2026-10-27 23:47:06 -04
+ExecMainStatus=1
+MemoryPeak=377544704
+CPUUsageNSec=3251232000
+ActiveState=failed
+SubState=failed
+InvocationID=3bb524765d3c4b669fcad7f2ee4b18f4
