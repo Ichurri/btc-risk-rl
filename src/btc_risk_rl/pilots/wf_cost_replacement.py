@@ -83,7 +83,7 @@ def inspect_candidate(root=ROOT):
 
     if MARKET_EXECUTION_ENABLED:
         raise ValueError("Historical WF execution gate unexpectedly enabled")
-    blockers = ["proposal_not_authorized", "new_executor_profile_not_implemented"]
+    blockers = ["proposal_not_authorized"]
     if proposed_root.exists():
         blockers.append("replacement_root_already_exists")
     if approval.exists():

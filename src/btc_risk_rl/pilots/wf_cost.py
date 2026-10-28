@@ -266,10 +266,10 @@ def admit(state: BudgetState, day: str, unit: int) -> str:
     return "start"
 
 
-def guard_fold_path(path: Path) -> Path:
+def guard_fold_path(path: Path, *, campaign: Path | None = None) -> Path:
     """Allow only immutable fold product locations inside the isolated root."""
     path = Path(path)
-    expected = (CAMPAIGN / "folds").resolve()
+    expected = ((CAMPAIGN if campaign is None else campaign) / "folds").resolve()
     if path.resolve() not in {expected / "wf-2021", expected / "wf-2022"}:
         raise ValueError("Fold path escapes isolated cost-study root")
     if path.is_symlink():
@@ -404,7 +404,7 @@ def inspect_host() -> dict:
     )
 
 
-def inspect_inputs() -> dict:
+def inspect_inputs(*, campaign: Path | None = None) -> dict:
     """Hash only accepted training products and metadata; never open shared CSV."""
     opened = []
     hashes = {}
@@ -430,7 +430,9 @@ def inspect_inputs() -> dict:
         raise ValueError("Cost-study design changed")
     missing_folds = []
     for fold in EXPECTED:
-        location = guard_fold_path(CAMPAIGN / "folds" / f"wf-{fold}")
+        fold_campaign = CAMPAIGN if campaign is None else campaign
+        location = guard_fold_path(fold_campaign / "folds" / f"wf-{fold}",
+                                   campaign=fold_campaign)
         if not (location / "manifest.json").is_file():
             missing_folds.append(str(location / "manifest.json"))
     return dict(ok=True, opened=opened, sha256=hashes,
@@ -438,18 +440,19 @@ def inspect_inputs() -> dict:
                 accepted_training_end_exclusive_ms=1672531200000)
 
 
-def inspect_budget(*, now: float | None = None) -> dict:
+def inspect_budget(*, now: float | None = None, campaign: Path | None = None) -> dict:
     """Read prior campaign debits for the current La Paz day without locking."""
     from btc_risk_rl.pilots.p2_budget import state_hash
 
     now = time.time() if now is None else now
+    campaign = CAMPAIGN if campaign is None else campaign
     day = datetime.fromtimestamp(now, LA_PAZ).date().isoformat()
     sources, spent, active, wf_ledger_spent = [], 0.0, [], {}
     artifacts = ROOT / "artifacts"
     ledgers = set(artifacts.glob("p*-approved-v*/ledger.jsonl"))
     ledgers.update(artifacts.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
     for path in sorted(ledgers):
-        if path.parent == CAMPAIGN:
+        if path.parent == campaign:
             continue
         raw = path.read_bytes()
         state = json.loads(raw.splitlines()[-1])
@@ -473,7 +476,7 @@ def inspect_budget(*, now: float | None = None) -> dict:
                             status=state.get("status"), charged_today_seconds=seconds,
                             reason="incomplete_debit" if incomplete else "measured"))
     for path in sorted(artifacts.glob("oos-v12-wf-cost-only-*/sessions.jsonl")):
-        if path.parent == CAMPAIGN:
+        if path.parent == campaign:
             continue
         ledger_path = path.parent / "ledger.jsonl"
         ledger_state = (json.loads(ledger_path.read_text().splitlines()[-1])
