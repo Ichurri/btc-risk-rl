@@ -39,9 +39,9 @@ from btc_risk_rl.pilots.wf_cost_replacement import SPEC, inspect_candidate
 
 CAMPAIGN = ROOT / "artifacts/oos-v12-wf-cost-only-02"
 REGISTRATION = ROOT / "docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json"
-# A later campaign authorization must set both values in a separate reviewed commit.
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+# Scope is fixed by the independent approval record and its pinned digest.
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "c0d6973d98951dabe1cbc0cfef2f79304c2662cba01e09ff58276547c453f242"
 
 
 def _code_file_sha256(path):
