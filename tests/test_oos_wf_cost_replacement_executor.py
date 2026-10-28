@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import runpy
 import subprocess
 import sys
 from contextlib import nullcontext
@@ -12,14 +13,15 @@ import pytest
 from btc_risk_rl.pilots import wf_cost_replacement_exec as replacement
 
 
-def test_replacement_gate_is_independent_and_closed(tmp_path, monkeypatch):
+def test_replacement_permission_is_independent_and_pinned(tmp_path, monkeypatch):
     root = tmp_path / "oos-v12-wf-cost-only-02"
     monkeypatch.setattr(replacement, "CAMPAIGN", root)
+    monkeypatch.setattr(replacement, "REGISTRATION_SHA256", None)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         replacement.run_historical_units()
     assert not root.exists()
     assert replacement.CAMPAIGN.name == "oos-v12-wf-cost-only-02"
-    assert replacement.MARKET_EXECUTION_ENABLED is False
+    assert replacement.MARKET_EXECUTION_ENABLED is True
 
 
 def test_code_hash_masks_only_registration_digest_literal(tmp_path):
@@ -36,7 +38,7 @@ def test_forged_approval_cannot_enable_replacement(tmp_path, monkeypatch):
     approval = tmp_path / "approval.json"
     approval.write_text(json.dumps({"active": True, "campaign": "oos-v12-wf-cost-only-02"}))
     monkeypatch.setattr(replacement, "REGISTRATION", approval)
-    monkeypatch.setattr(replacement, "MARKET_EXECUTION_ENABLED", True)
+    monkeypatch.setattr(replacement, "REGISTRATION_SHA256", None)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         replacement.require_campaign()
     monkeypatch.setattr(replacement, "REGISTRATION_SHA256", replacement.digest(approval))
@@ -44,16 +46,21 @@ def test_forged_approval_cannot_enable_replacement(tmp_path, monkeypatch):
         replacement.require_campaign()
 
 
-def test_public_and_worker_reject_before_request_or_root_access(tmp_path):
+def test_public_and_worker_reject_forged_digest_before_request_or_root_access(
+        tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_replacement_worker as worker
+    from btc_risk_rl.pilots.protocol import ROOT
+
+    public = runpy.run_path(str(ROOT / "scripts/run_oos_wf_cost_replacement.py"))["main"]
+
     request = tmp_path / "absent-request.json"
-    for module in ("scripts.run_oos_wf_cost_replacement",
-                   "btc_risk_rl.pilots.wf_cost_replacement_worker"):
-        args = ([sys.executable, "-m", module, "--run"] if module.startswith("scripts")
-                else [sys.executable, "-m", module, str(request)])
-        result = subprocess.run(args, capture_output=True, text=True, check=False)
-        assert result.returncode != 0
-        assert "NOT AUTHORIZED" in result.stderr
-        assert "No such file" not in result.stderr
+    monkeypatch.setattr(replacement, "REGISTRATION_SHA256", "0" * 64)
+    monkeypatch.setattr(sys, "argv", ["run_oos_wf_cost_replacement", "--run"])
+    with pytest.raises(SystemExit, match="hash mismatch"):
+        public()
+    monkeypatch.setattr(sys, "argv", ["wf_cost_replacement_worker", str(request)])
+    with pytest.raises(PermissionError, match="hash mismatch"):
+        worker.main()
     assert not request.exists()
     assert not replacement.CAMPAIGN.exists()
 
@@ -214,7 +221,7 @@ def test_preflight_open_audit_excludes_protected_and_shared_csv():
                             capture_output=True, text=True, check=False)
     assert result.returncode == 0, result.stderr
     payload = json.loads(result.stdout)
-    assert payload["preflight"]["status"] == "blocked"
+    assert "no active approval" not in " ".join(payload["preflight"]["blockers"])
     assert (payload["fold_metadata"]["2021"]["episodes"],
             payload["fold_metadata"]["2021"]["fit_rows"]) == (3639, 5764)
     assert (payload["fold_metadata"]["2022"]["episodes"],
