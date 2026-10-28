@@ -13,15 +13,15 @@ import pytest
 from btc_risk_rl.pilots import wf_cost_replacement_exec as replacement
 
 
-def test_replacement_permission_is_independent_and_pinned(tmp_path, monkeypatch):
+def test_failed_replacement_permission_is_closed_but_record_pinned(tmp_path, monkeypatch):
     root = tmp_path / "oos-v12-wf-cost-only-02"
     monkeypatch.setattr(replacement, "CAMPAIGN", root)
-    monkeypatch.setattr(replacement, "REGISTRATION_SHA256", None)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         replacement.run_historical_units()
     assert not root.exists()
     assert replacement.CAMPAIGN.name == "oos-v12-wf-cost-only-02"
-    assert replacement.MARKET_EXECUTION_ENABLED is True
+    assert replacement.MARKET_EXECUTION_ENABLED is False
+    assert replacement.digest(replacement.REGISTRATION) == replacement.REGISTRATION_SHA256
 
 
 def test_code_hash_masks_only_registration_digest_literal(tmp_path):
@@ -42,6 +42,7 @@ def test_forged_approval_cannot_enable_replacement(tmp_path, monkeypatch):
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         replacement.require_campaign()
     monkeypatch.setattr(replacement, "REGISTRATION_SHA256", replacement.digest(approval))
+    monkeypatch.setattr(replacement, "MARKET_EXECUTION_ENABLED", True)
     with pytest.raises(PermissionError, match="inconsistent"):
         replacement.require_campaign()
 
@@ -55,6 +56,7 @@ def test_public_and_worker_reject_forged_digest_before_request_or_root_access(
 
     request = tmp_path / "absent-request.json"
     monkeypatch.setattr(replacement, "REGISTRATION_SHA256", "0" * 64)
+    monkeypatch.setattr(replacement, "MARKET_EXECUTION_ENABLED", True)
     monkeypatch.setattr(sys, "argv", ["run_oos_wf_cost_replacement", "--run"])
     with pytest.raises(SystemExit, match="hash mismatch"):
         public()
@@ -62,7 +64,7 @@ def test_public_and_worker_reject_forged_digest_before_request_or_root_access(
     with pytest.raises(PermissionError, match="hash mismatch"):
         worker.main()
     assert not request.exists()
-    assert not replacement.CAMPAIGN.exists()
+    assert not (replacement.CAMPAIGN / "ledger.jsonl").exists()
 
 
 def test_new_profile_reuses_exact_roster_caps_and_budget():
@@ -221,7 +223,7 @@ def test_preflight_open_audit_excludes_protected_and_shared_csv():
                             capture_output=True, text=True, check=False)
     assert result.returncode == 0, result.stderr
     payload = json.loads(result.stdout)
-    assert "no active approval" not in " ".join(payload["preflight"]["blockers"])
+    assert "no active approval" in " ".join(payload["preflight"]["blockers"])
     assert (payload["fold_metadata"]["2021"]["episodes"],
             payload["fold_metadata"]["2021"]["fit_rows"]) == (3639, 5764)
     assert (payload["fold_metadata"]["2022"]["episodes"],
@@ -230,4 +232,5 @@ def test_preflight_open_audit_excludes_protected_and_shared_csv():
     assert payload["market_trajectories_generated"] == 0
     assert not any("segmented-B-h1/" in path and path.endswith(".csv")
                    for path in payload["files_opened"])
-    assert not replacement.CAMPAIGN.exists()
+    assert payload["preflight"]["root_exists"] is True
+    assert not (replacement.CAMPAIGN / "ledger.jsonl").exists()

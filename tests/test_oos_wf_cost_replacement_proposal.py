@@ -156,14 +156,15 @@ def test_candidate_preflight_is_read_only_and_blocked():
 
     root = ROOT / "artifacts/oos-v12-wf-cost-only-02"
     approval = ROOT / "docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json"
-    assert not root.exists() and approval.is_file()
+    assert root.is_dir() and approval.is_file()
     result = inspect_candidate()
     assert result["status"] == "blocked"
     assert "proposal_not_authorized" in result["blockers"]
+    assert "replacement_root_already_exists" in result["blockers"]
     assert "replacement_approval_path_already_exists" in result["blockers"]
-    assert result["root_absent"] and not result["approval_absent"]
+    assert not result["root_absent"] and not result["approval_absent"]
     assert result["historical_artifacts_verified"] is True
     assert str(ROOT / "artifacts/oos-v12-wf-cost-only-01/ledger.jsonl") in result["opened"]
-    assert not root.exists() and approval.is_file()
+    assert root.is_dir() and approval.is_file()
     assert all("validation" not in path and "final" not in path
                for path in result["opened"])
