@@ -1,4 +1,29 @@
-# Estado vigente — primer arranque WF corregido solo para raíces futuras
+# Estado vigente — perfil WF `...03` preparado, permiso cerrado
+
+Desde `9efe521`, la rama `codex/oos-wf-cost-only-03-profile` contiene un
+perfil exclusivo para una eventual campaña íntegra nueva: dos C10, cortes
+2021/2022, semillas originales, 22 unidades y límites científicos/temporales
+fijados por el diseño original. La raíz `artifacts/oos-v12-wf-cost-only-03/`
+y el registro de aprobación `OOS-v1-2-wf-cost-03-approval.json` **no existen**.
+El comando público y el trabajador tienen el gate cerrado. Las pruebas
+sintéticas cubren primer arranque, Q0 aceptada y pausa, reingreso en otro
+proceso, rechazo de raíz huérfana/identidad alterada y fallo preledger
+durable. Suite: 428 passed; Ruff pasó. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-03-perfil.md) y
+[preflight vigilado](evidence/oos-v1-2-wf-cost-03-profile/preflight.json).
+
+El preflight de solo lectura del 29/10/2026 15:04 UTC quedó `blocked`:
+batería 33 % (<50 %) y permiso ausente; CA, memoria, disco, `Linger`, gestor,
+huellas, cortes y presupuesto sí pasaron en esa captura. Saldo global del día
+0/10.800 s y 8.100 s antes de reserva. La sesión fallida de `...02` se carga
+como 10.800 s en **su día** 27/10, documentado por consulta histórica de
+solo lectura. `...01` y `...02` conservan todas sus huellas. No se creó una
+raíz histórica nueva ni hubo entrenamiento; 2023/final siguen cerrados.
+La eliminación local previa de `.python-version` permanece sin incorporar.
+
+---
+
+# Estado anterior — primer arranque WF corregido solo para raíces futuras
 
 En `codex/oos-wf-cost-first-start-fix` se corrigió el orden del supervisor:
 con el bloqueo global tomado comprueba la existencia previa de la raíz y su

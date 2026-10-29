@@ -1,0 +1,16 @@
+{
+  "03": {
+    "approval_absent": true,
+    "root_absent": true
+  },
+  "oos-v12-wf-cost-only-01": {
+    "file_count": 15,
+    "manifest_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a",
+    "unchanged": true
+  },
+  "oos-v12-wf-cost-only-02": {
+    "file_count": 2,
+    "manifest_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd",
+    "unchanged": true
+  }
+}

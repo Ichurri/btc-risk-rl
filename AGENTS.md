@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Perfil WF nuevo `...03` preparado **solo como infraestructura sintética**
+  desde `9efe521`. Raíz prevista
+  `artifacts/oos-v12-wf-cost-only-03/` y registro independiente previsto
+  `docs/protocols/OOS-v1-2-wf-cost-03-approval.json`: ambos ausentes.
+  `MARKET_EXECUTION_ENABLED=False`, `REGISTRATION_SHA256=None`; comando público
+  y trabajador rechazan antes de cargar datos o crear artefactos. El perfil
+  conserva por huella las dos C10, semillas, cortes, 22 unidades y límites
+  originales. Ver `docs/hitos/OOS-v1-2-costo-cortes-03-perfil.md`.
+  `...01` y `...02` permanecen cerradas e intactas. La sesión fallida de
+  `...02` carga 10.800 s conservadores el 27/10/2026 en la contabilidad
+  compartida, no en días posteriores. **No activar `...03`, crear su raíz,
+  lanzar entrenamiento ni abrir validación/final** por este hito. Una
+  campaña requerirá autorización posterior, guardas y preflight nuevos.
 - Corrección prospectiva del primer arranque WF de reemplazo en
   `codex/oos-wf-cost-first-start-fix`: `run_units()` comprueba bajo el bloqueo
   global si la raíz ya existía **antes** de crear la bitácora. Rechaza raíces
