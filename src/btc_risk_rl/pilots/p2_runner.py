@@ -48,7 +48,8 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
     from btc_risk_rl.pilots.p2r_market import P2RMarketPermit, P2RMarketSettings
     from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
     from btc_risk_rl.pilots.p3_market import P3MarketPermit, P3MarketSettings
-    from btc_risk_rl.pilots.wf_cost import WFCostPermit, WFCostSettings
+    from btc_risk_rl.pilots.wf_cost import WFCostSettings
+    from btc_risk_rl.pilots.wf_permits import authorized_wf_permits
     if type(source) is SyntheticMarket and type(settings) in {P2SyntheticSettings, P3SyntheticSettings}:
         if permit is not None:
             raise PermissionError("Synthetic P2 cannot use market permit")
@@ -75,9 +76,12 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
         if n_d != 64 or not atomic_checkpoint:
             raise ValueError("P3 market unit requires D=64 and atomic checkpoint")
     elif type(source) is TrainingMarket and type(settings) is WFCostSettings:
-        if type(permit) is not WFCostPermit:
+        campaigns = authorized_wf_permits()
+        if type(permit) not in campaigns:
             raise PermissionError("WF cost market unit requires registered lease")
         permit.validate(settings, condition, run_id)
+        if Path(root).resolve() != (campaigns[type(permit)] / run_id).resolve():
+            raise PermissionError("WF cost unit root differs from registered campaign")
         n_d = 64 if n_d is None else n_d
         if n_d != 64 or not atomic_checkpoint:
             raise ValueError("WF cost unit requires D=64 and atomic checkpoint")

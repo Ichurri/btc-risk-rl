@@ -147,9 +147,9 @@ class Diagnostic:
             from btc_risk_rl.pilots.p2_market import P2MarketPermit
             from btc_risk_rl.pilots.p2r_market import P2RMarketPermit
             from btc_risk_rl.pilots.p3_market import P3MarketPermit
-            from btc_risk_rl.pilots.wf_cost import WFCostPermit
-            if type(permit) not in {P2MarketPermit, P2RMarketPermit, P3MarketPermit,
-                                    WFCostPermit}:
+            from btc_risk_rl.pilots.wf_permits import authorized_wf_permits
+            if type(permit) not in ({P2MarketPermit, P2RMarketPermit, P3MarketPermit}
+                                    | set(authorized_wf_permits())):
                 raise PermissionError("P2 market diagnostic requires registered permit")
             permit.validate_d(source, seed, run_id)
         else:
