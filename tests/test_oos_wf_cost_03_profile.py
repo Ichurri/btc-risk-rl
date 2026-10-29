@@ -119,6 +119,7 @@ def test_03_public_and_worker_reject_closed_gate_before_root_or_request(
 def test_03_forged_registration_still_rejected(tmp_path, monkeypatch):
     from btc_risk_rl.pilots import wf_cost_replacement_03_exec as profile
 
+    monkeypatch.setattr(profile, "CAMPAIGN", tmp_path / "oos-v12-wf-cost-only-03")
     approval = tmp_path / "approval.json"
     approval.write_text(json.dumps({"active": True, "campaign": profile.CAMPAIGN.name}))
     monkeypatch.setattr(profile, "REGISTRATION", approval)
