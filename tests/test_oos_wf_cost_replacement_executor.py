@@ -217,6 +217,79 @@ def test_replacement_supervisor_records_failure_before_ledger(tmp_path, monkeypa
     assert rows[-1]["status"] == "failed"
 
 
+def _synthetic_supervisor_guards(monkeypatch, units, root):
+    """Exercise the real supervisor entry and readiness without market I/O."""
+    monkeypatch.setattr(units, "CAMPAIGN", root)
+    monkeypatch.setattr(units, "require_campaign", lambda: None)
+    monkeypatch.setattr(units, "check_service_context", lambda **_kwargs: "ready")
+    monkeypatch.setattr(units, "inspect_host", lambda: {
+        "power": {"ac": True, "battery_percent": 100},
+        "memory_available_bytes": 5 * 1024**3,
+        "disk_free_bytes": 25 * 1024**3,
+        "linger": "yes", "user_manager": "running",
+    })
+    monkeypatch.setattr(units, "inspect_inputs", lambda: {
+        "ok": True, "sha256": {"synthetic": "fixture"},
+    })
+    monkeypatch.setattr(units, "inspect_budget", lambda: {
+        "ok": True, "remaining_before_reserve": 1000, "global_spent": 0,
+    })
+    monkeypatch.setattr(units, "build_fold_source", lambda fold: SimpleNamespace(
+        identity=lambda: {"fold": fold, "fixture": True},
+        route_ids=(0, 1), audit={"fit_count": 2},
+    ))
+    monkeypatch.setattr(units, "provenance", lambda _source: {"synthetic": True})
+    monkeypatch.setattr(units, "_unit_resources", lambda: {"phase": "unit"})
+    monkeypatch.setattr(units, "resource_ready",
+                        lambda host: host.get("phase") != "unit")
+
+
+def test_supervisor_first_start_accepts_absent_synthetic_root(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_replacement_units as units
+
+    root = tmp_path / "oos-v12-wf-cost-only-synthetic"
+    _synthetic_supervisor_guards(monkeypatch, units, root)
+    assert not root.exists()
+    assert units.run_units()["status"] == "ready"
+    state = json.loads((root / "ledger.jsonl").read_text().splitlines()[-1])
+    assert state["status"] == "ready" and state["units"] == []
+    assert state.get("pending") is None
+    rows = [json.loads(x) for x in (root / "sessions.jsonl").read_text().splitlines()]
+    assert [row["event"] for row in rows] == ["start", "end"]
+    assert rows[-1]["status"] == "ready"
+
+
+def test_supervisor_rejects_existing_root_without_ledger_unchanged(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_replacement_units as units
+
+    root = tmp_path / "oos-v12-wf-cost-only-synthetic"
+    root.mkdir()
+    marker = root / "historical-evidence.txt"
+    marker.write_text("preserve")
+    _synthetic_supervisor_guards(monkeypatch, units, root)
+    with pytest.raises(ValueError, match="root exists without a valid ledger"):
+        units.run_units()
+    assert list(root.iterdir()) == [marker]
+    assert marker.read_text() == "preserve"
+
+
+def test_supervisor_reentry_accepts_existing_root_with_ledger(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_replacement_units as units
+
+    root = tmp_path / "oos-v12-wf-cost-only-synthetic"
+    _synthetic_supervisor_guards(monkeypatch, units, root)
+    assert units.run_units()["status"] == "ready"
+    ledger = root / "ledger.jsonl"
+    first_state = json.loads(ledger.read_text().splitlines()[-1])
+    assert units.run_units()["status"] == "ready"
+    latest_state = json.loads(ledger.read_text().splitlines()[-1])
+    assert latest_state["identity"] == first_state["identity"]
+    assert latest_state["units"] == [] and latest_state.get("pending") is None
+    rows = [json.loads(x) for x in (root / "sessions.jsonl").read_text().splitlines()]
+    assert [row["event"] for row in rows] == ["start", "end", "start", "end"]
+    assert all(row["status"] == "ready" for row in rows if row["event"] == "end")
+
+
 def test_preflight_open_audit_excludes_protected_and_shared_csv():
     result = subprocess.run([sys.executable, "-m",
                              "scripts.audit_oos_wf_cost_replacement_preflight"],
