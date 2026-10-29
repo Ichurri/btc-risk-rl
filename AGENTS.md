@@ -1,6 +1,17 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Campaña WF `...03` autorizada en `7c74176` y **fallida durante la primera
+  Q0** el 29/10/2026: la sesión `oos-wf-cost-20261029-03-session-01.service`
+  terminó con código 1; ledger `failed`, cero unidades aceptadas, sin
+  checkpoint. El trabajador rechazó el permiso `...03` por la guarda de tipo
+  exacto de `complete_unit`. El gate `...03` se cerró prospectivamente en
+  `05adff0`; el JSON de autorización permanece solo como evidencia. Preservar
+  la raíz y journal `...03` intactos, **no reanudar ni reintentar**, no
+  iniciar unidad 1. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-03-fallo-Q0.md`. Las raíces y gates
+  `...01`/`...02` siguen congelados. Cualquier estudio nuevo necesita
+  corrección y prueba de integración, raíz y autorización nuevas.
 - Perfil WF nuevo `...03` preparado **solo como infraestructura sintética**
   desde `9efe521`. Raíz prevista
   `artifacts/oos-v12-wf-cost-only-03/` y registro independiente previsto

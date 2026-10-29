@@ -1,4 +1,30 @@
-# Estado vigente — perfil WF `...03` preparado, permiso cerrado
+# Estado vigente — WF `...03` falló durante Q0; permiso cerrado
+
+La campaña íntegra `...03` fue autorizada en `7c74176` con registro
+independiente. Tras esperar a batería ≥50 % con CA, la suite completa pasó
+(428 pruebas) y Ruff pasó. El [preflight vigilado nuevo](evidence/oos-v1-2-wf-cost-03-campaign/preflight-launch.json)
+dio `ready`, sin aperturas protegidas. Se inició **una sola** sesión
+`systemd --user` con `Restart=no`. Su trabajador rechazó el permiso propio
+`...03` en una guarda de tipo exacto antes de completar Q0. El servicio
+terminó `Result=exit-code`, el ledger quedó `failed`, cero unidades aceptadas
+y ningún checkpoint. No se inició la unidad 1. Ver el
+[informe](hitos/OOS-v1-2-costo-cortes-03-fallo-Q0.md) y la
+[auditoría](evidence/oos-v1-2-wf-cost-03-campaign/audit-failure.json).
+
+El gate `...03` se cerró prospectivamente en `05adff0`. El registro de
+autorización y la raíz fallida son evidencia, no permiso para reingreso.
+El cargo conservador del fallo consume el presupuesto global del 29/10;
+las mediciones reales de sesión y ledger se informan por separado.
+Las raíces `...01` y `...02` conservan todas sus huellas. Antes de considerar
+otro estudio se requiere corregir la incompatibilidad del permiso, probar
+la ruta real del trabajador hasta `complete_unit`, y preparar otra raíz y
+autorización. No reanudar `...03`, activar evaluación v1.2 ni abrir
+validación/final. La eliminación local de `.python-version` sigue fuera de
+los commits.
+
+---
+
+# Estado anterior — perfil WF `...03` preparado, permiso cerrado
 
 Desde `9efe521`, la rama `codex/oos-wf-cost-only-03-profile` contiene un
 perfil exclusivo para una eventual campaña íntegra nueva: dos C10, cortes

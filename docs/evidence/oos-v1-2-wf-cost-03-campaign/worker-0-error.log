@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_03_worker.py", line 39, in <module>
+    main()
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_03_worker.py", line 35, in main
+    complete_unit(source, settings, permit=permit, n_d=64, **request)
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/p2_runner.py", line 79, in complete_unit
+    raise PermissionError("WF cost market unit requires registered lease")
+PermissionError: WF cost market unit requires registered lease
