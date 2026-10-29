@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Corrección **prospectiva y solo sintética** de la ruta de permisos WF tras
+  el fallo `...03`: `complete_unit`, `SyntheticExperiment` y
+  `Diagnostic.bind` admiten por tipo exacto únicamente los permisos WF de
+  `...01`, `...02` y `...03`, con sus validaciones de lease. `complete_unit`
+  exige además la raíz de campaña correspondiente antes de escribir. Una
+  prueba atraviesa el trabajador real y Q0 con fuente controlada hasta un
+  checkpoint `after_q0` verificable; no es entrenamiento histórico. Los tres
+  gates siguen cerrados; **no reanudar ninguna raíz fallida, crear permiso
+  nuevo ni abrir validación/final**. Ver
+  `docs/hitos/OOS-WF-permit-integration-prospectiva.md`.
 - Campaña WF `...03` autorizada en `7c74176` y **fallida durante la primera
   Q0** el 29/10/2026: la sesión `oos-wf-cost-20261029-03-session-01.service`
   terminó con código 1; ledger `failed`, cero unidades aceptadas, sin

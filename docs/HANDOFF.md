@@ -1,4 +1,28 @@
-# Estado vigente — WF `...03` falló durante Q0; permiso cerrado
+# Estado vigente — integración WF corregida prospectivamente; gates cerrados
+
+Se corrigieron las tres guardas de tipo exacto que rechazaban los permisos
+WF específicos en `complete_unit`, `SyntheticExperiment` y `Diagnostic.bind`.
+La lista autorizada contiene **solo** los tipos exactos de `...01`, `...02`
+y `...03`; cada lease conserva su comprobación de registro, ledger, token,
+identidad y fuente. `complete_unit` exige además que la raíz corresponda
+al perfil antes de crear archivos. Una prueba nueva recorre el trabajador
+real, Q0 y el verificador de checkpoint usando rutas y datos fabricados;
+prueba también permiso falso, raíz ajena, semilla/condición alteradas y gate
+cerrado. La suite completa dio 435 passed y Ruff pasó. Ver
+[informe](hitos/OOS-WF-permit-integration-prospectiva.md) y
+[evidencia](evidence/oos-wf-permit-integration/verification.json).
+
+Las raíces históricas `...01`, `...02` y `...03` coinciden con sus huellas
+congeladas (15/15, 2/2 y 10/10 archivos). Sus gates siguen cerrados y los
+trabajadores rechazan antes de leer solicitudes. Esta corrección no reabre
+`...03`, no crea una nueva campaña ni mide Q0 histórica. La eliminación
+local de `.python-version` permanece fuera de los commits. Siguiente
+decisión: revisar la prueba de integración y, solo mediante otro protocolo,
+raíz y autorización, considerar una medición nueva.
+
+---
+
+# Estado anterior — WF `...03` falló durante Q0; permiso cerrado
 
 La campaña íntegra `...03` fue autorizada en `7c74176` con registro
 independiente. Tras esperar a batería ≥50 % con CA, la suite completa pasó
