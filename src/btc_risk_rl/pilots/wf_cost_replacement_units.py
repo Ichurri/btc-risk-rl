@@ -42,7 +42,7 @@ from btc_risk_rl.pilots.worker import write_json
 
 
 def _launch_readiness():
-    """No output writes. Require every host and input guard before root creation."""
+    """Require host and input guards before loading fold sources."""
     require_campaign()
     check_service_context(require_linger=True)
     host = inspect_host()
@@ -53,8 +53,6 @@ def _launch_readiness():
     budget = inspect_budget()
     if not inputs["ok"] or not budget["ok"] or budget["remaining_before_reserve"] < 120:
         raise ValueError("WF cost input or global budget preflight blocked")
-    if CAMPAIGN.exists() and not (CAMPAIGN / "ledger.jsonl").is_file():
-        raise ValueError("WF cost root exists without a valid ledger")
     return inputs, budget
 
 
@@ -114,6 +112,10 @@ def run_units():
     """Run only under a registered user service; never called by preflight."""
     require_campaign()  # The disabled gate precedes every root or journal write.
     with P2RSharedBudget(CAMPAIGN.parent, CAMPAIGN.name, now=time.time()) as shared:
+        # Check the original root state while holding the shared lock, before
+        # the durable session journal creates it on a genuine first launch.
+        if CAMPAIGN.exists() and not (CAMPAIGN / "ledger.jsonl").is_file():
+            raise ValueError("WF cost root exists without a valid ledger")
         CAMPAIGN.mkdir(exist_ok=True)
         with WFCostSessionJournal(CAMPAIGN / "sessions.jsonl",
                                   campaign=CAMPAIGN.name) as sessions:
