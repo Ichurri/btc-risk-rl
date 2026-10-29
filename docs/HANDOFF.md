@@ -1,4 +1,27 @@
-# Estado vigente — integración WF corregida prospectivamente; gates cerrados
+# Estado vigente — Q0→Q/A/B+D verificado con fuente controlada; gates cerrados
+
+Desde `b52f1a9`, la prueba `test_wf_permit_integration.py` llama dos veces
+al trabajador real en el mismo proceso de prueba. La primera llamada cierra
+Q0 y produce `after_q0`; una nueva solicitud y lease sintéticos permiten
+que la segunda cargue el checkpoint, ejecute Q/A/B+D y produzca
+`after_dual_and_D`. Se verifican el hash y contenido del checkpoint, los
+contadores, el verificador de cierre y la conservación del checkpoint Q0.
+Checkpoint alterado, token, PID, semilla, condición y ruta previa incoherentes
+se rechazan sin producir la unidad 1. No se sustituyeron las funciones de
+algoritmo o persistencia solicitadas. [Informe](hitos/OOS-WF-QABD-integracion-sintetica.md)
+y [evidencia](evidence/oos-wf-qabd-integration/verification.json).
+
+La prueba focal dio 14 passed, la suite completa 442 passed y Ruff pasó.
+Las raíces `...01`–`...03` conservan sus huellas (15/15, 2/2 y 10/10) y los
+tres gates están cerrados. La prueba usa precios fabricados; no acredita
+reingreso entre procesos, supervisión `systemd`, tiempos históricos ni
+aceptación de una campaña. La eliminación local de `.python-version`
+permanece fuera de los commits. **Detenerse aquí para revisión; no preparar
+`...04` ni activar permiso alguno.**
+
+---
+
+# Estado anterior — integración WF corregida prospectivamente; gates cerrados
 
 Se corrigieron las tres guardas de tipo exacto que rechazaban los permisos
 WF específicos en `complete_unit`, `SyntheticExperiment` y `Diagnostic.bind`.

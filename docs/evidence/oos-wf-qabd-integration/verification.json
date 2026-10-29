@@ -1,0 +1,26 @@
+{
+  "code_commit": "b52f1a90645557818bd1d909b32790e4834838cc",
+  "gates_closed": {
+    "01": true,
+    "02": true,
+    "03": true
+  },
+  "historical_03_approval_sha256": "6f877eaf18663f0427ef9f5ad9e412eeec6da761d7355bbc110563e784c6c4b4",
+  "pytest_focal_log_sha256": "413059f9ceb4f9c08d3e02717c92c2a3faba4064358fd68543dc0303ed6ca510",
+  "pytest_full_log_sha256": "3817fa1c0a97380380aafc9e5c06379d516133796ab87297e711f91e51b421c3",
+  "roots": {
+    "oos-v12-wf-cost-only-01": {
+      "files": 15,
+      "unchanged": true
+    },
+    "oos-v12-wf-cost-only-02": {
+      "files": 2,
+      "unchanged": true
+    },
+    "oos-v12-wf-cost-only-03": {
+      "files": 10,
+      "unchanged": true
+    }
+  },
+  "ruff_log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+}

@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Extensión **solo sintética** de la integración WF desde `3ee6ebc`: la
+  prueba ahora ejecuta Q0, carga su checkpoint mediante el trabajador de
+  unidad 1, completa Q/A/B+D y verifica `after_dual_and_D`, contadores,
+  hashes y rechazos de lease/checkpoint alterados. Es el mismo proceso de
+  prueba, con una fuente controlada; no verifica reingreso `systemd`, costo
+  histórico ni aceptación de supervisor. Los gates `...01`–`...03` siguen
+  cerrados y sus raíces intactas. Ver
+  `docs/hitos/OOS-WF-QABD-integracion-sintetica.md`. **Detenerse antes de
+  preparar `...04`; no ejecutar entrenamiento histórico ni abrir 2023/final.**
 - Corrección **prospectiva y solo sintética** de la ruta de permisos WF tras
   el fallo `...03`: `complete_unit`, `SyntheticExperiment` y
   `Diagnostic.bind` admiten por tipo exacto únicamente los permisos WF de
