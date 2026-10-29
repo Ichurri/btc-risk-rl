@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Corrección prospectiva del primer arranque WF de reemplazo en
+  `codex/oos-wf-cost-first-start-fix`: `run_units()` comprueba bajo el bloqueo
+  global si la raíz ya existía **antes** de crear la bitácora. Rechaza raíces
+  previas sin ledger, incluida `...02`, sin escribirles; los fallos posteriores
+  al inicio de una raíz nueva siguen en `sessions.jsonl`. Pruebas solo
+  sintéticas; ver `docs/hitos/OOS-v1-2-costo-cortes-reemplazo-primer-arranque-correccion.md`.
+  El gate `MARKET_EXECUTION_ENABLED=False` y el permiso histórico `...02`
+  permanece cerrado. **No reingresar, reintentar ni modificar `...01` o
+  `...02`; una campaña nueva requiere otra raíz y autorización.**
 - Campaña WF de reemplazo `...02` autorizada en `743e51b` y **detenida antes
   de Q0** el 27/10/2026 (America/La_Paz). El preflight previo fue `ready`,
   pero la primera sesión `systemd --user` falló al comprobar su propia raíz:

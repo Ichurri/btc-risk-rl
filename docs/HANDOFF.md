@@ -1,4 +1,22 @@
-# Estado vigente — WF `...02` falló antes de Q0; permiso cerrado
+# Estado vigente — primer arranque WF corregido solo para raíces futuras
+
+En `codex/oos-wf-cost-first-start-fix` se corrigió el orden del supervisor:
+con el bloqueo global tomado comprueba la existencia previa de la raíz y su
+ledger **antes** de crear `sessions.jsonl`. Una raíz ausente llega a ledger y
+pausa sintética; una raíz previa sin ledger se rechaza sin escribirle; el
+reingreso con ledger y la bitácora de fallos anteriores al ledger siguen
+verificados. La suite terminó 419 passed y Ruff pasó. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-reemplazo-primer-arranque-correccion.md)
+y [evidencias](evidence/oos-v1-2-wf-first-start-fix/COMMANDS.md).
+
+**La campaña `...02` sigue fallida y su permiso cerrado.** La corrección no
+autoriza reanudarla ni tocar `...01`. No hubo entrenamiento ni lectura de
+validación/final. Una futura campaña necesita raíz y autorización nuevas.
+La eliminación local de `.python-version` permanece sin incorporar.
+
+---
+
+# Estado anterior — WF `...02` falló antes de Q0; permiso cerrado
 
 La campaña íntegra `...02` recibió autorización independiente en `743e51b`.
 La suite previa aprobó 415 pruebas (una omitida) y Ruff; el
