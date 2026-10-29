@@ -108,13 +108,17 @@ def inspect_candidate(root=ROOT):
         raise ValueError("WF cost 03 gate unexpectedly enabled")
     campaign = root / spec["campaign_root"]
     approval = root / spec["approval_record"]
-    blockers = ["no active approval"]
+    blockers = []
     if campaign.exists():
         blockers.append("new campaign root already exists")
-    if approval.exists():
-        blockers.append("new approval record already exists")
+    if approval.exists() and not approval.is_file():
+        blockers.append("approval record path is not a file")
+    if approval.is_file():
+        opened.append(approval)
     opened = sorted(set(opened))
-    return dict(status="blocked", blockers=blockers,
+    status = "blocked" if blockers else ("registered" if approval.is_file()
+                                          else "awaiting_approval")
+    return dict(status=status, blockers=blockers,
                 replacement_root=str(campaign), approval_record=str(approval),
                 root_absent=not campaign.exists(), approval_absent=not approval.exists(),
                 historical_artifacts_verified=True,

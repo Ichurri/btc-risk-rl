@@ -5,8 +5,10 @@ import json
 import os
 import time
 from dataclasses import asdict
+from datetime import datetime
 from pathlib import Path
 
+from btc_risk_rl.pilots.budget import LA_PAZ
 from btc_risk_rl.pilots.protocol import ROOT
 from btc_risk_rl.pilots.wf_cost import (
     CONFIG,
@@ -41,9 +43,9 @@ from btc_risk_rl.pilots.wf_cost_replacement_04 import SPEC, inspect_candidate
 
 CAMPAIGN = ROOT / "artifacts/oos-v12-wf-cost-only-04"
 REGISTRATION = ROOT / "docs/protocols/OOS-v1-2-wf-cost-04-approval.json"
-# A profile is not a campaign authorization. No 04 registration exists.
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+# Authorization is restricted to this new profile and no earlier WF root.
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "f9230d841757a3cf99ce79c81e50ad2c9794bf4615781fae3e0a4f2c1c74275d"
 
 
 def guard_fold_path(path):
@@ -75,6 +77,10 @@ def code_sha256():
     return hashlib.sha256(json.dumps(mapping, sort_keys=True).encode()).hexdigest()
 
 
+def _local_day():
+    return datetime.now(LA_PAZ).date().isoformat()
+
+
 def require_campaign():
     """Reject before requests, market input, root creation or session writes."""
     if not MARKET_EXECUTION_ENABLED or REGISTRATION_SHA256 is None:
@@ -89,8 +95,12 @@ def require_campaign():
             or entry.get("design_sha256") != digest(DESIGN)
             or entry.get("replacement_spec_sha256") != digest(SPEC)
             or entry.get("code_sha256") != code_sha256()
-            or entry.get("training_shard_manifest_sha256") != SHARD_MANIFEST_SHA256):
+            or entry.get("training_shard_manifest_sha256") != SHARD_MANIFEST_SHA256
+            or entry.get("not_before_day_la_paz") != "2026-10-30"
+            or entry.get("stop_after_first_accepted_q0") is not True):
         raise PermissionError("WF replacement registration inconsistent")
+    if _local_day() < entry["not_before_day_la_paz"]:
+        raise PermissionError("WF replacement before authorized day")
     return entry
 
 
@@ -110,7 +120,7 @@ def inspect_budget(*, now=None):
 
 
 def inspect_preflight():
-    """Read-only snapshot; the absent replacement permission is a blocker."""
+    """Read-only snapshot; every launch guard is checked again by the service."""
     from btc_risk_rl.pilots.budget import utc
     from btc_risk_rl.pilots.wf_cost_units import resource_ready
 

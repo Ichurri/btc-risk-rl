@@ -9,20 +9,31 @@ import time
 from dataclasses import asdict
 from pathlib import Path
 
+import pytest
 import torch
 
 
-def test_04_identity_and_closed_gate():
+def _root_hashes(root):
+    return {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(root.rglob("*")) if path.is_file()}
+
+
+def test_04_identity_and_registered_gate():
     from btc_risk_rl.pilots import wf_cost_replacement_04_exec as profile
     from btc_risk_rl.pilots.wf_cost_replacement_04 import inspect_candidate
     from btc_risk_rl.pilots.wf_permits import authorized_wf_permits
 
     assert profile.CAMPAIGN.name == "oos-v12-wf-cost-only-04"
     assert profile.REGISTRATION.name == "OOS-v1-2-wf-cost-04-approval.json"
-    assert not profile.CAMPAIGN.exists()
-    assert not profile.REGISTRATION.exists()
-    assert profile.MARKET_EXECUTION_ENABLED is False
-    assert profile.REGISTRATION_SHA256 is None
+    assert profile.REGISTRATION.exists()
+    assert profile.MARKET_EXECUTION_ENABLED is True
+    assert profile.REGISTRATION_SHA256 == profile.digest(profile.REGISTRATION)
+    approval = json.loads(profile.REGISTRATION.read_text())
+    assert approval["approved_base_commit"] == "ce62fed"
+    assert approval["campaign"] == profile.CAMPAIGN.name
+    assert approval["code_sha256"] == profile.code_sha256()
+    assert approval["not_before_day_la_paz"] == "2026-10-30"
+    assert approval["stop_after_first_accepted_q0"] is True
     assert authorized_wf_permits()[profile.WFCostPermit] == profile.CAMPAIGN
     assert profile.roster() == (("2021", 276696733, "C10"),
                                 ("2022", 498614892, "C10"))
@@ -31,32 +42,58 @@ def test_04_identity_and_closed_gate():
     candidate = inspect_candidate()
     assert candidate["historical_artifacts_verified"]
     assert candidate["failed_03_pending"]
-    assert candidate["root_absent"] and candidate["approval_absent"]
+    assert candidate["root_absent"] is (not profile.CAMPAIGN.exists())
+    assert not candidate["approval_absent"]
 
 
-def test_04_public_and_worker_commands_reject_before_root():
+def test_04_public_and_worker_commands_reject_closed_gate_before_root():
     from btc_risk_rl.pilots import wf_cost_replacement_04_exec as profile
 
+    before = _root_hashes(profile.CAMPAIGN)
     for command in (
-        [sys.executable, "scripts/run_oos_wf_cost_04.py", "--run"],
-        [sys.executable, "-m", "btc_risk_rl.pilots.wf_cost_replacement_04_worker",
-         "/tmp/nonexistent-wf04-request.json"],
+        [sys.executable, "-c", "import sys; from btc_risk_rl.pilots import "
+         "wf_cost_replacement_04_exec as p; p.MARKET_EXECUTION_ENABLED=False; "
+         "from scripts.run_oos_wf_cost_04 import main; "
+         "sys.argv=['run','--run']; main()"],
+        [sys.executable, "-c", "import sys; from btc_risk_rl.pilots import "
+         "wf_cost_replacement_04_exec as p; p.MARKET_EXECUTION_ENABLED=False; "
+         "from btc_risk_rl.pilots.wf_cost_replacement_04_worker import main; "
+         "sys.argv=['worker','/tmp/nonexistent-wf04-request.json']; main()"],
     ):
         result = subprocess.run(command, capture_output=True, text=True, check=False)
         assert result.returncode != 0
         assert "NOT AUTHORIZED" in result.stderr
-    assert not profile.CAMPAIGN.exists()
+    assert _root_hashes(profile.CAMPAIGN) == before
+
+
+def test_04_registration_and_day_guards_reject_forgery(monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_replacement_04_exec as profile
+
+    before = _root_hashes(profile.CAMPAIGN)
+    monkeypatch.setattr(profile, "_local_day", lambda: "2026-10-29")
+    with pytest.raises(PermissionError, match="before authorized day"):
+        profile.require_campaign()
+    monkeypatch.setattr(profile, "_local_day", lambda: "2026-10-30")
+    assert profile.require_campaign()["campaign"] == profile.CAMPAIGN.name
+    monkeypatch.setattr(profile, "REGISTRATION_SHA256", "0" * 64)
+    with pytest.raises(PermissionError, match="hash mismatch"):
+        profile.require_campaign()
+    assert _root_hashes(profile.CAMPAIGN) == before
 
 
 def test_04_watched_preflight_never_opens_protected_rows():
+    from btc_risk_rl.pilots import wf_cost_replacement_04_exec as profile
+
     result = subprocess.run(
         [sys.executable, "-m", "scripts.audit_oos_wf_cost_04_preflight"],
         capture_output=True, text=True, check=False,
     )
     assert result.returncode == 0, result.stderr
     payload = json.loads(result.stdout)
-    assert payload["preflight"]["status"] == "blocked"
-    assert payload["preflight"]["root_exists"] is False
+    assert payload["preflight"]["status"] == (
+        "blocked" if payload["preflight"]["blockers"] else "ready")
+    assert payload["preflight"]["market_execution_enabled"] is True
+    assert payload["preflight"]["root_exists"] is profile.CAMPAIGN.exists()
     assert payload["protected_or_shared_csv_opened"] is False
     assert payload["market_trajectories_generated"] == 0
     assert payload["optimizer_steps"] == 0
