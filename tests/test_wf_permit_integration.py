@@ -95,6 +95,89 @@ def test_worker_q0_reaches_real_checkpoint_with_controlled_source(tmp_path, monk
                               diagnostic_n=64)[1] == "after_q0"
 
 
+def _admit_unit_one(case, monkeypatch):
+    """Model a new supervisor lease after Q0 without replacing the worker."""
+    point = case.work / "checkpoint-0"
+    assert point.is_dir()
+    case.request["unit"] = 1
+    case.request["previous"] = str(point)
+    case.path = case.work / "request-1.json"
+    case.path.write_text(json.dumps(case.request))
+    case.state["runs"] = {"wf-2021": {"checkpoint": str(point)}}
+    case.state["pending"]["unit"] = 1
+    case.state["pending"]["request_sha256"] = hashlib.sha256(case.path.read_bytes()).hexdigest()
+    case.persist()
+    monkeypatch.setattr(sys, "argv", ["wf_cost_replacement_03_worker", str(case.path)])
+
+
+def test_worker_continues_q0_through_qabd_and_d_checkpoint(tmp_path, monkeypatch):
+    from btc_risk_rl.agents.checkpoint import provenance
+    from btc_risk_rl.pilots.p2r_units import _verify_completion
+
+    case = _worker_case(tmp_path, monkeypatch)
+    case.worker.main()
+    first = case.work / "checkpoint-0"
+    first_sha = hashlib.sha256((first / "state.pt").read_bytes()).hexdigest()
+    _admit_unit_one(case, monkeypatch)
+    case.worker.main()
+
+    point = case.work / "checkpoint-1"
+    payload = json.loads((case.work / "unit-1.json").read_text())
+    manifest = json.loads((point / "manifest.json").read_text())
+    state = torch.load(point / "state.pt", map_location="cpu", weights_only=True)
+    assert manifest["boundary"] == "after_dual_and_D"
+    assert manifest["state_sha256"] == hashlib.sha256((point / "state.pt").read_bytes()).hexdigest()
+    assert hashlib.sha256((first / "state.pt").read_bytes()).hexdigest() == first_sha
+    assert payload["resources"] == {
+        "trajectories": 6, "transitions": 1080,
+        "diagnostic_trajectories": 64, "diagnostic_transitions": 11520,
+        "actor_updates": 2, "critic_updates": 2,
+    }
+    assert state["attrs"]["next_iteration"] == 1
+    assert state["attrs"]["boundary"] == "after_dual_and_D"
+    assert payload["report"]["market_training_executed"] is True
+    assert _verify_completion(case.work, 1, case.settings, "C10", "wf-2021",
+                              {"status": "passed"}, provenance(case.source),
+                              diagnostic_n=64)[1] == "after_dual_and_D"
+
+
+@pytest.mark.parametrize("change, error", [
+    ("checkpoint", "Checkpoint schema/hash mismatch"),
+    ("permit", "No active WF replacement supervisor lease"),
+    ("pid", "No active WF replacement supervisor lease"),
+    ("seed", "WF replacement request does not match pending unit"),
+    ("condition", "WF replacement request does not match pending unit"),
+    ("previous", "WF replacement request does not match pending unit"),
+])
+def test_unit_one_rejects_changed_checkpoint_or_lease(tmp_path, monkeypatch, change, error):
+    case = _worker_case(tmp_path, monkeypatch)
+    case.worker.main()
+    _admit_unit_one(case, monkeypatch)
+    if change == "checkpoint":
+        with (case.work / "checkpoint-0/state.pt").open("ab") as stream:
+            stream.write(b"tampered fixture checkpoint")
+    elif change == "permit":
+        case.request["token"] = "forged-unit-one-lease"
+    elif change == "pid":
+        case.state["pending"]["supervisor_pid"] += 1
+    elif change == "seed":
+        case.request["settings"]["seed"] = 498614892
+    elif change == "condition":
+        case.request["condition"] = "C5"
+    elif change == "previous":
+        case.request["previous"] = str(tmp_path / "foreign-checkpoint")
+    if change not in {"checkpoint", "pid"}:
+        case.path.write_text(json.dumps(case.request))
+        case.state["pending"]["request_sha256"] = hashlib.sha256(
+            case.path.read_bytes()).hexdigest()
+    if change != "checkpoint":
+        case.persist()
+    with pytest.raises((PermissionError, ValueError), match=error):
+        case.worker.main()
+    assert not (case.work / "checkpoint-1").exists()
+    assert not (case.work / "unit-1.json").exists()
+
+
 @pytest.mark.parametrize("change", ["token", "root", "seed", "condition"])
 def test_worker_rejects_forged_lease_or_identity(tmp_path, monkeypatch, change):
     case = _worker_case(tmp_path, monkeypatch)
