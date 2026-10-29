@@ -215,6 +215,7 @@ def test_only_named_wf_permit_types_are_listed(tmp_path, monkeypatch):
     from btc_risk_rl.agents.trainer import SyntheticExperiment
     from btc_risk_rl.pilots import wf_cost
     from btc_risk_rl.pilots import wf_cost_replacement_03_exec as third
+    from btc_risk_rl.pilots import wf_cost_replacement_04_exec as fourth
     from btc_risk_rl.pilots import wf_cost_replacement_exec as replacement
     from btc_risk_rl.pilots.p2 import Diagnostic
     from btc_risk_rl.pilots.p2_runner import complete_unit
@@ -223,6 +224,7 @@ def test_only_named_wf_permit_types_are_listed(tmp_path, monkeypatch):
     case = _worker_case(tmp_path, monkeypatch)
     assert set(authorized_wf_permits()) == {
         wf_cost.WFCostPermit, replacement.WFCostPermit, third.WFCostPermit,
+        fourth.WFCostPermit,
     }
 
     class Forged(third.WFCostPermit):
