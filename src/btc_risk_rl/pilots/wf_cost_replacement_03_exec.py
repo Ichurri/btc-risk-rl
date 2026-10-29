@@ -41,9 +41,9 @@ from btc_risk_rl.pilots.wf_cost_replacement_03 import SPEC, inspect_candidate
 
 CAMPAIGN = ROOT / "artifacts/oos-v12-wf-cost-only-03"
 REGISTRATION = ROOT / "docs/protocols/OOS-v1-2-wf-cost-03-approval.json"
-# Separate profile: market execution remains disabled until new approval.
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+# Authorized exclusively for the registered WF cost 03 campaign.
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "6f877eaf18663f0427ef9f5ad9e412eeec6da761d7355bbc110563e784c6c4b4"
 
 
 def guard_fold_path(path):
