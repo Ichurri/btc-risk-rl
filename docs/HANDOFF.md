@@ -1,4 +1,25 @@
-# Estado vigente — perfil WF `...04` preparado; permiso cerrado
+# Estado vigente — WF `...04` autorizado; esperar al 30/10 local
+
+Santiago autorizó exclusivamente la campaña WF `...04` conforme al perfil
+`ce62fed`. El [registro independiente](protocols/OOS-v1-2-wf-cost-04-approval.json)
+y el gate `...04` se fijaron en `232e7dc`; la raíz histórica aún no existe.
+El registro impide ejecutar antes del **30/10/2026 America/La_Paz**. El
+29/10 el fallo `...03` agota los 10.800 s globales, de modo que no se lanza
+ninguna unidad ese día. Los gates `...01`–`...03` siguen cerrados y sus raíces
+congeladas. La eliminación local de `.python-version` no se incorpora.
+
+Siguiente acción ya autorizada: en el próximo día local admisible, suite
+completa y Ruff; inmediatamente, preflight vigilado nuevo y todas las guardas
+en `ready`. Solo entonces una sesión `systemd --user` con `Restart=no` hasta
+**Q0 aceptada**. Compartir ledger `ready` sin `pending`, checkpoint
+`after_q0` y SHA-256, `InvocationID`, bitácora, tiempos, cargos y huellas de
+las tres raíces previas. No iniciar unidad 1. Si alguna guarda falla, no
+lanzar; si la sesión falla, cerrar prospectivamente el gate `...04`.
+Ver [nota de autorización](hitos/OOS-v1-2-costo-cortes-04-autorizacion.md).
+
+---
+
+# Estado anterior — perfil WF `...04` preparado; permiso cerrado
 
 El perfil independiente `...04` conserva las dos C10, los cortes 2021/2022,
 semillas 276696733/498614892, 22 unidades y los límites científicos y

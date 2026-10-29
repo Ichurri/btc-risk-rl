@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- La campaña WF `...04` recibió autorización específica de Santiago en
+  `232e7dc`. El registro independiente fija el perfil `ce62fed`, código,
+  protocolo, diseño y derivado H1. Solo el gate `...04` está activo; `...01`–
+  `...03` siguen cerrados e intactos. El permiso contiene la guarda
+  `not_before_day_la_paz=2026-10-30`: **no iniciar el 29/10**, cuyo saldo
+  global es cero. En el siguiente día local disponible, ejecutar suite
+  completa y Ruff y luego preflight vigilado nuevo. Solo con todas las
+  puertas `ready` se permite una sesión `systemd --user`, `Restart=no`, que
+  se detiene tras la primera Q0 aceptada. Auditar y compartir Q0 antes de
+  unidad 1. Ante fallo, cerrar prospectivamente `...04` y conservar
+  artefactos. Ver `docs/protocols/OOS-v1-2-wf-cost-04-approval.json` y
+  `docs/hitos/OOS-v1-2-costo-cortes-04-autorizacion.md`. Validación/final y
+  evaluación v1.2 permanecen fuera del alcance.
 - Perfil WF `...04` preparado prospectivamente desde `2d3b6a4` con raíz
   `artifacts/oos-v12-wf-cost-only-04/` y aprobación independiente
   `docs/protocols/OOS-v1-2-wf-cost-04-approval.json`, **ambas ausentes**.
