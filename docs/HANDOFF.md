@@ -1,4 +1,25 @@
-# Estado vigente — Q0→Q/A/B+D verificado con fuente controlada; gates cerrados
+# Estado vigente — perfil WF `...04` preparado; permiso cerrado
+
+El perfil independiente `...04` conserva las dos C10, los cortes 2021/2022,
+semillas 276696733/498614892, 22 unidades y los límites científicos y
+temporales originales. La raíz histórica y el nuevo registro de aprobación
+siguen ausentes; el gate público y el del trabajador están cerrados. La prueba
+con fuente sintética ejecutó Q0 y la unidad 1 en trabajadores distintos,
+reabrió el ledger, verificó `after_q0` y `after_dual_and_D`, contadores y cadena
+de hashes. No acredita entrenamiento histórico ni una sesión `systemd`.
+
+El [preflight vigilado](evidence/oos-v1-2-wf-cost-04-profile/preflight.json)
+del 29/10/2026 dio `blocked`: el fallo histórico de `...03` carga 10.800 s
+globales ese día y falta el permiso independiente. Alimentación, memoria,
+disco, `Linger`, gestor, entradas y huellas pasaron en esa medición. Los
+archivos abiertos constan en la captura; no se abrieron CSV H1 compartidos,
+validación ni prueba final. Las raíces `...01`–`...03` coinciden con sus
+huellas fijadas. Ver [informe](hitos/OOS-v1-2-costo-cortes-04-perfil.md).
+No activar permiso, crear la raíz histórica ni iniciar unidades por este hito.
+
+---
+
+# Estado anterior — Q0→Q/A/B+D verificado con fuente controlada; gates cerrados
 
 Desde `b52f1a9`, la prueba `test_wf_permit_integration.py` llama dos veces
 al trabajador real en el mismo proceso de prueba. La primera llamada cierra

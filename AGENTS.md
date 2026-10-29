@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Perfil WF `...04` preparado prospectivamente desde `2d3b6a4` con raíz
+  `artifacts/oos-v12-wf-cost-only-04/` y aprobación independiente
+  `docs/protocols/OOS-v1-2-wf-cost-04-approval.json`, **ambas ausentes**.
+  `MARKET_EXECUTION_ENABLED=False` y `REGISTRATION_SHA256=None`; el comando
+  público y el trabajador rechazan antes de leer mercado o crear la raíz.
+  Conserva exactamente las dos C10, semillas, cortes, 22 unidades y límites
+  del estudio WF. La integración Q0→unidad 1 con reingreso fue solo sintética.
+  El preflight vigilado del 29/10/2026 quedó `blocked`: la campaña fallida
+  `...03` consume conservadoramente los 10.800 s globales de ese día y falta
+  aprobación. Las raíces `...01`–`...03` conservan sus huellas y gates
+  cerrados. Ver `docs/hitos/OOS-v1-2-costo-cortes-04-perfil.md`.
+  **No activar `...04`, crear aprobación/raíz histórica, iniciar unidades,
+  reutilizar artefactos anteriores ni abrir validación/final** por este hito.
 - Extensión **solo sintética** de la integración WF desde `3ee6ebc`: la
   prueba ahora ejecuta Q0, carga su checkpoint mediante el trabajador de
   unidad 1, completa Q/A/B+D y verifica `after_dual_and_D`, contadores,
