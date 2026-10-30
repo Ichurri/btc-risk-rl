@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...04` aceptó **solo la primera Q0** el 30/10/2026 local: una sesión
+  `systemd --user` con `Restart=no` cerró `Result=success`; ledger `ready`,
+  1/22 unidades, `pending=null`, checkpoint íntegro `after_q0`. No se inició
+  unidad 1. Q0 consumió 28,567081 s globales contando ledger y tramo de
+  bitácora sin solapamiento. Las raíces `...01`–`...03` conservan sus huellas.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-04-Q0-auditoria.md` y evidencia
+  `docs/evidence/oos-v1-2-wf-cost-04-q0-20261030/`. **Detenerse tras Q0 para
+  revisión; no iniciar unidad 1, validación, final ni v1.2 por este hito.**
+  El gate `...04` queda activo para una continuación posterior conforme al
+  protocolo, pero este hito no ejecuta más unidades.
 - Nueva comprobación WF `...04` del **29/10/2026 local** desde `b386334`:
   suite completa 447 passed y Ruff pasó; el preflight vigilado quedó
   `blocked` por memoria disponible 3.750.830.080 B (<4 GiB), presupuesto

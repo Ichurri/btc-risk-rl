@@ -1,0 +1,4 @@
+2026-10-30T01:49:26.605455-04:00 debian systemd[1547]: Starting oos-wf-cost-20261030-04-session-01.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_04.py --run...
+2026-10-30T01:49:26.647322-04:00 debian systemd[1547]: Started oos-wf-cost-20261030-04-session-01.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_04.py --run.
+2026-10-30T01:49:56.466937-04:00 debian uv[20336]: {"status": "ready", "units": 1}
+2026-10-30T01:49:56.757913-04:00 debian systemd[1547]: oos-wf-cost-20261030-04-session-01.service: Consumed 31.350s CPU time, 458.4M memory peak.

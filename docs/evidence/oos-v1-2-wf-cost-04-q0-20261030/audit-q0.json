@@ -1,0 +1,175 @@
+{
+  "accepted_units": 1,
+  "budget_accounting": {
+    "closure_reserve_seconds": 2700,
+    "daily_global_limit_seconds": 10800,
+    "day_la_paz": "2026-10-30",
+    "external_campaigns_seconds": 0.0,
+    "note": "inspect_budget excludes the current campaign; own ledger and uncovered session interval are added once.",
+    "own_ledger_seconds": 27.347102880477905,
+    "own_session_gap_seconds": 1.219977855682373,
+    "remaining_global_before_reserve_seconds": 8071.43291926384,
+    "total_global_charged_seconds": 28.56708073616028
+  },
+  "budget_after": {
+    "active_campaigns": [],
+    "day_la_paz": "2026-10-30",
+    "global_spent": 0.0,
+    "ok": true,
+    "remaining_before_reserve": 8100.0,
+    "sources": [
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+        "status": "ready"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p0-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-approved-v2/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p3-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+        "status": "completed"
+      }
+    ]
+  },
+  "campaign": "oos-v12-wf-cost-only-04",
+  "checkpoint": {
+    "attrs": {
+      "actor_updates": 0,
+      "boundary": "after_q0",
+      "critic_updates": 0,
+      "next_iteration": 0
+    },
+    "boundary": "after_q0",
+    "manifest_sha256": "240eccfa20a2caca415b1a56c341275e6207244d8b40a6f37ad93e324d3dcdbb",
+    "state_sha256": "0b37a844f6fef063ab07f792c61fc0a508cb43675f809e9c9ce885c45dcd1d28"
+  },
+  "invocation_id": "9ea19b05c8584dcb8dc8cfccbcc2e032",
+  "ledger": {
+    "charged_wall_seconds": 27.347102880477905,
+    "rows": 8,
+    "sha256": "b91d0febb3f5f713860031251c3ceeab90e3c381fa6661cc1e6052ded1aa2d4c",
+    "state_hash": "bb3fd1bb0da80636f3051cbdf96f2915ef1553b7f161040d92d19d3226d25636",
+    "unit_seconds": 27.151188373565674
+  },
+  "next_unit": 1,
+  "pending": null,
+  "prior_roots": {
+    "01": {
+      "files": 15,
+      "mapping_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a",
+      "matches_pinned": true
+    },
+    "02": {
+      "files": 2,
+      "mapping_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd",
+      "matches_pinned": true
+    },
+    "03": {
+      "files": 10,
+      "mapping_sha256": "34270a3a26901de2472d203662e1717827cc93d8073a7f996b01f0b8174bbb57",
+      "matches_pinned": true
+    }
+  },
+  "report": {
+    "algorithm_seconds": 24.550750895999954,
+    "market_training_executed": false,
+    "resources": {
+      "actor_updates": 0,
+      "critic_updates": 0,
+      "diagnostic_trajectories": 0,
+      "diagnostic_transitions": 0,
+      "trajectories": 400,
+      "transitions": 72000
+    },
+    "save_seconds": 0.060615369999936775,
+    "sha256": "d2da5dd8cdef2fa42afecfe6534a1595687408fd52879bed8c213b299836fe14"
+  },
+  "root_files_sha256": {
+    "campaign.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "folds/wf-2021/manifest.json": "b6bc792891cc66ff6bbedbe190c6860347d8aca1eb6a94e41debafb6cf98bcf3",
+    "folds/wf-2022/manifest.json": "e938e641d8a186c9561680c16e6ce9987634b8725c2f2c672c04ca3b17e1d551",
+    "ledger.jsonl": "b91d0febb3f5f713860031251c3ceeab90e3c381fa6661cc1e6052ded1aa2d4c",
+    "preflight-83da376981c84de68a9a93433a45a20d.json": "910bd9e5077f5500f0a8d0bb814ef0a7649dab1dd5fffc9e15aa0cdeddb28c34",
+    "sessions.jsonl": "5f8e6fc3a33a877a1bedba8afff11e4de2e3c9079ba874b58bd78e10d5d14c84",
+    "sessions.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "supervisor.jsonl": "3faa77441ecbd28212a82504291cc620bf17994539ab1e26b2422b2087bd2efd",
+    "wf-2021/checkpoint-0/manifest.json": "240eccfa20a2caca415b1a56c341275e6207244d8b40a6f37ad93e324d3dcdbb",
+    "wf-2021/checkpoint-0/state.pt": "0b37a844f6fef063ab07f792c61fc0a508cb43675f809e9c9ce885c45dcd1d28",
+    "wf-2021/closing-0.json": "2909e14e8f91ff973844a114cbd0df2ca78e9508d0837843e4af3d8cbb9613ed",
+    "wf-2021/journal/events.jsonl": "84f1c754b0a2f285c50899d7edd762922c7cb916e085c282fe81ed5f6e3d6414",
+    "wf-2021/progress.json": "71988c4e48d5eee94aef1665ac1c7326dc42caf4c48a2c1aefb59d8398aafda7",
+    "wf-2021/request-0.json": "0a3668b68f33ff24feb1b220ff39f6bdb956b3ad444730c0f610c7c55862f7c7",
+    "wf-2021/unit-0.json": "d2da5dd8cdef2fa42afecfe6534a1595687408fd52879bed8c213b299836fe14",
+    "wf-2021/worker-0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "schema_version": 1,
+  "session": {
+    "elapsed_seconds": 28.56708073616028,
+    "end_utc": "2026-10-30T05:49:56.462546+00:00",
+    "journal_sha256": "5f8e6fc3a33a877a1bedba8afff11e4de2e3c9079ba874b58bd78e10d5d14c84",
+    "start_utc": "2026-10-30T05:49:27.895465+00:00",
+    "status": "ready",
+    "wall_seconds": 28.56708073616028
+  },
+  "status": "ready",
+  "supervisor": {
+    "journal_sha256": "3faa77441ecbd28212a82504291cc620bf17994539ab1e26b2422b2087bd2efd",
+    "last_event": "supervisor_exit",
+    "last_status": "ready",
+    "worker_rss_peak_bytes": 360226816,
+    "worker_wall_seconds": 26.965554200000042
+  },
+  "unit_one_started": false
+}

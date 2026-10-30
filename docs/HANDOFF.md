@@ -1,4 +1,28 @@
-# Estado vigente — WF `...04` bloqueado en preflight; ninguna unidad lanzada
+# Estado vigente — WF `...04` Q0 aceptada; pausa para auditoría
+
+El 30/10/2026 local la suite completa pasó (447 pruebas) y Ruff pasó. Un
+preflight vigilado **nuevo** dio `ready`, con CA, batería 97 %, memoria,
+disco, `Linger`, gestor, presupuesto y huellas conformes; no abrió archivos
+protegidos. Se lanzó una sola sesión `systemd --user` con `Restart=no`.
+Terminó `Result=success`, `InvocationID=9ea19b05c8584dcb8dc8cfccbcc2e032`.
+El ledger está `ready`, **1/22 unidades aceptadas**, `pending=null`;
+`checkpoint-0` es `after_q0` con SHA-256
+`0b37a844f6fef063ab07f792c61fc0a508cb43675f809e9c9ce885c45dcd1d28`.
+No existe unidad 1. El cargo global sin doble conteo de esta sesión fue
+**28,567081 s**. Las raíces `...01`–`...03` conservan sus huellas.
+
+Ver [informe](hitos/OOS-v1-2-costo-cortes-04-Q0-auditoria.md),
+[auditoría](evidence/oos-v1-2-wf-cost-04-q0-20261030/audit-q0.json),
+[preflight](evidence/oos-v1-2-wf-cost-04-q0-20261030/preflight.json) y
+[comandos](evidence/oos-v1-2-wf-cost-04-q0-20261030/COMMANDS.md). Detenerse
+para revisión: **no iniciar unidad 1** todavía. La campaña de 22 unidades
+no está terminada; validación, prueba final y evaluación v1.2 siguen fuera
+de alcance. `.python-version` permanece eliminado solo localmente y no se
+incorpora a Git.
+
+---
+
+# Estado anterior — WF `...04` bloqueado en preflight; ninguna unidad lanzada
 
 El 29/10/2026 a las 20:18 `America/La_Paz`, la suite completa pasó
 (447 pruebas) y Ruff pasó. El preflight vigilado nuevo dio `blocked`:
