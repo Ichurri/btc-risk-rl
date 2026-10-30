@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Nueva comprobación WF `...04` del **29/10/2026 local** desde `b386334`:
+  suite completa 447 passed y Ruff pasó; el preflight vigilado quedó
+  `blocked` por memoria disponible 3.750.830.080 B (<4 GiB), presupuesto
+  global del día agotado y fecha anterior al inicio autorizado 30/10.
+  **No se lanzó Q0 ni `systemd`**; raíz `...04` ausente, las tres raíces
+  previas intactas y gate `...04` activo solo para una futura admisión
+  conforme. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-04-preflight-bloqueado-20261029.md`.
+  No usar esta captura para lanzar otro día: repetir suite, Ruff y preflight
+  vigilado inmediatos con todas las puertas `ready`.
 - La campaña WF `...04` recibió autorización específica de Santiago en
   `232e7dc`. El registro independiente fija el perfil `ce62fed`, código,
   protocolo, diseño y derivado H1. Solo el gate `...04` está activo; `...01`–

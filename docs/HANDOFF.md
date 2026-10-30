@@ -1,4 +1,25 @@
-# Estado vigente — WF `...04` autorizado; esperar al 30/10 local
+# Estado vigente — WF `...04` bloqueado en preflight; ninguna unidad lanzada
+
+El 29/10/2026 a las 20:18 `America/La_Paz`, la suite completa pasó
+(447 pruebas) y Ruff pasó. El preflight vigilado nuevo dio `blocked`:
+memoria disponible 3.750.830.080 B (<4 GiB), presupuesto global del día
+agotado por el cargo conservador de `...03` y fecha anterior al inicio
+autorizado 30/10. CA, batería 98 %, disco, `Linger`, gestor, huellas e
+integridad de entradas pasaron en esa medición. El vigilante registró 57
+rutas y ninguna protegida. La raíz `...04` permanece ausente; no se inició
+`systemd`, Q0 ni unidad 1. Las raíces `...01`–`...03` coinciden con sus
+huellas. Ver [informe](hitos/OOS-v1-2-costo-cortes-04-preflight-bloqueado-20261029.md)
+y [captura](evidence/oos-v1-2-wf-cost-04-check-20261029/preflight.json).
+
+La aprobación `...04` sigue registrada y el gate continúa activo, pero
+esta captura **no habilita** un lanzamiento posterior. Para continuar otro
+día local debe repetirse suite completa, Ruff y un preflight vigilado
+inmediato con todas las puertas `ready`. La eliminación local de
+`.python-version` sigue fuera de Git.
+
+---
+
+# Estado anterior — WF `...04` autorizado; esperar al 30/10 local
 
 Santiago autorizó exclusivamente la campaña WF `...04` conforme al perfil
 `ce62fed`. El [registro independiente](protocols/OOS-v1-2-wf-cost-04-approval.json)
