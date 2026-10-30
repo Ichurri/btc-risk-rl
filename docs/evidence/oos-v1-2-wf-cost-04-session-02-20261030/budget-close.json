@@ -1,0 +1,21 @@
+{
+  "day_la_paz": "2026-10-30",
+  "global_spent_seconds": 10800.0,
+  "remaining_before_reserve_seconds": 0.0,
+  "wf04_sources": [
+    {
+      "charged_today_seconds": 10800,
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+      "reason": "incomplete_debit",
+      "sha256": "5e61ed0ee1b0503ba289fa8ab54c53f1c5bcc7a351e56c5ca02eed29bbbe8024",
+      "status": "failed"
+    },
+    {
+      "charged_today_seconds": 0.0,
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-04/sessions.jsonl",
+      "reason": "failed_or_unclosed_session",
+      "sha256": "c0265234ae9f5bd6c7cb5371dee0f817ecff52bb29dfda2c9b40bc3617ca8573",
+      "status": "blocked"
+    }
+  ]
+}

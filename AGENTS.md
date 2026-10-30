@@ -1,6 +1,17 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...04` **falló durante la unidad 8** el 30/10/2026 local. La segunda
+  sesión `systemd --user` partió de Q0 auditada, aceptó las unidades 1–7 y
+  terminó `Result=exit-code` por `WF cost resources lost during unit`.
+  Ledger `failed`, **8/22 unidades aceptadas** en total, unidad 8 pendiente
+  sin reporte/checkpoint aceptado. La guarda no registró cuál recurso cruzó
+  el umbral; no atribuir una causa específica. El gate `...04` se cerró
+  prospectivamente; conservar raíz, ledger, Q0, checkpoints, bitácora,
+  journals y aprobación histórica intactos. **No reanudar ni repetir esta
+  campaña**, aunque exista un checkpoint completo previo. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-04-continuacion-fallo.md`. La evaluación
+  v1.2, validación 2023 y prueba final siguen fuera de alcance.
 - WF `...04` aceptó **solo la primera Q0** el 30/10/2026 local: una sesión
   `systemd --user` con `Restart=no` cerró `Result=success`; ledger `ready`,
   1/22 unidades, `pending=null`, checkpoint íntegro `after_q0`. No se inició

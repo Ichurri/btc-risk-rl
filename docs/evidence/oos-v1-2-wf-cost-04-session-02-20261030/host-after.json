@@ -1,0 +1,8 @@
+{
+  "observed_utc": "2026-10-30T06:24:36.222303+00:00",
+  "ac_online": 1,
+  "battery_percent": 97,
+  "memory_available_bytes": 7734751232,
+  "disk_free_bytes": 144144793600,
+  "note": "After failure; not the values at the resource-guard decision"
+}

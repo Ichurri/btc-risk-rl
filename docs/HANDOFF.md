@@ -1,4 +1,28 @@
-# Estado vigente — WF `...04` Q0 aceptada; pausa para auditoría
+# Estado vigente — WF `...04` falló en unidad 8; gate cerrado
+
+El 30/10/2026 `America/La_Paz`, tras revisar Q0, se repitieron la suite
+completa (447 passed), Ruff y un preflight vigilado nuevo `ready`. La segunda
+sesión `systemd --user` aceptó las unidades 1–7 y falló durante la unidad 8
+por `WF cost resources lost during unit`. El ledger está **`failed`, 8/22
+unidades aceptadas, unidad 8 pendiente**; no hay reporte ni checkpoint
+aceptado de ella. Q0 conserva su huella. La bitácora mide 479,692 s para
+esta sesión; el cargo de seguridad del día es 10.800 s por fallo con unidad
+pendiente. El gate `...04` se cerró prospectivamente y ambos comandos
+operativos rechazan nuevas ejecuciones. **No reanudar ni repetir `...04`**.
+
+Ver [informe](hitos/OOS-v1-2-costo-cortes-04-continuacion-fallo.md),
+[auditoría](evidence/oos-v1-2-wf-cost-04-session-02-20261030/audit.json),
+[preflight](evidence/oos-v1-2-wf-cost-04-session-02-20261030/preflight.json) y
+[comandos](evidence/oos-v1-2-wf-cost-04-session-02-20261030/COMMANDS.md).
+Siguiente paso: revisión metodológica de la campaña fallida y de la
+instrumentación de recursos; cualquier nueva campaña de costos requiere
+protocolo, raíz y permiso independientes. Validación 2023, prueba final y
+evaluación v1.2 siguen bloqueadas. `.python-version` continúa eliminado
+solo localmente, fuera de Git.
+
+---
+
+# Estado anterior — WF `...04` Q0 aceptada; pausa para auditoría
 
 El 30/10/2026 local la suite completa pasó (447 pruebas) y Ruff pasó. Un
 preflight vigilado **nuevo** dio `ready`, con CA, batería 97 %, memoria,
