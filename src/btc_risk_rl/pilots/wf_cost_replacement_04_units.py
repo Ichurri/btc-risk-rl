@@ -64,12 +64,38 @@ def resource_ready(host):
             and host.get("disk_free_bytes", 0) >= 20 * 1024**3)
 
 
+def observe_resource_guard(journal, host, *, run_id, unit, phase, disposition):
+    """Record the exact snapshot used by a failed resource decision."""
+    ready = resource_ready(host)
+    if not ready:
+        power = host["power"]
+        failed = []
+        if power.get("ac") is not True:
+            failed.append("ac")
+        if power.get("battery_percent", -1) < 50:
+            failed.append("battery")
+        if host.get("memory_available_bytes") is None or host["memory_available_bytes"] < 4 * 1024**3:
+            failed.append("memory")
+        if host.get("disk_free_bytes", 0) < 20 * 1024**3:
+            failed.append("disk")
+        journal.record(
+            "resource_guard_failed", phase=phase, run_id=run_id,
+            unit=unit, counters={}, disposition=disposition,
+            resource_snapshot=host, failed_checks=failed,
+            resource_limits=dict(ac_required=True, battery_min_percent=50,
+                                 memory_min_bytes=4 * 1024**3,
+                                 disk_min_bytes=20 * 1024**3),
+        )
+    return ready
+
+
 def _unit_resources():
     try:
         ac, battery = read_power()
         power = dict(ac=ac, battery_percent=battery)
-    except (OSError, ValueError):
-        power = dict(ac=False, battery_percent=-1)
+    except (OSError, ValueError) as exc:
+        power = dict(ac=False, battery_percent=-1,
+                     values_observed=False, sensor_error=str(exc))
     available = next((int(line.split()[1]) * 1024
                       for line in Path("/proc/meminfo").read_text().splitlines()
                       if line.startswith("MemAvailable:")), None)
@@ -190,7 +216,11 @@ def _run_locked_session(inputs, budget, shared, sessions, token):
                 fold, seed, condition = roster()[index // 11]
                 unit = index % 11
                 current.update(fold=fold, unit=unit)
-                if not resource_ready(_unit_resources()):
+                resources = _unit_resources()
+                if not observe_resource_guard(
+                    journal, resources, run_id=f"wf-{fold}", unit=unit,
+                    phase="between_units", disposition="pause",
+                ):
                     journal.record("paused", phase="between_units", run_id=f"wf-{fold}",
                                    unit=unit, counters={}, reason="resources")
                     return ledger.state
@@ -232,7 +262,11 @@ def _run_locked_session(inputs, budget, shared, sessions, token):
                     stamp = time.monotonic()
                     if last_heartbeat[0] is not None and stamp - last_heartbeat[0] < 4:
                         return
-                    if not resource_ready(_unit_resources()):
+                    resources = _unit_resources()
+                    if not observe_resource_guard(
+                        journal, resources, run_id=f"wf-{fold}", unit=unit,
+                        phase="unit", disposition="fail",
+                    ):
                         raise ValueError("WF cost resources lost during unit")
                     phase, counters = read_worker_progress(work, unit, allow_previous=True)
                     journal.record("heartbeat", phase=phase, run_id=f"wf-{fold}",
