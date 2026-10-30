@@ -1,4 +1,28 @@
-# Estado vigente — WF `...04` falló en unidad 8; gate cerrado
+# Estado vigente — causa de recurso WF `...04` desconocida; observabilidad lista
+
+Se revisaron de forma **solo lectura** el ledger, los últimos heartbeats,
+el journal accesible de `systemd`, las fuentes de kernel y alimentación y
+las muestras de memoria y disco disponibles alrededor de las 02:13:15
+del 30/10/2026 local. Se confirmó la decisión fallida de la guarda, pero
+**no hay valores de CA, batería, `MemAvailable` ni disco de ese instante**;
+el recurso específico sigue desconocido. El journal de kernel completo no
+fue accesible sin contraseña y `sysstat` no tiene una muestra de ese día.
+
+La corrección prospectiva escribe un evento durable con los cuatro valores
+de la decisión antes de una pausa o fallo, sin cambiar umbrales ni el
+algoritmo. Las pruebas son sintéticas. Las cuatro raíces históricas
+conservan sus huellas, sus gates siguen cerrados y `...04` permanece
+`failed` sin permiso de reanudación. Ver
+[informe](hitos/OOS-WF-04-recursos-diagnostico-observabilidad.md),
+[comprobaciones](evidence/wf04-resource-diagnostic-20261030/results.json) y
+[comandos](evidence/wf04-resource-diagnostic-20261030/COMMANDS.md).
+Una nueva campaña requiere propuesta y autorización separadas. No abrir
+validación 2023 ni prueba final. La eliminación local de `.python-version`
+sigue fuera de Git.
+
+---
+
+# Estado anterior — WF `...04` falló en unidad 8; gate cerrado
 
 El 30/10/2026 `America/La_Paz`, tras revisar Q0, se repitieron la suite
 completa (447 passed), Ruff y un preflight vigilado nuevo `ready`. La segunda

@@ -1,0 +1,126 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+___ test_each_failed_resource_records_exact_decision_snapshot[observed0-ac] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_each_failed_resource_reco0')
+observed = {'power': {'ac': False, 'battery_percent': 50}, 'memory_available_bytes': 4294967296, 'disk_free_bytes': 21474836480}
+failed = 'ac'
+
+    @pytest.mark.parametrize(
+        ("observed", "failed"),
+        [
+            (snapshot(ac=False), "ac"),
+            (snapshot(battery=49), "battery"),
+            (snapshot(memory=4 * GIB - 1), "memory"),
+            (snapshot(disk=20 * GIB - 1), "disk"),
+        ],
+    )
+    def test_each_failed_resource_records_exact_decision_snapshot(tmp_path, observed, failed):
+>       assert callable(getattr(units, "observe_resource_guard", None)), "resource observation missing"
+E       AssertionError: resource observation missing
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(units, 'observe_resource_guard', None)
+
+tests/test_wf_resource_observability.py:31: AssertionError
+_ test_each_failed_resource_records_exact_decision_snapshot[observed1-battery] _
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_each_failed_resource_reco1')
+observed = {'power': {'ac': True, 'battery_percent': 49}, 'memory_available_bytes': 4294967296, 'disk_free_bytes': 21474836480}
+failed = 'battery'
+
+    @pytest.mark.parametrize(
+        ("observed", "failed"),
+        [
+            (snapshot(ac=False), "ac"),
+            (snapshot(battery=49), "battery"),
+            (snapshot(memory=4 * GIB - 1), "memory"),
+            (snapshot(disk=20 * GIB - 1), "disk"),
+        ],
+    )
+    def test_each_failed_resource_records_exact_decision_snapshot(tmp_path, observed, failed):
+>       assert callable(getattr(units, "observe_resource_guard", None)), "resource observation missing"
+E       AssertionError: resource observation missing
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(units, 'observe_resource_guard', None)
+
+tests/test_wf_resource_observability.py:31: AssertionError
+_ test_each_failed_resource_records_exact_decision_snapshot[observed2-memory] __
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_each_failed_resource_reco2')
+observed = {'power': {'ac': True, 'battery_percent': 50}, 'memory_available_bytes': 4294967295, 'disk_free_bytes': 21474836480}
+failed = 'memory'
+
+    @pytest.mark.parametrize(
+        ("observed", "failed"),
+        [
+            (snapshot(ac=False), "ac"),
+            (snapshot(battery=49), "battery"),
+            (snapshot(memory=4 * GIB - 1), "memory"),
+            (snapshot(disk=20 * GIB - 1), "disk"),
+        ],
+    )
+    def test_each_failed_resource_records_exact_decision_snapshot(tmp_path, observed, failed):
+>       assert callable(getattr(units, "observe_resource_guard", None)), "resource observation missing"
+E       AssertionError: resource observation missing
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(units, 'observe_resource_guard', None)
+
+tests/test_wf_resource_observability.py:31: AssertionError
+__ test_each_failed_resource_records_exact_decision_snapshot[observed3-disk] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_each_failed_resource_reco3')
+observed = {'power': {'ac': True, 'battery_percent': 50}, 'memory_available_bytes': 4294967296, 'disk_free_bytes': 21474836479}
+failed = 'disk'
+
+    @pytest.mark.parametrize(
+        ("observed", "failed"),
+        [
+            (snapshot(ac=False), "ac"),
+            (snapshot(battery=49), "battery"),
+            (snapshot(memory=4 * GIB - 1), "memory"),
+            (snapshot(disk=20 * GIB - 1), "disk"),
+        ],
+    )
+    def test_each_failed_resource_records_exact_decision_snapshot(tmp_path, observed, failed):
+>       assert callable(getattr(units, "observe_resource_guard", None)), "resource observation missing"
+E       AssertionError: resource observation missing
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(units, 'observe_resource_guard', None)
+
+tests/test_wf_resource_observability.py:31: AssertionError
+_______________ test_boundary_values_pass_without_failure_record _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_boundary_values_pass_with0')
+
+    def test_boundary_values_pass_without_failure_record(tmp_path):
+>       assert callable(getattr(units, "observe_resource_guard", None)), "resource observation missing"
+E       AssertionError: resource observation missing
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(units, 'observe_resource_guard', None)
+
+tests/test_wf_resource_observability.py:55: AssertionError
+_________ test_pause_records_values_and_preserves_synthetic_artifacts __________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_pause_records_values_and_0')
+
+    def test_pause_records_values_and_preserves_synthetic_artifacts(tmp_path):
+>       assert callable(getattr(units, "observe_resource_guard", None)), "resource observation missing"
+E       AssertionError: resource observation missing
+E       assert False
+E        +  where False = callable(None)
+E        +    where None = getattr(units, 'observe_resource_guard', None)
+
+tests/test_wf_resource_observability.py:68: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_wf_resource_observability.py::test_each_failed_resource_records_exact_decision_snapshot[observed0-ac]
+FAILED tests/test_wf_resource_observability.py::test_each_failed_resource_records_exact_decision_snapshot[observed1-battery]
+FAILED tests/test_wf_resource_observability.py::test_each_failed_resource_records_exact_decision_snapshot[observed2-memory]
+FAILED tests/test_wf_resource_observability.py::test_each_failed_resource_records_exact_decision_snapshot[observed3-disk]
+FAILED tests/test_wf_resource_observability.py::test_boundary_values_pass_without_failure_record
+FAILED tests/test_wf_resource_observability.py::test_pause_records_values_and_preserves_synthetic_artifacts
+6 failed in 0.95s

@@ -1,0 +1,2 @@
+/var/log/sysstat/sa30 modified=2026-09-30 19:28:43.718640907 -0400
+Linux 6.12.111+deb13-amd64 (debian) 	09/30/26 	_x86_64_	(16 CPU)

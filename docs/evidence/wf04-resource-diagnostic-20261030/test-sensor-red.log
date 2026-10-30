@@ -1,0 +1,24 @@
+......F                                                                  [100%]
+=================================== FAILURES ===================================
+___________ test_unreadable_power_is_labeled_as_missing_measurement ____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fba99de73b0>
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-6/test_unreadable_power_is_label0')
+
+    def test_unreadable_power_is_labeled_as_missing_measurement(monkeypatch, tmp_path):
+        def unreadable():
+            raise ValueError("synthetic sensor unavailable")
+    
+        monkeypatch.setattr(units, "read_power", unreadable)
+        monkeypatch.setattr(units, "CAMPAIGN", tmp_path / "synthetic-campaign")
+        observed = units._unit_resources()
+        assert observed["power"]["ac"] is False
+        assert observed["power"]["battery_percent"] == -1
+>       assert observed["power"]["values_observed"] is False
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'values_observed'
+
+tests/test_wf_resource_observability.py:99: KeyError
+=========================== short test summary info ============================
+FAILED tests/test_wf_resource_observability.py::test_unreadable_power_is_labeled_as_missing_measurement
+1 failed, 6 passed in 0.97s

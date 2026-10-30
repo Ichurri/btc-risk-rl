@@ -1,6 +1,16 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Diagnóstico **de solo lectura** del fallo de recursos WF `...04`:
+  el supervisor falló el 30/10/2026 a las 02:13:15 local durante Q de la
+  unidad 8, pero no conservó CA, batería, `MemAvailable` ni disco de esa
+  decisión. El recurso concreto sigue **desconocido**. Se instrumentó
+  prospectivamente el journal para guardar esos valores en una pausa o
+  fallo, sin cambiar umbrales ni decisión; se verificó solo con datos
+  sintéticos. Ver `docs/hitos/OOS-WF-04-recursos-diagnostico-observabilidad.md`.
+  Las raíces `...01`–`...04` mantienen sus huellas y **todos los gates
+  permanecen cerrados**. No lanzar unidades, reanudar ninguna campaña,
+  preparar otra raíz, abrir validación ni prueba final por este hito.
 - WF `...04` **falló durante la unidad 8** el 30/10/2026 local. La segunda
   sesión `systemd --user` partió de Q0 auditada, aceptó las unidades 1–7 y
   terminó `Result=exit-code` por `WF cost resources lost during unit`.
