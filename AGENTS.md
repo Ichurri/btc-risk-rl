@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...05`: Santiago autorizó el reingreso tras Q0, pero el preflight
+  vigilado **nuevo** del 01/11/2026 18:13:38 `America/La_Paz` quedó
+  `blocked`: `MemAvailable=4.241.289.216 B`, por debajo de 4 GiB
+  (4.294.967.296 B). La suite completa (463 passed) y Ruff pasaron;
+  CA, batería, disco, gestor, huellas y presupuesto fueron conformes.
+  **No se lanzó la sesión 02 ni la unidad 1.** La auditoría Q0 antes/después
+  coincide byte por byte con la publicada: ledger `ready`, 1/22 unidades,
+  `pending=null`, checkpoint `after_q0` íntegro. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/`.
+  No rebajar umbrales, repetir Q0, reanudar un ledger `failed` ni lanzar
+  una sesión usando este preflight bloqueado; cualquier intento posterior
+  requiere puertas y captura nuevas. Validación/final siguen protegidas.
 - WF `...05` recibió autorización específica y aprobó las puertas de
   lanzamiento el 01/11/2026 `America/La_Paz`. El commit `cacf6a9` fija
   aprobación, código, perfil, protocolo y derivado H1; solo el gate `...05`

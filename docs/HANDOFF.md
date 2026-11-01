@@ -1,4 +1,30 @@
-# Estado vigente — WF `...05` Q0 aceptada; pausa para revisión
+# Estado vigente — reingreso WF `...05` bloqueado por memoria
+
+Santiago autorizó continuar desde Q0 sin repetirla. El 01/11/2026
+`America/La_Paz` se reprodujo exactamente la auditoría Q0 publicada:
+ledger `ready`, 1/22 unidades, `pending=null`, checkpoint `after_q0` con
+SHA-256 `8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185`.
+No había otra unidad WF activa. La suite completa dio **463 passed** y Ruff
+pasó. El preflight vigilado **nuevo** de las 18:13:38 quedó `blocked` por
+`MemAvailable=4.241.289.216 B`, **53.678.080 B por debajo de 4 GiB**.
+CA, batería 100 %, disco, `Linger`, gestor, huellas, integridad y saldo
+fueron conformes en esa medición. **No se lanzó la sesión 02 ni unidad 1.**
+El ledger y checkpoint conservan sus huellas; la campaña sigue `ready`,
+sin nuevo fallo ni pausa registrada en el ledger. Ver
+[diagnóstico](hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado.md),
+[captura](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/preflight.json),
+[comprobaciones](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/results.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/COMMANDS.md).
+
+Un intento posterior requiere suite, Ruff y preflight vigilado **nuevos**;
+esta captura bloqueada no se puede reutilizar. No bajar los umbrales ni
+reanudar un ledger `failed`. Validación 2023, prueba final y evaluación
+v1.2 siguen fuera de alcance. `.python-version` continúa eliminado solo
+localmente y fuera de Git.
+
+---
+
+# Estado anterior — WF `...05` Q0 aceptada; pausa para revisión
 
 La autorización específica de Santiago quedó fijada en `cacf6a9`. El
 01/11/2026 `America/La_Paz`, la suite completa dio **463 passed** y Ruff

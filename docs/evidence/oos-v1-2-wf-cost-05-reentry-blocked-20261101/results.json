@@ -1,0 +1,31 @@
+{
+  "ac": true,
+  "accepted_units_after": 1,
+  "battery_percent": 100,
+  "blockers": [
+    "Power, battery, memory or disk guard failed"
+  ],
+  "disk_free_bytes": 134296645632,
+  "files_opened_count": 1920,
+  "git_commit": "bd587744b0f7a04acff321c497d067897bf2f14f",
+  "global_budget_external_seconds": 0.0,
+  "ledger_status_after": "ready",
+  "linger": "yes",
+  "market_trajectories_generated_by_preflight": 0,
+  "memory_available_bytes": 4241289216,
+  "memory_deficit_bytes": 53678080,
+  "memory_min_bytes": 4294967296,
+  "new_units_started": 0,
+  "observed_utc": "2026-11-01T22:13:38.210874+00:00",
+  "optimizer_steps_by_preflight": 0,
+  "pending_after": null,
+  "preflight_sha256": "53b66659d34db0a152b81c430a667d43295fd4342a3ac39204bd958c5f4c9d3d",
+  "protected_or_shared_csv_opened": false,
+  "q0_audit_sha256": "32ef4b4fc0df6816d8b1cae9b6668b5b8d5324d1d09e1d685ad34214918c785d",
+  "q0_checkpoint_sha256": "8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185",
+  "q0_global_charged_seconds": 30.721120357513428,
+  "q0_root_mapping_sha256": "4fc5dcb2c963232deb6a50f132a76bdabf4b9c53590e6f009ba256510ad3df75",
+  "remaining_before_reserve_with_q0_seconds": 8069.278879642487,
+  "status": "blocked_before_session_02",
+  "user_manager": "running"
+}
