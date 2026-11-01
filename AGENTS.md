@@ -1,6 +1,20 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...05` queda preparado **prospectivamente, solo como infraestructura**
+  desde `dda554e`: raíz exclusiva
+  `artifacts/oos-v12-wf-cost-only-05/` y aprobación independiente
+  `docs/protocols/OOS-v1-2-wf-cost-05-approval.json`, ambas ausentes.
+  `MARKET_EXECUTION_ENABLED=False` y `REGISTRATION_SHA256=None`; el comando
+  público y el trabajador rechazan antes de abrir solicitudes o mercado.
+  Conserva dos C10, semillas/cortes/orden de 22 unidades y límites originales;
+  incluye observabilidad durable de las decisiones de recursos. Primer arranque,
+  reingreso Q0→unidad 1 y guardas se verificaron solo sintéticamente. Preflight
+  vigilado de solo lectura `blocked` exclusivamente por falta de permiso en la
+  captura de 2026-11-01; las cuatro raíces previas conservaron sus huellas.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-05-perfil.md`. **No crear aprobación
+  ni raíz histórica, activar gate, lanzar unidades ni abrir validación/final**
+  por este hito. `...01`–`...04` siguen cerradas e intactas.
 - Diagnóstico **de solo lectura** del fallo de recursos WF `...04`:
   el supervisor falló el 30/10/2026 a las 02:13:15 local durante Q de la
   unidad 8, pero no conservó CA, batería, `MemAvailable` ni disco de esa

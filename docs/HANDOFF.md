@@ -1,4 +1,27 @@
-# Estado vigente — causa de recurso WF `...04` desconocida; observabilidad lista
+# Estado vigente — perfil WF `...05` preparado, sin permiso
+
+En `codex/oos-wf05-profile` se preparó una raíz y registro nuevos, ambos
+ausentes, para una eventual medición WF íntegra. El gate `...05` permanece
+cerrado en el comando y el trabajador. El perfil conserva por huella el
+diseño de dos C10 y 22 unidades, el presupuesto y las guardas; registra la
+muestra exacta de recursos que causa pausa o fallo. Las pruebas sintéticas
+cubrieron primer arranque, Q0→unidad 1 con dos trabajadores, reingreso del
+ledger, permisos y observabilidad. La suite completa dio 463 passed y Ruff
+pasó. El [preflight vigilado](evidence/oos-v1-2-wf-cost-05-profile/results.json)
+de 2026-11-01 fue `blocked` solo por ausencia deliberada de permiso; no
+abrió archivos protegidos ni generó trayectorias. Las cuatro raíces
+históricas conservaron sus huellas. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-05-perfil.md) y
+[comandos](evidence/oos-v1-2-wf-cost-05-profile/COMMANDS.md).
+
+Siguiente paso: revisar perfil e informe antes de considerar autorización
+separada; ninguna captura de preflight sustituye la comprobación inmediata
+de un día de ejecución. No iniciar `...05`, reanudar `...01`–`...04`, abrir
+validación ni prueba final. `.python-version` sigue eliminado solo localmente.
+
+---
+
+# Estado anterior — causa de recurso WF `...04` desconocida; observabilidad lista
 
 Se revisaron de forma **solo lectura** el ledger, los últimos heartbeats,
 el journal accesible de `systemd`, las fuentes de kernel y alimentación y

@@ -1,0 +1,73 @@
+{
+  "approval_05_absent": true,
+  "base_design_sha256": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+  "blockers": [
+    "WF replacement campaign has no active approval"
+  ],
+  "budget": {
+    "active_campaigns": [],
+    "day_la_paz": "2026-11-01",
+    "global_spent": 0.0,
+    "ok": true,
+    "remaining_before_reserve": 8100.0
+  },
+  "code_sha256": "e00466bd5bbd39010731622ebb5ca31c6acdc9987bc927249912831aec572308",
+  "files_opened_count": 1919,
+  "folds": {
+    "2021": {
+      "episodes": 3639,
+      "fit_rows": 5764,
+      "scaler_sha256": "c463181f0c933cc07cbe99d34076e7f1cd2044483b949ef6a55eb80916459151",
+      "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+      "trajectories_generated": 0,
+      "validation_observations_loaded": false
+    },
+    "2022": {
+      "episodes": 4678,
+      "fit_rows": 7703,
+      "scaler_sha256": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+      "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+      "trajectories_generated": 0,
+      "validation_observations_loaded": false
+    }
+  },
+  "gate_05_closed": true,
+  "git_commit": "98954eefb19e3ee28d02f0adca2cf033093622e5",
+  "historical_roots": {
+    "01": {
+      "files": 15,
+      "mapping_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a"
+    },
+    "02": {
+      "files": 2,
+      "mapping_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd"
+    },
+    "03": {
+      "files": 10,
+      "mapping_sha256": "34270a3a26901de2472d203662e1717827cc93d8073a7f996b01f0b8174bbb57"
+    },
+    "04": {
+      "files": 1860,
+      "mapping_sha256": "3c22543a9238b07f84ae790e92fcd8b627d53483898e15204d9a8a5fb6a859da"
+    }
+  },
+  "host": {
+    "disk_free_bytes": 139387125760,
+    "linger": "yes",
+    "memory_available_bytes": 4355284992,
+    "power": {
+      "ac": true,
+      "battery_percent": 100
+    },
+    "user_manager": "running"
+  },
+  "market_trajectories_generated": 0,
+  "observed_utc": "2026-11-01T21:31:18.040279+00:00",
+  "opened_files_manifest_sha256": "c3ae77a27cf4dc18af44c2d117ad2355e0ba8b9f85843772ee7f03bc5c168957",
+  "optimizer_steps": 0,
+  "preflight_sha256": "cee65fea9b0cf0c0df061b6606cf29eab7454d5788e8eac87d7728975cb5fd01",
+  "profile_05_sha256": "7dbec963f27064ac02669091400a19dc031394daffb51afbee95ae614776581a",
+  "protected_or_shared_csv_opened": false,
+  "root_05_absent": true,
+  "status": "blocked"
+}
