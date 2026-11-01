@@ -1,4 +1,29 @@
-# Estado vigente — perfil WF `...05` preparado, sin permiso
+# Estado vigente — WF `...05` Q0 aceptada; pausa para revisión
+
+La autorización específica de Santiago quedó fijada en `cacf6a9`. El
+01/11/2026 `America/La_Paz`, la suite completa dio **463 passed** y Ruff
+pasó. Un preflight vigilado nuevo dio `ready` y ninguna apertura protegida.
+Se lanzó una sola sesión `systemd --user` con `Restart=no`,
+`oos-wf-cost-20261101-05-session-01.service`,
+`InvocationID=d69d5d0157544abc96f3235ab9d339c3`. Cerró
+`Result=success` tras **solo Q0**. El ledger está `ready`, 1/22 unidades,
+`pending=null`; el checkpoint íntegro `after_q0` tiene SHA-256
+`8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185`.
+El cargo global de la sesión, sin doble conteo, fue **30,721120 s**;
+la unidad Q0 aceptada duró **28,650246 s**. Las raíces `...01`–`...04`
+mantienen sus huellas. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-05-Q0-auditoria.md),
+[auditoría](evidence/oos-v1-2-wf-cost-05-q0-20261101/audit-q0.json),
+[preflight](evidence/oos-v1-2-wf-cost-05-q0-20261101/preflight-launch.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-q0-20261101/COMMANDS.md).
+
+**Esperar revisión antes de la unidad 1.** No abrir validación 2023 ni
+prueba final, ni activar la evaluación v1.2. `.python-version` sigue
+eliminado solo localmente y fuera de Git.
+
+---
+
+# Estado anterior — perfil WF `...05` preparado, sin permiso
 
 En `codex/oos-wf05-profile` se preparó una raíz y registro nuevos, ambos
 ausentes, para una eventual medición WF íntegra. El gate `...05` permanece

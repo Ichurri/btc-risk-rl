@@ -1,0 +1,75 @@
+{
+  "accepted_units": 1,
+  "budget_accounting": {
+    "day_la_paz": "2026-11-01",
+    "external_seconds": 0.0,
+    "global_charged_seconds": 30.721120357513428,
+    "own_ledger_seconds": 28.855961084365845,
+    "own_session_gap_seconds": 1.865159273147583,
+    "remaining_before_reserve_seconds": 8069.278879642487
+  },
+  "campaign": "oos-v12-wf-cost-only-05",
+  "checkpoint": {
+    "actor_updates": 0,
+    "boundary": "after_q0",
+    "critic_updates": 0,
+    "manifest_sha256": "e67714f35c63d79ef4f41596934bc7dd6908c3279c33350a3d8ccf957529c279",
+    "next_iteration": 0,
+    "state_sha256": "8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185"
+  },
+  "code_commit": "cacf6a90d81587ed5de352ffa0f49a54471fdee3",
+  "current_root_files": 16,
+  "current_root_mapping_sha256": "4fc5dcb2c963232deb6a50f132a76bdabf4b9c53590e6f009ba256510ad3df75",
+  "invocation_id": "d69d5d0157544abc96f3235ab9d339c3",
+  "ledger": {
+    "rows": 8,
+    "sha256": "865df4a9f7db661a28c4fdd159facdc9f28da3997d36c56756a2e942f545284f",
+    "state_hash": "f6875af1df65f88cf741d3986fb01e2d84d9470545d68e06417e42224b5fc4ac",
+    "unit_seconds": 28.650246381759644
+  },
+  "ledger_status": "ready",
+  "next_unit": 1,
+  "pending": null,
+  "preflight_sha256": "0c6a88499ad34518708a00498f1d0824f3eff774c4f391eb4cebd949c85a97cf",
+  "prior_roots": {
+    "01": {
+      "files": 15,
+      "mapping_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a"
+    },
+    "02": {
+      "files": 2,
+      "mapping_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd"
+    },
+    "03": {
+      "files": 10,
+      "mapping_sha256": "34270a3a26901de2472d203662e1717827cc93d8073a7f996b01f0b8174bbb57"
+    },
+    "04": {
+      "files": 1860,
+      "mapping_sha256": "3c22543a9238b07f84ae790e92fcd8b627d53483898e15204d9a8a5fb6a859da"
+    }
+  },
+  "report_sha256": "9e288ff8a258153101c5f966b268fef1f7d92b6c97333749e0b353467e559b78",
+  "resources": {
+    "actor_updates": 0,
+    "critic_updates": 0,
+    "diagnostic_trajectories": 0,
+    "diagnostic_transitions": 0,
+    "trajectories": 400,
+    "transitions": 72000
+  },
+  "sessions": {
+    "elapsed_seconds": 30.721120357513428,
+    "end_utc": "2026-11-01T21:58:25.059656+00:00",
+    "sha256": "23f66ac5467abc4d8108dcbf25c41a6f1952503a425a5f5deb736fb5ba4b58e4",
+    "start_utc": "2026-11-01T21:57:54.338535+00:00",
+    "wall_seconds": 30.721120357513428
+  },
+  "supervisor": {
+    "events": 12,
+    "sha256": "3cf856d018225ad947331fb4e0264faa1868c3aa26dc928f1cd2237d4dde1032"
+  },
+  "systemd_journal_sha256": "21e49fe9ad4a9b20d338968657d725adb5a5d0a4d8aa3d20eb656bd7e012b26b",
+  "systemd_result": "success",
+  "unit": "oos-wf-cost-20261101-05-session-01.service"
+}

@@ -1,6 +1,17 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...05` recibió autorización específica y aprobó las puertas de
+  lanzamiento el 01/11/2026 `America/La_Paz`. El commit `cacf6a9` fija
+  aprobación, código, perfil, protocolo y derivado H1; solo el gate `...05`
+  está activo. Una sesión `systemd --user` con `Restart=no` aceptó únicamente
+  Q0 (`after_q0`) y terminó `Result=success`: ledger `ready`, 1/22 unidades,
+  `pending=null`, sin unidad 1. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-05-Q0-auditoria.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-q0-20261101/`.
+  **Detenerse tras Q0 para revisión; no iniciar unidad 1 ni otra sesión por
+  este hito.** `...01`–`...04` conservan huellas y gates cerrados. No abrir
+  validación 2023, prueba final ni activar evaluación v1.2.
 - WF `...05` queda preparado **prospectivamente, solo como infraestructura**
   desde `dda554e`: raíz exclusiva
   `artifacts/oos-v12-wf-cost-only-05/` y aprobación independiente
