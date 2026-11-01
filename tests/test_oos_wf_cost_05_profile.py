@@ -27,9 +27,15 @@ def test_fifth_profile_preserves_science_and_historical_roots():
 
     assert profile.CAMPAIGN.name == "oos-v12-wf-cost-only-05"
     assert profile.REGISTRATION.name == "OOS-v1-2-wf-cost-05-approval.json"
-    assert not profile.CAMPAIGN.exists() and not profile.REGISTRATION.exists()
-    assert profile.MARKET_EXECUTION_ENABLED is False
-    assert profile.REGISTRATION_SHA256 is None
+    assert profile.REGISTRATION.is_file()
+    assert profile.MARKET_EXECUTION_ENABLED is True
+    assert profile.REGISTRATION_SHA256 == profile.digest(profile.REGISTRATION)
+    approval = profile.require_campaign()
+    assert approval["approved_base_commit"] == "08e7e6a"
+    assert approval["campaign"] == profile.CAMPAIGN.name
+    assert approval["roster"] == [["2021", 276696733, "C10"],
+                                  ["2022", 498614892, "C10"]]
+    assert approval["code_sha256"] == profile.code_sha256()
     assert authorized_wf_permits()[profile.WFCostPermit] == profile.CAMPAIGN
     assert profile.roster() == (("2021", 276696733, "C10"),
                                 ("2022", 498614892, "C10"))
@@ -37,24 +43,23 @@ def test_fifth_profile_preserves_science_and_historical_roots():
     assert sum(profile.unit_cap(unit) for _, unit in profile.units()) == 3840
     result = inspect_candidate()
     assert result["historical_artifacts_verified"]
-    assert result["root_absent"] and result["approval_absent"]
+    assert result["root_absent"] is (not profile.CAMPAIGN.exists())
+    assert not result["approval_absent"]
     assert result["historical_roots"]["04"]["files"] == 1860
 
 
-def test_fifth_public_and_worker_gates_reject_before_root():
+def test_fifth_gate_rejects_forged_registration_without_touching_roots(monkeypatch):
     from btc_risk_rl.pilots import wf_cost_replacement_05_exec as profile
 
     roots_before = [_hashes(Path("artifacts") / f"oos-v12-wf-cost-only-{n:02d}")
                     for n in range(1, 5)]
-    for command in (
-        [sys.executable, "scripts/run_oos_wf_cost_05.py", "--run"],
-        [sys.executable, "-m", "btc_risk_rl.pilots.wf_cost_replacement_05_worker",
-         "/tmp/nonexistent-wf05-request.json"],
-    ):
-        result = subprocess.run(command, capture_output=True, text=True, check=False)
-        assert result.returncode != 0
-        assert "NOT AUTHORIZED" in result.stderr
-    assert not profile.CAMPAIGN.exists()
+    monkeypatch.setattr(profile, "MARKET_EXECUTION_ENABLED", False)
+    with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
+        profile.require_campaign()
+    monkeypatch.setattr(profile, "MARKET_EXECUTION_ENABLED", True)
+    monkeypatch.setattr(profile, "REGISTRATION_SHA256", "0" * 64)
+    with pytest.raises(PermissionError, match="hash mismatch"):
+        profile.require_campaign()
     assert roots_before == [_hashes(Path("artifacts") / f"oos-v12-wf-cost-only-{n:02d}")
                             for n in range(1, 5)]
 
@@ -126,8 +131,9 @@ def test_fifth_watched_preflight_opens_no_protected_rows():
     )
     assert result.returncode == 0, result.stderr
     payload = json.loads(result.stdout)
-    assert payload["preflight"]["status"] == "blocked"
-    assert payload["preflight"]["market_execution_enabled"] is False
+    assert payload["preflight"]["status"] == (
+        "blocked" if payload["preflight"]["blockers"] else "ready")
+    assert payload["preflight"]["market_execution_enabled"] is True
     assert payload["protected_or_shared_csv_opened"] is False
     assert payload["market_trajectories_generated"] == 0
     assert payload["optimizer_steps"] == 0
