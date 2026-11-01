@@ -1,6 +1,21 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...05` reingresó desde Q0 el 01/11/2026 local tras suite (463 passed),
+  Ruff y preflight vigilado **nuevo** `ready`. Una sola sesión
+  `systemd --user`, `Restart=no`, aceptó `wf-2021/1`–`/10` y pausó en
+  frontera por presupuesto antes de `wf-2022/Q0`: ledger `ready`, **11/22**
+  unidades, `pending=null`, sin fallo. `InvocationID`
+  `16d210a2098e4ab58f83cf8fbb7d0423`, `Result=success`; última huella
+  completa `after_dual_and_D`:
+  `80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf`.
+  El cargo conservador propio deja 115,489597 s del tope diario, menos que
+  los 120 s exigidos para admitir Q0; **no iniciar otra unidad este día**.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-05-session-02-pausa.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-session-02-20261101/`. Un reingreso
+  posterior exige todas las guardas y preflight nuevos, sin repetir unidades
+  ni reanudar un ledger `failed`. Las raíces `...01`–`...04` siguen intactas;
+  no abrir validación ni prueba final ni activar evaluación v1.2.
 - WF `...05`: Santiago autorizó el reingreso tras Q0, pero el preflight
   vigilado **nuevo** del 01/11/2026 18:13:38 `America/La_Paz` quedó
   `blocked`: `MemAvailable=4.241.289.216 B`, por debajo de 4 GiB

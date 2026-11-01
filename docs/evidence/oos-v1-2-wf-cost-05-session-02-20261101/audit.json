@@ -1,0 +1,264 @@
+{
+  "accepted": [
+    {
+      "algorithm_seconds": 25.817360883999754,
+      "checkpoint_manifest_sha256": "e67714f35c63d79ef4f41596934bc7dd6908c3279c33350a3d8ccf957529c279",
+      "checkpoint_sha256": "8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185",
+      "diagnostic_D_seconds": null,
+      "ledger_wall_seconds": 28.650246381759644,
+      "report_sha256": "9e288ff8a258153101c5f966b268fef1f7d92b6c97333749e0b353467e559b78",
+      "resources": {
+        "actor_updates": 0,
+        "critic_updates": 0,
+        "diagnostic_trajectories": 0,
+        "diagnostic_transitions": 0,
+        "trajectories": 400,
+        "transitions": 72000
+      },
+      "save_seconds": 0.07590804400024354,
+      "unit": 0
+    },
+    {
+      "algorithm_seconds": 61.3477434739998,
+      "checkpoint_manifest_sha256": "e7f279ceb14f62ce679ab8bf1be8ce4aad21c2ae12417cad36a3af111ee3476a",
+      "checkpoint_sha256": "ae16b97be71f253c0cb1a46ea77da3a235b10cdd3a260906bbe332fbf6263922",
+      "diagnostic_D_seconds": 4.711580031999802,
+      "ledger_wall_seconds": 64.84726786613464,
+      "report_sha256": "9348912fbd9895dfeba211e3b69c9ef970f55228c3f293de1b3c93be5ebfcbc1",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 0.23398625499976333,
+      "unit": 1
+    },
+    {
+      "algorithm_seconds": 62.131689554999866,
+      "checkpoint_manifest_sha256": "ebbb1a1f579930089a3d9ed578bfca962fec0bbf9ccca9af7dc5135656fda916",
+      "checkpoint_sha256": "84869420804b52da67f0295ec953cb0531ae197da502f9a05168c79960202f9f",
+      "diagnostic_D_seconds": 4.7625759200000175,
+      "ledger_wall_seconds": 67.36321187019348,
+      "report_sha256": "c0c2f181e8d68e51617c088aba4f6af738d473026228d3ef17a0875de98bdfe8",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 0.3705431629996383,
+      "unit": 2
+    },
+    {
+      "algorithm_seconds": 62.352420093000546,
+      "checkpoint_manifest_sha256": "63ed354a3f80c9c31f189516d6b7a2d00ac17f94b715f53c43c9c8bb3bc0f2e5",
+      "checkpoint_sha256": "fffefa2982662b61b956d9adba71aae548e3ae458e6000a87dbd3ecf7c118fde",
+      "diagnostic_D_seconds": 4.75664426000003,
+      "ledger_wall_seconds": 68.21617126464844,
+      "report_sha256": "00ce1ca03d54c0d42d16c46431b5637eebeba70543e0985572f9dfe200533893",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 0.542666356999689,
+      "unit": 3
+    },
+    {
+      "algorithm_seconds": 63.0701478130004,
+      "checkpoint_manifest_sha256": "190ddd1a7b518d4167a4c9e926f8ab566f013dfac9fedd319bb5aa6216f1907c",
+      "checkpoint_sha256": "5f29c8f06fa6393e4b254c4916de5bc65c287fbf2d4784db3e1153c9c564d84b",
+      "diagnostic_D_seconds": 4.6505792749994725,
+      "ledger_wall_seconds": 69.88394665718079,
+      "report_sha256": "09fa74c857fe0b940aea5349334f26694ee661091889cf6428f75aa333ab42c8",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 0.7188884580000376,
+      "unit": 4
+    },
+    {
+      "algorithm_seconds": 64.02530517299965,
+      "checkpoint_manifest_sha256": "68387b9896e5125ce1f0855c267ab13ef8640e4ac4d7b3f781cf12cc6c6ac081",
+      "checkpoint_sha256": "66c1c326551b5e0baf23e1a21bdf84c87094ed8b6e65a67a581e4b29dcc4f13b",
+      "diagnostic_D_seconds": 4.913910379000299,
+      "ledger_wall_seconds": 71.60887551307678,
+      "report_sha256": "cc3afbbc88f9384ecc25fe5b9dc26770e2b5b50177e1479274b54d0f6657e63b",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 0.9824198619999152,
+      "unit": 5
+    },
+    {
+      "algorithm_seconds": 60.489525037999556,
+      "checkpoint_manifest_sha256": "7f909a05c32b047a4103b5f37af3a327669444dd6dc1dc3a12acb004ba6acdfd",
+      "checkpoint_sha256": "93482e96b84b5abfc522477f878e459a6e0955e36916d4c5ce62c639eeb4c089",
+      "diagnostic_D_seconds": 4.53823214699969,
+      "ledger_wall_seconds": 68.85909175872803,
+      "report_sha256": "3658069ea53079a8a72abae046a07422a61ae483631ac0ebf2071bb832f13415",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 1.0900500600000669,
+      "unit": 6
+    },
+    {
+      "algorithm_seconds": 61.93214475700006,
+      "checkpoint_manifest_sha256": "1587890c19c490ef52a06b430ccfb3198e98a6cd8c3c9ec99c45da91446bba3f",
+      "checkpoint_sha256": "559f13d3b99e1689fb5199863c8c575e729445c54a9db009e7a05808a01f928d",
+      "diagnostic_D_seconds": 4.6283753360003175,
+      "ledger_wall_seconds": 71.60636281967163,
+      "report_sha256": "a9cb8ab9bb3cf0de843a540f7346564dee21850051ae402e070376d8440b302a",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 1.3336657610007023,
+      "unit": 7
+    },
+    {
+      "algorithm_seconds": 65.35176025000055,
+      "checkpoint_manifest_sha256": "c1343d2262528bfd6a7fa821320e9c0db13abdcc725f6f4e07f2682043e4c0bc",
+      "checkpoint_sha256": "5382bd032881bb90be07039a26c60cfccdefa3f7dd04c4c6c8d9cdb21a8a8ccb",
+      "diagnostic_D_seconds": 5.0425803979997,
+      "ledger_wall_seconds": 76.6197943687439,
+      "report_sha256": "b313ea190acbc0918680d4fdf399b46c85fd3a95e645bdb645a658827820f5f5",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 1.651535581000644,
+      "unit": 8
+    },
+    {
+      "algorithm_seconds": 65.46898874600083,
+      "checkpoint_manifest_sha256": "5cde3ac78140d306cd0de1158af63d3dd4950779d55666986a2172507b8547ae",
+      "checkpoint_sha256": "e117183a8b8919194ef12d245315057ebe90741ab879703200bad485aa515426",
+      "diagnostic_D_seconds": 4.911613498999941,
+      "ledger_wall_seconds": 77.32523036003113,
+      "report_sha256": "13dea89fd5932d7d3230294383fa111c1cbe907f3659169967580f2934903f31",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 1.802543539999533,
+      "unit": 9
+    },
+    {
+      "algorithm_seconds": 65.2674912170005,
+      "checkpoint_manifest_sha256": "a4f24793d06ea9c655725821142cc46d59f789a78af309730ca090da75a87dac",
+      "checkpoint_sha256": "80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf",
+      "diagnostic_D_seconds": 4.901895854999566,
+      "ledger_wall_seconds": 78.42818427085876,
+      "report_sha256": "0a4ebc5d9e0605b10ccd050183bb67785d9538a731a51cbbcbe532fa04a9cdaa",
+      "resources": {
+        "actor_updates": 8,
+        "critic_updates": 16,
+        "diagnostic_trajectories": 64,
+        "diagnostic_transitions": 11520,
+        "trajectories": 864,
+        "transitions": 155520
+      },
+      "save_seconds": 1.8965471630008324,
+      "unit": 10
+    }
+  ],
+  "accepted_units": 11,
+  "budget_accounting": {
+    "day_la_paz": "2026-11-01",
+    "external_campaign_seconds": 0.0,
+    "global_charged_seconds": 3484.510402687977,
+    "next_unit_cap_seconds": 120,
+    "own_ledger_span_seconds": 3482.644556760788,
+    "own_session_gap_seconds": 1.8658459271891843,
+    "remaining_global_before_reserve_seconds": 4615.489597312023,
+    "remaining_own_daily_seconds": 115.48959731202285
+  },
+  "checkpoint_10_sha256": "80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf",
+  "checkpoint_q0_unchanged": "8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185",
+  "failure": null,
+  "invocation_id": "16d210a2098e4ab58f83cf8fbb7d0423",
+  "ledger_rows": 52,
+  "ledger_sha256": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+  "ledger_state_hash": "4ccb0a4e925cd44c3d82522d0f7a6390001649d243c7e6190baa1d086502f4df",
+  "next_unit": "wf-2022/Q0",
+  "pause_reason": "budget",
+  "pending": null,
+  "preflight_sha256": "b9221cac25257afb0eaa313f3e1ebf037e450d81a6f3f9b83cae3543ea337a6c",
+  "prior_roots": {
+    "01": {
+      "files": 15,
+      "mapping_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a"
+    },
+    "02": {
+      "files": 2,
+      "mapping_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd"
+    },
+    "03": {
+      "files": 10,
+      "mapping_sha256": "34270a3a26901de2472d203662e1717827cc93d8073a7f996b01f0b8174bbb57"
+    },
+    "04": {
+      "files": 1860,
+      "mapping_sha256": "3c22543a9238b07f84ae790e92fcd8b627d53483898e15204d9a8a5fb6a859da"
+    }
+  },
+  "resource_guard_failed_events": 0,
+  "resources_total": {
+    "actor_updates": 80,
+    "critic_updates": 160,
+    "diagnostic_trajectories": 640,
+    "diagnostic_transitions": 115200,
+    "trajectories": 9040,
+    "transitions": 1627200
+  },
+  "root_file_count": 2647,
+  "root_mapping_sha256": "0d034efccb2138c4fb975c86e504763ff69ce331f2a5fdbb9919f4e1d06931eb",
+  "session_01_wall_seconds": 30.721120357513428,
+  "session_02_end_utc": "2026-11-01T22:55:58.848938+00:00",
+  "session_02_start_utc": "2026-11-01T22:44:00.364578+00:00",
+  "session_02_wall_seconds": 718.4843602180481,
+  "sessions_sha256": "70595af7a182dcece5d90db6bd3db27e370073d488b328fc2cbc30b41bd6763f",
+  "status": "ready",
+  "supervisor_rows": 208,
+  "supervisor_sha256": "b832229b98c4c7dad13c8c77428265a8acbe4aee5061fabd65ea3e2a083195a3",
+  "systemd_journal_sha256": "918cfdd3ecf7f3942a16f681f58179b7cc9a711972b9d01171aabf66a88672b8",
+  "systemd_result": "success",
+  "unit": "oos-wf-cost-20261101-05-session-02.service"
+}

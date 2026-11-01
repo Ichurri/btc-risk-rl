@@ -1,4 +1,33 @@
-# Estado vigente — reingreso WF `...05` bloqueado por memoria
+# Estado vigente — WF `...05` pausada tras 11/22 unidades
+
+El 01/11/2026 (`America/La_Paz`) Santiago autorizó continuar desde Q0
+sin repetirla. La suite completa dio **463 passed**, Ruff pasó y el
+preflight vigilado **nuevo** dio `ready`. Se inició una sola sesión
+`oos-wf-cost-20261101-05-session-02.service` con `Restart=no`,
+`InvocationID=16d210a2098e4ab58f83cf8fbb7d0423`. Cerró
+`Result=success` tras aceptar `wf-2021/1`–`/10`. El ledger está **`ready`,
+11/22 unidades, `pending=null`**, sin fallo; la pausa presupuestaria ocurrió
+antes de `wf-2022/Q0`. El checkpoint completo `after_dual_and_D` de unidad
+10 tiene SHA-256
+`80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf`;
+Q0 conserva su huella. La sesión duró **718,484360 s** y D sumó
+**47,817987 s** de tiempos de fase. El cargo propio conservador del día
+es **3.484,510403 s**, pues el ledger incluye el intervalo entre sesiones:
+quedan **115,489597 s** del tope propio, menos que los 120 s necesarios
+para admitir la siguiente Q0. No iniciar otra unidad hoy.
+
+Ver [informe](hitos/OOS-v1-2-costo-cortes-05-session-02-pausa.md),
+[auditoría](evidence/oos-v1-2-wf-cost-05-session-02-20261101/audit.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-session-02-20261101/COMMANDS.md).
+La campaña sigue incompleta. Otro día local requiere guardas, suite, Ruff
+y preflight nuevos antes de cualquier reingreso. Un ledger `failed` sería
+irreversible. Las raíces `...01`–`...04` conservan sus huellas; no se
+abrieron validación 2023 ni prueba final. `.python-version` permanece
+eliminado solo localmente y fuera de Git.
+
+---
+
+# Estado anterior — reingreso WF `...05` bloqueado por memoria
 
 Santiago autorizó continuar desde Q0 sin repetirla. El 01/11/2026
 `America/La_Paz` se reprodujo exactamente la auditoría Q0 publicada:
