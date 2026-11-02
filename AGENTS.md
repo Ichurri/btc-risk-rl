@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...05`: intento de reingreso del 02/11/2026 local **bloqueado antes de
+  lanzar**. El ledger previo y posterior siguió `ready`, 11/22 unidades,
+  `pending=null`; los 11 checkpoints y huellas coincidieron con la auditoría
+  de la sesión 02 y no había unidad activa. Suite completa 463 passed y Ruff
+  pasaron. El preflight vigilado nuevo dio `blocked` por
+  `MemAvailable=4.259.569.664 B`, 35.397.632 B por debajo de 4 GiB; las
+  demás guardas fueron conformes. **No se lanzó `wf-2022/Q0` ni otra sesión.**
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado-20261102.md`
+  y `docs/evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261102/`. La suite
+  gastó 390,45 s fuera del ledger; no asumir que el contador automático 0 s
+  es todo el gasto global. No asumir un tercer día activo: adjudicar si este
+  intento consumió el segundo. No rebajar memoria, repetir unidades ni usar
+  este preflight para lanzar. Validación/final y v1.2 siguen protegidas.
 - WF `...05` reingresó desde Q0 el 01/11/2026 local tras suite (463 passed),
   Ruff y preflight vigilado **nuevo** `ready`. Una sola sesión
   `systemd --user`, `Restart=no`, aceptó `wf-2021/1`–`/10` y pausó en

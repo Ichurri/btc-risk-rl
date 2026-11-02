@@ -1,4 +1,30 @@
-# Estado vigente — WF `...05` pausada tras 11/22 unidades
+# Estado vigente — WF `...05` bloqueada antes de reingresar el 02/11
+
+WF05 sigue con ledger **`ready`, 11/22 unidades aceptadas y `pending=null`**.
+La auditoría de los 11 checkpoints se reprodujo exactamente y no había
+unidad WF activa. En el nuevo día local 02/11/2026, la suite completa dio
+**463 passed in 390,45s** y Ruff pasó. El preflight vigilado nuevo quedó
+`blocked` a las 17:29:52 en `America/La_Paz`: `MemAvailable=4.259.569.664 B`,
+**35.397.632 B por debajo de 4 GiB**. CA, batería 97 %, disco, gestor,
+`Linger`, presupuesto, huellas y vigilancia de aperturas fueron conformes.
+**No se inició `wf-2022/Q0` ni otra sesión.** La huella del ledger y del
+último checkpoint permanece intacta. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado-20261102.md),
+[preflight](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261102/preflight.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261102/COMMANDS.md).
+
+El contador automático indicó 0 s globales el 02/11 al no abrirse sesión,
+pero las pruebas gastaron 390,45 s fuera del ledger. Debe adjudicarse si
+ese trabajo consume el segundo día activo del máximo de dos; **no asumir
+un tercero** ni llamar completo al estudio. Un nuevo intento requiere
+guardas, suite, Ruff y preflight nuevos y presupuesto real, sin reutilizar
+esta captura `blocked`. La propuesta de evaluación v1.2 sigue sin permiso;
+validación 2023 y prueba final siguen protegidas. `.python-version` continúa
+eliminado solo localmente y fuera de Git.
+
+---
+
+# Estado anterior — WF `...05` pausada tras 11/22 unidades
 
 El 01/11/2026 (`America/La_Paz`) Santiago autorizó continuar desde Q0
 sin repetirla. La suite completa dio **463 passed**, Ruff pasó y el
