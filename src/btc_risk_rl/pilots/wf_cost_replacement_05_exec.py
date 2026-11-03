@@ -43,8 +43,9 @@ from btc_risk_rl.pilots.wf_cost_replacement_05 import SPEC, inspect_candidate
 
 CAMPAIGN = ROOT / "artifacts/oos-v12-wf-cost-only-05"
 REGISTRATION = ROOT / "docs/protocols/OOS-v1-2-wf-cost-05-approval.json"
-# Authorization is restricted to this new profile and no earlier WF root.
-MARKET_EXECUTION_ENABLED = True
+# Closed prospectively after the two active WF05 days; retain the historical
+# approval hash for audit, never for renewed execution of this incomplete root.
+MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = "c2b287ec646a6d6a85c849474f1411f5be28fabb1f1c5701b65005e3374a3c59"
 
 
