@@ -1,4 +1,36 @@
-# Estado vigente — WF `...05` bloqueada antes de reingresar el 02/11
+# Estado vigente — WF `...05` cerrada `incomplete`; gate apagado
+
+El 03/11/2026 se adjudicó conservadoramente el 02/11 como **segundo día
+activo** de WF05, pues hubo auditoría, suite, Ruff, preflight y cierre
+específicos de campaña. El máximo de dos días se agotó sin iniciar
+`wf-2022/Q0`. Resultado metodológico **`incomplete`, 11/22 unidades**;
+el ledger original conserva su último estado técnico `ready`,
+`pending=null`, sin reescritura. Los 11 checkpoints, raíces anteriores y
+registro de aprobación conservan sus huellas. El gate de WF05 está
+**cerrado prospectivamente** y tanto el comando público como el
+trabajador rechazan otra ejecución. No reanudar esta raíz.
+
+La conciliación sin doble cargo del 01/11 da **3.824,140403 s como mínimo
+distinto**: 3.484,510403 s ledger/bitácora más 339,63 s de la primera
+suite previa al ledger. Superó por al menos **224,140403 s** el tope propio
+diario de 3.600 s; las suites posteriores ya estaban dentro del intervalo
+del ledger. El 02/11, el contador automático 0 s no incluyó la suite de
+390,45 s ni otros tiempos de comprobación y cierre. Su envolvente
+conservadora fue 560 s. La suma de las dos envolventes fue 4.726 s, bajo
+5.400 s acumulados, sin subsanar la desviación diaria ni abrir un tercer
+día. Ver [informe](hitos/OOS-v1-2-costo-cortes-05-cierre-incomplete.md),
+[resumen académico](hitos/OOS-v1-2-costo-cortes-05-resumen-academico-cierre.md),
+[cálculo y huellas](evidence/oos-v1-2-wf-cost-05-closure-20261103/results.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-closure-20261103/COMMANDS.md).
+
+La medición completa del corte 2022 falta. La propuesta de evaluación
+v1.2 sigue sin adopción ni permiso; no se consultaron validación 2023 ni
+prueba final. `.python-version` permanece eliminado solo localmente y
+fuera de Git.
+
+---
+
+# Estado anterior — WF `...05` bloqueada antes de reingresar el 02/11
 
 WF05 sigue con ledger **`ready`, 11/22 unidades aceptadas y `pending=null`**.
 La auditoría de los 11 checkpoints se reprodujo exactamente y no había

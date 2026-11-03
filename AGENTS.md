@@ -1,6 +1,21 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- WF `...05` **cerrado metodológicamente `incomplete` el 03/11/2026**:
+  el 02/11 se adjudicó como segundo día activo por suite, auditoría, Ruff,
+  preflight y cierre, aunque no hubo sesión histórica. El máximo de dos
+  días está agotado: **no iniciar `wf-2022/Q0` ni reanudar esta raíz**.
+  Ledger original intacto `ready`, 11/22 unidades, `pending=null`; sus 11
+  checkpoints, raíz y aprobación conservan huellas. El gate WF05 se cerró
+  prospectivamente (`MARKET_EXECUTION_ENABLED=False`); comando público y
+  trabajador rechazan antes de leer solicitudes. La conciliación incluye
+  339,63 s de primera suite fuera del ledger el 01/11: mínimo propio
+  3.824,140403 s, **224,140403 s por encima** del límite diario de 3.600 s.
+  El 02/11, el contador 0 s omitió la suite de 390,45 s y más trabajo de
+  comprobación/cierre. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-05-cierre-incomplete.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-closure-20261103/`. No alterar el
+  ledger para reetiquetarlo, no abrir validación/final ni activar v1.2.
 - WF `...05`: intento de reingreso del 02/11/2026 local **bloqueado antes de
   lanzar**. El ledger previo y posterior siguió `ready`, 11/22 unidades,
   `pending=null`; los 11 checkpoints y huellas coincidieron con la auditoría
