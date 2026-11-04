@@ -1,4 +1,19 @@
-# Estado vigente — WF `...05` cerrada `incomplete`; gate apagado
+# Estado vigente — propuesta de costo exclusivo del corte 2022
+
+Tras el cierre WF05 en `977e852` se preparó
+[una propuesta nueva](proposals/OOS-v1-2-costo-2022-exclusivo-v1.md), **para
+revisión y sin autorización de ejecución**. Propone una sola C10 nueva con
+semilla 498614892, Q0 y diez iteraciones del corte 2022, raíz y aprobación
+independientes. Define límites diarios y acumulados, y exige una bitácora
+durable desde la primera comprobación para cargar suite, Ruff, preflight,
+supervisión, auditoría y cierre mediante intervalos sin doble conteo. La
+bitácora y el perfil ejecutor aún requieren implementación y pruebas antes
+de solicitar permiso. La comprobación actual es solo algebraica y sintética;
+no se inició ninguna campaña ni se habilitó v1.2. WF05 no se reanuda.
+
+---
+
+# Estado anterior — WF `...05` cerrada `incomplete`; gate apagado
 
 El 03/11/2026 se adjudicó conservadoramente el 02/11 como **segundo día
 activo** de WF05, pues hubo auditoría, suite, Ruff, preflight y cierre
