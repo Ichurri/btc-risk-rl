@@ -165,10 +165,31 @@ class P2RSharedBudget:
                 remaining = max(0.0, DAY_LIMIT - already)
                 spent = remaining if charge.blocked else min(measured, remaining)
                 self.external_seconds += spent
+                wf_ledger_spent[path.parent] = already + spent
                 self.sources.append(dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                                          seconds=spent, reason=("failed_or_unclosed_session"
                                                                 if charge.blocked else "session_gap"),
                                          day=self.day))
+            # The 2022-only study starts its durable budget clock before a
+            # campaign ledger or service session can exist.
+            from btc_risk_rl.pilots.wf_cost_2022_orchestrator import (
+                CAMPAIGN_NAME,
+                JOURNAL_NAME,
+                shared_attempt_debit,
+            )
+
+            if campaign_name != CAMPAIGN_NAME:
+                path = self.audit / JOURNAL_NAME
+                if path.exists():
+                    delta = shared_attempt_debit(self.root, now=now, day=self.day)
+                    root = self.root / CAMPAIGN_NAME
+                    remaining = max(0.0, DAY_LIMIT - wf_ledger_spent.get(root, 0.0))
+                    spent = min(delta, remaining)
+                    self.external_seconds += spent
+                    self.sources.append(dict(path=str(path),
+                                             sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                                             seconds=spent, reason="precheck_attempt",
+                                             day=self.day))
             self.record("entered")
         except BaseException:
             self.lock.close()

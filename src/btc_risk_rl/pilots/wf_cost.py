@@ -491,11 +491,29 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None) ->
         seconds = (remaining if charge.blocked else
                    min(charge.extra_by_day.get(day, 0.0), remaining))
         spent += seconds
+        wf_ledger_spent[path.parent] = already + seconds
         sources.append(dict(path=str(path), sha256=digest(path),
                             status="blocked" if charge.blocked else "closed",
                             charged_today_seconds=seconds,
                             reason="failed_or_unclosed_session" if charge.blocked
                                    else "session_gap"))
+    from btc_risk_rl.pilots.wf_cost_2022_orchestrator import (
+        CAMPAIGN_NAME,
+        JOURNAL_NAME,
+        shared_attempt_debit,
+    )
+
+    if campaign.name != CAMPAIGN_NAME:
+        path = artifacts / "shared-pilot-budget" / JOURNAL_NAME
+        if path.exists():
+            delta = shared_attempt_debit(artifacts, now=now, day=day)
+            root = artifacts / CAMPAIGN_NAME
+            remaining = max(0.0, 10800 - wf_ledger_spent.get(root, 0.0))
+            seconds = min(delta, remaining)
+            spent += seconds
+            sources.append(dict(path=str(path), sha256=digest(path),
+                                status="precheck_attempt", charged_today_seconds=seconds,
+                                reason="precheck_attempt"))
     return dict(ok=not active, day_la_paz=day, global_spent=spent,
                 remaining_before_reserve=max(0.0, 10800 - spent - 2700),
                 active_campaigns=active, sources=sources)
