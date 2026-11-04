@@ -1,4 +1,26 @@
-# Estado vigente — propuesta de costo exclusivo del corte 2022
+# Estado vigente — orquestador WF 2022 verificado solo sintéticamente
+
+Se implementó la bitácora de intentos **anterior al ledger** y la admisión
+con presupuesto propio/global, días activos y reservas del
+[protocolo 2022](proposals/OOS-v1-2-costo-2022-exclusivo-v1.md). Las pruebas
+focales sintéticas dieron 17 passed; la suite completa 481 passed y Ruff
+pasó. La conciliación de intentos, sesiones y ledger evita doble cargo;
+el presupuesto compartido reconoce intentos incluso si no se abrió el
+ledger. Ver [informe](hitos/OOS-v1-2-costo-2022-orquestador-sintetico.md)
+y [comandos](evidence/oos-v12-wf-2022-orchestrator/COMMANDS.md).
+
+El nuevo gate está cerrado, no existen aprobación ni raíz histórica y el
+comando público rechaza `--run`. Falta integrar el trabajador/supervisor
+histórico 2022, probarlo con fuente controlada y efectuar preflight vigilado
+antes de solicitar autorización separada. WF05 conserva su cierre
+`incomplete` y su gate apagado. La verificación de infraestructura de este
+hito **no consume** el presupuesto de una futura campaña, cuyo reloj debe
+empezar desde su primera comprobación. Validación/final y v1.2 siguen
+cerradas. `.python-version` permanece eliminado solo localmente.
+
+---
+
+# Estado anterior — propuesta de costo exclusivo del corte 2022
 
 Tras el cierre WF05 en `977e852` se preparó
 [una propuesta nueva](proposals/OOS-v1-2-costo-2022-exclusivo-v1.md), **para

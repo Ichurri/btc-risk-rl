@@ -1,6 +1,15 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- Estudio WF **exclusivo del corte 2022**: el usuario autorizó solo la
+  implementación y verificación **sintética** del orquestador propuesto en
+  `cb6aeb8`. La bitácora previa al ledger, conciliación de intervalos y
+  admisión con reservas están implementadas; ver
+  `docs/hitos/OOS-v1-2-costo-2022-orquestador-sintetico.md`. El gate nuevo
+  sigue `MARKET_EXECUTION_ENABLED=False`, sin registro de aprobación ni raíz
+  histórica. Faltan trabajador/supervisor histórico, integración de corte,
+  preflight vigilado y autorización específica. **No lanzar C10, no reanudar
+  WF05, no abrir validación/final ni activar v1.2** por este hito.
 - WF `...05` **cerrado metodológicamente `incomplete` el 03/11/2026**:
   el 02/11 se adjudicó como segundo día activo por suite, auditoría, Ruff,
   preflight y cierre, aunque no hubo sesión histórica. El máximo de dos
