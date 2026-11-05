@@ -1,3 +1,15 @@
+# Dashboard local de avance — solo lectura
+
+Dashboard comparativo disponible mediante `scripts/build_thesis_dashboard.py`;
+salida ignorada en `reports/avance-tesis/index.html`. Abre por defecto el cruce
+P3 sobre D fijo, con selectores de semilla, condición y política generadora.
+Incluye P1 y estados/recursos de P0/P2/P2R/WF05. Ver [documentación](DASHBOARD.md).
+Este hito solo exporta evidencias: mantiene WF05 y los permisos cerrados,
+2022 histórico pendiente y evaluación v1.2 sin activar. La eliminación local
+de `.python-version` se conserva fuera de los commits.
+
+---
+
 # Estado vigente — orquestador WF 2022 verificado solo sintéticamente
 
 Se implementó la bitácora de intentos **anterior al ledger** y la admisión

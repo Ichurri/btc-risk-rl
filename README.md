@@ -26,6 +26,16 @@ permiso y preflight nuevos. Validación y prueba final
 siguen bloqueadas.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 
+## Dashboard comparativo local
+
+```bash
+uv run --frozen python scripts/build_thesis_dashboard.py
+xdg-open reports/avance-tesis/index.html
+```
+
+[Fuentes, límites y recorrido de presentación](docs/DASHBOARD.md).
+Funciona sin servidor ni conexión y no inicia campañas.
+
 ## Debian local / entorno remoto
 Requisitos: Git, Python 3.11–3.13 y uv disponible. Dentro de esta carpeta:
 
