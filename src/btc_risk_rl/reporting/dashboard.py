@@ -77,6 +77,65 @@ def git(*args: str) -> str:
     return subprocess.check_output(["git", "-C", str(ROOT), *args], text=True).strip()
 
 
+def summarize_runs(state: dict, directory: str, read) -> list[dict]:
+    """Use the last accepted frontier per run, never a pending unit."""
+    grouped = {}
+    for unit in state["units"]:
+        grouped.setdefault(unit["run_id"], []).append(unit)
+    result = []
+    for run_id, units in grouped.items():
+        latest = units[-1]
+        number = int(Path(latest["checkpoint"]).name.split("-")[-1])
+        relative = f"artifacts/{directory}/{run_id}/unit-{number}.json"
+        payload = read(relative)
+        report = payload["report"]
+        expected = latest.get("report_sha256")
+        if expected and digest((ROOT / relative).read_bytes()) != expected:
+            raise ValueError(f"Reporte aceptado alterado: {relative}")
+        settings = report["settings"]
+        fixed = [
+            row
+            for row in report.get("stability", [])
+            if row.get("phase") == "fixed_A" and row.get("measurement") == "after_critic"
+        ]
+        audit = report.get("audits", [])
+        resources = {}
+        for unit in units:
+            for key, value in unit.get("resources", {}).items():
+                resources[key] = resources.get(key, 0) + value
+        result.append(
+            dict(
+                run=run_id,
+                condition=report["condition"],
+                seed=settings["seed"],
+                settings=settings,
+                beta=settings.get("critic_beta", 0),
+                accepted_units=len(units),
+                complete=number == settings["iterations"],
+                accepted_iteration=number,
+                seconds=sum(unit["seconds"] for unit in units),
+                rss_mib=max(unit.get("supervisor", {}).get("rss_peak_bytes", 0) for unit in units)
+                / 1024**2,
+                resources=resources,
+                first_utc=units[0].get("end_utc"),
+                last_utc=latest.get("end_utc"),
+                source=relative,
+                report_hash_pinned=bool(expected),
+                boundary=report.get("boundary"),
+                marker=report.get("market_training_executed"),
+                mse_a_post=fixed[-1]["mse"] if fixed else None,
+                mse_a_iteration=fixed[-1]["iteration"] if fixed else None,
+                audit={
+                    key: audit[-1].get(key)
+                    for key in ("iteration", "eta", "f_b", "rho_b", "lambda_before", "lambda_after")
+                }
+                if audit
+                else {},
+            )
+        )
+    return result
+
+
 def load_data(root: Path = ROOT) -> dict:
     """Read only pinned small evidence files, accepted ledgers and accepted reports."""
     sources = {}
@@ -133,6 +192,7 @@ def load_data(root: Path = ROOT) -> dict:
         }
         path = root / "artifacts" / directory / "ledger.jsonl"
         rows = []
+        runs = []
         status = "Sin evidencia disponible"
         if path.is_file():
             raw = path.read_bytes()
@@ -165,11 +225,13 @@ def load_data(root: Path = ROOT) -> dict:
                         "rss_mib": unit.get("supervisor", {}).get("rss_peak_bytes", 0) / 1024**2,
                     }
                 )
+            runs = summarize_runs(state, directory, read)
         campaigns[name] = dict(
             status=status,
             planned=planned,
             accepted=len(rows),
             rows=rows,
+            runs=runs,
             source=report,
             ledger=f"artifacts/{directory}/ledger.jsonl",
             question=question,

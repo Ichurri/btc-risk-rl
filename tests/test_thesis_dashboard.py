@@ -70,3 +70,26 @@ def test_generation_is_repeatable_and_does_not_change_sources():
             assert hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() == source["sha256"]
     finally:
         shutil.rmtree(output.parent, ignore_errors=True)
+
+
+def test_run_table_uses_only_last_accepted_frontier_and_reconciles_counts():
+    data = load_data()
+    assert sum(len(c["runs"]) for c in data["campaigns"].values()) == 61
+    for pilot, campaign in data["campaigns"].items():
+        assert sum(r["accepted_units"] for r in campaign["runs"]) == campaign["accepted"]
+        assert sum(r["seconds"] for r in campaign["runs"]) == pytest.approx(
+            sum(r["seconds"] for r in campaign["rows"])
+        )
+        for run in campaign["runs"]:
+            original = json.loads((ROOT / run["source"]).read_text())["report"]
+            assert run["settings"] == original["settings"]
+            assert run["seed"] == original["settings"]["seed"]
+            assert run["condition"] == original["condition"]
+            assert run["boundary"] == (
+                "after_dual" if pilot in {"P0", "P1"} else "after_dual_and_D"
+            )
+    partial = next(r for r in data["campaigns"]["P2"]["runs"] if not r["complete"])
+    assert partial["run"] == "run-05-C0"
+    assert partial["accepted_iteration"] == 1
+    assert partial["source"].endswith("/unit-1.json")
+    assert partial["resources"]["actor_updates"] == 8

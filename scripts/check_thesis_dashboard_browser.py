@@ -45,6 +45,24 @@ with sync_playwright() as p:
         assert page.locator("#seed").is_disabled()
         assert "Unidades aceptadas" in page.locator("#content").inner_text()
     page.screenshot(path=str(root / "reports/avance-tesis/wf05.png"))
+    assert page.locator("#generalTable tbody tr").count() == 6
+    assert page.locator("#runTable tbody tr").count() == 61
+    assert page.locator("#allPairs tbody tr").count() == 9
+    page.select_option("#tablePilot", "P3")
+    page.select_option("#tableCondition", "C10")
+    for view in ["all", "config", "resources", "metrics"]:
+        page.select_option("#tableView", view)
+        assert page.locator("#runTable tbody tr").count() == 6
+    with page.expect_download() as download:
+        page.click("#exportRuns")
+    assert download.value.suggested_filename == "comparacion-corridas-metrics.csv"
+    page.evaluate("window.scrollTo(0,document.getElementById('tablas').offsetTop-15)")
+    page.screenshot(path=str(root / "reports/avance-tesis/tablas.png"))
+    page.select_option("#tablePilot", "P2")
+    page.select_option("#tableCondition", "Todas")
+    page.select_option("#tableView", "resources")
+    assert page.locator("#runTable tbody tr").count() == 6
+    assert "Parcial: solo frontera aceptada" in page.locator("#runTable").inner_text()
     page.select_option("#pilot", "P3")
     page.set_viewport_size({"width": 390, "height": 844})
     assert page.evaluate("document.documentElement.scrollWidth<=innerWidth")
@@ -58,6 +76,11 @@ with sync_playwright() as p:
                 "other_pilots": 4,
                 "page_errors": errors,
                 "mobile_no_overflow": True,
+                "comparison_campaign_rows": 6,
+                "accepted_run_rows": 61,
+                "crossed_pair_rows": 9,
+                "run_views_tested": 4,
+                "csv_download": True,
             }
         )
     )

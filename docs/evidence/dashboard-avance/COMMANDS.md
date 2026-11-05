@@ -39,3 +39,12 @@ conservan fuera de Git en `reports/avance-tesis/`.
 
 Objetivos: texto leído de la tesis de Drive en modo de solo lectura el
 05/11/2026; extracto y enlace en `docs/DASHBOARD.md`. No se modificó Google Docs.
+
+Ampliación de tablas: seis pruebas Python finales, conciliación de las 61
+corridas con las unidades y tiempos del ledger, identidad de semilla/configuración
+contra cada reporte original y rechazo de la unidad parcial P2. El navegador
+verifica seis filas de campañas, 61 filas de corridas, nueve pares cruzados,
+filtros P3/C10 y P2, las tres vistas y la descarga CSV. La primera prueba detectó
+el nombre histórico `after_dual` de P0/P1; se especificó su frontera propia.
+La prueba móvil detectó el ancho intrínseco del selector nuevo; se corrigió su
+ancho máximo y pasó la repetición.

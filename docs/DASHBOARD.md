@@ -82,3 +82,26 @@ Genera capturas `inicio.png`, `principal.png`, `p1.png` y `wf05.png` en la salid
 ignorada. Se verificaron 18 selecciones P3, tres semillas P1, cuatro pilotos
 operativos, valores contra fuentes auditadas, ausencia de errores JavaScript
 y ancho móvil. Ver `docs/evidence/dashboard-avance/`.
+
+## Tablas comparativas ampliadas
+
+La sección «Tablas comparativas» muestra seis pilotos en una tabla general:
+pregunta, agentes/condiciones, semillas observadas, configuración, corridas
+completas y previstas, unidades, estado, período, tiempo, resultado, decisión y
+fuentes. El detalle incluye las **61 corridas con unidades aceptadas**, con
+filtros por piloto y condición y una vista «Toda la información» que reúne estos tres grupos:
+
+- Configuración: K, β, épocas de actor/crítico, tamaños Q/A/B/minibatch,
+  arquitectura oculta, tasas de aprendizaje, clip, d y fragmentación.
+- Recursos: última iteración aceptada, unidades, duración, RSS, trayectorias y
+  transiciones de aprendizaje/D, pasos de ambos optimizadores, fechas UTC y frontera.
+- Métricas: último MSE post-A registrado, iteración correspondiente, η, F_B,
+  CVaR empírico B, multiplicador y marcador histórico de entrenamiento.
+
+Se puede descargar cada vista filtrada como CSV local. No se crean archivos en
+los artefactos originales. Una tabla adicional conserva los nueve pares P3 y
+sus cuatro celdas de MSE, con la referencia cero de cada lote. Los valores A de
+diferentes corridas no se presentan como un ranking; cada uno corresponde a su
+propio lote. P2 se limita a la última unidad aceptada, incluso en su corrida
+parcial; la unidad interrumpida queda excluida. Las corridas no iniciadas no se
+inventan como filas con métricas. La tabla general mantiene su cantidad prevista.

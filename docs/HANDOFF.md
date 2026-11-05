@@ -3,7 +3,9 @@
 Dashboard comparativo disponible mediante `scripts/build_thesis_dashboard.py`;
 salida ignorada en `reports/avance-tesis/index.html`. Abre por defecto el cruce
 P3 sobre D fijo, con selectores de semilla, condición y política generadora.
-Incluye P1 y estados/recursos de P0/P2/P2R/WF05. Ver [documentación](DASHBOARD.md).
+Incluye P1 y estados/recursos de P0/P2/P2R/WF05. Las tablas comparativas
+resumen seis pilotos y 61 corridas con configuración, recursos y métricas,
+filtros y exportación CSV. Ver [documentación](DASHBOARD.md).
 Este hito solo exporta evidencias: mantiene WF05 y los permisos cerrados,
 2022 histórico pendiente y evaluación v1.2 sin activar. La eliminación local
 de `.python-version` se conserva fuera de los commits.
