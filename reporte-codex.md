@@ -19,4 +19,6 @@
   `docs/hitos/OOS-v1-2-costo-2022-integracion-historica.md`.
 - Evaluación confirmatoria: Santiago eligió prórroga para conservar 36
   bloques y límites. La v1.2 aún requiere cierre académico antes de 2023
-  o de la prueba final; no se abrieron esos conjuntos.
+  o de la prueba final; el texto de revisión está en
+  `docs/proposals/OOS-v1-2-prorroga-y-armonizacion-tesis-20261106.md`.
+  No se abrieron esos conjuntos.

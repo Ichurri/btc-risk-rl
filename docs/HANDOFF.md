@@ -41,7 +41,9 @@ mínimas estimadas no caben entre el 06/11 y el 16/11 (11 fechas locales).
 Santiago eligió **prorrogar la evaluación confirmatoria** para mantener los
 36 bloques y los límites diarios. Falta fijar esa decisión en un protocolo
 académico armonizado con la tesis y precisar el calendario posterior; no
-abrir la prueba final antes de ese cierre.
+abrir la prueba final antes de ese cierre. El [texto para revisión del tutor](proposals/OOS-v1-2-prorroga-y-armonizacion-tesis-20261106.md)
+identifica los cambios de §2.7.2, §2.7.3/Tabla 4 y §3.8.4 que aún requieren
+decisión expresa; la tesis de Drive permanece sin editar por este hito.
 
 ---
 
