@@ -9,7 +9,9 @@
   previa a unidad. La huella vigente es
   `783d30a27eb99c0a21a33f977d151f1048b6c4e6529128a855d5d5470f89ca7f`;
   pero esto **no** significa que el preflight esté `ready` ni que una unidad
-  haya comenzado. Ver
+  haya comenzado. Mientras el gate 2022 esté activo, no modificar archivos
+  ejecutables cubiertos por `code_sha256()`: cualquier cambio invalida el
+  permiso y exige un repin antes de arrancar. Ver
   `docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md`.
   La raíz nueva es `artifacts/oos-v12-wf-cost-only-2022-01/`; WF05 sigue
   cerrado `incomplete` y no se reanuda. La ventana preferente 23:00–08:00

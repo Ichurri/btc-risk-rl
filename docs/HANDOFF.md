@@ -30,6 +30,8 @@ memoria 5854142464 B, disco 128975572992 B, `Linger=yes`, gestor
 `running` y presupuesto externo 0 s. No se lanzó ninguna unidad. Ver
 [informe](hitos/OOS-v1-2-costo-2022-integracion-historica.md) y
 [captura](evidence/oos-wf-2022-integration/preflight-after-approval.json).
+Mientras el gate siga activo, conservar el código ejecutable fijado por
+`code_sha256()`; cualquier edición requeriría una nueva huella y registro.
 
 **Siguiente tarea:** reconectar CA y repetir suite/Ruff y preflight vigilado
 dentro de un intento medido,
