@@ -74,6 +74,47 @@ def test_2022_preflight_rejects_symlinked_campaign_root(tmp_path, monkeypatch):
     assert any("symlink" in blocker.lower() for blocker in result["blockers"])
 
 
+def test_service_resource_drop_before_root_is_a_metered_block(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_2022_units as units
+    from btc_risk_rl.pilots.wf_cost_2022_orchestrator import PreflightBlocked
+    from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
+
+    campaign = tmp_path / units.CAMPAIGN.name
+    monkeypatch.setattr(units, "CAMPAIGN", campaign)
+    monkeypatch.setattr(units, "require_campaign", lambda: {"controlled": True})
+    monkeypatch.setattr(units, "require_recent_prepare", lambda *_a, **_kw: None)
+    monkeypatch.setattr(units, "check_service_context", lambda **_kw: None)
+    monkeypatch.setattr(units, "inspect_host", lambda: {"memory_available_bytes": 0})
+    monkeypatch.setattr(units, "resource_ready", lambda _host: False)
+    with pytest.raises(PreflightBlocked, match="host preflight"):
+        units.run_units()
+    assert not campaign.exists()
+    journal = tmp_path / "shared-pilot-budget/wf-2022-only-01-attempts.jsonl"
+    with WFCostSessionJournal(journal, campaign=campaign.name, read_only=True) as recorded:
+        assert recorded.sessions[0]["end"]["status"] == "ready"
+
+
+def test_stale_prepare_before_root_is_a_metered_block(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_2022_units as units
+    from btc_risk_rl.pilots.wf_cost_2022_orchestrator import PreflightBlocked
+    from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
+
+    campaign = tmp_path / units.CAMPAIGN.name
+    monkeypatch.setattr(units, "CAMPAIGN", campaign)
+    monkeypatch.setattr(units, "require_campaign", lambda: {"controlled": True})
+
+    def stale(*_a, **_kw):
+        raise ValueError("WF 2022 prepare checks invalid or stale")
+
+    monkeypatch.setattr(units, "require_recent_prepare", stale)
+    with pytest.raises(PreflightBlocked, match="prepare"):
+        units.run_units()
+    assert not campaign.exists()
+    journal = tmp_path / "shared-pilot-budget/wf-2022-only-01-attempts.jsonl"
+    with WFCostSessionJournal(journal, campaign=campaign.name, read_only=True) as recorded:
+        assert recorded.sessions[0]["end"]["status"] == "ready"
+
+
 def test_2022_launch_requires_same_day_complete_prepare(tmp_path):
     from datetime import datetime
     from zoneinfo import ZoneInfo
@@ -284,6 +325,19 @@ def test_2022_supervisor_accepts_q0_then_unit_one_in_new_session(tmp_path, monke
         capture_output=True, text=True, check=False,
     )
     assert inspect.returncode == 0, inspect.stderr
+    from btc_risk_rl.pilots.wf_cost_2022_orchestrator import PreflightBlocked
+
+    original_external = units._external
+
+    def occupied(_now):
+        raise PreflightBlocked("Another campaign is active")
+
+    monkeypatch.setattr(units, "_external", occupied)
+    paused = units.run_units()
+    assert paused["status"] == "ready" and len(paused["units"]) == 1
+    assert paused["pending"] is None
+    assert hashlib.sha256(first_point.read_bytes()).hexdigest() == sha0
+    monkeypatch.setattr(units, "_external", original_external)
     second_state = units.run_units(stop_after_unit=1)
     assert len(second_state["units"]) >= 2
     assert hashlib.sha256(first_point.read_bytes()).hexdigest() == sha0

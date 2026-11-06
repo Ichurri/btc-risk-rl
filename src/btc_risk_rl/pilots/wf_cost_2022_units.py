@@ -34,7 +34,11 @@ from btc_risk_rl.pilots.wf_cost_2022_exec import (
     require_campaign,
     require_recent_prepare,
 )
-from btc_risk_rl.pilots.wf_cost_2022_orchestrator import UNIT_CAPS, BudgetAttempt
+from btc_risk_rl.pilots.wf_cost_2022_orchestrator import (
+    UNIT_CAPS,
+    BudgetAttempt,
+    PreflightBlocked,
+)
 from btc_risk_rl.pilots.wf_cost_replacement_05_units import (
     observe_resource_guard,
     resource_ready,
@@ -61,7 +65,7 @@ def _resources():
 def _external(now):
     result = inspect_budget(now=now, campaign=CAMPAIGN)
     if not result["ok"]:
-        raise ValueError("Another campaign is active")
+        raise PreflightBlocked("Another campaign is active")
     return result["global_spent"]
 
 
@@ -70,11 +74,13 @@ def _preflight():
     host = inspect_host()
     if (not resource_ready(host)
             or host["linger"] != "yes" or host["user_manager"] != "running"):
-        raise ValueError("WF 2022 host preflight blocked")
+        raise PreflightBlocked("WF 2022 host preflight blocked")
     inputs = inspect_inputs()
     budget = inspect_budget(campaign=CAMPAIGN)
-    if not inputs["ok"] or not budget["ok"]:
-        raise ValueError("WF 2022 inputs or shared budget blocked")
+    if not inputs["ok"]:
+        raise ValueError("WF 2022 input integrity failed")
+    if not budget["ok"]:
+        raise PreflightBlocked("WF 2022 shared budget blocked")
     if CAMPAIGN.is_symlink():
         raise ValueError("WF 2022 campaign root is a symlink")
     if CAMPAIGN.exists() and not (CAMPAIGN / "ledger.jsonl").is_file():
@@ -92,8 +98,14 @@ def run_units(*, stop_after_q0: bool = False, stop_after_unit: int | None = None
     with BudgetAttempt(CAMPAIGN.parent, gate=require_campaign,
                        authorize=require_campaign, external_spent=_external,
                        night_window=True) as attempt:
+        def check_prepare():
+            try:
+                require_recent_prepare(checks, now=time.time())
+            except ValueError as exc:
+                raise PreflightBlocked(str(exc)) from exc
+
         attempt.run_check("prepare_freshness",
-                          lambda: require_recent_prepare(checks, now=time.time()))
+                          check_prepare)
         host, inputs, budget = attempt.run_check("service_preflight", _preflight)
         # The attempt is durable before any training source is loaded or root is created.
         source = attempt.run_check("build_2022_fold", lambda: build_fold_source("2022"))
@@ -279,6 +291,10 @@ def _run_locked(attempt, sessions, session_token, source, host, inputs, budget, 
                         journal.record("paused", phase="between_units", run_id="wf-2022",
                                        unit=None, counters={}, reason="first_q0_audit")
                         return ledger.state
+                except PreflightBlocked as exc:
+                    journal.record("paused", phase="between_units", run_id="wf-2022",
+                                   unit=unit, counters={}, reason=str(exc))
+                    return ledger.state
                 except BaseException as exc:
                     if ledger.state["status"] not in {"failed", "incomplete"}:
                         ledger.fail(time.time(), "interrupted_supervisor_or_unit", error=str(exc))
