@@ -221,6 +221,8 @@ class P2RJournal:
         self.campaign = campaign
         self.previous = None
         self.last = None
+        self._recording = False
+        self._pending_events = []
         if self.path.exists():
             try:
                 for line in self.path.read_text().splitlines():
@@ -237,6 +239,23 @@ class P2RJournal:
                 raise ValueError("P2R journal corrupt") from exc
 
     def record(self, event, **fields):
+        # A signal handler may also record an event. Defer it until this row's
+        # digest and in-memory previous pointer are both committed.
+        if self._recording:
+            self._pending_events.append((event, fields))
+            return
+        self._recording = True
+        prior = signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGTERM, signal.SIGINT})
+        try:
+            self._record_masked(event, **fields)
+            while self._pending_events:
+                queued_event, queued_fields = self._pending_events.pop(0)
+                self._record_masked(queued_event, **queued_fields)
+        finally:
+            self._recording = False
+            signal.pthread_sigmask(signal.SIG_SETMASK, prior)
+
+    def _record_masked(self, event, **fields):
         current = time.time()
         row = dict(campaign=self.campaign, event=event, previous=self.previous,
                    utc=utc(current), monotonic=time.monotonic(),

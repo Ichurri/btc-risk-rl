@@ -191,12 +191,14 @@ class BudgetAttempt:
     def __init__(self, artifacts: Path, *, clock=None,
                  gate: Callable[[], object] = require_code_gate,
                  authorize: Callable[[], object] = require_campaign,
-                 external_spent: Callable[[float], float] | None = None):
+                 external_spent: Callable[[float], float] | None = None,
+                 night_window: bool = False):
         self.artifacts = Path(artifacts)
         self.clock = clock if clock is not None else _RealClock()
         self.gate = gate
         self.authorize = authorize
         self.external_spent = external_spent
+        self.night_window = night_window
         self.journal_path = self.artifacts / "shared-pilot-budget" / JOURNAL_NAME
         self.checks_path = self.artifacts / "shared-pilot-budget" / "wf-2022-only-01-checks.jsonl"
         self.checks = []
@@ -295,13 +297,15 @@ class BudgetAttempt:
             self.checks.append(dict(name=name, start_epoch=start,
                                     end_epoch=end, status=status))
 
-    def snapshot(self, ledger_state: dict, *, sessions=None) -> Charges:
+    def snapshot(self, ledger_state: dict, *, sessions=None,
+                 session_token: str | None = None) -> Charges:
         if self.token is None:
             raise ValueError("WF attempt not active")
         return reconcile(self.journal, sessions, ledger_state, now=self.clock.now(),
-                         active_token=self.token)
+                         active_token=self.token, active_session_token=session_token)
 
-    def admit(self, ledger_state: dict, *, unit: int, sessions=None) -> str:
+    def admit(self, ledger_state: dict, *, unit: int, sessions=None,
+              session_token: str | None = None) -> str:
         """Admit a full unit cap only when all reserves and days still fit."""
         if type(unit) is not int or not 0 <= unit < len(UNIT_CAPS):
             raise ValueError("WF 2022 unit out of roster")
@@ -309,7 +313,7 @@ class BudgetAttempt:
             if (ledger_state.get("status") != "ready" or ledger_state.get("pending") is not None
                     or len(ledger_state.get("units", [])) != unit):
                 raise ValueError("WF 2022 requires a complete expected frontier")
-        snap = self.snapshot(ledger_state, sessions=sessions)
+        snap = self.snapshot(ledger_state, sessions=sessions, session_token=session_token)
         if snap.blocked:
             raise ValueError("WF 2022 failed or unclosed state blocks admission")
         if len(snap.active_days) > ACTIVE_DAYS_MAX:
@@ -335,16 +339,25 @@ class BudgetAttempt:
             raise ValueError("Invalid WF external budget debit")
         midnight = datetime.combine(datetime.fromtimestamp(now, LA_PAZ).date()
                                     + timedelta(days=1), datetime.min.time(), LA_PAZ).timestamp()
+        window_end = midnight
+        if self.night_window:
+            local = datetime.fromtimestamp(now, LA_PAZ)
+            if 8 <= local.hour < 23:
+                return "pause"
+            if local.hour < 8:
+                window_end = local.replace(hour=8, minute=0, second=0,
+                                           microsecond=0).timestamp()
         if (daily + cap + OWN_CLOSE_RESERVE > OWN_DAILY
                 or external + daily + cap + GLOBAL_CLOSE_RESERVE > DAY_LIMIT
-                or midnight - now < cap + OWN_CLOSE_RESERVE):
+                or min(midnight, window_end) - now < cap + OWN_CLOSE_RESERVE):
             return "pause"
         return "start"
 
     def run_unit(self, ledger_state: dict, *, unit: int, operation: Callable[[], object],
-                 sessions=None):
+                 sessions=None, session_token: str | None = None):
         """Never call the unit callback when its full cap and reserves cannot fit."""
-        decision = self.admit(ledger_state, unit=unit, sessions=sessions)
+        decision = self.admit(ledger_state, unit=unit, sessions=sessions,
+                              session_token=session_token)
         if decision != "start":
             return decision
         start_wall = self.clock.now()

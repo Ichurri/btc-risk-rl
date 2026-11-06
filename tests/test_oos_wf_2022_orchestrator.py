@@ -181,6 +181,23 @@ def test_checks_and_reserves_can_pause_before_unit(tmp_path):
         assert attempt.admit({}, unit=0) == "pause"  # global reserve
 
 
+def test_night_window_never_starts_a_unit_that_cannot_close_by_eight(tmp_path):
+    clock = Clock(epoch(4, 22, 59))
+    with wf22.BudgetAttempt(tmp_path, clock=clock, gate=lambda: True,
+                            authorize=lambda: True, external_spent=lambda _now: 0,
+                            night_window=True) as attempt:
+        assert attempt.admit({}, unit=0) == "pause"
+        clock.advance(60)
+        assert attempt.admit({}, unit=0) == "start"
+    next_day = Clock(epoch(5, 7, 47))
+    with wf22.BudgetAttempt(tmp_path, clock=next_day, gate=lambda: True,
+                            authorize=lambda: True, external_spent=lambda _now: 0,
+                            night_window=True) as attempt:
+        assert attempt.admit({}, unit=0) == "start"  # 13 minutes cover Q0 and closure.
+        next_day.advance(120)
+        assert attempt.admit({}, unit=0) == "pause"
+
+
 def test_unit_over_cap_fails_attempt_without_accepting_a_partial(tmp_path):
     clock = Clock(epoch(4, 10, 0))
     with pytest.raises(ValueError, match="unit cap exceeded"):

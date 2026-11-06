@@ -214,6 +214,7 @@ def test_complete_unit_rejects_foreign_root_before_writing(tmp_path, monkeypatch
 def test_only_named_wf_permit_types_are_listed(tmp_path, monkeypatch):
     from btc_risk_rl.agents.trainer import SyntheticExperiment
     from btc_risk_rl.pilots import wf_cost
+    from btc_risk_rl.pilots import wf_cost_2022_exec as single_2022
     from btc_risk_rl.pilots import wf_cost_replacement_03_exec as third
     from btc_risk_rl.pilots import wf_cost_replacement_04_exec as fourth
     from btc_risk_rl.pilots import wf_cost_replacement_05_exec as fifth
@@ -227,6 +228,7 @@ def test_only_named_wf_permit_types_are_listed(tmp_path, monkeypatch):
         wf_cost.WFCostPermit, replacement.WFCostPermit, third.WFCostPermit,
         fourth.WFCostPermit,
         fifth.WFCostPermit,
+        single_2022.WF2022Permit,
     }
 
     class Forged(third.WFCostPermit):
