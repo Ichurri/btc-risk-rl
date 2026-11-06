@@ -75,6 +75,8 @@ def _preflight():
     budget = inspect_budget(campaign=CAMPAIGN)
     if not inputs["ok"] or not budget["ok"]:
         raise ValueError("WF 2022 inputs or shared budget blocked")
+    if CAMPAIGN.is_symlink():
+        raise ValueError("WF 2022 campaign root is a symlink")
     if CAMPAIGN.exists() and not (CAMPAIGN / "ledger.jsonl").is_file():
         raise ValueError("WF 2022 root exists without a ledger")
     return host, inputs, budget

@@ -340,6 +340,7 @@ class BudgetAttempt:
         midnight = datetime.combine(datetime.fromtimestamp(now, LA_PAZ).date()
                                     + timedelta(days=1), datetime.min.time(), LA_PAZ).timestamp()
         window_end = midnight
+        window_reserve = OWN_CLOSE_RESERVE
         if self.night_window:
             local = datetime.fromtimestamp(now, LA_PAZ)
             if 8 <= local.hour < 23:
@@ -347,9 +348,13 @@ class BudgetAttempt:
             if local.hour < 8:
                 window_end = local.replace(hour=8, minute=0, second=0,
                                            microsecond=0).timestamp()
+            else:
+                # The global daily reserve must remain available before the
+                # midnight budget boundary, even inside the night window.
+                window_reserve = GLOBAL_CLOSE_RESERVE
         if (daily + cap + OWN_CLOSE_RESERVE > OWN_DAILY
                 or external + daily + cap + GLOBAL_CLOSE_RESERVE > DAY_LIMIT
-                or min(midnight, window_end) - now < cap + OWN_CLOSE_RESERVE):
+                or min(midnight, window_end) - now < cap + window_reserve):
             return "pause"
         return "start"
 

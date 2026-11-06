@@ -189,6 +189,8 @@ def test_night_window_never_starts_a_unit_that_cannot_close_by_eight(tmp_path):
         assert attempt.admit({}, unit=0) == "pause"
         clock.advance(60)
         assert attempt.admit({}, unit=0) == "start"
+        clock.advance(15 * 60)
+        assert attempt.admit({}, unit=0) == "pause"  # 45-minute global close reserve.
     next_day = Clock(epoch(5, 7, 47))
     with wf22.BudgetAttempt(tmp_path, clock=next_day, gate=lambda: True,
                             authorize=lambda: True, external_spent=lambda _now: 0,

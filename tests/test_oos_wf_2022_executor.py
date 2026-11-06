@@ -47,6 +47,22 @@ def test_2022_worker_rejects_closed_gate_before_request(tmp_path):
     assert not (tmp_path / "missing.json").exists()
 
 
+def test_2022_preflight_rejects_symlinked_campaign_root(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost_2022_exec as profile
+
+    target = tmp_path / "foreign"
+    target.mkdir()
+    (target / "ledger.jsonl").write_text("{}\n")
+    link = tmp_path / profile.CAMPAIGN.name
+    link.symlink_to(target, target_is_directory=True)
+    monkeypatch.setattr(profile, "CAMPAIGN", link)
+    monkeypatch.setattr(profile, "inspect_inputs", lambda: {"ok": True, "opened": []})
+    monkeypatch.setattr(profile, "require_campaign", lambda: {"controlled": True})
+    result = profile.inspect_preflight()
+    assert result["status"] == "blocked"
+    assert any("symlink" in blocker.lower() for blocker in result["blockers"])
+
+
 def test_2022_launch_requires_same_day_complete_prepare(tmp_path):
     from datetime import datetime
     from zoneinfo import ZoneInfo

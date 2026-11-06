@@ -292,7 +292,9 @@ def inspect_preflight() -> dict:
     else:
         if not budget["ok"] or budget["remaining_before_reserve"] < 120:
             blockers.append("Shared budget cannot admit Q0")
-    if CAMPAIGN.exists() and not (CAMPAIGN / "ledger.jsonl").is_file():
+    if CAMPAIGN.is_symlink():
+        blockers.append("WF 2022 campaign root is a symlink")
+    elif CAMPAIGN.exists() and not (CAMPAIGN / "ledger.jsonl").is_file():
         blockers.append("WF 2022 root exists without ledger")
     try:
         require_campaign()
