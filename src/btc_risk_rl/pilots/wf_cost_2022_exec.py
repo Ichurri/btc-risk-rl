@@ -31,8 +31,8 @@ EXPECTED_ROUTES = 4678
 EXPECTED_FIT_ROWS = 7703
 AUTHORIZATION = ROOT / "docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md"
 # Kept separate from prior WF gates. The hash is pinned only after final tests.
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "7f79bf9ea9ac4c2f5a7498be44f56643ef8212525c8e3312ef2a53e9bc703367"
 
 
 def _expected_settings() -> dict:
