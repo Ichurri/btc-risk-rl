@@ -2,12 +2,18 @@
   "active": true,
   "authorization_sha256": "05ea25db2f302859a394202727d9496840cdfbc73a086ed69167b30138765b85",
   "campaign": "oos-v12-wf-cost-only-2022-01",
-  "code_sha256": "e26a7526c95246269409969e216b18df1c6fc3d8569fbfdb97e5801a436fdfd4",
+  "code_sha256": "2fe47a482e5cd4577920698427d2c442f62f05aff331bfeb90de27423c726195",
   "condition": "C10",
   "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
   "protocol_sha256": "4b877ee99ea1c91ead2802c7dd10ae4f361675d2e587177a01322c79ac5152fa",
   "root": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-01",
-  "roster": [["2022", 498614892, "C10"]],
+  "roster": [
+    [
+      "2022",
+      498614892,
+      "C10"
+    ]
+  ],
   "scope": "2022_training_cut_cost_only",
   "seed": 498614892,
   "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
