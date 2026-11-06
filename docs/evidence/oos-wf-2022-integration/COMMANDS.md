@@ -34,8 +34,11 @@ detectaron un bloqueo entre preparación y servicio que se marcaba como
 fallo irreversible: dieron **2 failed** antes de corregir y **2 passed**
 después. El reingreso con una pausa intermedia dio **1 passed in 88.64s**.
 Tras volver a fijar el permiso, la suite final dio **504 passed in
-433.71s**, registrada en `/tmp/oos-wf-2022-suite-final-pinned-20261106.txt`.
-Ruff y `git diff --check` pasaron.
+433.71s**, registrada en [`suite-final.txt`](suite-final.txt), SHA-256
+`441bad345ea6c7d5abb07c706658e1ef255f0a09040ff6aeca66b98affb23b39`.
+Ruff informó [`All checks passed!`](ruff-final.txt), SHA-256
+`82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18`;
+`git diff --check` pasó.
 
 El preflight de solo lectura anterior al permiso está en
 [`preflight-closed.json`](preflight-closed.json), SHA-256
