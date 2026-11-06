@@ -1,3 +1,50 @@
+# Estado vigente — 06/11/2026, integración del costo WF 2022
+
+Rama `codex/oos-wf-2022-confirmatory-prep`, base `21725f5`. La eliminación
+local previa de `.python-version` se conserva fuera de commits. Santiago
+autorizó una medición **nueva** del corte 2022 y avanzar hacia la evaluación
+confirmatoria, con las puertas del
+[registro de alcance](protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md).
+WF05 sigue cerrado `incomplete`, 11/22 unidades aceptadas, permiso apagado;
+no se reanuda. Los archivos de 2023 y 2024–2025 siguen protegidos.
+
+Se integró un perfil histórico aislado de una C10/11 unidades, lease
+exacto, checkpoint completo, preflight vigilado y bitácora previa al ledger.
+El permiso técnico exclusivo se fijó inicialmente en `61602a9` y se
+volvió a fijar en `b142d20` tras la corrección prospectiva de una pausa
+previa a unidad. La huella vigente es
+`783d30a27eb99c0a21a33f977d151f1048b6c4e6529128a855d5d5470f89ca7f`.
+La raíz histórica 2022 sigue ausente; el permiso no sustituye suite,
+Ruff, preflight `ready` ni admisión. La suite final dio **504 passed in
+433,71 s** y Ruff pasó. La prueba controlada de trabajador completó
+Q0 y unidad 1 con `after_q0` y `after_dual_and_D`; la prueba de supervisor
+recorrió dos sesiones y reingreso desde el checkpoint. El preflight de
+solo lectura verificó 4.678 inicios, 7.703 filas de ajuste, CA,
+`Linger=yes` y gestor `running`, y registró solo el derivado H1 de
+entrenamiento y metadatos. Su estado fue `blocked` por gate inactivo
+**y** memoria disponible inferior a 4 GiB en ese instante. Estas
+comprobaciones **no son unidades históricas** ni
+admisión de campaña. El preflight vigilado tras el permiso dio `blocked`
+a las 17:24 hora de La Paz por **CA desconectada**, con batería 81 %;
+memoria 5854142464 B, disco 128975572992 B, `Linger=yes`, gestor
+`running` y presupuesto externo 0 s. No se lanzó ninguna unidad. Ver
+[informe](hitos/OOS-v1-2-costo-2022-integracion-historica.md) y
+[captura](evidence/oos-wf-2022-integration/preflight-after-approval.json).
+
+**Siguiente tarea:** reconectar CA y repetir suite/Ruff y preflight vigilado
+dentro de un intento medido,
+y solo con guardas `ready` iniciar bajo `systemd --user` en 23:00–08:00.
+Cada unidad conserva los topes 120/180 s, las reservas y el máximo de dos
+fechas activas; la ventana no amplía las tres horas globales por fecha.
+La propuesta v1.2 sigue sin adopción académica. Sus 17 fechas activas
+mínimas estimadas no caben entre el 06/11 y el 16/11 (11 fechas locales).
+Santiago eligió **prorrogar la evaluación confirmatoria** para mantener los
+36 bloques y los límites diarios. Falta fijar esa decisión en un protocolo
+académico armonizado con la tesis y precisar el calendario posterior; no
+abrir la prueba final antes de ese cierre.
+
+---
+
 # Dashboard local de avance — solo lectura
 
 Dashboard comparativo disponible mediante `scripts/build_thesis_dashboard.py`;

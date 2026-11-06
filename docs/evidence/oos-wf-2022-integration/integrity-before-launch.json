@@ -1,0 +1,12 @@
+{
+  "branch": "codex/oos-wf-2022-confirmatory-prep",
+  "head": "e7f656f93b15a70f647798383800fb34f3dfa8d2",
+  "observed_utc": "2026-11-06T17:04:45.450656+00:00",
+  "wf05_file_count": 2647,
+  "wf05_matches_closure": true,
+  "wf05_root_mapping_sha256": "0d034efccb2138c4fb975c86e504763ff69ce331f2a5fdbb9919f4e1d06931eb",
+  "wf2022_approval_scope": "2022_training_cut_cost_only",
+  "wf2022_approval_sha256": "7f79bf9ea9ac4c2f5a7498be44f56643ef8212525c8e3312ef2a53e9bc703367",
+  "wf2022_code_sha256": "e26a7526c95246269409969e216b18df1c6fc3d8569fbfdb97e5801a436fdfd4",
+  "wf2022_root_exists": false
+}

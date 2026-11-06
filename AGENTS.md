@@ -1,15 +1,43 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
-- Estudio WF **exclusivo del corte 2022**: el usuario autorizó solo la
+- Nueva autorización del 06/11/2026: integrar y verificar el ejecutor de
+  costo **exclusivo 2022** y ejecutar una campaña nueva solo después de
+  suite, Ruff, preflight vigilado, permiso fijado por huella y admisión
+  presupuestaria. El permiso técnico independiente se fijó inicialmente en
+  `61602a9` y se volvió a fijar en `b142d20` tras corregir una pausa
+  previa a unidad. La huella vigente es
+  `783d30a27eb99c0a21a33f977d151f1048b6c4e6529128a855d5d5470f89ca7f`;
+  pero esto **no** significa que el preflight esté `ready` ni que una unidad
+  haya comenzado. Ver
+  `docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md`.
+  La raíz nueva es `artifacts/oos-v12-wf-cost-only-2022-01/`; WF05 sigue
+  cerrado `incomplete` y no se reanuda. La ventana preferente 23:00–08:00
+  `America/La_Paz` **no** aumenta los topes de 3 h globales por fecha ni
+  los dos días/4.800 s propios del estudio. Cada unidad debe caber con
+  reserva antes de medianoche o de las 08:00. Las comprobaciones de
+  implementación anteriores al permiso técnico no son una campaña.
+- El usuario autorizó avanzar hacia la evaluación confirmatoria, pero
+  la propuesta v1.2 aún no está adoptada y exige resolver cambios
+  académicos de la tesis antes de abrir 2024–2025. Su cálculo vigente
+  requiere al menos 17 fechas activas bajo tiempos extrapolados; del
+  06/11 al 16/11 solo hay 11 fechas. Santiago eligió **prorrogar** el
+  contraste confirmatorio para conservar 36 bloques y los límites; la
+  fecha concreta y la armonización académica aún faltan. No recortar
+  réplicas ni reservas para aparentar viabilidad. Preparar infraestructura y medir 2022 sin
+  consultar validación/final hasta congelar el protocolo y las puertas.
+- Antecedente anterior a la autorización del 06/11 — estudio WF
+  **exclusivo del corte 2022**: el usuario autorizó solo la
   implementación y verificación **sintética** del orquestador propuesto en
   `cb6aeb8`. La bitácora previa al ledger, conciliación de intervalos y
   admisión con reservas están implementadas; ver
   `docs/hitos/OOS-v1-2-costo-2022-orquestador-sintetico.md`. El gate nuevo
   sigue `MARKET_EXECUTION_ENABLED=False`, sin registro de aprobación ni raíz
-  histórica. Faltan trabajador/supervisor histórico, integración de corte,
-  preflight vigilado y autorización específica. **No lanzar C10, no reanudar
-  WF05, no abrir validación/final ni activar v1.2** por este hito.
+  histórica. En ese hito faltaban trabajador/supervisor histórico,
+  integración de corte, preflight vigilado y autorización específica.
+  Sus restricciones de ejecución fueron sustituidas solo en el alcance
+  explícito del nuevo registro; WF05, validación/final y v1.2 conservan
+  las guardas indicadas arriba.
 - WF `...05` **cerrado metodológicamente `incomplete` el 03/11/2026**:
   el 02/11 se adjudicó como segundo día activo por suite, auditoría, Ruff,
   preflight y cierre, aunque no hubo sesión histórica. El máximo de dos

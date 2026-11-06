@@ -1,0 +1,12 @@
+{
+  "branch": "codex/oos-wf-2022-confirmatory-prep",
+  "head": "b142d20087281ec48799c70868bfb6d67616b451",
+  "observed_utc": "2026-11-06T17:11:03.530493+00:00",
+  "wf05_file_count": 2647,
+  "wf05_matches_closure": true,
+  "wf05_root_mapping_sha256": "0d034efccb2138c4fb975c86e504763ff69ce331f2a5fdbb9919f4e1d06931eb",
+  "wf2022_approval_sha256": "783d30a27eb99c0a21a33f977d151f1048b6c4e6529128a855d5d5470f89ca7f",
+  "wf2022_code_sha256": "2fe47a482e5cd4577920698427d2c442f62f05aff331bfeb90de27423c726195",
+  "wf2022_registered_code_sha256": "2fe47a482e5cd4577920698427d2c442f62f05aff331bfeb90de27423c726195",
+  "wf2022_root_exists": false
+}
