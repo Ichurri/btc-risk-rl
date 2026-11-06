@@ -240,8 +240,9 @@ def test_cumulative_reserve_blocks_unit_even_when_day_is_fresh(tmp_path):
         assert attempt.admit({}, unit=0) == "incomplete"
 
 
-def test_unauthorized_public_entry_creates_no_journal_or_campaign(tmp_path):
+def test_closed_public_entry_creates_no_journal_or_campaign(tmp_path, monkeypatch):
     clock = Clock(epoch(4, 10, 0))
+    monkeypatch.setattr(wf22, "MARKET_EXECUTION_ENABLED", False)
     with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
         with wf22.BudgetAttempt(tmp_path, clock=clock,
                                 authorize=wf22.require_campaign,
@@ -249,7 +250,12 @@ def test_unauthorized_public_entry_creates_no_journal_or_campaign(tmp_path):
             pass
     assert not (tmp_path / "shared-pilot-budget" / wf22.JOURNAL_NAME).exists()
     assert not (tmp_path / wf22.CAMPAIGN_NAME).exists()
-    result = subprocess.run([sys.executable, "scripts/run_oos_wf_cost_2022.py", "--run"],
+    script = ("import runpy, sys; "
+              "from btc_risk_rl.pilots import wf_cost_2022_exec as profile; "
+              "profile.MARKET_EXECUTION_ENABLED=False; "
+              "sys.argv=['scripts/run_oos_wf_cost_2022.py','--run']; "
+              "runpy.run_path('scripts/run_oos_wf_cost_2022.py',run_name='__main__')")
+    result = subprocess.run([sys.executable, "-c", script],
                             capture_output=True, text=True, check=False)
     assert result.returncode != 0
     assert "NOT AUTHORIZED" in result.stderr
