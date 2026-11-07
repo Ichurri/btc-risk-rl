@@ -1,4 +1,36 @@
-# Estado vigente — 06/11/2026, integración del costo WF 2022
+# Estado vigente — 07/11/2026, intento WF 2022-01 detenido
+
+La ventana aprobada es **01:00–09:00 America/La_Paz** con los topes y
+reservas originales. El preflight vigilado previo de las 00:58 dio `ready`
+(CA conectada, batería 100 %, memoria y disco conformes, fuente exclusiva de
+entrenamiento); fue una captura del momento, no aceptación de una unidad.
+La sesión `oos-wf-cost-2022-01-session-01.service`, `InvocationID`
+`d1d9f440f25e4dfe98d610c96ac848da`, empezó a las 01:00:05 y terminó
+`Result=exit-code` a las 01:07:26. La suite formal dio **503 passed, 1 failed**:
+una prueba de P2R heredó el contexto de servicio y chocó con el bloqueo
+global que mantenía el intento. No hubo Ruff ni preflight formal, ledger,
+checkpoint ni unidad histórica. La raíz `2022-01` sigue ausente.
+
+La bitácora durable marca el intento `failed`; la conciliación carga
+**10.800 s globales conservadores para el 07/11**, frente a **440,610179 s
+medidos**. Por ello no se reutiliza esta raíz/intento ni se lanza otra
+campaña ese día. El gate se cerró prospectivamente en `0dbe214` y la
+aprobación histórica quedó intacta. La verificación posterior de desarrollo
+dio **504 passed en 434,88 s** y Ruff pasó; no convalida la suite formal
+fallida. La prueba se corrigió para ejecutar la
+comprobación de terminal sin heredar `INVOCATION_ID`; ver
+[diagnóstico](hitos/OOS-v1-2-costo-2022-primer-intento-fallido.md) y
+[evidencias](evidence/oos-wf-2022-integration/launch-20261107-failed/).
+La medición del costo 2022 sigue pendiente. Para continuar, preparar una
+**raíz y autorización independientes** con el mismo diseño científico,
+incluir la deuda del intento fallido en el presupuesto compartido y repetir
+suite, Ruff y preflight vigilado en una fecha nueva admisible. WF05 y los
+productos de validación/final permanecen cerrados; la evaluación v1.2 sigue
+pendiente de armonización académica.
+
+---
+
+# Estado anterior — 06/11/2026, integración del costo WF 2022
 
 Rama `codex/oos-wf-2022-confirmatory-prep`, base `21725f5`. La eliminación
 local previa de `.python-version` se conserva fuera de commits. Santiago

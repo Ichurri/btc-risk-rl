@@ -1,0 +1,7 @@
+Restart=no
+Result=exit-code
+ExecMainStartTimestamp=Sat 2026-11-07 01:00:05 -04
+ExecMainExitTimestamp=Sat 2026-11-07 01:07:26 -04
+ExecMainStatus=1
+ActiveState=failed
+InvocationID=d1d9f440f25e4dfe98d610c96ac848da

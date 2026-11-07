@@ -1,0 +1,45 @@
+{
+  "campaign": "oos-v12-wf-cost-only-2022-01",
+  "day_la_paz": "2026-11-07",
+  "window_la_paz": "01:00-09:00",
+  "service": "oos-wf-cost-2022-01-session-01.service",
+  "invocation_id": "d1d9f440f25e4dfe98d610c96ac848da",
+  "service_start_la_paz": "2026-11-07T01:00:05-04:00",
+  "service_exit_la_paz": "2026-11-07T01:07:26-04:00",
+  "systemd_result": "exit-code",
+  "systemd_exit_status": 1,
+  "restart": "no",
+  "prelaunch_watched_preflight": "ready",
+  "formal_suite": {
+    "passed": 503,
+    "failed": 1,
+    "elapsed_seconds": 439.41,
+    "failed_test": "tests/test_p2r_historical_executor.py::test_separate_historical_command_requires_user_service_before_data_access"
+  },
+  "formal_ruff_executed": false,
+  "formal_preflight_executed": false,
+  "attempt_wall_seconds_measured": 440.6101779937744,
+  "attempt_elapsed_seconds_charged_own": 440.610178851,
+  "global_conservative_debit_seconds": 10800.0,
+  "global_debit_is_measured_runtime": false,
+  "attempt_status": "failed",
+  "ledger_created": false,
+  "campaign_root_created": false,
+  "historical_units_accepted": 0,
+  "checkpoint_count": 0,
+  "post_failure_development_verification": {
+    "focused_tests_passed": 16,
+    "focused_elapsed_seconds": 112.10,
+    "clean_full_suite_passed": 504,
+    "clean_full_suite_elapsed_seconds": 434.88,
+    "ruff": "All checks passed"
+  },
+  "artifact_sha256": {
+    "attempts_jsonl": "1ae8a7d967cca4d07974fb3f1743dc6c6222f28a54e8fb561e6709ccbdebfb1a",
+    "checks_jsonl": "edff22ca2f5d3b9a482cccbfe365140613d2734e8e364184ee61ef87f1b234a7",
+    "prelaunch_preflight_json": "335206958920190de787f43316fa3c50323142da96667a527353219e6b7c6f78",
+    "journal_txt": "5bb50854387eaabda9667690407d7cd358725e646fb601318ed263c6e509f9a6",
+    "systemd_txt": "728922917cc0ef482dee9a140530114c391de6211b8d01b50bb917540d106b54"
+  },
+  "scope": "failed_preledger_integrity_check; no historical training"
+}

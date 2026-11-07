@@ -1,6 +1,17 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **07/11/2026, primer intento WF 2022-01 fallido antes del ledger.** La
+  sesión `oos-wf-cost-2022-01-session-01.service` inició a las 01:00 y la
+  suite previa terminó con 503 pruebas correctas y una falla contextual;
+  no se ejecutó Ruff formal, preflight formal ni Q0. La raíz histórica
+  sigue ausente. El intento durable terminó `failed`, bloquea reingreso y
+  carga conservadoramente 10.800 s globales el 07/11, aunque el intervalo
+  medido fue 440,610179 s. El gate de `2022-01` se cerró en `0dbe214`;
+  conservar la aprobación y los journals originales. No reanudar ni
+  repetir este intento, ni lanzar otro estudio ese día. La prueba fue
+  corregida prospectivamente para no heredar el contexto del servicio;
+  ver `docs/hitos/OOS-v1-2-costo-2022-primer-intento-fallido.md`.
 - Nueva autorización del 06/11/2026: integrar y verificar el ejecutor de
   costo **exclusivo 2022** y ejecutar una campaña nueva solo después de
   suite, Ruff, preflight vigilado, permiso fijado por huella y admisión
@@ -9,10 +20,8 @@
   previa a unidad. El cambio de ventana 01:00–09:00 exigió otro repin;
   la huella vigente es
   `43506140c41c349731fd0a5b4a6133b6cec6e9bf091c995ab65c1ed68260cc75`;
-  pero esto **no** significa que el preflight esté `ready` ni que una unidad
-  haya comenzado. Mientras el gate 2022 esté activo, no modificar archivos
-  ejecutables cubiertos por `code_sha256()`: cualquier cambio invalida el
-  permiso y exige un repin antes de arrancar. Ver
+  El gate de esta raíz ya está cerrado por el intento fallido; la huella se
+  conserva solo para auditoría. Ver
   `docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md`.
   La raíz nueva es `artifacts/oos-v12-wf-cost-only-2022-01/`; WF05 sigue
   cerrado `incomplete` y no se reanuda. La ventana 01:00–09:00
