@@ -1,7 +1,7 @@
 # Reporte Codex — 07/11/2026, 01:32 (America/La_Paz)
 
-- Rama: `codex/oos-wf-2022-confirmatory-prep`; cierre prospectivo del gate
-  WF 2022-01: commit `0dbe214`. La eliminación local de `.python-version`
+- Rama: `codex/oos-wf-2022-confirmatory-prep`; entrega publicada `af49e03`,
+  cierre prospectivo del gate WF 2022-01 en `0dbe214`. La eliminación local de `.python-version`
   permanece fuera de los commits.
 - Ventana aprobada: **01:00–09:00 La Paz**. Conserva 3 h globales por día,
   2.700 s de reserva global, 3.600 s propios diarios, 4.800 s acumulados,
