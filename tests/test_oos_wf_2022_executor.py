@@ -15,14 +15,20 @@ import torch
 
 def test_2022_profile_has_independent_pinned_approval():
     from btc_risk_rl.pilots import wf_cost_2022_exec as profile
+    from btc_risk_rl.pilots import wf_cost_2022_orchestrator as budget
     from btc_risk_rl.pilots.wf_permits import authorized_wf_permits
 
     assert profile.CAMPAIGN.name == "oos-v12-wf-cost-only-2022-01"
     assert profile.ROSTER == (("2022", 498614892, "C10"),)
     assert profile.UNITS == tuple(range(11))
-    assert profile.MARKET_EXECUTION_ENABLED is True
+    assert profile.MARKET_EXECUTION_ENABLED is False
+    assert profile.REGISTRATION_SHA256 is None
     assert authorized_wf_permits()[profile.WF2022Permit] == profile.CAMPAIGN
-    assert profile.require_campaign()["scope"] == "2022_training_cut_cost_only"
+    with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
+        profile.require_campaign()
+    approval = json.loads(budget.APPROVAL.read_text())
+    assert approval["campaign"] == profile.CAMPAIGN.name
+    assert approval["scope"] == "2022_training_cut_cost_only"
 
 
 def test_2022_ledger_rejects_other_run_and_incomplete_checkpoint(tmp_path):
@@ -50,8 +56,12 @@ def test_2022_worker_rejects_closed_gate_before_request(tmp_path, monkeypatch):
 
 def test_2022_forged_registration_rejected_before_worker_request(tmp_path, monkeypatch):
     from btc_risk_rl.pilots import wf_cost_2022_exec as profile
+    from btc_risk_rl.pilots import wf_cost_2022_orchestrator as budget
     from btc_risk_rl.pilots import wf_cost_2022_worker as worker
 
+    monkeypatch.setattr(profile, "MARKET_EXECUTION_ENABLED", True)
+    monkeypatch.setattr(budget, "MARKET_EXECUTION_ENABLED", True)
+    monkeypatch.setattr(budget, "REGISTRATION_SHA256", budget._sha256(budget.APPROVAL))
     monkeypatch.setattr(profile, "REGISTRATION_SHA256", "0" * 64)
     with pytest.raises(PermissionError, match="approval inputs changed"):
         worker.run_request(tmp_path / "missing.json")

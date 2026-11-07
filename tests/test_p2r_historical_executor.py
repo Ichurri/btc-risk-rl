@@ -1,6 +1,8 @@
 """P2R historical executor contract; no historical learning is run here."""
 
+import fcntl
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -68,10 +70,16 @@ def test_public_market_command_rejects_before_output(tmp_path):
 
 
 def test_separate_historical_command_requires_user_service_before_data_access():
-    result = subprocess.run(
-        [sys.executable, "scripts/run_p2r_market.py"], capture_output=True,
-        text=True, check=False,
-    )
+    # The full WF suite runs inside a user service while holding this lock.
+    # Explicitly model a terminal child, independent of the parent's cgroup.
+    env = dict(os.environ, INVOCATION_ID="")
+    lock_path = Path("artifacts/shared-pilot-budget/global.lock")
+    with lock_path.open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        result = subprocess.run(
+            [sys.executable, "scripts/run_p2r_market.py"], capture_output=True,
+            text=True, check=False, env=env,
+        )
     assert result.returncode != 0
     assert "requires a systemd user service" in result.stderr
 
