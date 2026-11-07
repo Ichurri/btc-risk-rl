@@ -12,8 +12,8 @@ Se integró un perfil histórico aislado de una C10/11 unidades, lease
 exacto, checkpoint completo, preflight vigilado y bitácora previa al ledger.
 El permiso técnico exclusivo se fijó inicialmente en `61602a9` y se
 volvió a fijar en `b142d20` tras la corrección prospectiva de una pausa
-previa a unidad. La huella vigente es
-`783d30a27eb99c0a21a33f977d151f1048b6c4e6529128a855d5d5470f89ca7f`.
+previa a unidad; el horario 01:00–09:00 exigió otro repin. La huella
+vigente es `43506140c41c349731fd0a5b4a6133b6cec6e9bf091c995ab65c1ed68260cc75`.
 La raíz histórica 2022 sigue ausente; el permiso no sustituye suite,
 Ruff, preflight `ready` ni admisión. La suite final dio **504 passed in
 433,71 s** y Ruff pasó. La prueba controlada de trabajador completó

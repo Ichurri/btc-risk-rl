@@ -6,8 +6,9 @@
   suite, Ruff, preflight vigilado, permiso fijado por huella y admisión
   presupuestaria. El permiso técnico independiente se fijó inicialmente en
   `61602a9` y se volvió a fijar en `b142d20` tras corregir una pausa
-  previa a unidad. La huella vigente es
-  `783d30a27eb99c0a21a33f977d151f1048b6c4e6529128a855d5d5470f89ca7f`;
+  previa a unidad. El cambio de ventana 01:00–09:00 exigió otro repin;
+  la huella vigente es
+  `43506140c41c349731fd0a5b4a6133b6cec6e9bf091c995ab65c1ed68260cc75`;
   pero esto **no** significa que el preflight esté `ready` ni que una unidad
   haya comenzado. Mientras el gate 2022 esté activo, no modificar archivos
   ejecutables cubiertos por `code_sha256()`: cualquier cambio invalida el
