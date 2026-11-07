@@ -181,22 +181,25 @@ def test_checks_and_reserves_can_pause_before_unit(tmp_path):
         assert attempt.admit({}, unit=0) == "pause"  # global reserve
 
 
-def test_night_window_never_starts_a_unit_that_cannot_close_by_eight(tmp_path):
-    clock = Clock(epoch(4, 22, 59))
+def test_night_window_never_starts_a_unit_that_cannot_close_by_nine(tmp_path):
+    clock = Clock(epoch(4, 0, 59))
     with wf22.BudgetAttempt(tmp_path, clock=clock, gate=lambda: True,
                             authorize=lambda: True, external_spent=lambda _now: 0,
                             night_window=True) as attempt:
         assert attempt.admit({}, unit=0) == "pause"
         clock.advance(60)
         assert attempt.admit({}, unit=0) == "start"
-        clock.advance(15 * 60)
-        assert attempt.admit({}, unit=0) == "pause"  # 45-minute global close reserve.
-    next_day = Clock(epoch(5, 7, 47))
-    with wf22.BudgetAttempt(tmp_path, clock=next_day, gate=lambda: True,
+    late = Clock(epoch(5, 8, 47))
+    with wf22.BudgetAttempt(tmp_path / "late", clock=late, gate=lambda: True,
                             authorize=lambda: True, external_spent=lambda _now: 0,
                             night_window=True) as attempt:
         assert attempt.admit({}, unit=0) == "start"  # 13 minutes cover Q0 and closure.
-        next_day.advance(120)
+        late.advance(120)
+        assert attempt.admit({}, unit=0) == "pause"
+    outside = Clock(epoch(5, 23, 0))
+    with wf22.BudgetAttempt(tmp_path / "outside", clock=outside, gate=lambda: True,
+                            authorize=lambda: True, external_spent=lambda _now: 0,
+                            night_window=True) as attempt:
         assert attempt.admit({}, unit=0) == "pause"
 
 

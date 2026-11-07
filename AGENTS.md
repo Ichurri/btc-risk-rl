@@ -14,10 +14,10 @@
   permiso y exige un repin antes de arrancar. Ver
   `docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md`.
   La raíz nueva es `artifacts/oos-v12-wf-cost-only-2022-01/`; WF05 sigue
-  cerrado `incomplete` y no se reanuda. La ventana preferente 23:00–08:00
+  cerrado `incomplete` y no se reanuda. La ventana 01:00–09:00
   `America/La_Paz` **no** aumenta los topes de 3 h globales por fecha ni
   los dos días/4.800 s propios del estudio. Cada unidad debe caber con
-  reserva antes de medianoche o de las 08:00. Las comprobaciones de
+  reserva antes de las 09:00. Las comprobaciones de
   implementación anteriores al permiso técnico no son una campaña.
 - El usuario autorizó avanzar hacia la evaluación confirmatoria, pero
   la propuesta v1.2 aún no está adoptada y exige resolver cambios

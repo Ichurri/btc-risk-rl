@@ -15,7 +15,7 @@
 - Próxima acción: conectar CA, tomar preflight **nuevo** y ejecutar la suite,
   Ruff y la admisión dentro de la bitácora de campaña. Solo si todo da
   `ready`, iniciar una sesión `systemd --user` con `Restart=no` dentro de
-  23:00–08:00. La captura bloqueada no habilita lanzamiento. Procedimiento:
+  01:00–09:00. La captura bloqueada no habilita lanzamiento. Procedimiento:
   `docs/protocols/OOS-v1-2-wf-2022-launch-20261106.md`.
 - Evidencias: `docs/evidence/oos-wf-2022-integration/`,
   `docs/hitos/OOS-v1-2-costo-2022-integracion-historica.md`.

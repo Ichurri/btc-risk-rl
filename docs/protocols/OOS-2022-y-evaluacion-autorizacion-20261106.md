@@ -15,13 +15,15 @@ no reutiliza Q0 ni pesos de WF05. El registro JSON y el gate se fijarán por
 huella en un commit independiente **después** de aprobar integración,
 pruebas y preflight; un JSON aislado no activa la ruta.
 
-La ventana preferente de unidades es 23:00–08:00 `America/La_Paz`.
+La ventana de unidades, actualizada por Santiago el 07/11/2026, es
+**01:00–09:00 `America/La_Paz`**. Reemplaza 23:00–08:00; las ocho horas
+incluyen comprobaciones, ejecución, guardado y cierre.
 **No se aumenta el presupuesto por ser una ventana de nueve horas.** Se
 conservan 10.800 s globales por fecha local, reserva global 2.700 s;
 3.600 s propios diarios, 4.800 s propios acumulados y máximo dos fechas
 activas para este estudio, con reserva propia 600 s por fecha. Cada unidad
-debe caber con su cota 120/180 s, checkpoint y reserva antes de medianoche
-o de las 08:00. La bitácora empieza antes de la primera comprobación
+debe caber con su cota 120/180 s, checkpoint y reserva antes de las 09:00.
+La bitácora empieza antes de la primera comprobación
 específica y descuenta suite, Ruff, preflight, servicio, auditoría y cierre,
 sin duplicar intervalos. Los registros llevan timestamps UTC y día La Paz.
 Un fallo dentro de unidad bloquea reingreso; solo se retoma desde una

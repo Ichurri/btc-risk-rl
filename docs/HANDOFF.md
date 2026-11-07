@@ -35,7 +35,7 @@ Mientras el gate siga activo, conservar el código ejecutable fijado por
 
 **Siguiente tarea:** reconectar CA y repetir suite/Ruff y preflight vigilado
 dentro de un intento medido,
-y solo con guardas `ready` iniciar bajo `systemd --user` en 23:00–08:00.
+y solo con guardas `ready` iniciar bajo `systemd --user` en 01:00–09:00.
 Cada unidad conserva los topes 120/180 s, las reservas y el máximo de dos
 fechas activas; la ventana no amplía las tres horas globales por fecha.
 La propuesta v1.2 sigue sin adopción académica. Sus 17 fechas activas
