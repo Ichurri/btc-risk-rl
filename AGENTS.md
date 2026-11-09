@@ -5,8 +5,11 @@
   una medición nueva del corte 2022 desde el 10/11, 01:00–09:00 La Paz,
   condicionada a margen sostenido de memoria, suite, Ruff, preflight y
   admisión. El primer permiso `d0f024c` no se ejecutó y se invalidó al
-  cerrar dos guardas del lanzador; el gate quedó temporalmente apagado
-  mientras se fijan nuevas huellas. `2022-01` y `2022-02` siguen `failed` y no se reanudan; WF05
+  cerrar dos guardas del lanzador; el gate final quedó fijado en `3aa8aeb`,
+  JSON SHA-256 `c72292883224c50f86f0ae6a27b2ee6e4aaeed3ee548751cd81f3ac7f7ce73d4`.
+  Una sola sesión `systemd --user` está **programada**, no ejecutada, para
+  el 10/11 a la 01:00; `Restart=no`. El preflight, suite, Ruff y admisión
+  del día deben pasar antes de mercado. `2022-01` y `2022-02` siguen `failed` y no se reanudan; WF05
   sigue cerrado. La sonda 04 cayó bajo 4 GiB durante la suite; la sonda 05
   sostuvo 4 GiB + 512 MiB durante una sesión equivalente, con solo 38,6 MB
   de margen mínimo. El perfil `2022-03` tiene raíz y aprobación propias,

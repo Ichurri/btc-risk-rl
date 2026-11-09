@@ -17,7 +17,12 @@ de 4 GiB durante unidades. Primera fecha admisible: **10/11/2026**,
 01:00–09:00 `America/La_Paz`, con suite formal, Ruff, preflight vigilado y
 admisión con reservas nuevos. El primer permiso `d0f024c` quedó
 prospectivamente invalidado por la corrección de la contabilidad y ventana;
-el gate se apagó y requiere nueva huella antes de programar. El 09/11 tiene saldo global **0 s** por el
+el gate final se fijó en `3aa8aeb` con SHA-256
+`c72292883224c50f86f0ae6a27b2ee6e4aaeed3ee548751cd81f3ac7f7ce73d4`.
+El timer `oos-wf-cost-2022-03-session-01.timer` quedó `active/waiting`
+para **10/11 01:00 La Paz**, servicio `Restart=no`, sin raíz histórica ni
+proceso activo; ver [informe de perfil](hitos/OOS-v1-2-costo-2022-03-perfil.md).
+El 09/11 tiene saldo global **0 s** por el
 fallo `2022-02`. No abrir validación 2023 ni prueba final; evaluación v1.2
 no adoptada. El estado operativo de permiso, programación y pruebas finales
 se detalla en `reporte-codex.md` y el informe del perfil; verificar sus
