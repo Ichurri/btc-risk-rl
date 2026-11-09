@@ -30,7 +30,10 @@ def test_2022_profile_has_independent_pinned_approval():
         assert profile.require_campaign()["campaign"] == profile.CAMPAIGN.name
     else:
         assert profile.REGISTRATION_SHA256 is None
-        assert not budget.APPROVAL.exists()
+        assert not budget.MARKET_EXECUTION_ENABLED
+        assert budget.REGISTRATION_SHA256 is None
+        # The signed approval is historical evidence, not an executable gate.
+        assert budget.APPROVAL.is_file()
         with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
             profile.require_campaign()
 
