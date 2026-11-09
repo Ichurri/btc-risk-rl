@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **09/11/2026: WF 2022-02 falló dentro de la unidad 8 por memoria.**
+  Perfil y autorización independientes en `7da17ad`/`a118476`; suite formal
+  bajo `systemd --user`: 505 passed, Ruff y preflight vigilado `ready`.
+  Una sesión aceptó Q0 y actualizaciones 1–7 (8/11 unidades), pero la
+  guarda observó `MemAvailable=4.278.210.560 B`, inferior a 4 GiB por
+  16.756.736 B. Ledger `failed`, unidad 8 pendiente, sin checkpoint
+  aceptado de ella. El último checkpoint completo `after_dual_and_D` de
+  unidad 7 se conserva solo como evidencia. **No reanudar, repetir la
+  unidad ni iniciar otra campaña el 09/11**: el fallo carga 10.800 s
+  globales conservadores ese día. Gate `2022-02` cerrado prospectivamente
+  en `dbadf34`; aprobación, ledger, journals y checkpoints intactos. Ver
+  `docs/hitos/OOS-v1-2-costo-2022-02-cierre-fallido.md`. WF05 y 2022-01
+  mantienen sus cierres; validación, prueba final y v1.2 siguen cerradas.
 - **07/11/2026, primer intento WF 2022-01 fallido antes del ledger.** La
   sesión `oos-wf-cost-2022-01-session-01.service` inició a las 01:00 y la
   suite previa terminó con 503 pruebas correctas y una falla contextual;

@@ -1,4 +1,31 @@
-# Estado vigente — 07/11/2026, intento WF 2022-01 detenido
+# Estado vigente — 09/11/2026, WF 2022-02 fallido y cerrado
+
+Rama `codex/oos-wf-2022-02`; perfil `7da17ad`, aprobación independiente
+`a118476`, cierre prospectivo del gate `dbadf34`. La suite formal bajo
+`systemd --user` pasó **505 pruebas**, Ruff y preflight vigilado `ready`.
+La sesión histórica aceptó **8/11 unidades** (Q0 e iteraciones 1–7) y
+falló durante la unidad 8 por `MemAvailable=4.278.210.560 B`, bajo el
+mínimo de 4 GiB. Ledger `failed`, unidad 8 pendiente, sin reporte ni
+checkpoint aceptado. Último checkpoint completo: unidad 7,
+`after_dual_and_D`, SHA-256 de estado
+`618f9b45c42cf7e0976c1b8d6caadde39fddcfe1586a1173f3a5506295c9b0e1`.
+**No reanudar ni repetir esta campaña**, aunque exista ese checkpoint.
+El 09/11 tiene un cargo global conservador de **10.800 s**, saldo **0**.
+El gate quedó cerrado; aprobación y evidencias históricas intactas.
+
+El [informe](hitos/OOS-v1-2-costo-2022-02-cierre-fallido.md) conserva
+comandos, tiempos, recursos, huellas y límites. El resumen operativo
+copiable está en `reporte-codex.md`. WF05 sigue `incomplete` cerrado y
+2022-01 permanece fallido con su cargo del 07/11. No hubo acceso a
+validación 2023 ni prueba final. La medición 2022 íntegra sigue pendiente;
+una nueva campaña requiere identidad y autorización independientes, además
+de memoria estable sin rebajar 4 GiB. La evaluación confirmatoria v1.2 no
+está adoptada: faltan armonización académica y fecha de prórroga para
+los 36 bloques.
+
+---
+
+# Estado anterior — 07/11/2026, intento WF 2022-01 detenido
 
 La ventana aprobada es **01:00–09:00 America/La_Paz** con los topes y
 reservas originales. El preflight vigilado previo de las 00:58 dio `ready`

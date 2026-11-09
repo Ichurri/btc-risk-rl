@@ -1,38 +1,10 @@
-# Reporte Codex — 07/11/2026, 01:32 (America/La_Paz)
+# Reporte Codex — 09/11/2026, 01:45 America/La_Paz
 
-- Rama: `codex/oos-wf-2022-confirmatory-prep`; entrega publicada `af49e03`,
-  cierre prospectivo del gate WF 2022-01 en `0dbe214`. La eliminación local de `.python-version`
-  permanece fuera de los commits.
-- Ventana aprobada: **01:00–09:00 La Paz**. Conserva 3 h globales por día,
-  2.700 s de reserva global, 3.600 s propios diarios, 4.800 s acumulados,
-  600 s de reserva propia y máximo dos días activos.
-- Preflight vigilado previo 00:58: `ready`, CA conectada, batería 100 %, memoria
-  9.094.168.576 B, disco 129.157.259.264 B, gestor y `Linger` conformes;
-  verificó el derivado exclusivo de entrenamiento sin abrir CSV compartidos.
-- Servicio `oos-wf-cost-2022-01-session-01.service`, `InvocationID`
-  `d1d9f440f25e4dfe98d610c96ac848da`: arrancó 01:00:05 y falló 01:07:26
-  durante la suite formal. Resultado: **503 passed, 1 failed**, 439,41 s.
-  Una prueba de P2R heredó contexto del servicio y observó el bloqueo
-  global en vez del rechazo de terminal esperado. La bitácora mide
-  440,610179 s de intento; `systemd` registró 1,3 GiB de memoria pico.
-- No se ejecutaron Ruff ni preflight formales después de esa suite. **Cero
-  unidades históricas, cero checkpoints**; la raíz `2022-01` sigue ausente.
-  La bitácora terminó `failed` y no se reanuda. Su cargo global
-  conservador el 07/11 es **10.800 s**; no cabe otra campaña ese día.
-- La prueba contextual fue corregida prospectivamente; verificación focal:
-  **16 passed en 112,10 s**. Suite completa de desarrollo limpia:
-  **504 passed en 434,88 s**; Ruff: **All checks passed**. Una ejecución
-  intermedia de desarrollo recibió señales de interrupción y no se usa como
-  verificación. Nada de ello cambia la suite formal fallida de la unidad.
-- Evidencias: `docs/hitos/OOS-v1-2-costo-2022-primer-intento-fallido.md`,
-  `docs/evidence/oos-wf-2022-integration/launch-20261107-failed/`,
-  `artifacts/shared-pilot-budget/wf-2022-only-01-attempts.jsonl` y
-  `wf-2022-only-01-checks.jsonl`. WF05 sigue cerrado e intacto.
-- Siguiente acción: terminar la verificación de la corrección y preparar
-  un perfil/permiso **independiente** `2022-02` bajo la propuesta
-  `docs/proposals/OOS-v1-2-costo-2022-reemplazo-02-v1.md`. En fecha local
-  posterior, repetir suite, Ruff y preflight vigilado dentro de su propia
-  bitácora; iniciar Q0 solo con todas las guardas `ready` y reservas.
-- Evaluación v1.2 y prueba final siguen cerradas. Santiago eligió prórroga
-  para los 36 bloques; faltan fecha y armonización de la tesis. No se abrió
-  validación 2023 ni prueba final 2024–2025.
+- Rama `codex/oos-wf-2022-02`; commits de perfil `7da17ad`, autorización `a118476` y cierre del gate `dbadf34`. La eliminación local de `.python-version` sigue fuera de Git.
+- La suite formal bajo `systemd --user` pasó **505 pruebas en 503,45 s**; Ruff y preflight vigilado pasaron. CA y batería conformes; el preflight verificó el derivado exclusivo de entrenamiento sin abrir CSV compartidos, validación ni prueba final.
+- Servicio `oos-wf-cost-2022-02-session-01.service`, `InvocationID=df1313adea4e400996fa4982229099ca`, 01:23:10–01:41:54, `Result=exit-code`. Tiempo total de servicio **1123,821 s**; bitácoras durables **508,788 s** de preparación y **612,339 s** de ejecución, sin duplicar la sesión interna.
+- **8/11 unidades aceptadas:** Q0 e iteraciones 1–7; tiempos por unidad `31,704; 72,023; 72,353; 73,245; 81,069; 76,624; 87,308; 79,115 s`. Último checkpoint completo `artifacts/oos-v12-wf-cost-only-2022-02/wf-2022/checkpoint-7`, estado SHA-256 `618f9b45c42cf7e0976c1b8d6caadde39fddcfe1586a1173f3a5506295c9b0e1`.
+- La unidad 8 quedó parcial y el ledger `failed`: `MemAvailable=4.278.210.560 B`, **16.756.736 B** bajo el mínimo de 4 GiB, a las 01:41:53,967. CA, batería y disco seguían conformes. No hay supervisor o trabajador activo. **No reanudar** esta raíz ni reutilizar el checkpoint para ocultar el fallo. El gate quedó cerrado y el comando público rechaza otra ejecución.
+- Presupuesto propio medido: bitácoras suman **1121,127 s**; cargo global conservador por fallo: **10.800/10.800 s el 09/11**, saldo **0**. No iniciar otra campaña ese día. WF05 y 2022-01 conservan sus estados y huellas.
+- Evidencia: `docs/hitos/OOS-v1-2-costo-2022-02-cierre-fallido.md`, `docs/evidence/oos-wf-2022-02-preparation/`, `artifacts/oos-v12-wf-cost-only-2022-02/`, `artifacts/shared-pilot-budget/wf-2022-only-02-{attempts,checks}.jsonl`.
+- Próxima acción: revisar una nueva medición íntegra 2022 con otra raíz y permiso, tras resolver estabilidad de memoria sin bajar el umbral. Para evaluación confirmatoria faltan congelación académica de v1.2 y fecha de prórroga. Validación 2023 y prueba final siguen cerradas.
