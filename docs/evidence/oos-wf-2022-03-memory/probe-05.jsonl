@@ -1,0 +1,635 @@
+{"cgroup_memory_bytes": 7262208, "elapsed": 9.854700056166621e-05, "guard_bytes": 536870912, "kind": "start", "mem_available_bytes": 7444566016, "stage": "suite", "target_load_bytes": 1195008000, "threshold_bytes": 4294967296, "utc": "2026-11-09T12:08:11.404533+00:00"}
+{"cgroup_memory_bytes": 7680000, "elapsed": 0.013918610000473564, "kind": "sample", "mem_available_bytes": 7444566016, "stage": "suite", "utc": "2026-11-09T12:08:11.418356+00:00"}
+{"cgroup_memory_bytes": 271433728, "elapsed": 2.0168064850004157, "kind": "sample", "mem_available_bytes": 7168327680, "stage": "suite", "utc": "2026-11-09T12:08:13.421232+00:00"}
+{"cgroup_memory_bytes": 272531456, "elapsed": 4.030609074000495, "kind": "sample", "mem_available_bytes": 7175708672, "stage": "suite", "utc": "2026-11-09T12:08:15.435030+00:00"}
+{"cgroup_memory_bytes": 272506880, "elapsed": 6.044315023000308, "kind": "sample", "mem_available_bytes": 7187812352, "stage": "suite", "utc": "2026-11-09T12:08:17.448747+00:00"}
+{"cgroup_memory_bytes": 272736256, "elapsed": 8.05812719900041, "kind": "sample", "mem_available_bytes": 7191416832, "stage": "suite", "utc": "2026-11-09T12:08:19.462558+00:00"}
+{"cgroup_memory_bytes": 272609280, "elapsed": 10.072343611000178, "kind": "sample", "mem_available_bytes": 7199588352, "stage": "suite", "utc": "2026-11-09T12:08:21.476764+00:00"}
+{"cgroup_memory_bytes": 272809984, "elapsed": 12.085927705999893, "kind": "sample", "mem_available_bytes": 7193128960, "stage": "suite", "utc": "2026-11-09T12:08:23.490359+00:00"}
+{"cgroup_memory_bytes": 272588800, "elapsed": 14.100152899000022, "kind": "sample", "mem_available_bytes": 7195754496, "stage": "suite", "utc": "2026-11-09T12:08:25.504573+00:00"}
+{"cgroup_memory_bytes": 325206016, "elapsed": 16.113661187000616, "kind": "sample", "mem_available_bytes": 7088693248, "stage": "suite", "utc": "2026-11-09T12:08:27.518090+00:00"}
+{"cgroup_memory_bytes": 351006720, "elapsed": 18.127049950000583, "kind": "sample", "mem_available_bytes": 7064870912, "stage": "suite", "utc": "2026-11-09T12:08:29.531464+00:00"}
+{"cgroup_memory_bytes": 350806016, "elapsed": 20.130497821000063, "kind": "sample", "mem_available_bytes": 7067070464, "stage": "suite", "utc": "2026-11-09T12:08:31.534919+00:00"}
+{"cgroup_memory_bytes": 350806016, "elapsed": 22.143772068000544, "kind": "sample", "mem_available_bytes": 7061397504, "stage": "suite", "utc": "2026-11-09T12:08:33.548194+00:00"}
+{"cgroup_memory_bytes": 411160576, "elapsed": 24.15733591300068, "kind": "sample", "mem_available_bytes": 6994145280, "stage": "suite", "utc": "2026-11-09T12:08:35.561755+00:00"}
+{"cgroup_memory_bytes": 360255488, "elapsed": 26.16362373999982, "kind": "sample", "mem_available_bytes": 7018672128, "stage": "suite", "utc": "2026-11-09T12:08:37.568044+00:00"}
+{"cgroup_memory_bytes": 360316928, "elapsed": 28.177084949000346, "kind": "sample", "mem_available_bytes": 7044206592, "stage": "suite", "utc": "2026-11-09T12:08:39.581517+00:00"}
+{"cgroup_memory_bytes": 473141248, "elapsed": 30.190577387999838, "kind": "sample", "mem_available_bytes": 6977400832, "stage": "suite", "utc": "2026-11-09T12:08:41.595001+00:00"}
+{"cgroup_memory_bytes": 664006656, "elapsed": 32.204013638000106, "kind": "sample", "mem_available_bytes": 6850158592, "stage": "suite", "utc": "2026-11-09T12:08:43.608432+00:00"}
+{"cgroup_memory_bytes": 832290816, "elapsed": 34.217761234000136, "kind": "sample", "mem_available_bytes": 6665318400, "stage": "suite", "utc": "2026-11-09T12:08:45.622185+00:00"}
+{"cgroup_memory_bytes": 593145856, "elapsed": 36.231345143, "kind": "sample", "mem_available_bytes": 6848761856, "stage": "suite", "utc": "2026-11-09T12:08:47.635775+00:00"}
+{"cgroup_memory_bytes": 738099200, "elapsed": 38.23403807300019, "kind": "sample", "mem_available_bytes": 6711066624, "stage": "suite", "utc": "2026-11-09T12:08:49.638469+00:00"}
+{"cgroup_memory_bytes": 468160512, "elapsed": 40.24346260200036, "kind": "sample", "mem_available_bytes": 6982922240, "stage": "suite", "utc": "2026-11-09T12:08:51.647894+00:00"}
+{"cgroup_memory_bytes": 574648320, "elapsed": 42.25701516400022, "kind": "sample", "mem_available_bytes": 6848917504, "stage": "suite", "utc": "2026-11-09T12:08:53.661439+00:00"}
+{"cgroup_memory_bytes": 719335424, "elapsed": 44.27087358800054, "kind": "sample", "mem_available_bytes": 6730153984, "stage": "suite", "utc": "2026-11-09T12:08:55.675292+00:00"}
+{"cgroup_memory_bytes": 360542208, "elapsed": 46.28485686800013, "kind": "sample", "mem_available_bytes": 7081275392, "stage": "suite", "utc": "2026-11-09T12:08:57.689274+00:00"}
+{"cgroup_memory_bytes": 610381824, "elapsed": 48.29898149000019, "kind": "sample", "mem_available_bytes": 6829924352, "stage": "suite", "utc": "2026-11-09T12:08:59.703400+00:00"}
+{"cgroup_memory_bytes": 346750976, "elapsed": 50.30176268800005, "kind": "sample", "mem_available_bytes": 7074287616, "stage": "suite", "utc": "2026-11-09T12:09:01.706195+00:00"}
+{"cgroup_memory_bytes": 347652096, "elapsed": 52.30443555000056, "kind": "sample", "mem_available_bytes": 7111131136, "stage": "suite", "utc": "2026-11-09T12:09:03.708846+00:00"}
+{"cgroup_memory_bytes": 350937088, "elapsed": 54.31784233600047, "kind": "sample", "mem_available_bytes": 7151865856, "stage": "suite", "utc": "2026-11-09T12:09:05.722275+00:00"}
+{"cgroup_memory_bytes": 351064064, "elapsed": 56.3314031280006, "kind": "sample", "mem_available_bytes": 7182114816, "stage": "suite", "utc": "2026-11-09T12:09:07.735834+00:00"}
+{"cgroup_memory_bytes": 350928896, "elapsed": 58.3455130830007, "kind": "sample", "mem_available_bytes": 7190319104, "stage": "suite", "utc": "2026-11-09T12:09:09.749944+00:00"}
+{"cgroup_memory_bytes": 351064064, "elapsed": 60.359421252000175, "kind": "sample", "mem_available_bytes": 7194079232, "stage": "suite", "utc": "2026-11-09T12:09:11.763843+00:00"}
+{"cgroup_memory_bytes": 350932992, "elapsed": 62.36255193499983, "kind": "sample", "mem_available_bytes": 7154343936, "stage": "suite", "utc": "2026-11-09T12:09:13.766982+00:00"}
+{"cgroup_memory_bytes": 351064064, "elapsed": 64.3763819830001, "kind": "sample", "mem_available_bytes": 7143907328, "stage": "suite", "utc": "2026-11-09T12:09:15.780808+00:00"}
+{"cgroup_memory_bytes": 350932992, "elapsed": 66.39011516200026, "kind": "sample", "mem_available_bytes": 7169622016, "stage": "suite", "utc": "2026-11-09T12:09:17.794545+00:00"}
+{"cgroup_memory_bytes": 351064064, "elapsed": 68.40379986400058, "kind": "sample", "mem_available_bytes": 7175118848, "stage": "suite", "utc": "2026-11-09T12:09:19.808231+00:00"}
+{"cgroup_memory_bytes": 351002624, "elapsed": 70.41762783200011, "kind": "sample", "mem_available_bytes": 7185530880, "stage": "suite", "utc": "2026-11-09T12:09:21.822048+00:00"}
+{"cgroup_memory_bytes": 350990336, "elapsed": 72.43134013600047, "kind": "sample", "mem_available_bytes": 7175524352, "stage": "suite", "utc": "2026-11-09T12:09:23.835771+00:00"}
+{"cgroup_memory_bytes": 350855168, "elapsed": 74.44525005200012, "kind": "sample", "mem_available_bytes": 7168114688, "stage": "suite", "utc": "2026-11-09T12:09:25.849681+00:00"}
+{"cgroup_memory_bytes": 350982144, "elapsed": 76.45107446100064, "kind": "sample", "mem_available_bytes": 7130435584, "stage": "suite", "utc": "2026-11-09T12:09:27.855505+00:00"}
+{"cgroup_memory_bytes": 350851072, "elapsed": 78.46490744699986, "kind": "sample", "mem_available_bytes": 7159140352, "stage": "suite", "utc": "2026-11-09T12:09:29.869339+00:00"}
+{"cgroup_memory_bytes": 352985088, "elapsed": 80.47872181399998, "kind": "sample", "mem_available_bytes": 7136485376, "stage": "suite", "utc": "2026-11-09T12:09:31.883154+00:00"}
+{"cgroup_memory_bytes": 353112064, "elapsed": 82.49244323400035, "kind": "sample", "mem_available_bytes": 7140925440, "stage": "suite", "utc": "2026-11-09T12:09:33.896875+00:00"}
+{"cgroup_memory_bytes": 352985088, "elapsed": 84.50646560000041, "kind": "sample", "mem_available_bytes": 7149805568, "stage": "suite", "utc": "2026-11-09T12:09:35.910896+00:00"}
+{"cgroup_memory_bytes": 353112064, "elapsed": 86.52040823600055, "kind": "sample", "mem_available_bytes": 7168221184, "stage": "suite", "utc": "2026-11-09T12:09:37.924839+00:00"}
+{"cgroup_memory_bytes": 352903168, "elapsed": 88.53446221100057, "kind": "sample", "mem_available_bytes": 7173713920, "stage": "suite", "utc": "2026-11-09T12:09:39.938891+00:00"}
+{"cgroup_memory_bytes": 353038336, "elapsed": 90.54844333800065, "kind": "sample", "mem_available_bytes": 7178735616, "stage": "suite", "utc": "2026-11-09T12:09:41.952867+00:00"}
+{"cgroup_memory_bytes": 352903168, "elapsed": 92.5515769120002, "kind": "sample", "mem_available_bytes": 7186190336, "stage": "suite", "utc": "2026-11-09T12:09:43.955997+00:00"}
+{"cgroup_memory_bytes": 353030144, "elapsed": 94.56560447100037, "kind": "sample", "mem_available_bytes": 7187099648, "stage": "suite", "utc": "2026-11-09T12:09:45.970035+00:00"}
+{"cgroup_memory_bytes": 352894976, "elapsed": 96.57964566200008, "kind": "sample", "mem_available_bytes": 7189180416, "stage": "suite", "utc": "2026-11-09T12:09:47.984067+00:00"}
+{"cgroup_memory_bytes": 353026048, "elapsed": 98.59377433000009, "kind": "sample", "mem_available_bytes": 7172751360, "stage": "suite", "utc": "2026-11-09T12:09:49.998206+00:00"}
+{"cgroup_memory_bytes": 352890880, "elapsed": 100.60731476000001, "kind": "sample", "mem_available_bytes": 7173406720, "stage": "suite", "utc": "2026-11-09T12:09:52.011746+00:00"}
+{"cgroup_memory_bytes": 353284096, "elapsed": 102.62092597100036, "kind": "sample", "mem_available_bytes": 7176732672, "stage": "suite", "utc": "2026-11-09T12:09:54.025353+00:00"}
+{"cgroup_memory_bytes": 352935936, "elapsed": 104.63425605000066, "kind": "sample", "mem_available_bytes": 7176040448, "stage": "suite", "utc": "2026-11-09T12:09:56.038683+00:00"}
+{"cgroup_memory_bytes": 353062912, "elapsed": 106.64022463400033, "kind": "sample", "mem_available_bytes": 7180636160, "stage": "suite", "utc": "2026-11-09T12:09:58.044655+00:00"}
+{"cgroup_memory_bytes": 352931840, "elapsed": 108.65360810099992, "kind": "sample", "mem_available_bytes": 7158489088, "stage": "suite", "utc": "2026-11-09T12:10:00.058038+00:00"}
+{"cgroup_memory_bytes": 353095680, "elapsed": 110.65645299800053, "kind": "sample", "mem_available_bytes": 7160217600, "stage": "suite", "utc": "2026-11-09T12:10:02.060883+00:00"}
+{"cgroup_memory_bytes": 352960512, "elapsed": 112.6700518710004, "kind": "sample", "mem_available_bytes": 7158366208, "stage": "suite", "utc": "2026-11-09T12:10:04.074482+00:00"}
+{"cgroup_memory_bytes": 353087488, "elapsed": 114.6837920730004, "kind": "sample", "mem_available_bytes": 7183638528, "stage": "suite", "utc": "2026-11-09T12:10:06.088221+00:00"}
+{"cgroup_memory_bytes": 352960512, "elapsed": 116.68668004000028, "kind": "sample", "mem_available_bytes": 7183544320, "stage": "suite", "utc": "2026-11-09T12:10:08.091099+00:00"}
+{"cgroup_memory_bytes": 353087488, "elapsed": 118.70037148000029, "kind": "sample", "mem_available_bytes": 7189585920, "stage": "suite", "utc": "2026-11-09T12:10:10.104800+00:00"}
+{"cgroup_memory_bytes": 352952320, "elapsed": 120.71395918000053, "kind": "sample", "mem_available_bytes": 7187562496, "stage": "suite", "utc": "2026-11-09T12:10:12.118390+00:00"}
+{"cgroup_memory_bytes": 353341440, "elapsed": 122.72754677100056, "kind": "sample", "mem_available_bytes": 7211024384, "stage": "suite", "utc": "2026-11-09T12:10:14.131977+00:00"}
+{"cgroup_memory_bytes": 353992704, "elapsed": 124.73598525299985, "kind": "sample", "mem_available_bytes": 7209127936, "stage": "suite", "utc": "2026-11-09T12:10:16.140416+00:00"}
+{"cgroup_memory_bytes": 354648064, "elapsed": 126.74962781400063, "kind": "sample", "mem_available_bytes": 7218331648, "stage": "suite", "utc": "2026-11-09T12:10:18.154059+00:00"}
+{"cgroup_memory_bytes": 355749888, "elapsed": 128.76336660500056, "kind": "sample", "mem_available_bytes": 7207800832, "stage": "suite", "utc": "2026-11-09T12:10:20.167798+00:00"}
+{"cgroup_memory_bytes": 357453824, "elapsed": 130.7663514730002, "kind": "sample", "mem_available_bytes": 7203479552, "stage": "suite", "utc": "2026-11-09T12:10:22.170778+00:00"}
+{"cgroup_memory_bytes": 358629376, "elapsed": 132.76896421699985, "kind": "sample", "mem_available_bytes": 7202689024, "stage": "suite", "utc": "2026-11-09T12:10:24.173396+00:00"}
+{"cgroup_memory_bytes": 361123840, "elapsed": 134.77204178300053, "kind": "sample", "mem_available_bytes": 7204630528, "stage": "suite", "utc": "2026-11-09T12:10:26.176462+00:00"}
+{"cgroup_memory_bytes": 362565632, "elapsed": 136.78603292500065, "kind": "sample", "mem_available_bytes": 7200833536, "stage": "suite", "utc": "2026-11-09T12:10:28.190454+00:00"}
+{"cgroup_memory_bytes": 399073280, "elapsed": 138.7998010880001, "kind": "sample", "mem_available_bytes": 7060742144, "stage": "suite", "utc": "2026-11-09T12:10:30.204235+00:00"}
+{"cgroup_memory_bytes": 570888192, "elapsed": 140.81339046599987, "kind": "sample", "mem_available_bytes": 6816735232, "stage": "suite", "utc": "2026-11-09T12:10:32.217807+00:00"}
+{"cgroup_memory_bytes": 377204736, "elapsed": 142.826999162, "kind": "sample", "mem_available_bytes": 7034957824, "stage": "suite", "utc": "2026-11-09T12:10:34.231431+00:00"}
+{"cgroup_memory_bytes": 378122240, "elapsed": 144.84070114800033, "kind": "sample", "mem_available_bytes": 7054688256, "stage": "suite", "utc": "2026-11-09T12:10:36.245133+00:00"}
+{"cgroup_memory_bytes": 384937984, "elapsed": 146.8543850320002, "kind": "sample", "mem_available_bytes": 7072251904, "stage": "suite", "utc": "2026-11-09T12:10:38.258817+00:00"}
+{"cgroup_memory_bytes": 385073152, "elapsed": 148.857171011, "kind": "sample", "mem_available_bytes": 7075717120, "stage": "suite", "utc": "2026-11-09T12:10:40.261603+00:00"}
+{"cgroup_memory_bytes": 384946176, "elapsed": 150.87097187400013, "kind": "sample", "mem_available_bytes": 7092482048, "stage": "suite", "utc": "2026-11-09T12:10:42.275392+00:00"}
+{"cgroup_memory_bytes": 385081344, "elapsed": 152.88485187300012, "kind": "sample", "mem_available_bytes": 7107063808, "stage": "suite", "utc": "2026-11-09T12:10:44.289283+00:00"}
+{"cgroup_memory_bytes": 384950272, "elapsed": 154.89848513500056, "kind": "sample", "mem_available_bytes": 7163805696, "stage": "suite", "utc": "2026-11-09T12:10:46.302916+00:00"}
+{"cgroup_memory_bytes": 385089536, "elapsed": 156.9121716360005, "kind": "sample", "mem_available_bytes": 7173140480, "stage": "suite", "utc": "2026-11-09T12:10:48.316602+00:00"}
+{"cgroup_memory_bytes": 385482752, "elapsed": 158.925880924, "kind": "sample", "mem_available_bytes": 7166939136, "stage": "suite", "utc": "2026-11-09T12:10:50.330312+00:00"}
+{"cgroup_memory_bytes": 385617920, "elapsed": 160.9303259010003, "kind": "sample", "mem_available_bytes": 7175856128, "stage": "suite", "utc": "2026-11-09T12:10:52.334757+00:00"}
+{"cgroup_memory_bytes": 387035136, "elapsed": 162.93308840200007, "kind": "sample", "mem_available_bytes": 7193751552, "stage": "suite", "utc": "2026-11-09T12:10:54.337509+00:00"}
+{"cgroup_memory_bytes": 388485120, "elapsed": 164.94673529300053, "kind": "sample", "mem_available_bytes": 7196844032, "stage": "suite", "utc": "2026-11-09T12:10:56.351168+00:00"}
+{"cgroup_memory_bytes": 389660672, "elapsed": 166.9605142600003, "kind": "sample", "mem_available_bytes": 7177871360, "stage": "suite", "utc": "2026-11-09T12:10:58.364945+00:00"}
+{"cgroup_memory_bytes": 392413184, "elapsed": 168.97395948900066, "kind": "sample", "mem_available_bytes": 7152197632, "stage": "suite", "utc": "2026-11-09T12:11:00.378390+00:00"}
+{"cgroup_memory_bytes": 393334784, "elapsed": 170.98783023600026, "kind": "sample", "mem_available_bytes": 7115886592, "stage": "suite", "utc": "2026-11-09T12:11:02.392256+00:00"}
+{"cgroup_memory_bytes": 407461888, "elapsed": 173.00175495500025, "kind": "sample", "mem_available_bytes": 7050395648, "stage": "suite", "utc": "2026-11-09T12:11:04.406185+00:00"}
+{"cgroup_memory_bytes": 407580672, "elapsed": 175.01567770400015, "kind": "sample", "mem_available_bytes": 7074983936, "stage": "suite", "utc": "2026-11-09T12:11:06.420098+00:00"}
+{"cgroup_memory_bytes": 414011392, "elapsed": 177.0294544970002, "kind": "sample", "mem_available_bytes": 7082614784, "stage": "suite", "utc": "2026-11-09T12:11:08.433876+00:00"}
+{"cgroup_memory_bytes": 414109696, "elapsed": 179.03278743900046, "kind": "sample", "mem_available_bytes": 7103418368, "stage": "suite", "utc": "2026-11-09T12:11:10.437195+00:00"}
+{"cgroup_memory_bytes": 413986816, "elapsed": 181.04635323500042, "kind": "sample", "mem_available_bytes": 7111442432, "stage": "suite", "utc": "2026-11-09T12:11:12.450783+00:00"}
+{"cgroup_memory_bytes": 414380032, "elapsed": 183.06043667300037, "kind": "sample", "mem_available_bytes": 7117795328, "stage": "suite", "utc": "2026-11-09T12:11:14.464867+00:00"}
+{"cgroup_memory_bytes": 415039488, "elapsed": 185.06361194500005, "kind": "sample", "mem_available_bytes": 7120674816, "stage": "suite", "utc": "2026-11-09T12:11:16.468050+00:00"}
+{"cgroup_memory_bytes": 415432704, "elapsed": 187.07745527800034, "kind": "sample", "mem_available_bytes": 7123636224, "stage": "suite", "utc": "2026-11-09T12:11:18.481886+00:00"}
+{"cgroup_memory_bytes": 415985664, "elapsed": 189.0903070860004, "kind": "sample", "mem_available_bytes": 7128088576, "stage": "suite", "utc": "2026-11-09T12:11:20.494720+00:00"}
+{"cgroup_memory_bytes": 416645120, "elapsed": 191.093183985, "kind": "sample", "mem_available_bytes": 7125598208, "stage": "suite", "utc": "2026-11-09T12:11:22.497615+00:00"}
+{"cgroup_memory_bytes": 417300480, "elapsed": 193.10649528000067, "kind": "sample", "mem_available_bytes": 7121522688, "stage": "suite", "utc": "2026-11-09T12:11:24.510912+00:00"}
+{"cgroup_memory_bytes": 417955840, "elapsed": 195.1200773370001, "kind": "sample", "mem_available_bytes": 7122784256, "stage": "suite", "utc": "2026-11-09T12:11:26.524507+00:00"}
+{"cgroup_memory_bytes": 418877440, "elapsed": 197.13374506400032, "kind": "sample", "mem_available_bytes": 7142440960, "stage": "suite", "utc": "2026-11-09T12:11:28.538166+00:00"}
+{"cgroup_memory_bytes": 420585472, "elapsed": 199.14712693500041, "kind": "sample", "mem_available_bytes": 7137161216, "stage": "suite", "utc": "2026-11-09T12:11:30.551558+00:00"}
+{"cgroup_memory_bytes": 421502976, "elapsed": 201.16078226300033, "kind": "sample", "mem_available_bytes": 7135059968, "stage": "suite", "utc": "2026-11-09T12:11:32.565213+00:00"}
+{"cgroup_memory_bytes": 423211008, "elapsed": 203.17430563700054, "kind": "sample", "mem_available_bytes": 7124885504, "stage": "suite", "utc": "2026-11-09T12:11:34.578726+00:00"}
+{"cgroup_memory_bytes": 423346176, "elapsed": 205.18791783899997, "kind": "sample", "mem_available_bytes": 7117754368, "stage": "suite", "utc": "2026-11-09T12:11:36.592347+00:00"}
+{"cgroup_memory_bytes": 423739392, "elapsed": 207.20158702400022, "kind": "sample", "mem_available_bytes": 7117131776, "stage": "suite", "utc": "2026-11-09T12:11:38.606018+00:00"}
+{"cgroup_memory_bytes": 424574976, "elapsed": 209.21524667599988, "kind": "sample", "mem_available_bytes": 7092719616, "stage": "suite", "utc": "2026-11-09T12:11:40.619677+00:00"}
+{"cgroup_memory_bytes": 426278912, "elapsed": 211.2289294660004, "kind": "sample", "mem_available_bytes": 7099412480, "stage": "suite", "utc": "2026-11-09T12:11:42.633360+00:00"}
+{"cgroup_memory_bytes": 427749376, "elapsed": 213.24272882400055, "kind": "sample", "mem_available_bytes": 7095369728, "stage": "suite", "utc": "2026-11-09T12:11:44.647158+00:00"}
+{"cgroup_memory_bytes": 428941312, "elapsed": 215.2564811330003, "kind": "sample", "mem_available_bytes": 7100133376, "stage": "suite", "utc": "2026-11-09T12:11:46.660908+00:00"}
+{"cgroup_memory_bytes": 430911488, "elapsed": 217.2702500940004, "kind": "sample", "mem_available_bytes": 7100149760, "stage": "suite", "utc": "2026-11-09T12:11:48.674664+00:00"}
+{"cgroup_memory_bytes": 432091136, "elapsed": 219.2839204130005, "kind": "sample", "mem_available_bytes": 7085297664, "stage": "suite", "utc": "2026-11-09T12:11:50.688350+00:00"}
+{"cgroup_memory_bytes": 433803264, "elapsed": 221.28661178899983, "kind": "sample", "mem_available_bytes": 7093297152, "stage": "suite", "utc": "2026-11-09T12:11:52.691043+00:00"}
+{"cgroup_memory_bytes": 435765248, "elapsed": 223.3004376300005, "kind": "sample", "mem_available_bytes": 7088979968, "stage": "suite", "utc": "2026-11-09T12:11:54.704865+00:00"}
+{"cgroup_memory_bytes": 437473280, "elapsed": 225.31430295800055, "kind": "sample", "mem_available_bytes": 7087775744, "stage": "suite", "utc": "2026-11-09T12:11:56.718734+00:00"}
+{"cgroup_memory_bytes": 438923264, "elapsed": 227.32813381400047, "kind": "sample", "mem_available_bytes": 7104266240, "stage": "suite", "utc": "2026-11-09T12:11:58.732565+00:00"}
+{"cgroup_memory_bytes": 441417728, "elapsed": 229.341695393, "kind": "sample", "mem_available_bytes": 7092994048, "stage": "suite", "utc": "2026-11-09T12:12:00.746125+00:00"}
+{"cgroup_memory_bytes": 442609664, "elapsed": 231.35544635099996, "kind": "sample", "mem_available_bytes": 7054909440, "stage": "suite", "utc": "2026-11-09T12:12:02.759878+00:00"}
+{"cgroup_memory_bytes": 524537856, "elapsed": 233.36950395199983, "kind": "sample", "mem_available_bytes": 6944882688, "stage": "suite", "utc": "2026-11-09T12:12:04.773923+00:00"}
+{"cgroup_memory_bytes": 615604224, "elapsed": 235.38320749600007, "kind": "sample", "mem_available_bytes": 6840496128, "stage": "suite", "utc": "2026-11-09T12:12:06.787635+00:00"}
+{"cgroup_memory_bytes": 488366080, "elapsed": 237.39728847700007, "kind": "sample", "mem_available_bytes": 6935089152, "stage": "suite", "utc": "2026-11-09T12:12:08.801727+00:00"}
+{"cgroup_memory_bytes": 608636928, "elapsed": 239.4112018880005, "kind": "sample", "mem_available_bytes": 6816505856, "stage": "suite", "utc": "2026-11-09T12:12:10.815632+00:00"}
+{"cgroup_memory_bytes": 521216000, "elapsed": 241.4251312360002, "kind": "sample", "mem_available_bytes": 6872821760, "stage": "suite", "utc": "2026-11-09T12:12:12.829552+00:00"}
+{"cgroup_memory_bytes": 612061184, "elapsed": 243.43879348100018, "kind": "sample", "mem_available_bytes": 6886653952, "stage": "suite", "utc": "2026-11-09T12:12:14.843226+00:00"}
+{"cgroup_memory_bytes": 678207488, "elapsed": 245.45248321300005, "kind": "sample", "mem_available_bytes": 6824325120, "stage": "suite", "utc": "2026-11-09T12:12:16.856902+00:00"}
+{"cgroup_memory_bytes": 480038912, "elapsed": 247.4659523930004, "kind": "sample", "mem_available_bytes": 6940983296, "stage": "suite", "utc": "2026-11-09T12:12:18.870382+00:00"}
+{"cgroup_memory_bytes": 660381696, "elapsed": 249.47940905799987, "kind": "sample", "mem_available_bytes": 6743384064, "stage": "suite", "utc": "2026-11-09T12:12:20.883823+00:00"}
+{"cgroup_memory_bytes": 619261952, "elapsed": 251.49322570100048, "kind": "sample", "mem_available_bytes": 6827196416, "stage": "suite", "utc": "2026-11-09T12:12:22.897654+00:00"}
+{"cgroup_memory_bytes": 605904896, "elapsed": 253.5068033990001, "kind": "sample", "mem_available_bytes": 6876991488, "stage": "suite", "utc": "2026-11-09T12:12:24.911234+00:00"}
+{"cgroup_memory_bytes": 708657152, "elapsed": 255.52057953300027, "kind": "sample", "mem_available_bytes": 6787690496, "stage": "suite", "utc": "2026-11-09T12:12:26.924995+00:00"}
+{"cgroup_memory_bytes": 710365184, "elapsed": 257.5342072450003, "kind": "sample", "mem_available_bytes": 6808260608, "stage": "suite", "utc": "2026-11-09T12:12:28.938632+00:00"}
+{"cgroup_memory_bytes": 716365824, "elapsed": 259.5479139079998, "kind": "sample", "mem_available_bytes": 6796615680, "stage": "suite", "utc": "2026-11-09T12:12:30.952339+00:00"}
+{"cgroup_memory_bytes": 493142016, "elapsed": 261.56621826100036, "kind": "sample", "mem_available_bytes": 6963322880, "stage": "suite", "utc": "2026-11-09T12:12:32.970649+00:00"}
+{"cgroup_memory_bytes": 651747328, "elapsed": 263.5803964430006, "kind": "sample", "mem_available_bytes": 6839054336, "stage": "suite", "utc": "2026-11-09T12:12:34.984825+00:00"}
+{"cgroup_memory_bytes": 677154816, "elapsed": 265.59403275300065, "kind": "sample", "mem_available_bytes": 6739361792, "stage": "suite", "utc": "2026-11-09T12:12:36.998463+00:00"}
+{"cgroup_memory_bytes": 688287744, "elapsed": 267.60768722300054, "kind": "sample", "mem_available_bytes": 6782795776, "stage": "suite", "utc": "2026-11-09T12:12:39.012118+00:00"}
+{"cgroup_memory_bytes": 667922432, "elapsed": 269.6213522830003, "kind": "sample", "mem_available_bytes": 6852079616, "stage": "suite", "utc": "2026-11-09T12:12:41.025783+00:00"}
+{"cgroup_memory_bytes": 714043392, "elapsed": 271.635069379, "kind": "sample", "mem_available_bytes": 6834339840, "stage": "suite", "utc": "2026-11-09T12:12:43.039501+00:00"}
+{"cgroup_memory_bytes": 715571200, "elapsed": 273.6488631550001, "kind": "sample", "mem_available_bytes": 6840557568, "stage": "suite", "utc": "2026-11-09T12:12:45.053294+00:00"}
+{"cgroup_memory_bytes": 537567232, "elapsed": 275.66262405900034, "kind": "sample", "mem_available_bytes": 7061303296, "stage": "suite", "utc": "2026-11-09T12:12:47.067053+00:00"}
+{"cgroup_memory_bytes": 540753920, "elapsed": 277.67636875600056, "kind": "sample", "mem_available_bytes": 6880694272, "stage": "suite", "utc": "2026-11-09T12:12:49.080799+00:00"}
+{"cgroup_memory_bytes": 487591936, "elapsed": 279.69005612100045, "kind": "sample", "mem_available_bytes": 6765563904, "stage": "suite", "utc": "2026-11-09T12:12:51.094485+00:00"}
+{"cgroup_memory_bytes": 659902464, "elapsed": 281.6930332720003, "kind": "sample", "mem_available_bytes": 6777257984, "stage": "suite", "utc": "2026-11-09T12:12:53.097458+00:00"}
+{"cgroup_memory_bytes": 610107392, "elapsed": 283.70694943800027, "kind": "sample", "mem_available_bytes": 6855012352, "stage": "suite", "utc": "2026-11-09T12:12:55.111380+00:00"}
+{"cgroup_memory_bytes": 659845120, "elapsed": 285.7205753070002, "kind": "sample", "mem_available_bytes": 6776250368, "stage": "suite", "utc": "2026-11-09T12:12:57.125002+00:00"}
+{"cgroup_memory_bytes": 603426816, "elapsed": 287.73454629500065, "kind": "sample", "mem_available_bytes": 6877114368, "stage": "suite", "utc": "2026-11-09T12:12:59.138983+00:00"}
+{"cgroup_memory_bytes": 681275392, "elapsed": 289.74808574300005, "kind": "sample", "mem_available_bytes": 6710083584, "stage": "suite", "utc": "2026-11-09T12:13:01.152516+00:00"}
+{"cgroup_memory_bytes": 506982400, "elapsed": 291.7575296750001, "kind": "sample", "mem_available_bytes": 6861025280, "stage": "suite", "utc": "2026-11-09T12:13:03.161955+00:00"}
+{"cgroup_memory_bytes": 637616128, "elapsed": 293.7708320790007, "kind": "sample", "mem_available_bytes": 6782676992, "stage": "suite", "utc": "2026-11-09T12:13:05.175255+00:00"}
+{"cgroup_memory_bytes": 506978304, "elapsed": 295.78621772600036, "kind": "sample", "mem_available_bytes": 6880718848, "stage": "suite", "utc": "2026-11-09T12:13:07.190642+00:00"}
+{"cgroup_memory_bytes": 493621248, "elapsed": 297.7925125700003, "kind": "sample", "mem_available_bytes": 6872481792, "stage": "suite", "utc": "2026-11-09T12:13:09.196921+00:00"}
+{"cgroup_memory_bytes": 489213952, "elapsed": 299.7959291650004, "kind": "sample", "mem_available_bytes": 6892113920, "stage": "suite", "utc": "2026-11-09T12:13:11.200361+00:00"}
+{"cgroup_memory_bytes": 494170112, "elapsed": 301.80963273399993, "kind": "sample", "mem_available_bytes": 6929408000, "stage": "suite", "utc": "2026-11-09T12:13:13.214053+00:00"}
+{"cgroup_memory_bytes": 504705024, "elapsed": 303.8233434220001, "kind": "sample", "mem_available_bytes": 6941175808, "stage": "suite", "utc": "2026-11-09T12:13:15.227782+00:00"}
+{"cgroup_memory_bytes": 504807424, "elapsed": 305.8369977080001, "kind": "sample", "mem_available_bytes": 6969565184, "stage": "suite", "utc": "2026-11-09T12:13:17.241429+00:00"}
+{"cgroup_memory_bytes": 505069568, "elapsed": 307.8506982580002, "kind": "sample", "mem_available_bytes": 7006453760, "stage": "suite", "utc": "2026-11-09T12:13:19.255129+00:00"}
+{"cgroup_memory_bytes": 505040896, "elapsed": 309.85381229799987, "kind": "sample", "mem_available_bytes": 7019704320, "stage": "suite", "utc": "2026-11-09T12:13:21.258244+00:00"}
+{"cgroup_memory_bytes": 505622528, "elapsed": 311.85979313400003, "kind": "sample", "mem_available_bytes": 7023194112, "stage": "suite", "utc": "2026-11-09T12:13:23.264213+00:00"}
+{"cgroup_memory_bytes": 506265600, "elapsed": 313.87125878700044, "kind": "sample", "mem_available_bytes": 7050838016, "stage": "suite", "utc": "2026-11-09T12:13:25.275690+00:00"}
+{"cgroup_memory_bytes": 506679296, "elapsed": 315.8852832370003, "kind": "sample", "mem_available_bytes": 7043743744, "stage": "suite", "utc": "2026-11-09T12:13:27.289702+00:00"}
+{"cgroup_memory_bytes": 507330560, "elapsed": 317.89886713800024, "kind": "sample", "mem_available_bytes": 7042043904, "stage": "suite", "utc": "2026-11-09T12:13:29.303288+00:00"}
+{"cgroup_memory_bytes": 507990016, "elapsed": 319.9128154500004, "kind": "sample", "mem_available_bytes": 7048122368, "stage": "suite", "utc": "2026-11-09T12:13:31.317246+00:00"}
+{"cgroup_memory_bytes": 508772352, "elapsed": 321.92614020200017, "kind": "sample", "mem_available_bytes": 7046918144, "stage": "suite", "utc": "2026-11-09T12:13:33.330571+00:00"}
+{"cgroup_memory_bytes": 509820928, "elapsed": 323.9397166540002, "kind": "sample", "mem_available_bytes": 7056465920, "stage": "suite", "utc": "2026-11-09T12:13:35.344142+00:00"}
+{"cgroup_memory_bytes": 511246336, "elapsed": 325.95337973799997, "kind": "sample", "mem_available_bytes": 7054536704, "stage": "suite", "utc": "2026-11-09T12:13:37.357811+00:00"}
+{"cgroup_memory_bytes": 513769472, "elapsed": 327.96684843, "kind": "sample", "mem_available_bytes": 7019274240, "stage": "suite", "utc": "2026-11-09T12:13:39.371280+00:00"}
+{"cgroup_memory_bytes": 741330944, "elapsed": 329.9803425810005, "kind": "sample", "mem_available_bytes": 6863228928, "stage": "suite", "utc": "2026-11-09T12:13:41.384771+00:00"}
+{"cgroup_memory_bytes": 740941824, "elapsed": 331.99392974200055, "kind": "sample", "mem_available_bytes": 6859567104, "stage": "suite", "utc": "2026-11-09T12:13:43.398350+00:00"}
+{"cgroup_memory_bytes": 635457536, "elapsed": 334.0075416770005, "kind": "sample", "mem_available_bytes": 6963896320, "stage": "suite", "utc": "2026-11-09T12:13:45.411972+00:00"}
+{"cgroup_memory_bytes": 514461696, "elapsed": 336.0212439570005, "kind": "sample", "mem_available_bytes": 6990987264, "stage": "suite", "utc": "2026-11-09T12:13:47.425641+00:00"}
+{"cgroup_memory_bytes": 734228480, "elapsed": 338.0352022470006, "kind": "sample", "mem_available_bytes": 6733049856, "stage": "suite", "utc": "2026-11-09T12:13:49.439629+00:00"}
+{"cgroup_memory_bytes": 514899968, "elapsed": 340.0380206890004, "kind": "sample", "mem_available_bytes": 6934482944, "stage": "suite", "utc": "2026-11-09T12:13:51.442452+00:00"}
+{"cgroup_memory_bytes": 517345280, "elapsed": 342.0520193700004, "kind": "sample", "mem_available_bytes": 6870437888, "stage": "suite", "utc": "2026-11-09T12:13:53.456452+00:00"}
+{"cgroup_memory_bytes": 528031744, "elapsed": 344.0657841480006, "kind": "sample", "mem_available_bytes": 6896701440, "stage": "suite", "utc": "2026-11-09T12:13:55.470204+00:00"}
+{"cgroup_memory_bytes": 628944896, "elapsed": 346.0798096710005, "kind": "sample", "mem_available_bytes": 6798442496, "stage": "suite", "utc": "2026-11-09T12:13:57.484228+00:00"}
+{"cgroup_memory_bytes": 538320896, "elapsed": 348.0937196770001, "kind": "sample", "mem_available_bytes": 6839181312, "stage": "suite", "utc": "2026-11-09T12:13:59.498140+00:00"}
+{"cgroup_memory_bytes": 744095744, "elapsed": 350.10750583700064, "kind": "sample", "mem_available_bytes": 6643306496, "stage": "suite", "utc": "2026-11-09T12:14:01.511936+00:00"}
+{"cgroup_memory_bytes": 723402752, "elapsed": 352.11028135800007, "kind": "sample", "mem_available_bytes": 6683787264, "stage": "suite", "utc": "2026-11-09T12:14:03.514710+00:00"}
+{"cgroup_memory_bytes": 670019584, "elapsed": 354.1237699479998, "kind": "sample", "mem_available_bytes": 6734417920, "stage": "suite", "utc": "2026-11-09T12:14:05.528191+00:00"}
+{"cgroup_memory_bytes": 658685952, "elapsed": 356.1376174699999, "kind": "sample", "mem_available_bytes": 6760546304, "stage": "suite", "utc": "2026-11-09T12:14:07.542049+00:00"}
+{"cgroup_memory_bytes": 541327360, "elapsed": 358.151436911, "kind": "sample", "mem_available_bytes": 6880706560, "stage": "suite", "utc": "2026-11-09T12:14:09.555868+00:00"}
+{"cgroup_memory_bytes": 544800768, "elapsed": 360.1652314970006, "kind": "sample", "mem_available_bytes": 6896099328, "stage": "suite", "utc": "2026-11-09T12:14:11.569646+00:00"}
+{"cgroup_memory_bytes": 544800768, "elapsed": 362.1799401640001, "kind": "sample", "mem_available_bytes": 6918930432, "stage": "suite", "utc": "2026-11-09T12:14:13.584355+00:00"}
+{"cgroup_memory_bytes": 544800768, "elapsed": 364.18537940399983, "kind": "sample", "mem_available_bytes": 6926065664, "stage": "suite", "utc": "2026-11-09T12:14:15.589794+00:00"}
+{"cgroup_memory_bytes": 544804864, "elapsed": 366.1999463860002, "kind": "sample", "mem_available_bytes": 6839345152, "stage": "suite", "utc": "2026-11-09T12:14:17.604378+00:00"}
+{"cgroup_memory_bytes": 544542720, "elapsed": 368.202715378, "kind": "sample", "mem_available_bytes": 6885715968, "stage": "suite", "utc": "2026-11-09T12:14:19.607155+00:00"}
+{"cgroup_memory_bytes": 596783104, "elapsed": 370.2163927640004, "kind": "sample", "mem_available_bytes": 6866468864, "stage": "suite", "utc": "2026-11-09T12:14:21.620825+00:00"}
+{"cgroup_memory_bytes": 543440896, "elapsed": 372.23024132499995, "kind": "sample", "mem_available_bytes": 6870958080, "stage": "suite", "utc": "2026-11-09T12:14:23.634650+00:00"}
+{"cgroup_memory_bytes": 577671168, "elapsed": 374.23313438200057, "kind": "sample", "mem_available_bytes": 6843813888, "stage": "suite", "utc": "2026-11-09T12:14:25.637566+00:00"}
+{"cgroup_memory_bytes": 620318720, "elapsed": 376.246701131, "kind": "sample", "mem_available_bytes": 6798282752, "stage": "suite", "utc": "2026-11-09T12:14:27.651133+00:00"}
+{"cgroup_memory_bytes": 627335168, "elapsed": 378.26045841799987, "kind": "sample", "mem_available_bytes": 6800912384, "stage": "suite", "utc": "2026-11-09T12:14:29.664890+00:00"}
+{"cgroup_memory_bytes": 627335168, "elapsed": 380.27431155200065, "kind": "sample", "mem_available_bytes": 6821724160, "stage": "suite", "utc": "2026-11-09T12:14:31.678731+00:00"}
+{"cgroup_memory_bytes": 634216448, "elapsed": 382.28816668000036, "kind": "sample", "mem_available_bytes": 6840999936, "stage": "suite", "utc": "2026-11-09T12:14:33.692597+00:00"}
+{"cgroup_memory_bytes": 634216448, "elapsed": 384.3016423520003, "kind": "sample", "mem_available_bytes": 6864449536, "stage": "suite", "utc": "2026-11-09T12:14:35.706062+00:00"}
+{"cgroup_memory_bytes": 634216448, "elapsed": 386.3152112890002, "kind": "sample", "mem_available_bytes": 6871941120, "stage": "suite", "utc": "2026-11-09T12:14:37.719642+00:00"}
+{"cgroup_memory_bytes": 634277888, "elapsed": 388.32870397399984, "kind": "sample", "mem_available_bytes": 6875099136, "stage": "suite", "utc": "2026-11-09T12:14:39.733111+00:00"}
+{"cgroup_memory_bytes": 634273792, "elapsed": 390.3422047510003, "kind": "sample", "mem_available_bytes": 6881824768, "stage": "suite", "utc": "2026-11-09T12:14:41.746629+00:00"}
+{"cgroup_memory_bytes": 634273792, "elapsed": 392.3556592290006, "kind": "sample", "mem_available_bytes": 6887247872, "stage": "suite", "utc": "2026-11-09T12:14:43.760090+00:00"}
+{"cgroup_memory_bytes": 780124160, "elapsed": 394.369191191, "kind": "sample", "mem_available_bytes": 6734585856, "stage": "suite", "utc": "2026-11-09T12:14:45.773611+00:00"}
+{"cgroup_memory_bytes": 774193152, "elapsed": 396.3827015200004, "kind": "sample", "mem_available_bytes": 6669815808, "stage": "suite", "utc": "2026-11-09T12:14:47.787129+00:00"}
+{"cgroup_memory_bytes": 644734976, "elapsed": 398.3963345760003, "kind": "sample", "mem_available_bytes": 6777753600, "stage": "suite", "utc": "2026-11-09T12:14:49.800766+00:00"}
+{"cgroup_memory_bytes": 871854080, "elapsed": 400.4098291240007, "kind": "sample", "mem_available_bytes": 6641799168, "stage": "suite", "utc": "2026-11-09T12:14:51.814249+00:00"}
+{"cgroup_memory_bytes": 858447872, "elapsed": 402.4234102170003, "kind": "sample", "mem_available_bytes": 6640685056, "stage": "suite", "utc": "2026-11-09T12:14:53.827829+00:00"}
+{"cgroup_memory_bytes": 812986368, "elapsed": 404.4281428780005, "kind": "sample", "mem_available_bytes": 6684483584, "stage": "suite", "utc": "2026-11-09T12:14:55.832573+00:00"}
+{"cgroup_memory_bytes": 757366784, "elapsed": 406.44182429100056, "kind": "sample", "mem_available_bytes": 6716674048, "stage": "suite", "utc": "2026-11-09T12:14:57.846254+00:00"}
+{"cgroup_memory_bytes": 740569088, "elapsed": 408.4556644660006, "kind": "sample", "mem_available_bytes": 6652366848, "stage": "suite", "utc": "2026-11-09T12:14:59.860096+00:00"}
+{"cgroup_memory_bytes": 876564480, "elapsed": 410.4692782250004, "kind": "sample", "mem_available_bytes": 6618058752, "stage": "suite", "utc": "2026-11-09T12:15:01.873703+00:00"}
+{"cgroup_memory_bytes": 876052480, "elapsed": 412.4833397880002, "kind": "sample", "mem_available_bytes": 6631632896, "stage": "suite", "utc": "2026-11-09T12:15:03.887771+00:00"}
+{"cgroup_memory_bytes": 854740992, "elapsed": 414.49672177499997, "kind": "sample", "mem_available_bytes": 6633197568, "stage": "suite", "utc": "2026-11-09T12:15:05.901147+00:00"}
+{"cgroup_memory_bytes": 836681728, "elapsed": 416.51087206600005, "kind": "sample", "mem_available_bytes": 6658838528, "stage": "suite", "utc": "2026-11-09T12:15:07.915292+00:00"}
+{"cgroup_memory_bytes": 775102464, "elapsed": 418.52477518200067, "kind": "sample", "mem_available_bytes": 6634987520, "stage": "suite", "utc": "2026-11-09T12:15:09.929206+00:00"}
+{"cgroup_memory_bytes": 694444032, "elapsed": 420.5382853450001, "kind": "sample", "mem_available_bytes": 6691278848, "stage": "suite", "utc": "2026-11-09T12:15:11.942709+00:00"}
+{"cgroup_memory_bytes": 648601600, "elapsed": 422.55214875, "kind": "sample", "mem_available_bytes": 6746906624, "stage": "suite", "utc": "2026-11-09T12:15:13.956567+00:00"}
+{"cgroup_memory_bytes": 877625344, "elapsed": 424.555578554, "kind": "sample", "mem_available_bytes": 6602256384, "stage": "suite", "utc": "2026-11-09T12:15:15.959990+00:00"}
+{"cgroup_memory_bytes": 862330880, "elapsed": 426.56955372500033, "kind": "sample", "mem_available_bytes": 6628278272, "stage": "suite", "utc": "2026-11-09T12:15:17.973972+00:00"}
+{"cgroup_memory_bytes": 783454208, "elapsed": 428.58328791199983, "kind": "sample", "mem_available_bytes": 6668169216, "stage": "suite", "utc": "2026-11-09T12:15:19.987714+00:00"}
+{"cgroup_memory_bytes": 763928576, "elapsed": 430.5972331869998, "kind": "sample", "mem_available_bytes": 6710751232, "stage": "suite", "utc": "2026-11-09T12:15:22.001665+00:00"}
+{"cgroup_memory_bytes": 739930112, "elapsed": 432.6111682130004, "kind": "sample", "mem_available_bytes": 6740033536, "stage": "suite", "utc": "2026-11-09T12:15:24.015586+00:00"}
+{"cgroup_memory_bytes": 655396864, "elapsed": 434.61740576100055, "kind": "sample", "mem_available_bytes": 6775394304, "stage": "suite", "utc": "2026-11-09T12:15:26.021820+00:00"}
+{"cgroup_memory_bytes": 655314944, "elapsed": 436.6316386839999, "kind": "sample", "mem_available_bytes": 6771253248, "stage": "suite", "utc": "2026-11-09T12:15:28.036057+00:00"}
+{"cgroup_memory_bytes": 655310848, "elapsed": 438.63514845200007, "kind": "sample", "mem_available_bytes": 6773039104, "stage": "suite", "utc": "2026-11-09T12:15:30.039563+00:00"}
+{"cgroup_memory_bytes": 655310848, "elapsed": 440.649112993, "kind": "sample", "mem_available_bytes": 6765199360, "stage": "suite", "utc": "2026-11-09T12:15:32.053534+00:00"}
+{"cgroup_memory_bytes": 655572992, "elapsed": 442.66283008700066, "kind": "sample", "mem_available_bytes": 6776414208, "stage": "suite", "utc": "2026-11-09T12:15:34.067248+00:00"}
+{"cgroup_memory_bytes": 655572992, "elapsed": 444.6770224709999, "kind": "sample", "mem_available_bytes": 6800052224, "stage": "suite", "utc": "2026-11-09T12:15:36.081437+00:00"}
+{"cgroup_memory_bytes": 820404224, "elapsed": 446.6801168390002, "kind": "sample", "mem_available_bytes": 6727041024, "stage": "suite", "utc": "2026-11-09T12:15:38.084544+00:00"}
+{"cgroup_memory_bytes": 655663104, "elapsed": 448.68406381800014, "kind": "sample", "mem_available_bytes": 6844743680, "stage": "suite", "utc": "2026-11-09T12:15:40.088480+00:00"}
+{"cgroup_memory_bytes": 655544320, "elapsed": 450.69829799000036, "kind": "sample", "mem_available_bytes": 6848806912, "stage": "suite", "utc": "2026-11-09T12:15:42.102713+00:00"}
+{"cgroup_memory_bytes": 655544320, "elapsed": 452.71260199600056, "kind": "sample", "mem_available_bytes": 6865727488, "stage": "suite", "utc": "2026-11-09T12:15:44.117016+00:00"}
+{"cgroup_memory_bytes": 880234496, "elapsed": 454.7271772190006, "kind": "sample", "mem_available_bytes": 6696525824, "stage": "suite", "utc": "2026-11-09T12:15:46.131608+00:00"}
+{"cgroup_memory_bytes": 651177984, "elapsed": 456.7408272170005, "kind": "sample", "mem_available_bytes": 6830448640, "stage": "suite", "utc": "2026-11-09T12:15:48.145258+00:00"}
+{"cgroup_memory_bytes": 652029952, "elapsed": 458.75481281300017, "kind": "sample", "mem_available_bytes": 6836862976, "stage": "suite", "utc": "2026-11-09T12:15:50.159243+00:00"}
+{"cgroup_memory_bytes": 821383168, "elapsed": 460.76860293900063, "kind": "sample", "mem_available_bytes": 6614921216, "stage": "suite", "utc": "2026-11-09T12:15:52.173021+00:00"}
+{"cgroup_memory_bytes": 817143808, "elapsed": 462.7714488930005, "kind": "sample", "mem_available_bytes": 6702407680, "stage": "suite", "utc": "2026-11-09T12:15:54.175879+00:00"}
+{"cgroup_memory_bytes": 749879296, "elapsed": 464.78529056000025, "kind": "sample", "mem_available_bytes": 6686654464, "stage": "suite", "utc": "2026-11-09T12:15:56.189720+00:00"}
+{"cgroup_memory_bytes": 722145280, "elapsed": 466.79890759499995, "kind": "sample", "mem_available_bytes": 6706167808, "stage": "suite", "utc": "2026-11-09T12:15:58.203320+00:00"}
+{"cgroup_memory_bytes": 882970624, "elapsed": 468.8124826880003, "kind": "sample", "mem_available_bytes": 6622101504, "stage": "suite", "utc": "2026-11-09T12:16:00.216906+00:00"}
+{"cgroup_memory_bytes": 882520064, "elapsed": 470.82626391900067, "kind": "sample", "mem_available_bytes": 6660042752, "stage": "suite", "utc": "2026-11-09T12:16:02.230700+00:00"}
+{"cgroup_memory_bytes": 882782208, "elapsed": 472.8399748090005, "kind": "sample", "mem_available_bytes": 6622822400, "stage": "suite", "utc": "2026-11-09T12:16:04.244406+00:00"}
+{"cgroup_memory_bytes": 856805376, "elapsed": 474.8540635600002, "kind": "sample", "mem_available_bytes": 6602838016, "stage": "suite", "utc": "2026-11-09T12:16:06.258487+00:00"}
+{"cgroup_memory_bytes": 848695296, "elapsed": 476.86819320199993, "kind": "sample", "mem_available_bytes": 6630363136, "stage": "suite", "utc": "2026-11-09T12:16:08.272613+00:00"}
+{"cgroup_memory_bytes": 793640960, "elapsed": 478.88191024700063, "kind": "sample", "mem_available_bytes": 6701809664, "stage": "suite", "utc": "2026-11-09T12:16:10.286325+00:00"}
+{"cgroup_memory_bytes": 787193856, "elapsed": 480.8847416190001, "kind": "sample", "mem_available_bytes": 6636363776, "stage": "suite", "utc": "2026-11-09T12:16:12.289159+00:00"}
+{"cgroup_memory_bytes": 659529728, "elapsed": 482.8876344959999, "kind": "sample", "mem_available_bytes": 6744150016, "stage": "suite", "utc": "2026-11-09T12:16:14.292065+00:00"}
+{"cgroup_memory_bytes": 880119808, "elapsed": 484.901551809, "kind": "sample", "mem_available_bytes": 6560325632, "stage": "suite", "utc": "2026-11-09T12:16:16.305979+00:00"}
+{"cgroup_memory_bytes": 884199424, "elapsed": 486.91570091500034, "kind": "sample", "mem_available_bytes": 6531559424, "stage": "suite", "utc": "2026-11-09T12:16:18.320133+00:00"}
+{"cgroup_memory_bytes": 860651520, "elapsed": 488.9294738110002, "kind": "sample", "mem_available_bytes": 6553882624, "stage": "suite", "utc": "2026-11-09T12:16:20.333904+00:00"}
+{"cgroup_memory_bytes": 827858944, "elapsed": 490.942936808, "kind": "sample", "mem_available_bytes": 6542712832, "stage": "suite", "utc": "2026-11-09T12:16:22.347367+00:00"}
+{"cgroup_memory_bytes": 822280192, "elapsed": 492.956452421, "kind": "sample", "mem_available_bytes": 6562861056, "stage": "suite", "utc": "2026-11-09T12:16:24.360883+00:00"}
+{"cgroup_memory_bytes": 658575360, "elapsed": 494.97041334799997, "kind": "sample", "mem_available_bytes": 6670196736, "stage": "suite", "utc": "2026-11-09T12:16:26.374834+00:00"}
+{"cgroup_memory_bytes": 661229568, "elapsed": 496.9844699330006, "kind": "sample", "mem_available_bytes": 6689705984, "stage": "suite", "utc": "2026-11-09T12:16:28.388900+00:00"}
+{"cgroup_memory_bytes": 672002048, "elapsed": 498.99804295300055, "kind": "sample", "mem_available_bytes": 6691405824, "stage": "suite", "utc": "2026-11-09T12:16:30.402473+00:00"}
+{"cgroup_memory_bytes": 676659200, "elapsed": 501.0117815499998, "kind": "sample", "mem_available_bytes": 6723870720, "stage": "suite", "utc": "2026-11-09T12:16:32.416213+00:00"}
+{"cgroup_memory_bytes": 688119808, "elapsed": 503.02535926700057, "kind": "sample", "mem_available_bytes": 6752825344, "stage": "suite", "utc": "2026-11-09T12:16:34.429790+00:00"}
+{"cgroup_memory_bytes": 697561088, "elapsed": 505.0388937180005, "kind": "sample", "mem_available_bytes": 6780203008, "stage": "suite", "utc": "2026-11-09T12:16:36.443319+00:00"}
+{"cgroup_memory_bytes": 709013504, "elapsed": 507.0423453180001, "kind": "sample", "mem_available_bytes": 6795517952, "stage": "suite", "utc": "2026-11-09T12:16:38.446783+00:00"}
+{"cgroup_memory_bytes": 718147584, "elapsed": 509.055379548, "kind": "sample", "mem_available_bytes": 6740312064, "stage": "suite", "utc": "2026-11-09T12:16:40.459810+00:00"}
+{"cgroup_memory_bytes": 730652672, "elapsed": 511.06904464299987, "kind": "sample", "mem_available_bytes": 6753120256, "stage": "suite", "utc": "2026-11-09T12:16:42.473465+00:00"}
+{"cgroup_memory_bytes": 740286464, "elapsed": 513.0824755820004, "kind": "sample", "mem_available_bytes": 6765088768, "stage": "suite", "utc": "2026-11-09T12:16:44.486914+00:00"}
+{"cgroup_memory_bytes": 740024320, "elapsed": 515.0957195219999, "kind": "sample", "mem_available_bytes": 6814838784, "stage": "suite", "utc": "2026-11-09T12:16:46.500152+00:00"}
+{"cgroup_memory_bytes": 740024320, "elapsed": 517.1090363070007, "kind": "sample", "mem_available_bytes": 6756618240, "stage": "suite", "utc": "2026-11-09T12:16:48.513469+00:00"}
+{"cgroup_memory_bytes": 749760512, "elapsed": 519.1226339100003, "kind": "sample", "mem_available_bytes": 6760472576, "stage": "suite", "utc": "2026-11-09T12:16:50.527064+00:00"}
+{"cgroup_memory_bytes": 831844352, "elapsed": 521.1364589060004, "kind": "sample", "mem_available_bytes": 6751965184, "stage": "suite", "utc": "2026-11-09T12:16:52.540883+00:00"}
+{"cgroup_memory_bytes": 830210048, "elapsed": 523.1498055720003, "kind": "sample", "mem_available_bytes": 6769852416, "stage": "suite", "utc": "2026-11-09T12:16:54.554232+00:00"}
+{"cgroup_memory_bytes": 749936640, "elapsed": 525.1525049800002, "kind": "sample", "mem_available_bytes": 6823759872, "stage": "suite", "utc": "2026-11-09T12:16:56.556937+00:00"}
+{"cgroup_memory_bytes": 750940160, "elapsed": 527.166060814, "kind": "sample", "mem_available_bytes": 6827655168, "stage": "suite", "utc": "2026-11-09T12:16:58.570492+00:00"}
+{"cgroup_memory_bytes": 754286592, "elapsed": 529.1797480680007, "kind": "sample", "mem_available_bytes": 6805655552, "stage": "suite", "utc": "2026-11-09T12:17:00.584178+00:00"}
+{"cgroup_memory_bytes": 320032768, "elapsed": 530.6333881730006, "exit_code": 0, "kind": "suite_end", "mem_available_bytes": 7250362368, "stage": "suite", "suite_tail": "........................................................................ [ 13%]\n........................................................................ [ 26%]\n........................................................................ [ 39%]\n........................................................................ [ 53%]\n........................................................................ [ 66%]\n........................................................................ [ 79%]\n........................................................................ [ 92%]\n.......................................                                  [100%]\n543 passed in 529.62s (0:08:49)\n", "utc": "2026-11-09T12:17:02.037819+00:00"}
+{"allocated_bytes": 16777216, "cgroup_memory_bytes": 336773120, "elapsed": 530.6559645180005, "kind": "load_chunk", "mem_available_bytes": 7232221184, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.060395+00:00"}
+{"allocated_bytes": 33554432, "cgroup_memory_bytes": 353615872, "elapsed": 530.6660796850001, "kind": "load_chunk", "mem_available_bytes": 7215407104, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.070505+00:00"}
+{"allocated_bytes": 50331648, "cgroup_memory_bytes": 370434048, "elapsed": 530.6772797470003, "kind": "load_chunk", "mem_available_bytes": 7200833536, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.081704+00:00"}
+{"allocated_bytes": 67108864, "cgroup_memory_bytes": 386985984, "elapsed": 530.6880468070003, "kind": "load_chunk", "mem_available_bytes": 7180001280, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.092484+00:00"}
+{"allocated_bytes": 83886080, "cgroup_memory_bytes": 403804160, "elapsed": 530.699150378, "kind": "load_chunk", "mem_available_bytes": 7163076608, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.103586+00:00"}
+{"allocated_bytes": 100663296, "cgroup_memory_bytes": 420614144, "elapsed": 530.7100802370005, "kind": "load_chunk", "mem_available_bytes": 7142531072, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.114498+00:00"}
+{"allocated_bytes": 117440512, "cgroup_memory_bytes": 437428224, "elapsed": 530.7209165710001, "kind": "load_chunk", "mem_available_bytes": 7125458944, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.125343+00:00"}
+{"allocated_bytes": 134217728, "cgroup_memory_bytes": 454197248, "elapsed": 530.7318089549999, "kind": "load_chunk", "mem_available_bytes": 7112876032, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.136249+00:00"}
+{"allocated_bytes": 150994944, "cgroup_memory_bytes": 471011328, "elapsed": 530.7411550060006, "kind": "load_chunk", "mem_available_bytes": 7096098816, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.145591+00:00"}
+{"allocated_bytes": 167772160, "cgroup_memory_bytes": 487825408, "elapsed": 530.7512786280004, "kind": "load_chunk", "mem_available_bytes": 7075553280, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.155714+00:00"}
+{"allocated_bytes": 184549376, "cgroup_memory_bytes": 504639488, "elapsed": 530.7610203120003, "kind": "load_chunk", "mem_available_bytes": 7058481152, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.165458+00:00"}
+{"allocated_bytes": 201326592, "cgroup_memory_bytes": 521453568, "elapsed": 530.770265952, "kind": "load_chunk", "mem_available_bytes": 7045668864, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.174697+00:00"}
+{"allocated_bytes": 218103808, "cgroup_memory_bytes": 538009600, "elapsed": 530.7805457860004, "kind": "load_chunk", "mem_available_bytes": 7028891648, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.184981+00:00"}
+{"allocated_bytes": 234881024, "cgroup_memory_bytes": 554823680, "elapsed": 530.7912498750002, "kind": "load_chunk", "mem_available_bytes": 7008346112, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.195686+00:00"}
+{"allocated_bytes": 251658240, "cgroup_memory_bytes": 571637760, "elapsed": 530.8015469400007, "kind": "load_chunk", "mem_available_bytes": 6991400960, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.205982+00:00"}
+{"allocated_bytes": 268435456, "cgroup_memory_bytes": 588451840, "elapsed": 530.811374209, "kind": "load_chunk", "mem_available_bytes": 6980046848, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.215805+00:00"}
+{"allocated_bytes": 285212672, "cgroup_memory_bytes": 605265920, "elapsed": 530.821799161, "kind": "load_chunk", "mem_available_bytes": 6963048448, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.226235+00:00"}
+{"allocated_bytes": 301989888, "cgroup_memory_bytes": 622080000, "elapsed": 530.8326208750004, "kind": "load_chunk", "mem_available_bytes": 6943535104, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.237058+00:00"}
+{"allocated_bytes": 318767104, "cgroup_memory_bytes": 638894080, "elapsed": 530.8432473060002, "kind": "load_chunk", "mem_available_bytes": 6927753216, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.247684+00:00"}
+{"allocated_bytes": 335544320, "cgroup_memory_bytes": 655708160, "elapsed": 530.8530362090005, "kind": "load_chunk", "mem_available_bytes": 7049539584, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.257472+00:00"}
+{"allocated_bytes": 352321536, "cgroup_memory_bytes": 672522240, "elapsed": 530.8634230870002, "kind": "load_chunk", "mem_available_bytes": 7032762368, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.267854+00:00"}
+{"allocated_bytes": 369098752, "cgroup_memory_bytes": 689336320, "elapsed": 530.8745106670003, "kind": "load_chunk", "mem_available_bytes": 7003996160, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.278945+00:00"}
+{"allocated_bytes": 385875968, "cgroup_memory_bytes": 706154496, "elapsed": 530.8852399389998, "kind": "load_chunk", "mem_available_bytes": 6987223040, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.289667+00:00"}
+{"allocated_bytes": 402653184, "cgroup_memory_bytes": 722968576, "elapsed": 530.8958814900006, "kind": "load_chunk", "mem_available_bytes": 6974640128, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.300318+00:00"}
+{"allocated_bytes": 419430400, "cgroup_memory_bytes": 739782656, "elapsed": 530.9066480310003, "kind": "load_chunk", "mem_available_bytes": 6949605376, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.311089+00:00"}
+{"allocated_bytes": 436207616, "cgroup_memory_bytes": 756596736, "elapsed": 530.9207057250005, "kind": "load_chunk", "mem_available_bytes": 6932959232, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.325134+00:00"}
+{"allocated_bytes": 452984832, "cgroup_memory_bytes": 773410816, "elapsed": 530.9384835290002, "kind": "load_chunk", "mem_available_bytes": 6916444160, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.342927+00:00"}
+{"allocated_bytes": 469762048, "cgroup_memory_bytes": 790224896, "elapsed": 530.9550321209999, "kind": "load_chunk", "mem_available_bytes": 6900346880, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.359467+00:00"}
+{"allocated_bytes": 486539264, "cgroup_memory_bytes": 807038976, "elapsed": 530.971160821, "kind": "load_chunk", "mem_available_bytes": 6883758080, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.375597+00:00"}
+{"allocated_bytes": 503316480, "cgroup_memory_bytes": 823853056, "elapsed": 530.9865620340006, "kind": "load_chunk", "mem_available_bytes": 6866632704, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.391003+00:00"}
+{"allocated_bytes": 520093696, "cgroup_memory_bytes": 840667136, "elapsed": 531.0003428300006, "kind": "load_chunk", "mem_available_bytes": 6849048576, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.404783+00:00"}
+{"allocated_bytes": 536870912, "cgroup_memory_bytes": 857481216, "elapsed": 531.0108542040007, "kind": "load_chunk", "mem_available_bytes": 6832717824, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.415298+00:00"}
+{"allocated_bytes": 553648128, "cgroup_memory_bytes": 874295296, "elapsed": 531.0194538830001, "kind": "load_chunk", "mem_available_bytes": 6815866880, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.423903+00:00"}
+{"allocated_bytes": 570425344, "cgroup_memory_bytes": 891109376, "elapsed": 531.0272536500006, "kind": "load_chunk", "mem_available_bytes": 6799867904, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.431705+00:00"}
+{"allocated_bytes": 587202560, "cgroup_memory_bytes": 907923456, "elapsed": 531.0335969120006, "kind": "load_chunk", "mem_available_bytes": 6860132352, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.438044+00:00"}
+{"allocated_bytes": 603979776, "cgroup_memory_bytes": 924741632, "elapsed": 531.0418077800005, "kind": "load_chunk", "mem_available_bytes": 6849859584, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.446255+00:00"}
+{"allocated_bytes": 620756992, "cgroup_memory_bytes": 941555712, "elapsed": 531.0522369199998, "kind": "load_chunk", "mem_available_bytes": 6833491968, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.456677+00:00"}
+{"allocated_bytes": 637534208, "cgroup_memory_bytes": 958373888, "elapsed": 531.0629481310007, "kind": "load_chunk", "mem_available_bytes": 6816018432, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.467391+00:00"}
+{"allocated_bytes": 654311424, "cgroup_memory_bytes": 975187968, "elapsed": 531.0731513210003, "kind": "load_chunk", "mem_available_bytes": 6790213632, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.477596+00:00"}
+{"allocated_bytes": 671088640, "cgroup_memory_bytes": 992002048, "elapsed": 531.0830656150001, "kind": "load_chunk", "mem_available_bytes": 6756954112, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.487509+00:00"}
+{"allocated_bytes": 687865856, "cgroup_memory_bytes": 1008816128, "elapsed": 531.092233806, "kind": "load_chunk", "mem_available_bytes": 6749999104, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.496680+00:00"}
+{"allocated_bytes": 704643072, "cgroup_memory_bytes": 1025634304, "elapsed": 531.1015597659998, "kind": "load_chunk", "mem_available_bytes": 6737100800, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.506007+00:00"}
+{"allocated_bytes": 721420288, "cgroup_memory_bytes": 1042448384, "elapsed": 531.111381015, "kind": "load_chunk", "mem_available_bytes": 6720860160, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.515829+00:00"}
+{"allocated_bytes": 738197504, "cgroup_memory_bytes": 1059262464, "elapsed": 531.1203139990002, "kind": "load_chunk", "mem_available_bytes": 6704312320, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.524763+00:00"}
+{"allocated_bytes": 754974720, "cgroup_memory_bytes": 1076076544, "elapsed": 531.1284241950007, "kind": "load_chunk", "mem_available_bytes": 6688165888, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.532875+00:00"}
+{"allocated_bytes": 771751936, "cgroup_memory_bytes": 1092890624, "elapsed": 531.1364123780004, "kind": "load_chunk", "mem_available_bytes": 6671650816, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.540863+00:00"}
+{"allocated_bytes": 788529152, "cgroup_memory_bytes": 1109704704, "elapsed": 531.1444499320005, "kind": "load_chunk", "mem_available_bytes": 6654889984, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.548900+00:00"}
+{"allocated_bytes": 805306368, "cgroup_memory_bytes": 1126518784, "elapsed": 531.1527057909998, "kind": "load_chunk", "mem_available_bytes": 6630117376, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.557156+00:00"}
+{"allocated_bytes": 822083584, "cgroup_memory_bytes": 1143332864, "elapsed": 531.16081132, "kind": "load_chunk", "mem_available_bytes": 6613602304, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.565262+00:00"}
+{"allocated_bytes": 838860800, "cgroup_memory_bytes": 1160146944, "elapsed": 531.1687745790005, "kind": "load_chunk", "mem_available_bytes": 6589050880, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.573225+00:00"}
+{"allocated_bytes": 855638016, "cgroup_memory_bytes": 1176961024, "elapsed": 531.1765323460004, "kind": "load_chunk", "mem_available_bytes": 6572572672, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.580983+00:00"}
+{"allocated_bytes": 872415232, "cgroup_memory_bytes": 1193775104, "elapsed": 531.18425854, "kind": "load_chunk", "mem_available_bytes": 6556057600, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.588709+00:00"}
+{"allocated_bytes": 889192448, "cgroup_memory_bytes": 1210589184, "elapsed": 531.1924334490004, "kind": "load_chunk", "mem_available_bytes": 6539440128, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.596876+00:00"}
+{"cgroup_memory_bytes": 1210626048, "elapsed": 531.1934917280005, "kind": "sample", "mem_available_bytes": 6539182080, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.597930+00:00"}
+{"allocated_bytes": 905969664, "cgroup_memory_bytes": 1227403264, "elapsed": 531.2003099929998, "kind": "load_chunk", "mem_available_bytes": 6522925056, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.604761+00:00"}
+{"allocated_bytes": 922746880, "cgroup_memory_bytes": 1244217344, "elapsed": 531.2084960740003, "kind": "load_chunk", "mem_available_bytes": 6506409984, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.612939+00:00"}
+{"allocated_bytes": 939524096, "cgroup_memory_bytes": 1261031424, "elapsed": 531.2166315579998, "kind": "load_chunk", "mem_available_bytes": 6489894912, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.621075+00:00"}
+{"allocated_bytes": 956301312, "cgroup_memory_bytes": 1277845504, "elapsed": 531.2245365420004, "kind": "load_chunk", "mem_available_bytes": 6473306112, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.628985+00:00"}
+{"allocated_bytes": 973078528, "cgroup_memory_bytes": 1294659584, "elapsed": 531.2322732470002, "kind": "load_chunk", "mem_available_bytes": 6456717312, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.636724+00:00"}
+{"allocated_bytes": 989855744, "cgroup_memory_bytes": 1311473664, "elapsed": 531.2402040200004, "kind": "load_chunk", "mem_available_bytes": 6440349696, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.644647+00:00"}
+{"allocated_bytes": 1006632960, "cgroup_memory_bytes": 1328291840, "elapsed": 531.2485231770006, "kind": "load_chunk", "mem_available_bytes": 6423838720, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.652966+00:00"}
+{"allocated_bytes": 1023410176, "cgroup_memory_bytes": 1345105920, "elapsed": 531.2563033260003, "kind": "load_chunk", "mem_available_bytes": 6407323648, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.660754+00:00"}
+{"allocated_bytes": 1040187392, "cgroup_memory_bytes": 1361920000, "elapsed": 531.2644298880004, "kind": "load_chunk", "mem_available_bytes": 6390808576, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.668873+00:00"}
+{"allocated_bytes": 1056964608, "cgroup_memory_bytes": 1378734080, "elapsed": 531.2721276900002, "kind": "load_chunk", "mem_available_bytes": 6374293504, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.676578+00:00"}
+{"allocated_bytes": 1073741824, "cgroup_memory_bytes": 1395548160, "elapsed": 531.2802893550006, "kind": "load_chunk", "mem_available_bytes": 6357704704, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.684732+00:00"}
+{"allocated_bytes": 1090519040, "cgroup_memory_bytes": 1412362240, "elapsed": 531.288029024, "kind": "load_chunk", "mem_available_bytes": 6341115904, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.692480+00:00"}
+{"allocated_bytes": 1107296256, "cgroup_memory_bytes": 1429176320, "elapsed": 531.2960705780006, "kind": "load_chunk", "mem_available_bytes": 6324748288, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.700514+00:00"}
+{"allocated_bytes": 1124073472, "cgroup_memory_bytes": 1445990400, "elapsed": 531.3043023589998, "kind": "load_chunk", "mem_available_bytes": 6308233216, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.708745+00:00"}
+{"allocated_bytes": 1140850688, "cgroup_memory_bytes": 1462804480, "elapsed": 531.3123513, "kind": "load_chunk", "mem_available_bytes": 6291718144, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.716798+00:00"}
+{"allocated_bytes": 1157627904, "cgroup_memory_bytes": 1479622656, "elapsed": 531.3206166250002, "kind": "load_chunk", "mem_available_bytes": 6275330048, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.725060+00:00"}
+{"allocated_bytes": 1174405120, "cgroup_memory_bytes": 1496436736, "elapsed": 531.3285666800002, "kind": "load_chunk", "mem_available_bytes": 6258814976, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.733009+00:00"}
+{"allocated_bytes": 1191182336, "cgroup_memory_bytes": 1513250816, "elapsed": 531.3365572540006, "kind": "load_chunk", "mem_available_bytes": 6242299904, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.741004+00:00"}
+{"allocated_bytes": 1207959552, "cgroup_memory_bytes": 1530064896, "elapsed": 531.3444862550004, "kind": "load_chunk", "mem_available_bytes": 6225711104, "stage": "bounded_load", "utc": "2026-11-09T12:17:02.748933+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 533.2006527530002, "kind": "sample", "mem_available_bytes": 6214512640, "stage": "bounded_load", "utc": "2026-11-09T12:17:04.605073+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 535.2148978630003, "kind": "sample", "mem_available_bytes": 6199844864, "stage": "bounded_load", "utc": "2026-11-09T12:17:06.619315+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 537.2183251100005, "kind": "sample", "mem_available_bytes": 6161612800, "stage": "bounded_load", "utc": "2026-11-09T12:17:08.622756+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 539.2322015079999, "kind": "sample", "mem_available_bytes": 5946503168, "stage": "bounded_load", "utc": "2026-11-09T12:17:10.636625+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 541.2351529030002, "kind": "sample", "mem_available_bytes": 5814083584, "stage": "bounded_load", "utc": "2026-11-09T12:17:12.639574+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 543.2490718850004, "kind": "sample", "mem_available_bytes": 5744812032, "stage": "bounded_load", "utc": "2026-11-09T12:17:14.653467+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 545.2631236110001, "kind": "sample", "mem_available_bytes": 5797023744, "stage": "bounded_load", "utc": "2026-11-09T12:17:16.667534+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 547.2767347039999, "kind": "sample", "mem_available_bytes": 5855764480, "stage": "bounded_load", "utc": "2026-11-09T12:17:18.681138+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 549.2870356200001, "kind": "sample", "mem_available_bytes": 5878210560, "stage": "bounded_load", "utc": "2026-11-09T12:17:20.691459+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 551.300734806, "kind": "sample", "mem_available_bytes": 5875220480, "stage": "bounded_load", "utc": "2026-11-09T12:17:22.705154+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 553.314957394, "kind": "sample", "mem_available_bytes": 5912543232, "stage": "bounded_load", "utc": "2026-11-09T12:17:24.719377+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 555.3288747500001, "kind": "sample", "mem_available_bytes": 5911040000, "stage": "bounded_load", "utc": "2026-11-09T12:17:26.733296+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 557.3424550420004, "kind": "sample", "mem_available_bytes": 5916635136, "stage": "bounded_load", "utc": "2026-11-09T12:17:28.746875+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 559.3560615400002, "kind": "sample", "mem_available_bytes": 5918793728, "stage": "bounded_load", "utc": "2026-11-09T12:17:30.760476+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 561.369800597, "kind": "sample", "mem_available_bytes": 5934407680, "stage": "bounded_load", "utc": "2026-11-09T12:17:32.774208+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 563.3835899420001, "kind": "sample", "mem_available_bytes": 5917917184, "stage": "bounded_load", "utc": "2026-11-09T12:17:34.787989+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 565.3972488680001, "kind": "sample", "mem_available_bytes": 5929984000, "stage": "bounded_load", "utc": "2026-11-09T12:17:36.801676+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 567.4109852190004, "kind": "sample", "mem_available_bytes": 5917663232, "stage": "bounded_load", "utc": "2026-11-09T12:17:38.815403+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 569.4247298390001, "kind": "sample", "mem_available_bytes": 5913833472, "stage": "bounded_load", "utc": "2026-11-09T12:17:40.829145+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 571.4383424280004, "kind": "sample", "mem_available_bytes": 5981679616, "stage": "bounded_load", "utc": "2026-11-09T12:17:42.842762+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 573.452162136, "kind": "sample", "mem_available_bytes": 5958119424, "stage": "bounded_load", "utc": "2026-11-09T12:17:44.856562+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 575.4662142130001, "kind": "sample", "mem_available_bytes": 5944553472, "stage": "bounded_load", "utc": "2026-11-09T12:17:46.870604+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 577.480590053, "kind": "sample", "mem_available_bytes": 5913501696, "stage": "bounded_load", "utc": "2026-11-09T12:17:48.885008+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 579.483368053, "kind": "sample", "mem_available_bytes": 5911281664, "stage": "bounded_load", "utc": "2026-11-09T12:17:50.887790+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 581.4970975870001, "kind": "sample", "mem_available_bytes": 4870426624, "stage": "bounded_load", "utc": "2026-11-09T12:17:52.901503+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 583.5022715880004, "kind": "sample", "mem_available_bytes": 5866668032, "stage": "bounded_load", "utc": "2026-11-09T12:17:54.906685+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 585.5073253239998, "kind": "sample", "mem_available_bytes": 5796032512, "stage": "bounded_load", "utc": "2026-11-09T12:17:56.911732+00:00"}
+{"cgroup_memory_bytes": 1530093568, "elapsed": 587.5415025689999, "kind": "sample", "mem_available_bytes": 5919170560, "stage": "bounded_load", "utc": "2026-11-09T12:17:58.945927+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 589.5892504930007, "kind": "sample", "mem_available_bytes": 5963534336, "stage": "bounded_load", "utc": "2026-11-09T12:18:00.993668+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 591.6244314579999, "kind": "sample", "mem_available_bytes": 6048727040, "stage": "bounded_load", "utc": "2026-11-09T12:18:03.028851+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 593.6440955470007, "kind": "sample", "mem_available_bytes": 6103568384, "stage": "bounded_load", "utc": "2026-11-09T12:18:05.048515+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 595.6697873100002, "kind": "sample", "mem_available_bytes": 6029373440, "stage": "bounded_load", "utc": "2026-11-09T12:18:07.074208+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 597.838018677, "kind": "sample", "mem_available_bytes": 6023671808, "stage": "bounded_load", "utc": "2026-11-09T12:18:09.242436+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 599.8521158600006, "kind": "sample", "mem_available_bytes": 6001238016, "stage": "bounded_load", "utc": "2026-11-09T12:18:11.256537+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 601.8660819780007, "kind": "sample", "mem_available_bytes": 6013546496, "stage": "bounded_load", "utc": "2026-11-09T12:18:13.270504+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 603.8796617030002, "kind": "sample", "mem_available_bytes": 6015070208, "stage": "bounded_load", "utc": "2026-11-09T12:18:15.284084+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 605.8827409290006, "kind": "sample", "mem_available_bytes": 6011977728, "stage": "bounded_load", "utc": "2026-11-09T12:18:17.287152+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 607.8966559569999, "kind": "sample", "mem_available_bytes": 6017081344, "stage": "bounded_load", "utc": "2026-11-09T12:18:19.301074+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 609.9104897180005, "kind": "sample", "mem_available_bytes": 6007218176, "stage": "bounded_load", "utc": "2026-11-09T12:18:21.314910+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 611.924126244, "kind": "sample", "mem_available_bytes": 6011236352, "stage": "bounded_load", "utc": "2026-11-09T12:18:23.328548+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 613.9377358740003, "kind": "sample", "mem_available_bytes": 6020345856, "stage": "bounded_load", "utc": "2026-11-09T12:18:25.342144+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 615.9517837550002, "kind": "sample", "mem_available_bytes": 6022504448, "stage": "bounded_load", "utc": "2026-11-09T12:18:27.356205+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 617.9657750140004, "kind": "sample", "mem_available_bytes": 6024671232, "stage": "bounded_load", "utc": "2026-11-09T12:18:29.370191+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 619.9798008120006, "kind": "sample", "mem_available_bytes": 6017224704, "stage": "bounded_load", "utc": "2026-11-09T12:18:31.384219+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 621.9829492830004, "kind": "sample", "mem_available_bytes": 6009376768, "stage": "bounded_load", "utc": "2026-11-09T12:18:33.387369+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 623.9972735740002, "kind": "sample", "mem_available_bytes": 5978136576, "stage": "bounded_load", "utc": "2026-11-09T12:18:35.401698+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 626.0108684120005, "kind": "sample", "mem_available_bytes": 6016970752, "stage": "bounded_load", "utc": "2026-11-09T12:18:37.415277+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 628.01994973, "kind": "sample", "mem_available_bytes": 6046011392, "stage": "bounded_load", "utc": "2026-11-09T12:18:39.424368+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 630.0338798299999, "kind": "sample", "mem_available_bytes": 6053167104, "stage": "bounded_load", "utc": "2026-11-09T12:18:41.438295+00:00"}
+{"cgroup_memory_bytes": 1530101760, "elapsed": 632.0479939309998, "kind": "sample", "mem_available_bytes": 6061088768, "stage": "bounded_load", "utc": "2026-11-09T12:18:43.452414+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 634.062352512, "kind": "sample", "mem_available_bytes": 6082547712, "stage": "bounded_load", "utc": "2026-11-09T12:18:45.466774+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 636.0761418110005, "kind": "sample", "mem_available_bytes": 6068875264, "stage": "bounded_load", "utc": "2026-11-09T12:18:47.480564+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 638.0903301970002, "kind": "sample", "mem_available_bytes": 6077145088, "stage": "bounded_load", "utc": "2026-11-09T12:18:49.494747+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 640.0936033490007, "kind": "sample", "mem_available_bytes": 6081400832, "stage": "bounded_load", "utc": "2026-11-09T12:18:51.498023+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 642.1076617950002, "kind": "sample", "mem_available_bytes": 6083985408, "stage": "bounded_load", "utc": "2026-11-09T12:18:53.512065+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 644.1218108940002, "kind": "sample", "mem_available_bytes": 6080815104, "stage": "bounded_load", "utc": "2026-11-09T12:18:55.526216+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 646.1356836410005, "kind": "sample", "mem_available_bytes": 6066671616, "stage": "bounded_load", "utc": "2026-11-09T12:18:57.540104+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 648.150433068, "kind": "sample", "mem_available_bytes": 6070816768, "stage": "bounded_load", "utc": "2026-11-09T12:18:59.554852+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 650.1639967760002, "kind": "sample", "mem_available_bytes": 6047944704, "stage": "bounded_load", "utc": "2026-11-09T12:19:01.568403+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 652.1670031470003, "kind": "sample", "mem_available_bytes": 6027796480, "stage": "bounded_load", "utc": "2026-11-09T12:19:03.571410+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 654.1810687759998, "kind": "sample", "mem_available_bytes": 5962092544, "stage": "bounded_load", "utc": "2026-11-09T12:19:05.585488+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 656.1909675730003, "kind": "sample", "mem_available_bytes": 5947613184, "stage": "bounded_load", "utc": "2026-11-09T12:19:07.595385+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 658.204770237, "kind": "sample", "mem_available_bytes": 5964275712, "stage": "bounded_load", "utc": "2026-11-09T12:19:09.609191+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 660.2191515600007, "kind": "sample", "mem_available_bytes": 5967052800, "stage": "bounded_load", "utc": "2026-11-09T12:19:11.623562+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 662.2329342060002, "kind": "sample", "mem_available_bytes": 5961478144, "stage": "bounded_load", "utc": "2026-11-09T12:19:13.637352+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 664.2464665460002, "kind": "sample", "mem_available_bytes": 5971869696, "stage": "bounded_load", "utc": "2026-11-09T12:19:15.650889+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 666.2600708350001, "kind": "sample", "mem_available_bytes": 5976764416, "stage": "bounded_load", "utc": "2026-11-09T12:19:17.664479+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 668.273939406, "kind": "sample", "mem_available_bytes": 5984714752, "stage": "bounded_load", "utc": "2026-11-09T12:19:19.678359+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 670.2769947030001, "kind": "sample", "mem_available_bytes": 5971529728, "stage": "bounded_load", "utc": "2026-11-09T12:19:21.681413+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 672.2803367140004, "kind": "sample", "mem_available_bytes": 5997629440, "stage": "bounded_load", "utc": "2026-11-09T12:19:23.684746+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 674.2942293370006, "kind": "sample", "mem_available_bytes": 5987237888, "stage": "bounded_load", "utc": "2026-11-09T12:19:25.698648+00:00"}
+{"cgroup_memory_bytes": 1530105856, "elapsed": 676.3080590270001, "kind": "sample", "mem_available_bytes": 5963624448, "stage": "bounded_load", "utc": "2026-11-09T12:19:27.712482+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 678.3220976720004, "kind": "sample", "mem_available_bytes": 5976940544, "stage": "bounded_load", "utc": "2026-11-09T12:19:29.726501+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 680.3359390599999, "kind": "sample", "mem_available_bytes": 5981921280, "stage": "bounded_load", "utc": "2026-11-09T12:19:31.740361+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 682.3499010579999, "kind": "sample", "mem_available_bytes": 5966778368, "stage": "bounded_load", "utc": "2026-11-09T12:19:33.754323+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 684.3639016670004, "kind": "sample", "mem_available_bytes": 6009004032, "stage": "bounded_load", "utc": "2026-11-09T12:19:35.768320+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 686.3776768110001, "kind": "sample", "mem_available_bytes": 6004400128, "stage": "bounded_load", "utc": "2026-11-09T12:19:37.782084+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 688.3915634510004, "kind": "sample", "mem_available_bytes": 6022852608, "stage": "bounded_load", "utc": "2026-11-09T12:19:39.795980+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 690.4054978470003, "kind": "sample", "mem_available_bytes": 6015418368, "stage": "bounded_load", "utc": "2026-11-09T12:19:41.809916+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 692.4197058509999, "kind": "sample", "mem_available_bytes": 6022369280, "stage": "bounded_load", "utc": "2026-11-09T12:19:43.824125+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 694.4339077499999, "kind": "sample", "mem_available_bytes": 6017224704, "stage": "bounded_load", "utc": "2026-11-09T12:19:45.838326+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 696.4481463900001, "kind": "sample", "mem_available_bytes": 6023196672, "stage": "bounded_load", "utc": "2026-11-09T12:19:47.852566+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 698.4619572580004, "kind": "sample", "mem_available_bytes": 6027669504, "stage": "bounded_load", "utc": "2026-11-09T12:19:49.866357+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 700.4759466390005, "kind": "sample", "mem_available_bytes": 6096322560, "stage": "bounded_load", "utc": "2026-11-09T12:19:51.880354+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 702.4898592509999, "kind": "sample", "mem_available_bytes": 6087979008, "stage": "bounded_load", "utc": "2026-11-09T12:19:53.894286+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 704.5035632019999, "kind": "sample", "mem_available_bytes": 6103109632, "stage": "bounded_load", "utc": "2026-11-09T12:19:55.907985+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 706.5174368550006, "kind": "sample", "mem_available_bytes": 6105288704, "stage": "bounded_load", "utc": "2026-11-09T12:19:57.921860+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 708.530864204, "kind": "sample", "mem_available_bytes": 6112485376, "stage": "bounded_load", "utc": "2026-11-09T12:19:59.935281+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 710.5444273130006, "kind": "sample", "mem_available_bytes": 6091194368, "stage": "bounded_load", "utc": "2026-11-09T12:20:01.948849+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 712.5580845450004, "kind": "sample", "mem_available_bytes": 6078717952, "stage": "bounded_load", "utc": "2026-11-09T12:20:03.962496+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 714.5720647280004, "kind": "sample", "mem_available_bytes": 6088306688, "stage": "bounded_load", "utc": "2026-11-09T12:20:05.976479+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 716.5859053560007, "kind": "sample", "mem_available_bytes": 5986422784, "stage": "bounded_load", "utc": "2026-11-09T12:20:07.990317+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 718.5997382420001, "kind": "sample", "mem_available_bytes": 5983268864, "stage": "bounded_load", "utc": "2026-11-09T12:20:10.004160+00:00"}
+{"cgroup_memory_bytes": 1530109952, "elapsed": 720.6132782100003, "kind": "sample", "mem_available_bytes": 5966614528, "stage": "bounded_load", "utc": "2026-11-09T12:20:12.017699+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 722.6271392890003, "kind": "sample", "mem_available_bytes": 5983948800, "stage": "bounded_load", "utc": "2026-11-09T12:20:14.031560+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 724.6408020570007, "kind": "sample", "mem_available_bytes": 6048161792, "stage": "bounded_load", "utc": "2026-11-09T12:20:16.045219+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 726.6436445429999, "kind": "sample", "mem_available_bytes": 6058061824, "stage": "bounded_load", "utc": "2026-11-09T12:20:18.048069+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 728.6570342360001, "kind": "sample", "mem_available_bytes": 6083129344, "stage": "bounded_load", "utc": "2026-11-09T12:20:20.061455+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 730.6705931390006, "kind": "sample", "mem_available_bytes": 6089809920, "stage": "bounded_load", "utc": "2026-11-09T12:20:22.075017+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 732.6845246290004, "kind": "sample", "mem_available_bytes": 6083330048, "stage": "bounded_load", "utc": "2026-11-09T12:20:24.088938+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 734.6981923150006, "kind": "sample", "mem_available_bytes": 6084521984, "stage": "bounded_load", "utc": "2026-11-09T12:20:26.102585+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 736.71174694, "kind": "sample", "mem_available_bytes": 6085304320, "stage": "bounded_load", "utc": "2026-11-09T12:20:28.116167+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 738.7255926630005, "kind": "sample", "mem_available_bytes": 6069600256, "stage": "bounded_load", "utc": "2026-11-09T12:20:30.130009+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 740.7392979020005, "kind": "sample", "mem_available_bytes": 6076346368, "stage": "bounded_load", "utc": "2026-11-09T12:20:32.143721+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 742.7533243369999, "kind": "sample", "mem_available_bytes": 6069231616, "stage": "bounded_load", "utc": "2026-11-09T12:20:34.157749+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 744.7671197090003, "kind": "sample", "mem_available_bytes": 6082166784, "stage": "bounded_load", "utc": "2026-11-09T12:20:36.171538+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 746.7806294370002, "kind": "sample", "mem_available_bytes": 6090493952, "stage": "bounded_load", "utc": "2026-11-09T12:20:38.185053+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 748.7944930250005, "kind": "sample", "mem_available_bytes": 6096830464, "stage": "bounded_load", "utc": "2026-11-09T12:20:40.198916+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 750.8083245490006, "kind": "sample", "mem_available_bytes": 6129836032, "stage": "bounded_load", "utc": "2026-11-09T12:20:42.212745+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 752.8220514220002, "kind": "sample", "mem_available_bytes": 6135586816, "stage": "bounded_load", "utc": "2026-11-09T12:20:44.226468+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 754.835998171, "kind": "sample", "mem_available_bytes": 6126198784, "stage": "bounded_load", "utc": "2026-11-09T12:20:46.240407+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 756.850046945, "kind": "sample", "mem_available_bytes": 6121672704, "stage": "bounded_load", "utc": "2026-11-09T12:20:48.254466+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 758.8638777650003, "kind": "sample", "mem_available_bytes": 6134906880, "stage": "bounded_load", "utc": "2026-11-09T12:20:50.268295+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 760.8777858970006, "kind": "sample", "mem_available_bytes": 6119645184, "stage": "bounded_load", "utc": "2026-11-09T12:20:52.282210+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 762.8915091590006, "kind": "sample", "mem_available_bytes": 6114357248, "stage": "bounded_load", "utc": "2026-11-09T12:20:54.295927+00:00"}
+{"cgroup_memory_bytes": 1530114048, "elapsed": 764.9055757249998, "kind": "sample", "mem_available_bytes": 6118543360, "stage": "bounded_load", "utc": "2026-11-09T12:20:56.309987+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 766.9195433690002, "kind": "sample", "mem_available_bytes": 6104498176, "stage": "bounded_load", "utc": "2026-11-09T12:20:58.323966+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 768.9333276269999, "kind": "sample", "mem_available_bytes": 6095859712, "stage": "bounded_load", "utc": "2026-11-09T12:21:00.337745+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 770.9473216460001, "kind": "sample", "mem_available_bytes": 6098132992, "stage": "bounded_load", "utc": "2026-11-09T12:21:02.351744+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 772.961345226, "kind": "sample", "mem_available_bytes": 6066270208, "stage": "bounded_load", "utc": "2026-11-09T12:21:04.365752+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 774.9642677410002, "kind": "sample", "mem_available_bytes": 5994205184, "stage": "bounded_load", "utc": "2026-11-09T12:21:06.368687+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 776.9780049640003, "kind": "sample", "mem_available_bytes": 6000152576, "stage": "bounded_load", "utc": "2026-11-09T12:21:08.382418+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 778.9923115070005, "kind": "sample", "mem_available_bytes": 5978480640, "stage": "bounded_load", "utc": "2026-11-09T12:21:10.396734+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 781.0064803810001, "kind": "sample", "mem_available_bytes": 5986033664, "stage": "bounded_load", "utc": "2026-11-09T12:21:12.410900+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 783.010334394, "kind": "sample", "mem_available_bytes": 5992226816, "stage": "bounded_load", "utc": "2026-11-09T12:21:14.414751+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 785.024521026, "kind": "sample", "mem_available_bytes": 6025568256, "stage": "bounded_load", "utc": "2026-11-09T12:21:16.428942+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 787.038498033, "kind": "sample", "mem_available_bytes": 6029766656, "stage": "bounded_load", "utc": "2026-11-09T12:21:18.442908+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 789.0529147630004, "kind": "sample", "mem_available_bytes": 6020476928, "stage": "bounded_load", "utc": "2026-11-09T12:21:20.457353+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 791.066652218, "kind": "sample", "mem_available_bytes": 6027984896, "stage": "bounded_load", "utc": "2026-11-09T12:21:22.471072+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 793.0808159490007, "kind": "sample", "mem_available_bytes": 6036410368, "stage": "bounded_load", "utc": "2026-11-09T12:21:24.485237+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 795.0947956750006, "kind": "sample", "mem_available_bytes": 6036258816, "stage": "bounded_load", "utc": "2026-11-09T12:21:26.499230+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 797.1084191850005, "kind": "sample", "mem_available_bytes": 6027563008, "stage": "bounded_load", "utc": "2026-11-09T12:21:28.512837+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 799.1222318290002, "kind": "sample", "mem_available_bytes": 6011150336, "stage": "bounded_load", "utc": "2026-11-09T12:21:30.526652+00:00"}
+{"cgroup_memory_bytes": 1530118144, "elapsed": 801.1361705529998, "kind": "sample", "mem_available_bytes": 6004649984, "stage": "bounded_load", "utc": "2026-11-09T12:21:32.540596+00:00"}
+{"cgroup_memory_bytes": 1530056704, "elapsed": 803.1494687060003, "kind": "sample", "mem_available_bytes": 5969256448, "stage": "bounded_load", "utc": "2026-11-09T12:21:34.553880+00:00"}
+{"cgroup_memory_bytes": 1530056704, "elapsed": 805.1636719190001, "kind": "sample", "mem_available_bytes": 5994872832, "stage": "bounded_load", "utc": "2026-11-09T12:21:36.568080+00:00"}
+{"cgroup_memory_bytes": 1530056704, "elapsed": 807.1776131800007, "kind": "sample", "mem_available_bytes": 6029221888, "stage": "bounded_load", "utc": "2026-11-09T12:21:38.582037+00:00"}
+{"cgroup_memory_bytes": 1530056704, "elapsed": 809.1913094420006, "kind": "sample", "mem_available_bytes": 6032322560, "stage": "bounded_load", "utc": "2026-11-09T12:21:40.595731+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 811.2051317089999, "kind": "sample", "mem_available_bytes": 6026530816, "stage": "bounded_load", "utc": "2026-11-09T12:21:42.609556+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 813.2187847450004, "kind": "sample", "mem_available_bytes": 6017810432, "stage": "bounded_load", "utc": "2026-11-09T12:21:44.623204+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 815.2326834220003, "kind": "sample", "mem_available_bytes": 6052663296, "stage": "bounded_load", "utc": "2026-11-09T12:21:46.637098+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 817.2461948250002, "kind": "sample", "mem_available_bytes": 6005198848, "stage": "bounded_load", "utc": "2026-11-09T12:21:48.650574+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 819.2600766800006, "kind": "sample", "mem_available_bytes": 5999341568, "stage": "bounded_load", "utc": "2026-11-09T12:21:50.664499+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 821.273763569, "kind": "sample", "mem_available_bytes": 5996478464, "stage": "bounded_load", "utc": "2026-11-09T12:21:52.678178+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 823.2878876660006, "kind": "sample", "mem_available_bytes": 6006034432, "stage": "bounded_load", "utc": "2026-11-09T12:21:54.692311+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 825.3017709750002, "kind": "sample", "mem_available_bytes": 5989994496, "stage": "bounded_load", "utc": "2026-11-09T12:21:56.706197+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 827.3050863859999, "kind": "sample", "mem_available_bytes": 5993914368, "stage": "bounded_load", "utc": "2026-11-09T12:21:58.709495+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 829.3192297270007, "kind": "sample", "mem_available_bytes": 5978865664, "stage": "bounded_load", "utc": "2026-11-09T12:22:00.723649+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 831.3223332329999, "kind": "sample", "mem_available_bytes": 5951119360, "stage": "bounded_load", "utc": "2026-11-09T12:22:02.726763+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 833.3257165129999, "kind": "sample", "mem_available_bytes": 5934411776, "stage": "bounded_load", "utc": "2026-11-09T12:22:04.730136+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 835.339438127, "kind": "sample", "mem_available_bytes": 5947195392, "stage": "bounded_load", "utc": "2026-11-09T12:22:06.743857+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 837.3534145650001, "kind": "sample", "mem_available_bytes": 5968629760, "stage": "bounded_load", "utc": "2026-11-09T12:22:08.757836+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 839.367145147, "kind": "sample", "mem_available_bytes": 5989433344, "stage": "bounded_load", "utc": "2026-11-09T12:22:10.771562+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 841.3701270669999, "kind": "sample", "mem_available_bytes": 5921095680, "stage": "bounded_load", "utc": "2026-11-09T12:22:12.774558+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 843.3730157420005, "kind": "sample", "mem_available_bytes": 5941350400, "stage": "bounded_load", "utc": "2026-11-09T12:22:14.777436+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 845.3865053690006, "kind": "sample", "mem_available_bytes": 5977759744, "stage": "bounded_load", "utc": "2026-11-09T12:22:16.790923+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 847.4003160400007, "kind": "sample", "mem_available_bytes": 5976285184, "stage": "bounded_load", "utc": "2026-11-09T12:22:18.804737+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 849.4138586050003, "kind": "sample", "mem_available_bytes": 5962289152, "stage": "bounded_load", "utc": "2026-11-09T12:22:20.818273+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 851.4164306780003, "kind": "sample", "mem_available_bytes": 5963468800, "stage": "bounded_load", "utc": "2026-11-09T12:22:22.820849+00:00"}
+{"cgroup_memory_bytes": 1530060800, "elapsed": 853.4303307440005, "kind": "sample", "mem_available_bytes": 5968543744, "stage": "bounded_load", "utc": "2026-11-09T12:22:24.834756+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 855.4442806670004, "kind": "sample", "mem_available_bytes": 5959274496, "stage": "bounded_load", "utc": "2026-11-09T12:22:26.848699+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 857.4582620730007, "kind": "sample", "mem_available_bytes": 5958090752, "stage": "bounded_load", "utc": "2026-11-09T12:22:28.862682+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 859.4722759390006, "kind": "sample", "mem_available_bytes": 5955719168, "stage": "bounded_load", "utc": "2026-11-09T12:22:30.876693+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 861.4861521350003, "kind": "sample", "mem_available_bytes": 5984272384, "stage": "bounded_load", "utc": "2026-11-09T12:22:32.890573+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 863.5002138190002, "kind": "sample", "mem_available_bytes": 5989904384, "stage": "bounded_load", "utc": "2026-11-09T12:22:34.904629+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 865.5141866860004, "kind": "sample", "mem_available_bytes": 6017130496, "stage": "bounded_load", "utc": "2026-11-09T12:22:36.918573+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 867.5282469570002, "kind": "sample", "mem_available_bytes": 5979643904, "stage": "bounded_load", "utc": "2026-11-09T12:22:38.932668+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 869.542319706, "kind": "sample", "mem_available_bytes": 5974941696, "stage": "bounded_load", "utc": "2026-11-09T12:22:40.946743+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 871.5458367689998, "kind": "sample", "mem_available_bytes": 5971013632, "stage": "bounded_load", "utc": "2026-11-09T12:22:42.950275+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 873.5486612940003, "kind": "sample", "mem_available_bytes": 5968355328, "stage": "bounded_load", "utc": "2026-11-09T12:22:44.953082+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 875.5628340809999, "kind": "sample", "mem_available_bytes": 5981892608, "stage": "bounded_load", "utc": "2026-11-09T12:22:46.967257+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 877.5766382940001, "kind": "sample", "mem_available_bytes": 5988016128, "stage": "bounded_load", "utc": "2026-11-09T12:22:48.981014+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 879.582384245, "kind": "sample", "mem_available_bytes": 5981896704, "stage": "bounded_load", "utc": "2026-11-09T12:22:50.986808+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 881.5963710420001, "kind": "sample", "mem_available_bytes": 5988229120, "stage": "bounded_load", "utc": "2026-11-09T12:22:53.000797+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 883.6102380740003, "kind": "sample", "mem_available_bytes": 5978042368, "stage": "bounded_load", "utc": "2026-11-09T12:22:55.014656+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 885.6243882690005, "kind": "sample", "mem_available_bytes": 6000930816, "stage": "bounded_load", "utc": "2026-11-09T12:22:57.028808+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 887.6384318440005, "kind": "sample", "mem_available_bytes": 5979783168, "stage": "bounded_load", "utc": "2026-11-09T12:22:59.042857+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 889.6417246840001, "kind": "sample", "mem_available_bytes": 5978402816, "stage": "bounded_load", "utc": "2026-11-09T12:23:01.046143+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 891.6556631920002, "kind": "sample", "mem_available_bytes": 6050209792, "stage": "bounded_load", "utc": "2026-11-09T12:23:03.060069+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 893.6690841580003, "kind": "sample", "mem_available_bytes": 6057664512, "stage": "bounded_load", "utc": "2026-11-09T12:23:05.073498+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 895.6825025779999, "kind": "sample", "mem_available_bytes": 6082019328, "stage": "bounded_load", "utc": "2026-11-09T12:23:07.086926+00:00"}
+{"cgroup_memory_bytes": 1530064896, "elapsed": 897.6960881820005, "kind": "sample", "mem_available_bytes": 6066999296, "stage": "bounded_load", "utc": "2026-11-09T12:23:09.100514+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 899.7097883530005, "kind": "sample", "mem_available_bytes": 6052159488, "stage": "bounded_load", "utc": "2026-11-09T12:23:11.114205+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 901.7128870840006, "kind": "sample", "mem_available_bytes": 6044381184, "stage": "bounded_load", "utc": "2026-11-09T12:23:13.117304+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 903.7156529009999, "kind": "sample", "mem_available_bytes": 6039961600, "stage": "bounded_load", "utc": "2026-11-09T12:23:15.120069+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 905.7293103480006, "kind": "sample", "mem_available_bytes": 6034415616, "stage": "bounded_load", "utc": "2026-11-09T12:23:17.133734+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 907.7427840609998, "kind": "sample", "mem_available_bytes": 6046732288, "stage": "bounded_load", "utc": "2026-11-09T12:23:19.147208+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 909.7563820639998, "kind": "sample", "mem_available_bytes": 6054977536, "stage": "bounded_load", "utc": "2026-11-09T12:23:21.160794+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 911.7702054259998, "kind": "sample", "mem_available_bytes": 6058303488, "stage": "bounded_load", "utc": "2026-11-09T12:23:23.174582+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 913.7837443870003, "kind": "sample", "mem_available_bytes": 6054297600, "stage": "bounded_load", "utc": "2026-11-09T12:23:25.188166+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 915.7972299140001, "kind": "sample", "mem_available_bytes": 6036992000, "stage": "bounded_load", "utc": "2026-11-09T12:23:27.201646+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 917.8001273930004, "kind": "sample", "mem_available_bytes": 6035419136, "stage": "bounded_load", "utc": "2026-11-09T12:23:29.204549+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 919.8139481859998, "kind": "sample", "mem_available_bytes": 6047547392, "stage": "bounded_load", "utc": "2026-11-09T12:23:31.218372+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 921.8278867910003, "kind": "sample", "mem_available_bytes": 6027743232, "stage": "bounded_load", "utc": "2026-11-09T12:23:33.232307+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 923.8415958740006, "kind": "sample", "mem_available_bytes": 6032039936, "stage": "bounded_load", "utc": "2026-11-09T12:23:35.246015+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 925.8554817069999, "kind": "sample", "mem_available_bytes": 6018457600, "stage": "bounded_load", "utc": "2026-11-09T12:23:37.259886+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 927.8691995850004, "kind": "sample", "mem_available_bytes": 6014791680, "stage": "bounded_load", "utc": "2026-11-09T12:23:39.273614+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 929.883128214, "kind": "sample", "mem_available_bytes": 6012260352, "stage": "bounded_load", "utc": "2026-11-09T12:23:41.287541+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 931.8861073060007, "kind": "sample", "mem_available_bytes": 6042808320, "stage": "bounded_load", "utc": "2026-11-09T12:23:43.290529+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 933.9000347810006, "kind": "sample", "mem_available_bytes": 6026100736, "stage": "bounded_load", "utc": "2026-11-09T12:23:45.304454+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 935.9137020930002, "kind": "sample", "mem_available_bytes": 6025080832, "stage": "bounded_load", "utc": "2026-11-09T12:23:47.318121+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 937.9275343509998, "kind": "sample", "mem_available_bytes": 6022144000, "stage": "bounded_load", "utc": "2026-11-09T12:23:49.331956+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 939.9416794030003, "kind": "sample", "mem_available_bytes": 6026653696, "stage": "bounded_load", "utc": "2026-11-09T12:23:51.346101+00:00"}
+{"cgroup_memory_bytes": 1530068992, "elapsed": 941.9556160890006, "kind": "sample", "mem_available_bytes": 6038257664, "stage": "bounded_load", "utc": "2026-11-09T12:23:53.360036+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 943.9694485850005, "kind": "sample", "mem_available_bytes": 6032773120, "stage": "bounded_load", "utc": "2026-11-09T12:23:55.373866+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 945.98338564, "kind": "sample", "mem_available_bytes": 6034354176, "stage": "bounded_load", "utc": "2026-11-09T12:23:57.387795+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 947.9974709550006, "kind": "sample", "mem_available_bytes": 6056337408, "stage": "bounded_load", "utc": "2026-11-09T12:23:59.401889+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 950.0113444369999, "kind": "sample", "mem_available_bytes": 5970284544, "stage": "bounded_load", "utc": "2026-11-09T12:24:01.415762+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 952.0253407210002, "kind": "sample", "mem_available_bytes": 5968285696, "stage": "bounded_load", "utc": "2026-11-09T12:24:03.429749+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 954.0392567320005, "kind": "sample", "mem_available_bytes": 5966946304, "stage": "bounded_load", "utc": "2026-11-09T12:24:05.443676+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 956.0532668209999, "kind": "sample", "mem_available_bytes": 5989318656, "stage": "bounded_load", "utc": "2026-11-09T12:24:07.457686+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 958.0564031909998, "kind": "sample", "mem_available_bytes": 5991538688, "stage": "bounded_load", "utc": "2026-11-09T12:24:09.460825+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 960.0703471200004, "kind": "sample", "mem_available_bytes": 5982531584, "stage": "bounded_load", "utc": "2026-11-09T12:24:11.474768+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 962.0845382900006, "kind": "sample", "mem_available_bytes": 5998833664, "stage": "bounded_load", "utc": "2026-11-09T12:24:13.488942+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 964.0879490080006, "kind": "sample", "mem_available_bytes": 5980164096, "stage": "bounded_load", "utc": "2026-11-09T12:24:15.492368+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 966.1018606520001, "kind": "sample", "mem_available_bytes": 5972598784, "stage": "bounded_load", "utc": "2026-11-09T12:24:17.506281+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 968.1160794260004, "kind": "sample", "mem_available_bytes": 5966839808, "stage": "bounded_load", "utc": "2026-11-09T12:24:19.520498+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 970.1195041010005, "kind": "sample", "mem_available_bytes": 5981413376, "stage": "bounded_load", "utc": "2026-11-09T12:24:21.523924+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 972.1335181989998, "kind": "sample", "mem_available_bytes": 5973708800, "stage": "bounded_load", "utc": "2026-11-09T12:24:23.537937+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 974.1476404960003, "kind": "sample", "mem_available_bytes": 5976059904, "stage": "bounded_load", "utc": "2026-11-09T12:24:25.552063+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 976.1616041060006, "kind": "sample", "mem_available_bytes": 5969719296, "stage": "bounded_load", "utc": "2026-11-09T12:24:27.566014+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 978.1755683060001, "kind": "sample", "mem_available_bytes": 5973590016, "stage": "bounded_load", "utc": "2026-11-09T12:24:29.579993+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 980.1895537609998, "kind": "sample", "mem_available_bytes": 5991612416, "stage": "bounded_load", "utc": "2026-11-09T12:24:31.593952+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 982.2036756950001, "kind": "sample", "mem_available_bytes": 5953851392, "stage": "bounded_load", "utc": "2026-11-09T12:24:33.608085+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 984.2175240530005, "kind": "sample", "mem_available_bytes": 5943595008, "stage": "bounded_load", "utc": "2026-11-09T12:24:35.621945+00:00"}
+{"cgroup_memory_bytes": 1530073088, "elapsed": 986.2310723669998, "kind": "sample", "mem_available_bytes": 5930917888, "stage": "bounded_load", "utc": "2026-11-09T12:24:37.635495+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 988.2341161009999, "kind": "sample", "mem_available_bytes": 5934333952, "stage": "bounded_load", "utc": "2026-11-09T12:24:39.638523+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 990.2479046830003, "kind": "sample", "mem_available_bytes": 5890428928, "stage": "bounded_load", "utc": "2026-11-09T12:24:41.652330+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 992.2617212790001, "kind": "sample", "mem_available_bytes": 5916450816, "stage": "bounded_load", "utc": "2026-11-09T12:24:43.666129+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 994.2756587849999, "kind": "sample", "mem_available_bytes": 5925761024, "stage": "bounded_load", "utc": "2026-11-09T12:24:45.680081+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 996.289573602, "kind": "sample", "mem_available_bytes": 5983924224, "stage": "bounded_load", "utc": "2026-11-09T12:24:47.693994+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 998.303290461, "kind": "sample", "mem_available_bytes": 5988290560, "stage": "bounded_load", "utc": "2026-11-09T12:24:49.707693+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1000.3061917660007, "kind": "sample", "mem_available_bytes": 5987708928, "stage": "bounded_load", "utc": "2026-11-09T12:24:51.710591+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1002.3199701550002, "kind": "sample", "mem_available_bytes": 5997465600, "stage": "bounded_load", "utc": "2026-11-09T12:24:53.724391+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1004.3337721220005, "kind": "sample", "mem_available_bytes": 6007394304, "stage": "bounded_load", "utc": "2026-11-09T12:24:55.738192+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1006.347586672, "kind": "sample", "mem_available_bytes": 6016073728, "stage": "bounded_load", "utc": "2026-11-09T12:24:57.752009+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1008.3611429000002, "kind": "sample", "mem_available_bytes": 6063341568, "stage": "bounded_load", "utc": "2026-11-09T12:24:59.765552+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1010.374986885, "kind": "sample", "mem_available_bytes": 6044028928, "stage": "bounded_load", "utc": "2026-11-09T12:25:01.779404+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1012.3886494190001, "kind": "sample", "mem_available_bytes": 6045917184, "stage": "bounded_load", "utc": "2026-11-09T12:25:03.793073+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1014.4022579130005, "kind": "sample", "mem_available_bytes": 5971582976, "stage": "bounded_load", "utc": "2026-11-09T12:25:05.806677+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1016.4160173130003, "kind": "sample", "mem_available_bytes": 5974228992, "stage": "bounded_load", "utc": "2026-11-09T12:25:07.820441+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1018.4236006870005, "kind": "sample", "mem_available_bytes": 5959725056, "stage": "bounded_load", "utc": "2026-11-09T12:25:09.828025+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1020.437360809, "kind": "sample", "mem_available_bytes": 5973590016, "stage": "bounded_load", "utc": "2026-11-09T12:25:11.841769+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1022.4511191720003, "kind": "sample", "mem_available_bytes": 5976174592, "stage": "bounded_load", "utc": "2026-11-09T12:25:13.855541+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1024.4649781590006, "kind": "sample", "mem_available_bytes": 5979242496, "stage": "bounded_load", "utc": "2026-11-09T12:25:15.869384+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1026.4786491640007, "kind": "sample", "mem_available_bytes": 5977878528, "stage": "bounded_load", "utc": "2026-11-09T12:25:17.883071+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1028.4921826170003, "kind": "sample", "mem_available_bytes": 5992681472, "stage": "bounded_load", "utc": "2026-11-09T12:25:19.896606+00:00"}
+{"cgroup_memory_bytes": 1530077184, "elapsed": 1030.5061803750004, "kind": "sample", "mem_available_bytes": 5992955904, "stage": "bounded_load", "utc": "2026-11-09T12:25:21.910582+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1032.5201936869998, "kind": "sample", "mem_available_bytes": 5969174528, "stage": "bounded_load", "utc": "2026-11-09T12:25:23.924617+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1034.5344716070003, "kind": "sample", "mem_available_bytes": 5984391168, "stage": "bounded_load", "utc": "2026-11-09T12:25:25.938893+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1036.5484462140003, "kind": "sample", "mem_available_bytes": 5975715840, "stage": "bounded_load", "utc": "2026-11-09T12:25:27.952857+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1038.5623543420006, "kind": "sample", "mem_available_bytes": 5966340096, "stage": "bounded_load", "utc": "2026-11-09T12:25:29.966774+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1040.5766579600004, "kind": "sample", "mem_available_bytes": 5971476480, "stage": "bounded_load", "utc": "2026-11-09T12:25:31.981058+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1042.5902408560005, "kind": "sample", "mem_available_bytes": 5982920704, "stage": "bounded_load", "utc": "2026-11-09T12:25:33.994658+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1044.6038749099998, "kind": "sample", "mem_available_bytes": 5982183424, "stage": "bounded_load", "utc": "2026-11-09T12:25:36.008295+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1046.6173155780007, "kind": "sample", "mem_available_bytes": 5974007808, "stage": "bounded_load", "utc": "2026-11-09T12:25:38.021741+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1048.6306530749998, "kind": "sample", "mem_available_bytes": 5989081088, "stage": "bounded_load", "utc": "2026-11-09T12:25:40.035073+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1050.6441924110004, "kind": "sample", "mem_available_bytes": 5994815488, "stage": "bounded_load", "utc": "2026-11-09T12:25:42.048616+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1052.6577795100002, "kind": "sample", "mem_available_bytes": 6042513408, "stage": "bounded_load", "utc": "2026-11-09T12:25:44.062205+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1054.66074845, "kind": "sample", "mem_available_bytes": 6064766976, "stage": "bounded_load", "utc": "2026-11-09T12:25:46.065170+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1056.674264577, "kind": "sample", "mem_available_bytes": 6057218048, "stage": "bounded_load", "utc": "2026-11-09T12:25:48.078683+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1058.6883057350005, "kind": "sample", "mem_available_bytes": 6057705472, "stage": "bounded_load", "utc": "2026-11-09T12:25:50.092717+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1060.702321142, "kind": "sample", "mem_available_bytes": 6056747008, "stage": "bounded_load", "utc": "2026-11-09T12:25:52.106742+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1062.716146279, "kind": "sample", "mem_available_bytes": 6092091392, "stage": "bounded_load", "utc": "2026-11-09T12:25:54.120554+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1064.7300922120003, "kind": "sample", "mem_available_bytes": 6088654848, "stage": "bounded_load", "utc": "2026-11-09T12:25:56.134517+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1066.7438425199998, "kind": "sample", "mem_available_bytes": 6097874944, "stage": "bounded_load", "utc": "2026-11-09T12:25:58.148268+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1068.7578114480002, "kind": "sample", "mem_available_bytes": 6083973120, "stage": "bounded_load", "utc": "2026-11-09T12:26:00.162236+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1070.7717675100002, "kind": "sample", "mem_available_bytes": 6081634304, "stage": "bounded_load", "utc": "2026-11-09T12:26:02.176190+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1072.785822504, "kind": "sample", "mem_available_bytes": 6069428224, "stage": "bounded_load", "utc": "2026-11-09T12:26:04.190242+00:00"}
+{"cgroup_memory_bytes": 1530081280, "elapsed": 1074.8001385650005, "kind": "sample", "mem_available_bytes": 5966323712, "stage": "bounded_load", "utc": "2026-11-09T12:26:06.204560+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1076.8153311040005, "kind": "sample", "mem_available_bytes": 5961519104, "stage": "bounded_load", "utc": "2026-11-09T12:26:08.219753+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1078.8292367880003, "kind": "sample", "mem_available_bytes": 5982691328, "stage": "bounded_load", "utc": "2026-11-09T12:26:10.233654+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1080.8428789320005, "kind": "sample", "mem_available_bytes": 5981364224, "stage": "bounded_load", "utc": "2026-11-09T12:26:12.247298+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1082.8565341889998, "kind": "sample", "mem_available_bytes": 5985832960, "stage": "bounded_load", "utc": "2026-11-09T12:26:14.260952+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1084.8701836930004, "kind": "sample", "mem_available_bytes": 5998698496, "stage": "bounded_load", "utc": "2026-11-09T12:26:16.274579+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1086.8838507540004, "kind": "sample", "mem_available_bytes": 5993316352, "stage": "bounded_load", "utc": "2026-11-09T12:26:18.288272+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1088.8975506200004, "kind": "sample", "mem_available_bytes": 5987782656, "stage": "bounded_load", "utc": "2026-11-09T12:26:20.301970+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1090.911308836, "kind": "sample", "mem_available_bytes": 5995958272, "stage": "bounded_load", "utc": "2026-11-09T12:26:22.315718+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1092.9250795819999, "kind": "sample", "mem_available_bytes": 5999132672, "stage": "bounded_load", "utc": "2026-11-09T12:26:24.329503+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1094.9346138629999, "kind": "sample", "mem_available_bytes": 5997277184, "stage": "bounded_load", "utc": "2026-11-09T12:26:26.339033+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1096.9483282560004, "kind": "sample", "mem_available_bytes": 5978583040, "stage": "bounded_load", "utc": "2026-11-09T12:26:28.352750+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1098.961974801, "kind": "sample", "mem_available_bytes": 5986693120, "stage": "bounded_load", "utc": "2026-11-09T12:26:30.366393+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1100.9758467660004, "kind": "sample", "mem_available_bytes": 5987954688, "stage": "bounded_load", "utc": "2026-11-09T12:26:32.380266+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1102.9895399779998, "kind": "sample", "mem_available_bytes": 5985644544, "stage": "bounded_load", "utc": "2026-11-09T12:26:34.393962+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1105.003498348, "kind": "sample", "mem_available_bytes": 6015262720, "stage": "bounded_load", "utc": "2026-11-09T12:26:36.407919+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1107.0173351080002, "kind": "sample", "mem_available_bytes": 5995167744, "stage": "bounded_load", "utc": "2026-11-09T12:26:38.421756+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1109.0314333690003, "kind": "sample", "mem_available_bytes": 6035902464, "stage": "bounded_load", "utc": "2026-11-09T12:26:40.435853+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1111.045152961, "kind": "sample", "mem_available_bytes": 6045163520, "stage": "bounded_load", "utc": "2026-11-09T12:26:42.449552+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1113.0589989979999, "kind": "sample", "mem_available_bytes": 6144622592, "stage": "bounded_load", "utc": "2026-11-09T12:26:44.463439+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1115.06164885, "kind": "sample", "mem_available_bytes": 6147596288, "stage": "bounded_load", "utc": "2026-11-09T12:26:46.466068+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1117.0756668720005, "kind": "sample", "mem_available_bytes": 6146375680, "stage": "bounded_load", "utc": "2026-11-09T12:26:48.480073+00:00"}
+{"cgroup_memory_bytes": 1530085376, "elapsed": 1119.0897418840004, "kind": "sample", "mem_available_bytes": 6136709120, "stage": "bounded_load", "utc": "2026-11-09T12:26:50.494180+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 1121.0923920800005, "kind": "sample", "mem_available_bytes": 6124777472, "stage": "bounded_load", "utc": "2026-11-09T12:26:52.496812+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 1123.1062096100004, "kind": "sample", "mem_available_bytes": 5931810816, "stage": "bounded_load", "utc": "2026-11-09T12:26:54.510603+00:00"}
+{"cgroup_memory_bytes": 1530089472, "elapsed": 1125.1177089580005, "kind": "sample", "mem_available_bytes": 5949087744, "stage": "bounded_load", "utc": "2026-11-09T12:26:56.522147+00:00"}
+{"allocated_bytes": 1207959552, "cgroup_memory_bytes": 1530081280, "elapsed": 1127.1312779630007, "kind": "end", "mem_available_bytes": 5955420160, "stage": "bounded_load", "suite_exit_code": 0, "utc": "2026-11-09T12:26:58.535700+00:00"}

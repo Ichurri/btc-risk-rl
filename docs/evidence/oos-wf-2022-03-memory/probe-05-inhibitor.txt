@@ -1,0 +1,1 @@
+/usr/bin/bash -c cd /home/ichurri/Deskt… 1000 ichurri 52802 systemd-inhibit sleep:idle                                               WF 2022-03 controlled memory probe        block
