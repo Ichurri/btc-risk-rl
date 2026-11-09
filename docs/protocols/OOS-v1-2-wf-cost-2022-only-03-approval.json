@@ -2,11 +2,11 @@
   "active": true,
   "authorization_sha256": "7c884b4d0db9d032e12b3cfe91950c27d61d0dd3a52640036d330b3e8d6bbcc8",
   "campaign": "oos-v12-wf-cost-only-2022-03",
-  "code_sha256": "ce294952999e168bcf2a110d4257c514b10ed9fcb17c8e1f6f82d10648f211c5",
+  "code_sha256": "89f9aae6490778170a50aa65596b836ab9dd507447bc526ca34be4adab61bf33",
   "condition": "C10",
   "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
   "not_before_day_la_paz": "2026-11-10",
-  "protocol_sha256": "cc2c30b10eb4626633903464341162f9d8de73954ce735746af1b2b2bb2ba65f",
+  "protocol_sha256": "5ecd9407e5b4dc1ebc04a65b4918c37e745b0bc94e6a9a15e269ffc63a5811a3",
   "root": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-03",
   "roster": [
     [
