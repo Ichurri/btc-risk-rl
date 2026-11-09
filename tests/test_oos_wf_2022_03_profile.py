@@ -1,5 +1,6 @@
-"""Independent third 2022-only cost profile stays closed until its own pin."""
+"""Independent third 2022-only cost profile and admission checks."""
 
+import importlib.util
 import json
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -74,13 +75,43 @@ def test_2022_03_shared_budget_charges_failed_02_once(tmp_path, monkeypatch):
 
 
 def test_2022_03_cannot_start_before_10_november():
-    from btc_risk_rl.pilots.wf_cost_2022_03_exec import date_admissible
+    from btc_risk_rl.pilots.wf_cost_2022_03_exec import (
+        date_admissible,
+        window_admissible,
+    )
 
     zone = ZoneInfo("America/La_Paz")
     before = datetime(2026, 11, 9, 23, 59, 59, tzinfo=zone).timestamp()
     first = datetime(2026, 11, 10, 0, 0, 0, tzinfo=zone).timestamp()
     assert not date_admissible(before)
     assert date_admissible(first)
+    assert not window_admissible(first)
+    assert not window_admissible(datetime(2026, 11, 10, 0, 59, tzinfo=zone).timestamp())
+    assert window_admissible(datetime(2026, 11, 10, 1, tzinfo=zone).timestamp())
+    assert window_admissible(datetime(2026, 11, 10, 8, 59, tzinfo=zone).timestamp())
+    assert not window_admissible(datetime(2026, 11, 10, 9, tzinfo=zone).timestamp())
+
+
+def test_public_prepare_uses_night_window_before_suite(monkeypatch):
+    from btc_risk_rl.pilots.protocol import ROOT
+
+    spec = importlib.util.spec_from_file_location(
+        "wf03_entry_test", ROOT / "scripts/run_oos_wf_cost_2022_03.py")
+    assert spec is not None and spec.loader is not None
+    entry = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(entry)
+
+    class ReachedBudget(Exception):
+        pass
+
+    def budget_attempt(*_args, **kwargs):
+        assert kwargs["night_window"] is True
+        raise ReachedBudget
+
+    monkeypatch.setattr(entry, "require_campaign", lambda: {"authorized": True})
+    monkeypatch.setattr(entry, "BudgetAttempt", budget_attempt)
+    with pytest.raises(ReachedBudget):
+        entry.prepare()
 
 
 def test_2022_03_launch_headroom_preserves_four_gib_operational_guard(monkeypatch):

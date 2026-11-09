@@ -1,0 +1,9 @@
+2026-11-09T09:07:59.531212-04:00 debian systemd[1556]: Started oos-wf-2022-03-suite-metered-final-20261109.service - [systemd-run] /usr/bin/systemd-inhibit --what=sleep:idle --mode=block "--why=WF 2022-03 metered-launch final suite" /usr/bin/bash -c "cd /home/ichurri/Desktop/personal_projects/btc-risk-rl && flock -n artifacts/shared-pilot-budget/global.lock /home/ichurri/.local/bin/uv run --frozen python -m pytest -q".
+2026-11-09T09:08:27.234622-04:00 debian systemd-inhibit[73266]: ........................................................................ [ 13%]
+2026-11-09T09:10:28.900153-04:00 debian systemd[1556]: oos-wf-2022-03-suite-metered-final-20261109.service: Sent signal SIGTERM to main process 73259 (systemd-inhibit) on client request.
+2026-11-09T09:10:28.900423-04:00 debian systemd[1556]: oos-wf-2022-03-suite-metered-final-20261109.service: Sending signal SIGTERM to process 73262 (flock) on client request.
+2026-11-09T09:10:28.900524-04:00 debian systemd[1556]: oos-wf-2022-03-suite-metered-final-20261109.service: Sending signal SIGTERM to process 73263 (uv) on client request.
+2026-11-09T09:10:28.900601-04:00 debian systemd[1556]: oos-wf-2022-03-suite-metered-final-20261109.service: Sending signal SIGTERM to process 73266 (python3) on client request.
+2026-11-09T09:10:48.362454-04:00 debian systemd[1556]: oos-wf-2022-03-suite-metered-final-20261109.service: Killed unit cgroup with SIGKILL on client request.
+2026-11-09T09:10:48.402304-04:00 debian systemd-inhibit[73266]: .......................................................................
+2026-11-09T09:10:48.402894-04:00 debian systemd[1556]: oos-wf-2022-03-suite-metered-final-20261109.service: Consumed 3min 9.823s CPU time, 785.6M memory peak.

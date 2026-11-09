@@ -1,0 +1,7 @@
+Result=success
+ExecMainStatus=0
+MemoryPeak=[not set]
+Id=oos-wf-2022-03-suite-metered-final-20261109.service
+ActiveState=inactive
+SubState=dead
+InvocationID=

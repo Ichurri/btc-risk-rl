@@ -37,8 +37,7 @@ def test_2022_profile_has_independent_pinned_approval(monkeypatch):
         assert profile.REGISTRATION_SHA256 is None
         assert not budget.MARKET_EXECUTION_ENABLED
         assert budget.REGISTRATION_SHA256 is None
-        # This new profile has no approval yet; historical approvals stay separate.
-        assert not budget.APPROVAL.exists()
+        # A superseded approval file may remain for audit; the code gate still closes.
         with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
             profile.require_campaign()
 

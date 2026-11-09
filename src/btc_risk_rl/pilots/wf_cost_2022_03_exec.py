@@ -32,8 +32,8 @@ EXPECTED_ROUTES = 4678
 EXPECTED_FIT_ROWS = 7703
 AUTHORIZATION = ROOT / "docs/protocols/OOS-2022-03-autorizacion-20261109.md"
 # Kept separate from prior WF gates. The hash is pinned only after final tests.
-MARKET_EXECUTION_ENABLED = True
-REGISTRATION_SHA256 = "c2e74a3213314b7fc5e4e4e496e81b1d400d1506c2ac5a077520e9dba99e4b6f"
+MARKET_EXECUTION_ENABLED = False
+REGISTRATION_SHA256 = None
 NOT_BEFORE_DAY_LA_PAZ = "2026-11-10"
 LAUNCH_MEMORY_MIN_BYTES = 4 * 1024**3 + 512 * 1024**2 + 1_195_008_000
 
@@ -41,6 +41,12 @@ LAUNCH_MEMORY_MIN_BYTES = 4 * 1024**3 + 512 * 1024**2 + 1_195_008_000
 def date_admissible(epoch: float) -> bool:
     """Keep this independent campaign outside the charged 09 November date."""
     return datetime.fromtimestamp(epoch, LA_PAZ).date().isoformat() >= NOT_BEFORE_DAY_LA_PAZ
+
+
+def window_admissible(epoch: float) -> bool:
+    """Permit public entry only during the approved local working window."""
+    local = datetime.fromtimestamp(epoch, LA_PAZ)
+    return date_admissible(epoch) and 1 <= local.hour < 9
 
 
 def launch_memory_ready(value: int | None) -> bool:
@@ -117,8 +123,8 @@ def require_campaign() -> dict:
             or budget.REGISTRATION_SHA256 != REGISTRATION_SHA256
             or not budget.MARKET_EXECUTION_ENABLED):
         raise PermissionError("WF 2022 approval inputs changed")
-    if not date_admissible(time.time()):
-        raise PermissionError("WF 2022-03 before authorized date")
+    if not window_admissible(time.time()):
+        raise PermissionError("WF 2022-03 outside authorized date or 01:00-09:00 window")
     return registration
 
 

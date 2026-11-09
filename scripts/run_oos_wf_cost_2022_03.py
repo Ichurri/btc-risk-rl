@@ -38,7 +38,8 @@ def prepare():
         return budget["global_spent"]
 
     with BudgetAttempt(CAMPAIGN.parent, gate=require_campaign,
-                       authorize=require_campaign, external_spent=external) as attempt:
+                       authorize=require_campaign, external_spent=external,
+                       night_window=True) as attempt:
         if attempt.admit({}, unit=0) != "start":
             raise PreflightBlocked("WF 2022 budget cannot reserve Q0 and closure")
         root = Path(__file__).resolve().parents[1]

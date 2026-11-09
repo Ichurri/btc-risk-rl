@@ -6,7 +6,6 @@ import sys
 import time
 
 from btc_risk_rl.pilots.protocol import ROOT
-from btc_risk_rl.pilots.wf_cost_2022_03_exec import inspect_preflight
 from btc_risk_rl.pilots.wf_cost_2022_03_launch import launch_once
 
 
@@ -17,8 +16,8 @@ def main() -> None:
         subprocess.run([sys.executable, str(entry), f"--{action}"],
                        cwd=ROOT, check=True)
 
-    print(json.dumps(launch_once(now=time.time(), preflight=inspect_preflight,
-                                 invoke=invoke), sort_keys=True), flush=True)
+    print(json.dumps(launch_once(now=time.time(), invoke=invoke),
+                     sort_keys=True), flush=True)
 
 
 if __name__ == "__main__":

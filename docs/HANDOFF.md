@@ -15,7 +15,9 @@ C10, semilla 498614892, 11 unidades, diseño y límites originales. La
 puerta inicial de memoria exige 6.026.846.208 B, sin modificar la guarda
 de 4 GiB durante unidades. Primera fecha admisible: **10/11/2026**,
 01:00–09:00 `America/La_Paz`, con suite formal, Ruff, preflight vigilado y
-admisión con reservas nuevos. El 09/11 tiene saldo global **0 s** por el
+admisión con reservas nuevos. El primer permiso `d0f024c` quedó
+prospectivamente invalidado por la corrección de la contabilidad y ventana;
+el gate se apagó y requiere nueva huella antes de programar. El 09/11 tiene saldo global **0 s** por el
 fallo `2022-02`. No abrir validación 2023 ni prueba final; evaluación v1.2
 no adoptada. El estado operativo de permiso, programación y pruebas finales
 se detalla en `reporte-codex.md` y el informe del perfil; verificar sus

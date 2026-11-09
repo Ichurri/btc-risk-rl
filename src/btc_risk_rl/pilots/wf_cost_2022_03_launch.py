@@ -16,8 +16,7 @@ from btc_risk_rl.pilots.wf_cost_2022_03_exec import (
 MIN_START_WINDOW_SECONDS = 900 + 120 + 180 + 120 + 600
 
 
-def launch_once(*, now: float, preflight: Callable[[], dict],
-                invoke: Callable[[str], object]) -> dict:
+def launch_once(*, now: float, invoke: Callable[[str], object]) -> dict:
     """Admit a first session only; the worker retains every budget guard."""
     require_campaign()
     local = datetime.fromtimestamp(now, LA_PAZ)
@@ -28,10 +27,6 @@ def launch_once(*, now: float, preflight: Callable[[], dict],
         return {"status": "insufficient_window", "seconds_left": seconds_left}
     if CAMPAIGN.exists():
         return {"status": "root_exists"}
-    result = preflight()
-    if result.get("status") != "ready":
-        return {"status": "blocked", "preflight": result}
     invoke("prepare")
     invoke("run")
-    return {"status": "launched", "preflight": result,
-            "observed_epoch": time.time()}
+    return {"status": "launched", "observed_epoch": time.time()}
