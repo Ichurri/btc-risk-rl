@@ -75,7 +75,11 @@ def test_separate_historical_command_requires_user_service_before_data_access():
     env = dict(os.environ, INVOCATION_ID="")
     lock_path = Path("artifacts/shared-pilot-budget/global.lock")
     with lock_path.open("a") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        # The enclosing supervised suite may already own the global lock.
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            pass
         result = subprocess.run(
             [sys.executable, "scripts/run_p2r_market.py"], capture_output=True,
             text=True, check=False, env=env,

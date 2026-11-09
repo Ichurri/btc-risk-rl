@@ -1,4 +1,4 @@
-"""Independent 2022-only cost profile; disabled until a pinned approval is registered."""
+"""Independent 2022-only cost profile with a pinned approval gate."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ ROSTER = (("2022", 498614892, "C10"),)
 UNITS = tuple(range(11))
 EXPECTED_ROUTES = 4678
 EXPECTED_FIT_ROWS = 7703
-AUTHORIZATION = ROOT / "docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md"
+AUTHORIZATION = ROOT / "docs/protocols/OOS-2022-02-autorizacion-20261109.md"
 # Kept separate from prior WF gates. The hash is pinned only after final tests.
 MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = None

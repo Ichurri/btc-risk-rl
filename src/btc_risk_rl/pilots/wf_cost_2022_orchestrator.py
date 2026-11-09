@@ -1,7 +1,7 @@
-"""Metered attempts for a future, separately permitted 2022-only WF study.
+"""Metered attempts for the separately permitted 2022-only WF study.
 
 This module accounts for checks and unit admission. It contains no market
-loader or unit runner; the historical entry remains disabled in code.
+loader or unit runner; the historical entry requires a pinned permit.
 """
 
 from __future__ import annotations
@@ -25,11 +25,16 @@ from btc_risk_rl.pilots.wf_cost_session import (
     _split_days,
 )
 
-CAMPAIGN_NAME = "oos-v12-wf-cost-only-2022-01"
+CAMPAIGN_NAME = "oos-v12-wf-cost-only-2022-02"
 CAMPAIGN = ROOT / "artifacts" / CAMPAIGN_NAME
-APPROVAL = ROOT / "docs/protocols/OOS-v1-2-wf-cost-2022-only-approval.json"
-PROPOSAL = ROOT / "docs/proposals/OOS-v1-2-costo-2022-exclusivo-v1.md"
-JOURNAL_NAME = "wf-2022-only-01-attempts.jsonl"
+APPROVAL = ROOT / "docs/protocols/OOS-v1-2-wf-cost-2022-only-02-approval.json"
+PROPOSAL = ROOT / "docs/proposals/OOS-v1-2-costo-2022-reemplazo-02-v1.md"
+JOURNAL_NAME = "wf-2022-only-02-attempts.jsonl"
+CHECKS_NAME = "wf-2022-only-02-checks.jsonl"
+ATTEMPT_PROFILES = (
+    ("oos-v12-wf-cost-only-2022-01", "wf-2022-only-01-attempts.jsonl"),
+    (CAMPAIGN_NAME, JOURNAL_NAME),
+)
 MARKET_EXECUTION_ENABLED = False
 REGISTRATION_SHA256 = None
 OWN_DAILY = 3600
@@ -154,19 +159,23 @@ def reconcile(
     return Charges(own, frozenset(active_days), blocked)
 
 
-def shared_attempt_debit(artifacts: Path, *, now: float, day: str) -> float:
-    """Additional global charge for the new attempt journal beyond existing WF sources."""
+def shared_attempt_debit(artifacts: Path, *, now: float, day: str,
+                         campaign_name: str = CAMPAIGN_NAME,
+                         journal_name: str = JOURNAL_NAME) -> float:
+    """Additional global charge for one pinned attempt journal beyond WF sources."""
+    if (campaign_name, journal_name) not in ATTEMPT_PROFILES:
+        raise ValueError("Unknown WF 2022 attempt profile")
     artifacts = Path(artifacts)
-    journal_path = artifacts / "shared-pilot-budget" / JOURNAL_NAME
+    journal_path = artifacts / "shared-pilot-budget" / journal_name
     if not journal_path.exists():
         return 0.0
-    campaign = artifacts / CAMPAIGN_NAME
+    campaign = artifacts / campaign_name
     ledger_path = campaign / "ledger.jsonl"
     sessions_path = campaign / "sessions.jsonl"
     ledger = json.loads(ledger_path.read_text().splitlines()[-1]) if ledger_path.exists() else {}
-    with WFCostSessionJournal(journal_path, campaign=CAMPAIGN_NAME, read_only=True) as attempts:
+    with WFCostSessionJournal(journal_path, campaign=campaign_name, read_only=True) as attempts:
         if sessions_path.exists():
-            with WFCostSessionJournal(sessions_path, campaign=CAMPAIGN_NAME,
+            with WFCostSessionJournal(sessions_path, campaign=campaign_name,
                                       read_only=True) as sessions:
                 base = reconcile(None, sessions, ledger, now=now)
                 merged = reconcile(attempts, sessions, ledger, now=now)
@@ -200,7 +209,7 @@ class BudgetAttempt:
         self.external_spent = external_spent
         self.night_window = night_window
         self.journal_path = self.artifacts / "shared-pilot-budget" / JOURNAL_NAME
-        self.checks_path = self.artifacts / "shared-pilot-budget" / "wf-2022-only-01-checks.jsonl"
+        self.checks_path = self.artifacts / "shared-pilot-budget" / CHECKS_NAME
         self.checks = []
         self.check_previous = None
         self.journal = None

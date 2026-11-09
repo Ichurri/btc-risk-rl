@@ -281,6 +281,39 @@ def test_shared_budget_sees_precheck_journal_without_ledger(tmp_path):
     assert wf_cost.MARKET_EXECUTION_ENABLED is False
 
 
+def test_failed_2022_01_attempt_remains_a_global_debit_for_2022_02(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import wf_cost
+    from btc_risk_rl.pilots.p2r import P2RSharedBudget
+
+    artifacts = tmp_path / "artifacts"
+    audit = artifacts / "shared-pilot-budget"
+    audit.mkdir(parents=True)
+    clock = Clock(epoch(7, 1, 0))
+    old_campaign = "oos-v12-wf-cost-only-2022-01"
+    old_journal = audit / "wf-2022-only-01-attempts.jsonl"
+    with WFCostSessionJournal(old_journal, campaign=old_campaign) as journal:
+        token = journal.start(now=clock.now(), monotonic=clock.monotonic(),
+                              invocation_id="old-synthetic")
+        clock.advance(441)
+        journal.end(token, now=clock.now(), monotonic=clock.monotonic(),
+                    status="failed", reason="suite failed")
+
+    monkeypatch.setattr(wf_cost, "ROOT", tmp_path)
+    result = wf_cost.inspect_budget(now=clock.now(),
+                                    campaign=artifacts / wf22.CAMPAIGN_NAME)
+    assert result["global_spent"] == 10800
+    assert result["remaining_before_reserve"] == 0
+    assert any(row["path"] == str(old_journal)
+               and row["charged_today_seconds"] == 10800
+               for row in result["sources"])
+    with P2RSharedBudget(artifacts, wf22.CAMPAIGN_NAME, now=clock.now(),
+                         synthetic_fixture=True) as shared:
+        assert shared.external_seconds == 10800
+    clock.advance(86400)
+    assert wf_cost.inspect_budget(now=clock.now(),
+                                  campaign=artifacts / wf22.CAMPAIGN_NAME)["global_spent"] == 0
+
+
 def test_read_only_wf_budget_scanner_sees_precheck_without_ledger(tmp_path, monkeypatch):
     from btc_risk_rl.pilots import wf_cost
 

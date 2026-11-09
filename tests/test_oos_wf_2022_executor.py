@@ -18,17 +18,21 @@ def test_2022_profile_has_independent_pinned_approval():
     from btc_risk_rl.pilots import wf_cost_2022_orchestrator as budget
     from btc_risk_rl.pilots.wf_permits import authorized_wf_permits
 
-    assert profile.CAMPAIGN.name == "oos-v12-wf-cost-only-2022-01"
+    assert profile.CAMPAIGN.name == "oos-v12-wf-cost-only-2022-02"
     assert profile.ROSTER == (("2022", 498614892, "C10"),)
     assert profile.UNITS == tuple(range(11))
-    assert profile.MARKET_EXECUTION_ENABLED is False
-    assert profile.REGISTRATION_SHA256 is None
     assert authorized_wf_permits()[profile.WF2022Permit] == profile.CAMPAIGN
-    with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
-        profile.require_campaign()
-    approval = json.loads(budget.APPROVAL.read_text())
-    assert approval["campaign"] == profile.CAMPAIGN.name
-    assert approval["scope"] == "2022_training_cut_cost_only"
+    assert budget.APPROVAL.name == "OOS-v1-2-wf-cost-2022-only-02-approval.json"
+    assert budget.JOURNAL_NAME == "wf-2022-only-02-attempts.jsonl"
+    if profile.MARKET_EXECUTION_ENABLED:
+        assert profile.REGISTRATION_SHA256 == budget.REGISTRATION_SHA256
+        assert budget.APPROVAL.is_file()
+        assert profile.require_campaign()["campaign"] == profile.CAMPAIGN.name
+    else:
+        assert profile.REGISTRATION_SHA256 is None
+        assert not budget.APPROVAL.exists()
+        with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
+            profile.require_campaign()
 
 
 def test_2022_ledger_rejects_other_run_and_incomplete_checkpoint(tmp_path):
@@ -61,9 +65,9 @@ def test_2022_forged_registration_rejected_before_worker_request(tmp_path, monke
 
     monkeypatch.setattr(profile, "MARKET_EXECUTION_ENABLED", True)
     monkeypatch.setattr(budget, "MARKET_EXECUTION_ENABLED", True)
-    monkeypatch.setattr(budget, "REGISTRATION_SHA256", budget._sha256(budget.APPROVAL))
+    monkeypatch.setattr(budget, "REGISTRATION_SHA256", "0" * 64)
     monkeypatch.setattr(profile, "REGISTRATION_SHA256", "0" * 64)
-    with pytest.raises(PermissionError, match="approval inputs changed"):
+    with pytest.raises(PermissionError, match="approval hash mismatch"):
         worker.run_request(tmp_path / "missing.json")
     assert not (tmp_path / "missing.json").exists()
 
@@ -99,7 +103,9 @@ def test_service_resource_drop_before_root_is_a_metered_block(tmp_path, monkeypa
     with pytest.raises(PreflightBlocked, match="host preflight"):
         units.run_units()
     assert not campaign.exists()
-    journal = tmp_path / "shared-pilot-budget/wf-2022-only-01-attempts.jsonl"
+    from btc_risk_rl.pilots.wf_cost_2022_orchestrator import JOURNAL_NAME
+
+    journal = tmp_path / "shared-pilot-budget" / JOURNAL_NAME
     with WFCostSessionJournal(journal, campaign=campaign.name, read_only=True) as recorded:
         assert recorded.sessions[0]["end"]["status"] == "ready"
 
@@ -120,7 +126,9 @@ def test_stale_prepare_before_root_is_a_metered_block(tmp_path, monkeypatch):
     with pytest.raises(PreflightBlocked, match="prepare"):
         units.run_units()
     assert not campaign.exists()
-    journal = tmp_path / "shared-pilot-budget/wf-2022-only-01-attempts.jsonl"
+    from btc_risk_rl.pilots.wf_cost_2022_orchestrator import JOURNAL_NAME
+
+    journal = tmp_path / "shared-pilot-budget" / JOURNAL_NAME
     with WFCostSessionJournal(journal, campaign=campaign.name, read_only=True) as recorded:
         assert recorded.sessions[0]["end"]["status"] == "ready"
 

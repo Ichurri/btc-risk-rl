@@ -35,6 +35,7 @@ from btc_risk_rl.pilots.wf_cost_2022_exec import (
     require_recent_prepare,
 )
 from btc_risk_rl.pilots.wf_cost_2022_orchestrator import (
+    CHECKS_NAME,
     UNIT_CAPS,
     BudgetAttempt,
     PreflightBlocked,
@@ -94,7 +95,7 @@ def run_units(*, stop_after_q0: bool = False, stop_after_unit: int | None = None
                                         or not 0 <= stop_after_unit < 10):
         raise ValueError("WF 2022 pause boundary invalid")
     require_campaign()
-    checks = CAMPAIGN.parent / "shared-pilot-budget/wf-2022-only-01-checks.jsonl"
+    checks = CAMPAIGN.parent / "shared-pilot-budget" / CHECKS_NAME
     with BudgetAttempt(CAMPAIGN.parent, gate=require_campaign,
                        authorize=require_campaign, external_spent=_external,
                        night_window=True) as attempt:
