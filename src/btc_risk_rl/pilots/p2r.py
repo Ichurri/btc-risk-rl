@@ -172,7 +172,7 @@ class P2RSharedBudget:
                                          day=self.day))
             # The 2022-only study starts its durable budget clock before a
             # campaign ledger or service session can exist.
-            from btc_risk_rl.pilots.wf_cost_2022_orchestrator import (
+            from btc_risk_rl.pilots.wf_cost_2022_03_orchestrator import (
                 ATTEMPT_PROFILES,
                 shared_attempt_debit,
             )

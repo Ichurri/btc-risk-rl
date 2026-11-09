@@ -1,4 +1,29 @@
-# Estado vigente — 09/11/2026, WF 2022-02 fallido y cerrado
+# Estado vigente — 09/11/2026, preparación WF 2022-03
+
+Rama `codex/oos-wf-2022-03`, base `85a08b9`. `2022-02` permanece `failed`,
+8/11 unidades aceptadas, unidad 8 parcial y checkpoint 7 íntegro; no se
+reanuda. WF05 y `2022-01` mantienen sus cierres. El diagnóstico de memoria
+está en [el informe](hitos/OOS-v1-2-costo-2022-02-memoria-diagnostico.md):
+la caída histórica fue de 5.817.507.840 a 4.278.210.560 B entre preflight
+y unidad 8; no hay serie de los procesos externos que permita identificar
+la causa. La sonda controlada 04 cruzó 4 GiB durante la suite; la 05,
+sin carga de desarrollo concurrente, completó 1127,131 s y mantuvo un
+mínimo de 4.870.426.624 B, apenas 38.588.416 B sobre 4 GiB + 512 MiB.
+
+El [perfil independiente](hitos/OOS-v1-2-costo-2022-03-perfil.md) conserva
+C10, semilla 498614892, 11 unidades, diseño y límites originales. La
+puerta inicial de memoria exige 6.026.846.208 B, sin modificar la guarda
+de 4 GiB durante unidades. Primera fecha admisible: **10/11/2026**,
+01:00–09:00 `America/La_Paz`, con suite formal, Ruff, preflight vigilado y
+admisión con reservas nuevos. El 09/11 tiene saldo global **0 s** por el
+fallo `2022-02`. No abrir validación 2023 ni prueba final; evaluación v1.2
+no adoptada. El estado operativo de permiso, programación y pruebas finales
+se detalla en `reporte-codex.md` y el informe del perfil; verificar sus
+huellas antes de cualquier acción.
+
+---
+
+# Estado anterior — 09/11/2026, WF 2022-02 fallido y cerrado
 
 Rama `codex/oos-wf-2022-02`; perfil `7da17ad`, aprobación independiente
 `a118476`, cierre prospectivo del gate `dbadf34`. La suite formal bajo

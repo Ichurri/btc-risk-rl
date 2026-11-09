@@ -1,5 +1,6 @@
 """Synthetic checks for a metered, unapproved 2022-only WF cost campaign."""
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -253,6 +254,11 @@ def test_closed_public_entry_creates_no_journal_or_campaign(tmp_path, monkeypatc
             pass
     assert not (tmp_path / "shared-pilot-budget" / wf22.JOURNAL_NAME).exists()
     assert not (tmp_path / wf22.CAMPAIGN_NAME).exists()
+    historical_root = wf22.CAMPAIGN
+    ledger = historical_root / "ledger.jsonl"
+    before_root = historical_root.exists()
+    before_ledger = (hashlib.sha256(ledger.read_bytes()).hexdigest()
+                     if ledger.exists() else None)
     script = ("import runpy, sys; "
               "from btc_risk_rl.pilots import wf_cost_2022_exec as profile; "
               "profile.MARKET_EXECUTION_ENABLED=False; "
@@ -262,7 +268,9 @@ def test_closed_public_entry_creates_no_journal_or_campaign(tmp_path, monkeypatc
                             capture_output=True, text=True, check=False)
     assert result.returncode != 0
     assert "NOT AUTHORIZED" in result.stderr
-    assert not wf22.CAMPAIGN.exists()
+    assert historical_root.exists() is before_root
+    assert (hashlib.sha256(ledger.read_bytes()).hexdigest()
+            if ledger.exists() else None) == before_ledger
 
 
 def test_shared_budget_sees_precheck_journal_without_ledger(tmp_path):

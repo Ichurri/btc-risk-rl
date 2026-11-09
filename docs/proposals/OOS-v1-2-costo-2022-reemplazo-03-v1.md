@@ -1,0 +1,21 @@
+# Perfil independiente WF 2022-03
+
+**Continuidad prospectiva, 09/11/2026.** Santiago autorizó una nueva medición del costo del corte 2022 con identidad propia. Los intentos `2022-01` y `2022-02` terminaron `failed`; ninguno se reanuda ni aporta Q0, pesos, trayectorias o checkpoints. El cierre de WF05 se conserva.
+
+| Elemento | Identidad 2022-03 |
+| --- | --- |
+| Raíz histórica exclusiva | `artifacts/oos-v12-wf-cost-only-2022-03/` |
+| Registro de aprobación independiente | `docs/protocols/OOS-v1-2-wf-cost-2022-only-03-approval.json` |
+| Intentos previos al ledger | `artifacts/shared-pilot-budget/wf-2022-only-03-attempts.jsonl` |
+| Comprobaciones | `artifacts/shared-pilot-budget/wf-2022-only-03-checks.jsonl` |
+| Servicio | `oos-wf-cost-2022-03-session-NN.service`, `Restart=no` |
+
+**Diseño congelado:** una C10 nueva, semilla 498614892, β=0, cuatro épocas del crítico, K=10, D=64, d=−ln(0,90), Q0 más diez unidades Q/A/B+D; reconstrucción del corte 2022 desde el derivado H1 exclusivo de entrenamiento. Permanecen 4.678 inicios y 7.703 filas de ajuste. Sin acceso a validación 2023 o prueba final 2024–2025.
+
+**Presupuesto sin ampliación:** 10.800 s globales por fecha `America/La_Paz`, reserva global 2.700 s; 3.600 s propios por fecha, reserva propia 600 s, 4.800 s propios acumulados, máximo dos días activos; cotas 120 s para Q0 y 180 s para cada Q/A/B+D. Ventana 01:00–09:00, incluyendo suite, Ruff, preflight, carga, unidades, checkpoints y cierre. Primera fecha admisible: **10/11/2026**. La deuda conservadora de `2022-01` ocupa el 07/11 y la de `2022-02` ocupa el 09/11, cada una por 10.800 s; no se traslada al 10/11, pero ambas siguen visibles en auditoría.
+
+**Puerta adicional de memoria, sin rebajar el mínimo:** antes de activar el lanzamiento se ejecuta una sonda controlada de duración al menos igual a los 1123,821 s observados en la sesión `2022-02`. La sonda incluye la suite y una carga residente acotada contra el pico de memoria de servicio observado (1.195.008.000 B); mide `MemAvailable` y la memoria del cgroup. Para declarar margen sostenido, exige que la carga objetivo se alcance y que **todas las muestras, tanto durante la suite como bajo carga posterior**, mantengan `MemAvailable ≥4 GiB + 512 MiB`. Si la sonda no alcanza la carga completa o cruza la guarda, el resultado es **insuficiente**, aunque no haya fallo del sistema. Además, cada preflight de lanzamiento exige `MemAvailable ≥6.026.846.208 B` (4 GiB + 512 MiB + pico de servicio 1.195.008.000 B) antes de cargar el corte o abrir la raíz. Esta puerta técnica no garantiza memoria futura ni cambia la guarda operativa de 4 GiB durante unidades. Repetir la sonda en la fecha de ejecución si cambió de forma material la carga del equipo.
+
+El permiso técnico se fija por huellas de código, perfil, protocolo, configuración, autorización y derivado H1 en un commit separado. El comando y el trabajador rechazan mientras falte aprobación o gate. En fecha admisible, la preparación formal empieza su bitácora antes de suite, Ruff y preflight vigilado. La admisión exige CA, batería ≥50 %, `MemAvailable ≥4 GiB`, disco ≥20 GiB, `Linger=yes`, gestor `running`, huellas y saldo con reservas; cada unidad debe terminar y guardar antes de las 09:00. Solo se reingresa desde ledger `ready` sin `pending` y una frontera completa. Un fallo dentro de unidad es irreversible para esta raíz, aunque conserve checkpoint previo. La propuesta de evaluación v1.2 permanece sin adoptar.
+
+El primer lanzamiento puede programarse como una única unidad `systemd --user` para el 10/11 a las 01:00. El lanzador comprueba permiso, fecha, raíz ausente y preflight de solo lectura antes de llamar `--prepare` y luego `--run`. No reintenta fallos ni ejecuta sobre una raíz existente. Requiere al menos 1.920 s antes de las 09:00 para los tiempos máximos de suite (900 s), Ruff (120 s), preflight (180 s), Q0 (120 s) y reserva de cierre (600 s); el supervisor aplica además los topes y reservas propios y globales a cada unidad. Un `blocked` deja evidencia del intento solo si entró en `--prepare`; una unidad fallida no se recupera automáticamente. La unidad se configura con `Restart=no` e inhibición de suspensión. El lanzamiento programado no constituye por sí mismo evidencia de ejecución: ledger, checkpoint y journal deben auditarse después.

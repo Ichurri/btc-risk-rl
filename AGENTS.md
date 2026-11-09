@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **09/11/2026, diagnóstico y preparación WF 2022-03.** Santiago autorizó
+  una medición nueva del corte 2022 desde el 10/11, 01:00–09:00 La Paz,
+  condicionada a margen sostenido de memoria, suite, Ruff, preflight y
+  admisión. `2022-01` y `2022-02` siguen `failed` y no se reanudan; WF05
+  sigue cerrado. La sonda 04 cayó bajo 4 GiB durante la suite; la sonda 05
+  sostuvo 4 GiB + 512 MiB durante una sesión equivalente, con solo 38,6 MB
+  de margen mínimo. El perfil `2022-03` tiene raíz y aprobación propias,
+  guarda inicial de 6.026.846.208 B de `MemAvailable` y conserva 4 GiB
+  como guarda operativa. Ver
+  `docs/hitos/OOS-v1-2-costo-2022-02-memoria-diagnostico.md` y
+  `docs/hitos/OOS-v1-2-costo-2022-03-perfil.md`. **No usar una captura del
+  09/11 para lanzar el 10/11**: nueva suite formal, Ruff, preflight vigilado
+  y admisión con reservas. Validación/final y v1.2 siguen cerradas.
 - **09/11/2026: WF 2022-02 falló dentro de la unidad 8 por memoria.**
   Perfil y autorización independientes en `7da17ad`/`a118476`; suite formal
   bajo `systemd --user`: 505 passed, Ruff y preflight vigilado `ready`.
