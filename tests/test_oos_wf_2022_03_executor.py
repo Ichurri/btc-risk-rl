@@ -34,10 +34,11 @@ def test_2022_profile_has_independent_pinned_approval(monkeypatch):
         monkeypatch.setattr(profile.time, "time", lambda: admitted.timestamp())
         assert profile.require_campaign()["campaign"] == profile.CAMPAIGN.name
     else:
-        assert profile.REGISTRATION_SHA256 is None
+        assert profile.REGISTRATION_SHA256 == budget.REGISTRATION_SHA256
+        assert budget.APPROVAL.is_file()
+        assert hashlib.sha256(budget.APPROVAL.read_bytes()).hexdigest() == budget.REGISTRATION_SHA256
         assert not budget.MARKET_EXECUTION_ENABLED
-        assert budget.REGISTRATION_SHA256 is None
-        # A superseded approval file may remain for audit; the code gate still closes.
+        # The completed approval is historical evidence, not a new execution lease.
         with pytest.raises(PermissionError, match="NOT AUTHORIZED"):
             profile.require_campaign()
 
