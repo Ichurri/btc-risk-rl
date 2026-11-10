@@ -19,7 +19,9 @@
   del momento, insuficiente para lanzar entonces**, no pronóstico nocturno.
   Se cambió prospectivamente la preferencia de suspensión con CA de
   `suspend` a `nothing` para pantalla apagada; restaurar `suspend` al cerrar
-  la campaña. Ver `docs/hitos/OOS-v1-2-entrenamiento-preparacion.md` y
+  la campaña. El timer `oos-v12-restore-power.timer` está programado para
+  16/11 a las 09:05 con restauración persistente; verificar que se ejecutó.
+  Ver `docs/hitos/OOS-v1-2-entrenamiento-preparacion.md` y
   `docs/evidence/oos-v12-training-prep-20261110/schedule.json`. WF05,
   `2022-01`/`02` y el costo `2022-03` conservan sus cierres; no abrir
   validación 2023 ni prueba final 2024–2025 con este permiso. Si al 16/11

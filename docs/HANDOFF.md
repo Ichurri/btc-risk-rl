@@ -30,6 +30,11 @@ inferior al mínimo inicial de 6.026.846.208 B. El preflight nocturno debe
 medir de nuevo; **con ese valor no arrancaría una unidad**. Con CA,
 la preferencia de suspensión automática se cambió de `suspend` a `nothing`
 para que la pantalla pueda apagarse; restaurar `suspend` al cerrar la campaña.
+El timer independiente `oos-v12-restore-power.timer` quedó programado
+para restaurarlo automáticamente el **16/11 a las 09:05**, con
+`Persistent=true`; verificar el resultado al cierre. Su
+[captura](evidence/oos-v12-training-prep-20261110/restore-timer.txt)
+fija unidad, horario y huellas.
 La [captura](evidence/oos-v12-training-prep-20261110/schedule.json) conserva
 timer, recursos, presupuesto y huellas. No hay entrenamiento OOS nuevo
 todavía.

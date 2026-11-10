@@ -12,7 +12,8 @@
   inactivo y tres raíces de campaña ausentes. No hay unidad OOS aceptada.
   El servicio tiene `Restart=no` e inhibición de sueño; con CA se cambió la
   preferencia GNOME de suspensión automática de `suspend` a `nothing`.
-  **Restaurar `suspend` al cerrar la campaña.**
+  El timer `oos-v12-restore-power.timer` restaurará `suspend` el
+  **16/11 a las 09:05** (`Persistent=true`); verificar el cierre.
 - Captura 10:57: CA=1, batería 98 %, `MemAvailable=5.536.272.384 B`
   frente al mínimo inicial 6.026.846.208 B, disco 125,79 GB,
   `systemd --user=running`, `Linger=yes`. La memoria debe volver a superar

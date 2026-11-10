@@ -101,6 +101,12 @@ antes del disparo; la pantalla mantiene `idle-delay=300 s`. El servicio
 además usa `systemd-inhibit` durante su ejecución. **Restaurar `'suspend'`
 al cierre de esta campaña**. El cambio de preferencia es del usuario local,
 sin modificar drivers ni datos. No se realizó una prueba nocturna todavía.
+Se habilitó un segundo timer de usuario, `oos-v12-restore-power.timer`,
+para restaurar automáticamente el valor original el **16/11 a las 09:05**
+La Paz (`Persistent=true` si el equipo estaba apagado). Sus unidades están
+en `~/.config/systemd/user/` y no forman parte del ejecutor de mercado;
+la [captura y huellas](../evidence/oos-v12-training-prep-20261110/restore-timer.txt)
+tienen SHA-256 `b766dd7ff7b5a9e96e1a5fcf4c22102e94a012d75934203f866189a5e4562d5d`.
 
 La presentación puede informar corridas y checkpoints completos, tasas y
 diagnósticos de desarrollo. Sin 36 ternas y sin evaluación final autorizada
