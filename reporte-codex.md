@@ -1,4 +1,40 @@
-# Reporte Codex — 10/11/2026, 02:10 America/La_Paz
+# Reporte Codex — 10/11/2026, 10:57 America/La_Paz
+
+- Rama `codex/oos-v12-training-prep`; código `1ce1382`, permiso de
+  entrenamiento exclusivo `cbd11de`. `.python-version` sigue borrada solo
+  localmente y fuera de los commits.
+- La suite final pasó **576 pruebas en 573,22 s** (dos advertencias del
+  `fork` sintético); Ruff pasó. Comprobación de fuentes de solo lectura:
+  3.639/4.678/7.048 inicios, solo derivado H1 de entrenamiento y
+  manifiesto H1 compartido. No se generaron trayectorias ni se entrenó.
+- Timer `oos-v12-training.timer` habilitado, próximo disparo
+  **11/11/2026 01:00 America/La_Paz**; servicio `oos-v12-training.service`
+  inactivo y tres raíces de campaña ausentes. No hay unidad OOS aceptada.
+  El servicio tiene `Restart=no` e inhibición de sueño; con CA se cambió la
+  preferencia GNOME de suspensión automática de `suspend` a `nothing`.
+  **Restaurar `suspend` al cerrar la campaña.**
+- Captura 10:57: CA=1, batería 98 %, `MemAvailable=5.536.272.384 B`
+  frente al mínimo inicial 6.026.846.208 B, disco 125,79 GB,
+  `systemd --user=running`, `Linger=yes`. La memoria debe volver a superar
+  el umbral en el preflight nocturno; con la captura actual se bloquearía.
+- Presupuesto medido 10/11: WF 2022-03 cargó **1.247,845 s**; saldo antes
+  de reserva 6.852,155 s. Para 11–16/11 hay como máximo 48.600 s
+  productivos suponiendo saldo íntegro. Extrapolación: 16 ternas como
+  techo sin gasto adicional, 14/13 con 500/900 s diarios supuestos. No
+  implica que estén entrenadas; el roster conserva las 36 previstas.
+- Evidencia: `docs/hitos/OOS-v1-2-entrenamiento-preparacion.md`,
+  `docs/evidence/oos-v12-training-prep-20261110/`,
+  `docs/protocols/OOS-v1-2-training-freeze-20261110.json` y aprobación
+  `docs/protocols/OOS-v1-2-training-approval-20261110.json`.
+- Siguiente acción: a la 01:00, el servicio repite suite, Ruff y preflight
+  vigilado; solo con `ready`, CA, memoria, presupuesto y admisión inicia
+  Q0. Tras la sesión, auditar ledger, journal y checkpoint. Un estado
+  `failed`/`incomplete` no se reanuda. Validación 2023 y prueba final
+  2024–2025 permanecen cerradas.
+
+---
+
+# Reporte anterior — 10/11/2026, 02:10 America/La_Paz
 
 - Rama `codex/oos-wf-2022-03`, base publicada `69aaf80` al iniciar. `.python-version` sigue eliminada solo localmente.
 - El timer de 01:00 desapareció tras reinicio a 01:39:29; no produjo intento ni Q0. Tras liberar memoria se repitieron guardas (8.927.092.736 B en captura inicial; 9.362.132.992 B en preflight formal; mínimo 6.026.846.208 B).

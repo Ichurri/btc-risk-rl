@@ -1,6 +1,29 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **10/11/2026: entrenamiento OOS v1.2 autorizado, aún sin unidades nuevas.**
+  Santiago autorizó preparar y ejecutar hasta el 16/11 el entrenamiento
+  que quepa en 01:00–09:00 `America/La_Paz`, manteniendo 36 bloques
+  principales C0/C5/C10 y límites de 10.800 s globales/día, reserva
+  de cierre de 2.700 s y máximo 20 días activos. La adopción es **solo
+  de entrenamiento**: [protocolo congelado](docs/protocols/OOS-v1-2-training-freeze-20261110.json),
+  SHA-256 `0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0`;
+  aprobación independiente en `cbd11de`, SHA-256
+  `2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2`.
+  El timer permanente `oos-v12-training.timer` está `active/waiting` para
+  11/11 a las 01:00; el servicio está inactivo y las tres raíces OOS nuevas
+  siguen ausentes. Cada sesión ejecuta suite, Ruff y preflight vigilado
+  antes de Q0; si falla una puerta, no iniciar unidades. La memoria inicial
+  exige 6.026.846.208 B y durante unidades se conservan 4 GiB. En la
+  captura de 10/11 a las 10:57 la memoria era 5.536.272.384 B: **medición
+  del momento, insuficiente para lanzar entonces**, no pronóstico nocturno.
+  Se cambió prospectivamente la preferencia de suspensión con CA de
+  `suspend` a `nothing` para pantalla apagada; restaurar `suspend` al cerrar
+  la campaña. Ver `docs/hitos/OOS-v1-2-entrenamiento-preparacion.md` y
+  `docs/evidence/oos-v12-training-prep-20261110/schedule.json`. WF05,
+  `2022-01`/`02` y el costo `2022-03` conservan sus cierres; no abrir
+  validación 2023 ni prueba final 2024–2025 con este permiso. Si al 16/11
+  faltan bloques, informar avance parcial sin contraste confirmatorio.
 - **09/11/2026, diagnóstico y preparación WF 2022-03.** Santiago autorizó
   una medición nueva del corte 2022 desde el 10/11, 01:00–09:00 La Paz,
   condicionada a margen sostenido de memoria, suite, Ruff, preflight y

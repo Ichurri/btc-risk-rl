@@ -49,8 +49,12 @@ de los tres perfiles.
 - `systemd-analyze verify ops/systemd/oos-v12-training.service ops/systemd/oos-v12-training.timer`:
   pasó. Las seis fechas 11–16/11 a las 01:00 se expresan explícitamente,
   con `Persistent=false`, `Restart=no` e inhibición de sueño durante el
-  servicio. La instalación y activación del timer se realizan únicamente
-  después de fijar el permiso y repetir todas las pruebas.
+  servicio. Tras aprobar el gate, se instalaron copias idénticas en
+  `~/.config/systemd/user/` y se habilitó el timer. El `systemctl --user
+  status` mostró `active (waiting)`, siguiente disparo **11/11 01:00 La Paz**;
+  el servicio seguía `inactive` y las tres raíces ausentes. Véase
+  [`schedule.json`](../evidence/oos-v12-training-prep-20261110/schedule.json),
+  SHA-256 `ff3ea49ad431608f651745f509527c29ac9072cba3d45a7197e427e45e415d07`.
 - `uv run --frozen python scripts/launch_oos_v12_nightly.py` con gate cerrado:
   rechazó `OOS market campaign NOT AUTHORIZED` antes de crear una raíz.
 
@@ -76,6 +80,27 @@ La primera ventana real tras esta preparación es **11/11 a la 01:00**: solo
 quedan seis fechas, 48.600 s productivos como máximo y un techo de 16
 ternas, o 14/13 con gastos diarios supuestos de 500/900 s. No se inició
 entrenamiento adicional el 10/11 después de las 09:00.
+
+## Permiso y estado de la máquina al programar
+
+El código de esta preparación quedó en `1ce1382`; el permiso específico de
+entrenamiento quedó en el commit separado `cbd11de`, JSON SHA-256
+`2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2`.
+El gate acepta únicamente fuentes aceptadas de entrenamiento, roster y
+huellas congelados. A las 10:57 del 10/11 `require_campaign()` verificó
+la huella de código y el lanzador fuera de horario devolvió `outside_window`
+sin crear raíz. CA=1, batería 98 %, memoria disponible 5.536.272.384 B
+**bajo el umbral de lanzamiento** de 6.026.846.208 B, disco libre
+125.793.193.984 B, gestor `running` y `Linger=yes`. Son medidas de ese
+instante; la sesión del 11/11 repetirá todo el preflight y bloqueará Q0
+si la memoria no se recupera.
+
+GNOME tenía `sleep-inactive-ac-type='suspend'`, con 900 s de inactividad
+en CA. Se cambió a `'nothing'` para permitir pantalla apagada sin suspensión
+antes del disparo; la pantalla mantiene `idle-delay=300 s`. El servicio
+además usa `systemd-inhibit` durante su ejecución. **Restaurar `'suspend'`
+al cierre de esta campaña**. El cambio de preferencia es del usuario local,
+sin modificar drivers ni datos. No se realizó una prueba nocturna todavía.
 
 La presentación puede informar corridas y checkpoints completos, tasas y
 diagnósticos de desarrollo. Sin 36 ternas y sin evaluación final autorizada

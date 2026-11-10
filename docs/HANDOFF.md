@@ -1,4 +1,52 @@
-# Estado vigente — 10/11/2026, WF 2022-03 completado
+# Estado vigente — 10/11/2026, entrenamiento OOS v1.2 preparado
+
+Rama `codex/oos-v12-training-prep`. El cierre de WF 2022-03 permanece
+intacto; su gate se cerró prospectivamente en `ae5b591`. Santiago autorizó
+entrenar lo que quepa hasta el 16/11 sin reducir el plan de 36 ternas.
+La parte **solo de entrenamiento** quedó congelada en
+[`OOS-v1-2-training-freeze-20261110.json`](protocols/OOS-v1-2-training-freeze-20261110.json),
+SHA-256 `0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0`;
+el código y la evidencia se publican en `1ce1382`, y el permiso propio
+se fijó en `cbd11de`, JSON SHA-256
+`2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2`.
+El roster contiene 9 corridas 2021, 9 corridas 2022 y 108 principales
+en 36 ternas C0/C5/C10, sin reutilizar P3 ni las mediciones WF.
+
+**Estado operativo:** `oos-v12-training.timer` está habilitado y espera
+el **11/11/2026 01:00 La Paz**; `oos-v12-training.service` está inactivo,
+`Restart=no`, y las tres raíces OOS aún no existen. Se instalaron copias
+idénticas de los [unit files](../ops/systemd/oos-v12-training.service).
+La sesión hará suite formal, Ruff y preflight vigilado **nuevos** antes de
+leer la fuente de entrenamiento; admission antes de cada unidad y reserva
+para cierre antes de las 09:00. Una Q0 o actualización parcial invalida
+la campaña y no se reanuda. La suite local final pasó **576 pruebas** en
+573,22 s, Ruff pasó, y la verificación de fuentes de solo lectura confirmó
+3.639/4.678/7.048 inicios sin abrir CSV H1 compartidos ni conjuntos
+protegidos. [Informe y comandos](hitos/OOS-v1-2-entrenamiento-preparacion.md).
+
+La captura de recursos de las 10:57 mostró CA=1, batería 98 %, gestor
+`running`, `Linger=yes`, disco 125,79 GB y `MemAvailable=5.536.272.384 B`,
+inferior al mínimo inicial de 6.026.846.208 B. El preflight nocturno debe
+medir de nuevo; **con ese valor no arrancaría una unidad**. Con CA,
+la preferencia de suspensión automática se cambió de `suspend` a `nothing`
+para que la pantalla pueda apagarse; restaurar `suspend` al cerrar la campaña.
+La [captura](evidence/oos-v12-training-prep-20261110/schedule.json) conserva
+timer, recursos, presupuesto y huellas. No hay entrenamiento OOS nuevo
+todavía.
+
+El 10/11 cargó 1.247,845 s globales por WF 2022-03. Desde la primera
+ventana admisible (11/11) hasta el 16/11 hay como máximo seis fechas y
+48.600 s productivos. Con tasas extrapoladas de WF/P3, el techo de ternas
+principales completas sería 16 sin gasto adicional o 14/13 con supuestos
+de 500/900 s diarios de preparación. Son escenarios, no resultado.
+**Siguiente tarea:** auditar el disparo nocturno, el preflight y cada
+checkpoint/ledger; actualizar `reporte-codex.md` con tiempos reales y
+preparar tabla/gráficos solo de unidades aceptadas. Validación 2023,
+prueba final 2024–2025 y el contraste confirmatorio siguen cerrados.
+
+---
+
+# Estado anterior — 10/11/2026, WF 2022-03 completado
 
 La medición independiente del corte 2022 terminó a las 02:04:46
 `America/La_Paz`: ledger `completed`, **11/11 unidades aceptadas** (Q0 y

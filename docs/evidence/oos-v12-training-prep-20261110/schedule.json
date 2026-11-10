@@ -1,0 +1,156 @@
+{
+  "ac_idle_sleep_type": "'nothing'",
+  "approval_sha256": "2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2",
+  "budget_20261110": {
+    "active_campaigns": [],
+    "day_la_paz": "2026-11-10",
+    "global_spent": 1247.8451627921072,
+    "ok": true,
+    "remaining_before_reserve": 6852.154837207892,
+    "sources": [
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+        "status": "ready"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "5e61ed0ee1b0503ba289fa8ab54c53f1c5bcc7a351e56c5ca02eed29bbbe8024",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+        "status": "ready"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-02/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "9206afe1cf7a833d236977d0a71b8168648294e3c0a49d9827471aac5fb0e745",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 715.0962653160095,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-03/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "707a643073d21588cd7dab631bb3b7331946adf97714a576b5c8f0177dff7b1e",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p0-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-approved-v2/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p3-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.029904842376708984,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-03/sessions.jsonl",
+        "reason": "session_gap",
+        "sha256": "ff5df2d5305044c358d0968404e1a0ad4300d7faf49f2ed0fe6a49ec37b0188d",
+        "status": "closed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-01-attempts.jsonl",
+        "reason": "precheck_attempt",
+        "sha256": "1ae8a7d967cca4d07974fb3f1743dc6c6222f28a54e8fb561e6709ccbdebfb1a",
+        "status": "precheck_attempt"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-02-attempts.jsonl",
+        "reason": "precheck_attempt",
+        "sha256": "4861a7ab5c884e0d782cf6f607aabb6372956ab4aff80a1f9d0b760e649ed17c",
+        "status": "precheck_attempt"
+      },
+      {
+        "charged_today_seconds": 532.718992633721,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-03-attempts.jsonl",
+        "reason": "precheck_attempt",
+        "sha256": "965d9d36f98b210977edee4ded0c070b1b30c9f89efed88ee47446508bf5aa0b",
+        "status": "precheck_attempt"
+      }
+    ]
+  },
+  "campaign_roots_absent": {
+    "main-2018-2022": true,
+    "wf-2021": true,
+    "wf-2022": true
+  },
+  "captured_utc": "2026-11-10T14:58:58.981415+00:00",
+  "code_sha256": "411d441cf07062c4c563ba16a43e50568173b0d284dd0af1e81473725471f5d8",
+  "host": {
+    "disk_free_bytes": 125789454336,
+    "linger": "yes",
+    "memory_available_bytes": 5382287360,
+    "power": {
+      "ac": true,
+      "battery_percent": 98
+    },
+    "user_manager": "running"
+  },
+  "screen_idle_delay": "uint32 300",
+  "systemd_service": "Restart=no\nResult=success\nActiveState=inactive\nFragmentPath=/home/ichurri/.config/systemd/user/oos-v12-training.service",
+  "systemd_timer": "NextElapseUSecRealtime=Wed 2026-11-11 01:00:00 -04\nActiveState=active\nFragmentPath=/home/ichurri/.config/systemd/user/oos-v12-training.timer",
+  "unit_files_sha256": {
+    "ops/systemd/oos-v12-training.service": "f96d7998fb184d7c1b42c448ab91142b298fd1993abcf6841123209938cf28ac",
+    "ops/systemd/oos-v12-training.timer": "2988a5c57cd6be6f57e86d615e6f5b0a4e2941f012690762a38449e12f1a320e"
+  }
+}
