@@ -1,4 +1,16 @@
-# Reporte Codex — 09/11/2026, 13:06 America/La_Paz
+# Reporte Codex — 10/11/2026, 02:10 America/La_Paz
+
+- Rama `codex/oos-wf-2022-03`, base publicada `69aaf80` al iniciar. `.python-version` sigue eliminada solo localmente.
+- El timer de 01:00 desapareció tras reinicio a 01:39:29; no produjo intento ni Q0. Tras liberar memoria se repitieron guardas (8.927.092.736 B en captura inicial; 9.362.132.992 B en preflight formal; mínimo 6.026.846.208 B).
+- Una sola sesión `oos-wf-cost-2022-03-session-02.service`, `InvocationID=367e1c7feaad4a268a3f31069f35bfe7`, se inició 01:43:56 y terminó 02:04:46 con `Result=success`, `Restart=no`. No hay proceso WF activo.
+- Suite formal **549 passed en 527,07 s**, Ruff y preflight vigilado `ready`. Ledger `completed`, **11/11** unidades, `pending=null`: Q0 y diez Q/A/B+D. Los 11 checkpoints y 11 reportes coinciden con las huellas del ledger. Último checkpoint `artifacts/oos-v12-wf-cost-only-2022-03/wf-2022/checkpoint-10`, estado SHA-256 `5740732f226667d79ede579f4be96afc71705882cb68e53c1e6eb75c5fc2ea2e`.
+- Preparación 531,643 s, segunda fase 716,202 s; cargo total reconciliado **1.247,845 s**, saldo global **6.852,155 s antes de la reserva de 2.700 s**. Servicio: pared 20 min 50,189 s, pico de memoria 2,1 GiB. No sumar la duración del servicio ni el ledger otra vez al cargo de la bitácora.
+- Evidencia: `docs/hitos/OOS-v1-2-costo-2022-03-cierre.md`, `docs/evidence/oos-wf-2022-03-relaunch-20261110/` y artefactos originales en `artifacts/oos-v12-wf-cost-only-2022-03/`. No se abrió validación ni prueba final.
+- Siguiente acción: recalcular el calendario de evaluación v1.2 con el costo medido y resolver la prórroga y los cambios académicos antes de congelar el protocolo. La evaluación confirmatoria sigue cerrada; WF05, `2022-01` y `2022-02` no se reanudan.
+
+---
+
+# Reporte anterior — 09/11/2026, 13:06 America/La_Paz
 
 - Rama `codex/oos-wf-2022-03`. Base `85a08b9`; diagnóstico `6548215`, perfil `9ba423f`, primer permiso sin uso `d0f024c`, corrección `87c544c`, permiso final `3aa8aeb`. La eliminación local de `.python-version` sigue fuera de los commits.
 - `2022-02` permanece `failed`: Q0 e iteraciones 1–7 aceptadas (8/11), unidad 8 parcial por `MemAvailable=4.278.210.560 B` (<4 GiB). Último checkpoint completo `artifacts/oos-v12-wf-cost-only-2022-02/wf-2022/checkpoint-7`, estado SHA-256 `618f9b45c42cf7e0976c1b8d6caadde39fddcfe1586a1173f3a5506295c9b0e1`. Ledger, sesión y supervisor conservaron sus huellas; no se reanuda ni repite. WF05 y `2022-01` siguen cerrados.

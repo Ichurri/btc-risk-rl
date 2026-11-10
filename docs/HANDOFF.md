@@ -1,4 +1,31 @@
-# Estado vigente — 09/11/2026, preparación WF 2022-03
+# Estado vigente — 10/11/2026, WF 2022-03 completado
+
+La medición independiente del corte 2022 terminó a las 02:04:46
+`America/La_Paz`: ledger `completed`, **11/11 unidades aceptadas** (Q0 y
+diez Q/A/B+D), `pending=null`, sin servicio activo. El timer transitorio
+de las 01:00 se perdió al reiniciar Debian; tras nuevas guardas y memoria
+restaurada se lanzó una sola sesión `oos-wf-cost-2022-03-session-02.service`,
+`InvocationID=367e1c7feaad4a268a3f31069f35bfe7`, `Restart=no`.
+La suite formal pasó (549), Ruff y preflight vigilado `ready`; no se abrieron
+CSV H1 compartidos, validación ni final. Los 11 checkpoints y reportes
+coinciden con sus SHA-256 del ledger. Último checkpoint:
+`artifacts/oos-v12-wf-cost-only-2022-03/wf-2022/checkpoint-10`, estado
+SHA-256 `5740732f226667d79ede579f4be96afc71705882cb68e53c1e6eb75c5fc2ea2e`.
+El cargo reconciliado de preparación y ejecución es **1.247,845 s** el 10/11;
+quedan **6.852,155 s antes de la reserva global**. Informe y evidencia:
+[hito 2022-03](hitos/OOS-v1-2-costo-2022-03-cierre.md),
+`docs/evidence/oos-wf-2022-03-relaunch-20261110/`.
+
+**Siguiente tarea:** usar este tiempo medido para recalcular el calendario
+v1.2 y resolver la armonización académica y prórroga antes de congelar y
+abrir evaluación confirmatoria. La medición completa no autoriza por sí
+sola entrenamiento adicional ni acceso a 2023/2024–2025. WF05 y
+`2022-01`/`2022-02` siguen cerrados; la eliminación local de
+`.python-version` permanece fuera de los commits.
+
+---
+
+# Estado anterior — 09/11/2026, preparación WF 2022-03
 
 Rama `codex/oos-wf-2022-03`, base `85a08b9`. `2022-02` permanece `failed`,
 8/11 unidades aceptadas, unidad 8 parcial y checkpoint 7 íntegro; no se
