@@ -81,9 +81,10 @@ def check_service_context(*, invocation_id=None, cgroup=None, linger=None,
     if cgroup is None:
         cgroup = _cgroup(os.getpid())
     unit = cgroup.strip().split("/")[-1] if cgroup else ""
+    historical_unit = (unit.startswith(("p2r-", "p3-", "oos-wf-cost-"))
+                       and unit.endswith(".service"))
     if (not invocation_id or not cgroup or "user.slice" not in cgroup
-            or not unit.startswith(("p2r-", "p3-", "oos-wf-cost-"))
-            or not unit.endswith(".service")):
+            or not (historical_unit or unit == "oos-v12-training.service")):
         raise ValueError("P2R requires a systemd user service, not a chat/terminal child")
     if require_linger:
         if linger is None:
@@ -118,7 +119,9 @@ class P2RSharedBudget:
         try:
             external = set(self.root.glob("p*-approved-v*/ledger.jsonl"))
             external.update(self.root.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
+            external.update(self.root.glob("oos-v12-training-*/ledger.jsonl"))
             wf_ledger_spent = {}
+            oos_ledger_spent = {}
             for path in sorted(external):
                 if path.parent.name == campaign_name:
                     continue
@@ -144,6 +147,8 @@ class P2RSharedBudget:
                 self.external_seconds += spent
                 if path.parent.name.startswith("oos-v12-wf-cost-only-"):
                     wf_ledger_spent[path.parent] = spent
+                if path.parent.name.startswith("oos-v12-training-"):
+                    oos_ledger_spent[path.parent.name] = spent
                 self.sources.append(dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                                          seconds=spent, reason=reason, day=self.day))
             # A WF supervisor may have failed before creating its unit ledger.
@@ -193,6 +198,24 @@ class P2RSharedBudget:
                 self.sources.append(dict(path=str(path),
                                          sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                                          seconds=spent, reason="precheck_attempt",
+                                         day=self.day))
+            from btc_risk_rl.pilots.oos_v12_budget import PREP_NAME, inspect_oos_debit
+
+            active_oos_token = (os.environ.get("OOS_PREP_TOKEN")
+                                if campaign_name.startswith("oos-v12-training-") else None)
+            oos = inspect_oos_debit(self.root, now=now,
+                                    active_prep_token=active_oos_token)
+            if oos["blocked"]:
+                raise ValueError("OOS preparation or training remains open/failed")
+            own = oos["ledger_by_campaign"].get(campaign_name, {}).get(self.day, 0.0)
+            additional = max(0.0, oos["by_day"].get(self.day, 0.0)
+                             - own - sum(oos_ledger_spent.values()))
+            self.external_seconds += additional
+            if (self.audit / PREP_NAME).exists():
+                path = self.audit / PREP_NAME
+                self.sources.append(dict(path=str(path),
+                                         sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                                         seconds=additional, reason="oos_precheck_gap",
                                          day=self.day))
             self.record("entered")
         except BaseException:

@@ -44,6 +44,7 @@ def counts(run):
 def complete_unit(source, settings, *, root, condition, run_id, unit, previous=None,
                   permit=None, n_d=None, atomic_checkpoint=False):
     from btc_risk_rl.agents.market_source import TrainingMarket
+    from btc_risk_rl.pilots.oos_v12_training import CAMPAIGNS, OOSPermit, OOSSettings
     from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
     from btc_risk_rl.pilots.p2r_market import P2RMarketPermit, P2RMarketSettings
     from btc_risk_rl.pilots.p3_critic import P3SyntheticSettings
@@ -75,6 +76,15 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
         n_d = 64 if n_d is None else n_d
         if n_d != 64 or not atomic_checkpoint:
             raise ValueError("P3 market unit requires D=64 and atomic checkpoint")
+    elif type(source) is TrainingMarket and type(settings) is OOSSettings:
+        if type(permit) is not OOSPermit:
+            raise PermissionError("OOS market unit requires registered lease")
+        permit.validate(settings, condition, run_id)
+        if Path(root).resolve() != (CAMPAIGNS[permit.profile] / run_id).resolve():
+            raise PermissionError("OOS market unit root differs from registered campaign")
+        n_d = 64 if n_d is None else n_d
+        if n_d != 64 or not atomic_checkpoint:
+            raise ValueError("OOS market unit requires D=64 and atomic checkpoint")
     elif type(source) is TrainingMarket and type(settings) is WFCostSettings:
         campaigns = authorized_wf_permits()
         if type(permit) not in campaigns:
@@ -157,7 +167,7 @@ def complete_unit(source, settings, *, root, condition, run_id, unit, previous=N
             warnings=warnings(report),
             report=report,
         )
-        if type(settings) in {P3SyntheticSettings, P3MarketSettings, WFCostSettings}:
+        if type(settings) in {P3SyntheticSettings, P3MarketSettings, WFCostSettings, OOSSettings}:
             result["beta"] = settings.critic_beta
         write_json(root / f"unit-{unit}.json", result)
         return result

@@ -1,0 +1,16 @@
+[Unit]
+Description=Ventanas 01:00 de entrenamiento OOS v1.2 hasta la presentación
+
+[Timer]
+OnCalendar=2026-11-11 01:00:00
+OnCalendar=2026-11-12 01:00:00
+OnCalendar=2026-11-13 01:00:00
+OnCalendar=2026-11-14 01:00:00
+OnCalendar=2026-11-15 01:00:00
+OnCalendar=2026-11-16 01:00:00
+AccuracySec=1s
+Persistent=false
+Unit=oos-v12-training.service
+
+[Install]
+WantedBy=timers.target

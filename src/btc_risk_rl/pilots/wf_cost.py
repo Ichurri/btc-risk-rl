@@ -440,7 +440,8 @@ def inspect_inputs(*, campaign: Path | None = None) -> dict:
                 accepted_training_end_exclusive_ms=1672531200000)
 
 
-def inspect_budget(*, now: float | None = None, campaign: Path | None = None) -> dict:
+def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
+                   active_oos_prep_token: str | None = None) -> dict:
     """Read prior campaign debits for the current La Paz day without locking."""
     from btc_risk_rl.pilots.p2_budget import state_hash
 
@@ -451,6 +452,8 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None) ->
     artifacts = ROOT / "artifacts"
     ledgers = set(artifacts.glob("p*-approved-v*/ledger.jsonl"))
     ledgers.update(artifacts.glob("oos-v12-wf-cost-only-*/ledger.jsonl"))
+    ledgers.update(artifacts.glob("oos-v12-training-*/ledger.jsonl"))
+    oos_ledger_spent = {}
     for path in sorted(ledgers):
         if path.parent == campaign:
             continue
@@ -472,6 +475,8 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None) ->
         spent += seconds
         if path.parent.name.startswith("oos-v12-wf-cost-only-"):
             wf_ledger_spent[path.parent] = seconds
+        if path.parent.name.startswith("oos-v12-training-"):
+            oos_ledger_spent[path.parent.name] = seconds
         sources.append(dict(path=str(path), sha256=hashlib.sha256(raw).hexdigest(),
                             status=state.get("status"), charged_today_seconds=seconds,
                             reason="incomplete_debit" if incomplete else "measured"))
@@ -518,6 +523,21 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None) ->
         sources.append(dict(path=str(path), sha256=digest(path),
                             status="precheck_attempt", charged_today_seconds=seconds,
                             reason="precheck_attempt"))
+    from btc_risk_rl.pilots.oos_v12_budget import PREP_NAME, inspect_oos_debit
+
+    oos = inspect_oos_debit(artifacts, now=now,
+                            active_prep_token=active_oos_prep_token)
+    own = oos["ledger_by_campaign"].get(campaign.name, {}).get(day, 0.0)
+    additional = max(0.0, oos["by_day"].get(day, 0.0)
+                     - own - sum(oos_ledger_spent.values()))
+    spent += additional
+    if (artifacts / "shared-pilot-budget" / PREP_NAME).exists():
+        path = artifacts / "shared-pilot-budget" / PREP_NAME
+        sources.append(dict(path=str(path), sha256=digest(path),
+                            status="blocked" if oos["blocked"] else "precheck_attempt",
+                            charged_today_seconds=additional, reason="oos_precheck_gap"))
+    if oos["blocked"]:
+        active.append("oos training preparation or ledger open/failed")
     return dict(ok=not active, day_la_paz=day, global_spent=spent,
                 remaining_before_reserve=max(0.0, 10800 - spent - 2700),
                 active_campaigns=active, sources=sources)

@@ -117,6 +117,7 @@ def _verify_report_and_checkpoint(point, payload, unit, settings, condition,
             ("synthetic", "p3_synthetic_tests_only"),
             ("accepted_train_collection_only", "authorized_p2r_only"),
             ("accepted_train_collection_only", "authorized_p3_only"),
+            ("accepted_train_collection_only", "oos_v12_train_only"),
             ("accepted_train_collection_only", "wf_cost_only"),
         }:
             raise ValueError("P2R source/settings profile mismatch")
@@ -274,7 +275,9 @@ def _run_units(root, config_path, settings, *, roster, source, settings_for,
                     prior = ledger.state["runs"].get(run_id, {}).get("checkpoint")
                     if unit > 0 and not prior:
                         raise ValueError("Complete preceding checkpoint required")
-                    token = uuid.uuid4().hex if profile in {"p2r_market_units", "p3_market_units"} else None
+                    token = uuid.uuid4().hex if profile in {
+                        "p2r_market_units", "p3_market_units", "oos_v12_market_units"
+                    } else None
                     request = dict(settings=asdict(settings), config=str(config_path),
                                    root=str(work), condition=condition, run_id=run_id,
                                    unit=unit, previous=prior, token=token,

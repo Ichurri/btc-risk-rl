@@ -49,6 +49,7 @@ class SyntheticExperiment:
         diagnostic=None,
     ):
         from btc_risk_rl.agents.market_source import TrainingMarket
+        from btc_risk_rl.pilots.oos_v12_training import OOSPermit, OOSSettings
         from btc_risk_rl.pilots.p1_protocol import P1Permit, P1Settings
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
         from btc_risk_rl.pilots.p2_market import P2MarketPermit, P2MarketSettings
@@ -69,6 +70,7 @@ class SyntheticExperiment:
                 (TrainingMarket, P2MarketSettings, P2MarketPermit),
                 (TrainingMarket, P2RMarketSettings, P2RMarketPermit),
                 (TrainingMarket, P3MarketSettings, P3MarketPermit),
+                (TrainingMarket, OOSSettings, OOSPermit),
             } | {(TrainingMarket, WFCostSettings, wf_type) for wf_type in wf_types}
         ):
             raise PermissionError("P2 diagnostics require an explicit authorized profile")
@@ -81,6 +83,7 @@ class SyntheticExperiment:
                 (P2MarketSettings, P2MarketPermit),
                 (P2RMarketSettings, P2RMarketPermit),
                 (P3MarketSettings, P3MarketPermit),
+                (OOSSettings, OOSPermit),
             } | {(WFCostSettings, wf_type) for wf_type in wf_types} or (
                 condition != "C0" and not risk_enabled
             ):

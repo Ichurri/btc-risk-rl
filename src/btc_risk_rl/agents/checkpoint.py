@@ -225,6 +225,7 @@ def load_checkpoint(path, source, *, journal, permit=None):
         ):
             raise ValueError("Run journal forbids stale/failed/interrupted checkpoint")
         state = torch.load(path / "state.pt", map_location="cpu", weights_only=True)
+        from btc_risk_rl.pilots.oos_v12_training import OOSSettings
         from btc_risk_rl.pilots.p2 import Diagnostic, P2SyntheticSettings
         from btc_risk_rl.pilots.p2_market import P2MarketSettings
         from btc_risk_rl.pilots.p2r_market import P2RMarketSettings
@@ -242,7 +243,8 @@ def load_checkpoint(path, source, *, journal, permit=None):
         run = SyntheticExperiment(
             source,
             (
-                (WFCostSettings if manifest["profile"] == "wf_cost_only"
+                (OOSSettings if manifest["profile"] == "oos_v12_train_only"
+                 else WFCostSettings if manifest["profile"] == "wf_cost_only"
                  else P3MarketSettings if manifest["profile"] == "authorized_p3_only"
                  else P2RMarketSettings if manifest["profile"] == "authorized_p2r_only"
                  else P2MarketSettings if manifest["profile"] == "authorized_p2_only"
