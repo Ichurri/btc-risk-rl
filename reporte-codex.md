@@ -1,3 +1,15 @@
+# Estado en ejecución — 11/11/2026 11:30 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit `fef5d74`; enmienda `b86ea47`, código `20c3e96`, permiso v3 `8860fb9`.
+- Suite manual: 587 passed en 570,02 s; Ruff correcto. Preflight manual vigilado `ready`, CA conectada, batería 98 %, `MemAvailable=6.868.131.840 B`, 4.678 rutas `wf-2022`, sin aperturas protegidas. Evidencia: `docs/evidence/oos-v12-expanded-20261111/preflight.json`.
+- Una sesión `oos-v12-training.service` inició el 11/11 a las 11:28:14, `InvocationID=097bd51bfa774984a3913721e364f67e`, `Restart=no`. A las 11:29 estaba en la suite formal interna, sin ledger ni Q0 de `wf-2022`. No duplicar el lanzamiento.
+- Presupuesto ampliado: 50.400 s globales por fecha y 2.700 s de reserva; hoy se cargan 10.800 s previos conservadores (6.942,163 s medidos + 3.857,837 s de ajuste). Antes de esta sesión quedaban 36.900 s productivos; la bitácora cobrará su tiempo nuevo.
+- `wf-2021`: 99/99 unidades y 9/9 corridas íntegras, raíz histórica conservada; exclusividad del bloqueo original no demostrada. `wf-2022`: 0/99 al iniciar; principal: 0/1188.
+- Próxima acción: esperar suite, Ruff y preflight internos; auditar Q0, unidades, ledger y checkpoint al cierre. Si bloquea recursos, no iniciar unidad; si falla dentro de una unidad, no reanudar. Timer diario siguiente 12/11 01:00.
+- Validación 2023 y prueba final 2024–2025 siguen cerradas.
+
+---
+
 # Continuación preparada — 11/11/2026, 08:50 America/La_Paz
 
 - Rama `codex/oos-v12-training-root-fix`; código `1dcff09`, nueva
