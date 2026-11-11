@@ -212,6 +212,10 @@ con el entrenamiento activo.
 Un tercer test reprodujo que un host arbitrario podía etiquetarse como
 Binance; la ruta ahora rechaza ese endpoint antes de crear raíz. Las
 pruebas siguen inyectando respuestas inventadas, sin red.
+El lector de fuente final comprueba además la consulta temporal exacta
+registrada para **cada página** antes de abrirla. Una consulta alterada
+en un manifiesto rehuellado pasó al principio y después fue rechazada;
+`11 passed` en el grupo focal de lector y descargador, Ruff limpio.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.

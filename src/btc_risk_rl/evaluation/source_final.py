@@ -53,6 +53,13 @@ def load_final_binance_bars(source: Path, *, expected_manifest_sha256: str,
     for index, page in enumerate(manifest["pages"]):
         name = f"page-{index:04d}.json"
         path = source / name
+        expected_query = {
+            "symbol": "BTCUSDT", "interval": "4h",
+            "startTime": start - 43 * STEP_MS + len(rows) * STEP_MS,
+            "endTime": end - 1, "limit": 1000, "timeZone": "0",
+        }
+        if type(page) is not dict or page.get("query") != expected_query:
+            raise ValueError(f"Final source page query mismatch: {name}")
         if (type(page) is not dict or page.get("file") != name
                 or type(page.get("rows")) is not int
                 or not 1 <= page["rows"] <= 1000

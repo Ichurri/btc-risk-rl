@@ -27,7 +27,12 @@ def _source(tmp_path):
                  int(t + STEP_MS - 1), "0", 1, "0", "0", "0"]
                 for t in times[left:left + 1000]]
         page.write_text(json.dumps(rows))
-        pages.append({"file": page.name, "sha256": _sha(page), "rows": len(rows)})
+        pages.append({
+            "file": page.name, "sha256": _sha(page), "rows": len(rows),
+            "query": {"symbol": "BTCUSDT", "interval": "4h",
+                      "startTime": int(times[left]), "endTime": end - 1,
+                      "limit": 1000, "timeZone": "0"},
+        })
     (root / "manifest.json").write_text(json.dumps({
         "schema": "oos_v12_final_raw_v1", "status": "download_complete_not_accepted",
         "source": "Binance spot API", "symbol": "BTCUSDT", "interval": "4h",
@@ -133,6 +138,20 @@ def test_final_prefix_must_match_accepted_h1_context_exactly(tmp_path):
     assert provenance["h1_context_rows_matched"] == 43
     context.loc[20, "volume"] += 1
     with pytest.raises(ValueError, match="H1 context"):
+        load_final_binance_bars(root,
+                                expected_manifest_sha256=_sha(root / "manifest.json"),
+                                expected_h1_context=context)
+
+
+def test_final_source_rejects_rehashed_manifest_with_wrong_page_query(tmp_path):
+    from btc_risk_rl.evaluation.source_final import load_final_binance_bars
+
+    root = _source(tmp_path)
+    context = _accepted_context(root)
+    manifest = json.loads((root / "manifest.json").read_text())
+    manifest["pages"][2]["query"]["startTime"] += STEP_MS
+    (root / "manifest.json").write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="query"):
         load_final_binance_bars(root,
                                 expected_manifest_sha256=_sha(root / "manifest.json"),
                                 expected_h1_context=context)
