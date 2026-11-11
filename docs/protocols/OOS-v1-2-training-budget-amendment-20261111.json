@@ -1,0 +1,35 @@
+{
+  "schema": "oos_v12_training_budget_amendment_v1",
+  "status": "authorized_training_only",
+  "authorized_by": "Santiago, instrucciones de esta conversación del 11/11/2026",
+  "effective_day_la_paz": "2026-11-11",
+  "original_freeze_sha256": "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0",
+  "daily_global_seconds": 50400,
+  "daily_closure_reserve_seconds": 2700,
+  "active_days_max": 20,
+  "daily_cutoff": "midnight_America/La_Paz",
+  "presentation_cutoff_local": "2026-11-16T09:00:00-04:00",
+  "q0_cap_seconds": 1800,
+  "iteration_cap_seconds": 2700,
+  "preflight_seconds_max": 900,
+  "initial_memory_min_bytes": 6026846208,
+  "operating_memory_min_bytes": 4294967296,
+  "prior_day": {
+    "day_la_paz": "2026-11-11",
+    "measured_union_seconds": 6942.163071632385,
+    "conservative_extra_debit_seconds": 3857.836928367615,
+    "debit_before_new_work_seconds": 10800,
+    "reason": "La suite posterior medida (539,80 s) y las demás tareas de desarrollo no quedaron dentro de la bitácora de la primera sesión. Se carga hasta el límite previo de 10.800 s antes de cualquier nuevo trabajo; el trabajo posterior se suma íntegramente."
+  },
+  "cost_basis": {
+    "wf_2021_9_runs_measured_unit_seconds": 6401.296,
+    "wf_2021_full_session_measured_seconds": 6942.163,
+    "wf_2022_03_one_run_measured_supervised_seconds": 716.202,
+    "p3_9_runs_measured_seconds": 6542.420,
+    "remaining_runs_extrapolated": 117,
+    "remaining_training_unit_seconds_extrapolated_at_716_202": 83795.634,
+    "training_prechecks_audits_evaluation": "additional; full evaluation path and 2023/final access not yet authorized",
+    "limit_rationale": "14 h globales por fecha dejan 13 h 15 min antes de la reserva; tres fechas completas permiten como máximo 39 h 45 min de trabajo, frente a 37,44 h del presupuesto v1.2 extrapolado. No garantiza completar dentro del plazo."
+  },
+  "unchanged": "36 ternas principales, 9 corridas por corte, orden, semillas, Q0/Q/A/B+D, límites por unidad, fuentes de entrenamiento, 2023 y final cerrados"
+}
