@@ -29,3 +29,14 @@ def test_progress_rejects_missing_or_duplicate_unit_without_drawing_it():
                  pending=None)
     with pytest.raises(ValueError, match="contiguous"):
         summarize_state("wf-2022", state, expected_runs=9)
+
+
+def test_pending_q0_is_not_counted_as_accepted():
+    from btc_risk_rl.reporting.oos_progress import summarize_state
+
+    state = dict(status="running", cursor=0, units=[],
+                 pending=dict(run_id="run-00-C0-b0", unit=0))
+    summary = summarize_state("wf-2022", state, expected_runs=9)
+    assert summary["accepted_units"] == 0
+    assert summary["completed_runs"] == 0
+    assert summary["pending"] == "run-00-C0-b0/0"

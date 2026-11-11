@@ -37,8 +37,10 @@ def summarize_state(profile: str, state: dict, *, expected_runs: int) -> dict:
         raise ValueError("OOS cursor disagrees with completed units")
     pending = state.get("pending")
     if pending is not None:
-        if (state["status"] != "running" or pending.get("run_id") not in runs
-                or pending.get("unit") != len(runs[pending["run_id"]])):
+        prefix = runs.get(pending.get("run_id"), [])
+        if (state["status"] != "running"
+                or pending.get("unit") != len(prefix)
+                or (not prefix and pending.get("unit") != 0)):
             raise ValueError("OOS pending unit does not follow accepted prefix")
         pending_label = f"{pending['run_id']}/{pending['unit']}"
     else:
