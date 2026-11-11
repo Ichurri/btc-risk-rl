@@ -33,7 +33,9 @@ def load_h1_technical_bars(source: Path, *, expected_h1_manifest_sha256: str,
     """Verify accepted H1 bytes, then extract the exact 2023 plus context rows."""
     source = Path(source)
     manifest_path, bars_path = source / "manifest.json", source / "bars.csv"
-    if source.is_symlink() or manifest_path.is_symlink() or bars_path.is_symlink():
+    coverage_path = source / "coverage.json"
+    if (source.is_symlink() or manifest_path.is_symlink() or bars_path.is_symlink()
+            or coverage_path.is_symlink()):
         raise ValueError("H1 source symlink invalid")
     if _sha(manifest_path) != expected_h1_manifest_sha256:
         raise ValueError("H1 manifest hash mismatch")
@@ -48,6 +50,22 @@ def load_h1_technical_bars(source: Path, *, expected_h1_manifest_sha256: str,
             != expected_raw_manifest_sha256):
         raise ValueError("H1 manifest provenance mismatch")
     expected_bars_sha = manifest.get("files", {}).get("bars.csv")
+    expected_coverage_sha = manifest.get("files", {}).get("coverage.json")
+    if (not isinstance(expected_coverage_sha, str)
+            or _sha(coverage_path) != expected_coverage_sha):
+        raise ValueError("H1 coverage hash mismatch")
+    coverage = json.loads(coverage_path.read_text(encoding="utf-8"))
+    validation = coverage.get("validation", {}) if type(coverage) is dict else {}
+    if (type(validation) is not dict
+            or validation.get("expected_bars") != 2190
+            or validation.get("received_bars") != 2190
+            or validation.get("retained_partition_bars") != 2190
+            or validation.get("segments") != 1
+            or validation.get("usable_transitions") != 2190
+            or validation.get("exclusions") != {
+                "missing": 0, "early_close": 0, "reopening": 0
+            }):
+        raise ValueError("H1 validation coverage mismatch")
     if not isinstance(expected_bars_sha, str) or _sha(bars_path) != expected_bars_sha:
         raise ValueError("H1 bars hash mismatch")
     frame = pd.read_csv(bars_path, float_precision="round_trip")

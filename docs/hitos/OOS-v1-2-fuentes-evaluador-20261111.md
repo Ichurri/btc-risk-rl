@@ -59,6 +59,10 @@ El lector de páginas finales exige ahora que sus **43 velas de contexto de
 que le entregue el futuro ejecutor autorizado. Rechaza tiempos no enteros
 aun cuando la página y el manifiesto se vuelvan a firmar. Los tests
 construyeron ambas entradas; no abrieron datos de 2023 ni 2024–2025.
+El adaptador H1 comprueba también la huella y los recuentos de
+`coverage.json` antes de parsear `bars.csv`: 2.190 velas de validación,
+un segmento continuo y cero exclusiones. Una fixture con exclusión falsa
+y manifiesto rehuellado fue rechazada antes de abrir el CSV.
 
 En la rama aislada, `evaluation.export_builder` escribe un export nuevo a
 partir de velas suministradas por un futuro adaptador autorizado; valida
