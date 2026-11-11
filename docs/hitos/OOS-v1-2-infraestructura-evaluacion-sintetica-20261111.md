@@ -21,6 +21,7 @@ indefinida o una terna incompleta impide el contraste primario.
 | --- | --- | --- |
 | `evaluation.inference` | Acepta exactamente 36 ternas C0/C5/C10 completas, calcula diferencias pareadas, intervalo descriptivo, tamaño `d_z`, p unilateral centrada y Holm. Rechaza registros de otro piloto, partición o frontera. | Recibe métricas ya auditadas; aún falta verificar huellas de reportes, trazas y checkpoints en la ruta histórica. |
 | `evaluation.historical_path` | Exige 2.190 o 4.386 transiciones continuas, precios y características finitos, fechas completas y una sola cartera. Ejecuta la contabilidad existente y vuelve a auditar precios, costos y retornos. | Solo recibe arrays en memoria inventados por las pruebas; no tiene lector ni permiso de datos protegidos. |
+| `evaluation.features` | Reutiliza las fórmulas H1 sobre barras sintéticas con 42 velas de calentamiento y aplica el normalizador congelado, sin reajuste. La ruta pública de desarrollo conserva su bloqueo de fechas finales. | Es una transformación pura de arrays suministrados; no acredita procedencia ni autoriza abrir 2023/final. |
 | `reporting.oos_progress` | Comprueba la cadena del ledger y cuenta solo unidades/corridas completas; produce SVG local sin red. | Es una instantánea del ledger, no una auditoría de las huellas de todos los checkpoints ni una evaluación financiera. |
 
 ## Comandos realmente ejecutados en este worktree
@@ -28,9 +29,16 @@ indefinida o una terna incompleta impide el contraste primario.
 ```bash
 uv run --frozen pytest -q tests/test_oos_v12_inference.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_progress.py
 uv run --frozen ruff check src/btc_risk_rl/evaluation/historical_path.py src/btc_risk_rl/evaluation/inference.py src/btc_risk_rl/reporting/oos_progress.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_inference.py tests/test_oos_v12_progress.py
+uv run --frozen pytest -q tests/test_oos_v12_evaluation_features.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_inference.py tests/test_oos_v12_progress.py
+uv run --frozen pytest -q tests/test_features.py tests/test_oos_v12_evaluation_features.py
+uv run --frozen ruff check src/btc_risk_rl/evaluation src/btc_risk_rl/features/market.py src/btc_risk_rl/reporting/oos_progress.py tests/test_oos_v12_evaluation_features.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_inference.py tests/test_oos_v12_progress.py
 ```
 
-Resultado: **16 passed** y **All checks passed!**. `uv` instaló el entorno
+Resultados: **16 passed**, luego **20 passed** y **10 passed**; Ruff pasó en
+ambas invocaciones. Una primera ejecución de las pruebas nuevas produjo
+4 fallos esperados por módulo ausente; la siguiente produjo 1 fallo por una
+expectativa textual incorrecta de la prueba. Se corrigió esta expectativa
+sin rebajar la guarda de contigüidad. `uv` instaló el entorno
 reproducible del worktree antes de las pruebas. No se ejecutó la suite
 completa aquí mientras el entrenamiento histórico sigue activo.
 
