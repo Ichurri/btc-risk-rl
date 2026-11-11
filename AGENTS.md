@@ -17,6 +17,12 @@
   `oos-v12-training.service` comenzó a las 11:28:14, `InvocationID`
   `097bd51bfa774984a3913721e364f67e`; comprobar ledger y cierre antes
   de otra sesión. El timer diario apunta al 12/11 01:00. Conservar
+  las reglas metodológicas de evaluación congeladas en
+  `docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json`
+  (`5fcdf75`): el acceso 2023/final sigue cerrado hasta evaluador
+  histórico verificado, armonización de tesis y permisos independientes.
+  La inferencia pura se prepara aislada en otra rama del mismo repositorio,
+  sin cambiar la huella de código del servicio activo. Conservar
   2021 íntegro solo como diagnóstico descriptivo; el bloqueo original no
   demostró exclusividad. Siguiente perfil `wf-2022` independiente. Antes de
   Q0 exigir suite formal, Ruff, preflight vigilado, recursos y admisión.
