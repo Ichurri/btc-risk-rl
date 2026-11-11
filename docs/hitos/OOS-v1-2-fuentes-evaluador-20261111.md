@@ -216,6 +216,17 @@ El lector de fuente final comprueba además la consulta temporal exacta
 registrada para **cada página** antes de abrirla. Una consulta alterada
 en un manifiesto rehuellado pasó al principio y después fue rechazada;
 `11 passed` en el grupo focal de lector y descargador, Ruff limpio.
+Un cierre técnico **interno** exige 36 bloques pareados, 108 unidades
+completas, identidad con el roster de entrenamiento, reauditoría de todos
+los reportes y Sortino definido en cada política. Su JSON registra solo
+la decisión de integridad y huellas, sin usar el signo o tamaño de Sortino
+para escoger políticas. Las pruebas de estructura y escritura usaron un
+ledger inventado; en la prueba de 108 entradas se sustituyó únicamente la
+reauditoría costosa de trazas por una sonda, ya que la reauditoría real se
+prueba en `test_oos_v12_evaluation_runner.py`. Por ello, **no es un cierre
+real de 2023**. El comando focal de ambos archivos terminó `6 passed` y
+Ruff pasó; el test aislado del cierre terminó `3 passed`. La ruta pública,
+supervisión y permisos históricos siguen pendientes.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.

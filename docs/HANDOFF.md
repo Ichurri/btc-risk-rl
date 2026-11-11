@@ -1,5 +1,17 @@
 # Estado vigente del worktree aislado — 11/11/2026, evaluación aún cerrada
 
+El cierre técnico interno de 2023 ya tiene una puerta de **108 políticas
+completas**, 36 bloques pareados, reauditoría y Sortino definido, con un
+archivo de cierre que no publica resultados financieros. Se verificó la
+estructura con un ledger sintético, no con 2023. El lector final valida
+ahora también la consulta temporal de cada página antes de abrirla. Faltan
+supervisor histórico, admisión de presupuesto, permisos separados activos
+y comprobación de fuentes reales. La sesión de entrenamiento principal
+continúa en el otro worktree; no fusionar este código mientras siga activa.
+Ver [informe de preparación](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
+
+---
+
 El trabajador interno de evaluación ya conecta checkpoint sintético,
 exportación inventada, traza continua y bitácora durable; vuelve a auditar
 reportes antes de aceptarlos y falla ante unidades huérfanas. La batería
