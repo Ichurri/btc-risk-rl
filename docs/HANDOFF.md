@@ -1,4 +1,22 @@
-# Estado vigente — 11/11/2026, presupuesto OOS ampliado prospectivamente
+# Estado vigente del worktree aislado — 11/11/2026, evaluación aún cerrada
+
+La rama `codex/oos-v12-evaluation-infrastructure` prepara el evaluador sin
+alterar el código fijado de la sesión histórica que corre en
+`codex/oos-v12-expanded-budget`. El [inventario permitido](hitos/OOS-v1-2-fuentes-evaluador-20261111.md)
+registra que H1 tiene 2.190/2.190 velas de 2023 sin exclusiones y que no se
+identificó archivo local final 2024–2025; no se leyeron esas filas. En
+`00863ae` se añadieron un exportador de filas suministradas, una unidad
+continua con checkpoint K10 y doble auditoría de la traza, y la tabla del
+contraste congelado. **43 pruebas focales sintéticas pasaron** y Ruff pasó.
+No existe comando histórico activo ni permiso 2023/final. Faltan adquisición
+y auditoría de fuentes, supervisor y cierre del roster de 108, permisos
+separados y armonización del texto académico. El entrenamiento principal
+continúa en la otra rama; no fusionar código en ella mientras su permiso
+fija la huella anterior. [Texto metodológico propuesto](proposals/OOS-v1-2-armonizacion-tesis-20261111.md).
+
+---
+
+# Estado anterior — 11/11/2026, presupuesto OOS ampliado prospectivamente
 
 Santiago autorizó sustituir la ventana 01:00–09:00 por ejecución a cualquier hora y ampliar el cómputo en función de tiempos medidos, sin alterar roster ni topes por unidad. La [enmienda de presupuesto](protocols/OOS-v1-2-training-budget-amendment-20261111.json) se fijó **antes de aplicarse** en `b86ea47`: 50.400 s globales por fecha `America/La_Paz`, reserva de cierre 2.700 s, máximo 20 días, corte de presentación 16/11 a las 09:00. El gasto original del 11/11 de 6.942,163 s permanece medido; se añaden 3.857,837 s de débito conservador por verificaciones/trabajo posterior no cronometrado íntegramente. El trabajo nuevo se cobra encima. [Fundamento y adjudicación 2021](hitos/OOS-v1-2-presupuesto-ampliado-20261111.md).
 
