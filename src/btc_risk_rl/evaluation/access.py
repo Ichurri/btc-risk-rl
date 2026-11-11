@@ -10,6 +10,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from btc_risk_rl.evaluation.code_identity import execution_code_sha256
+
 METHOD_SHA256 = "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f2"
 TRAINING_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
 METHOD_PATH = Path("docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json")
@@ -58,7 +60,7 @@ def require_evaluation_access(partition: str, repo_root: Path, *,
                               training_ledger_sha256: str,
                               export_manifest_sha256: str,
                               source_manifest_sha256: str,
-                              scaler_sha256: str, code_sha256: str,
+                              scaler_sha256: str,
                               technical_closure_path: Path | None = None) -> dict:
     """Reject a partition unless its independent approval pins every input."""
     approval = read_pinned_approval(partition, repo_root)
@@ -70,7 +72,7 @@ def require_evaluation_access(partition: str, repo_root: Path, *,
         "export_manifest_sha256": export_manifest_sha256,
         "source_manifest_sha256": source_manifest_sha256,
         "scaler_sha256": scaler_sha256,
-        "code_sha256": code_sha256,
+        "code_sha256": execution_code_sha256(repo_root),
     }
     if any(approval.get(key) != value for key, value in required.items()):
         raise PermissionError("OOS evaluation approval identity mismatch")

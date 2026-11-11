@@ -50,7 +50,9 @@ activo en esta entrega.
 paquete, dependencias/configuración y futuras entradas de evaluación. Solo
 normaliza las dos declaraciones de activación y registro del permiso; un
 cambio de algoritmo altera la huella. Esta función debe emplearse en el
-futuro ejecutor antes de comparar la aprobación, y habrá que fijar su
+futuro ejecutor antes de comparar la aprobación. La puerta de acceso ya la
+calcula directamente, sin aceptar una cadena de huella suministrada por el
+llamador. Habrá que fijar su
 valor **tras** integrar el código definitivo. No se interpreta la huella
 de una prueba aislada como permiso de acceso.
 
@@ -162,6 +164,10 @@ El test de identidad de código falló inicialmente por módulo ausente;
 después terminó `2 passed` y Ruff pasó. Verificó que cambiar un módulo
 altera la huella, que las dos declaraciones de permiso se normalizan y
 que un archivo ejecutable obligatorio ausente se rechaza.
+Tras enlazar ese cálculo con la puerta, la batería focal completa de
+evaluación terminó **62 passed en 6,54 s** y Ruff volvió a pasar. El test
+nuevo falló primero porque la función exigía una huella aportada por el
+llamador y pasó cuando la calculó internamente.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.

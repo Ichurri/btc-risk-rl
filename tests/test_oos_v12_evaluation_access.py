@@ -33,8 +33,7 @@ def test_both_partition_gates_are_closed_by_default(tmp_path):
                                       training_ledger_sha256="a" * 64,
                                       export_manifest_sha256="b" * 64,
                                       source_manifest_sha256="c" * 64,
-                                      scaler_sha256="d" * 64,
-                                      code_sha256="e" * 64)
+                                      scaler_sha256="d" * 64)
     assert list(tmp_path.iterdir()) == []
 
 
@@ -42,6 +41,7 @@ def test_synthetic_technical_permission_binds_all_inputs(tmp_path, monkeypatch):
     from btc_risk_rl.evaluation import access
 
     _synthetic_freezes(tmp_path, monkeypatch, access)
+    monkeypatch.setattr(access, "execution_code_sha256", lambda _root: "e" * 64)
     approval = {
         "status": "approved", "partition": "technical_2023",
         "method_freeze_sha256": access.METHOD_SHA256,
@@ -61,7 +61,7 @@ def test_synthetic_technical_permission_binds_all_inputs(tmp_path, monkeypatch):
     result = access.require_evaluation_access(
         "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
         export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
-        scaler_sha256="d" * 64, code_sha256="e" * 64,
+        scaler_sha256="d" * 64,
     )
     assert result == approval
     method = tmp_path / access.METHOD_PATH
@@ -70,21 +70,21 @@ def test_synthetic_technical_permission_binds_all_inputs(tmp_path, monkeypatch):
         access.require_evaluation_access(
             "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
             export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
-            scaler_sha256="d" * 64, code_sha256="e" * 64,
+            scaler_sha256="d" * 64,
         )
     method.write_text("synthetic METHOD_PATH")
     with pytest.raises(PermissionError, match="identity"):
         access.require_evaluation_access(
             "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
             export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
-            scaler_sha256="d" * 64, code_sha256="f" * 64,
+            scaler_sha256="f" * 64,
         )
     path.write_text(json.dumps({**approval, "code_sha256": "f" * 64}))
     with pytest.raises(PermissionError, match="approval hash"):
         access.require_evaluation_access(
             "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
             export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
-            scaler_sha256="d" * 64, code_sha256="e" * 64,
+            scaler_sha256="d" * 64,
         )
 
 
@@ -92,6 +92,7 @@ def test_synthetic_final_requires_pinned_passed_technical_closure(tmp_path, monk
     from btc_risk_rl.evaluation import access
 
     _synthetic_freezes(tmp_path, monkeypatch, access)
+    monkeypatch.setattr(access, "execution_code_sha256", lambda _root: "e" * 64)
     closure_path = tmp_path / "technical-closure.json"
     closure_path.write_text(json.dumps({"status": "passed", "complete_policies": 108,
                                         "partition": "technical_2023"}))
@@ -114,7 +115,7 @@ def test_synthetic_final_requires_pinned_passed_technical_closure(tmp_path, monk
     assert access.require_evaluation_access(
         "final_2024_2025", tmp_path, training_ledger_sha256="a" * 64,
         export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
-        scaler_sha256="d" * 64, code_sha256="e" * 64,
+        scaler_sha256="d" * 64,
         technical_closure_path=closure_path,
     ) == approval
     closure_path.write_text(json.dumps({"status": "failed", "complete_policies": 108,
@@ -123,6 +124,41 @@ def test_synthetic_final_requires_pinned_passed_technical_closure(tmp_path, monk
         access.require_evaluation_access(
             "final_2024_2025", tmp_path, training_ledger_sha256="a" * 64,
             export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
-            scaler_sha256="d" * 64, code_sha256="e" * 64,
+            scaler_sha256="d" * 64,
             technical_closure_path=closure_path,
+        )
+
+
+def test_access_gate_computes_code_identity_instead_of_trusting_caller(tmp_path, monkeypatch):
+    from btc_risk_rl.evaluation import access
+
+    _synthetic_freezes(tmp_path, monkeypatch, access)
+    approval = {
+        "status": "approved", "partition": "technical_2023",
+        "method_freeze_sha256": access.METHOD_SHA256,
+        "training_freeze_sha256": access.TRAINING_SHA256,
+        "training_ledger_sha256": "a" * 64,
+        "export_manifest_sha256": "b" * 64,
+        "source_manifest_sha256": "c" * 64,
+        "scaler_sha256": "d" * 64,
+        "code_sha256": "e" * 64,
+    }
+    path = tmp_path / "approval.json"
+    path.write_text(json.dumps(approval, sort_keys=True))
+    monkeypatch.setitem(access.ENABLED, "technical_2023", True)
+    monkeypatch.setitem(access.APPROVAL_PATHS, "technical_2023", path)
+    monkeypatch.setitem(access.REGISTRATION_SHA256, "technical_2023", _sha(path))
+    monkeypatch.setattr(access, "execution_code_sha256", lambda _root: "e" * 64,
+                        raising=False)
+    assert access.require_evaluation_access(
+        "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
+        export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
+        scaler_sha256="d" * 64,
+    ) == approval
+    monkeypatch.setattr(access, "execution_code_sha256", lambda _root: "f" * 64)
+    with pytest.raises(PermissionError, match="identity"):
+        access.require_evaluation_access(
+            "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
+            export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
+            scaler_sha256="d" * 64,
         )
