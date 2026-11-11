@@ -150,3 +150,42 @@ def test_full_synthetic_final_export_uses_continuous_accounting(tmp_path, config
     assert result["metrics"]["periods"] == 4386
     assert result["trace"][0]["observation_ms"] == path.times[0]
     assert result["trace"][-1]["execution_ms"] == path.times[-1]
+
+
+def test_synthetic_export_and_frozen_actor_checkpoint_integrate(tmp_path, config):
+    import torch
+
+    from btc_risk_rl.agents.models import Actor, fingerprint
+    from btc_risk_rl.evaluation.checkpoint_read import load_oos_final_actor
+    from btc_risk_rl.evaluation.export_reader import load_evaluation_export
+    from btc_risk_rl.evaluation.historical_path import evaluate_in_memory
+
+    root, _ = _export(tmp_path)
+    checkpoint = tmp_path / "run-00-C0-b0/checkpoint-10"
+    checkpoint.mkdir(parents=True)
+    actor = Actor(hidden=8, seed=31)
+    torch.save({"actor": actor.state_dict(), "diagnostic": {"synthetic": True},
+                "attrs": {"next_iteration": 10, "generation": 10,
+                          "boundary": "after_dual_and_D", "actor_updates": 80,
+                          "critic_updates": 160}}, checkpoint / "state.pt")
+    settings = {"seed": 101, "critic_beta": 0, "iterations": 10, "hidden": 8}
+    (checkpoint / "manifest.json").write_text(json.dumps({
+        "schema_version": "p2_complete_boundary_v1", "profile": "oos_v12_train_only",
+        "condition": "C0", "run_id": "run-00-C0-b0", "risk_enabled": False,
+        "boundary": "after_dual_and_D", "state_sha256": _sha(checkpoint / "state.pt"),
+        "settings": settings, "provenance": {"data": {"source": "invented"}},
+    }))
+    loaded, checkpoint_meta = load_oos_final_actor(
+        checkpoint, expected_state_sha256=_sha(checkpoint / "state.pt"),
+        expected_run_id="run-00-C0-b0", expected_seed=101, expected_condition="C0",
+        expected_settings=settings, expected_source_identity={"source": "invented"},
+        expected_actor_updates=80, expected_critic_updates=160,
+    )
+    path, _ = load_evaluation_export(
+        root, partition="technical_2023", expected_manifest_sha256=_sha(root / "manifest.json"),
+        scaler=_scaler(), expected_scaler_sha256="a" * 64,
+    )
+    result = evaluate_in_memory(path, loaded, config)
+    assert result["metrics"]["periods"] == 2190
+    assert all(0 < row["action"] < 1 and row["clock"] == 1 for row in result["trace"])
+    assert fingerprint(loaded) == checkpoint_meta["actor_fingerprint"]
