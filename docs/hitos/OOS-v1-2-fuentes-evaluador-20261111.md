@@ -198,7 +198,8 @@ módulo y función ausentes, y luego pasaron con la ruta implementada.
 
 Se preparó un descargador **interno, aún no habilitado** para la fuente
 final: cinco páginas como máximo para 4.429 velas requeridas, consultas
-UTC fijadas, archivos nuevos y huellas por página. Una falta temporal
+UTC fijadas al endpoint HTTPS de Binance usado por el proyecto, archivos
+nuevos y huellas por página. Una falta temporal
 conserva el manifiesto `failed` y las páginas ya recibidas; la raíz no
 se reutiliza. Dos pruebas con transporte inventado comprobaron cobertura
 exacta y fallo por un hueco. No hubo llamada HTTP ni acceso a 2024–2025.
@@ -208,6 +209,9 @@ La batería focal acumulada quedó en **71 passed en 8,64 s** y Ruff pasó.
 El test de páginas falló primero por módulo ausente y luego pasó con el
 descargador. La suite completa del repositorio aún no se corre en paralelo
 con el entrenamiento activo.
+Un tercer test reprodujo que un host arbitrario podía etiquetarse como
+Binance; la ruta ahora rechaza ese endpoint antes de crear raíz. Las
+pruebas siguen inyectando respuestas inventadas, sin red.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.

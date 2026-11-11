@@ -38,7 +38,8 @@ def fetch_final_pages(destination: Path, *, endpoint: str,
     """Write an immutable, paged candidate; reject missing or altered bars."""
     destination = Path(destination)
     parsed = urlparse(endpoint)
-    if parsed.scheme != "https" or parsed.path != "/api/v3/klines":
+    if (parsed.scheme != "https" or parsed.netloc != "api.binance.com"
+            or parsed.path != "/api/v3/klines" or parsed.query or parsed.fragment):
         raise ValueError("Final source endpoint invalid")
     start, end, steps = PERIODS["final_2024_2025"]
     cursor = start - 43 * STEP_MS

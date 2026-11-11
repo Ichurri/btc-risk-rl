@@ -51,7 +51,7 @@ def test_invented_pages_are_saved_once_and_match_h1_context(tmp_path):
         return json.dumps(rows[index:index + 1000]).encode()
 
     root = tmp_path / "invented-final"
-    result = fetch_final_pages(root, endpoint="https://example.invalid/api/v3/klines",
+    result = fetch_final_pages(root, endpoint="https://api.binance.com/api/v3/klines",
                                transport=transport)
     assert result["status"] == "download_complete_not_accepted"
     assert len(result["pages"]) == 5
@@ -64,7 +64,7 @@ def test_invented_pages_are_saved_once_and_match_h1_context(tmp_path):
     assert len(bars) == 4429
     assert provenance["h1_context_rows_matched"] == 43
     with pytest.raises(FileExistsError):
-        fetch_final_pages(root, endpoint="https://example.invalid/api/v3/klines",
+        fetch_final_pages(root, endpoint="https://api.binance.com/api/v3/klines",
                           transport=transport)
 
 
@@ -83,9 +83,19 @@ def test_invented_gap_fails_and_preserves_partial_manifest(tmp_path):
 
     root = tmp_path / "invented-final"
     with pytest.raises(ValueError, match="contiguous"):
-        fetch_final_pages(root, endpoint="https://example.invalid/api/v3/klines",
+        fetch_final_pages(root, endpoint="https://api.binance.com/api/v3/klines",
                           transport=transport)
     manifest = json.loads((root / "manifest.json").read_text())
     assert manifest["status"] == "failed"
     assert (root / "page-0000.json").exists()
     assert (root / "page-0001.json").exists()
+
+
+def test_final_fetch_rejects_unpinned_hostname_before_creating_root(tmp_path):
+    from btc_risk_rl.evaluation.final_fetch import fetch_final_pages
+
+    root = tmp_path / "invented-final"
+    with pytest.raises(ValueError, match="endpoint"):
+        fetch_final_pages(root, endpoint="https://example.invalid/api/v3/klines",
+                          transport=lambda _url: b"[]")
+    assert not root.exists()
