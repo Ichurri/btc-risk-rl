@@ -168,6 +168,20 @@ Tras enlazar ese cálculo con la puerta, la batería focal completa de
 evaluación terminó **62 passed en 6,54 s** y Ruff volvió a pasar. El test
 nuevo falló primero porque la función exigía una huella aportada por el
 llamador y pasó cuando la calculó internamente.
+
+La bitácora interna `evaluation.ledger` añade estados encadenados y
+durables por política: `ready → running → ready/completed`, con reingreso
+solo tras una unidad aceptada. Un proceso nuevo continuó desde la primera
+unidad sintética; una interrupción con unidad pendiente dejó `failed` y
+rechazó reintento. Se rechazaron roster, token y cadena alterados. La
+bitácora **no ejecuta** una política ni comprueba por sí sola los archivos
+de reporte; el futuro supervisor debe verificar esas huellas antes de
+`accept`, conservar fallos y aplicar presupuesto. Los tests usaron dos
+identidades inventadas y ninguna observación de mercado.
+Con esta bitácora, la batería focal terminó **65 passed en 7,84 s** y Ruff
+pasó. El primer intento de sus tres pruebas falló por módulo ausente; el
+reingreso de la segunda política se repitió luego en un proceso Python
+distinto.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
