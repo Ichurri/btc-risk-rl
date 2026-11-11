@@ -1,3 +1,13 @@
+# Cierre del corte auxiliar wf-2022 — 11/11/2026 13:33 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit base `89f3d38`. Una sola sesión `oos-v12-training.service` (`InvocationID=097bd51bfa774984a3913721e364f67e`) sigue activa; terminó `wf-2022` y entró en la suite formal del perfil principal. No iniciar otra sesión.
+- `wf-2022`: ledger `completed`, cursor 9, `pending=null`, **99/99 unidades, 9/9 corridas y 3/3 ternas C0/C5/C10**. La auditoría comprobó 302 estados encadenados y las huellas de los 99 checkpoints, 99 reportes y 99 solicitudes. Ledger SHA-256 `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`. Último checkpoint K10 `artifacts/oos-v12-training-wf-2022-01/run-08-C5-b0/checkpoint-10/state.pt`, SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`.
+- Tiempo **medido de unidades**: 6.832,147 s; cargo propio del ledger para el corte: 6.846,916 s. La diferencia comprende gastos supervisados fuera de los tiempos de unidades; no sumar ambos. La primera sesión OOS de hoy conserva su débito anterior de 10.800 s, compuesto de 6.942,163 s medidos y 3.857,837 s conservadores.
+- Instantánea de presupuesto a las 13:33 con el token activo del nuevo preflight: 18.297,464 s de cargo global y 29.402,536 s antes de la reserva de 2.700 s. La sesión principal está haciendo suite; esas cifras seguirán aumentando y no son saldo de cierre. Evidencia: `docs/evidence/oos-v12-wf2022-closure-20261111/audit.json`, SHA-256 `ad948736bc852b146c017614af988e5cd58c7d343438828dac671a14e75fee39`.
+- Entrenamiento principal: todavía sin ledger ni unidad aceptada a esta hora. Próxima acción: verificar que suite, Ruff, preflight y admisión pasen; dejar avanzar una única sesión, auditar la primera terna principal y actualizar la proyección de tiempos. La evaluación histórica 2023/final sigue cerrada.
+
+---
+
 # Avance en ejecución — 11/11/2026 12:15 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, commit base `496834c`; `.python-version` sigue eliminado solo localmente. Una sola sesión `oos-v12-training.service`, `InvocationID=097bd51bfa774984a3913721e364f67e`, permanece activa. No iniciar otra.
