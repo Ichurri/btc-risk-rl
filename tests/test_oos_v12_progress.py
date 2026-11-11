@@ -40,3 +40,21 @@ def test_pending_q0_is_not_counted_as_accepted():
     assert summary["accepted_units"] == 0
     assert summary["completed_runs"] == 0
     assert summary["pending"] == "run-00-C0-b0/0"
+
+
+def test_read_verified_ledger_rejects_bad_chain_and_keeps_pending_separate(tmp_path):
+    import json
+
+    from btc_risk_rl.pilots.p2_budget import state_hash
+    from btc_risk_rl.reporting.oos_progress import read_verified_ledger
+
+    path = tmp_path / "ledger.jsonl"
+    state = dict(status="running", cursor=0, units=[],
+                 pending=dict(run_id="run-00-C0-b0", unit=0), previous_hash=None)
+    state["state_hash"] = state_hash(state)
+    path.write_text(json.dumps(state) + "\n")
+    assert read_verified_ledger(path)["pending"]["unit"] == 0
+    bad = dict(state, cursor=1)
+    path.write_text(json.dumps(bad) + "\n")
+    with pytest.raises(ValueError, match="chain"):
+        read_verified_ledger(path)

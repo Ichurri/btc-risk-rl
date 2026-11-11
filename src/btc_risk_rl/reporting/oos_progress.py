@@ -2,7 +2,25 @@
 
 from __future__ import annotations
 
+import json
 import math
+from pathlib import Path
+
+from btc_risk_rl.pilots.p2_budget import state_hash
+
+
+def read_verified_ledger(path: Path) -> dict:
+    """Read an append-only snapshot and verify every complete chain entry."""
+    previous = None
+    state = None
+    for line in Path(path).read_text().splitlines():
+        state = json.loads(line)
+        if state.get("previous_hash") != previous or state.get("state_hash") != state_hash(state):
+            raise ValueError("OOS ledger chain corrupt")
+        previous = state["state_hash"]
+    if state is None:
+        raise ValueError("OOS ledger empty")
+    return state
 
 
 def summarize_state(profile: str, state: dict, *, expected_runs: int) -> dict:
