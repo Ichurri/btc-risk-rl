@@ -4,6 +4,7 @@ import hashlib
 import json
 
 import numpy as np
+import pandas as pd
 import pytest
 
 from btc_risk_rl.config import STEP_MS
@@ -36,12 +37,26 @@ def _source(tmp_path):
     return root
 
 
+def _accepted_context(root):
+    rows = json.loads((root / "page-0000.json").read_text())[:43]
+    return pd.DataFrame({
+        "open_time_ms": [row[0] for row in rows],
+        "close_time_ms": [row[6] for row in rows],
+        "open": [float(row[1]) for row in rows],
+        "high": [float(row[2]) for row in rows],
+        "low": [float(row[3]) for row in rows],
+        "close": [float(row[4]) for row in rows],
+        "volume": [float(row[5]) for row in rows],
+    })
+
+
 def test_invented_final_pages_extract_exact_contiguous_bars(tmp_path):
     from btc_risk_rl.evaluation.source_final import load_final_binance_bars
 
     root = _source(tmp_path)
     bars, provenance = load_final_binance_bars(
         root, expected_manifest_sha256=_sha(root / "manifest.json"),
+        expected_h1_context=_accepted_context(root),
     )
     assert len(bars) == 4429
     assert list(bars) == ["open_time_ms", "close_time_ms", "open", "high",
@@ -64,7 +79,8 @@ def test_final_manifest_pin_rejects_before_page_open(tmp_path, monkeypatch):
 
     monkeypatch.setattr(type(root), "read_bytes", watched)
     with pytest.raises(ValueError, match="manifest hash"):
-        load_final_binance_bars(root, expected_manifest_sha256="a" * 64)
+        load_final_binance_bars(root, expected_manifest_sha256="a" * 64,
+                                expected_h1_context=_accepted_context(root))
     assert opened == []
 
 
@@ -82,7 +98,8 @@ def test_final_missing_candle_rejected_even_with_rehashed_page(tmp_path):
     (root / "manifest.json").write_text(json.dumps(manifest))
     with pytest.raises(ValueError, match="contiguous"):
         load_final_binance_bars(root,
-                                expected_manifest_sha256=_sha(root / "manifest.json"))
+                                expected_manifest_sha256=_sha(root / "manifest.json"),
+                                expected_h1_context=_accepted_context(root))
 
 
 @pytest.mark.parametrize("bad_time", [1703448000000.5, "1703448000000.5", True])
@@ -99,4 +116,23 @@ def test_final_rejects_noninteger_timestamp_even_if_page_is_rehashed(tmp_path, b
     (root / "manifest.json").write_text(json.dumps(manifest))
     with pytest.raises(ValueError, match="numeric row"):
         load_final_binance_bars(root,
-                                expected_manifest_sha256=_sha(root / "manifest.json"))
+                                expected_manifest_sha256=_sha(root / "manifest.json"),
+                                expected_h1_context=_accepted_context(root))
+
+
+def test_final_prefix_must_match_accepted_h1_context_exactly(tmp_path):
+    from btc_risk_rl.evaluation.source_final import load_final_binance_bars
+
+    root = _source(tmp_path)
+    context = _accepted_context(root)
+    bars, provenance = load_final_binance_bars(
+        root, expected_manifest_sha256=_sha(root / "manifest.json"),
+        expected_h1_context=context,
+    )
+    assert len(bars) == 4429
+    assert provenance["h1_context_rows_matched"] == 43
+    context.loc[20, "volume"] += 1
+    with pytest.raises(ValueError, match="H1 context"):
+        load_final_binance_bars(root,
+                                expected_manifest_sha256=_sha(root / "manifest.json"),
+                                expected_h1_context=context)

@@ -26,13 +26,8 @@ def _sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def require_evaluation_access(partition: str, repo_root: Path, *,
-                              training_ledger_sha256: str,
-                              export_manifest_sha256: str,
-                              source_manifest_sha256: str,
-                              scaler_sha256: str, code_sha256: str,
-                              technical_closure_path: Path | None = None) -> dict:
-    """Reject a partition unless its independent approval pins every input."""
+def read_pinned_approval(partition: str, repo_root: Path) -> dict:
+    """Check the closed gate and immutable approval before protected reads."""
     if partition not in ENABLED or not ENABLED[partition]:
         raise PermissionError("OOS evaluation partition disabled")
     for relative_path, expected_sha in (
@@ -51,6 +46,22 @@ def require_evaluation_access(partition: str, repo_root: Path, *,
             or _sha(approval_path) != expected_approval_sha):
         raise PermissionError("OOS evaluation approval hash mismatch")
     approval = json.loads(approval_path.read_text(encoding="utf-8"))
+    if (type(approval) is not dict or approval.get("status") != "approved"
+            or approval.get("partition") != partition
+            or approval.get("method_freeze_sha256") != METHOD_SHA256
+            or approval.get("training_freeze_sha256") != TRAINING_SHA256):
+        raise PermissionError("OOS evaluation approval identity mismatch")
+    return approval
+
+
+def require_evaluation_access(partition: str, repo_root: Path, *,
+                              training_ledger_sha256: str,
+                              export_manifest_sha256: str,
+                              source_manifest_sha256: str,
+                              scaler_sha256: str, code_sha256: str,
+                              technical_closure_path: Path | None = None) -> dict:
+    """Reject a partition unless its independent approval pins every input."""
+    approval = read_pinned_approval(partition, repo_root)
     required = {
         "status": "approved", "partition": partition,
         "method_freeze_sha256": METHOD_SHA256,
@@ -61,8 +72,7 @@ def require_evaluation_access(partition: str, repo_root: Path, *,
         "scaler_sha256": scaler_sha256,
         "code_sha256": code_sha256,
     }
-    if type(approval) is not dict or any(approval.get(key) != value
-                                          for key, value in required.items()):
+    if any(approval.get(key) != value for key, value in required.items()):
         raise PermissionError("OOS evaluation approval identity mismatch")
     if partition == "final_2024_2025":
         if (technical_closure_path is None or technical_closure_path.is_symlink()

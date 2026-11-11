@@ -1,5 +1,17 @@
 # Estado vigente del worktree aislado — 11/11/2026, evaluación aún cerrada
 
+Se incorporaron puertas **independientes y apagadas** para 2023 y
+2024–2025: exigen aprobación con huella fijada, protocolo real íntegro y
+proveniencia concordante; el conjunto final exige además cierre técnico de
+108 políticas. La fuente final deberá cotejar exactamente 43 velas de
+contexto de 2023 contra H1 y rechaza tiempos fraccionarios. La batería
+focal de evaluación quedó en **58 passed** y Ruff pasó; todas las fuentes
+de esas pruebas son inventadas. Véase
+[informe de fuentes y límites](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
+El siguiente trabajo es conectar estas puertas con un ejecutor supervisado,
+fijar las fuentes y el código antes de cada acceso y auditar el cierre de
+las 108 corridas. Ningún permiso histórico de evaluación está activo.
+
 La rama `codex/oos-v12-evaluation-infrastructure` prepara el evaluador sin
 alterar el código fijado de la sesión histórica que corre en
 `codex/oos-v12-expanded-budget`. El [inventario permitido](hitos/OOS-v1-2-fuentes-evaluador-20261111.md)

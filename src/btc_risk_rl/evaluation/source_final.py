@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 
 from btc_risk_rl.config import STEP_MS
+from btc_risk_rl.evaluation.export_reader import COLUMNS
 from btc_risk_rl.evaluation.historical_path import PERIODS
 
 
@@ -25,9 +26,10 @@ def _sha(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_final_binance_bars(source: Path, *, expected_manifest_sha256: str
+def load_final_binance_bars(source: Path, *, expected_manifest_sha256: str,
+                            expected_h1_context: pd.DataFrame
                             ) -> tuple[pd.DataFrame, dict]:
-    """Verify page hashes and exact 2024–2025 coverage including context."""
+    """Verify pages and match 2023 context against separately accepted H1."""
     source = Path(source)
     manifest_path = source / "manifest.json"
     if source.is_symlink() or manifest_path.is_symlink():
@@ -87,8 +89,14 @@ def load_final_binance_bars(source: Path, *, expected_manifest_sha256: str
         "open": prices[:, 0], "high": prices[:, 1], "low": prices[:, 2],
         "close": prices[:, 3], "volume": prices[:, 4],
     })
+    if (type(expected_h1_context) is not pd.DataFrame
+            or tuple(expected_h1_context.columns) != COLUMNS
+            or expected_h1_context.shape != (43, len(COLUMNS))
+            or not bars.iloc[:43].reset_index(drop=True).equals(
+                expected_h1_context.reset_index(drop=True))):
+        raise ValueError("Final source H1 context mismatch")
     return bars, {
         "source_manifest_sha256": expected_manifest_sha256,
         "partition": "final_2024_2025", "page_count": len(manifest["pages"]),
-        "bar_count": len(rows),
+        "bar_count": len(rows), "h1_context_rows_matched": 43,
     }

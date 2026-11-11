@@ -20,9 +20,14 @@ def _synthetic_freezes(tmp_path, monkeypatch, access):
 
 
 def test_both_partition_gates_are_closed_by_default(tmp_path):
-    from btc_risk_rl.evaluation.access import require_evaluation_access
+    from btc_risk_rl.evaluation.access import (
+        read_pinned_approval,
+        require_evaluation_access,
+    )
 
     for partition in ("technical_2023", "final_2024_2025"):
+        with pytest.raises(PermissionError, match="disabled"):
+            read_pinned_approval(partition, tmp_path)
         with pytest.raises(PermissionError, match="disabled"):
             require_evaluation_access(partition, tmp_path,
                                       training_ledger_sha256="a" * 64,
@@ -52,6 +57,7 @@ def test_synthetic_technical_permission_binds_all_inputs(tmp_path, monkeypatch):
     monkeypatch.setitem(access.ENABLED, "technical_2023", True)
     monkeypatch.setitem(access.APPROVAL_PATHS, "technical_2023", path)
     monkeypatch.setitem(access.REGISTRATION_SHA256, "technical_2023", _sha(path))
+    assert access.read_pinned_approval("technical_2023", tmp_path) == approval
     result = access.require_evaluation_access(
         "technical_2023", tmp_path, training_ledger_sha256="a" * 64,
         export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,

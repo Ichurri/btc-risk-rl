@@ -34,6 +34,24 @@ una fuente equivalente auditada; no se dará por válida otra automáticamente.
 
 ## Integración sintética añadida
 
+### Puertas separadas y continuidad de procedencia
+
+El módulo `evaluation.access` deja **cerradas en código** las puertas
+`technical_2023` y `final_2024_2025`. Una aprobación JSON futura debe tener
+huella fijada en código, y se comprueban los bytes reales de las congelaciones
+metodológica y de entrenamiento antes de abrir entradas protegidas. El lector
+de aprobación permite examinar solo el permiso ya fijado; la verificación
+completa exige además ledger, exportación, fuente, normalizador y código con
+huellas concordantes. La puerta final requiere un cierre técnico 2023
+separado, íntegro y de 108 políticas. No hay permiso ni comando histórico
+activo en esta entrega.
+
+El lector de páginas finales exige ahora que sus **43 velas de contexto de
+2023 coincidan exactamente** en tiempo y OHLCV con el prefijo aceptado de H1
+que le entregue el futuro ejecutor autorizado. Rechaza tiempos no enteros
+aun cuando la página y el manifiesto se vuelvan a firmar. Los tests
+construyeron ambas entradas; no abrieron datos de 2023 ni 2024–2025.
+
 En la rama aislada, `evaluation.export_builder` escribe un export nuevo a
 partir de velas suministradas por un futuro adaptador autorizado; valida
 antes de escribir filas, fechas, OHLCV y huellas declaradas. No carga
@@ -119,6 +137,15 @@ repositorio todavía no se ejecutó en este worktree.
 Después de los adaptadores inventados, la batería focal quedó en
 **51 passed en 6,80 s** y Ruff pasó. Ninguna prueba abrió 2023 real o
 2024–2025 real.
+Tras las puertas y el cotejo de contexto, la batería focal quedó en
+**58 passed en 6,84 s** y Ruff pasó; es verificación sintética, no
+evaluación histórica. Las llamadas focales de las puertas fueron
+`uv run --frozen pytest -q tests/test_oos_v12_evaluation_access.py`
+(3 passed) y de la fuente final
+`uv run --frozen pytest -q tests/test_oos_v12_final_source.py`
+(7 passed). El test de contexto falló primero por argumento ausente y
+pasó tras exigirlo. La suite completa del repositorio continúa pendiente
+en este worktree mientras el servicio de entrenamiento sigue activo.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
