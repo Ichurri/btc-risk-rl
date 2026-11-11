@@ -1,4 +1,32 @@
-# Estado vigente — 11/11/2026 13:33 America/La_Paz, `wf-2022` cerrado
+# Estado vigente — 11/11/2026 14:20 America/La_Paz, primera terna principal
+
+La misma sesión `oos-v12-training.service` con
+`InvocationID=097bd51bfa774984a3913721e364f67e` sigue activa, sin otra
+sesión de entrenamiento. El perfil principal aceptó la primera terna
+C0/C5/C10 de semilla `1869792951`: **3/108 corridas, 1/36 ternas,
+33 unidades completas y tres checkpoints K10 verificados**. Tiempo medido de
+unidades: **2.258,869 s** en la terna. El auditor comprobó cadena, roster y
+huellas de 33 checkpoints, 33 reportes y 33 solicitudes; ver
+[informe](hitos/OOS-v1-2-primera-terna-principal-20261111.md) y
+[evidencia](evidence/oos-v12-main-first-triplet-20261111/audit.json).
+`wf-2022` permanece cerrado y auditado, 99/99 unidades.
+
+La captura de presupuesto a las 14:20:18 cargó **21.118,462 s** globales
+del 11/11 y dejó **26.581,538 s** antes de reservar 2.700 s. Es una
+instantánea, no cierre. Las 35 ternas restantes equivaldrían a
+**79.060,411 s de unidades** al ritmo de la primera, además de suite,
+preflight, cargas y cierre: estimación condicionada de entrenamiento hacia
+el **13/11**, sin garantía de evaluación para el 16/11. El evaluador aislado
+verificó sintéticamente su ruta y cargó en solo lectura los tres K10; aún no
+hay permiso ni resultados de validación/final. No se identificaron archivos
+finales 2024–2025 en la lista local. **Siguiente tarea:** supervisar la
+sesión actual hasta su pausa o cierre, conciliar cargo y checkpoints; solo
+entonces considerar otra sesión con suite, Ruff, preflight y admisión nuevos.
+No reanudar un ledger `failed` ni abrir 2023/final antes de sus puertas.
+
+---
+
+# Estado anterior — 11/11/2026 13:33 America/La_Paz, `wf-2022` cerrado
 
 La sesión original `oos-v12-training.service` continúa con el mismo `InvocationID=097bd51bfa774984a3913721e364f67e`. `wf-2022` terminó `completed`, 9/9 corridas, 3/3 ternas, 99/99 unidades y `pending=null`. La auditoría verificó 302 estados encadenados, 99 checkpoints, 99 reportes y 99 solicitudes; [evidencia](evidence/oos-v12-wf2022-closure-20261111/audit.json). El ledger SHA-256 es `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`; último checkpoint K10 SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`. Las unidades midieron 6.832,147 s y el cargo propio del corte fue 6.846,916 s. A las 13:33 el cargo global era 18.297,464 s, con 29.402,536 s antes de reservar 2.700 s. Son valores en curso. El perfil principal entró en la suite formal, aún sin ledger. **Siguiente tarea:** dejar terminar suite, Ruff y preflight; auditar la primera terna principal y recalcular el plazo del 16/11 con sus tiempos reales. [Reporte local](../reporte-codex.md). Validación y final permanecen cerradas.
 

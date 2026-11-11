@@ -1,3 +1,14 @@
+# Primera terna principal aceptada — 11/11/2026 14:20 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, sesión original `oos-v12-training.service` aún activa con `InvocationID=097bd51bfa774984a3913721e364f67e`. No hay segundo lanzamiento; el supervisor pasó a la siguiente semilla.
+- `wf-2022` permanece cerrado: 99/99 unidades, 9/9 corridas y 3/3 ternas auxiliares, con auditoría publicada. En el perfil principal hay **3/108 corridas, 1/36 ternas y 33 unidades completas** al corte; la siguiente unidad puede estar en marcha. Los K10 de la semilla `1869792951` son C0 `1ecc4be37436f2db928511a1346e0f08383b145c5342f7fc44f95ff3d3a5c4fd`, C5 `638113d2df49d70613daf4f950553fd13de75e0117c88b43ebe5324114004de4` y C10 `2aaee9fe8610635ca14e8e39e136a7e427f33d01e782aecebddb2de841ad0c4f` (SHA-256 de `state.pt`). Los tres actores cargaron en modo de solo lectura desde los checkpoints fijados.
+- Tiempo **medido de unidades**: C0 772,220 s; C5 748,023 s; C10 738,626 s; terna 2.258,869 s. Auditoría: cadena de 107 estados en la captura y 33/33 huellas de cada tipo (checkpoint, reporte y solicitud). [Informe y comandos](docs/hitos/OOS-v1-2-primera-terna-principal-20261111.md); [resultado](docs/evidence/oos-v12-main-first-triplet-20261111/audit.json). [Tabla y gráfico](https://github.com/Ichurri/btc-risk-rl/tree/7f0b582/docs/evidence/oos-v12-main-progress-20261111) publicados en rama aislada.
+- Presupuesto capturado a las 14:20:18: **21.118,462 s** globales del día, **26.581,538 s** restantes antes de la reserva de 2.700 s. Es una instantánea de sesión abierta, no el débito final. La sesión sigue ocupando el bloqueo; `blocked_for_other_session=true` es esperado.
+- Extrapolación condicionada: 35 ternas restantes × 2.258,869 s = **79.060,411 s de unidades**, más futuras suites, carga, preflights, auditorías y cierres. A este ritmo el **entrenamiento** podría terminar alrededor del 13/11, sujeto a guardas y presupuesto. La evaluación 2023/final carece de permiso y costo histórico extremo a extremo; su fecha no está garantizada. No hay fuentes finales 2024–2025 identificadas en la lista local de archivos.
+- Próxima acción: dejar continuar esta única sesión; al cerrar, auditar ledger, huellas, cargo conciliado y estado `ready/completed/failed`. El timer apunta al 12/11 01:00, pero otra sesión requiere cierre previo, suite, Ruff, preflight vigilado y admisión nuevos. Validación 2023 y final 2024–2025 siguen cerradas.
+
+---
+
 # Cierre del corte auxiliar wf-2022 — 11/11/2026 13:33 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, commit base `89f3d38`. Una sola sesión `oos-v12-training.service` (`InvocationID=097bd51bfa774984a3913721e364f67e`) sigue activa; terminó `wf-2022` y entró en la suite formal del perfil principal. No iniciar otra sesión.
