@@ -122,3 +122,31 @@ def test_export_rejects_gap_and_symlink_even_with_rewritten_manifest(tmp_path):
         load_evaluation_export(root, partition="technical_2023",
                                expected_manifest_sha256=_sha(root / "manifest.json"),
                                scaler=_scaler(), expected_scaler_sha256="a" * 64)
+
+
+def test_full_synthetic_final_export_uses_continuous_accounting(tmp_path, config):
+    from btc_risk_rl.evaluation.export_reader import load_evaluation_export
+    from btc_risk_rl.evaluation.historical_path import evaluate_in_memory
+
+    class HalfPolicy:
+        calls = 0
+
+        def deterministic_action(self, observation):
+            self.calls += 1
+            assert observation.shape == (13,)
+            assert observation[-1] == 1
+            return 0.5
+
+    root, _ = _export(tmp_path, "final_2024_2025")
+    path, _ = load_evaluation_export(
+        root, partition="final_2024_2025",
+        expected_manifest_sha256=_sha(root / "manifest.json"),
+        scaler=_scaler(), expected_scaler_sha256="a" * 64,
+    )
+    policy = HalfPolicy()
+    result = evaluate_in_memory(path, policy, config)
+    assert result["status"] == "audited_in_memory"
+    assert policy.calls == 4386
+    assert result["metrics"]["periods"] == 4386
+    assert result["trace"][0]["observation_ms"] == path.times[0]
+    assert result["trace"][-1]["execution_ms"] == path.times[-1]
