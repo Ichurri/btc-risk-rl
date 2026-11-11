@@ -1,3 +1,13 @@
+# Avance de sesión — 11/11/2026 11:51 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit de método `5fcdf75` y permiso `8860fb9`; la sesión `oos-v12-training.service`, `InvocationID=097bd51bfa774984a3913721e364f67e`, sigue activa. Timer siguiente: 12/11 01:00, sin sesión duplicada.
+- La suite formal **interna** pasó en 554,642 s, Ruff pasó en 0,032 s y preflight vigilado `ready` en 1,424 s. `wf-2022/C0`, semilla 57739409, primera corrida: Q0 + 10 actualizaciones aceptadas en 725,139 s de unidades; checkpoint K10 `artifacts/oos-v12-training-wf-2022-01/run-00-C0-b0/checkpoint-10/state.pt`, SHA-256 `ce1d9760b42e8b863d7deef83b9557097f724747a9111fffa4e18a3782f84091` cotejado. El ledger pasó a la siguiente corrida; no hay fallo registrado.
+- A las 11:50 local, el débito global OOS era 12.168,398 s y el saldo antes de reservar 2.700 s era 35.531,602 s. Esta es una instantánea con la sesión activa, no saldo final. El cargo conservador anterior de 10.800 s incluye los 6.942,163 s medidos del primer bloque 2021 y un ajuste de 3.857,837 s.
+- Proyección **solo de entrenamiento**: 116 corridas restantes × 725,139 s de primera corrida 2022 ≈ 84.116 s de unidades, más comprobaciones, cargas y cierres. Con el presupuesto ampliado y sin bloqueos podría terminar hacia el 13/11; la evaluación histórica no está instrumentada ni medida y **no tiene fecha garantizada**. La metodología de inferencia se fijó antes de abrir 2023/final; esos datos siguen cerrados.
+- Próxima acción: dejar al supervisor admitir unidades completas hasta su pausa/cierre, comprobar ledger, checkpoints, memoria y presupuesto; mantener la exclusividad de la sesión. Un ledger `failed` no se reanuda.
+
+---
+
 # Estado en ejecución — 11/11/2026 11:30 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, commit `fef5d74`; enmienda `b86ea47`, código `20c3e96`, permiso v3 `8860fb9`.
