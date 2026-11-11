@@ -46,6 +46,14 @@ huellas concordantes. La puerta final requiere un cierre técnico 2023
 separado, íntegro y de 108 políticas. No hay permiso ni comando histórico
 activo en esta entrega.
 
+`evaluation.code_identity` calcula una huella de los archivos Python del
+paquete, dependencias/configuración y futuras entradas de evaluación. Solo
+normaliza las dos declaraciones de activación y registro del permiso; un
+cambio de algoritmo altera la huella. Esta función debe emplearse en el
+futuro ejecutor antes de comparar la aprobación, y habrá que fijar su
+valor **tras** integrar el código definitivo. No se interpreta la huella
+de una prueba aislada como permiso de acceso.
+
 El lector de páginas finales exige ahora que sus **43 velas de contexto de
 2023 coincidan exactamente** en tiempo y OHLCV con el prefijo aceptado de H1
 que le entregue el futuro ejecutor autorizado. Rechaza tiempos no enteros
@@ -146,6 +154,10 @@ evaluación histórica. Las llamadas focales de las puertas fueron
 (7 passed). El test de contexto falló primero por argumento ausente y
 pasó tras exigirlo. La suite completa del repositorio continúa pendiente
 en este worktree mientras el servicio de entrenamiento sigue activo.
+El test de identidad de código falló inicialmente por módulo ausente;
+después terminó `2 passed` y Ruff pasó. Verificó que cambiar un módulo
+altera la huella, que las dos declaraciones de permiso se normalizan y
+que un archivo ejecutable obligatorio ausente se rechaza.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
