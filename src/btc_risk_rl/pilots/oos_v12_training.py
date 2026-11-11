@@ -18,8 +18,8 @@ from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 FREEZE = ROOT / "docs/protocols/OOS-v1-2-training-freeze-20261110.json"
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
 APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261111-v2.json"
-MARKET_EXECUTION_ENABLED = False
-REGISTRATION_SHA256 = None
+MARKET_EXECUTION_ENABLED = True
+REGISTRATION_SHA256 = "ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806"
 PROFILES = ("wf-2021", "wf-2022", "main-2018-2022")
 LA_PAZ = ZoneInfo("America/La_Paz")
 LAUNCH_MEMORY_MIN_BYTES = 6_026_846_208
