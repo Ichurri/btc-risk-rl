@@ -83,3 +83,20 @@ def test_final_missing_candle_rejected_even_with_rehashed_page(tmp_path):
     with pytest.raises(ValueError, match="contiguous"):
         load_final_binance_bars(root,
                                 expected_manifest_sha256=_sha(root / "manifest.json"))
+
+
+@pytest.mark.parametrize("bad_time", [1703448000000.5, "1703448000000.5", True])
+def test_final_rejects_noninteger_timestamp_even_if_page_is_rehashed(tmp_path, bad_time):
+    from btc_risk_rl.evaluation.source_final import load_final_binance_bars
+
+    root = _source(tmp_path)
+    path = root / "page-0000.json"
+    rows = json.loads(path.read_text())
+    rows[0][0] = bad_time
+    path.write_text(json.dumps(rows))
+    manifest = json.loads((root / "manifest.json").read_text())
+    manifest["pages"][0]["sha256"] = _sha(path)
+    (root / "manifest.json").write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="numeric row"):
+        load_final_binance_bars(root,
+                                expected_manifest_sha256=_sha(root / "manifest.json"))

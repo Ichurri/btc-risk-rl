@@ -63,9 +63,11 @@ def load_final_binance_bars(source: Path, *, expected_manifest_sha256: str
         rows.extend(payload)
     if len(rows) != steps + 43:
         raise ValueError("Final source bars count incomplete")
+    if any(type(row[0]) is not int or type(row[6]) is not int for row in rows):
+        raise ValueError("Final source numeric row timestamp invalid")
     try:
-        times = np.asarray([int(row[0]) for row in rows], dtype=np.int64)
-        close_times = np.asarray([int(row[6]) for row in rows], dtype=np.int64)
+        times = np.asarray([row[0] for row in rows], dtype=np.int64)
+        close_times = np.asarray([row[6] for row in rows], dtype=np.int64)
         prices = np.asarray([[float(row[j]) for j in (1, 2, 3, 4, 5)]
                              for row in rows], dtype=np.float64)
     except (ValueError, TypeError, OverflowError) as exc:
