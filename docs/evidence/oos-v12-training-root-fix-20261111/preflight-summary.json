@@ -1,0 +1,23 @@
+{
+  "budget": {
+    "active_campaigns": [],
+    "day_la_paz": "2026-11-11",
+    "global_spent": 538.7302510738373,
+    "other_registered_sources_charged_seconds": 0.0,
+    "remaining_before_reserve": 7561.269748926163
+  },
+  "host": {
+    "ac": true,
+    "battery_percent": 100,
+    "disk_free_bytes": 125993971712,
+    "linger": "yes",
+    "memory_available_bytes": 9254907904,
+    "user_manager": "running"
+  },
+  "invocation_id": "67732d86aae44562a2e68a34d14b2124",
+  "profile": "wf-2021",
+  "protected_or_shared_csv_opened": false,
+  "route_count": 3639,
+  "source_profile": "accepted_train_collection_only",
+  "status": "ready"
+}

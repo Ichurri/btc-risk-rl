@@ -1,3 +1,55 @@
+# Continuación preparada — 11/11/2026, 08:50 America/La_Paz
+
+- Rama `codex/oos-v12-training-root-fix`; código `1dcff09`, nueva
+  aprobación `dbffdf6`. `.python-version` sigue eliminada solo localmente.
+- Se corrigieron las tres raíces para que coincidan con el protocolo y
+  preparación/supervisor compitan por el mismo `global.lock`. Las dos
+  pruebas de regresión fallaron antes del cambio y pasaron después;
+  suite completa **585 passed en 539,80 s**, dos advertencias de `fork`
+  sintético, Ruff sin errores. Permiso v2 SHA-256
+  `ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806`;
+  huella de código `662edcea4367ea8a6f470cbb0a64ab25f0827585f55f0ccfc1fc7d159aa70177`.
+- `wf-2021`: ledger original en `artifacts/artifacts/` **intacto**,
+  9/9 corridas, 3/3 ternas, 99/99 unidades; cadena y las 99 huellas de
+  checkpoints/reportes/solicitudes verificadas. Último checkpoint:
+  `artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10/state.pt`,
+  SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+  Las 99 unidades habrían cabido con la reserva en la reconstrucción
+  conservadora; margen mínimo 1.128,211 s. **Integridad aceptada, uso como
+  prueba de cumplimiento estricto del supervisor pendiente de revisión.**
+  No repetir ni migrar el corte.
+- `wf-2022`: ninguna unidad iniciada; es independiente de los pesos y
+  checkpoints de 2021. El selector lo identifica como próximo perfil.
+  Timer habilitado para **12/11/2026 01:00 America/La_Paz**, servicio ahora
+  inactivo, `Restart=no`. Suite, Ruff, preflight vigilado y admisión con
+  saldo/reserva se repetirán en esa ventana; si falla una puerta, no se
+  inicia Q0. El contador automático del 11/11 no incluye la suite manual
+  posterior de 539,80 s ni todo el trabajo de desarrollo: no usarlo para
+  admitir más unidades hoy.
+- Informe, comandos y evidencia:
+  `docs/hitos/OOS-v1-2-entrenamiento-ruta-presupuesto-20261111.md` y
+  `docs/evidence/oos-v12-training-root-fix-20261111/`.
+  **Próxima acción:** auditar el servicio del 12/11, ledger y último
+  checkpoint completo; conservar 2023 y la prueba final cerrados.
+
+---
+
+# Reporte automático — 11/11/2026 08:47 America/La_Paz
+
+- Rama `codex/oos-v12-training-root-fix`, commit `dbffdf6`.
+- `wf-2021`: raíz histórica íntegra `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01`; conservada sin migración ni repetición.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: sin ledger; no se inició una unidad.
+- `main-2018-2022`: sin ledger; no se inició una unidad.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `f372dc56f36e41e8e3948ecccc4d45ebf8f251d32c4ff1f13d39034fed3a915d`.
+- Presupuesto global del día: 6942.163 s cargados; 1157.837 s antes de la reserva de cierre de 2.700 s. Puerta: ready.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+---
+
 # Cierre auditado — 11/11/2026, 02:56 America/La_Paz
 
 - Rama `codex/oos-v12-training-prep`, base publicada `a5eef29`, código

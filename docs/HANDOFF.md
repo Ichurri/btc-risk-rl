@@ -1,4 +1,43 @@
-# Estado vigente — 11/11/2026, primera sesión OOS cerrada
+# Estado vigente — 11/11/2026, `wf-2022` programado
+
+La corrección prospectiva eliminó el doble prefijo `artifacts/` en las
+tres raíces congeladas. La preparación y el supervisor de cada perfil
+usan ahora el mismo bloqueo y presupuesto global. Las pruebas de raíces
+y de contención entre dos procesos reprodujeron el fallo anterior y
+pasaron tras la corrección; la suite completa terminó **585 passed** y
+Ruff sin errores. El código quedó en `1dcff09`, y una aprobación nueva
+en `dbffdf6`, SHA-256
+`ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806`,
+sin editar la aprobación anterior. El protocolo congelado no cambió.
+El selector de solo lectura reconoce la raíz histórica completada de
+`wf-2021` sin moverla ni volver a entrenarla y selecciona `wf-2022`.
+
+La auditoría sobre la sesión original verificó la cadena de 302 estados,
+los 99 checkpoints, 99 reportes y 99 solicitudes. Con el presupuesto
+compartido reconstruido y cero cargos ajenos registrados, **99/99 unidades
+habrían cabido**; el menor margen al instante posterior de `begin()` fue
+1.128,211 s. **Integridad verificada; uso analítico como cumplimiento
+estricto del supervisor todavía pendiente de adjudicación.** El bloqueo
+equivocado no permite afirmar retrospectivamente exclusividad de acceso.
+`wf-2022` tiene fuente y estados propios, por lo que su ejecución no
+depende de aceptar científicamente 2021. Ver [informe y comandos](hitos/OOS-v1-2-entrenamiento-ruta-presupuesto-20261111.md)
+y [auditoría por unidad](evidence/oos-v12-training-root-fix-20261111/budget-audit.json).
+
+`oos-v12-training.timer` quedó activo para **12/11/2026 01:00
+America/La_Paz**, `Restart=no`; el servicio está inactivo. La captura
+está en [schedule.json](evidence/oos-v12-training-root-fix-20261111/schedule.json).
+La sesión nueva repetirá suite, Ruff, preflight vigilado y todas las
+guardas actuales de recursos, identidad y presupuesto antes de Q0;
+admitirá cada unidad solo con reserva. **Siguiente tarea:** auditar esa
+sesión y actualizar `reporte-codex.md` con ledger, checkpoints, tiempos
+y saldos. No usar el contador del 11/11 como saldo para más unidades hoy:
+la suite manual posterior de 539,80 s y trabajo de desarrollo adicional
+no están en la bitácora automática. Validación 2023, prueba final
+2024–2025 y contraste confirmatorio permanecen cerrados.
+
+---
+
+# Estado anterior — 11/11/2026, primera sesión OOS cerrada
 
 La sesión `oos-v12-training.service` del 11/11 (01:00–02:55:46
 `America/La_Paz`) cerró `Result=success`. Suite, Ruff y preflight vigilado

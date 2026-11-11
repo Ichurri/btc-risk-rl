@@ -1,0 +1,27 @@
+{
+  "approval_sha256": "ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806",
+  "branch": "codex/oos-v12-training-root-fix",
+  "captured_at_la_paz": "2026-11-11T08:48:35.188836-04:00",
+  "code_sha256": "662edcea4367ea8a6f470cbb0a64ab25f0827585f55f0ccfc1fc7d159aa70177",
+  "freeze_sha256": "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0",
+  "next_profile": "wf-2022",
+  "restore_timer": {
+    "ActiveState": "active",
+    "NextElapseUSecRealtime": "Mon 2026-11-16 09:05:00 -04"
+  },
+  "roots": {
+    "main-2018-2022": "artifacts/oos-v12-training-main-01",
+    "wf-2021": "artifacts/oos-v12-training-wf-2021-01",
+    "wf-2022": "artifacts/oos-v12-training-wf-2022-01"
+  },
+  "service": {
+    "ActiveState": "inactive",
+    "Restart": "no",
+    "Result": "success"
+  },
+  "timer": {
+    "ActiveState": "active",
+    "NextElapseUSecRealtime": "Thu 2026-11-12 01:00:00 -04",
+    "Unit": "oos-v12-training.service"
+  }
+}

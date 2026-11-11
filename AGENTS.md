@@ -1,7 +1,26 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
-- **11/11/2026: primera sesión OOS cerrada; siguiente lanzamiento suspendido.**
+- **11/11/2026: corrección prospectiva y continuación OOS programada.**
+  Las tres raíces de campaña coinciden ahora con el protocolo congelado y
+  el supervisor comparte `artifacts/shared-pilot-budget/global.lock` con
+  la preparación. Pruebas de dos procesos, suite completa **585 passed**
+  y Ruff pasaron. La aprobación independiente v2 SHA-256
+  `ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806`
+  fija el nuevo código sin editar el permiso del 10/11. El timer está
+  activo para **12/11/2026 01:00 America/La_Paz**; servicio inactivo y
+  próximo perfil `wf-2022`. Cada sesión debe repetir suite formal, Ruff,
+  preflight vigilado y admisión con saldo/reserva antes de Q0. El ledger
+  original anidado de `wf-2021` permanece intacto: 99/99 unidades y
+  huellas verificadas, 99/99 habrían cabido en la reconstrucción de
+  presupuesto, margen mínimo 1.128,211 s. Su integridad técnica está
+  verificada, pero el uso como cumplimiento estricto del supervisor
+  queda pendiente de adjudicación por el bloqueo equivocado original.
+  No repetir ni migrar 2021. `wf-2022` es independiente de sus pesos y
+  checkpoints, por lo que puede avanzar sin adoptar ese uso analítico.
+  Ver `docs/hitos/OOS-v1-2-entrenamiento-ruta-presupuesto-20261111.md`
+  y `reporte-codex.md`. Validación 2023 y final siguen cerradas.
+- **11/11/2026: antecedente de primera sesión OOS y pausa del timer.**
   `oos-v12-training.service` cerró `Result=success` tras suite, Ruff y
   preflight `ready`; `wf-2021` tiene 9/9 corridas, 3/3 ternas y 99/99
   unidades aceptadas, ledger `completed` sin `pending`. El cargo global
