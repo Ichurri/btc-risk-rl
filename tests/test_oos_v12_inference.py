@@ -61,3 +61,26 @@ def test_seed_block_pairing_uses_position_not_condition_level():
         assert left[name]["mean_difference"] == pytest.approx(
             right[name]["mean_difference"])
         assert left[name]["p_one_sided"] == right[name]["p_one_sided"]
+
+
+def test_audited_records_reject_pilot_or_partial_and_pair_exact_roster():
+    from btc_risk_rl.evaluation.inference import compare_audited_records
+
+    seeds = tuple(range(100, 136))
+    records = [dict(seed=seed, condition=condition,
+                    profile="main-2018-2022", partition="final_2024_2025",
+                    status="completed", audit_accepted=True, steps=4386,
+                    boundary="after_dual_and_D", sortino_annualized=float(value))
+               for seed in seeds for condition, value in
+               (("C0", 0), ("C5", 1), ("C10", 2))]
+    result = compare_audited_records(records, expected_seeds=seeds)
+    assert result["C5_minus_C0"]["mean_difference"] == 1
+    for changes in ({"profile": "p3-approved-v1"}, {"status": "partial"},
+                    {"partition": "technical_2023"}, {"audit_accepted": False},
+                    {"steps": 180}, {"sortino_annualized": None}):
+        altered = [dict(row) for row in records]
+        altered[0].update(changes)
+        with pytest.raises(ValueError):
+            compare_audited_records(altered, expected_seeds=seeds)
+    with pytest.raises(ValueError, match="Duplicate|missing"):
+        compare_audited_records(records[1:] + [records[1]], expected_seeds=seeds)

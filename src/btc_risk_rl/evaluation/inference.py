@@ -66,3 +66,39 @@ def compare_blocks(rows: Sequence[tuple[float, float, float]]) -> dict:
             "minimum_effect": MINIMUM_EFFECT,
         }
     return result
+
+
+def compare_audited_records(records: Sequence[dict], *, expected_seeds: Sequence[int]) -> dict:
+    """Reject cross-pilot or partial rows before constructing the 36 pairs.
+
+    The caller must independently verify each report, trace and checkpoint
+    hash. This function enforces their declared identity and completeness.
+    """
+    seeds = tuple(expected_seeds)
+    if (len(seeds) != BLOCKS or len(set(seeds)) != BLOCKS
+            or any(type(seed) is not int for seed in seeds)
+            or len(records) != BLOCKS * 3):
+        raise ValueError("Expected 36 distinct seeds and 108 audited records")
+    indexed = {}
+    for row in records:
+        seed, condition = row.get("seed"), row.get("condition")
+        key = (seed, condition)
+        if key in indexed or seed not in seeds or condition not in {"C0", "C5", "C10"}:
+            raise ValueError("Duplicate or unexpected seed-condition record")
+        if (row.get("profile") != "main-2018-2022"
+                or row.get("partition") != "final_2024_2025"
+                or row.get("status") != "completed"
+                or row.get("audit_accepted") is not True
+                or row.get("steps") != 4386
+                or row.get("boundary") != "after_dual_and_D"):
+            raise ValueError("Pilot, partial or incompatible final evaluation record")
+        value = row.get("sortino_annualized")
+        if type(value) not in (int, float) or not math.isfinite(value):
+            raise ValueError("Undefined or nonfinite primary metric")
+        indexed[key] = float(value)
+    try:
+        paired = [(indexed[(seed, "C0")], indexed[(seed, "C5")],
+                   indexed[(seed, "C10")]) for seed in seeds]
+    except KeyError as exc:
+        raise ValueError("Missing seed-condition record") from exc
+    return compare_blocks(paired)
