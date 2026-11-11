@@ -1,4 +1,10 @@
-# Estado vigente — 11/11/2026, presupuesto OOS ampliado prospectivamente
+# Estado vigente — 11/11/2026 12:15 America/La_Paz, sesión OOS activa
+
+La única sesión `oos-v12-training.service` (`InvocationID=097bd51bfa774984a3913721e364f67e`) sigue activa. Su suite formal interna, Ruff y preflight vigilado pasaron antes de Q0. En `wf-2022`, la primera terna auxiliar C0/C5/C10 terminó con 33/99 unidades y 3/9 corridas completas; los tres checkpoints K10 coinciden con sus huellas del ledger. Tiempos medidos de unidades: 725,139 s, 730,349 s y 761,859 s, respectivamente. A las 12:15 el cargo global era 13.655,430 s y quedaban 34.044,570 s antes de la reserva de 2.700 s; son **valores de una sesión en curso**, no un cierre. El supervisor ya comenzó `run-03-C5-b0`. [Reporte local actualizado](../reporte-codex.md). **Siguiente tarea:** dejar avanzar la sesión sin duplicarla y auditar ledger, checkpoint, recursos y presupuesto al cierre. La evaluación 2023/final continúa cerrada.
+
+---
+
+# Estado anterior — 11/11/2026, presupuesto OOS ampliado prospectivamente
 
 Santiago autorizó sustituir la ventana 01:00–09:00 por ejecución a cualquier hora y ampliar el cómputo en función de tiempos medidos, sin alterar roster ni topes por unidad. La [enmienda de presupuesto](protocols/OOS-v1-2-training-budget-amendment-20261111.json) se fijó **antes de aplicarse** en `b86ea47`: 50.400 s globales por fecha `America/La_Paz`, reserva de cierre 2.700 s, máximo 20 días, corte de presentación 16/11 a las 09:00. El gasto original del 11/11 de 6.942,163 s permanece medido; se añaden 3.857,837 s de débito conservador por verificaciones/trabajo posterior no cronometrado íntegramente. El trabajo nuevo se cobra encima. [Fundamento y adjudicación 2021](hitos/OOS-v1-2-presupuesto-ampliado-20261111.md). Las [reglas de evaluación](protocols/OOS-v1-2-evaluation-method-freeze-20261111.json) se fijaron en `5fcdf75` **sin abrir 2023/final**: checkpoint K10, acción determinista, 36 bloques, Sortino, bootstrap centrado y Holm. Faltan evaluador histórico y permisos de datos separados. La inferencia pura se prepara en un worktree de este mismo repositorio (`codex/oos-v12-evaluation-infrastructure`, `53e0acd`), aislado de la huella usada por el entrenamiento activo.
 

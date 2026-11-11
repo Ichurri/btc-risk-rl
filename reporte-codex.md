@@ -1,3 +1,13 @@
+# Avance en ejecución — 11/11/2026 12:15 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit base `496834c`; `.python-version` sigue eliminado solo localmente. Una sola sesión `oos-v12-training.service`, `InvocationID=097bd51bfa774984a3913721e364f67e`, permanece activa. No iniciar otra.
+- La suite formal interna, Ruff y el preflight vigilado pasaron antes de Q0. En `wf-2022`, la primera terna auxiliar C0/C5/C10 está completa: 33/99 unidades aceptadas, 3/9 corridas y 1/3 ternas. El siguiente run `run-03-C5-b0` ya empezó; la captura posterior tenía 34 unidades aceptadas y unidad 1 activa.
+- Tiempos **medidos de unidades** en la terna: C0 725,139 s; C5 730,349 s; C10 761,859 s. Total 2.217,347 s, sin incluir suite, carga, auditoría ni cierre. Las tres huellas K10 cotejadas con ledger son `ce1d9760b42e8b863d7deef83b9557097f724747a9111fffa4e18a3782f84091`, `fc690584dcde2d0a36fe7388c44036a4ebe92a3fbe8e7f9d3e37e7e29c8d0c29` y `a746d15ac1d6d82949ea2ad524453e46efc231b5e014e72bce1cd70edd2d8545`, respectivamente. La cadena del ledger pasó 107 estados en la captura de la primera terna; su SHA-256 entonces era `4fda19d572644d73612c2819148e75be42c7ebc2f868fa1ec90dec84ace0a0ba` y seguirá cambiando mientras la sesión avance.
+- Instantánea de presupuesto a las 12:15: **13.655,430 s** cargados globalmente y **34.044,570 s** antes de la reserva de 2.700 s. Incluye 10.800 s anteriores conservadores y tiempo nuevo de la sesión, sin llamar a la captura saldo final. La consulta externa marca otra campaña como activa por diseño; la admisión la hace el supervisor bajo su propio token y bloqueo.
+- Próxima acción: dejar avanzar la misma sesión, auditar su cierre y los checkpoints completos, actualizar tiempos/cargos y conservar el próximo arranque programado solo si el ledger queda `ready`. `wf-2021` permanece íntegro como diagnóstico descriptivo; su exclusividad original no está demostrada. Validación 2023 y final 2024–2025 siguen cerradas.
+
+---
+
 # Avance de sesión — 11/11/2026 11:51 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, commit de método `5fcdf75` y permiso `8860fb9`; la sesión `oos-v12-training.service`, `InvocationID=097bd51bfa774984a3913721e364f67e`, sigue activa. Timer siguiente: 12/11 01:00, sin sesión duplicada.
