@@ -10,6 +10,10 @@ from dataclasses import dataclass
 import numpy as np
 
 from btc_risk_rl.config import STEP_MS
+from btc_risk_rl.evaluation.synthetic import (
+    audit_trace,
+    evaluate_continuous,
+)
 
 PERIODS = {
     "technical_2023": (1672531200000, 1704067200000, 2190),
@@ -50,3 +54,28 @@ class HistoricalEvaluationPath:
                 raise ValueError("Evaluation prices must be positive")
             array.setflags(write=False)
             object.__setattr__(self, name, array)
+
+
+def evaluate_in_memory(path: HistoricalEvaluationPath, policy, config) -> dict:
+    """Evaluate already verified arrays; no market file reader or permission."""
+    if type(path) is not HistoricalEvaluationPath:
+        raise ValueError("Complete historical evaluation path required")
+    trace = evaluate_continuous(path, policy, config)
+    for index, row in enumerate(trace):
+        if (row["open_price"] != path.opens[index + 1]
+                or row["close_price"] != path.closes[index + 1]):
+            raise ValueError("Evaluation trace differs from path price")
+        row["observation_ms"] = int(path.times[index])
+        row["execution_ms"] = int(path.times[index + 1])
+    audit = audit_trace(trace, expected_steps=len(path.times) - 1,
+                        fee=config.environment.commission,
+                        slip=config.environment.slippage)
+    return {
+        "status": "audited_in_memory",
+        "partition": path.partition,
+        "steps": len(trace),
+        "metrics": audit["metrics"],
+        "trace": trace,
+        "commission_total": audit["commission_total"],
+        "slippage_total": audit["slippage_total"],
+    }
