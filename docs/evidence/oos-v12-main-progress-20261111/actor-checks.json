@@ -1,0 +1,36 @@
+{
+  "actors": [
+    {
+      "actor_fingerprint": "e38d001db50eb74608da73519fd76068fe7ab35638db206b2a11e692be3a043e",
+      "boundary": "after_dual_and_D",
+      "condition": "C0",
+      "generation": 10,
+      "manifest_sha256": "139d7a36b0478e176f437d78af9a2fd9adc52ca708839faacd6966c51d2810cb",
+      "run_id": "run-00-C0-b0",
+      "seed": 1869792951,
+      "state_sha256": "1ecc4be37436f2db928511a1346e0f08383b145c5342f7fc44f95ff3d3a5c4fd"
+    },
+    {
+      "actor_fingerprint": "defa7f630f7f679e97f7d25186074d51054216f08e83b61e9a5430367a1b3d83",
+      "boundary": "after_dual_and_D",
+      "condition": "C5",
+      "generation": 10,
+      "manifest_sha256": "315ea91127cb304ccf6329bd09e4b821934031a7c79ca51c9dbe0e39242894d8",
+      "run_id": "run-01-C5-b0",
+      "seed": 1869792951,
+      "state_sha256": "638113d2df49d70613daf4f950553fd13de75e0117c88b43ebe5324114004de4"
+    },
+    {
+      "actor_fingerprint": "9aa26bd6e5b9bbc3176a61df9023b347c8e667694537672e34134696271f1774",
+      "boundary": "after_dual_and_D",
+      "condition": "C10",
+      "generation": 10,
+      "manifest_sha256": "05306661dd16916bd19593aa867ee7cfe1595aade596d3be7786800e2ec5d03a",
+      "run_id": "run-02-C10-b0",
+      "seed": 1869792951,
+      "state_sha256": "2aaee9fe8610635ca14e8e39e136a7e427f33d01e782aecebddb2de841ad0c4f"
+    }
+  ],
+  "scope": "read_only_training_checkpoints_no_market_evaluation",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
+}
