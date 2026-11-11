@@ -17,20 +17,55 @@ from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 
 FREEZE = ROOT / "docs/protocols/OOS-v1-2-training-freeze-20261110.json"
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
-APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261110.json"
-MARKET_EXECUTION_ENABLED = True
-REGISTRATION_SHA256 = "2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2"
+APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261111-v2.json"
+MARKET_EXECUTION_ENABLED = False
+REGISTRATION_SHA256 = None
 PROFILES = ("wf-2021", "wf-2022", "main-2018-2022")
 LA_PAZ = ZoneInfo("America/La_Paz")
 LAUNCH_MEMORY_MIN_BYTES = 6_026_846_208
 CAMPAIGNS = {
-    profile: ROOT / "artifacts" / name
+    profile: ROOT / name
     for profile, name in json.loads(FREEZE.read_text())["campaign_roots"].items()
+}
+LEGACY_COMPLETED_ROOTS = {
+    "wf-2021": {
+        "root": ROOT / "artifacts/artifacts/oos-v12-training-wf-2021-01",
+        "ledger_sha256": "811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4",
+        "last_checkpoint_sha256": "864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774",
+    },
 }
 
 
 def digest(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def verified_legacy_completed_root(profile: str, entries=None) -> Path | None:
+    """Read a pinned, completed legacy root without moving or rerunning it."""
+    entries = LEGACY_COMPLETED_ROOTS if entries is None else entries
+    entry = entries.get(profile)
+    if entry is None:
+        return None
+    root = Path(entry["root"])
+    ledger = root / "ledger.jsonl"
+    if not ledger.is_file() or digest(ledger) != entry["ledger_sha256"]:
+        raise ValueError("OOS legacy ledger hash mismatch or absent")
+    previous = None
+    for line in ledger.read_text().splitlines():
+        state = json.loads(line)
+        if (state.get("previous_hash") != previous
+                or state.get("state_hash") != state_hash(state)):
+            raise ValueError("OOS legacy ledger chain corrupt")
+        previous = state["state_hash"]
+    units = state.get("units", [])
+    if (state.get("status") != "completed" or state.get("cursor") != len(roster(profile))
+            or state.get("pending") is not None or len(units) != 11 * len(roster(profile))):
+        raise ValueError("OOS legacy completion invalid")
+    checkpoint = Path(units[-1]["checkpoint"]) / "state.pt"
+    if (not checkpoint.is_file() or digest(checkpoint) != entry["last_checkpoint_sha256"]
+            or units[-1].get("checkpoint_sha256") != entry["last_checkpoint_sha256"]):
+        raise ValueError("OOS legacy final checkpoint hash mismatch")
+    return root
 
 
 def window_admissible(epoch: float) -> bool:
@@ -398,6 +433,8 @@ def run_historical_units(profile: str):
     require_campaign()  # Before a source read, request read, or artifact root creation.
     if profile not in PROFILES:
         raise ValueError("Unknown OOS training profile")
+    if verified_legacy_completed_root(profile) is not None:
+        raise PermissionError("OOS legacy completed profile cannot be replayed")
     from btc_risk_rl.agents.checkpoint import provenance
     from btc_risk_rl.pilots.oos_v12_launch import require_recent_prepare
     from btc_risk_rl.pilots.p2r import check_service_context

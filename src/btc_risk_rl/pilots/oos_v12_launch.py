@@ -17,11 +17,13 @@ from btc_risk_rl.pilots.budget import LA_PAZ
 from btc_risk_rl.pilots.oos_v12_budget import PREP_CAMPAIGN, PREP_NAME, inspect_oos_debit
 from btc_risk_rl.pilots.oos_v12_training import (
     CAMPAIGNS,
+    LEGACY_COMPLETED_ROOTS,
     PROFILES,
     read_budget,
     require_campaign,
     roster,
     run_historical_units,
+    verified_legacy_completed_root,
     window_admissible,
 )
 from btc_risk_rl.pilots.p2_budget import state_hash
@@ -162,19 +164,29 @@ def _checked_command(args, *, timeout, output_tail=1200):
                 stderr=result.stderr[-1200:])
 
 
-def select_next_profile(campaigns=None, *, now=None):
+def select_next_profile(campaigns=None, *, legacy_completed=None, now=None):
     """Select the first unfinished frozen roster, never replaying a failed unit."""
-    campaigns = CAMPAIGNS if campaigns is None else campaigns
+    production_roots = campaigns is None
+    campaigns = CAMPAIGNS if production_roots else campaigns
+    legacy_completed = (LEGACY_COMPLETED_ROOTS if production_roots else {}) \
+        if legacy_completed is None else legacy_completed
     now = time.time() if now is None else now
     candidate = None
     for profile in PROFILES:
         root = Path(campaigns[profile])
+        legacy = legacy_completed.get(profile)
+        if root.exists() and legacy is not None and Path(legacy["root"]).exists():
+            raise ValueError("OOS canonical and legacy roots both exist")
         path = root / "ledger.jsonl"
         if not path.exists():
             if root.exists():
                 raise ValueError("OOS root exists without a complete ledger")
-            candidate = profile
-            break
+            legacy_root = verified_legacy_completed_root(profile, legacy_completed)
+            if legacy_root is None:
+                candidate = profile
+                break
+            root = legacy_root
+            path = root / "ledger.jsonl"
         previous = None
         for line in path.read_text().splitlines():
             state = json.loads(line)
@@ -228,6 +240,8 @@ def prepare_and_run(profile):
     require_campaign()
     if profile not in PROFILES or not window_admissible(time.time()):
         raise PreflightBlocked("OOS profile or night window blocked")
+    if profile != select_next_profile():
+        raise PreflightBlocked("OOS profile is not the next unfinished frozen roster")
     with OOSPrecheckAttempt(ROOT / "artifacts") as attempt:
         now = time.time()
         preparation_started = now

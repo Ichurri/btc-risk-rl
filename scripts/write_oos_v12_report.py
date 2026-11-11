@@ -12,6 +12,7 @@ from btc_risk_rl.pilots.oos_v12_training import (
     PROFILES,
     digest,
     read_budget,
+    verified_legacy_completed_root,
 )
 from btc_risk_rl.pilots.p2_budget import state_hash
 from btc_risk_rl.pilots.protocol import ROOT
@@ -26,6 +27,12 @@ def main():
     lines = [f"# Reporte Codex — {stamp}", "", f"- Rama `{branch}`, commit `{commit}`."]
     for profile in PROFILES:
         root = CAMPAIGNS[profile]
+        if not root.exists():
+            legacy = verified_legacy_completed_root(profile)
+            if legacy is not None:
+                root = legacy
+                lines.append(f"- `{profile}`: raíz histórica íntegra `{legacy}`; "
+                             "conservada sin migración ni repetición.")
         path = root / "ledger.jsonl"
         if not path.is_file():
             lines.append(f"- `{profile}`: sin ledger; no se inició una unidad.")

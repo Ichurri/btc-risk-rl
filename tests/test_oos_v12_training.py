@@ -4,6 +4,7 @@ import hashlib
 import json
 import multiprocessing
 import os
+import time
 from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
@@ -11,6 +12,52 @@ from types import SimpleNamespace
 from zoneinfo import ZoneInfo
 
 import pytest
+
+
+def test_campaign_roots_match_frozen_paths_exactly():
+    from btc_risk_rl.pilots import oos_v12_training as campaign
+
+    expected = campaign.frozen_protocol()["campaign_roots"]
+    assert {name: str(path.relative_to(campaign.ROOT))
+            for name, path in campaign.CAMPAIGNS.items()} == expected
+    assert {path.parent for path in campaign.CAMPAIGNS.values()} == {
+        campaign.ROOT / "artifacts"
+    }
+
+
+def _hold_precheck_lock(artifacts, ready, release):
+    from btc_risk_rl.pilots.oos_v12_launch import OOSPrecheckAttempt
+
+    with OOSPrecheckAttempt(artifacts, gate=lambda: None):
+        ready.set()
+        if not release.wait(20):
+            raise TimeoutError("Lock test did not release the holder")
+
+
+def test_precheck_and_all_profile_supervisors_compete_for_one_lock(tmp_path):
+    from btc_risk_rl.pilots import oos_v12_training as campaign
+    from btc_risk_rl.pilots.p2r import P2RSharedBudget
+
+    artifacts = tmp_path / "artifacts"
+    context = multiprocessing.get_context("spawn")
+    ready, release = context.Event(), context.Event()
+    holder = context.Process(target=_hold_precheck_lock,
+                             args=(artifacts, ready, release))
+    holder.start()
+    try:
+        assert ready.wait(10)
+        assert holder.is_alive() and holder.pid != os.getpid()
+        for profile in campaign.PROFILES:
+            root = tmp_path / campaign.CAMPAIGNS[profile].relative_to(campaign.ROOT)
+            with pytest.raises(ValueError, match="global daily budget"):
+                P2RSharedBudget(root.parent, root.name, now=time.time())
+    finally:
+        release.set()
+        holder.join(10)
+        if holder.is_alive():
+            holder.terminate()
+            holder.join(5)
+    assert holder.exitcode == 0
 
 
 def test_rosters_are_complete_rotated_and_disjoint():
@@ -63,6 +110,43 @@ def test_nightly_selector_skips_complete_and_rejects_partial(tmp_path, monkeypat
     ledger("wf-2022", "running", 0, 0, {"unit": 0})
     with pytest.raises(ValueError, match="not resumable"):
         launch.select_next_profile(roots, now=1794391200)
+
+
+def test_nightly_selector_recognizes_pinned_legacy_completion_without_replay(tmp_path):
+    from btc_risk_rl.pilots import oos_v12_launch as launch
+    from btc_risk_rl.pilots import oos_v12_training as campaign
+    from btc_risk_rl.pilots.p2_budget import state_hash
+
+    roots = {profile: tmp_path / "artifacts" / campaign.CAMPAIGNS[profile].name
+             for profile in campaign.PROFILES}
+    legacy = tmp_path / "artifacts/artifacts/oos-v12-training-wf-2021-01"
+    legacy.mkdir(parents=True)
+    checkpoint = legacy / "run-08-C5-b0/checkpoint-10/state.pt"
+    checkpoint.parent.mkdir(parents=True)
+    checkpoint.write_bytes(b"complete synthetic checkpoint")
+    units = [{} for _ in range(98)] + [{
+        "checkpoint": str(checkpoint.parent),
+        "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+    }]
+    state = dict(status="completed", cursor=9, units=units, pending=None,
+                 days={}, previous_hash=None)
+    state["state_hash"] = state_hash(state)
+    ledger = legacy / "ledger.jsonl"
+    ledger.write_text(json.dumps(state) + "\n")
+    entry = {"wf-2021": {
+        "root": legacy,
+        "ledger_sha256": hashlib.sha256(ledger.read_bytes()).hexdigest(),
+        "last_checkpoint_sha256": units[-1]["checkpoint_sha256"],
+    }}
+
+    assert not roots["wf-2021"].exists()
+    assert launch.select_next_profile(roots, legacy_completed=entry,
+                                      now=1794391200) == "wf-2022"
+    assert not roots["wf-2021"].exists()
+    ledger.write_text(ledger.read_text() + " ")
+    with pytest.raises(ValueError, match="legacy.*hash"):
+        launch.select_next_profile(roots, legacy_completed=entry,
+                                   now=1794391200)
 
 
 def test_nightly_selector_rejects_false_completed_ledger(tmp_path, monkeypatch):
@@ -248,6 +332,16 @@ def test_public_and_worker_entries_fail_before_market_access(tmp_path, monkeypat
     assert not (tmp_path / "campaign").exists()
 
 
+def test_direct_worker_entry_cannot_replay_legacy_completed_profile(monkeypatch):
+    from btc_risk_rl.pilots import oos_v12_training as campaign
+
+    monkeypatch.setattr(campaign, "require_campaign", lambda: {"fixture": True})
+    monkeypatch.setattr(campaign, "source_for",
+                        lambda _profile: pytest.fail("historical source was loaded"))
+    with pytest.raises(PermissionError, match="legacy completed profile"):
+        campaign.run_historical_units("wf-2021")
+
+
 def _controlled_worker(tmp_path, monkeypatch):
     import torch
 
@@ -420,13 +514,18 @@ def test_open_precheck_blocks_reentry_and_charges_conservatively(tmp_path):
     assert debit["by_day"]["2026-11-11"] == 10800
 
 
-def test_shared_budget_debits_oos_precheck_and_ledger_once(tmp_path):
+@pytest.mark.parametrize("campaign_name", (
+    "oos-v12-training-wf-2021-01",
+    "oos-v12-training-wf-2022-01",
+    "oos-v12-training-main-01",
+))
+def test_shared_budget_debits_oos_precheck_and_ledger_once(tmp_path, campaign_name):
     from btc_risk_rl.pilots.p2_budget import state_hash
     from btc_risk_rl.pilots.p2r import P2RSharedBudget
     from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
 
     artifacts = tmp_path / "artifacts"
-    root = artifacts / "oos-v12-training-wf-2021-01"
+    root = artifacts / campaign_name
     root.mkdir(parents=True)
     day = datetime(2026, 11, 11, 1, 0, tzinfo=ZoneInfo("America/La_Paz")).timestamp()
     ledger = {"status": "ready", "days": {"2026-11-11": {
@@ -527,6 +626,7 @@ def test_precheck_session_covers_source_loading_and_supervision(tmp_path, monkey
     start = datetime(2026, 11, 11, 1, tzinfo=ZoneInfo("America/La_Paz")).timestamp()
     clock = [start]
     monkeypatch.setattr(launch, "ROOT", tmp_path)
+    monkeypatch.setattr(launch, "select_next_profile", lambda: "wf-2021")
     monkeypatch.setattr(launch.time, "time", lambda: clock[0])
     monkeypatch.setattr(launch, "require_campaign", lambda: {})
     monkeypatch.setattr(launch, "window_admissible", lambda _epoch: True)
