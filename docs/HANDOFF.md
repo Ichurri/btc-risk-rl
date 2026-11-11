@@ -3,8 +3,11 @@
 El trabajador interno de evaluación ya conecta checkpoint sintético,
 exportación inventada, traza continua y bitácora durable; vuelve a auditar
 reportes antes de aceptarlos y falla ante unidades huérfanas. La batería
-focal quedó en **69 passed** y Ruff pasó. Sigue faltando supervisor histórico,
-presupuesto/admisión y exportación final auditada; ningún permiso está activo.
+focal quedó en **71 passed** antes de la guarda adicional de host, y Ruff
+pasó. El descargador final interno solo se probó con transporte inventado;
+rechaza endpoints ajenos a Binance. Sigue faltando supervisor histórico,
+presupuesto/admisión, exportación final auditada y fuente real; ningún
+permiso está activo ni se hizo una solicitud de red.
 Se incorporaron puertas **independientes y apagadas** para 2023 y
 2024–2025: exigen aprobación con huella fijada, protocolo real íntegro y
 proveniencia concordante; el conjunto final exige además cierre técnico de
