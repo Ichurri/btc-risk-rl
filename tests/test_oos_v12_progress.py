@@ -58,3 +58,20 @@ def test_read_verified_ledger_rejects_bad_chain_and_keeps_pending_separate(tmp_p
     path.write_text(json.dumps(bad) + "\n")
     with pytest.raises(ValueError, match="chain"):
         read_verified_ledger(path)
+
+
+def test_training_progress_chart_labels_source_and_excludes_pending():
+    from btc_risk_rl.reporting.oos_progress import render_progress_svg, summarize_state
+
+    state = dict(status="running", cursor=1,
+                 units=[dict(run_id="run-00-C0-b0", unit=i, seconds=1.0)
+                        for i in range(11)],
+                 pending=dict(run_id="run-01-C5-b0", unit=0))
+    svg = render_progress_svg(summarize_state("wf-2022", state, expected_runs=9),
+                              source="ledger.jsonl")
+    assert "wf-2022" in svg
+    assert "ledger.jsonl" in svg
+    assert "C0: 1/3" in svg
+    assert "C5: 0/3" in svg
+    assert "C10: 0/3" in svg
+    assert "Unidades aceptadas: 11" in svg

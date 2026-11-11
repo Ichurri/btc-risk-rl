@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+from html import escape
 from pathlib import Path
 
 from btc_risk_rl.pilots.p2_budget import state_hash
@@ -68,3 +69,32 @@ def summarize_state(profile: str, state: dict, *, expected_runs: int) -> dict:
                 accepted_units=len(state.get("units", [])),
                 completed_by_condition=completed_by_condition,
                 measured_unit_seconds=measured, pending=pending_label)
+
+
+def render_progress_svg(summary: dict, *, source: str) -> str:
+    """Compact offline figure of complete runs; pending work is text only."""
+    profile = escape(summary["profile"])
+    source_label = escape(source)
+    target = summary["expected_runs"] // 3
+    rows = []
+    for index, condition in enumerate(("C0", "C5", "C10")):
+        count = summary["completed_by_condition"][condition]
+        y = 105 + 80 * index
+        width = 600 * count / max(1, target)
+        rows += [f'<text x="20" y="{y}" font-size="22">{condition}: {count}/{target}</text>',
+                 f'<rect x="190" y="{y - 22}" width="600" height="28" fill="#e4e7eb"/>',
+                 f'<rect x="190" y="{y - 22}" width="{width:.2f}" height="28" '
+                 'fill="#246b77"/>']
+    footer = (f'Unidades aceptadas: {summary["accepted_units"]}; '
+              f'corridas completas: {summary["completed_runs"]}/{summary["expected_runs"]}; '
+              f'pendiente: {summary["pending"] or "ninguna"}')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="850" height="390" '
+            'viewBox="0 0 850 390" role="img">'
+            f'<title>Avance {profile}, corridas completas</title>'
+            '<rect width="850" height="390" fill="white"/>'
+            f'<text x="20" y="35" font-size="25" font-weight="bold">{profile}: '
+            'corridas completas por condición</text>'
+            + "".join(rows)
+            + f'<text x="20" y="350" font-size="15">{escape(footer)}</text>'
+            + f'<text x="20" y="374" font-size="13">Fuente: {source_label}. '
+              'Unidad: corridas y unidades; entrenamiento.</text></svg>')
