@@ -1,3 +1,33 @@
+# Tres ternas principales aceptadas — 11/11/2026 15:35 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, servicio original todavía activo,
+  `InvocationID=097bd51bfa774984a3913721e364f67e`. No se lanzó otro.
+  `wf-2022` permanece cerrado y auditado: 99/99 unidades, 3/3 ternas.
+- Principal al corte: **9/108 corridas, 3/36 ternas y 99 unidades de esas
+  ternas completas**. La captura de ledger tenía 100 unidades aceptadas
+  porque el bloque 3 había comenzado; no se cuenta como terna.
+  SHA-256 de esa captura:
+  `07a750e4bc5f068032223f5b40f66c879ecf2061c05b9840bd5366621df19bc9`.
+  Auditoría: 99 checkpoints, 99 reportes y 99 solicitudes cotejados;
+  [informe](docs/hitos/OOS-v1-2-tres-ternas-principales-20261111.md),
+  [resultado](docs/evidence/oos-v12-main-three-triplets-20261111/audit.json).
+- Tiempos medidos de unidades por terna: **2.258,869 / 2.246,075 /
+  2.266,412 s**; media 2.257,119 s. El mayor RSS de trabajador fue
+  672.030.720 B. A las 15:35:50 el débito global observado era
+  **25.650,515 s**, saldo **22.049,485 s antes de la reserva** de 2.700 s;
+  seguirá cambiando mientras la sesión esté abierta.
+- Proyección de **entrenamiento**: 33 ternas × media = **74.484,917 s
+  (20,690 h) de unidades**, más verificaciones y cierre. Si continúan
+  ritmo, recursos y admisión, cierre posible alrededor del 13/11; no es
+  promesa. La evaluación 2023/final tiene ruta sintética preparada en el
+  worktree aislado, pero carece de permisos, fuente final auditada y costo
+  histórico completo. No hay comparación financiera fuera de muestra.
+- Próxima acción: esperar la pausa/cierre del mismo servicio; verificar
+  ledger, huellas, presupuesto conciliado y última frontera antes de otra
+  sesión. `failed`/`incomplete` no se reanudan. Validación y final cerrados.
+
+---
+
 # Primera terna principal aceptada — 11/11/2026 14:20 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, sesión original `oos-v12-training.service` aún activa con `InvocationID=097bd51bfa774984a3913721e364f67e`. No hay segundo lanzamiento; el supervisor pasó a la siguiente semilla.

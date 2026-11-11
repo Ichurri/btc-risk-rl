@@ -1,4 +1,23 @@
-# Estado vigente — 11/11/2026 14:20 America/La_Paz, primera terna principal
+# Estado vigente — 11/11/2026 15:35 America/La_Paz, tres ternas principales
+
+La sesión `oos-v12-training.service` continúa con el mismo `InvocationID`
+`097bd51bfa774984a3913721e364f67e`. La captura auditada confirmó
+**9/108 corridas y 3/36 ternas**, con 99 unidades completas de esas ternas;
+el bloque siguiente ya comenzó. La cadena y las 99 huellas de cada tipo
+coincidieron. Tiempos medidos por terna: 2.258,869 / 2.246,075 /
+2.266,412 s; media 2.257,119 s. A las 15:35:50 el cargo global
+instantáneo fue 25.650,515 s y el saldo antes de la reserva de 2.700 s
+fue 22.049,485 s. Restan 33 ternas: 74.484,917 s de unidades si
+repitieran la media, más verificaciones y cierre. Ver
+[informe](hitos/OOS-v1-2-tres-ternas-principales-20261111.md) y
+[reporte local](../reporte-codex.md). **Siguiente tarea:** dejar pausar o
+cerrar esta única sesión, auditar ledger, checkpoints y cargo final; solo
+entonces valorar otra sesión. La evaluación aislada aún no tiene permiso ni
+fuente final auditada. Validación 2023 y final 2024–2025 siguen cerrados.
+
+---
+
+# Estado anterior — 11/11/2026 14:20 America/La_Paz, primera terna principal
 
 La misma sesión `oos-v12-training.service` con
 `InvocationID=097bd51bfa774984a3913721e364f67e` sigue activa, sin otra
