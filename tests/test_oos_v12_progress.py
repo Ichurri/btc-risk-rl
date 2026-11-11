@@ -60,6 +60,13 @@ def test_read_verified_ledger_rejects_bad_chain_and_keeps_pending_separate(tmp_p
         read_verified_ledger(path)
 
 
+def test_snapshot_rejects_unterminated_live_ledger_line():
+    from btc_risk_rl.reporting.oos_progress import read_verified_snapshot
+
+    with pytest.raises(ValueError, match="incomplete"):
+        read_verified_snapshot(b'{"pending":')
+
+
 def test_training_progress_chart_labels_source_and_excludes_pending():
     from btc_risk_rl.reporting.oos_progress import render_progress_svg, summarize_state
 

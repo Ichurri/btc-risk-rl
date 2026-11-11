@@ -10,11 +10,13 @@ from pathlib import Path
 from btc_risk_rl.pilots.p2_budget import state_hash
 
 
-def read_verified_ledger(path: Path) -> dict:
-    """Read an append-only snapshot and verify every complete chain entry."""
+def read_verified_snapshot(raw: bytes) -> dict:
+    """Verify one immutable byte snapshot of a newline-terminated ledger."""
+    if not raw.endswith(b"\n"):
+        raise ValueError("OOS ledger snapshot ends with an incomplete line")
     previous = None
     state = None
-    for line in Path(path).read_text().splitlines():
+    for line in raw.decode("utf-8").splitlines():
         state = json.loads(line)
         if state.get("previous_hash") != previous or state.get("state_hash") != state_hash(state):
             raise ValueError("OOS ledger chain corrupt")
@@ -22,6 +24,11 @@ def read_verified_ledger(path: Path) -> dict:
     if state is None:
         raise ValueError("OOS ledger empty")
     return state
+
+
+def read_verified_ledger(path: Path) -> dict:
+    """Read an append-only snapshot and verify every complete chain entry."""
+    return read_verified_snapshot(Path(path).read_bytes())
 
 
 def summarize_state(profile: str, state: dict, *, expected_runs: int) -> dict:
