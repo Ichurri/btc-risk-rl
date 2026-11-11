@@ -195,6 +195,19 @@ La batería focal tras esta integración terminó **69 passed en 8,51 s**;
 Ruff pasó. Las cuatro pruebas del trabajador utilizaron únicamente velas,
 checkpoint y normalizador inventados. Sus intentos iniciales fallaron por
 módulo y función ausentes, y luego pasaron con la ruta implementada.
+
+Se preparó un descargador **interno, aún no habilitado** para la fuente
+final: cinco páginas como máximo para 4.429 velas requeridas, consultas
+UTC fijadas, archivos nuevos y huellas por página. Una falta temporal
+conserva el manifiesto `failed` y las páginas ya recibidas; la raíz no
+se reutiliza. Dos pruebas con transporte inventado comprobaron cobertura
+exacta y fallo por un hueco. No hubo llamada HTTP ni acceso a 2024–2025.
+Su ejecución futura depende de la puerta final separada y del cierre
+técnico 2023; la descarga por sí sola no acepta el conjunto final.
+La batería focal acumulada quedó en **71 passed en 8,64 s** y Ruff pasó.
+El test de páginas falló primero por módulo ausente y luego pasó con el
+descargador. La suite completa del repositorio aún no se corre en paralelo
+con el entrenamiento activo.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
