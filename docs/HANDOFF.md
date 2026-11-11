@@ -1,11 +1,17 @@
 # Estado vigente del worktree aislado — 11/11/2026, evaluación aún cerrada
 
+El trabajador interno de evaluación ya conecta checkpoint sintético,
+exportación inventada, traza continua y bitácora durable; vuelve a auditar
+reportes antes de aceptarlos y falla ante unidades huérfanas. La batería
+focal quedó en **69 passed** y Ruff pasó. Sigue faltando supervisor histórico,
+presupuesto/admisión y exportación final auditada; ningún permiso está activo.
 Se incorporaron puertas **independientes y apagadas** para 2023 y
 2024–2025: exigen aprobación con huella fijada, protocolo real íntegro y
 proveniencia concordante; el conjunto final exige además cierre técnico de
 108 políticas. La fuente final deberá cotejar exactamente 43 velas de
 contexto de 2023 contra H1 y rechaza tiempos fraccionarios. La batería
-focal de evaluación quedó en **58 passed** y Ruff pasó; todas las fuentes
+focal de evaluación había quedado en **58 passed** antes de la integración
+del trabajador; todas las fuentes
 de esas pruebas son inventadas. Véase
 [informe de fuentes y límites](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
 El siguiente trabajo es conectar estas puertas con un ejecutor supervisado,
