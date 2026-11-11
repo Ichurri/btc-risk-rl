@@ -10,7 +10,10 @@ continua con checkpoint K10 y doble auditoría de la traza, y la tabla del
 contraste congelado. **43 pruebas focales sintéticas pasaron** y Ruff pasó.
 No existe comando histórico activo ni permiso 2023/final. Faltan adquisición
 y auditoría de fuentes, supervisor y cierre del roster de 108, permisos
-separados y armonización del texto académico. El entrenamiento principal
+separados y armonización del texto académico. La guarda nueva de roster
+exige 108 corridas, 1.188 unidades, 36 ternas y todas las huellas antes
+de abrir evaluación; rechazó el ledger real aún activo. En total, la
+batería focal quedó en **45 passed** y Ruff pasó. El entrenamiento principal
 continúa en la otra rama; no fusionar código en ella mientras su permiso
 fija la huella anterior. [Texto metodológico propuesto](proposals/OOS-v1-2-armonizacion-tesis-20261111.md).
 

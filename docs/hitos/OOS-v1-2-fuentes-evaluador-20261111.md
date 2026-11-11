@@ -45,12 +45,21 @@ permiso histórico activo**. La prueba de extremo a extremo utilizó velas y
 pesos inventados de ambas longitudes. No constituyen evaluación de políticas
 sobre 2023 o 2024–2025.
 
-Falta conectar un adaptador de fuente auditado, el cierre del roster de 108
-checkpoints, un supervisor por evaluación, presupuesto/bitácora y permisos
+Falta conectar un adaptador de fuente auditado, la carga de los 108
+checkpoints tras el cierre del roster, un supervisor por evaluación,
+presupuesto/bitácora y permisos
 distintos para 2023 y final. Estas puertas deben verificarse antes de abrir
 cualquier CSV protegido. La [armonización metodológica de la tesis](../proposals/OOS-v1-2-armonizacion-tesis-20261111.md)
 también está preparada como texto propuesto; todavía no está aplicada al
 documento académico.
+
+La guarda `evaluation.complete_roster` exige el ledger `completed`, las
+**108 corridas y 1.188 unidades**, 36 ternas con semilla pareada, cadena y
+huellas de todos los checkpoints, reportes y solicitudes. En la captura
+real aún activa devolvió `ValueError: OOS main training is not completed`;
+no se abrió ninguna partición de evaluación. Dos pruebas con un ledger
+completo inventado ejercitaron aceptación y rechazo por cambio de huella,
+estado y protocolo.
 
 ## Estimación separada de 108 recorridos
 
@@ -78,12 +87,14 @@ se usa esta tabla para declarar viable automáticamente la fecha 16/11.
 uv run --frozen python docs/evidence/oos-v12-evaluation-source-inventory-20261111/checks.py
 uv run --frozen ruff check docs/evidence/oos-v12-evaluation-source-inventory-20261111/checks.py
 uv run --frozen pytest -q tests/test_oos_v12_historical_unit.py
+uv run --frozen pytest -q tests/test_oos_v12_complete_roster.py
 uv run --frozen pytest -q tests/test_oos_v12_export_builder.py
 uv run --frozen pytest -q tests/test_oos_v12_contrast_table.py
 uv run --frozen pytest -q tests/test_oos_v12_contrast_table.py tests/test_oos_v12_export_builder.py tests/test_oos_v12_historical_unit.py
 uv run --frozen ruff check src/btc_risk_rl/evaluation/export_builder.py src/btc_risk_rl/evaluation/historical_unit.py src/btc_risk_rl/reporting/oos_contrast.py tests/test_oos_v12_contrast_table.py tests/test_oos_v12_export_builder.py tests/test_oos_v12_historical_unit.py
 uv run --frozen pytest -q tests/test_oos_v12_checkpoint_read.py tests/test_oos_v12_evaluation_export.py tests/test_oos_v12_evaluation_features.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_inference.py tests/test_oos_v12_progress.py tests/test_oos_v12_tables.py tests/test_oos_v12_contrast_table.py tests/test_oos_v12_export_builder.py tests/test_oos_v12_historical_unit.py
 uv run --frozen ruff check src/btc_risk_rl/evaluation src/btc_risk_rl/reporting/oos_contrast.py src/btc_risk_rl/reporting/oos_progress.py src/btc_risk_rl/reporting/oos_tables.py scripts/render_oos_v12_training_progress.py tests/test_oos_v12_checkpoint_read.py tests/test_oos_v12_evaluation_export.py tests/test_oos_v12_evaluation_features.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_inference.py tests/test_oos_v12_progress.py tests/test_oos_v12_tables.py tests/test_oos_v12_contrast_table.py tests/test_oos_v12_export_builder.py tests/test_oos_v12_historical_unit.py
+uv run --frozen pytest -q tests/test_oos_v12_complete_roster.py tests/test_oos_v12_checkpoint_read.py tests/test_oos_v12_evaluation_export.py tests/test_oos_v12_evaluation_features.py tests/test_oos_v12_historical_path.py tests/test_oos_v12_inference.py tests/test_oos_v12_progress.py tests/test_oos_v12_tables.py tests/test_oos_v12_contrast_table.py tests/test_oos_v12_export_builder.py tests/test_oos_v12_historical_unit.py
 ```
 
 Las primeras invocaciones de cada prueba fallaron por módulo ausente, según
@@ -92,6 +103,9 @@ antes de añadir el segundo período y la lectura auditada; la prueba focal
 actualizada terminó **4 passed**. La batería focal de evaluación terminó
 **43 passed en 6,98 s** y Ruff pasó. No se ejecutó suite completa
 en este worktree mientras el servicio histórico entrenaba en otro árbol.
+Después de añadir la guarda de roster, la batería focal quedó en
+**45 passed en 7,32 s** y Ruff volvió a pasar. La suite general del
+repositorio todavía no se ejecutó en este worktree.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
