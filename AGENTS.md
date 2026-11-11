@@ -1,6 +1,21 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **11/11/2026: ampliación prospectiva OOS autorizada.** Santiago sustituyó
+  la ventana fija 01:00–09:00 por ejecución a cualquier hora en Debian y
+  autorizó ampliar el presupuesto según mediciones, sin alterar las 36
+  ternas C0/C5/C10, los nueve bloques por corte ni los topes por unidad.
+  La enmienda nueva `docs/protocols/OOS-v1-2-training-budget-amendment-20261111.json`
+  se fijó antes de aplicar código en `b86ea47`: 50.400 s globales por fecha
+  `America/La_Paz`, reserva 2.700 s, máximo 20 días y corte de presentación
+  el 16/11 a las 09:00. Los 6.942,163 s medidos el 11/11 más 3.857,837 s
+  conservadores se cargan antes de trabajo nuevo; no son 10.800 s de tiempo
+  realmente medido. El timer antiguo está deshabilitado mientras se verifica
+  y se fija un permiso nuevo; no lanzar con código/huellas dispares. Conservar
+  2021 íntegro solo como diagnóstico descriptivo; el bloqueo original no
+  demostró exclusividad. Siguiente perfil `wf-2022` independiente. Antes de
+  Q0 exigir suite formal, Ruff, preflight vigilado, recursos y admisión.
+  Validación 2023 y final 2024–2025 requieren congelación/permiso distintos.
 - **11/11/2026: corrección prospectiva y continuación OOS programada.**
   Las tres raíces de campaña coinciden ahora con el protocolo congelado y
   el supervisor comparte `artifacts/shared-pilot-budget/global.lock` con

@@ -7,7 +7,7 @@ WorkingDirectory=/home/ichurri/Desktop/personal_projects/btc-risk-rl
 ExecStart=/usr/bin/systemd-inhibit --what=sleep:idle --mode=block --why=OOS-v1.2-training /home/ichurri/.local/bin/uv run --frozen python scripts/launch_oos_v12_nightly.py
 ExecStopPost=/home/ichurri/.local/bin/uv run --frozen python scripts/write_oos_v12_report.py
 Restart=no
-TimeoutStartSec=8h
+TimeoutStartSec=15h
 
 [Install]
 WantedBy=default.target

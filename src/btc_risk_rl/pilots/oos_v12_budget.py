@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from datetime import datetime
@@ -9,11 +10,27 @@ from pathlib import Path
 
 from btc_risk_rl.pilots.budget import LA_PAZ
 from btc_risk_rl.pilots.p2_budget import state_hash
+from btc_risk_rl.pilots.protocol import ROOT
 from btc_risk_rl.pilots.wf_cost_session import (
-    DAY_LIMIT,
     WFCostSessionJournal,
     _split_days,
 )
+
+AMENDMENT = ROOT / "docs/protocols/OOS-v1-2-training-budget-amendment-20261111.json"
+AMENDMENT_SHA256 = "ebd4856b3658fac31f10baeb1688a58dbab61ac80e3655f99f8228604a16c036"
+
+
+def amended_budget():
+    raw = AMENDMENT.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != AMENDMENT_SHA256:
+        raise ValueError("OOS budget amendment hash mismatch")
+    data = json.loads(raw)
+    if (data.get("status") != "authorized_training_only"
+            or data.get("daily_global_seconds") != 50400
+            or data.get("daily_closure_reserve_seconds") != 2700
+            or data.get("active_days_max") != 20):
+        raise ValueError("OOS budget amendment identity mismatch")
+    return data
 
 PREP_CAMPAIGN = "oos-v12-training-v1"
 PREP_NAME = "oos-v12-training-preflight.jsonl"
@@ -39,9 +56,20 @@ def _union(intervals):
     return total
 
 
-def inspect_oos_debit(artifacts, *, now, active_prep_token=None):
+def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
+                      prior_day_adjustment_seconds=None):
     """Merge all accepted OOS intervals; open or failed preparation blocks reentry."""
     artifacts = Path(artifacts)
+    budget = amended_budget()
+    day_limit = budget["daily_global_seconds"]
+    if prior_day_adjustment_seconds is None:
+        prior_day_adjustment_seconds = (
+            budget["prior_day"]["conservative_extra_debit_seconds"]
+            if artifacts.resolve() == (ROOT / "artifacts").resolve() else 0.0
+        )
+    if (not math.isfinite(prior_day_adjustment_seconds)
+            or prior_day_adjustment_seconds < 0):
+        raise ValueError("Invalid OOS prior-day adjustment")
     intervals = {}
     forced_days = set()
     observed_days = set()
@@ -102,9 +130,12 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None):
                         day = datetime.fromtimestamp(stop, LA_PAZ).date().isoformat()
                         intervals.setdefault(day, []).append((stop, stop + excess))
 
-    by_day = {day: min(DAY_LIMIT, _union(values)) for day, values in intervals.items()}
+    by_day = {day: min(day_limit, _union(values)) for day, values in intervals.items()}
+    prior_day = budget["prior_day"]["day_la_paz"]
+    if prior_day in observed_days and prior_day_adjustment_seconds:
+        by_day[prior_day] = min(day_limit, by_day[prior_day] + prior_day_adjustment_seconds)
     for day in forced_days:
-        by_day[day] = DAY_LIMIT
+        by_day[day] = day_limit
     return dict(by_day=by_day, blocked=blocked,
                 ledger_by_campaign=ledger_by_campaign,
                 active_days=sorted(observed_days | forced_days))

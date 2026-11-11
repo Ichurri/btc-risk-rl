@@ -7,19 +7,20 @@ import json
 import os
 import sys
 from dataclasses import asdict, dataclass
-from datetime import datetime, time
+from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from btc_risk_rl.pilots.budget import CampaignLedger
+from btc_risk_rl.pilots.oos_v12_budget import AMENDMENT_SHA256, amended_budget
 from btc_risk_rl.pilots.p2_budget import P2Ledger, state_hash
 from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 
 FREEZE = ROOT / "docs/protocols/OOS-v1-2-training-freeze-20261110.json"
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
-APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261111-v2.json"
+APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261111-v3.json"
 MARKET_EXECUTION_ENABLED = True
-REGISTRATION_SHA256 = "ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806"
+REGISTRATION_SHA256 = None
 PROFILES = ("wf-2021", "wf-2022", "main-2018-2022")
 LA_PAZ = ZoneInfo("America/La_Paz")
 LAUNCH_MEMORY_MIN_BYTES = 6_026_846_208
@@ -70,7 +71,9 @@ def verified_legacy_completed_root(profile: str, entries=None) -> Path | None:
 
 def window_admissible(epoch: float) -> bool:
     local = datetime.fromtimestamp(epoch, LA_PAZ)
-    return 1 <= local.hour < 9
+    budget = amended_budget()
+    return (local.date().isoformat() >= budget["effective_day_la_paz"]
+            and epoch < datetime.fromisoformat(budget["presentation_cutoff_local"]).timestamp())
 
 
 def frozen_protocol() -> dict:
@@ -173,6 +176,8 @@ def require_campaign() -> dict:
     if (approval.get("active") is not True
             or approval.get("scope") != "accepted_training_only"
             or approval.get("freeze_sha256") != FREEZE_SHA256
+            or approval.get("budget_amendment_sha256") != AMENDMENT_SHA256
+            or approval.get("daily_global_seconds") != amended_budget()["daily_global_seconds"]
             or approval.get("campaign_roots") != frozen_protocol()["campaign_roots"]
             or approval.get("inputs_sha256") != frozen_protocol()["inputs_sha256"]
             or approval.get("code_sha256") != code_sha256()
@@ -197,7 +202,10 @@ def read_budget(profile: str, *, now=None, active_prep_token=None) -> dict:
     # The unit supervisor separately excludes it when computing external debit.
     return inspect_budget(now=now,
                           campaign=ROOT / "artifacts/__oos_v12_budget_probe__",
-                          active_oos_prep_token=active_prep_token)
+                          active_oos_prep_token=active_prep_token,
+                          daily_limit_seconds=amended_budget()["daily_global_seconds"],
+                          closure_reserve_seconds=amended_budget()[
+                              "daily_closure_reserve_seconds"])
 
 
 def inspect_preflight(profile: str, *, active_prep_token=None) -> dict:
@@ -229,7 +237,7 @@ def inspect_preflight(profile: str, *, active_prep_token=None) -> dict:
     if not budget["ok"] or budget["remaining_before_reserve"] < 1800:
         blockers.append("shared budget insufficient for Q0 cap and closing reserve")
     if not window_admissible(__import__("time").time()):
-        blockers.append("outside 01:00–09:00 La Paz window")
+        blockers.append("outside authorized La Paz date or presentation cutoff")
     return dict(status="blocked" if blockers else "ready", blockers=blockers,
                 profile=profile, source_identity=identity, route_count=len(source.route_ids),
                 host=host, budget=budget, trajectories_generated=0, optimizer_steps=0)
@@ -346,10 +354,14 @@ class OOSLedger(P2Ledger):
 
     iterations = 10
     preserve_completed = True
+    daily_limit_seconds = 50400
+    initial_work_seconds = 47700
+    base_closure_reserve_seconds = 2700
+    post_preflight_work_seconds = 47700
 
     def __init__(self, root, *, now, identity, external_seconds=0):
         if not window_admissible(now):
-            raise ValueError("OOS outside 01:00-09:00 La Paz window")
+            raise ValueError("OOS outside authorized La Paz date or presentation cutoff")
         self.previous_hash = None
         path = Path(root) / "ledger.jsonl"
         if path.exists():
@@ -377,9 +389,8 @@ class OOSLedger(P2Ledger):
             self.persist(now)
             self.lock.close()
             raise ValueError("OOS shared twenty active days exhausted")
-        day = datetime.fromtimestamp(now, LA_PAZ).date()
-        nine = datetime.combine(day, time(9), LA_PAZ).timestamp()
-        self.day["hard_deadline"] = min(self.day["hard_deadline"], nine)
+        cutoff = datetime.fromisoformat(amended_budget()["presentation_cutoff_local"]).timestamp()
+        self.day["hard_deadline"] = min(self.day["hard_deadline"], cutoff)
         self.day["work_deadline"] = min(self.day["work_deadline"],
                                         self.day["hard_deadline"] - 2700)
         self.persist(now)
@@ -460,5 +471,6 @@ def run_historical_units(profile: str):
         profile="oos_v12_market_units", diagnostic_n=64,
         require_service=True, require_linger=True, ledger_type=OOSLedger,
         protocol_identity={"freeze_sha256": FREEZE_SHA256,
+                           "budget_amendment_sha256": AMENDMENT_SHA256,
                            "source_identity": source.identity()},
     )

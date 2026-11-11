@@ -236,30 +236,67 @@ def test_new_ledger_reserves_2700_and_rejects_failed(tmp_path):
     from btc_risk_rl.pilots.oos_v12_training import OOSLedger
 
     identity = {"fixture": True}
-    with OOSLedger(tmp_path / "campaign", now=1794300000, identity=identity) as ledger:
+    start = datetime(2026, 11, 11, 1, tzinfo=ZoneInfo("America/La_Paz")).timestamp()
+    with OOSLedger(tmp_path / "campaign", now=start, identity=identity) as ledger:
         assert ledger.day["hard_deadline"] - ledger.day["work_deadline"] >= 2700
-        ledger.fail(1794300001, "synthetic_failure")
+        ledger.fail(start + 1, "synthetic_failure")
     with pytest.raises(ValueError, match="failed/incomplete"):
-        OOSLedger(tmp_path / "campaign", now=1794300002, identity=identity)
+        OOSLedger(tmp_path / "campaign", now=start + 2, identity=identity)
 
 
-def test_night_window_stops_units_before_nine(tmp_path):
+def test_expanded_window_stops_at_midnight_with_reserve(tmp_path):
     from btc_risk_rl.pilots.oos_v12_training import OOSLedger, window_admissible
 
     zone = ZoneInfo("America/La_Paz")
     def at(hour, minute):
         return datetime(2026, 11, 11, hour, minute, tzinfo=zone).timestamp()
-    assert not window_admissible(at(0, 59))
+    assert window_admissible(at(0, 59))
     assert window_admissible(at(1, 0))
     assert window_admissible(at(8, 59))
-    assert not window_admissible(at(9, 0))
+    assert window_admissible(at(9, 0))
     with OOSLedger(tmp_path / "night", now=at(8, 50), identity={"fixture": True}) as ledger:
-        assert ledger.day["hard_deadline"] <= at(9, 0)
+        assert ledger.day["hard_deadline"] > at(9, 0)
+        assert ledger.day["hard_deadline"] <= at(23, 59) + 60
+        assert ledger.day["hard_deadline"] - ledger.day["work_deadline"] >= 2700
         ledger.preflight_done(at(8, 50))
-        assert ledger.admit("C0", "q0", at(8, 50)) == "pause"
+        assert ledger.admit("C0", "q0", at(8, 50)) == "start"
 
 
-def test_twenty_active_days_count_precheck_days_across_campaigns(tmp_path):
+def test_expanded_ledger_charges_external_time_and_pauses_before_midnight(tmp_path):
+    from btc_risk_rl.pilots.oos_v12_training import OOSLedger
+
+    zone = ZoneInfo("America/La_Paz")
+    morning = datetime(2026, 11, 12, 9, tzinfo=zone).timestamp()
+    with OOSLedger(tmp_path / "morning", now=morning, identity={"fixture": True},
+                   external_seconds=10800) as ledger:
+        assert ledger.day["hard_deadline"] == pytest.approx(morning + 39600)
+        ledger.preflight_done(morning)
+        assert ledger.day["work_deadline"] <= ledger.day["hard_deadline"] - 2700
+    late = datetime(2026, 11, 12, 23, 30, tzinfo=zone).timestamp()
+    with OOSLedger(tmp_path / "late", now=late, identity={"fixture": True}) as ledger:
+        ledger.preflight_done(late)
+        assert ledger.admit("C0", "q0", late) == "pause"
+
+
+def test_expanded_budget_counts_old_day_conservatively_and_new_work(tmp_path):
+    from btc_risk_rl.pilots.oos_v12_budget import inspect_oos_debit
+    from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
+
+    artifacts = tmp_path / "artifacts"
+    day = datetime(2026, 11, 11, 1, tzinfo=ZoneInfo("America/La_Paz")).timestamp()
+    path = artifacts / "shared-pilot-budget/oos-v12-training-preflight.jsonl"
+    with WFCostSessionJournal(path, campaign="oos-v12-training-v1") as journal:
+        token = journal.start(now=day, monotonic=0, invocation_id="old")
+        journal.end(token, now=day + 6942.163, monotonic=6942.163, status="ready")
+        token = journal.start(now=day + 10000, monotonic=10000, invocation_id="new")
+        journal.end(token, now=day + 10100, monotonic=10100, status="ready")
+    debit = inspect_oos_debit(artifacts, now=day + 10100,
+                              prior_day_adjustment_seconds=10800 - 6942.163)
+    assert debit["by_day"]["2026-11-11"] == pytest.approx(10900)
+
+
+def test_twenty_active_days_count_precheck_days_across_campaigns(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import oos_v12_training as training
     from btc_risk_rl.pilots.oos_v12_training import OOSLedger
     from btc_risk_rl.pilots.wf_cost_session import WFCostSessionJournal
 
@@ -275,6 +312,7 @@ def test_twenty_active_days_count_precheck_days_across_campaigns(tmp_path):
                         status="ready")
     now = datetime(2026, 11, 21, 1, tzinfo=zone).timestamp()
     root = artifacts / "oos-v12-training-main-01"
+    monkeypatch.setattr(training, "window_admissible", lambda _now: True)
     with pytest.raises(ValueError, match="twenty active days exhausted"):
         OOSLedger(root, now=now, identity={"fixture": True})
     assert json.loads((root / "ledger.jsonl").read_text().splitlines()[-1])[
@@ -511,7 +549,7 @@ def test_open_precheck_blocks_reentry_and_charges_conservatively(tmp_path):
         journal.start(now=day, monotonic=0, invocation_id="fixture")
     debit = inspect_oos_debit(artifacts, now=day + 60)
     assert debit["blocked"]
-    assert debit["by_day"]["2026-11-11"] == 10800
+    assert debit["by_day"]["2026-11-11"] == 50400
 
 
 @pytest.mark.parametrize("campaign_name", (
@@ -557,7 +595,9 @@ def test_precheck_budget_counts_own_existing_ledger(tmp_path, monkeypatch):
     ledger["state_hash"] = state_hash(ledger)
     (root / "ledger.jsonl").write_text(json.dumps(ledger) + "\n")
     monkeypatch.setattr(wf_cost, "ROOT", tmp_path)
-    assert campaign.read_budget("wf-2021", now=day + 600)["global_spent"] == 600
+    budget = campaign.read_budget("wf-2021", now=day + 600)
+    assert budget["global_spent"] == 600
+    assert budget["remaining_before_reserve"] == 50400 - 600 - 2700
 
 
 def test_preflight_rejects_low_memory_without_trajectories(monkeypatch):

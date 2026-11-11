@@ -1,8 +1,7 @@
 [Unit]
-Description=Ventanas 01:00 de entrenamiento OOS v1.2 hasta la presentación
+Description=Reintento diario de entrenamiento OOS v1.2 hasta la presentación
 
 [Timer]
-OnCalendar=2026-11-11 01:00:00
 OnCalendar=2026-11-12 01:00:00
 OnCalendar=2026-11-13 01:00:00
 OnCalendar=2026-11-14 01:00:00

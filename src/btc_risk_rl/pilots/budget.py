@@ -18,6 +18,10 @@ def utc(t):
 
 class CampaignLedger:
     iterations = 2
+    daily_limit_seconds = 10800
+    initial_work_seconds = 9000
+    base_closure_reserve_seconds = 1800
+    post_preflight_work_seconds = 8100
     def __init__(self, root, *, now, identity, external_seconds=0.0):
         if not math.isfinite(external_seconds) or external_seconds < 0:
             raise ValueError("Invalid external daily debit")
@@ -64,12 +68,13 @@ class CampaignLedger:
                 midnight = datetime.combine(
                     date + timedelta(days=1), datetime.min.time(), LA_PAZ
                 ).timestamp()
-                hard = min(now + max(0, 10800 - external_seconds), midnight)
+                hard = min(now + max(0, self.daily_limit_seconds - external_seconds), midnight)
                 self.state["days"][self.day_key] = dict(
                     started_utc_epoch=now,
                     started_utc=utc(now),
                     hard_deadline=hard,
-                    work_deadline=min(now + 9000, hard - 1800),
+                    work_deadline=min(now + self.initial_work_seconds,
+                                      hard - self.base_closure_reserve_seconds),
                     preflight_done=False,
                     active_seconds=0.0,
                     external_seconds=external_seconds,
@@ -79,7 +84,8 @@ class CampaignLedger:
             if extra:
                 self.day["hard_deadline"] -= extra
                 self.day["work_deadline"] = min(
-                    self.day["work_deadline"], self.day["hard_deadline"] - 1800
+                    self.day["work_deadline"],
+                    self.day["hard_deadline"] - self.base_closure_reserve_seconds
                 )
                 self.day["external_seconds"] = external_seconds
             self.persist(now)
@@ -107,7 +113,8 @@ class CampaignLedger:
             if now - self.day["started_utc_epoch"] > 900:
                 self.fail(now, "preflight_timeout")
                 raise ValueError("Preflight exceeded 15 minutes")
-            self.day["work_deadline"] = min(self.day["work_deadline"], now + 8100)
+            self.day["work_deadline"] = min(self.day["work_deadline"],
+                                             now + self.post_preflight_work_seconds)
             self.day["preflight_done"] = True
         self.persist(now)
 

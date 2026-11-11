@@ -441,7 +441,9 @@ def inspect_inputs(*, campaign: Path | None = None) -> dict:
 
 
 def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
-                   active_oos_prep_token: str | None = None) -> dict:
+                   active_oos_prep_token: str | None = None,
+                   daily_limit_seconds: float = 10800,
+                   closure_reserve_seconds: float = 2700) -> dict:
     """Read prior campaign debits for the current La Paz day without locking."""
     from btc_risk_rl.pilots.p2_budget import state_hash
 
@@ -539,7 +541,8 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
     if oos["blocked"]:
         active.append("oos training preparation or ledger open/failed")
     return dict(ok=not active, day_la_paz=day, global_spent=spent,
-                remaining_before_reserve=max(0.0, 10800 - spent - 2700),
+                remaining_before_reserve=max(
+                    0.0, daily_limit_seconds - spent - closure_reserve_seconds),
                 active_campaigns=active, sources=sources)
 
 

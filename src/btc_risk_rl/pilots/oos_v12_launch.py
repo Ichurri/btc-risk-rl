@@ -9,8 +9,7 @@ import os
 import subprocess
 import sys
 import time
-from datetime import datetime
-from datetime import time as daytime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from btc_risk_rl.pilots.budget import LA_PAZ
@@ -215,7 +214,7 @@ def select_next_profile(campaigns=None, *, legacy_completed=None, now=None):
 
 
 def run_nightly():
-    """Run frozen profiles in order; a valid budget pause ends this night."""
+    """Run frozen profiles in order; a valid budget pause ends this session."""
     require_campaign()
     while window_admissible(time.time()):
         profile = select_next_profile()
@@ -232,14 +231,24 @@ def run_nightly():
         if state["status"] == "ready" and state.get("pending") is None:
             return "paused_at_complete_boundary"
         raise ValueError("OOS nightly unit failed or has an incomplete boundary")
-    return "outside_window"
+    return "outside_authorized_period"
+
+
+def session_deadline_epoch(now):
+    from btc_risk_rl.pilots.oos_v12_budget import amended_budget
+
+    local = datetime.fromtimestamp(now, LA_PAZ)
+    midnight = datetime.combine(local.date() + timedelta(days=1),
+                                datetime.min.time(), LA_PAZ).timestamp()
+    cutoff = datetime.fromisoformat(amended_budget()["presentation_cutoff_local"]).timestamp()
+    return min(midnight, cutoff)
 
 
 def prepare_and_run(profile):
     """One systemd session, preparation journal first, training only after ready."""
     require_campaign()
     if profile not in PROFILES or not window_admissible(time.time()):
-        raise PreflightBlocked("OOS profile or night window blocked")
+        raise PreflightBlocked("OOS profile or authorized period blocked")
     if profile != select_next_profile():
         raise PreflightBlocked("OOS profile is not the next unfinished frozen roster")
     with OOSPrecheckAttempt(ROOT / "artifacts") as attempt:
@@ -248,11 +257,10 @@ def prepare_and_run(profile):
         if len(inspect_oos_debit(ROOT / "artifacts", now=now,
                                  active_prep_token=attempt.token)["active_days"]) > 20:
             raise PreflightBlocked("OOS twenty active days exhausted")
-        day = datetime.fromtimestamp(now, LA_PAZ).date()
-        nine = datetime.combine(day, daytime(9), LA_PAZ).timestamp()
+        deadline = session_deadline_epoch(now)
         budget = read_budget(profile, now=now, active_prep_token=attempt.token)
         if (not budget["ok"] or budget["remaining_before_reserve"] < 900 + 1800
-                or nine - now < 900 + 1800 + 2700):
+                or deadline - now < 900 + 1800 + 2700):
             raise PreflightBlocked("OOS suite/Q0/closing reserve does not fit")
         attempt.run_check("suite", lambda: _checked_command(
             [sys.executable, "-m", "pytest", "-q"], timeout=900))
@@ -278,7 +286,7 @@ def prepare_and_run(profile):
         remaining = read_budget(profile, now=time.time(),
                                 active_prep_token=attempt.token)
         if (not remaining["ok"] or remaining["remaining_before_reserve"] < 1800
-                or nine - time.time() < 1800 + 2700):
+                or session_deadline_epoch(time.time()) - time.time() < 1800 + 2700):
             raise PreflightBlocked("OOS Q0 plus closing reserve no longer fits")
         print(json.dumps(dict(stage="prepared", profile=profile,
                               preflight=preflight, token=attempt.token),

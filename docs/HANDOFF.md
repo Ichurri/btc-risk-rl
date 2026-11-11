@@ -1,4 +1,12 @@
-# Estado vigente — 11/11/2026, `wf-2022` programado
+# Estado vigente — 11/11/2026, presupuesto OOS ampliado prospectivamente
+
+Santiago autorizó sustituir la ventana 01:00–09:00 por ejecución a cualquier hora y ampliar el cómputo en función de tiempos medidos, sin alterar roster ni topes por unidad. La [enmienda de presupuesto](protocols/OOS-v1-2-training-budget-amendment-20261111.json) se fijó **antes de aplicarse** en `b86ea47`: 50.400 s globales por fecha `America/La_Paz`, reserva de cierre 2.700 s, máximo 20 días, corte de presentación 16/11 a las 09:00. El gasto original del 11/11 de 6.942,163 s permanece medido; se añaden 3.857,837 s de débito conservador por verificaciones/trabajo posterior no cronometrado íntegramente. El trabajo nuevo se cobra encima. [Fundamento y adjudicación 2021](hitos/OOS-v1-2-presupuesto-ampliado-20261111.md).
+
+El timer antiguo se deshabilitó durante la modificación; el servicio está inactivo. **Siguiente tarea:** terminar suite y Ruff del código revisado, fijar un permiso v3 por huella, instalar las unidades `systemd --user`, repetir preflight vigilado y admisión. Solo entonces lanzar `wf-2022` bajo el bloqueo compartido. Los 99 checkpoints 2021 quedan intactos; su integridad está comprobada, pero la exclusividad del bloqueo original no pudo demostrarse. Validación 2023 y prueba final siguen cerradas; el protocolo confirmatorio v1.2 aún requiere congelación y permiso separados.
+
+---
+
+# Estado anterior — 11/11/2026, `wf-2022` programado
 
 La corrección prospectiva eliminó el doble prefijo `artifacts/` en las
 tres raíces congeladas. La preparación y el supervisor de cada perfil
