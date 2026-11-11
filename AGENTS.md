@@ -10,8 +10,13 @@
   `America/La_Paz`, reserva 2.700 s, máximo 20 días y corte de presentación
   el 16/11 a las 09:00. Los 6.942,163 s medidos el 11/11 más 3.857,837 s
   conservadores se cargan antes de trabajo nuevo; no son 10.800 s de tiempo
-  realmente medido. El timer antiguo está deshabilitado mientras se verifica
-  y se fija un permiso nuevo; no lanzar con código/huellas dispares. Conservar
+  realmente medido. La suite completa pasó con 587 pruebas y Ruff pasó; el
+  permiso v3 quedó fijado en `8860fb9`, SHA-256
+  `7b1f7dc62d01b6030b1b3a70b516b47d5207b612b25fd64607bf49a01194bed3`.
+  El preflight manual vigilado de `wf-2022` dio `ready`. Una sola sesión
+  `oos-v12-training.service` comenzó a las 11:28:14, `InvocationID`
+  `097bd51bfa774984a3913721e364f67e`; comprobar ledger y cierre antes
+  de otra sesión. El timer diario apunta al 12/11 01:00. Conservar
   2021 íntegro solo como diagnóstico descriptivo; el bloqueo original no
   demostró exclusividad. Siguiente perfil `wf-2022` independiente. Antes de
   Q0 exigir suite formal, Ruff, preflight vigilado, recursos y admisión.
