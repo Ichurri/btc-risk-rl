@@ -182,6 +182,19 @@ Con esta bitácora, la batería focal terminó **65 passed en 7,84 s** y Ruff
 pasó. El primer intento de sus tres pruebas falló por módulo ausente; el
 reingreso de la segunda política se repitió luego en un proceso Python
 distinto.
+
+El trabajador interno `evaluation.runner` ejecuta una unidad sintética
+real con checkpoint K10 y exportación inventados. Antes de aceptar calcula
+otra vez la contabilidad desde la traza persistida, compara el reporte y
+guarda sus huellas en la bitácora. Revisa los reportes aceptados antes de
+continuar. Un checkpoint corrupto dejó `failed` sin aceptación, y una
+unidad huérfana se convirtió en fallo irreversible antes de reingresar.
+Esta ruta **aún no tiene supervisor histórico, admisión temporal, permisos
+activos ni fuente final**; no es una evaluación de las 108 políticas.
+La batería focal tras esta integración terminó **69 passed en 8,51 s**;
+Ruff pasó. Las cuatro pruebas del trabajador utilizaron únicamente velas,
+checkpoint y normalizador inventados. Sus intentos iniciales fallaron por
+módulo y función ausentes, y luego pasaron con la ruta implementada.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
