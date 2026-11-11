@@ -1,3 +1,55 @@
+# Cierre auditado — 11/11/2026, 02:56 America/La_Paz
+
+- Rama `codex/oos-v12-training-prep`, base publicada `a5eef29`, código
+  `1ce1382` y permiso `cbd11de`. La eliminación local de `.python-version`
+  permanece fuera de los commits.
+- `oos-v12-training.service` terminó `Result=success` a las 02:55:46,
+  `InvocationID=67732d86aae44562a2e68a34d14b2124`. No queda servicio
+  de entrenamiento activo. Suite formal, Ruff y preflight vigilado pasaron;
+  este último confirmó CA, 9.254.907.904 B de memoria disponible, 3.639
+  rutas 2021 y ninguna apertura protegida.
+- `wf-2021`: **9/9 corridas, 3/3 ternas C0/C5/C10 y 99/99 unidades**;
+  ledger `completed`, `pending=null`. La cadena de 302 estados y las 99
+  huellas de checkpoints, reportes y solicitudes coincidieron. Último
+  checkpoint válido:
+  `artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10/state.pt`,
+  SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+  Ledger SHA-256 `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+  `wf-2022` y el perfil principal siguen sin iniciar.
+- Cargo global del 11/11: **6.942,163 s**, incluidos preparación y unidades
+  sin duplicar los 6.401,296 s del ledger. Saldo antes de la reserva de
+  2.700 s: **1.157,837 s**. A las 02:55 se bloqueó el comienzo de `wf-2022`
+  porque no cabían suite, Q0 y cierre; no fue un fallo de unidad.
+- **Desviación de ruta:** el protocolo fija `artifacts/oos-v12-training-*`,
+  pero el código escribió el corte 2021 en `artifacts/artifacts/oos-v12-training-*`.
+  Por ello el supervisor de unidades usó otro bloqueo/presupuesto compartido.
+  La bitácora principal sí midió la sesión completa y el cargo quedó dentro
+  del límite global, pero la admisión por unidad no fue la ruta congelada.
+  Se deshabilitó el timer nocturno, sin interrumpir esta sesión. Los artefactos
+  originales se conservan; **no repetir ni migrar el corte 2021**.
+- **Siguiente acción:** adjudicar la desviación, corregir prospectivamente
+  ruta/contabilidad con pruebas y nueva huella de permiso, y solo entonces
+  reactivar el timer para una ventana futura con preflight nuevo. Validación
+  2023 y prueba final 2024–2025 siguen cerradas. Detalle y comandos:
+  `docs/hitos/OOS-v1-2-entrenamiento-sesion-20261111.md`.
+
+---
+
+# Reporte automático — 11/11/2026 02:55 America/La_Paz
+
+- Rama `codex/oos-v12-training-prep`, commit `a5eef29`.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: sin ledger; no se inició una unidad.
+- `main-2018-2022`: sin ledger; no se inició una unidad.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `f372dc56f36e41e8e3948ecccc4d45ebf8f251d32c4ff1f13d39034fed3a915d`.
+- Presupuesto global del día: 6942.163 s cargados; 1157.837 s antes de la reserva de cierre de 2.700 s. Puerta: ready.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+---
+
 # Reporte Codex — 10/11/2026, 10:57 America/La_Paz
 
 - Rama `codex/oos-v12-training-prep`; código `1ce1382`, permiso de

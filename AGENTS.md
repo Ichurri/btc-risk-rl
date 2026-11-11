@@ -1,7 +1,24 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
-- **10/11/2026: entrenamiento OOS v1.2 autorizado, aún sin unidades nuevas.**
+- **11/11/2026: primera sesión OOS cerrada; siguiente lanzamiento suspendido.**
+  `oos-v12-training.service` cerró `Result=success` tras suite, Ruff y
+  preflight `ready`; `wf-2021` tiene 9/9 corridas, 3/3 ternas y 99/99
+  unidades aceptadas, ledger `completed` sin `pending`. El cargo global
+  fue 6.942,163 s el 11/11, con 1.157,837 s antes de la reserva de
+  2.700 s. `wf-2022` se bloqueó antes de Q0 por saldo insuficiente;
+  el perfil principal no inició. **Desviación de ruta:** el código escribió
+  el ledger en `artifacts/artifacts/oos-v12-training-wf-2021-01`, aunque
+  la raíz congelada era `artifacts/oos-v12-training-wf-2021-01`. El
+  supervisor usó el bloqueo/presupuesto anidado; la bitácora principal
+  midió toda la sesión y no hubo exceso global observado. No alterar,
+  migrar ni repetir el corte 2021. Se deshabilitó el timer nocturno;
+  no lanzar otra sesión antes de adjudicar y corregir prospectivamente
+  rutas/contabilidad, verificar y actualizar las huellas del permiso.
+  El servicio está inactivo. Ver
+  `docs/hitos/OOS-v1-2-entrenamiento-sesion-20261111.md` y
+  `reporte-codex.md`. Validación 2023 y prueba final siguen cerradas.
+- **10/11/2026: antecedente de autorización y preparación OOS v1.2.**
   Santiago autorizó preparar y ejecutar hasta el 16/11 el entrenamiento
   que quepa en 01:00–09:00 `America/La_Paz`, manteniendo 36 bloques
   principales C0/C5/C10 y límites de 10.800 s globales/día, reserva

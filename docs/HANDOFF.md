@@ -1,4 +1,37 @@
-# Estado vigente — 10/11/2026, entrenamiento OOS v1.2 preparado
+# Estado vigente — 11/11/2026, primera sesión OOS cerrada
+
+La sesión `oos-v12-training.service` del 11/11 (01:00–02:55:46
+`America/La_Paz`) cerró `Result=success`. Suite, Ruff y preflight vigilado
+pasaron. En `wf-2021`, el ledger terminó `completed`: **9/9 corridas,
+3/3 ternas C0/C5/C10 y 99/99 unidades**, sin `pending`. Se verificaron
+cadena y huellas de los 99 checkpoints, reportes y solicitudes. El último
+checkpoint íntegro es
+`artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10/state.pt`,
+SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+El cargo global medido fue **6.942,163 s**; quedaban **1.157,837 s antes
+de la reserva de 2.700 s**. `wf-2022` se bloqueó antes de suite/Q0 porque
+no cabía con reserva; tampoco inició el perfil principal. El servicio está
+inactivo y no hay una segunda sesión. Ver [auditoría de la sesión](hitos/OOS-v1-2-entrenamiento-sesion-20261111.md)
+y [reporte local](../reporte-codex.md).
+
+**Desviación pendiente:** el código antepuso `artifacts/` a las raíces
+que ya lo contenían en el protocolo congelado. El corte 2021 se escribió
+en `artifacts/artifacts/oos-v12-training-wf-2021-01`, y el supervisor
+usó un bloqueo/presupuesto de unidades anidado. La bitácora principal sí
+contabilizó toda la sesión y no hubo exceso global medido; aun así, la
+admisión de unidades no siguió literalmente la ruta congelada. Conservar
+el ledger y sus checkpoints originales; no repetir ni migrar 2021 para
+ocultar la desviación. Se deshabilitó `oos-v12-training.timer` antes del
+cierre, sin interrumpir el servicio. **Siguiente tarea:** adjudicar la
+desviación, corregir prospectivamente rutas/contabilidad, verificar y
+actualizar la huella del permiso antes de cualquier nueva sesión. El
+timer de restauración de suspensión sigue previsto para 16/11 09:05.
+Validación 2023 y prueba final 2024–2025 permanecen cerradas; no hay
+evaluación confirmatoria.
+
+---
+
+# Estado anterior — 10/11/2026, entrenamiento OOS v1.2 preparado
 
 Rama `codex/oos-v12-training-prep`. El cierre de WF 2022-03 permanece
 intacto; su gate se cerró prospectivamente en `ae5b591`. Santiago autorizó
