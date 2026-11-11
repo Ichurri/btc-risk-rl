@@ -13,7 +13,10 @@ y auditoría de fuentes, supervisor y cierre del roster de 108, permisos
 separados y armonización del texto académico. La guarda nueva de roster
 exige 108 corridas, 1.188 unidades, 36 ternas y todas las huellas antes
 de abrir evaluación; rechazó el ledger real aún activo. En total, la
-batería focal quedó en **45 passed** y Ruff pasó. El entrenamiento principal
+batería focal quedó en **51 passed** y Ruff pasó. Se añadieron adaptadores
+internos H1/2023 y páginas Binance/final probados solo con archivos
+inventados; falta descargador final autorizado y auditoría del origen.
+El entrenamiento principal
 continúa en la otra rama; no fusionar código en ella mientras su permiso
 fija la huella anterior. [Texto metodológico propuesto](proposals/OOS-v1-2-armonizacion-tesis-20261111.md).
 

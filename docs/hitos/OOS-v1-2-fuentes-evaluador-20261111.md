@@ -25,7 +25,10 @@ velas de 2023 auditado contra H1. Deben persistirse solicitudes, respuestas,
 huellas y manifiesto nuevo; exigir exactamente la malla temporal, OHLCV
 finitos y velas completas, sin interpolar ni seleccionar otras fechas. Una
 falta, diferencia de fuente o interrupción impide aceptar la exportación.
-No se descargó ni se abrió ese período en este hito. Si el origen público
+El lector interno `source_final` ya verifica un manifiesto y páginas
+inmutables, pero **aún falta el descargador autorizado** que crearía esos
+archivos y una auditoría independiente de origen. No se descargó ni se abrió
+ese período en este hito. Si el origen público
 no entrega la cobertura exigida, habrá que documentar el bloqueo y solicitar
 una fuente equivalente auditada; no se dará por válida otra automáticamente.
 
@@ -34,7 +37,11 @@ una fuente equivalente auditada; no se dará por válida otra automáticamente.
 En la rama aislada, `evaluation.export_builder` escribe un export nuevo a
 partir de velas suministradas por un futuro adaptador autorizado; valida
 antes de escribir filas, fechas, OHLCV y huellas declaradas. No carga
-particiones por sí mismo. `evaluation.historical_unit` verifica primero la
+particiones por sí mismo. `source_h1` comprueba el manifiesto H1 fijado y
+extrae, tras una futura autorización, las 2.233 barras de 2023/contexto;
+`source_final` comprueba un manifiesto final y cada página Binance fijada
+antes de reconstruir las 4.429 barras requeridas. Ambos se probaron solo
+con fuentes inventadas. `evaluation.historical_unit` verifica primero la
 identidad del manifiesto de origen, luego checkpoint K10 y export, evalúa una
 cartera continua con `sigmoid(μ)`, persiste la traza y vuelve a auditarla;
 rechaza una raíz previa. Una segunda lectura recalcula la contabilidad y
@@ -45,8 +52,9 @@ permiso histórico activo**. La prueba de extremo a extremo utilizó velas y
 pesos inventados de ambas longitudes. No constituyen evaluación de políticas
 sobre 2023 o 2024–2025.
 
-Falta conectar un adaptador de fuente auditado, la carga de los 108
-checkpoints tras el cierre del roster, un supervisor por evaluación,
+Falta verificar los adaptadores contra fuentes reales después de sus
+permisos, la carga de los 108 checkpoints tras el cierre del roster,
+un descargador final, un supervisor por evaluación,
 presupuesto/bitácora y permisos
 distintos para 2023 y final. Estas puertas deben verificarse antes de abrir
 cualquier CSV protegido. La [armonización metodológica de la tesis](../proposals/OOS-v1-2-armonizacion-tesis-20261111.md)
@@ -88,6 +96,8 @@ uv run --frozen python docs/evidence/oos-v12-evaluation-source-inventory-2026111
 uv run --frozen ruff check docs/evidence/oos-v12-evaluation-source-inventory-20261111/checks.py
 uv run --frozen pytest -q tests/test_oos_v12_historical_unit.py
 uv run --frozen pytest -q tests/test_oos_v12_complete_roster.py
+uv run --frozen pytest -q tests/test_oos_v12_h1_source.py
+uv run --frozen pytest -q tests/test_oos_v12_final_source.py
 uv run --frozen pytest -q tests/test_oos_v12_export_builder.py
 uv run --frozen pytest -q tests/test_oos_v12_contrast_table.py
 uv run --frozen pytest -q tests/test_oos_v12_contrast_table.py tests/test_oos_v12_export_builder.py tests/test_oos_v12_historical_unit.py
@@ -106,6 +116,9 @@ en este worktree mientras el servicio histórico entrenaba en otro árbol.
 Después de añadir la guarda de roster, la batería focal quedó en
 **45 passed en 7,32 s** y Ruff volvió a pasar. La suite general del
 repositorio todavía no se ejecutó en este worktree.
+Después de los adaptadores inventados, la batería focal quedó en
+**51 passed en 6,80 s** y Ruff pasó. Ninguna prueba abrió 2023 real o
+2024–2025 real.
 El verificador del inventario devolvió `matched_metadata_only`; el
 `metadata.json` capturado tiene SHA-256
 `beadbaf093c7e1013ad4876601287456b7d01042628d43111721c60cd9a44895`.
