@@ -1,4 +1,26 @@
-# Estado vigente — 11/11/2026 15:35 America/La_Paz, tres ternas principales
+# Estado al cierre de sesión OOS — 11/11/2026 20:44 America/La_Paz
+
+El servicio histórico terminó con pausa válida y está inactivo. `wf-2022`
+auxiliar cerró 99/99 unidades; el principal está `ready`, cursor 16,
+186 unidades, `pending=null`: **5/36 ternas completas**. Se verificaron
+la cadena y 558 huellas de archivos aceptados; último checkpoint válido
+`run-16-C0-b0/checkpoint-9`, SHA-256
+`c33ff5961c1cbff19e81bb159155d31bf59957e03e7faa66ef287417878153a8`.
+El ledger principal tiene SHA-256
+`d0d4562da56e585f081c8bc7558f9c8db8b66c78fbcf216290cd5cbab1bf0b44`.
+El cargo global reconciliado del 11/11 fue 31.675,357 s, con 16.024,643 s
+antes de reserva. La última unidad registró pérdida de CA; CA volvió a 1,
+pero la batería medida a las 20:44 era 44 % (<50 %), por lo que no se
+inició otra sesión. El timer espera el 12/11 01:00 y repite suite, Ruff,
+preflight y admisión. La media de cinco ternas fue 2.271,805 s de unidades;
+31 ternas restantes implican 70.425,961 s extrapolados, más gastos de
+preparación y cierre. Ver [reporte local](../reporte-codex.md).
+Validación 2023 y final 2024–2025 permanecen cerradas; el evaluador se
+prepara en el worktree aislado `codex/oos-v12-evaluation-infrastructure`.
+
+---
+
+# Estado anterior — 11/11/2026 15:35 America/La_Paz, tres ternas principales
 
 La sesión `oos-v12-training.service` continúa con el mismo `InvocationID`
 `097bd51bfa774984a3913721e364f67e`. La captura auditada confirmó
