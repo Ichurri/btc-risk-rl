@@ -1,4 +1,26 @@
-# Estado vigente — 11/11/2026 21:11 America/La_Paz
+# Estado vigente — 11/11/2026 21:37 America/La_Paz
+
+La segunda sesión principal pausó en frontera completa, `Result=success`,
+sin proceso activo. Ledger `ready`, cursor 19/108, **215 unidades** y
+**6/36 ternas completas**, `pending=null`; última frontera
+`run-19-C5-b0/checkpoint-5`, SHA-256
+`caf08ad45b9c1a9b57e6e38974cb79ff9dbaef90b49e30dffdbc9d41ab10b64c`.
+La [auditoría](hitos/OOS-v1-2-sesion-02-20261111.md) verificó 653
+estados y 645 huellas. El cargo protocolario del 11/11 es 47.008,738 s,
+con 691,262 s antes de reserva: **no iniciar otra sesión hoy**. Incluye
+12.801,316 s de hueco inactivo entre sesiones, por la forma conservadora
+del ledger; la unión de sesiones realmente medida fue 30.349,585 s y
+además existía un ajuste conservador previo de 3.857,837 s. No modificar
+retroactivamente el ledger ni tratar el hueco como cómputo. La media de
+seis ternas es 2.273,757 s; las otras treinta equivalen a 68.212,696 s
+extrapolados de unidades, más gastos. El timer espera el 12/11 01:00 y
+deberá repetir suite, Ruff, preflight y admisión con recursos actuales.
+Evaluación 2023/final sigue cerrada: metadatos H1 identifican 2023, no
+hay archivo final local identificado. Ver [reporte local](../reporte-codex.md).
+
+---
+
+# Estado anterior — 11/11/2026 21:11 America/La_Paz
 
 La sesión supervisada `9d306358db424a7c87ac4abe8c2cacba` sigue activa;
 el ledger principal estaba `running`, cursor 17 y 196 unidades aceptadas,

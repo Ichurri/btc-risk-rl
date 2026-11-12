@@ -1,0 +1,18 @@
+{
+  "additional_conservative_debit_seconds": 12801.315901,
+  "idle_gap_seconds": 12801.315901,
+  "interpretation": "idle gap charged by cumulative same-day ledger span; not compute time",
+  "measured_session_union_seconds": 30349.585274,
+  "no_idle_gap_reference_seconds": 34207.422203,
+  "prior_conservative_extra_seconds": 3857.836928,
+  "protocol_charged_seconds": 47008.738103,
+  "session_count": 5,
+  "session_journal_sha256": "c73253ca368652ca240a91956f38ae3b18c4b327fc7d334b3ab59c8e56d6ca6d",
+  "session_wall_seconds": [
+    6941.898751,
+    0.264321,
+    7404.884688,
+    13470.471923,
+    2532.065593
+  ]
+}

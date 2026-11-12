@@ -1,0 +1,14 @@
+{
+  "active_days": [
+    "2026-11-11"
+  ],
+  "blocked_for_other_session": false,
+  "can_admit_formal_suite_and_q0_today": false,
+  "captured_utc": "2026-11-12T01:35:16.254874+00:00",
+  "closure_reserve_seconds": 2700,
+  "daily_global_limit_seconds": 50400,
+  "day_la_paz": "2026-11-11",
+  "global_spent_seconds": 47008.73810338974,
+  "ledger_sha256": "1245b4299103401bbc066f9044278ffeabd55606687ac3ddab0bfb5c712c5749",
+  "remaining_before_reserve_seconds": 691.26189661026
+}

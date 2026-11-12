@@ -5,6 +5,13 @@
 `9d306358db424a7c87ac4abe8c2cacba`, seguía activa. Este documento no
 es cierre de campaña ni evaluación de políticas.
 
+**Actualización posterior:** esa sesión pausó a las 21:31 con seis ternas
+completas. La [auditoría de cierre](OOS-v1-2-sesion-02-20261111.md) reemplaza
+las cifras de entrenamiento de esta captura: **68.212,696 s extrapolados
+de unidades restantes** y 47.008,738 s de débito protocolario, del cual
+12.801,316 s corresponden a un hueco entre sesiones cobrado de forma
+conservadora. La estimación de evaluación y sus límites no cambiaron.
+
 ## Entrenamiento hasta el 16/11 a las 09:00
 
 El ledger principal auditado al cierre anterior tenía SHA-256
