@@ -1,3 +1,12 @@
+# Reporte Codex — 11/11/2026 21:11 America/La_Paz, proyecciones separadas
+
+- Servicio `oos-v12-training.service` activo con `InvocationID=9d306358db424a7c87ac4abe8c2cacba`; a este corte el ledger principal estaba `running`, cursor 17, 196 unidades aceptadas y `run-17-C5-b0/9` pendiente. **5/36 ternas completas**. No hubo sesión duplicada.
+- **Entrenamiento:** cinco ternas cerradas midieron una media de 2.271,805 s de unidades. Las 31 restantes representan **70.425,961 s (19,563 h) extrapolados** de unidades, más suite, Ruff, preflight, auditoría y cierre. El último cargo global cerrado del 11/11 fue 31.675,357 s, con 16.024,643 s antes de reserva; la sesión actual lo incrementa. Si sostienen tasa, recursos y admisión, el entrenamiento podría cerrar alrededor del 13/11, antes del 16/11 09:00; no es garantía.
+- **Evaluación:** por inventario permitido, H1 declara 2.190/2.190 velas de 2023 sin exclusiones; **no se identificó archivo local final 2024–2025**. La extrapolación de sonda sintética es 769,680 s para 108 recorridos de 2023 y 764,640 s para 108 finales, 1.534,320 s (25,57 min) sumados; faltan adquisición/exportación/auditoría y tiempo histórico real. Antes de abrir datos se requieren 36 ternas cerradas, supervisor verificado, armonización académica, permisos separados y fuente final auditada. No hace falta que ubique un archivo ahora; el descargador interno aún está apagado y se intentará solo tras el permiso final.
+- Detalle y límites: [proyección versionada](docs/hitos/OOS-v1-2-proyeccion-20261111.md). Validación y final permanecen cerrados. Próxima acción: esperar pausa o cierre de la sesión activa, auditar ledger/huellas/cargo y reingresar solo desde frontera válida con guardas nuevas.
+
+---
+
 # Reporte Codex — 11/11/2026 21:02 America/La_Paz
 
 - Se inició **una sola nueva sesión** `oos-v12-training.service` a las 20:49, `InvocationID=9d306358db424a7c87ac4abe8c2cacba`, `Restart=no`. Antes: CA=1, batería=50 % y cargando, MemAvailable=6.352.928.768 B, disco libre=113.509.847.040 B, gestor `running`, `Linger=yes`; presupuesto `ok=true`, 16.024,643 s antes de reserva. El servicio realizó suite, Ruff y preflight vigilado, los tres `ready` con el mismo `InvocationID`.

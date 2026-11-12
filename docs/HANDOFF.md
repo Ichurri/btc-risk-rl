@@ -1,4 +1,19 @@
-# Estado vigente — 11/11/2026 21:02 America/La_Paz
+# Estado vigente — 11/11/2026 21:11 America/La_Paz
+
+La sesión supervisada `9d306358db424a7c87ac4abe8c2cacba` sigue activa;
+el ledger principal estaba `running`, cursor 17 y 196 unidades aceptadas,
+con la unidad 9 de `run-17-C5-b0` pendiente. Hay 5/36 ternas completas.
+No iniciar otra sesión. La [proyección separada](hitos/OOS-v1-2-proyeccion-20261111.md)
+usa cinco ternas medidas: 70.425,961 s extrapolados de unidades restantes,
+más comprobaciones/cierre. El inventario permitido identifica 2023 por
+metadatos H1 y no identifica fuente local final; 1.534,320 s para ambos
+conjuntos de 108 recorridos es extrapolación **sintética**, no costo
+histórico completo. Evaluación protegida hasta cierre y permisos separados.
+Al pausar/cerrar, auditar ledger, huellas y cargo antes de reingreso.
+
+---
+
+# Estado anterior — 11/11/2026 21:02 America/La_Paz
 
 Tras la pausa válida documentada abajo, una sola sesión nueva
 `oos-v12-training.service` arrancó a las 20:49 con `InvocationID`
