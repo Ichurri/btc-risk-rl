@@ -1,3 +1,11 @@
+# Reporte Codex — 11/11/2026 21:02 America/La_Paz
+
+- Se inició **una sola nueva sesión** `oos-v12-training.service` a las 20:49, `InvocationID=9d306358db424a7c87ac4abe8c2cacba`, `Restart=no`. Antes: CA=1, batería=50 % y cargando, MemAvailable=6.352.928.768 B, disco libre=113.509.847.040 B, gestor `running`, `Linger=yes`; presupuesto `ok=true`, 16.024,643 s antes de reserva. El servicio realizó suite, Ruff y preflight vigilado, los tres `ready` con el mismo `InvocationID`.
+- A las 21:02 el ledger estaba `running`, cursor 17, 188 unidades aceptadas, unidad `run-17-C5-b0/1` pendiente. Esto **no** completa la sexta terna; siguen 5/36 ternas cerradas. No se lanzó evaluación ni otra campaña en paralelo.
+- Siguiente acción: dejar que el supervisor pause o cierre en frontera; después cotejar cadena, checkpoint, cargos y estado `systemd`. El timer del 12/11 01:00 repetirá guardas si corresponde. Validación 2023 y prueba final siguen cerradas.
+
+---
+
 # Reporte Codex — 11/11/2026 20:44 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, commit publicado `977bf53`; la eliminación local previa de `.python-version` permanece fuera de Git.

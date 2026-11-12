@@ -1,4 +1,19 @@
-# Estado al cierre de sesión OOS — 11/11/2026 20:44 America/La_Paz
+# Estado vigente — 11/11/2026 21:02 America/La_Paz
+
+Tras la pausa válida documentada abajo, una sola sesión nueva
+`oos-v12-training.service` arrancó a las 20:49 con `InvocationID`
+`9d306358db424a7c87ac4abe8c2cacba`. CA=1, batería=50 % cargando,
+MemAvailable=6.352.928.768 B y presupuesto `ok=true` antes de iniciar.
+Suite, Ruff y preflight vigilado quedaron `ready` dentro de esa sesión.
+A las 21:02 el ledger principal estaba `running`, cursor 17, 188 unidades
+aceptadas y `run-17-C5-b0/1` pendiente: **5/36 ternas completas**. No
+lanzar otra sesión ni tocar los pesos mientras esta siga activa. Al
+pausar/cerrar, auditar ledger, huellas y gasto; el timer del 12/11 01:00
+requiere guardas nuevas. Validación 2023 y final siguen cerradas.
+
+---
+
+# Estado anterior — 11/11/2026 20:44 America/La_Paz
 
 El servicio histórico terminó con pausa válida y está inactivo. `wf-2022`
 auxiliar cerró 99/99 unidades; el principal está `ready`, cursor 16,
