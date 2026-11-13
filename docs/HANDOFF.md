@@ -1,4 +1,32 @@
-# Estado vigente — 11/11/2026 21:37 America/La_Paz
+# Estado vigente — 13/11/2026 15:33 America/La_Paz
+
+El entrenamiento principal está `ready`, cursor 82/108, 907/1.188 unidades,
+`pending=null`; última frontera `run-82-C5-b0/checkpoint-4`, SHA-256
+`9ddf6f807b814fc5c1885d143353d5642e67e9be4a8f7544561fdd7f357fcde9`.
+Ledger SHA-256 `24a602293b16483010055a58f832acbd33cd41cabd0d31ef63627857fbb36323`.
+No hay servicio activo. El último corte fue `availability_lost_after_unit`;
+los registros no retuvieron el valor exacto de memoria/disco en ese instante.
+El presupuesto global 13/11 cargó 45.459,199 s y deja 2.240,801 s antes
+de la reserva de 2.700 s, inferior al mínimo de 2.700 s exigido para
+preparación y admisión. La frontera del ledger para trabajar el 13/11 fue
+14:01:53. No alterar cargos ni huellas para reingresar hoy. Una ampliación
+del JSON/código vigente rompería la identidad estricta del ledger y la
+procedencia de los checkpoints; no se ha preparado una migración verificada.
+
+Santiago aclaró que 01:00 era horario del timer, no límite metodológico.
+Para arrancar en la primera hora con saldo diario nuevo, se deshabilitó
+`oos-v12-training.timer` y se programó **una sola** unidad transitoria
+`oos-v12-training-midnight-20261114.timer` para el **14/11 a las 00:00**
+`America/La_Paz`; ejecuta `systemctl --user start --no-block
+oos-v12-training.service`. `Linger=yes`. El servicio existente repetirá
+suite formal, Ruff, preflight vigilado y admisión antes de entrenar, con
+`Restart=no`. Comprobar esa sesión y su ledger antes de cualquier otra;
+restablecer una programación posterior solo cuando no pueda duplicarla.
+Validación 2023 y final 2024–2025 siguen cerradas. Ver `reporte-codex.md`.
+
+---
+
+# Estado anterior — 11/11/2026 21:37 America/La_Paz
 
 La segunda sesión principal pausó en frontera completa, `Result=success`,
 sin proceso activo. Ledger `ready`, cursor 19/108, **215 unidades** y
