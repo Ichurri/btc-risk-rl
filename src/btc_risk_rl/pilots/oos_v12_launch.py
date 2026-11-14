@@ -13,7 +13,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 from btc_risk_rl.pilots.budget import LA_PAZ
-from btc_risk_rl.pilots.oos_v12_budget import PREP_CAMPAIGN, PREP_NAME, inspect_oos_debit
+from btc_risk_rl.pilots.oos_v12_budget import (
+    PREP_CAMPAIGN,
+    PREP_NAME,
+    inspect_oos_debit,
+    recoverable_precheck_timeout,
+    recovery_policy,
+)
 from btc_risk_rl.pilots.oos_v12_training import (
     CAMPAIGNS,
     LEGACY_COMPLETED_ROOTS,
@@ -58,8 +64,14 @@ class OOSPrecheckAttempt:
             fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             self.journal = WFCostSessionJournal(self.journal_path,
                                                  campaign=PREP_CAMPAIGN)
-            self.token = self.journal.start(now=time.time(), monotonic=time.monotonic(),
-                                            invocation_id=os.environ.get("INVOCATION_ID"))
+            recovery_hash = None
+            if self.journal.sessions and recoverable_precheck_timeout(
+                    self.journal.sessions[-1], self.artifacts):
+                recovery_hash = recovery_policy()["failed_end_sha256"]
+            self.token = self.journal.start(
+                now=time.time(), monotonic=time.monotonic(),
+                invocation_id=os.environ.get("INVOCATION_ID"),
+                recovered_failed_sha256=recovery_hash)
             if self.checks_path.exists():
                 for line in self.checks_path.read_text().splitlines():
                     row = json.loads(line)
@@ -254,16 +266,17 @@ def prepare_and_run(profile):
     with OOSPrecheckAttempt(ROOT / "artifacts") as attempt:
         now = time.time()
         preparation_started = now
+        preparation_cap = recovery_policy()["preparation_seconds_max"]
         if len(inspect_oos_debit(ROOT / "artifacts", now=now,
                                  active_prep_token=attempt.token)["active_days"]) > 20:
             raise PreflightBlocked("OOS twenty active days exhausted")
         deadline = session_deadline_epoch(now)
         budget = read_budget(profile, now=now, active_prep_token=attempt.token)
-        if (not budget["ok"] or budget["remaining_before_reserve"] < 900 + 1800
-                or deadline - now < 900 + 1800 + 2700):
+        if (not budget["ok"] or budget["remaining_before_reserve"] < preparation_cap + 1800
+                or deadline - now < preparation_cap + 1800 + 2700):
             raise PreflightBlocked("OOS suite/Q0/closing reserve does not fit")
         attempt.run_check("suite", lambda: _checked_command(
-            [sys.executable, "-m", "pytest", "-q"], timeout=900))
+            [sys.executable, "-m", "pytest", "-q"], timeout=1050))
         attempt.run_check("ruff", lambda: _checked_command(
             [sys.executable, "-m", "ruff", "check", str(ROOT)], timeout=120))
 
@@ -281,8 +294,8 @@ def prepare_and_run(profile):
             preflight = attempt.run_check(profile, watched)
         finally:
             os.environ.pop("OOS_PREP_TOKEN", None)
-        if time.time() - preparation_started > 900:
-            raise ValueError("OOS formal preparation exceeded 900 seconds")
+        if time.time() - preparation_started > preparation_cap:
+            raise PreflightBlocked("OOS formal preparation exceeded 1200 seconds")
         remaining = read_budget(profile, now=time.time(),
                                 active_prep_token=attempt.token)
         if (not remaining["ok"] or remaining["remaining_before_reserve"] < 1800

@@ -35,6 +35,39 @@ def test_preledger_identity_failure_is_durable_and_reentry_is_rejected(tmp_path)
             reopened.start(now=1004, monotonic=510, invocation_id="second")
 
 
+def test_only_pinned_failed_precheck_can_reenter_without_editing_history(tmp_path):
+    path = tmp_path / "sessions.jsonl"
+    with WFCostSessionJournal(path, campaign="oos-v12-training-v1") as journal:
+        token = journal.start(now=1000, monotonic=500, invocation_id="first")
+        journal.end(token, now=1989, monotonic=1489, status="failed",
+                    reason="OOS formal preparation exceeded 900 seconds")
+        failed_hash = json.loads(path.read_text().splitlines()[-1])["sha256"]
+    before = path.read_bytes()
+    with WFCostSessionJournal(path, campaign="oos-v12-training-v1") as journal:
+        with pytest.raises(ValueError, match="failed session"):
+            journal.start(now=1990, monotonic=1490, invocation_id="second")
+        with pytest.raises(ValueError, match="failed session"):
+            journal.start(now=1990, monotonic=1490, invocation_id="second",
+                          recovered_failed_sha256="0" * 64)
+        journal.start(now=1990, monotonic=1490, invocation_id="second",
+                      recovered_failed_sha256=failed_hash)
+    assert path.read_bytes().startswith(before)
+    assert json.loads(path.read_text().splitlines()[-1])[
+        "recovered_failed_sha256"] == failed_hash
+
+
+def test_other_campaign_cannot_use_pinned_precheck_recovery(tmp_path):
+    path = tmp_path / "sessions.jsonl"
+    with WFCostSessionJournal(path, campaign="synthetic") as journal:
+        token = journal.start(now=1000, monotonic=500, invocation_id="first")
+        journal.end(token, now=1010, monotonic=510, status="failed")
+        failed_hash = json.loads(path.read_text().splitlines()[-1])["sha256"]
+    with WFCostSessionJournal(path, campaign="synthetic") as journal:
+        with pytest.raises(ValueError, match="failed session"):
+            journal.start(now=1011, monotonic=511, invocation_id="second",
+                          recovered_failed_sha256=failed_hash)
+
+
 def test_admission_subtracts_ledger_overlap_without_double_charge(tmp_path):
     root = tmp_path / "synthetic"
     path = root / "sessions.jsonl"

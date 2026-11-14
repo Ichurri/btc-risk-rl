@@ -18,7 +18,7 @@ from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 
 FREEZE = ROOT / "docs/protocols/OOS-v1-2-training-freeze-20261110.json"
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
-APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261111-v3.json"
+APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261114-v4.json"
 MARKET_EXECUTION_ENABLED = True
 REGISTRATION_SHA256 = "7b1f7dc62d01b6030b1b3a70b516b47d5207b612b25fd64607bf49a01194bed3"
 PROFILES = ("wf-2021", "wf-2022", "main-2018-2022")
@@ -173,10 +173,14 @@ def require_campaign() -> dict:
     if not APPROVAL.is_file() or digest(APPROVAL) != REGISTRATION_SHA256:
         raise PermissionError("OOS market approval hash mismatch")
     approval = json.loads(APPROVAL.read_text())
+    from btc_risk_rl.pilots.oos_v12_budget import RECOVERY_POLICY_SHA256, recovery_policy
+
+    recovery_policy()
     if (approval.get("active") is not True
             or approval.get("scope") != "accepted_training_only"
             or approval.get("freeze_sha256") != FREEZE_SHA256
             or approval.get("budget_amendment_sha256") != AMENDMENT_SHA256
+            or approval.get("recovery_policy_sha256") != RECOVERY_POLICY_SHA256
             or approval.get("daily_global_seconds") != amended_budget()["daily_global_seconds"]
             or approval.get("campaign_roots") != frozen_protocol()["campaign_roots"]
             or approval.get("inputs_sha256") != frozen_protocol()["inputs_sha256"]

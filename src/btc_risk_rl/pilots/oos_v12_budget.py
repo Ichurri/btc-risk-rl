@@ -34,11 +34,62 @@ def amended_budget():
 
 PREP_CAMPAIGN = "oos-v12-training-v1"
 PREP_NAME = "oos-v12-training-preflight.jsonl"
+RECOVERY_POLICY_PATH = ROOT / "docs/protocols/OOS-v1-2-preunit-timeout-recovery-20261114.json"
+RECOVERY_POLICY_SHA256 = "2ba512e67d7a2f2d84492c4d285338928abf7e5f0a44c19d27c726183c17d722"
+CHECKS_NAME = "oos-v12-training-checks.jsonl"
 CAMPAIGN_NAMES = (
     "oos-v12-training-wf-2021-01",
     "oos-v12-training-wf-2022-01",
     "oos-v12-training-main-01",
 )
+
+
+def recovery_policy():
+    if not RECOVERY_POLICY_PATH.is_file():
+        raise ValueError("OOS recovery policy absent")
+    raw = RECOVERY_POLICY_PATH.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != RECOVERY_POLICY_SHA256:
+        raise ValueError("OOS recovery policy hash mismatch")
+    policy = json.loads(raw)
+    if (policy.get("schema") != "oos_preunit_timeout_recovery_v1"
+            or policy.get("reason") != "OOS formal preparation exceeded 900 seconds"
+            or policy.get("preparation_seconds_max") != 1200):
+        raise ValueError("OOS recovery policy identity mismatch")
+    return policy
+
+
+def recoverable_precheck_timeout(session, artifacts):
+    """Recognize only the pinned, fully passing timeout; never rewrite its row."""
+    end = session["end"]
+    if end is None or end.get("status") != "failed":
+        return False
+    policy = recovery_policy()
+    if (hashlib.sha256(json.dumps(end, sort_keys=True,
+                                  allow_nan=False).encode()).hexdigest()
+            != policy["failed_end_sha256"]
+            or end.get("token") != policy["token"]
+            or end.get("reason") != policy["reason"]):
+        return False
+    path = Path(artifacts) / "shared-pilot-budget" / CHECKS_NAME
+    if not path.is_file():
+        return False
+    previous, completed = None, []
+    for line in path.read_text().splitlines():
+        row = json.loads(line)
+        digest = row.pop("sha256")
+        if (row.get("previous") != previous
+                or hashlib.sha256(json.dumps(row, sort_keys=True,
+                                             allow_nan=False).encode()).hexdigest()
+                != digest):
+            raise ValueError("OOS precheck chain corrupt")
+        previous = digest
+        if row.get("event") == "check_end" and row.get("token") == policy["token"]:
+            completed.append((row, digest))
+    expected = ["suite", "ruff", "main-2018-2022"]
+    return (len(completed) == 3
+            and [row["name"] for row, _ in completed] == expected
+            and all(row["status"] == "ready" for row, _ in completed)
+            and completed[-1][1] == policy["checks_end_sha256"])
 
 
 def _union(intervals):
@@ -117,7 +168,8 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
             for item in journal.sessions:
                 start, end = item["start"], item["end"]
                 orphan = end is None and start["token"] != active_prep_token
-                failed = end is not None and end["status"] == "failed"
+                failed = (end is not None and end["status"] == "failed"
+                          and not recoverable_precheck_timeout(item, artifacts))
                 blocked |= orphan or failed
                 stop = now if end is None else end["epoch"]
                 add(start["epoch"], stop)
@@ -129,6 +181,11 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
                     if excess > 0:
                         day = datetime.fromtimestamp(stop, LA_PAZ).date().isoformat()
                         intervals.setdefault(day, []).append((stop, stop + excess))
+
+    if artifacts.resolve() == (ROOT / "artifacts").resolve():
+        debit = recovery_policy().get("diagnostic_debit")
+        if debit is not None:
+            add(debit["start_epoch"], debit["end_epoch"])
 
     by_day = {day: min(day_limit, _union(values)) for day, values in intervals.items()}
     prior_day = budget["prior_day"]["day_la_paz"]

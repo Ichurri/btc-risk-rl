@@ -145,21 +145,28 @@ class WFCostSessionJournal:
         self.previous = digest
         return row
 
-    def start(self, *, now, monotonic, invocation_id):
+    def start(self, *, now, monotonic, invocation_id,
+              recovered_failed_sha256=None):
         if not all(math.isfinite(value) for value in (now, monotonic)):
             raise ValueError("WF session clock invalid")
         if self.sessions:
             last = self.sessions[-1]
             if last["end"] is None:
                 raise ValueError("WF unclosed session blocks reentry")
-            if last["end"]["status"] != "ready":
+            if (last["end"]["status"] != "ready"
+                    and (self.campaign != "oos-v12-training-v1"
+                         or recovered_failed_sha256 != self.previous)):
                 raise ValueError("WF failed session blocks reentry")
             if now < last["end"]["epoch"]:
                 raise ValueError("WF session UTC clock moved backwards")
         token = uuid.uuid4().hex
+        recovery = ({"recovered_failed_sha256": recovered_failed_sha256}
+                    if self.sessions and self.sessions[-1]["end"]["status"] == "failed"
+                    else {})
         row = self._append(dict(event="start", token=token, epoch=now, utc=utc(now),
                                 monotonic=monotonic, invocation_id=invocation_id,
-                                day_la_paz=datetime.fromtimestamp(now, LA_PAZ).date().isoformat()))
+                                day_la_paz=datetime.fromtimestamp(now, LA_PAZ).date().isoformat(),
+                                **recovery))
         self.sessions.append(dict(start=row, end=None))
         return token
 

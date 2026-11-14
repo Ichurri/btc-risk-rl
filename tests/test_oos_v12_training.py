@@ -658,7 +658,9 @@ def test_precheck_journal_starts_before_a_check_and_closes(tmp_path):
     assert rows[-1]["status"] == "ready"
 
 
-def test_precheck_session_covers_source_loading_and_supervision(tmp_path, monkeypatch):
+@pytest.mark.parametrize("preparation_seconds", (0, 1000, 1300))
+def test_precheck_session_covers_source_loading_and_supervision(
+        tmp_path, monkeypatch, preparation_seconds):
     from btc_risk_rl.pilots import oos_v12_launch as launch
     from btc_risk_rl.pilots.oos_v12_budget import inspect_oos_debit
     from btc_risk_rl.pilots.p2r import P2RSharedBudget
@@ -679,29 +681,36 @@ def test_precheck_session_covers_source_loading_and_supervision(tmp_path, monkey
             return {"stdout": json.dumps({"status": "ready",
                                           "protected_or_shared_csv_opened": False}),
                     "stderr": ""}
+        if args[1] == "-m" and args[2] == "pytest":
+            clock[0] += preparation_seconds
         return {"stdout": "ready", "stderr": ""}
 
     monkeypatch.setattr(launch, "_checked_command", command)
 
     def supervised(_profile):
         assert os.environ["OOS_PREP_TOKEN"]
-        clock[0] += 120  # synthetic source loading before the unit ledger exists
+        clock[0] += 120  # source loading before the unit ledger exists
         artifacts = tmp_path / "artifacts"
         debit = inspect_oos_debit(artifacts, now=clock[0],
                                   active_prep_token=os.environ["OOS_PREP_TOKEN"])
-        assert debit["by_day"]["2026-11-11"] == 120
+        assert debit["by_day"]["2026-11-11"] == preparation_seconds + 120
         assert not debit["blocked"]
         with P2RSharedBudget(artifacts, "oos-v12-training-wf-2021-01",
                              now=clock[0]) as shared:
-            assert shared.external_seconds == 120
+            assert shared.external_seconds == preparation_seconds + 120
         return {"status": "ready"}
 
     monkeypatch.setattr(launch, "run_historical_units", supervised)
-    assert launch.prepare_and_run("wf-2021")["status"] == "ready"
+    if preparation_seconds > 1200:
+        with pytest.raises(launch.PreflightBlocked, match="formal preparation"):
+            launch.prepare_and_run("wf-2021")
+    else:
+        assert launch.prepare_and_run("wf-2021")["status"] == "ready"
     journal = tmp_path / "artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl"
     rows = [json.loads(line) for line in journal.read_text().splitlines()]
     assert rows[-1]["status"] == "ready"
-    assert rows[-1]["wall_seconds"] == 120
+    assert rows[-1]["wall_seconds"] == (
+        preparation_seconds if preparation_seconds > 1200 else preparation_seconds + 120)
 
 
 def test_precheck_reentry_requires_same_invocation_and_chain(tmp_path, monkeypatch):
@@ -723,3 +732,49 @@ def test_precheck_reentry_requires_same_invocation_and_chain(tmp_path, monkeypat
     path.write_text("\n".join(rows) + "\n")
     with pytest.raises(PermissionError, match="chain invalid"):
         launch.require_recent_prepare("wf-2021")
+
+
+def test_pinned_preunit_timeout_keeps_charge_and_allows_only_that_reentry(
+        tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import oos_v12_budget as budget
+    from btc_risk_rl.pilots import oos_v12_launch as launch
+
+    artifacts = tmp_path / "artifacts"
+    with pytest.raises(ValueError, match="formal preparation"):
+        with launch.OOSPrecheckAttempt(artifacts, gate=lambda: None) as attempt:
+            for name in ("suite", "ruff", "main-2018-2022"):
+                attempt.run_check(name, lambda: "ready")
+            token = attempt.token
+            raise ValueError("OOS formal preparation exceeded 900 seconds")
+    journal_path = artifacts / "shared-pilot-budget/oos-v12-training-preflight.jsonl"
+    checks_path = artifacts / "shared-pilot-budget/oos-v12-training-checks.jsonl"
+    failed = json.loads(journal_path.read_text().splitlines()[-1])
+    started = json.loads(journal_path.read_text().splitlines()[0])
+    checks = json.loads(checks_path.read_text().splitlines()[-1])
+    now = time.time() + 1
+    assert budget.inspect_oos_debit(artifacts, now=now)["blocked"]
+    policy_path = tmp_path / "recovery.json"
+    policy_path.write_text(json.dumps({
+        "schema": "oos_preunit_timeout_recovery_v1",
+        "failed_end_sha256": failed["sha256"],
+        "checks_end_sha256": checks["sha256"],
+        "token": token,
+        "reason": "OOS formal preparation exceeded 900 seconds",
+        "preparation_seconds_max": 1200,
+        "diagnostic_debit": {"start_epoch": failed["epoch"], "end_epoch": now},
+    }))
+    monkeypatch.setattr(budget, "ROOT", tmp_path)
+    monkeypatch.setattr(budget, "RECOVERY_POLICY_PATH", policy_path)
+    monkeypatch.setattr(budget, "RECOVERY_POLICY_SHA256",
+                        hashlib.sha256(policy_path.read_bytes()).hexdigest())
+    debit = budget.inspect_oos_debit(artifacts, now=now)
+    assert not debit["blocked"]
+    day = datetime.fromtimestamp(now, ZoneInfo("America/La_Paz")).date().isoformat()
+    assert debit["by_day"][day] == pytest.approx(now - started["epoch"])
+    before = journal_path.read_bytes()
+    with launch.OOSPrecheckAttempt(artifacts, gate=lambda: None):
+        pass
+    assert journal_path.read_bytes().startswith(before)
+    policy_path.write_text(policy_path.read_text().replace("1200", "1201"))
+    with pytest.raises(ValueError, match="recovery policy hash"):
+        budget.inspect_oos_debit(artifacts, now=now)
