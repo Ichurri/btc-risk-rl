@@ -1,0 +1,6 @@
+2026-11-14T11:14:56-04:00 debian systemd-inhibit[132369]: {"nightly_result": "completed"}
+2026-11-14T11:16:27-04:00 debian systemd[1555]: oos-v12-training.service: State 'stop-post' timed out. Terminating.
+2026-11-14T11:16:27-04:00 debian systemd[1555]: oos-v12-training.service: Control process exited, code=exited, status=143/n/a
+2026-11-14T11:16:27-04:00 debian systemd[1555]: oos-v12-training.service: Failed with result 'timeout'.
+2026-11-14T11:16:27-04:00 debian systemd[1555]: Failed to start oos-v12-training.service - Entrenamiento OOS v1.2 supervisado, solo fuente H1 de entrenamiento.
+2026-11-14T11:16:27-04:00 debian systemd[1555]: oos-v12-training.service: Consumed 1h 43min 40.715s CPU time, 12.5G memory peak, 932.7M memory swap peak.

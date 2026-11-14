@@ -1,6 +1,21 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **14/11/2026: entrenamiento principal OOS completado; evaluación aún cerrada.**
+  El ledger `artifacts/oos-v12-training-main-01/ledger.jsonl` cerró
+  `completed`, cursor 108, 1.188/1.188 unidades, `pending=null` y 36 ternas
+  C0/C5/C10. La auditoría posterior verificó la cadena completa de 3.622
+  estados y las 1.188 huellas de checkpoints; ver
+  `docs/hitos/OOS-v1-2-entrenamiento-principal-cierre-20261114.md` y
+  `docs/evidence/oos-v12-main-closure-20261114/`. El proceso principal
+  informó `nightly_result=completed`; `systemd` quedó `Result=timeout` porque
+  `ExecStopPost` agotó 90 s al generar `reporte-codex.md`. No confundir ese
+  fallo de reporte con una unidad de entrenamiento fallida ni lanzar otra
+  sesión. El timer está deshabilitado. Validación 2023 y final 2024–2025
+  continúan cerradas y requieren las puertas/permiso separados. El cargo
+  conservador del 12/11 excede 50.400 s, aunque no se aceptaron unidades
+  después del límite de admisión; documentar la distinción sin alterar el
+  ledger histórico.
 - **11/11/2026: ampliación prospectiva OOS autorizada.** Santiago sustituyó
   la ventana fija 01:00–09:00 por ejecución a cualquier hora en Debian y
   autorizó ampliar el presupuesto según mediciones, sin alterar las 36

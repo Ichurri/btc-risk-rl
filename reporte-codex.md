@@ -1,3 +1,36 @@
+# Reporte Codex — 14/11/2026 11:29 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, código y permiso v5 en `c9c5c49`;
+  evidencia del cierre en `docs/evidence/oos-v12-main-closure-20261114/`.
+  Servicio `oos-v12-training.service`
+  sin proceso activo, timer deshabilitado.
+- Entrenamiento principal: ledger `completed`, **108/108 corridas, 36/36
+  ternas y 1.188/1.188 unidades**, `pending=null`. Ledger SHA-256
+  `c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b`;
+  cadena de 3.622 filas y 1.188 checkpoints verificados.
+- Último checkpoint aceptado:
+  `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-107-C5-b0/checkpoint-10/state.pt`,
+  SHA-256 `e2c2b35e695251824574e32a4203545dca86f12bb36a681f652c3f2298009cce`.
+- Sesión `InvocationID=8a7a764ba6b04acab12ca78a3d3ddbe3`: proceso
+  principal `nightly_result=completed` a las 11:14:56; `systemd`
+  `Result=timeout` a las 11:16:27 por `ExecStopPost` (reporte), no por la
+  unidad final. El reporte se completó mediante esta auditoría; no se
+  reanudará entrenamiento.
+- Presupuesto del 14/11 a las 11:28:24: global **33.621,063 s** (ledger
+  principal 32.729,203 s más 891,860 s de comprobaciones sin solapamiento),
+  **14.078,937 s** antes de reserva 2.700 s. Cargo propio del entrenamiento
+  en cuatro días: 156.791,374 s. El 12/11 el cargo conservador histórico
+  llegó a 51.223,830 s; la última unidad de ese día terminó a las 13:09:39,
+  antes del límite de admisión. Ver el informe de cierre para el alcance.
+- Evidencias: `docs/evidence/oos-v12-main-closure-20261114/` e informe
+  `docs/hitos/OOS-v1-2-entrenamiento-principal-cierre-20261114.md`.
+- Próximo paso: cerrar prospectivamente el permiso operativo y verificar la
+  infraestructura de evaluación bajo protocolo/permiso separados. Validación
+  2023 y prueba final 2024–2025 siguen cerradas. El entrenamiento completo
+  por sí solo no resuelve las hipótesis financieras.
+
+---
+
 # Reporte Codex — 14/11/2026 09:12 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, commit `c9c5c49`.

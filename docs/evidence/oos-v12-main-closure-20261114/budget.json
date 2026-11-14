@@ -1,0 +1,24 @@
+{
+  "active_campaigns": [],
+  "day_la_paz": "2026-11-14",
+  "global_spent": 33621.062589645386,
+  "measured_utc": "2026-11-14T15:28:24.463406+00:00",
+  "ok": true,
+  "remaining_before_reserve": 14078.937410354614,
+  "sources_with_charge": [
+    {
+      "charged_today_seconds": 32729.20257115364,
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/ledger.jsonl",
+      "reason": "measured",
+      "sha256": "c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b",
+      "status": "completed"
+    },
+    {
+      "charged_today_seconds": 891.860018491745,
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl",
+      "reason": "oos_precheck_gap",
+      "sha256": "248e5d80c6c273abf0e942efa9d4f2b9e5b1a8443b89369dfb732a43dfbd08b9",
+      "status": "precheck_attempt"
+    }
+  ]
+}

@@ -1,4 +1,32 @@
-# Estado vigente — 14/11/2026 09:17 America/La_Paz
+# Estado vigente — 14/11/2026 11:29 America/La_Paz
+
+**Entrenamiento principal cerrado:** ledger `completed`, 108/108 corridas,
+36/36 ternas C0/C5/C10, 1.188/1.188 unidades, `pending=null`. La auditoría
+en `docs/evidence/oos-v12-main-closure-20261114/closure.json` verificó
+3.622 filas encadenadas y las 1.188 huellas de checkpoints; SHA-256 del
+ledger `c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b`.
+Último checkpoint `run-107-C5-b0/checkpoint-10/state.pt`, SHA-256
+`e2c2b35e695251824574e32a4203545dca86f12bb36a681f652c3f2298009cce`.
+
+La sesión `oos-v12-training.service` del 14/11, `InvocationID`
+`8a7a764ba6b04acab12ca78a3d3ddbe3`, terminó el proceso principal con
+`nightly_result=completed` a las 11:14:56. `systemd` registró
+`Result=timeout` a las 11:16:27 **solo en `ExecStopPost`**, porque el generador
+del reporte agotó sus 90 s. El reporte se actualizó después por auditoría
+independiente; no repetir entrenamiento. Timer deshabilitado. El cargo
+global verificado del 14/11 fue 33.621,063 s y conservó 14.078,937 s antes
+de la reserva. Ver el informe del cierre para la distinción entre cargo
+conservador y admisión del 12/11.
+
+**Siguiente tarea:** preparar la verificación técnica y los permisos de
+evaluación de manera separada. La validación 2023 y prueba final 2024–2025
+no se han abierto; el cierre de entrenamiento no demuestra rentabilidad,
+superioridad entre condiciones ni cumplimiento CVaR. Conservar el cierre y
+los artefactos de WF05, P0–P3 y los checkpoints OOS sin selección por resultado.
+
+---
+
+# Estado anterior — 14/11/2026 09:17 America/La_Paz
 
 Entrenamiento principal `main-2018-2022`: ledger `ready`, cursor 103/108,
 **1.134/1.188 unidades** aceptadas, `pending=null`; las corridas 0–102
