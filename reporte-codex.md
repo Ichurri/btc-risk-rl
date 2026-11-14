@@ -1,3 +1,122 @@
+# Reporte Codex — 14/11/2026 09:12 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit `c9c5c49`.
+- `wf-2021`: raíz histórica íntegra `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01`; conservada sin migración ni repetición.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`.
+- `wf-2022`: cargo propio medido en ledger 6846.916 s; última unidad 79.841 s.
+- Último checkpoint `wf-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`.
+- `main-2018-2022`: ledger `ready`, 1134 unidades aceptadas, cursor 103, pending=False; SHA-256 ledger `80deb1c4ee61b8a756ce97b86f75f6b205c8d41dfaac478ac92def67f36a50d3`.
+- `main-2018-2022`: cargo propio medido en ledger 149509.187 s; última unidad 51.259 s.
+- Último checkpoint `main-2018-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-103-C10-b0/checkpoint-0`; estado SHA-256 `5f7447e8686976b7af87619a20ba5f1d3016840a519941e68124c9ff432664dc`.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `db0399c1217b9c96caeb76b228d132b93c16b8dbb11f8cd8d3055935d157ac87`.
+- Presupuesto global del día: 26338.876 s cargados; 21361.124 s antes de la reserva de cierre de 2.700 s. Puerta: ready.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+Auditoría posterior (09:17): la sesión `d493e2011f414038abdf612bcf99e5b8`
+cerró `Result=success` por `availability_lost_after_unit` después de Q0.
+El checkpoint anterior coincide con la huella; no se aceptó unidad parcial.
+El evento carece de medición contemporánea del recurso que cruzó la guarda.
+Vivaldi reapareció y consumió entre 2,4 y 7,3 GiB RSS en capturas posteriores;
+no se le atribuye causalidad demostrada. El timer principal quedó deshabilitado
+para impedir duplicados. Se pidió guardar y cerrar Vivaldi; GNOME ya tiene
+`idle-delay=0` y suspensión con CA `nothing`. Reingresar solo tras nueva
+medición de recursos y presupuesto, con una sesión supervisada.
+
+---
+
+# Reporte Codex — 14/11/2026 08:36 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit `b56f8e7`.
+- `wf-2021`: raíz histórica íntegra `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01`; conservada sin migración ni repetición.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`.
+- `wf-2022`: cargo propio medido en ledger 6846.916 s; última unidad 79.841 s.
+- Último checkpoint `wf-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`.
+- `main-2018-2022`: ledger `ready`, 1133 unidades aceptadas, cursor 103, pending=False; SHA-256 ledger `f2b8a639273f3fbdb2a3c7afa5d21d7a30dca6a16178b9748e87b47038b93215`.
+- `main-2018-2022`: cargo propio medido en ledger 143772.991 s; última unidad 93.481 s.
+- Último checkpoint `main-2018-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-102-C5-b0/checkpoint-10`; estado SHA-256 `dff17b3504b95cf30ad16ab93df571e856397486c25d5b73ad59b484219097c1`.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `c9a54d09a9385a772389985a7a89317c7c16ceed47b35c2c80818d042c40ef07`.
+- Presupuesto global del día: 50400.000 s cargados; 0.000 s antes de la reserva de cierre de 2.700 s. Puerta: blocked.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+---
+
+# Reporte Codex — 14/11/2026 08:00 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit `fb9958c`.
+- `wf-2021`: raíz histórica íntegra `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01`; conservada sin migración ni repetición.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`.
+- `wf-2022`: cargo propio medido en ledger 6846.916 s; última unidad 79.841 s.
+- Último checkpoint `wf-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`.
+- `main-2018-2022`: ledger `ready`, 1133 unidades aceptadas, cursor 103, pending=False; SHA-256 ledger `f2b8a639273f3fbdb2a3c7afa5d21d7a30dca6a16178b9748e87b47038b93215`.
+- `main-2018-2022`: cargo propio medido en ledger 143772.991 s; última unidad 93.481 s.
+- Último checkpoint `main-2018-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-102-C5-b0/checkpoint-10`; estado SHA-256 `dff17b3504b95cf30ad16ab93df571e856397486c25d5b73ad59b484219097c1`.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `786c2f0c3fe7fffcd75027ff09fb096c5571c01d029c6506e7761d3ac526f5eb`.
+- Presupuesto global del día: 50400.000 s cargados; 0.000 s antes de la reserva de cierre de 2.700 s. Puerta: blocked.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+---
+
+# Reporte Codex — 14/11/2026 07:36 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit `fb9958c`.
+- `wf-2021`: raíz histórica íntegra `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01`; conservada sin migración ni repetición.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`.
+- `wf-2022`: cargo propio medido en ledger 6846.916 s; última unidad 79.841 s.
+- Último checkpoint `wf-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`.
+- `main-2018-2022`: ledger `ready`, 1133 unidades aceptadas, cursor 103, pending=False; SHA-256 ledger `f2b8a639273f3fbdb2a3c7afa5d21d7a30dca6a16178b9748e87b47038b93215`.
+- `main-2018-2022`: cargo propio medido en ledger 143772.991 s; última unidad 93.481 s.
+- Último checkpoint `main-2018-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-102-C5-b0/checkpoint-10`; estado SHA-256 `dff17b3504b95cf30ad16ab93df571e856397486c25d5b73ad59b484219097c1`.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `225927003b54d79b3056e63869d5c2fe9616123b24476b6e1bd3baf752a27c4f`.
+- Presupuesto global del día: 20602.686 s cargados; 27097.314 s antes de la reserva de cierre de 2.700 s. Puerta: ready.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+---
+
+# Estado de supervisión — 14/11/2026 02:15 America/La_Paz
+
+- El reinicio del equipo a las 01:47 eliminó el timer transitorio de medianoche; no se creó una sesión a las 00:00. A las 01:50 se verificaron permiso vigente, ledger `ready` (907 unidades), checkpoint `run-82-C5-b0/4` íntegro, saldo diario nuevo, CA y recursos. Una sola sesión `oos-v12-training.service`, `InvocationID=175a23e5e639415dbda98c32a323927e`, arrancó manualmente. Suite, Ruff y preflight pasaron. El timer persistente original quedó habilitado para el 15/11 a la 01:00; no hubo lanzamiento duplicado.
+- Se aceptaron `run-82-C5-b0/5` y `/6`: ledger `ready`, **909/1.188 unidades**, cursor 82, `pending=null`. Checkpoint `/6` SHA-256 `458c4566c27cb692a47e0f8c8f9cb61e1728af5c1525eef92e74dd602e714b2d`, igual al ledger. El servicio terminó `Result=success` por `availability_lost_after_unit` tras `/6`; no hay trabajador activo. La guarda registró «Insufficient P2R memory or disk» sin cifra contemporánea.
+- El servicio midió un pico de memoria de **8.585.256.960 B**. La memoria disponible después de cerrar fue **10.249.224.192 B**; esta comparación sugiere riesgo de caer bajo la guarda operativa de 4 GiB, pero no demuestra el mínimo del instante. Disco libre posterior **92.934.176.768 B**, CA conectada. Se pidió cerrar aplicaciones de usuario pesadas antes del siguiente reingreso. La corrida 82 tiene **2/3 sesiones** registradas; conservar la tercera para completar sus unidades 7–10.
+- Presupuesto global 14/11 al corte: **1.131,448 s** cargados, **46.568,552 s** antes de reserva. Validación 2023 y prueba final siguen cerradas. No se reanudará a ciegas pese al saldo.
+
+---
+
+# Reporte Codex — 14/11/2026 02:12 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, commit `fb9958c`.
+- `wf-2021`: raíz histórica íntegra `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01`; conservada sin migración ni repetición.
+- `wf-2021`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `811f7456a08ed74a53c2be2d39efa56de0dbb49f3e42f033dd30a630502798b4`.
+- `wf-2021`: cargo propio medido en ledger 6401.296 s; última unidad 71.336 s.
+- Último checkpoint `wf-2021`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+- `wf-2022`: ledger `completed`, 99 unidades aceptadas, cursor 9, pending=False; SHA-256 ledger `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`.
+- `wf-2022`: cargo propio medido en ledger 6846.916 s; última unidad 79.841 s.
+- Último checkpoint `wf-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01/run-08-C5-b0/checkpoint-10`; estado SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`.
+- `main-2018-2022`: ledger `ready`, 909 unidades aceptadas, cursor 82, pending=False; SHA-256 ledger `c405fe59387039e12f33c2d3cb4ecfb53c02a24864b7d6f2a8f0513b6d0069a9`.
+- `main-2018-2022`: cargo propio medido en ledger 124301.765 s; última unidad 81.386 s.
+- Último checkpoint `main-2018-2022`: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-82-C5-b0/checkpoint-6`; estado SHA-256 `458c4566c27cb692a47e0f8c8f9cb61e1728af5c1525eef92e74dd602e714b2d`.
+- Bitácora de comprobaciones: `/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl`; SHA-256 `e5785d303076eb6e5c43af4282bd2e76cd57df0df75c374763e3593ae838c32e`.
+- Presupuesto global del día: 1131.448 s cargados; 46568.552 s antes de la reserva de cierre de 2.700 s. Puerta: ready.
+- Validación 2023 y prueba final 2024–2025 permanecen cerradas.
+- Siguiente acción: consultar el ledger y el journal de `systemd --user`; reanudar solo un estado `ready` en la siguiente ventana con suite, Ruff, preflight vigilado y admisión nuevos. Un estado `failed`/`incomplete` no se reanuda.
+
+---
+
 # Reporte Codex — 13/11/2026 15:33 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, código `baa1a85`. Servicio inactivo; ledger `ready`, cursor **82/108**, **907/1.188 unidades**, `pending=null`. Último checkpoint completo `artifacts/oos-v12-training-main-01/run-82-C5-b0/checkpoint-4/state.pt`, SHA-256 `9ddf6f807b814fc5c1885d143353d5642e67e9be4a8f7544561fdd7f357fcde9`. Ledger SHA-256 `24a602293b16483010055a58f832acbd33cd41cabd0d31ef63627857fbb36323`.

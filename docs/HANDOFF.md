@@ -1,4 +1,29 @@
-# Estado vigente — 13/11/2026 15:33 America/La_Paz
+# Estado vigente — 14/11/2026 09:17 America/La_Paz
+
+Entrenamiento principal `main-2018-2022`: ledger `ready`, cursor 103/108,
+**1.134/1.188 unidades** aceptadas, `pending=null`; las corridas 0–102
+están completas. La Q0 de `run-103-C10-b0` quedó aceptada con checkpoint
+`artifacts/oos-v12-training-main-01/run-103-C10-b0/checkpoint-0/state.pt`,
+SHA-256 `5f7447e8686976b7af87619a20ba5f1d3016840a519941e68124c9ff432664dc`.
+La sesión `d493e2011f414038abdf612bcf99e5b8` pausó después de Q0 en
+frontera completa por `availability_lost_after_unit` (`Insufficient P2R
+memory or disk`); el valor contemporáneo no quedó registrado. El servicio
+está `inactive/dead`, `Result=success`. El timer principal está deshabilitado
+para evitar duplicados.
+
+La pantalla GNOME tiene `idle-delay=0` y con CA la suspensión está en
+`nothing`; no se necesita Vivaldi para mantenerla encendida. Tras la pausa
+se observaron varios procesos Vivaldi, con consumo variable de memoria;
+esto es una hipótesis de presión de recursos, no prueba de la causa puntual.
+Esperar a que el usuario guarde y cierre Vivaldi; volver a medir CA, batería,
+`MemAvailable`, disco, presupuesto y estado del servicio antes de un único
+reingreso. La corrida 103 ya utilizó una sesión; no gastar reingresos con
+margen incierto. Ver `reporte-codex.md` y políticas operativas del 14/11.
+Validación 2023 y prueba final 2024–2025 siguen cerradas.
+
+---
+
+# Estado anterior — 13/11/2026 15:33 America/La_Paz
 
 El entrenamiento principal está `ready`, cursor 82/108, 907/1.188 unidades,
 `pending=null`; última frontera `run-82-C5-b0/checkpoint-4`, SHA-256
