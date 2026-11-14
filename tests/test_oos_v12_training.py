@@ -778,3 +778,98 @@ def test_pinned_preunit_timeout_keeps_charge_and_allows_only_that_reentry(
     policy_path.write_text(policy_path.read_text().replace("1200", "1201"))
     with pytest.raises(ValueError, match="recovery policy hash"):
         budget.inspect_oos_debit(artifacts, now=now)
+
+
+def test_code_transition_accepts_only_supervisor_files_and_same_design():
+    from btc_risk_rl.pilots.oos_v12_training import compatible_code_transition
+
+    old = {"profile": "oos_v12_train_only", "code": {
+        "code": {"src/btc_risk_rl/agents/trainer.py": "actor-old",
+                 "src/btc_risk_rl/pilots/oos_v12_training.py": "supervisor-old"},
+        "data": {"manifest_sha256": "same"}},
+        "settings": {"seed": 13}, "roster": [[13, "C0", 0]]}
+    new = json.loads(json.dumps(old))
+    new["code"]["code"]["src/btc_risk_rl/pilots/oos_v12_training.py"] = "supervisor-new"
+    assert compatible_code_transition(old, new)
+    new["code"]["code"]["src/btc_risk_rl/agents/trainer.py"] = "actor-new"
+    assert not compatible_code_transition(old, new)
+    new["code"]["code"]["src/btc_risk_rl/agents/trainer.py"] = "actor-old"
+    new["roster"] = [[13, "C5", 0]]
+    assert not compatible_code_transition(old, new)
+
+
+def test_pinned_identity_failure_is_preunit_and_does_not_relabel_ledger(
+        tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import oos_v12_budget as budget
+    from btc_risk_rl.pilots import oos_v12_launch as launch
+
+    artifacts = tmp_path / "artifacts"
+    with pytest.raises(ValueError, match="identity mismatch"):
+        with launch.OOSPrecheckAttempt(artifacts, gate=lambda: None) as attempt:
+            for name in ("suite", "ruff", "main-2018-2022"):
+                attempt.run_check(name, lambda: "ready")
+            token = attempt.token
+            raise ValueError("Campaign identity mismatch")
+    journal = artifacts / "shared-pilot-budget/oos-v12-training-preflight.jsonl"
+    checks = artifacts / "shared-pilot-budget/oos-v12-training-checks.jsonl"
+    failed = json.loads(journal.read_text().splitlines()[-1])
+    end_check = json.loads(checks.read_text().splitlines()[-1])
+    policy = tmp_path / "identity.json"
+    policy.write_text(json.dumps({
+        "schema": "oos_preunit_code_transition_v1",
+        "reason": "Campaign identity mismatch",
+        "failed_end_sha256": failed["sha256"],
+        "checks_end_sha256": end_check["sha256"],
+        "token": token,
+        "cursor_at_transition": 103,
+        "accepted_units_at_transition": 1133,
+        "allowed_changed_code_paths": sorted(
+            budget.EXPECTED_OPERATIONAL_CODE_PATHS),
+    }))
+    monkeypatch.setattr(budget, "MIGRATION_POLICY_PATH", policy)
+    monkeypatch.setattr(budget, "MIGRATION_POLICY_SHA256",
+                        hashlib.sha256(policy.read_bytes()).hexdigest())
+    assert not budget.inspect_oos_debit(artifacts, now=time.time() + 1)["blocked"]
+    before = journal.read_bytes()
+    with launch.OOSPrecheckAttempt(artifacts, gate=lambda: None):
+        pass
+    assert journal.read_bytes().startswith(before)
+
+
+def test_ledger_records_code_transition_at_complete_boundary_only(tmp_path, monkeypatch):
+    from btc_risk_rl.pilots import oos_v12_budget as budget
+    from btc_risk_rl.pilots import oos_v12_training as training
+
+    now = datetime(2026, 11, 14, 8, tzinfo=ZoneInfo("America/La_Paz")).timestamp()
+    monkeypatch.setattr(training, "window_admissible", lambda _: True)
+    monkeypatch.setattr(budget, "inspect_oos_debit", lambda *_args, **_kwargs: {
+        "active_days": ["2026-11-14"]})
+    root = tmp_path / "main"
+    old = {"code": {"code": {
+        "src/btc_risk_rl/agents/trainer.py": "unchanged",
+        "src/btc_risk_rl/pilots/oos_v12_training.py": "old"},
+        "data": {"manifest_sha256": "same"}},
+        "roster": [[13, "C0", 0]], "settings": {"seed": 13}}
+    with training.OOSLedger(root, now=now, identity=old):
+        pass
+    path = root / "ledger.jsonl"
+    before = path.read_bytes()
+    first = json.loads(before.splitlines()[-1])
+    monkeypatch.setattr(training, "migration_policy", lambda: {
+        "ledger_state_hash_at_adjudication": first["state_hash"],
+        "cursor_at_transition": 0,
+        "accepted_units_at_transition": 0,
+        "last_checkpoint_sha256": None,
+    })
+    new = json.loads(json.dumps(old))
+    new["code"]["code"]["src/btc_risk_rl/pilots/oos_v12_training.py"] = "new"
+    with training.OOSLedger(root, now=now + 1, identity=new) as ledger:
+        assert ledger.state["identity"]["code"]["code"][
+            "src/btc_risk_rl/pilots/oos_v12_training.py"] == "old"
+        assert ledger.state["operational_code_transitions"][-1]["cursor"] == 0
+    assert path.read_bytes().startswith(before)
+    with training.OOSLedger(root, now=now + 2, identity=new) as ledger:
+        assert len(ledger.state["operational_code_transitions"]) == 1
+    new["code"]["code"]["src/btc_risk_rl/agents/trainer.py"] = "altered"
+    with pytest.raises(ValueError, match="Campaign identity mismatch"):
+        training.OOSLedger(root, now=now + 3, identity=new)

@@ -12,13 +12,19 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from btc_risk_rl.pilots.budget import CampaignLedger
-from btc_risk_rl.pilots.oos_v12_budget import AMENDMENT_SHA256, amended_budget
+from btc_risk_rl.pilots.oos_v12_budget import (
+    AMENDMENT_SHA256,
+    EXPECTED_OPERATIONAL_CODE_PATHS,
+    MIGRATION_POLICY_SHA256,
+    amended_budget,
+    migration_policy,
+)
 from btc_risk_rl.pilots.p2_budget import P2Ledger, state_hash
 from btc_risk_rl.pilots.protocol import ROOT, P0Settings
 
 FREEZE = ROOT / "docs/protocols/OOS-v1-2-training-freeze-20261110.json"
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
-APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261114-v4.json"
+APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261114-v5.json"
 MARKET_EXECUTION_ENABLED = True
 REGISTRATION_SHA256 = "aad7b6a19b11d04ed80bb947bd0a6b88aeb411e4e732bb873727faf69163e054"
 PROFILES = ("wf-2021", "wf-2022", "main-2018-2022")
@@ -39,6 +45,22 @@ LEGACY_COMPLETED_ROOTS = {
 
 def digest(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def compatible_code_transition(old: dict, new: dict) -> bool:
+    """Allow a change of supervisory code only, with the scientific identity fixed."""
+    if not isinstance(old, dict) or not isinstance(new, dict):
+        return False
+    old_code = old.get("code", {}).get("code")
+    new_code = new.get("code", {}).get("code")
+    if not isinstance(old_code, dict) or not isinstance(new_code, dict):
+        return False
+    old_rest = {**old, "code": {**old["code"], "code": None}}
+    new_rest = {**new, "code": {**new["code"], "code": None}}
+    changed = {name for name in old_code.keys() | new_code.keys()
+               if old_code.get(name) != new_code.get(name)}
+    return (old_rest == new_rest and old_code.keys() == new_code.keys()
+            and bool(changed) and changed <= EXPECTED_OPERATIONAL_CODE_PATHS)
 
 
 def verified_legacy_completed_root(profile: str, entries=None) -> Path | None:
@@ -173,16 +195,22 @@ def require_campaign() -> dict:
     if not APPROVAL.is_file() or digest(APPROVAL) != REGISTRATION_SHA256:
         raise PermissionError("OOS market approval hash mismatch")
     approval = json.loads(APPROVAL.read_text())
-    from btc_risk_rl.pilots.oos_v12_budget import RECOVERY_POLICY_SHA256, recovery_policy
+    from btc_risk_rl.pilots.oos_v12_budget import (
+        RECOVERY_POLICY_SHA256,
+        migration_policy,
+        recovery_policy,
+    )
 
     recovery_policy()
-    if (approval.get("schema") != "oos_v12_training_approval_v4"
+    migration_policy()
+    if (approval.get("schema") != "oos_v12_training_approval_v5"
             or approval.get("preparation_seconds_max") != recovery_policy()["preparation_seconds_max"]
             or approval.get("active") is not True
             or approval.get("scope") != "accepted_training_only"
             or approval.get("freeze_sha256") != FREEZE_SHA256
             or approval.get("budget_amendment_sha256") != AMENDMENT_SHA256
             or approval.get("recovery_policy_sha256") != RECOVERY_POLICY_SHA256
+            or approval.get("migration_policy_sha256") != MIGRATION_POLICY_SHA256
             or approval.get("daily_global_seconds") != amended_budget()["daily_global_seconds"]
             or approval.get("campaign_roots") != frozen_protocol()["campaign_roots"]
             or approval.get("inputs_sha256") != frozen_protocol()["inputs_sha256"]
@@ -370,6 +398,7 @@ class OOSLedger(P2Ledger):
             raise ValueError("OOS outside authorized La Paz date or presentation cutoff")
         self.previous_hash = None
         path = Path(root) / "ledger.jsonl"
+        prior = None
         if path.exists():
             for line in path.read_text().splitlines():
                 state = json.loads(line)
@@ -377,10 +406,47 @@ class OOSLedger(P2Ledger):
                         or state.get("state_hash") != state_hash(state)):
                     raise ValueError("OOS ledger hash chain corrupt")
                 self.previous_hash = state["state_hash"]
+            prior = state
+        requested_identity = {"profile": "oos_v12_train_only", **identity}
+        ledger_identity = requested_identity
+        transition = None
+        if prior is not None and prior["identity"] != requested_identity:
+            old = prior["identity"]
+            policy = migration_policy()
+            code_map_hash = hashlib.sha256(json.dumps(
+                requested_identity["code"]["code"], sort_keys=True).encode()).hexdigest()
+            transitions = prior.get("operational_code_transitions", [])
+            if (prior.get("status") != "ready" or prior.get("pending") is not None
+                    or not compatible_code_transition(old, requested_identity)):
+                raise ValueError("Campaign identity mismatch")
+            if transitions:
+                if (len(transitions) != 1
+                        or transitions[0].get("new_code_map_sha256") != code_map_hash
+                        or transitions[0].get("approval_sha256") != REGISTRATION_SHA256):
+                    raise ValueError("Campaign identity mismatch")
+            else:
+                units = prior.get("units", [])
+                if (prior.get("state_hash") != policy["ledger_state_hash_at_adjudication"]
+                        or prior.get("cursor") != policy["cursor_at_transition"]
+                        or len(units) != policy["accepted_units_at_transition"]
+                        or (units[-1]["checkpoint_sha256"] if units else None)
+                        != policy["last_checkpoint_sha256"]
+                        or (units and digest(Path(units[-1]["checkpoint"]) / "state.pt")
+                            != policy["last_checkpoint_sha256"])):
+                    raise ValueError("Campaign identity mismatch")
+                transition = dict(cursor=prior["cursor"], accepted_units=len(units),
+                                  from_state_hash=prior["state_hash"],
+                                  new_code_map_sha256=code_map_hash,
+                                  approval_sha256=REGISTRATION_SHA256,
+                                  migration_policy_sha256=MIGRATION_POLICY_SHA256)
+            ledger_identity = old
         self.session_id = __import__("uuid").uuid4().hex
         CampaignLedger.__init__(self, root, now=now,
-                                identity={"profile": "oos_v12_train_only", **identity},
+                                identity=ledger_identity,
                                 external_seconds=external_seconds)
+        if transition is not None:
+            self.state.setdefault("operational_code_transitions", []).append(transition)
+            self.persist(now)
         if self.state["status"] == "completed":
             return
         if len(self.state["days"]) > 20:

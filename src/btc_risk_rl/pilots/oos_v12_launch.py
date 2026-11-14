@@ -67,7 +67,7 @@ class OOSPrecheckAttempt:
             recovery_hash = None
             if self.journal.sessions and recoverable_precheck_timeout(
                     self.journal.sessions[-1], self.artifacts):
-                recovery_hash = recovery_policy()["failed_end_sha256"]
+                recovery_hash = self.journal.previous
             self.token = self.journal.start(
                 now=time.time(), monotonic=time.monotonic(),
                 invocation_id=os.environ.get("INVOCATION_ID"),

@@ -37,6 +37,14 @@ PREP_NAME = "oos-v12-training-preflight.jsonl"
 RECOVERY_POLICY_PATH = ROOT / "docs/protocols/OOS-v1-2-preunit-timeout-recovery-20261114.json"
 RECOVERY_POLICY_SHA256 = "2ba512e67d7a2f2d84492c4d285338928abf7e5f0a44c19d27c726183c17d722"
 CHECKS_NAME = "oos-v12-training-checks.jsonl"
+MIGRATION_POLICY_PATH = ROOT / "docs/protocols/OOS-v1-2-code-transition-20261114.json"
+MIGRATION_POLICY_SHA256 = "b5851eadf2eefadbf90ccc5ad47e71173f56cd5b980e5053ab64b2f0cf38b4ad"
+EXPECTED_OPERATIONAL_CODE_PATHS = frozenset({
+    "src/btc_risk_rl/pilots/oos_v12_budget.py",
+    "src/btc_risk_rl/pilots/oos_v12_launch.py",
+    "src/btc_risk_rl/pilots/oos_v12_training.py",
+    "src/btc_risk_rl/pilots/wf_cost_session.py",
+})
 CAMPAIGN_NAMES = (
     "oos-v12-training-wf-2021-01",
     "oos-v12-training-wf-2022-01",
@@ -58,17 +66,35 @@ def recovery_policy():
     return policy
 
 
+def migration_policy():
+    if not MIGRATION_POLICY_PATH.is_file():
+        raise ValueError("OOS migration policy absent")
+    raw = MIGRATION_POLICY_PATH.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != MIGRATION_POLICY_SHA256:
+        raise ValueError("OOS migration policy hash mismatch")
+    policy = json.loads(raw)
+    if (policy.get("schema") != "oos_preunit_code_transition_v1"
+            or policy.get("reason") != "Campaign identity mismatch"
+            or set(policy.get("allowed_changed_code_paths", []))
+            != EXPECTED_OPERATIONAL_CODE_PATHS
+            or policy.get("cursor_at_transition") != 103
+            or policy.get("accepted_units_at_transition") != 1133):
+        raise ValueError("OOS migration policy identity mismatch")
+    return policy
+
+
 def recoverable_precheck_timeout(session, artifacts):
-    """Recognize only the pinned, fully passing timeout; never rewrite its row."""
+    """Recognize only pinned, fully passing preunit failures."""
     end = session["end"]
     if end is None or end.get("status") != "failed":
         return False
-    policy = recovery_policy()
-    if (hashlib.sha256(json.dumps(end, sort_keys=True,
-                                  allow_nan=False).encode()).hexdigest()
-            != policy["failed_end_sha256"]
-            or end.get("token") != policy["token"]
-            or end.get("reason") != policy["reason"]):
+    digest = hashlib.sha256(json.dumps(end, sort_keys=True,
+                                       allow_nan=False).encode()).hexdigest()
+    policies = (recovery_policy(), migration_policy())
+    policy = next((p for p in policies if digest == p["failed_end_sha256"]
+                   and end.get("token") == p["token"]
+                   and end.get("reason") == p["reason"]), None)
+    if policy is None:
         return False
     path = Path(artifacts) / "shared-pilot-budget" / CHECKS_NAME
     if not path.is_file():
@@ -126,6 +152,7 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
     observed_days = set()
     ledger_by_campaign = {}
     blocked = False
+    observed_failed_hashes = set()
 
     def add(start, end):
         if end < start:
@@ -167,6 +194,9 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
         with WFCostSessionJournal(path, campaign=PREP_CAMPAIGN, read_only=True) as journal:
             for item in journal.sessions:
                 start, end = item["start"], item["end"]
+                if end is not None and end["status"] == "failed":
+                    observed_failed_hashes.add(hashlib.sha256(json.dumps(
+                        end, sort_keys=True, allow_nan=False).encode()).hexdigest())
                 orphan = end is None and start["token"] != active_prep_token
                 failed = (end is not None and end["status"] == "failed"
                           and not recoverable_precheck_timeout(item, artifacts))
@@ -183,9 +213,10 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
                         intervals.setdefault(day, []).append((stop, stop + excess))
 
     if artifacts.resolve() == (ROOT / "artifacts").resolve():
-        debit = recovery_policy().get("diagnostic_debit")
-        if debit is not None:
-            add(debit["start_epoch"], debit["end_epoch"])
+        for policy in (recovery_policy(), migration_policy()):
+            debit = policy.get("diagnostic_debit")
+            if debit is not None and policy["failed_end_sha256"] in observed_failed_hashes:
+                add(debit["start_epoch"], debit["end_epoch"])
 
     by_day = {day: min(day_limit, _union(values)) for day, values in intervals.items()}
     prior_day = budget["prior_day"]["day_la_paz"]
