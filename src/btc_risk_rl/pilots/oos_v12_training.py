@@ -20,7 +20,7 @@ FREEZE = ROOT / "docs/protocols/OOS-v1-2-training-freeze-20261110.json"
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
 APPROVAL = ROOT / "docs/protocols/OOS-v1-2-training-approval-20261114-v4.json"
 MARKET_EXECUTION_ENABLED = True
-REGISTRATION_SHA256 = "7b1f7dc62d01b6030b1b3a70b516b47d5207b612b25fd64607bf49a01194bed3"
+REGISTRATION_SHA256 = "aad7b6a19b11d04ed80bb947bd0a6b88aeb411e4e732bb873727faf69163e054"
 PROFILES = ("wf-2021", "wf-2022", "main-2018-2022")
 LA_PAZ = ZoneInfo("America/La_Paz")
 LAUNCH_MEMORY_MIN_BYTES = 6_026_846_208
@@ -176,7 +176,9 @@ def require_campaign() -> dict:
     from btc_risk_rl.pilots.oos_v12_budget import RECOVERY_POLICY_SHA256, recovery_policy
 
     recovery_policy()
-    if (approval.get("active") is not True
+    if (approval.get("schema") != "oos_v12_training_approval_v4"
+            or approval.get("preparation_seconds_max") != recovery_policy()["preparation_seconds_max"]
+            or approval.get("active") is not True
             or approval.get("scope") != "accepted_training_only"
             or approval.get("freeze_sha256") != FREEZE_SHA256
             or approval.get("budget_amendment_sha256") != AMENDMENT_SHA256
