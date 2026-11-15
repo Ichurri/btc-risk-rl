@@ -16,8 +16,8 @@ METHOD_SHA256 = "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f
 TRAINING_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
 METHOD_PATH = Path("docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json")
 TRAINING_PATH = Path("docs/protocols/OOS-v1-2-training-freeze-20261110.json")
-ENABLED = {"technical_2023_source": False, "technical_2023": False, "final_2024_2025": False}
-REGISTRATION_SHA256 = {"technical_2023_source": None, "technical_2023": None, "final_2024_2025": None}
+ENABLED = {"technical_2023_source": True, "technical_2023": False, "final_2024_2025": False}
+REGISTRATION_SHA256 = {"technical_2023_source": "11ae1737c178d94b0524509a2eaf43e29f1414acd58468d79db9c778057ce898", "technical_2023": None, "final_2024_2025": None}
 APPROVAL_PATHS = {
     "technical_2023_source": Path("docs/protocols/OOS-v1-2-technical-2023-source-approval-v2.json"),
     "technical_2023": Path("docs/protocols/OOS-v1-2-technical-2023-approval.json"),
