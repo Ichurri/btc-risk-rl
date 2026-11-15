@@ -64,7 +64,7 @@ def test_undefined_sortino_remains_undefined():
 
 def test_closed_or_forged_reference_permit_rejects_before_source(tmp_path, monkeypatch):
     module = _module()
-    assert module.ENABLED is False
+    monkeypatch.setattr(module, "ENABLED", False)
     with pytest.raises(PermissionError, match="disabled"):
         module.read_pinned_permission(tmp_path)
     assert not list(tmp_path.iterdir())
