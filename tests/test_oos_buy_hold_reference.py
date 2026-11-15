@@ -86,6 +86,14 @@ def test_permission_pins_reused_execution_code_before_source(tmp_path, monkeypat
         "steps": 4386, "output_path": module.OUTPUT_PATH.as_posix(),
         "normalized_code_sha256": module.normalized_code_sha256(),
         "evaluation_execution_code_sha256": "a" * 64,
+        "partition": "final_2024_2025",
+        "first_trade": "buy_to_target_weight_one_at_first_executable_open",
+        "holding": "no_further_trades_or_cash_interest",
+        "last_valuation": "final_close_without_liquidation",
+        "initial_cash_usdt": 10000.0,
+        "commission_fraction": 0.001,
+        "slippage_fraction": 0.0005,
+        "role": "post_contrast_descriptive_reference_only_not_primary_hypothesis_or_selection",
     }
     path = tmp_path / "approval.json"
     path.write_text(json.dumps(approval))
@@ -97,3 +105,8 @@ def test_permission_pins_reused_execution_code_before_source(tmp_path, monkeypat
         module.read_pinned_permission(tmp_path)
     monkeypatch.setattr(module, "execution_code_sha256", lambda _root: "a" * 64)
     assert module.read_pinned_permission(tmp_path) == approval
+    approval["last_valuation"] = "sell_at_final_open"
+    path.write_text(json.dumps(approval))
+    monkeypatch.setattr(module, "APPROVAL_SHA256", hashlib.sha256(path.read_bytes()).hexdigest())
+    with pytest.raises(PermissionError, match="identity"):
+        module.read_pinned_permission(tmp_path)

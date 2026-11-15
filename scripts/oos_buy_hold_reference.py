@@ -72,7 +72,16 @@ def read_pinned_permission(repo_root: Path) -> dict:
     approval = json.loads(approval_path.read_text(encoding="utf-8"))
     if (type(approval) is not dict or approval.get("status") != "approved"
             or approval.get("scope") != "single_descriptive_buy_hold_2024_2025"
+            or approval.get("partition") != "final_2024_2025"
             or approval.get("steps") != 4386
+            or approval.get("first_trade") != "buy_to_target_weight_one_at_first_executable_open"
+            or approval.get("holding") != "no_further_trades_or_cash_interest"
+            or approval.get("last_valuation") != "final_close_without_liquidation"
+            or approval.get("initial_cash_usdt") != 10000.0
+            or approval.get("commission_fraction") != 0.001
+            or approval.get("slippage_fraction") != 0.0005
+            or approval.get("role") !=
+            "post_contrast_descriptive_reference_only_not_primary_hypothesis_or_selection"
             or approval.get("output_path") != OUTPUT_PATH.as_posix()
             or approval.get("normalized_code_sha256") != normalized_code_sha256()):
         raise PermissionError("Buy-and-hold reference approval identity mismatch")
