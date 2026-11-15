@@ -1,4 +1,21 @@
-# Estado vigente — 15/11/2026 14:50 America/La_Paz
+# Estado vigente — 15/11/2026 15:28 America/La_Paz
+
+**Referencia descriptiva comprar y mantener BTC cerrada:** sobre la misma
+fuente final auditada y 4.386 transiciones, una compra inicial con costos y
+sin liquidación terminó en 20.697,609070 USDT desde 10.000 USDT. Retorno
+acumulado neto +106,976091 %; Sortino anualizado 1,421389. La auditoría
+independiente coincidió; el gate limitado está apagado y las 108 políticas,
+el ledger y el contraste principal conservan sus huellas. El cargo
+conservador propio fue 2.346,955736 s; gasto global del 15/11
+23.490,837403 s, saldo 24.209,162597 s antes de reserva. Ver
+[informe](hitos/OOS-v1-2-buy-hold-referencia-20261115.md) y
+[evidencia](evidence/oos-v12-buy-hold-20261115/). Siguiente tarea:
+trasladar a la tesis el párrafo descriptivo sin incluir esta referencia
+en el contraste principal ni atribuirle cumplimiento CVaR.
+
+---
+
+# Estado anterior — 15/11/2026 14:50 America/La_Paz
 
 **Evaluación final cerrada:** `main-2018-2022` aportó 108 checkpoints K10;
 el gate se cerró en `4f13aab` y el informe/evidencias se publicaron en

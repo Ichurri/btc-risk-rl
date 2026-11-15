@@ -1,4 +1,22 @@
-# Reporte Codex — 15/11/2026 14:50 America/La_Paz
+# Reporte Codex — 15/11/2026 15:28 America/La_Paz
+
+- Rama `codex/oos-buy-hold-reference`. Referencia descriptiva cerrada tras
+  una sola ejecución autorizada: 4.386 períodos, patrimonio final
+  20.697,609070 USDT desde 10.000, retorno neto +106,976091 %, Sortino
+  anualizado 1,421389. Fuente final CSV SHA-256
+  `d123935a385001082a0c7915071980d5d85706970e509ff856ff1f024775759d`.
+- Resultado, auditoría independiente y cargo en
+  `docs/evidence/oos-v12-buy-hold-20261115/`; informe en
+  `docs/hitos/OOS-v1-2-buy-hold-referencia-20261115.md`.
+  Pruebas focales 26 passed; Ruff conforme. No hubo nuevas unidades de
+  política. Gate de referencia cerrado; servicio de evaluación inactivo.
+- Cargo conservador 2.346,955736 s, gasto global 23.490,837403 s el 15/11,
+  saldo 24.209,162597 s antes de 2.700 s de reserva. Siguiente acción:
+  trasladar el párrafo al apartado 4.4.1 como referencia descriptiva.
+
+---
+
+# Reporte anterior — 15/11/2026 14:50 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`; commit de cierre de gates `4f13aab`;
   informe y evidencias `036919a`; evaluación final cerrada, sin

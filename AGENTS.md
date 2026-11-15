@@ -1,6 +1,14 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **15/11/2026: referencia descriptiva comprar y mantener BTC cerrada.**
+  Con permiso propio limitado se calculó una única vez sobre las 4.386
+  transiciones finales auditadas: retorno acumulado neto +106,976091 % y
+  Sortino anualizado 1,421389. El gate se cerró en `9a7256e`; no repetir ni
+  alterar las 108 políticas o el contraste principal. La referencia no es
+  una tercera hipótesis ni demuestra CVaR. Ver
+  `docs/hitos/OOS-v1-2-buy-hold-referencia-20261115.md` y evidencia
+  `docs/evidence/oos-v12-buy-hold-20261115/`.
 - **15/11/2026: evaluación OOS final cerrada y permisos apagados.**
   El ledger de evaluación 2024–2025 terminó `completed`, 108/108 políticas
   K10, 36/36 bloques, sin pendiente; SHA-256
