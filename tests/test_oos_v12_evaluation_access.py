@@ -211,6 +211,7 @@ def test_final_source_requires_independent_pin_and_passed_technical_closure(
 ):
     from btc_risk_rl.evaluation import access
 
+    monkeypatch.setitem(access.ENABLED, "final_2024_2025_source", False)
     _synthetic_freezes(tmp_path, monkeypatch, access)
     closure = tmp_path / "closure.json"
     closure.write_text(json.dumps({"status": "passed", "partition": "technical_2023",
