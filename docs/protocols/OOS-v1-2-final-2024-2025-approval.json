@@ -1,0 +1,23 @@
+{
+  "schema": "oos_v12_final_2024_2025_approval_v1",
+  "status": "approved",
+  "partition": "final_2024_2025",
+  "authorized_by": "Santiago: ejecutar contraste final de las 36 ternas tras puerta tecnica 2023, tesis armonizada y fuente final auditada, solicitud desde 57599b9",
+  "scope": "una evaluacion continua de cada uno de los 108 K10 fijos; bootstrap pareado y Holm sin seleccion por resultados",
+  "method_freeze_sha256": "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f2",
+  "training_freeze_sha256": "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0",
+  "training_ledger_sha256": "c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b",
+  "technical_closure_sha256": "a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3",
+  "technical_export_sha256": "59333b75248d7ae5f0e028c9d93d7bf7db941481370a34c97ece43970135ce0d",
+  "source_approval_sha256": "df2ac42d077a38fc6716892b07d1ee5a5c6d7c2d2a3c97447e60df4f99df0d5e",
+  "source_audit_sha256": "166ab049961e00fe1c2fefe92198e1be5a940c5b132ee5b3e70e4c0b71b08326",
+  "source_manifest_sha256": "85ab10e5d189e3bec0508bfd29f8da2d64ff8a6139c4d4363040c1e0a5232dbe",
+  "export_root": "data/processed/oos-v12-final-2024-2025-01",
+  "export_manifest_sha256": "db842235decd93fef2e04e49fbfb4f20752e9239f1c99eecb84f9e3e6e742436",
+  "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+  "code_sha256": "b0cfbfcb6cb5c95b8c5455a2221be0c7d736a64b83e6fe1b438c65f043c793b3",
+  "budget_sha256": "bb89506b74760785922da01e6229eec702b80df829051a68d859f172ebfd6517",
+  "configuration": "beta=0, critic_epochs=4, K=10, 36 fixed seed blocks C0/C5/C10, no model selection, deterministic sigmoid(mu), one continuous portfolio",
+  "thesis_harmonization": "Sections 2.7.2, 2.7.3/Table 4, 3.8.4 and 3.8.5 checked read-only in Drive on 2026-11-15",
+  "inference": "19999 centered paired bootstrap resamples, common indices, Holm one-sided family alpha=0.05; undefined primary metric invalidates full contrast"
+}
