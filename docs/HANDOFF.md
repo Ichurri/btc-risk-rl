@@ -1,4 +1,30 @@
-# Estado vigente — 15/11/2026 10:13 America/La_Paz
+# Estado vigente — 15/11/2026 14:50 America/La_Paz
+
+**Evaluación final cerrada:** `main-2018-2022` aportó 108 checkpoints K10;
+2023 superó la puerta técnica 108/108 y la evaluación 2024–2025 terminó
+108/108, 36/36 ternas y 4.386 transiciones por política. El ledger final
+está `completed`, `pending=null`, SHA-256
+`b035e1fef6d5e95b2b75df660cc178382081552207be30358f632f49a7e513ad`.
+El contraste original SHA-256
+`636ba000cf4b3f9820ea56828e99b7ae7b4f6a9d9d83185064c3fce67ac1cf1c`
+se reauditoró exactamente. C5−C0: diferencia media +0,000317, Holm
+`p=0,4588`; C10−C0: +0,000200, Holm `p=0,4588`. Ninguna nula de
+superioridad se rechaza ni alcanza el efecto mínimo +0,50. El resultado
+no demuestra cumplimiento CVaR. Ver [cierre final](hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md)
+y [material de capítulo 4](evidence/oos-v12-evaluation-20261115/chapter-4/).
+Los gates 2023 y final quedaron cerrados prospectivamente; permisos y
+artefactos originales permanecen auditables en solo lectura. La siguiente
+tarea es trasladar resultados y salvedades metodológicas a la tesis,
+manteniendo el matiz de `wf-2021` y el cargo conservador del 12/11.
+La suite estable posterior al cierre terminó **698 passed**, 2 advertencias
+de `fork` sintético; Ruff pasó. El cargo conservador de verificación y
+publicación llevó el gasto global del 15/11 a **21.143,881667 s**, con
+**26.556,118333 s** antes de la reserva de 2.700 s. No hubo otra unidad
+de mercado después de la evaluación final.
+
+---
+
+# Estado anterior — 15/11/2026 10:13 America/La_Paz
 
 **Fuente final 2024–2025 adquirida y auditada, cero políticas finales
 evaluadas.** Permiso de fuente independiente en `b1cb99b`, gate de fuente

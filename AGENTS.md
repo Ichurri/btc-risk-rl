@@ -1,6 +1,20 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **15/11/2026: evaluación OOS final cerrada y permisos apagados.**
+  El ledger de evaluación 2024–2025 terminó `completed`, 108/108 políticas
+  K10, 36/36 bloques, sin pendiente; SHA-256
+  `b035e1fef6d5e95b2b75df660cc178382081552207be30358f632f49a7e513ad`.
+  Contraste SHA-256
+  `636ba000cf4b3f9820ea56828e99b7ae7b4f6a9d9d83185064c3fce67ac1cf1c`,
+  reauditorado exactamente. Holm `p=0,4588` para C5−C0 y C10−C0;
+  no se rechaza superioridad ni se demuestra CVaR. Ver
+  `docs/hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md`.
+  Los cuatro gates de fuente/evaluación 2023 y final se cerraron
+  prospectivamente; conservar permisos históricos, fuentes y trazas
+  originales solo para auditoría. No repetir evaluación ni entrenamiento.
+  Mantener la salvedad de bloqueo original de `wf-2021` y cargo conservador
+  del 12/11 al trasladar resultados a la tesis.
 - **15/11/2026: fuente final auditada, evaluación aún cerrada.** El
   permiso de adquisición final se fijó en `b1cb99b` y se activó solo ese
   gate en `d3d0d35`, después del cierre técnico 2023. Una sesión

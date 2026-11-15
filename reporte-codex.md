@@ -1,4 +1,38 @@
-# Reporte Codex — 15/11/2026 10:13 America/La_Paz
+# Reporte Codex — 15/11/2026 14:50 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`; commit de cierre de gates `4f13aab`;
+  evaluación final cerrada, sin
+  sesión activa. Servicio `oos-v12-final-eval-20261115-01.service`,
+  `InvocationID=f8647d06d9d64a90a69e3b24b63c4b1d`, `Result=success`.
+  Ledger `artifacts/oos-v12-final-2024-2025-01/ledger.jsonl` `completed`,
+  **108/108 políticas, 36/36 bloques, pending=null**, SHA-256
+  `b035e1fef6d5e95b2b75df660cc178382081552207be30358f632f49a7e513ad`.
+- Contraste original SHA-256
+  `636ba000cf4b3f9820ea56828e99b7ae7b4f6a9d9d83185064c3fce67ac1cf1c`;
+  reauditoría independiente exacta en
+  `docs/evidence/oos-v12-evaluation-20261115/final-contrast-audit.json`.
+  C5−C0 media +0,000317; C10−C0 +0,000200; ambos `p_Holm=0,4588`.
+  No se rechazan las nulas de superioridad; no se acredita CVaR poblacional.
+- Tiempo final medido: **1.205,838761 s** de cargo; `systemd` informó
+  22 min 28,685 s CPU y pico 7,4 GiB. Presupuesto 15/11 al cierre:
+  **6.245,352197 s** cargados, **41.454,647803 s** antes de reserva
+  2.700 s; incluye preparación conservadora. No usar saldo para repetir.
+  Los cuatro gates de evaluación están cerrados prospectivamente.
+- Verificación postcierre: suite completa **698 passed**, 2 advertencias
+  sintéticas; Ruff conforme. El trabajo posterior al servicio se cargó
+  conservadoramente como 14.898,529470 s de pared, sin duplicarlo con el
+  ledger final: gasto global del 15/11 **21.143,881667 s**, saldo
+  **26.556,118333 s** antes de reserva. Comprobante en
+  `docs/evidence/oos-v12-evaluation-20261115/postclose-budget-debit.json`.
+- Tabla y figuras reproducibles en
+  `docs/evidence/oos-v12-evaluation-20261115/chapter-4/`; informe en
+  `docs/hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md`.
+  Próxima acción: trasladar a la tesis el resultado sin afirmación de
+  superioridad, generalización temporal adicional ni garantía CVaR.
+
+---
+
+# Reporte anterior — 15/11/2026 10:13 America/La_Paz
 
 - **Fuente final auditada, evaluación final pendiente:** cinco páginas
   crudas, 4.429 velas, 43 de contexto idénticas a 2023 y 4.386 transiciones

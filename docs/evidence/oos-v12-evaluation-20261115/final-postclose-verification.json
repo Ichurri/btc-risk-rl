@@ -1,0 +1,23 @@
+{
+  "scope": "postclose_code_and_presentation_verification",
+  "full_suite": {
+    "command": "uv run --frozen pytest -q",
+    "passed": 698,
+    "failed": 0,
+    "warnings": 2,
+    "warning_type": "DeprecationWarning from synthetic multiprocessing fork tests",
+    "elapsed_seconds_reported_by_pytest": 905.39
+  },
+  "focal_suite": {
+    "command": "uv run --frozen pytest -q tests/test_oos_final_figures.py tests/test_oos_v12_evaluation_access.py tests/test_oos_v12_final_supervisor.py",
+    "passed": 18,
+    "failed": 0
+  },
+  "lint": {
+    "command": "uv run --frozen ruff check .",
+    "result": "All checks passed!"
+  },
+  "executable_code_sha256_after_closure": "b0cfbfcb6cb5c95b8c5455a2221be0c7d736a64b83e6fe1b438c65f043c793b3",
+  "exhibits": "2 valid SVG XML files; 36 distinct seed rows; both paired means match the original final contrast to 1e-15",
+  "historical_originals_modified": false
+}

@@ -1,6 +1,15 @@
 # BTC Risk RL
 
-**Estado vigente:** [P3 v1.1](docs/hitos/P3-cierre-historico-v1.md)
+**Estado vigente (15/11/2026):** el [entrenamiento principal OOS](docs/hitos/OOS-v1-2-entrenamiento-principal-cierre-20261114.md)
+cerró 108/108 corridas y 36/36 ternas. La puerta técnica 2023 pasó 108/108;
+la [evaluación final 2024–2025](docs/hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md)
+cerró 108/108 recorridos. El contraste pareado no rechazó superioridad de
+C5 o C10 frente a C0 (`p_Holm=0,4588` en ambos). No demuestra cumplimiento
+de CVaR. Los permisos de evaluación quedaron cerrados prospectivamente;
+los artefactos originales son auditables en solo lectura. Los resultados y
+figuras pequeñas están en [evidencias OOS](docs/evidence/oos-v12-evaluation-20261115/).
+
+**Antecedente de desarrollo:** [P3 v1.1](docs/hitos/P3-cierre-historico-v1.md)
 cerró como diagnóstico de desarrollo el 13/10/2026 con resultado `review`.
 Su [permiso operativo está cerrado prospectivamente](docs/hitos/P3-permiso-cierre-prospectivo.md):
 el registro histórico sigue disponible para auditoría, pero el comando
@@ -9,11 +18,12 @@ quedó `failed` tras un apagado y no se reanuda. La campaña
 [P2R v2](docs/hitos/P2R-ejecucion-historica-v2.md)
 cerró operativamente sus nueve corridas y 99 unidades el 07/10/2026,
 exclusivamente sobre entrenamiento 2018–2022. Es diagnóstico de desarrollo,
-no evaluación confirmatoria. La regla numérica conjunta da `review`, pero
-la aceptación formal está pendiente de revisar el marcador heredado
-`market_training_executed=false` en los reportes. P2R usa el derivado H1
+no evaluación confirmatoria. La regla numérica conjunta dio `review`; los
+99 reportes conservaron el marcador heredado
+`market_training_executed=false`, por lo que sus resultados se adjudicaron
+solo como diagnóstico descriptivo de desarrollo. P2R usa el derivado H1
 exclusivo de entrenamiento; el preflight vigilado no abrió CSV H1
-compartidos. La autorización P3 no incluye validación 2023 ni prueba final. Consultar
+compartidos. La autorización P3 no incluía validación 2023 ni prueba final. Consultar
 el [HANDOFF](docs/HANDOFF.md) antes de usar comandos históricos.
 
 Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
@@ -21,9 +31,9 @@ decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
 
 Repositorio de infraestructura experimental. P0/P1 fueron campañas acotadas y
 cerradas. P2 conservó su diseño aprobado, pero la ejecución quedó fallida e
-incompleta; no debe lanzarse de nuevo. Una futura campaña necesitará protocolo,
-permiso y preflight nuevos. Validación y prueba final
-siguen bloqueadas.
+incompleta; no debe lanzarse de nuevo. Cualquier campaña futura necesitaría
+protocolo, permiso y preflight nuevos. Los permisos de la evaluación ya
+completada están cerrados.
 Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
 
 ## Dashboard comparativo local
@@ -55,19 +65,18 @@ Compartir rama, commit y docs/HANDOFF.md entre este chat y Codex. No compartir �
 descritos en una conversación sin archivos y evidencia.
 
 ## Protección
-La configuración reserva 2024–2025 como prueba final. Los comandos de desarrollo
-no pueden descargar ni preparar ese intervalo. No existe un flag para desbloquearlo.
-No es una barrera de seguridad contra quien edita el código: es una guarda de
-protocolo con pruebas. Una futura campaña final necesita un flujo separado y revisión.
+La evaluación final 2024–2025 se ejecutó una vez bajo fuente y permiso
+separados, después de la puerta técnica de 2023. Los cuatro gates de
+fuente/evaluación están ahora apagados; los comandos públicos rechazan otro
+acceso. No son una barrera contra quien edite el código: son guardas de
+protocolo con pruebas. Los originales locales deben conservarse para auditoría.
 
 ## Estado
 Consultar docs/hitos/ y docs/evidence/ para resultados reales, limitaciones y commits.
-Agentes/recolector H4 y checkpoint/instrumentación H5 verificados; adaptador de
-mercado solo para recolección congelada. experiments/ y
-reporting/ siguen reservados; no representan una campaña experimental implementada. [ADR-002 v2.1 está adoptado](docs/decisions/ADR-002-risk-horizon.md);
-H3 adapta el simulador; H4 implementa PPO/CVaR-PPO y recolector. Pilotos y
-entrenamientos de mercado requieren autorización separada. Hay parámetros por congelar antes de comparar condiciones y de evaluar
-confirmatoriamente; la prueba final permanece protegida.
+Agentes/recolector H4, checkpoint H5, pilotos P0–P3 y evaluación OOS v1.2
+están documentados en sus informes. [ADR-002 v2.1 está adoptado](docs/decisions/ADR-002-risk-horizon.md).
+El cierre OOS contiene el contraste de 36 bloques y sus límites; una
+campaña posterior exigiría autorización separada.
 
 ## Módulo de datos implementado
 
