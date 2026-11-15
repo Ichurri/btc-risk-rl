@@ -19,6 +19,20 @@ def _synthetic_freezes(tmp_path, monkeypatch, access):
         monkeypatch.setattr(access, constant, _sha(path))
 
 
+def test_post_closure_all_historical_evaluation_gates_are_closed(tmp_path):
+    from btc_risk_rl.evaluation import access
+
+    assert set(access.ENABLED) == {
+        "technical_2023_source", "technical_2023",
+        "final_2024_2025_source", "final_2024_2025",
+    }
+    assert all(enabled is False for enabled in access.ENABLED.values())
+    for partition in access.ENABLED:
+        with pytest.raises(PermissionError, match="disabled"):
+            access.read_pinned_approval(partition, tmp_path)
+    assert not list(tmp_path.iterdir())
+
+
 def test_disabled_partition_gates_reject_without_opening_files(tmp_path, monkeypatch):
     from btc_risk_rl.evaluation import access
     from btc_risk_rl.evaluation.access import (
