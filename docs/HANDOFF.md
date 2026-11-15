@@ -1,6 +1,8 @@
 # Estado vigente — 15/11/2026 14:50 America/La_Paz
 
 **Evaluación final cerrada:** `main-2018-2022` aportó 108 checkpoints K10;
+el gate se cerró en `4f13aab` y el informe/evidencias se publicaron en
+`036919a`. La fuente y los reportes históricos no se modificaron.
 2023 superó la puerta técnica 108/108 y la evaluación 2024–2025 terminó
 108/108, 36/36 ternas y 4.386 transiciones por política. El ledger final
 está `completed`, `pending=null`, SHA-256

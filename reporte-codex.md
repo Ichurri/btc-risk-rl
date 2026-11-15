@@ -1,7 +1,7 @@
 # Reporte Codex — 15/11/2026 14:50 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`; commit de cierre de gates `4f13aab`;
-  evaluación final cerrada, sin
+  informe y evidencias `036919a`; evaluación final cerrada, sin
   sesión activa. Servicio `oos-v12-final-eval-20261115-01.service`,
   `InvocationID=f8647d06d9d64a90a69e3b24b63c4b1d`, `Result=success`.
   Ledger `artifacts/oos-v12-final-2024-2025-01/ledger.jsonl` `completed`,
