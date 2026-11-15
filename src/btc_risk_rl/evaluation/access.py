@@ -19,7 +19,7 @@ TRAINING_PATH = Path("docs/protocols/OOS-v1-2-training-freeze-20261110.json")
 ENABLED = {"technical_2023_source": False, "technical_2023": False, "final_2024_2025": False}
 REGISTRATION_SHA256 = {"technical_2023_source": None, "technical_2023": None, "final_2024_2025": None}
 APPROVAL_PATHS = {
-    "technical_2023_source": Path("docs/protocols/OOS-v1-2-technical-2023-source-approval.json"),
+    "technical_2023_source": Path("docs/protocols/OOS-v1-2-technical-2023-source-approval-v2.json"),
     "technical_2023": Path("docs/protocols/OOS-v1-2-technical-2023-approval.json"),
     "final_2024_2025": Path("docs/protocols/OOS-v1-2-final-2024-2025-approval.json"),
 }

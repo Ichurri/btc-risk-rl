@@ -153,7 +153,7 @@ def source_preflight(*, active_token: str | None = None) -> dict:
         blockers.append("Technical source export root already exists")
     return {"status": "ready" if not blockers else "blocked", "blockers": blockers,
             "host": host, "budget": budget, "training_ledger_sha256": roster["ledger_sha256"],
-            "source_approval_sha256": sha(ROOT / "docs/protocols/OOS-v1-2-technical-2023-source-approval.json"),
+            "source_approval_sha256": sha(ROOT / "docs/protocols/OOS-v1-2-technical-2023-source-approval-v2.json"),
             "code_sha256": approval["code_sha256"],
             "opened_protected_rows": False}
 
