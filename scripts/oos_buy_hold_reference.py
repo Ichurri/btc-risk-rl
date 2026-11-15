@@ -23,7 +23,7 @@ from btc_risk_rl.evaluation.synthetic import load_verified_scaler, summarize_ret
 ROOT = Path(__file__).resolve().parents[1]
 APPROVAL_PATH = Path("docs/protocols/OOS-v1-2-buy-hold-reference-approval.json")
 OUTPUT_PATH = Path("docs/evidence/oos-v12-buy-hold-20261115/result.json")
-ENABLED = True
+ENABLED = False
 APPROVAL_SHA256 = "3688c0ef758515d86a9faec1f87f2fbed693e2b6a770010bc573045a4a6440fd"
 
 EXPORT = Path("data/processed/oos-v12-final-2024-2025-01")

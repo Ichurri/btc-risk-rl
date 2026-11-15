@@ -15,6 +15,10 @@ def _module():
     return module
 
 
+def test_completed_reference_gate_is_closed_prospectively():
+    assert _module().ENABLED is False
+
+
 def test_buy_once_at_first_executable_open_and_hold_to_last_close():
     calculator = _module().calculate_buy_hold
     result = calculator(
