@@ -204,3 +204,50 @@ def test_access_gate_computes_code_identity_instead_of_trusting_caller(tmp_path,
             export_manifest_sha256="b" * 64, source_manifest_sha256="c" * 64,
             scaler_sha256="d" * 64,
         )
+
+
+def test_final_source_requires_independent_pin_and_passed_technical_closure(
+    tmp_path, monkeypatch,
+):
+    from btc_risk_rl.evaluation import access
+
+    _synthetic_freezes(tmp_path, monkeypatch, access)
+    closure = tmp_path / "closure.json"
+    closure.write_text(json.dumps({"status": "passed", "partition": "technical_2023",
+                                   "complete_policies": 108}))
+    with pytest.raises(PermissionError, match="disabled"):
+        access.require_final_source_access(
+            tmp_path, training_ledger_sha256="a" * 64,
+            technical_closure_path=closure, technical_export_sha256="b" * 64,
+            h1_manifest_sha256="c" * 64, scaler_sha256="d" * 64,
+        )
+    approval = {
+        "status": "approved", "partition": "final_2024_2025_source",
+        "method_freeze_sha256": access.METHOD_SHA256,
+        "training_freeze_sha256": access.TRAINING_SHA256,
+        "training_ledger_sha256": "a" * 64,
+        "technical_closure_sha256": _sha(closure),
+        "technical_export_sha256": "b" * 64,
+        "h1_manifest_sha256": "c" * 64,
+        "scaler_sha256": "d" * 64,
+        "code_sha256": "e" * 64,
+    }
+    permit = tmp_path / "source-final.json"
+    permit.write_text(json.dumps(approval))
+    monkeypatch.setitem(access.ENABLED, "final_2024_2025_source", True)
+    monkeypatch.setitem(access.APPROVAL_PATHS, "final_2024_2025_source", permit)
+    monkeypatch.setitem(access.REGISTRATION_SHA256, "final_2024_2025_source", _sha(permit))
+    monkeypatch.setattr(access, "execution_code_sha256", lambda _root: "e" * 64)
+    assert access.require_final_source_access(
+        tmp_path, training_ledger_sha256="a" * 64,
+        technical_closure_path=closure, technical_export_sha256="b" * 64,
+        h1_manifest_sha256="c" * 64, scaler_sha256="d" * 64,
+    ) == approval
+    closure.write_text(json.dumps({"status": "failed", "partition": "technical_2023",
+                                   "complete_policies": 108}))
+    with pytest.raises(PermissionError, match="technical closure"):
+        access.require_final_source_access(
+            tmp_path, training_ledger_sha256="a" * 64,
+            technical_closure_path=closure, technical_export_sha256="b" * 64,
+            h1_manifest_sha256="c" * 64, scaler_sha256="d" * 64,
+        )

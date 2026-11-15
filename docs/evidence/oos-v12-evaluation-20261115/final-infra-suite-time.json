@@ -1,0 +1,7 @@
+{
+  "command": "uv run --frozen pytest -q",
+  "elapsed_seconds": 885.9799360469988,
+  "ended_epoch": 1794730361.798825,
+  "exit_code": 0,
+  "started_epoch": 1794729475.8188894
+}

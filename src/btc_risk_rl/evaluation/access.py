@@ -16,11 +16,12 @@ METHOD_SHA256 = "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f
 TRAINING_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
 METHOD_PATH = Path("docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json")
 TRAINING_PATH = Path("docs/protocols/OOS-v1-2-training-freeze-20261110.json")
-ENABLED = {"technical_2023_source": True, "technical_2023": True, "final_2024_2025": False}
-REGISTRATION_SHA256 = {"technical_2023_source": "11ae1737c178d94b0524509a2eaf43e29f1414acd58468d79db9c778057ce898", "technical_2023": "aa72823f4db557cc9024bfb5cf1c8d685e1bd4c6594a5109747e28f823dcf18a", "final_2024_2025": None}
+ENABLED = {"technical_2023_source": True, "technical_2023": True, "final_2024_2025_source": False, "final_2024_2025": False}
+REGISTRATION_SHA256 = {"technical_2023_source": "11ae1737c178d94b0524509a2eaf43e29f1414acd58468d79db9c778057ce898", "technical_2023": "aa72823f4db557cc9024bfb5cf1c8d685e1bd4c6594a5109747e28f823dcf18a", "final_2024_2025_source": None, "final_2024_2025": None}
 APPROVAL_PATHS = {
     "technical_2023_source": Path("docs/protocols/OOS-v1-2-technical-2023-source-approval-v2.json"),
     "technical_2023": Path("docs/protocols/OOS-v1-2-technical-2023-approval.json"),
+    "final_2024_2025_source": Path("docs/protocols/OOS-v1-2-final-source-approval.json"),
     "final_2024_2025": Path("docs/protocols/OOS-v1-2-final-2024-2025-approval.json"),
 }
 
@@ -111,4 +112,32 @@ def require_source_export_access(repo_root: Path, *, training_ledger_sha256: str
     }
     if any(approval.get(key) != value for key, value in required.items()):
         raise PermissionError("OOS source export approval identity mismatch")
+    return approval
+
+
+def require_final_source_access(repo_root: Path, *, training_ledger_sha256: str,
+                                technical_closure_path: Path,
+                                technical_export_sha256: str,
+                                h1_manifest_sha256: str,
+                                scaler_sha256: str) -> dict:
+    """Pin the passed technical gate before fetching any final-market bytes."""
+    approval = read_pinned_approval("final_2024_2025_source", repo_root)
+    closure_path = Path(technical_closure_path)
+    if (closure_path.is_symlink() or not closure_path.is_file()
+            or _sha(closure_path) != approval.get("technical_closure_sha256")):
+        raise PermissionError("OOS technical closure hash mismatch")
+    closure = json.loads(closure_path.read_text(encoding="utf-8"))
+    if (type(closure) is not dict or closure.get("status") != "passed"
+            or closure.get("partition") != "technical_2023"
+            or closure.get("complete_policies") != 108):
+        raise PermissionError("OOS technical closure not passed")
+    required = {
+        "training_ledger_sha256": training_ledger_sha256,
+        "technical_export_sha256": technical_export_sha256,
+        "h1_manifest_sha256": h1_manifest_sha256,
+        "scaler_sha256": scaler_sha256,
+        "code_sha256": execution_code_sha256(repo_root),
+    }
+    if any(approval.get(key) != value for key, value in required.items()):
+        raise PermissionError("OOS final source approval identity mismatch")
     return approval
