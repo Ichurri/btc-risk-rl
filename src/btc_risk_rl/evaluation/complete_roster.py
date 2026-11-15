@@ -6,7 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from btc_risk_rl.reporting.oos_progress import read_verified_snapshot
+from btc_risk_rl.pilots.p2_budget import state_hash
 from btc_risk_rl.reporting.oos_tables import completed_run_rows
 
 FREEZE_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
@@ -19,6 +19,24 @@ def _sha(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _read_streamed_ledger(path: Path) -> tuple[dict, str]:
+    """Verify the append-only chain without retaining its historical states."""
+    digest = hashlib.sha256()
+    previous = None
+    state = None
+    with path.open("rb") as stream:
+        for raw in stream:
+            digest.update(raw)
+            state = json.loads(raw)
+            if (state.get("previous_hash") != previous
+                    or state.get("state_hash") != state_hash(state)):
+                raise ValueError("OOS main ledger hash chain invalid")
+            previous = state["state_hash"]
+    if state is None:
+        raise ValueError("OOS main ledger empty")
+    return state, digest.hexdigest()
 
 
 def verify_complete_main_roster(repo_root: Path, *, freeze_path: Path | None = None,
@@ -52,8 +70,7 @@ def verify_complete_main_roster(repo_root: Path, *, freeze_path: Path | None = N
     ledger = root / "ledger.jsonl"
     if ledger.is_symlink():
         raise ValueError("OOS main ledger symlink invalid")
-    raw = ledger.read_bytes()
-    state = read_verified_snapshot(raw)
+    state, ledger_sha256 = _read_streamed_ledger(ledger)
     if (state.get("status") != "completed" or state.get("cursor") != 108
             or state.get("pending") is not None or len(state.get("units", [])) != 1188):
         raise ValueError("OOS main training is not completed")
@@ -70,6 +87,6 @@ def verify_complete_main_roster(repo_root: Path, *, freeze_path: Path | None = N
     return {
         "status": "complete_verified", "profile": "main-2018-2022",
         "complete_runs": len(rows), "accepted_units": len(state["units"]),
-        "ledger_sha256": hashlib.sha256(raw).hexdigest(),
+        "ledger_sha256": ledger_sha256,
         "freeze_sha256": freeze_sha256, "runs": rows,
     }

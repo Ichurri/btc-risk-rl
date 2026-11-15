@@ -97,3 +97,24 @@ def test_incomplete_main_ledger_and_changed_freeze_rejected(tmp_path):
     with pytest.raises(ValueError, match="completed"):
         verify_complete_main_roster(tmp_path, freeze_path=freeze,
                                     freeze_sha256=_sha(freeze))
+
+
+def test_complete_roster_streams_ledger_instead_of_loading_entire_file(tmp_path,
+                                                                       monkeypatch):
+    from pathlib import Path
+
+    from btc_risk_rl.evaluation.complete_roster import verify_complete_main_roster
+
+    freeze, root = _fixture(tmp_path)
+    ledger = root / "ledger.jsonl"
+    original = Path.read_bytes
+
+    def guarded_read_bytes(path):
+        if path == ledger:
+            raise AssertionError("large OOS ledger must be streamed")
+        return original(path)
+
+    monkeypatch.setattr(Path, "read_bytes", guarded_read_bytes)
+    result = verify_complete_main_roster(tmp_path, freeze_path=freeze,
+                                         freeze_sha256=_sha(freeze))
+    assert result["accepted_units"] == 1188
