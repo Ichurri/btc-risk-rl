@@ -16,9 +16,10 @@ METHOD_SHA256 = "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f
 TRAINING_SHA256 = "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0"
 METHOD_PATH = Path("docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json")
 TRAINING_PATH = Path("docs/protocols/OOS-v1-2-training-freeze-20261110.json")
-ENABLED = {"technical_2023": False, "final_2024_2025": False}
-REGISTRATION_SHA256 = {"technical_2023": None, "final_2024_2025": None}
+ENABLED = {"technical_2023_source": False, "technical_2023": False, "final_2024_2025": False}
+REGISTRATION_SHA256 = {"technical_2023_source": None, "technical_2023": None, "final_2024_2025": None}
 APPROVAL_PATHS = {
+    "technical_2023_source": Path("docs/protocols/OOS-v1-2-technical-2023-source-approval.json"),
     "technical_2023": Path("docs/protocols/OOS-v1-2-technical-2023-approval.json"),
     "final_2024_2025": Path("docs/protocols/OOS-v1-2-final-2024-2025-approval.json"),
 }
@@ -88,4 +89,26 @@ def require_evaluation_access(partition: str, repo_root: Path, *,
                 or closure.get("partition") != "technical_2023"
                 or closure.get("complete_policies") != 108):
             raise PermissionError("OOS technical closure not passed")
+    return approval
+
+
+def require_source_export_access(repo_root: Path, *, training_ledger_sha256: str,
+                                 h1_manifest_sha256: str,
+                                 raw_manifest_sha256: str,
+                                 scaler_sha256: str) -> dict:
+    """Pin the H1 read before an export hash can exist.
+
+    This gate cannot evaluate a policy. Evaluation requires a second permit
+    pinned to the completed export manifest.
+    """
+    approval = read_pinned_approval("technical_2023_source", repo_root)
+    required = {
+        "training_ledger_sha256": training_ledger_sha256,
+        "h1_manifest_sha256": h1_manifest_sha256,
+        "raw_manifest_sha256": raw_manifest_sha256,
+        "scaler_sha256": scaler_sha256,
+        "code_sha256": execution_code_sha256(repo_root),
+    }
+    if any(approval.get(key) != value for key, value in required.items()):
+        raise PermissionError("OOS source export approval identity mismatch")
     return approval

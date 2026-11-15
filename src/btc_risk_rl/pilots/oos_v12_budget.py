@@ -168,12 +168,16 @@ def inspect_oos_debit(artifacts, *, now, active_prep_token=None,
         if not path.exists():
             continue
         previous = None
-        for line in path.read_text().splitlines():
-            state = json.loads(line)
-            if (state.get("state_hash") != state_hash(state)
-                    or state.get("previous_hash") != previous):
-                raise ValueError("OOS ledger hash chain corrupt")
-            previous = state["state_hash"]
+        state = None
+        with path.open(encoding="utf-8") as stream:
+            for line in stream:
+                state = json.loads(line)
+                if (state.get("state_hash") != state_hash(state)
+                        or state.get("previous_hash") != previous):
+                    raise ValueError("OOS ledger hash chain corrupt")
+                previous = state["state_hash"]
+        if state is None:
+            raise ValueError("OOS ledger empty")
         blocked |= state["status"] == "running"
         charges = {}
         for day, row in state["days"].items():

@@ -1,0 +1,21 @@
+{
+  "schema": "oos_v12_technical_evaluation_budget_v1",
+  "status": "prospective_technical_2023_only",
+  "authorized_by": "Santiago, solicitud del 14/11/2026 de avanzar con la comprobacion tecnica de 108 K10 sin confirmaciones rutinarias",
+  "day_timezone": "America/La_Paz",
+  "global_daily_seconds": 50400,
+  "daily_closure_reserve_seconds": 2700,
+  "maximum_active_days": 20,
+  "first_unit_admission_seconds": 300,
+  "later_unit_admission_seconds": "max(300, 1.5 * maximum measured prior policy unit), bounded by 900",
+  "unit_supervisor_seconds_max": 900,
+  "unit_rss_bytes_max": 2147483648,
+  "minimum_mem_available_bytes": 4294967296,
+  "minimum_disk_free_bytes": 21474836480,
+  "minimum_battery_percent_with_ac": 50,
+  "session_journal": "artifacts/shared-pilot-budget/oos-v12-evaluation-sessions.jsonl",
+  "global_lock": "artifacts/shared-pilot-budget/global.lock",
+  "admission": "before every complete policy; count session preparation, already measured global charges, unit estimate and closure reserve; pause only at ledger ready",
+  "failure": "an interrupted or failed unit invalidates its evaluation campaign; no selective restart",
+  "scope": "technical 2023 only; final 2024-2025 needs another permit and budget record"
+}

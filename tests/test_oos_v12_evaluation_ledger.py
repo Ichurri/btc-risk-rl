@@ -71,6 +71,21 @@ def test_orphaned_partial_unit_is_failed_and_cannot_resume(tmp_path):
     assert EvaluationLedger.open(root, _identity()).state["status"] == "failed"
 
 
+def test_worker_rejected_before_begin_fails_closed_without_accepting_unit(tmp_path):
+    from btc_risk_rl.evaluation.ledger import EvaluationLedger
+
+    root = tmp_path / "preunit-rejected"
+    ledger = EvaluationLedger.create(root, _identity())
+    ledger.fail_before_unit("worker_lease_invalid")
+    state = EvaluationLedger.open(root, _identity()).state
+    assert state["status"] == "failed"
+    assert state["cursor"] == 0
+    assert state["pending"] is None
+    assert state["accepted"] == []
+    with pytest.raises(ValueError, match="failed"):
+        ledger.begin(_identity()["roster"][0], token="retry")
+
+
 def test_altered_identity_token_or_ledger_is_rejected(tmp_path):
     from btc_risk_rl.evaluation.ledger import EvaluationLedger
 

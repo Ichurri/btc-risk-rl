@@ -19,13 +19,15 @@ def _synthetic_freezes(tmp_path, monkeypatch, access):
         monkeypatch.setattr(access, constant, _sha(path))
 
 
-def test_both_partition_gates_are_closed_by_default(tmp_path):
+def test_disabled_partition_gates_reject_without_opening_files(tmp_path, monkeypatch):
+    from btc_risk_rl.evaluation import access
     from btc_risk_rl.evaluation.access import (
         read_pinned_approval,
         require_evaluation_access,
     )
 
     for partition in ("technical_2023", "final_2024_2025"):
+        monkeypatch.setitem(access.ENABLED, partition, False)
         with pytest.raises(PermissionError, match="disabled"):
             read_pinned_approval(partition, tmp_path)
         with pytest.raises(PermissionError, match="disabled"):
@@ -35,6 +37,46 @@ def test_both_partition_gates_are_closed_by_default(tmp_path):
                                       source_manifest_sha256="c" * 64,
                                       scaler_sha256="d" * 64)
     assert list(tmp_path.iterdir()) == []
+
+
+def test_source_export_requires_separate_pinned_permit(tmp_path, monkeypatch):
+    from btc_risk_rl.evaluation import access
+
+    monkeypatch.setitem(access.ENABLED, "technical_2023_source", False)
+    with pytest.raises(PermissionError, match="disabled"):
+        access.require_source_export_access(
+            tmp_path, training_ledger_sha256="a" * 64,
+            h1_manifest_sha256="b" * 64,
+            raw_manifest_sha256="c" * 64, scaler_sha256="d" * 64,
+        )
+    _synthetic_freezes(tmp_path, monkeypatch, access)
+    monkeypatch.setattr(access, "execution_code_sha256", lambda _root: "e" * 64)
+    approval = {
+        "status": "approved", "partition": "technical_2023_source",
+        "method_freeze_sha256": access.METHOD_SHA256,
+        "training_freeze_sha256": access.TRAINING_SHA256,
+        "training_ledger_sha256": "a" * 64,
+        "h1_manifest_sha256": "b" * 64,
+        "raw_manifest_sha256": "c" * 64,
+        "scaler_sha256": "d" * 64,
+        "code_sha256": "e" * 64,
+    }
+    path = tmp_path / "source-approval.json"
+    path.write_text(json.dumps(approval, sort_keys=True))
+    monkeypatch.setitem(access.ENABLED, "technical_2023_source", True)
+    monkeypatch.setitem(access.APPROVAL_PATHS, "technical_2023_source", path)
+    monkeypatch.setitem(access.REGISTRATION_SHA256, "technical_2023_source", _sha(path))
+    assert access.require_source_export_access(
+        tmp_path, training_ledger_sha256="a" * 64,
+        h1_manifest_sha256="b" * 64,
+        raw_manifest_sha256="c" * 64, scaler_sha256="d" * 64,
+    ) == approval
+    with pytest.raises(PermissionError, match="identity"):
+        access.require_source_export_access(
+            tmp_path, training_ledger_sha256="a" * 64,
+            h1_manifest_sha256="b" * 64,
+            raw_manifest_sha256="c" * 64, scaler_sha256="f" * 64,
+        )
 
 
 def test_synthetic_technical_permission_binds_all_inputs(tmp_path, monkeypatch):

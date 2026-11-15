@@ -168,3 +168,13 @@ class EvaluationLedger:
                 raise ValueError("Evaluation interruption requires active unit")
             changed = dict(current, status="failed", failure=reason)
             self._append(current, changed)
+
+    def fail_before_unit(self, reason: str) -> None:
+        """Permanently reject a worker failure before it could begin a unit."""
+        with self.lock.open("r", encoding="utf-8") as stream:
+            fcntl.flock(stream.fileno(), fcntl.LOCK_EX)
+            current = self._read_unlocked()
+            if (current["status"] != "ready" or current["pending"] is not None
+                    or not reason):
+                raise ValueError("Evaluation preunit failure requires a ready boundary")
+            self._append(current, dict(current, status="failed", failure=reason))

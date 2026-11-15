@@ -442,6 +442,7 @@ def inspect_inputs(*, campaign: Path | None = None) -> dict:
 
 def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
                    active_oos_prep_token: str | None = None,
+                   active_eval_token: str | None = None,
                    daily_limit_seconds: float = 10800,
                    closure_reserve_seconds: float = 2700) -> dict:
     """Read prior campaign debits for the current La Paz day without locking."""
@@ -459,8 +460,14 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
     for path in sorted(ledgers):
         if path.parent == campaign:
             continue
-        raw = path.read_bytes()
-        state = json.loads(raw.splitlines()[-1])
+        checksum = hashlib.sha256()
+        last = None
+        with path.open("rb") as stream:
+            for last in stream:
+                checksum.update(last)
+        if last is None:
+            raise ValueError(f"Empty campaign ledger: {path}")
+        state = json.loads(last)
         if state.get("state_hash") and state["state_hash"] != state_hash(state):
             raise ValueError(f"Corrupt campaign ledger: {path}")
         if state.get("status") == "running":
@@ -479,7 +486,7 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
             wf_ledger_spent[path.parent] = seconds
         if path.parent.name.startswith("oos-v12-training-"):
             oos_ledger_spent[path.parent.name] = seconds
-        sources.append(dict(path=str(path), sha256=hashlib.sha256(raw).hexdigest(),
+        sources.append(dict(path=str(path), sha256=checksum.hexdigest(),
                             status=state.get("status"), charged_today_seconds=seconds,
                             reason="incomplete_debit" if incomplete else "measured"))
     for path in sorted(artifacts.glob("oos-v12-wf-cost-only-*/sessions.jsonl")):
@@ -529,6 +536,7 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
 
     oos = inspect_oos_debit(artifacts, now=now,
                             active_prep_token=active_oos_prep_token)
+    oos_active_days = set(oos["active_days"])
     own = oos["ledger_by_campaign"].get(campaign.name, {}).get(day, 0.0)
     additional = max(0.0, oos["by_day"].get(day, 0.0)
                      - own - sum(oos_ledger_spent.values()))
@@ -538,12 +546,29 @@ def inspect_budget(*, now: float | None = None, campaign: Path | None = None,
         sources.append(dict(path=str(path), sha256=digest(path),
                             status="blocked" if oos["blocked"] else "precheck_attempt",
                             charged_today_seconds=additional, reason="oos_precheck_gap"))
+    evaluation_journal = artifacts / "shared-pilot-budget/oos-v12-evaluation-sessions.jsonl"
+    if evaluation_journal.exists():
+        with WFCostSessionJournal(evaluation_journal,
+                                  campaign="oos-v12-evaluation-v1",
+                                  read_only=True) as sessions:
+            evaluation = sessions.charges({}, now=now, active_token=active_eval_token)
+        oos_active_days.update(evaluation.session_days)
+        seconds = evaluation.extra_by_day.get(day, 0.0)
+        spent += seconds
+        if evaluation.blocked:
+            active.append("OOS evaluation session open or failed")
+        sources.append(dict(path=str(evaluation_journal),
+                            sha256=digest(evaluation_journal),
+                            status="blocked" if evaluation.blocked else "charged",
+                            charged_today_seconds=seconds,
+                            reason="evaluation_session"))
     if oos["blocked"]:
         active.append("oos training preparation or ledger open/failed")
     return dict(ok=not active, day_la_paz=day, global_spent=spent,
                 remaining_before_reserve=max(
                     0.0, daily_limit_seconds - spent - closure_reserve_seconds),
-                active_campaigns=active, sources=sources)
+                active_campaigns=active, sources=sources,
+                oos_active_days=sorted(oos_active_days))
 
 
 def inspect_preflight() -> dict:
