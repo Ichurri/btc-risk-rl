@@ -1,0 +1,15 @@
+{
+  "export_bars_sha256": "c06720ef3f1143e1eb73b0281898b5216bc5ba0f73181daeb8ddadfc300dcea6",
+  "export_manifest_sha256": "59333b75248d7ae5f0e028c9d93d7bf7db941481370a34c97ece43970135ce0d",
+  "final_partition_opened": false,
+  "first_open_ms": 1671912000000,
+  "invocation_id": "a24ab8da288c4df4ba5030c475099b59",
+  "last_open_ms": 1704052800000,
+  "policies_evaluated": 0,
+  "rows": 2233,
+  "session_elapsed_seconds": 143.36764600300012,
+  "session_journal_sha256": "4415e412ba752ec914a7c60296de20aa8960ae4a671d9768ac7fbe8fc906d584",
+  "source_manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+  "status": "accepted_source_export",
+  "technical_steps": 2190
+}

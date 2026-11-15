@@ -1,4 +1,36 @@
-# Estado vigente — 14/11/2026 11:29 America/La_Paz
+# Estado vigente — 15/11/2026 03:17 America/La_Paz
+
+**Fuente técnica de 2023 exportada y auditada; 0 políticas evaluadas.**
+El entrenamiento principal continúa cerrado con 108 K10 y 1.188 unidades
+verificadas. El supervisor histórico y la admisión compartida se integraron
+en `codex/oos-v12-expanded-budget`. Suite completa estable **684 passed**,
+dos advertencias de `fork` sintético, y Ruff pasó. Se documentó antes de
+abrir la fuente el alcance descriptivo de `wf-2021` y el exceso de cargo
+conservador del 12/11. La tesis de Drive, leída sin editar, ya describe los
+dos cortes cronológicos y 2023 como puerta técnica.
+
+Solo el gate de **exportación** `technical_2023_source` está activo. Su
+permiso v2 fija código, H1, normalizador, presupuesto y adjudicación.
+El preflight fue `ready`; `oos-v12-technical-source-20261115-01.service`
+cerró `Result=success`, `InvocationID=a24ab8da288c4df4ba5030c475099b59`.
+Producto local `data/processed/oos-v12-technical-2023-01/`: 2.233 filas,
+manifiesto SHA-256
+`59333b75248d7ae5f0e028c9d93d7bf7db941481370a34c97ece43970135ce0d`.
+El cargo medido fue 143,367646 s; presupuesto global del 15/11 tras la
+sesión: 143,367646 s gastados y 47.556,632354 s antes de la reserva de
+2.700 s. Evidencias e informe:
+[`OOS-v1-2-evaluacion-2023-fuente-20261115.md`](hitos/OOS-v1-2-evaluacion-2023-fuente-20261115.md).
+
+**Siguiente tarea:** fijar el permiso `technical_2023` al manifiesto
+exportado y ejecutar bajo `systemd --user` una evaluación continua de cada
+uno de los 108 K10, sin seleccionar por resultados. Repetir el preflight
+vigilado de recursos, permiso, exportación y presupuesto. Cerrar con las
+108 trazas reauditoradas o registrar fallo y detenerse. El gate final
+2024–2025 permanece cerrado y su fuente aún no se ha adquirido.
+
+---
+
+# Estado anterior — 14/11/2026 11:29 America/La_Paz
 
 **Entrenamiento principal cerrado:** ledger `completed`, 108/108 corridas,
 36/36 ternas C0/C5/C10, 1.188/1.188 unidades, `pending=null`. La auditoría

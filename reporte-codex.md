@@ -1,4 +1,35 @@
-# Reporte Codex — 14/11/2026 11:29 America/La_Paz
+# Reporte Codex — 15/11/2026 03:17 America/La_Paz
+
+- Rama `codex/oos-v12-expanded-budget`, último commit de gate de fuente
+  `de688b9`; `.python-version` sigue eliminado solo localmente y fuera de
+  los commits. Entrenamiento principal `completed`: 108/108 corridas,
+  36/36 ternas, 1.188/1.188 unidades, último checkpoint K10
+  `run-107-C5-b0` SHA-256
+  `e2c2b35e695251824574e32a4203545dca86f12bb36a681f652c3f2298009cce`.
+- Suite completa de evaluación/infraestructura: **684 passed**, 2
+  `DeprecationWarning` de `fork` sintético, 972,30 s; Ruff pasó.
+  Prueba sintética adicional de pausa y reingreso del supervisor: 11 passed.
+- Preflight fuente 2023 `ready`: CA sí, batería 100 %, memoria disponible
+  9.116.581.888 B, disco 83.826.311.168 B, `Linger=yes`, gestor `running`.
+  El servicio `oos-v12-technical-source-20261115-01.service` ya terminó
+  `Result=success` tras 143,367646 s de bitácora; no hay evaluación activa.
+- Exportación técnica local `data/processed/oos-v12-technical-2023-01/`:
+  2.233 filas, 2.190 períodos de 2023 y 43 barras de contexto; manifiesto
+  SHA-256 `59333b75248d7ae5f0e028c9d93d7bf7db941481370a34c97ece43970135ce0d`.
+  **0/108 políticas evaluadas**. Evidencia pequeña en
+  `docs/evidence/oos-v12-evaluation-20261115/` y
+  `docs/hitos/OOS-v1-2-evaluacion-2023-fuente-20261115.md`.
+- Presupuesto global 15/11 después de exportar: **143,367646 s** gastados,
+  **47.556,632354 s** antes de reserva de cierre 2.700 s. No había otra
+  campaña activa en esa captura. Es una medición del momento.
+- Siguiente acción: registrar y activar el permiso técnico de evaluación
+  fijado al manifiesto exportado; ejecutar preflight nuevo y evaluar los
+  108 K10 en una sola cartera cada uno, con pausas solo entre políticas.
+  El permiso final y su fuente 2024–2025 siguen cerrados.
+
+---
+
+# Reporte anterior — 14/11/2026 11:29 America/La_Paz
 
 - Rama `codex/oos-v12-expanded-budget`, código y permiso v5 en `c9c5c49`;
   evidencia del cierre en `docs/evidence/oos-v12-main-closure-20261114/`.
