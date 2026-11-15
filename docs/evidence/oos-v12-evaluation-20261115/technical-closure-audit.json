@@ -1,0 +1,13 @@
+{
+  "blocks": 36,
+  "closure_sha256": "a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3",
+  "last_run_id": "run-107-C5-b0",
+  "ledger_sha256": "b9b9352f6bcb7e44fb750aff3e8ac4a05b72f49f90d4e7382aeeb6093e0362cd",
+  "reports_and_traces_hashes_verified": 108,
+  "runs": 108,
+  "status": "passed",
+  "steps_per_run": 2190,
+  "unit_seconds_max": 4.618346575000032,
+  "unit_seconds_min": 3.7725841789979313,
+  "unit_seconds_total": 440.6785855130147
+}

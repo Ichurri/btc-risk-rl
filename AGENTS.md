@@ -1,6 +1,18 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **15/11/2026: puerta técnica 2023 superada.** El permiso separado
+  `technical_2023` fue fijado en `77bb44e` y activado en `80d763a`.
+  `oos-v12-technical-eval-20261115-01.service` terminó `Result=success`:
+  ledger `completed`, 108/108 políticas K10, 36/36 ternas, sin pendiente;
+  cierre técnico SHA-256
+  `a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3`.
+  La bitácora cargó 984,338637 s. Ver
+  `docs/hitos/OOS-v1-2-evaluacion-2023-cierre-20261115.md`.
+  Es integridad técnica, sin selección de desempeño; no demuestra
+  rentabilidad ni riesgo. El gate final sigue cerrado y exige fuente
+  2024–2025 auditada, armonización de tesis y permiso propio fijado al
+  cierre técnico. No acceder al final antes de estas puertas.
 - **14/11/2026: entrenamiento principal OOS completado; evaluación aún cerrada.**
   El ledger `artifacts/oos-v12-training-main-01/ledger.jsonl` cerró
   `completed`, cursor 108, 1.188/1.188 unidades, `pending=null` y 36 ternas

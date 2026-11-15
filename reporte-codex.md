@@ -1,4 +1,20 @@
-# Reporte Codex — 15/11/2026 03:17 America/La_Paz
+# Reporte Codex — 15/11/2026 03:39 America/La_Paz
+
+- **2023 técnico cerrado:** 108/108 políticas K10, 36/36 ternas, ledger
+  `completed` sin pendiente. `technical-closure.json` SHA-256
+  `a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3`.
+  Servicio `oos-v12-technical-eval-20261115-01.service` terminado
+  `Result=success`, bitácora 984,338637 s, unidades 440,678586 s.
+  El informe y evidencias están en
+  `docs/hitos/OOS-v1-2-evaluacion-2023-cierre-20261115.md` y
+  `docs/evidence/oos-v12-evaluation-20261115/`.
+- Permisos: `technical_2023_source` y `technical_2023` activos y fijados;
+  `final_2024_2025` cerrado. Siguiente acción: implementar y verificar
+  adquisición final con permiso propio, sin tocar resultados 2023; después
+  auditar la fuente y fijar el permiso de evaluación final. El cierre 2023
+  es técnico, no un resultado de rentabilidad.
+
+## Antecedente: exportación de fuente 2023
 
 - Rama `codex/oos-v12-expanded-budget`, último commit de gate de fuente
   `de688b9`; `.python-version` sigue eliminado solo localmente y fuera de

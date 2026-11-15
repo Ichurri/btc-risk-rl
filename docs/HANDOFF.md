@@ -1,4 +1,16 @@
-# Estado vigente — 15/11/2026 03:17 America/La_Paz
+# Estado vigente — 15/11/2026 03:39 America/La_Paz
+
+**Comprobación técnica 2023 aprobada: 108/108 políticas, 36/36 ternas.**
+Ledger `completed`, `pending=null`; cierre técnico original SHA-256
+`a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3`.
+Una sola sesión supervisada terminó `Result=success` y cargó 984,338637 s.
+Ver [informe de cierre](hitos/OOS-v1-2-evaluacion-2023-cierre-20261115.md).
+**Siguiente tarea:** preparar permiso independiente para adquirir y auditar
+la fuente final 2024–2025; después, permiso final fijado a esa fuente y al
+cierre técnico. Mantener el conjunto final cerrado hasta verificar ambas
+puertas. La prueba técnica no constituye comparación financiera.
+
+## Antecedente inmediato: exportación de 2023
 
 **Fuente técnica de 2023 exportada y auditada; 0 políticas evaluadas.**
 El entrenamiento principal continúa cerrado con 108 K10 y 1.188 unidades
