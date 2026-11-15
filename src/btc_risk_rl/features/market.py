@@ -19,10 +19,10 @@ FEATURES = [
 ]
 
 
-def market_features(frame: pd.DataFrame) -> pd.DataFrame:
+def _market_feature_values(frame: pd.DataFrame, *, allow_final: bool) -> pd.DataFrame:
     if not frame.index.is_monotonic_increasing or frame.index.has_duplicates:
         raise ValueError("Features require ordered, unique bars")
-    if len(frame) and frame.index[-1] >= pd.Timestamp(FINAL_START):
+    if not allow_final and len(frame) and frame.index[-1] >= pd.Timestamp(FINAL_START):
         raise ValueError("Final test is reserved")
     if len(frame) > 1 and not (np.diff(frame.index.asi8) == 14_400_000_000_000).all():
         raise ValueError("Features cannot cross missing bars")
@@ -38,6 +38,11 @@ def market_features(frame: pd.DataFrame) -> pd.DataFrame:
         out[f"volatility_{window}"] = r.rolling(window).std(ddof=0)
     out["log_volume"] = np.log1p(frame.volume)
     return out[FEATURES]
+
+
+def market_features(frame: pd.DataFrame) -> pd.DataFrame:
+    """Development feature route; final dates remain forbidden here."""
+    return _market_feature_values(frame, allow_final=False)
 
 
 @dataclass(frozen=True)

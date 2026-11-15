@@ -26,6 +26,66 @@ los artefactos de WF05, P0–P3 y los checkpoints OOS sin selección por resulta
 
 ---
 
+# Estado anterior del worktree aislado — 11/11/2026, evaluación aún cerrada
+
+El cierre técnico interno de 2023 ya tiene una puerta de **108 políticas
+completas**, 36 bloques pareados, reauditoría y Sortino definido, con un
+archivo de cierre que no publica resultados financieros. Se verificó la
+estructura con un ledger sintético, no con 2023. El lector final valida
+ahora también la consulta temporal de cada página antes de abrirla. Faltan
+supervisor histórico, admisión de presupuesto, permisos separados activos
+y comprobación de fuentes reales. La sesión de entrenamiento principal
+continúa en el otro worktree; no fusionar este código mientras siga activa.
+Ver [informe de preparación](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
+
+---
+
+El trabajador interno de evaluación ya conecta checkpoint sintético,
+exportación inventada, traza continua y bitácora durable; vuelve a auditar
+reportes antes de aceptarlos y falla ante unidades huérfanas. La batería
+focal quedó en **71 passed** antes de la guarda adicional de host, y Ruff
+pasó. El descargador final interno solo se probó con transporte inventado;
+rechaza endpoints ajenos a Binance. Sigue faltando supervisor histórico,
+presupuesto/admisión, exportación final auditada y fuente real; ningún
+permiso está activo ni se hizo una solicitud de red.
+Se incorporaron puertas **independientes y apagadas** para 2023 y
+2024–2025: exigen aprobación con huella fijada, protocolo real íntegro y
+proveniencia concordante; el conjunto final exige además cierre técnico de
+108 políticas. La fuente final deberá cotejar exactamente 43 velas de
+contexto de 2023 contra H1 y rechaza tiempos fraccionarios. La batería
+focal de evaluación había quedado en **58 passed** antes de la integración
+del trabajador; todas las fuentes
+de esas pruebas son inventadas. Véase
+[informe de fuentes y límites](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
+El siguiente trabajo es conectar estas puertas con un ejecutor supervisado,
+fijar las fuentes y el código antes de cada acceso y auditar el cierre de
+las 108 corridas. Ningún permiso histórico de evaluación está activo.
+
+La rama `codex/oos-v12-evaluation-infrastructure` prepara el evaluador sin
+alterar el código fijado de la sesión histórica que corre en
+`codex/oos-v12-expanded-budget`. El [inventario permitido](hitos/OOS-v1-2-fuentes-evaluador-20261111.md)
+registra que H1 tiene 2.190/2.190 velas de 2023 sin exclusiones y que no se
+identificó archivo local final 2024–2025; no se leyeron esas filas. En
+`00863ae` se añadieron un exportador de filas suministradas, una unidad
+continua con checkpoint K10 y doble auditoría de la traza, y la tabla del
+contraste congelado. **43 pruebas focales sintéticas pasaron** y Ruff pasó.
+No existe comando histórico activo ni permiso 2023/final. Faltan adquisición
+y auditoría de fuentes, supervisor y cierre del roster de 108, permisos
+separados y armonización del texto académico. La guarda nueva de roster
+exige 108 corridas, 1.188 unidades, 36 ternas y todas las huellas antes
+de abrir evaluación; rechazó el ledger real aún activo. En total, la
+batería focal quedó en **51 passed** y Ruff pasó. Se añadieron adaptadores
+internos H1/2023 y páginas Binance/final probados solo con archivos
+inventados; falta descargador final autorizado y auditoría del origen.
+El entrenamiento principal
+continúa en la otra rama; no fusionar código en ella mientras su permiso
+fija la huella anterior. [Texto metodológico propuesto](proposals/OOS-v1-2-armonizacion-tesis-20261111.md).
+
+---
+
+# Estado anterior — 11/11/2026, presupuesto OOS ampliado prospectivamente
+
+
 # Estado anterior — 14/11/2026 09:17 America/La_Paz
 
 Entrenamiento principal `main-2018-2022`: ledger `ready`, cursor 103/108,
