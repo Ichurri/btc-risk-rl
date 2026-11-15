@@ -1,4 +1,23 @@
-# Reporte Codex — 15/11/2026 03:39 America/La_Paz
+# Reporte Codex — 15/11/2026 10:13 America/La_Paz
+
+- **Fuente final auditada, evaluación final pendiente:** cinco páginas
+  crudas, 4.429 velas, 43 de contexto idénticas a 2023 y 4.386 transiciones
+  disponibles. Manifiesto exportado SHA-256
+  `db842235decd93fef2e04e49fbfb4f20752e9239f1c99eecb84f9e3e6e742436`;
+  raíz local `data/processed/oos-v12-final-2024-2025-01/`.
+  Servicio `oos-v12-final-source-20261115-01.service` cerrado
+  `Result=success`; cargo durable 134,826421 s. Permiso final de
+  evaluación aún cerrado. Ver
+  `docs/hitos/OOS-v1-2-final-fuente-20261115.md`.
+- Presupuesto compartido al cierre de fuente: 4.688,180886 s gastados el
+  15/11; 43.011,819114 s antes de 2.700 s de reserva. Incluye
+  3.425,648182 s de preparación de pared cargados conservadoramente;
+  las suites individuales fueron 692 y 694 passed, con la última estable
+  y Ruff conforme. **Siguiente acción:** registrar el permiso final fijado
+  a la fuente, ejecutar preflight nuevo y una sola sesión supervisada de
+  108 políticas. Después auditar el contraste pareado y publicar resultados.
+
+## Antecedente: puerta técnica 2023
 
 - **2023 técnico cerrado:** 108/108 políticas K10, 36/36 ternas, ledger
   `completed` sin pendiente. `technical-closure.json` SHA-256

@@ -10,3 +10,10 @@ d1cdaf4e39c74a4a2aca5bafff6d67c79e7a0cdd51b16c50942bc81809b00608  docs/evidence/
 2ad18b99ac16d04dbdbe52bbbd9e641f3e59c5852348a3ffdfdae75f3b28a02d  docs/evidence/oos-v12-evaluation-20261115/final-infra-suite-frozen.log
 3526db577896ac8ee76426278ea2b56cad1c0d2653e612b0e830516b071cf794  docs/evidence/oos-v12-evaluation-20261115/final-infra-suite-time.json
 eaefb10d87412969c0be0b2a41aae05c9652e2f99c28e6361c17d0032ef64616  docs/evidence/oos-v12-evaluation-20261115/final-infra-suite.log
+166ab049961e00fe1c2fefe92198e1be5a940c5b132ee5b3e70e4c0b71b08326  docs/evidence/oos-v12-evaluation-20261115/final-source-audit.json
+e64c3a5374a73cb586a962711d2dbc951bc8c716198f232f19a2754a20770e11  docs/evidence/oos-v12-evaluation-20261115/final-source-budget-after.json
+e7fb8241dbb911bab7e75ec2fd8130c2509cbcb8be5405c8a46dd4b081b72f8c  docs/evidence/oos-v12-evaluation-20261115/final-source-preflight-time.json
+cc04bf328b2bcedff63f165aaa35557b0dd1bc75b5f2d1d353a3e3212efece28  docs/evidence/oos-v12-evaluation-20261115/final-source-preflight.json
+0467d6f7909e2721c8b8be0a0ece23221fc2752df6746b40bb5ad590ede44808  docs/evidence/oos-v12-evaluation-20261115/final-source-service-journal.txt
+d1cdaf4e39c74a4a2aca5bafff6d67c79e7a0cdd51b16c50942bc81809b00608  docs/evidence/oos-v12-evaluation-20261115/final-source-service-state.txt
+1037a49b6f3ce9c3d3175519f60c189509ab20388f4bab3620a91d0a3b12e905  docs/evidence/oos-v12-evaluation-20261115/final-preparation-budget-debit.json

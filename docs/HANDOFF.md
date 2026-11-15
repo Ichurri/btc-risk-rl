@@ -1,4 +1,21 @@
-# Estado vigente — 15/11/2026 03:39 America/La_Paz
+# Estado vigente — 15/11/2026 10:13 America/La_Paz
+
+**Fuente final 2024–2025 adquirida y auditada, cero políticas finales
+evaluadas.** Permiso de fuente independiente en `b1cb99b`, gate de fuente
+en `d3d0d35`. Cinco páginas crudas, 4.429 velas completas con 43 de
+contexto cotejadas con 2023; exportación SHA-256
+`db842235decd93fef2e04e49fbfb4f20752e9239f1c99eecb84f9e3e6e742436`.
+El servicio cerró `Result=success`; bitácora 134,826421 s. El saldo
+capturado tras la sesión fue 43.011,819114 s antes de reserva, con los
+gastos de preparación reconstruidos y cargados conservadoramente. Ver
+[informe de fuente final](hitos/OOS-v1-2-final-fuente-20261115.md).
+**Siguiente tarea:** fijar y activar otro permiso `final_2024_2025`
+vinculado a la fuente y al cierre técnico; repetir preflight vigilado y
+evaluar los 108 K10 en el orden congelado. No seleccionar por 2023 ni por
+resultados finales. Cerrar con el bootstrap pareado/Holm ya fijado o
+preservar fallo y declarar hipótesis inconclusas.
+
+## Antecedente inmediato: cierre técnico 2023
 
 **Comprobación técnica 2023 aprobada: 108/108 políticas, 36/36 ternas.**
 Ledger `completed`, `pending=null`; cierre técnico original SHA-256

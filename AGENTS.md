@@ -1,6 +1,19 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **15/11/2026: fuente final auditada, evaluación aún cerrada.** El
+  permiso de adquisición final se fijó en `b1cb99b` y se activó solo ese
+  gate en `d3d0d35`, después del cierre técnico 2023. Una sesión
+  `oos-v12-final-source-20261115-01.service` terminó `Result=success`:
+  cinco páginas Binance Spot BTCUSDT 4h, 4.429 velas, 43 de contexto
+  idénticas a 2023 y 4.386 transiciones finales. Exportación SHA-256
+  `db842235decd93fef2e04e49fbfb4f20752e9239f1c99e3e6e742436`.
+  Cargo medido 134,826421 s. Ver
+  `docs/hitos/OOS-v1-2-final-fuente-20261115.md`. El permiso de
+  **evaluación** final sigue cerrado y requiere un registro distinto que
+  fije esta fuente, el código y el cierre técnico; cero políticas finales
+  evaluadas hasta entonces. No presentar esta auditoría como resultado
+  financiero.
 - **15/11/2026: puerta técnica 2023 superada.** El permiso separado
   `technical_2023` fue fijado en `77bb44e` y activado en `80d763a`.
   `oos-v12-technical-eval-20261115-01.service` terminó `Result=success`:
