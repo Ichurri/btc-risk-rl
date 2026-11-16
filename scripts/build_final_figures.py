@@ -12,18 +12,20 @@ matplotlib.use("Agg")
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.colors import to_rgba
 from matplotlib.ticker import FuncFormatter
 from secondary_metrics import CONDITIONS, EVIDENCE, FIGURES, REFERENCE, ROOT, output_path
 
 WIDTH = 15 / 2.54
 DPI = 300
 STYLES = (
-    {"color": "0.10", "linestyle": "-"},
-    {"color": "0.36", "linestyle": "--"},
-    {"color": "0.53", "linestyle": "-."},
+    {"color": "#005A9C", "linestyle": "-"},
+    {"color": "#B75600", "linestyle": "--"},
+    {"color": "#007A61", "linestyle": "-."},
 )
 HATCHES = ("//", "\\\\", "..")
-HOLD_STYLE = {"color": "0.16", "linestyle": ":"}
+MARKERS = ("o", "s", "^")
+HOLD_STYLE = {"color": "#783D91", "linestyle": ":"}
 
 
 def columns(path):
@@ -52,9 +54,10 @@ def plot_curve(rows, kind):
         return np.array([float(row[key]) for row in rows]) * factor
 
     for condition, style, hatch in zip(CONDITIONS, STYLES, HATCHES, strict=True):
+        color = style["color"]
         ax.fill_between(timestamps, series(f"{condition}_p05"), series(f"{condition}_p95"),
-                        facecolor="0.94", alpha=0.5, hatch=hatch,
-                        edgecolor=style["color"], linewidth=0.1, zorder=1)
+                        facecolor=to_rgba(color, 0.10), hatch=hatch,
+                        edgecolor=to_rgba(color, 0.29), linewidth=0.1, zorder=1)
     for index, (condition, style) in enumerate(zip(CONDITIONS, STYLES, strict=True)):
         ax.plot(timestamps, series(f"{condition}_median"), label=condition, **style,
                 lw=1.4 - 0.15 * index, zorder=4 + index)
@@ -84,11 +87,17 @@ def plot_sortino(rows):
     fig, ax = plt.subplots(figsize=(WIDTH, 8.1 / 2.54), layout="constrained")
     values = [[float(row["sortino"]) for row in rows if row["condition"] == c] for c in CONDITIONS]
     reference = next(float(r["sortino"]) for r in rows if r["condition"] == REFERENCE)
-    ax.boxplot(values, tick_labels=CONDITIONS, showfliers=False, widths=0.36,
-               medianprops={"color": "0.16", "linewidth": 1.6})
-    for index, points in enumerate(values, 1):
-        for offset, value in zip(np.linspace(-0.135, 0.135, len(points)), points, strict=True):
-            ax.scatter(index + offset, value, color="0.36", s=9, alpha=0.65, zorder=3)
+    artists = ax.boxplot(values, tick_labels=CONDITIONS, showfliers=False, widths=0.36,
+                        patch_artist=True)
+    for index, (points, style, marker) in enumerate(zip(values, STYLES, MARKERS, strict=True)):
+        color = style["color"]
+        artists["boxes"][index].set(facecolor=to_rgba(color, 0.10), edgecolor=color)
+        artists["medians"][index].set(color=color, linewidth=1.6)
+        for component in ("whiskers", "caps"):
+            for line in artists[component][2 * index:2 * index + 2]:
+                line.set(color=color)
+        ax.scatter(index + 1 + np.linspace(-0.135, 0.135, len(points)), points,
+                   color=color, marker=marker, s=10, alpha=0.7, zorder=3)
     ax.axhline(reference, **HOLD_STYLE, label=REFERENCE)
     ax.set_ylabel("Sortino anualizado")
     ax.set_xlabel("Condición")

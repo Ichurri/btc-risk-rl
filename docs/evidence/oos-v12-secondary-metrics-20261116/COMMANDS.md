@@ -5,7 +5,10 @@ Ejecutar desde la raíz del repositorio con las 108 trazas locales de la
 campaña cerrada disponibles. NumPy 2.5.3 proviene de `uv.lock`.
 Matplotlib 3.10.8 se instala en el entorno de ejecución de las figuras.
 
-El código de generación quedó fijado en el commit `611bc29`.
+El código del cálculo original quedó fijado en `611bc29`. La versión
+publicada de las figuras distingue C0 (azul), C5 (naranja), C10 (verde)
+y comprar y mantener (violeta). Los estilos de línea, tramas y marcadores
+permiten distinguir las condiciones también en escala de grises.
 
 ## Generación original
 
@@ -59,3 +62,21 @@ Se comprobaron las dimensiones de los cuatro PNG con Pillow y las siete
 secciones del HTML con `html.parser`. Las cuatro imágenes son autocontenidas
 y las anclas de navegación apuntan a secciones internas. La anchura de
 cada figura es de 1.771 píxeles a 300 ppp, aproximadamente 15 cm.
+
+## Regeneración de figuras y HTML desde los CSV
+
+Se regeneraron las cuatro figuras usando los CSV publicados, sin recalcular
+métricas ni leer las trazas. El HTML incorpora los nuevos PNG. El material
+para la tesis se reprodujo byte por byte.
+
+```bash
+evidence=docs/evidence/oos-v12-secondary-metrics-20261116
+tmp=$(mktemp -d /tmp/btc-oos-color.XXXXXX)
+cp "$evidence"/*.csv "$evidence/integrity.json" "$tmp/"
+uv run --frozen --with matplotlib==3.10.8 python scripts/build_final_figures.py --evidence "$tmp"
+uv run --frozen python scripts/build_final_report.py --evidence "$tmp" --report "$tmp/report.html" --thesis "$tmp/insertar-en-tesis.md"
+```
+
+Se verificaron el color, el tamaño de 1.771 píxeles de ancho, los 300 ppp
+y la igualdad entre los PNG publicados y los incorporados en el HTML.
+Pasaron Ruff y 10 pruebas focales de métricas y figuras.
