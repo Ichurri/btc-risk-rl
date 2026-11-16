@@ -2349,7 +2349,7 @@ local previa de .python-version sigue fuera del commit.
 # Handoff — entrega H5 conservada
 
 Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), origin.
-Rama [codex/h5-infrastructure](https://github.com/Ichurri/btc-risk-rl/tree/codex/h5-infrastructure).
+Rama [codex/h5-infrastructure](https://github.com/Ichurri/btc-risk-rl/tree/1118129b90d0760cf47f1538f1487dee9d7cd9e5).
 Base H4 local/remota verificada 19fa2e6; implementación H5 **3cbd342**.
 El commit documental posterior añade evidencias y este handoff. La eliminación
 local previa de .python-version se mantiene fuera de commits. Sin force push.
@@ -2392,7 +2392,7 @@ H1/H3, guardas, contabilidad y tesis intactos. No ZIP rutinario.
 # Handoff — entrega histórica H4
 
 Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
-Rama de entrega: [codex/h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/codex/h4-agents-collector).
+Rama de entrega: [codex/h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/19fa2e63d973a1ac6951a9d32cd3432113a4a5a3).
 Base H3 verificada local/remota 8f027c5; alcance/dependencias 31b4c87;
 implementación H4 a6c391a. La eliminación previa de .python-version sigue fuera
 de los commits. No hubo retroceso de ramas ni sobrescritura de cambios previos.
@@ -2437,7 +2437,7 @@ No modificar la tesis ni generar ZIP rutinario.
 # Handoff — estado vigente H3 (22-09-2026)
 
 Repositorio en [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
-Rama de entrega: [codex/adopt-adr002-v2-1](https://github.com/Ichurri/btc-risk-rl/tree/codex/adopt-adr002-v2-1).
+Rama de entrega: [codex/adopt-adr002-v2-1](https://github.com/Ichurri/btc-risk-rl/tree/8f027c53696976602260eb498698ef51ffd5d711).
 Base revisada e4e2e8f; adopción 10d92fa; código H3 ebb3914.
 Git local y remoto coincidían en la base; no había commits posteriores.
 La eliminación local previa de .python-version se conserva fuera de los commits.

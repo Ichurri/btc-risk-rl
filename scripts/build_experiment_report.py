@@ -3,7 +3,7 @@
 import argparse
 from pathlib import Path
 
-from btc_risk_rl.reporting.experiments import build
+from experiment_report import build
 
 
 def main() -> None:

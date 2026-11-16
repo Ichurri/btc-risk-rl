@@ -2,11 +2,17 @@
 
 import hashlib
 import json
+import runpy
 from pathlib import Path
 
 import pytest
 
-from btc_risk_rl.reporting.experiments import load_campaign, p3_pairs, render_report
+report_module = runpy.run_path(
+    str(Path(__file__).resolve().parents[1] / "scripts" / "experiment_report.py")
+)
+load_campaign = report_module["load_campaign"]
+p3_pairs = report_module["p3_pairs"]
+render_report = report_module["render_report"]
 
 
 def _write(path: Path, value: object) -> None:

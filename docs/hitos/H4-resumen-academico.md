@@ -2,7 +2,7 @@
 
 **Implementación y verificación sintética; sin pilotos ni entrenamiento de mercado.**
 Base H3: 8f027c5. Alcance/dependencias: 31b4c87. Código H4: a6c391a.
-[Rama](https://github.com/Ichurri/btc-risk-rl/tree/codex/h4-agents-collector).
+[Rama](https://github.com/Ichurri/btc-risk-rl/tree/19fa2e63d973a1ac6951a9d32cd3432113a4a5a3).
 
 Se implementó el contrato ADR-002 v2.1: actor y crítico separados, observación
 H3 de 13 componentes, MC completo de 180 pasos, gamma=lambda_GAE=1 y ningún
