@@ -1,0 +1,76 @@
+{
+  "code_sha256_current": "b61111ea8507bce5a3d6e74596006b13f8723cdbfc657e2bbda11fa86907e561",
+  "exact_wf_permit_types": [
+    "btc_risk_rl.pilots.wf_cost.WFCostPermit",
+    "btc_risk_rl.pilots.wf_cost_replacement_exec.WFCostPermit",
+    "btc_risk_rl.pilots.wf_cost_replacement_03_exec.WFCostPermit"
+  ],
+  "frozen_roots": {
+    "oos-v12-wf-cost-only-01": {
+      "files": 15,
+      "same_as_frozen_reference": true,
+      "sha256_by_file": {
+        "campaign.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "folds/wf-2021/manifest.json": "b6bc792891cc66ff6bbedbe190c6860347d8aca1eb6a94e41debafb6cf98bcf3",
+        "folds/wf-2022/manifest.json": "e938e641d8a186c9561680c16e6ce9987634b8725c2f2c672c04ca3b17e1d551",
+        "ledger.jsonl": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+        "preflight-5da87243d80a41ca91a2cbf52f720ed6.json": "cc49777050db7e479bd7e6808743643109382eeee251d89e7a510d8634dad558",
+        "preflight-bbda0780d68345c9a1021aa3158b6491.json": "87c7bb726afb9300ade61c269b88ee7c6a8032cbba0aaf0ec5e129fc4525e25c",
+        "supervisor.jsonl": "211ec9a948970de4e00dc59524d7da9aa39ac78017f31ad279415835acb21731",
+        "wf-2021/checkpoint-0/manifest.json": "2cfc684af0f7bb7224472dd5caa3c68e078275f6866a17cc02a3eafeea6ff9c3",
+        "wf-2021/checkpoint-0/state.pt": "22f9f60484db6ae5a04b7b35f4ebe2149debb16ac357437536c24f571bf8bca7",
+        "wf-2021/closing-0.json": "4dcb0bb191a4d3146ec8db07a1c3b9b074a0572e2a2b99b9a322d44cf7f30e0e",
+        "wf-2021/journal/events.jsonl": "5760eb1cdab9e3d59b05c941895941314ffaa317d3dcabf4cc5deaa3454a4378",
+        "wf-2021/progress.json": "71988c4e48d5eee94aef1665ac1c7326dc42caf4c48a2c1aefb59d8398aafda7",
+        "wf-2021/request-0.json": "1c8a8d1d55edb9fe94e58ac99d7632160be7bd193e05fa6cea2a45ff5256ab91",
+        "wf-2021/unit-0.json": "1ba4d95998624d0f0c8a46cdc37ddb51b8a2e04a32c5a14d85eff4f6639a934f",
+        "wf-2021/worker-0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "oos-v12-wf-cost-only-02": {
+      "files": 2,
+      "same_as_frozen_reference": true,
+      "sha256_by_file": {
+        "sessions.jsonl": "72e790c0daf96a8da188e47b3791d759de625d170813fdc98c60d6ae888cb276",
+        "sessions.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "oos-v12-wf-cost-only-03": {
+      "files": 10,
+      "same_as_frozen_reference": true,
+      "sha256_by_file": {
+        "campaign.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "folds/wf-2021/manifest.json": "b6bc792891cc66ff6bbedbe190c6860347d8aca1eb6a94e41debafb6cf98bcf3",
+        "folds/wf-2022/manifest.json": "e938e641d8a186c9561680c16e6ce9987634b8725c2f2c672c04ca3b17e1d551",
+        "ledger.jsonl": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+        "preflight-d4bcf60a787d44029cbd4bc28a3b7f6c.json": "6522c31c5ab6a26cb5673260facc9079c7313d84e07ec76ea57db8e9e7030e6c",
+        "sessions.jsonl": "8188fa36c51efe369a9e15f71c9afa0e9475d02f51ed3ab4df808ea44e0432d5",
+        "sessions.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "supervisor.jsonl": "65dbd26c1ee7571c27885db530ea21d3b1465f66fa5cbf6864e74aaedbd10b0f",
+        "wf-2021/request-0.json": "b4706951e8b0ec46839edc073fcf0ccae89d3b58d24af7502891d8e0cf775423",
+        "wf-2021/worker-0.log": "5515e671a11ca0841ffcd3a16b14af77c63b4c7d390bdfae38450b9b2165490f"
+      }
+    }
+  },
+  "gates_closed": {
+    "01": true,
+    "02": true,
+    "03": true
+  },
+  "git_commit": "803abc126f074694b4959693312b0fd497030328",
+  "historical_03_approval_sha256": "6f877eaf18663f0427ef9f5ad9e412eeec6da761d7355bbc110563e784c6c4b4",
+  "worker_gate_checks": {
+    "01": {
+      "rejected_before_request": true,
+      "returncode": 1
+    },
+    "02": {
+      "rejected_before_request": true,
+      "returncode": 1
+    },
+    "03": {
+      "rejected_before_request": true,
+      "returncode": 1
+    }
+  }
+}

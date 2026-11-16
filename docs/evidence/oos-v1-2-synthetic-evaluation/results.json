@@ -1,0 +1,177 @@
+{
+  "budget": {
+    "conditional_days": 17,
+    "conditional_headroom_seconds": 27206.122188568115,
+    "daily_reserve_seconds": 2700,
+    "days_proposed": 20,
+    "evaluation_and_audit_allowances_seconds_not_measured": 43200,
+    "global_seconds_per_day": 10800,
+    "if_cost_study_5400_charged_to_same_envelope_days": 18,
+    "if_cost_study_5400_charged_to_same_envelope_headroom_seconds": 21806.122188568115,
+    "plan_training_scaled_plus_allowances_seconds": 134793.87781143188,
+    "productive_cap_seconds": 162000,
+    "productive_seconds_per_day": 8100,
+    "synthetic_234_complete_processes_scaled_seconds_not_historical_measurement": 1659.0030000000002,
+    "training_126_runs_extrapolated_seconds": 91593.87781143188,
+    "training_rate_threshold_seconds_per_run_if_allowances_hold": 942.8571428571429,
+    "training_rate_threshold_seconds_per_run_with_cost_study_cap": 900.0
+  },
+  "cost_only_training_seed_proposal": {
+    "2021": 276696733,
+    "2022": 498614892
+  },
+  "cost_study_proposal_static": {
+    "iteration_hard_cap_seconds": 180,
+    "max_active_days": 2,
+    "per_day_productive_cap_seconds": 3600,
+    "q0_hard_cap_seconds": 120,
+    "sum_unit_hard_caps_seconds": 3840,
+    "total_productive_cap_seconds": 5400,
+    "units_exact": 22
+  },
+  "final_guard_probe_root": "artifacts/oos-synthetic-evaluation-20261026-guard",
+  "limits": [
+    "No historical 2023 or final dataset was opened or evaluated.",
+    "Four local systemd units provide two 2190-step replicates but only one 1979 and one 4386 measurement.",
+    "Synthetic features and years are fabricated; historical data loading, evaluator adaptation and future training costs remain unknown.",
+    "The shell time includes systemd startup, Python imports, supervision, audit and closure; source paths are pinned."
+  ],
+  "p3_historical_unit_max_seconds_measured": {
+    "iteration": 86.82818508148193,
+    "q0": 33.47689199447632
+  },
+  "probe_root": "artifacts/oos-synthetic-evaluation-20261026-final",
+  "runs": {
+    "run-1979": {
+      "checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "closure_sha256": "d881279fc0d1a4d98f18a6639e2b7528abf6e25784bc84d14168d242798140ed",
+      "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+      "external_wall_seconds_measured": 6.727,
+      "journal_json_sha256": "78d32565f9a3e4f8255d9d32313d3a807bdbe62e5cbabcbd7008844fdefb48db",
+      "journal_sha256": "323197f69fd987f64d3d3c50bde4deefb6431e2ef4af4030a6c7b0ad169288f0",
+      "launch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outer_time_sha256": "1f842d37963872e383ca470f68f19a8677b7afdcd3ea870d8b499e8920139a01",
+      "parent_audit_seconds": 0.0654516429931391,
+      "parent_wall_before_closure_seconds": 5.426371936002397,
+      "run_file_bytes": 598574,
+      "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "steps": 1979,
+      "supervisor_wall_seconds": 5.3257911240070825,
+      "systemd_invocation_id": "ced779991a234719bf87d7818e023e93",
+      "systemd_memory_peak_reported": "622.7M (swap: 0B)",
+      "trace_sha256": "e3f4a85328f9d1e12d04fc2a50b2a8034aacfc653ae9a1ff688f1bd1d182e6b5",
+      "worker_phase_seconds": {
+        "checkpoint_scaler_config_load_seconds": 3.708560958999442,
+        "continuous_accounting_seconds": 0.2863524420099566,
+        "synthetic_feature_generation_seconds": 0.005827642991789617,
+        "worker_metrics_audit_seconds": 0.008950110990554094
+      },
+      "worker_rss_peak_bytes": 567701504
+    },
+    "run-2190-a": {
+      "checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "closure_sha256": "f0591eb975ea35dd9a947448fc7876fe7b94653121ae14b2e0e52a5cb647770a",
+      "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+      "external_wall_seconds_measured": 6.631,
+      "journal_json_sha256": "0e46823e77afd407f768cce5686d586000813762ead7f3a02a887abb58072b63",
+      "journal_sha256": "0df5bcbb57a2d9a824cb817290cf0e52338c3dd786c2f4dd492a4a1ef5a241e7",
+      "launch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outer_time_sha256": "2e1553ea67fd2d7fa8dd5a2feed85107a3d37f2f02bad95a085442d4b4c6b660",
+      "parent_audit_seconds": 0.06875851799850352,
+      "parent_wall_before_closure_seconds": 5.314034763010568,
+      "run_file_bytes": 662117,
+      "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "steps": 2190,
+      "supervisor_wall_seconds": 5.220129912995617,
+      "systemd_invocation_id": "cbf4c42fc7c746debbbcc99cdceb5af0",
+      "systemd_memory_peak_reported": "622.7M (swap: 0B)",
+      "trace_sha256": "07ffbf7dc177251ae3e4606c8a666e3eb9a93bb05b835412d3e8315aa8f20956",
+      "worker_phase_seconds": {
+        "checkpoint_scaler_config_load_seconds": 3.571508692999487,
+        "continuous_accounting_seconds": 0.317948557989439,
+        "synthetic_feature_generation_seconds": 0.005818534002173692,
+        "worker_metrics_audit_seconds": 0.009976158005883917
+      },
+      "worker_rss_peak_bytes": 567824384
+    },
+    "run-2190-b": {
+      "checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "closure_sha256": "d89cedd20dca99af786abf80291b1e823a3d2211db6628cacbc3fd89b3286b37",
+      "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+      "external_wall_seconds_measured": 6.833,
+      "journal_json_sha256": "794dc0502e9c217c70738148219b8175359269434a69da7885bd3b08bd9a1928",
+      "journal_sha256": "04d783107353dbfd61151856c3c7f2f2e8cc1600293322301d022bed9e173ce3",
+      "launch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outer_time_sha256": "f34a5131e9bb8ba0b3fc7e3aad1ea49b6d4c3d812e7eb44aadb572226dd58a9d",
+      "parent_audit_seconds": 0.11084316100459546,
+      "parent_wall_before_closure_seconds": 5.476200238990714,
+      "run_file_bytes": 662115,
+      "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "steps": 2190,
+      "supervisor_wall_seconds": 5.328082193998853,
+      "systemd_invocation_id": "a58f4c84ab1a46e793b0c94f6b8efbd8",
+      "systemd_memory_peak_reported": "622.9M (swap: 0B)",
+      "trace_sha256": "07ffbf7dc177251ae3e4606c8a666e3eb9a93bb05b835412d3e8315aa8f20956",
+      "worker_phase_seconds": {
+        "checkpoint_scaler_config_load_seconds": 3.587972355991951,
+        "continuous_accounting_seconds": 0.3245216799987247,
+        "synthetic_feature_generation_seconds": 0.00603097298881039,
+        "worker_metrics_audit_seconds": 0.010189445005380549
+      },
+      "worker_rss_peak_bytes": 566489088
+    },
+    "run-2190-guard": {
+      "checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "closure_sha256": "0d7d85a53cb7a5d799241b4b1043c1db73ed0a293b4d899ce01243673f9d9f7e",
+      "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+      "external_wall_seconds_measured": 7.916,
+      "journal_json_sha256": "602b6cb3c173b9c6d18a117a78bbd86a383f1262d54c508b82f2d44dd10bcb51",
+      "journal_sha256": "61e6667cb4fde1f515102048f5509b61eabbd0016a4ddaedf152d81309950832",
+      "launch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outer_time_sha256": "1b9fc1c35f3425dce7d05e2a75dd8a4a525916bbfb658cd0b6f5803f7c527db8",
+      "parent_audit_seconds": 0.09669550099351909,
+      "parent_wall_before_closure_seconds": 6.261805728994659,
+      "run_file_bytes": 662121,
+      "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "steps": 2190,
+      "supervisor_wall_seconds": 6.126974188009626,
+      "systemd_invocation_id": "0da25de4b6434fd38ac5e06d5d0a4109",
+      "systemd_memory_peak_reported": "622.7M (swap: 0B)",
+      "trace_sha256": "07ffbf7dc177251ae3e4606c8a666e3eb9a93bb05b835412d3e8315aa8f20956",
+      "worker_phase_seconds": {
+        "checkpoint_scaler_config_load_seconds": 4.111852581001585,
+        "continuous_accounting_seconds": 0.37117418699199334,
+        "synthetic_feature_generation_seconds": 0.007433270002366044,
+        "worker_metrics_audit_seconds": 0.012827769998693839
+      },
+      "worker_rss_peak_bytes": 568532992
+    },
+    "run-4386-final": {
+      "checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "closure_sha256": "f065f28a86a59aa4cd081ed78c8d956ed19b229d9557d98f70e99edac190ecc6",
+      "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+      "external_wall_seconds_measured": 7.08,
+      "journal_json_sha256": "f6c9d89eac1bfa4e22f418d39872c8abfab4ec52bf2c9a9f47c5b004467331f2",
+      "journal_sha256": "bb9d7d53ad30fd6c489520b9a9baee68b1c895d501db7fa394d187549be0ce7d",
+      "launch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outer_time_sha256": "8aadc65b56e12ca5bcc0abf70b855493c0baf00aa1dbc10755ffe816c45856e0",
+      "parent_audit_seconds": 0.09529484598897398,
+      "parent_wall_before_closure_seconds": 5.772360771996318,
+      "run_file_bytes": 1321791,
+      "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "steps": 4386,
+      "supervisor_wall_seconds": 5.628126373994746,
+      "systemd_invocation_id": "6973a288d5ff4a3f989e2ad3069c1fcb",
+      "systemd_memory_peak_reported": "622.6M (swap: 0B)",
+      "trace_sha256": "39629c8a10da967726af59f50dd41a993d053f39c1c0ff55ba81a798e8177c03",
+      "worker_phase_seconds": {
+        "checkpoint_scaler_config_load_seconds": 3.600903238999308,
+        "continuous_accounting_seconds": 0.6440567319950787,
+        "synthetic_feature_generation_seconds": 0.00636392500018701,
+        "worker_metrics_audit_seconds": 0.01944370099226944
+      },
+      "worker_rss_peak_bytes": 567459840
+    }
+  },
+  "status": "synthetic_full_process_calibration_only_protocol_not_adopted"
+}

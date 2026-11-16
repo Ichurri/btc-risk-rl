@@ -1,0 +1,7 @@
+2026-10-06T01:03:23.926353-04:00 debian systemd[1395]: Starting p2r-signal-qabd-review-06.service - P2R synthetic Q/A/B+D SIGTERM with prior Q0 checkpoint...
+2026-10-06T01:03:23.952692-04:00 debian systemd[1395]: Started p2r-signal-qabd-review-06.service - P2R synthetic Q/A/B+D SIGTERM with prior Q0 checkpoint.
+2026-10-06T01:05:29.096722-04:00 debian systemd[1395]: p2r-signal-qabd-review-06.service: Sent signal SIGTERM to main process 6371 (python) on client request.
+2026-10-06T01:05:29.225218-04:00 debian python[6371]: {"status": "failed", "units": 1}
+2026-10-06T01:05:29.458515-04:00 debian systemd[1395]: p2r-signal-qabd-review-06.service: Main process exited, code=exited, status=1/FAILURE
+2026-10-06T01:05:29.458741-04:00 debian systemd[1395]: p2r-signal-qabd-review-06.service: Failed with result 'exit-code'.
+2026-10-06T01:05:29.459254-04:00 debian systemd[1395]: p2r-signal-qabd-review-06.service: Consumed 5.554s CPU time, 582.3M memory peak.

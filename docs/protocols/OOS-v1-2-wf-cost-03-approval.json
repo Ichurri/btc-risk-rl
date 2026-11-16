@@ -1,0 +1,34 @@
+{
+  "active": true,
+  "scope": "cost_measurement_training_folds_only",
+  "authorization": "Santiago authorized one complete new WF cost campaign on root ...03: two C10 runs, the frozen 2021/2022 folds and seeds, 22 units in order, and the adopted shared and own time limits. Wait for AC and battery at least 50 percent, run the complete suite, Ruff and a fresh watched read-only preflight. Launch one systemd --user session with Restart=no only if all guards pass. Stop after the first accepted Q0 and share its ledger, checkpoint and budget audit before unit 1. No validation 2023, final test, or out-of-sample v1.2 campaign.",
+  "approved_at_utc": "2026-10-29T15:15:33Z",
+  "approved_base_commit": "a2938b3",
+  "campaign": "oos-v12-wf-cost-only-03",
+  "artifact_root": "artifacts/oos-v12-wf-cost-only-03",
+  "protocol_sha256": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+  "design_sha256": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+  "replacement_spec_sha256": "1550e6755b90618fcb613c927ff744ac2a42cc4134e88dc305812585a8961256",
+  "code_sha256": "b450b981f96674456d417d0391551fa8090c36d7781e7aac36745645228c09c8",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "roster": [["2021", 276696733, "C10"], ["2022", 498614892, "C10"]],
+  "total_units": 22,
+  "stop_after_first_accepted_q0": true,
+  "limits": {
+    "global_daily_seconds": 10800,
+    "daily_closure_reserve_seconds": 2700,
+    "own_productive_daily_seconds": 3600,
+    "own_productive_cumulative_seconds": 5400,
+    "active_days_max": 2,
+    "timezone": "America/La_Paz"
+  },
+  "excluded": [
+    "out-of-sample v1.2 campaign",
+    "validation 2023",
+    "final test 2024-2025",
+    "reusing units or checkpoints from ...01 or ...02",
+    "unit 1 before the Q0 audit is shared",
+    "selecting checkpoints by performance",
+    "repeating failed units or runs"
+  ]
+}

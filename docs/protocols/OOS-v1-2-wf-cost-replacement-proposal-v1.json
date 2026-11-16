@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "proposal_not_authorized",
+  "base_design": "docs/protocols/OOS-v1-2-wf-cost-executor-v1.json",
+  "base_design_sha256": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+  "base_protocol_sha256": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "replacement_root": "artifacts/oos-v12-wf-cost-only-02",
+  "approval_record": "docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json",
+  "market_execution_authorized": false,
+  "reuse_partial_artifacts": false,
+  "require_new_session_journal": true,
+  "require_q0_pause": true,
+  "require_roster_canonicalization": true
+}

@@ -1,0 +1,29 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_serialized_rewards_must_match_portfolio_path _______________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-3/test_serialized_rewards_must_m0')
+
+    def test_serialized_rewards_must_match_portfolio_path(config,tmp_path):
+        from btc_risk_rl.agents.collector import load_trajectory, save_trajectory
+    
+        _,policy,c=fixture(config)
+        t=c.collect(policy,role="A",iteration=0,count=1)[0]
+        path=tmp_path/"good.npz"
+        save_trajectory(path,t)
+        with np.load(path,allow_pickle=False) as data:
+            content={k:data[k] for k in data.files}
+        # Preserve total reward, corrupt per-transition rewards.
+        content["rewards"][0]+=.01
+        content["rewards"][1]-=.01
+        bad=tmp_path/"corrupt.npz"
+        np.savez(bad,**content)
+>       with pytest.raises(ValueError,match="reward"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_collector.py:207: Failed
+=========================== short test summary info ============================
+FAILED tests/test_collector.py::test_serialized_rewards_must_match_portfolio_path
+1 failed, 11 deselected in 1.05s

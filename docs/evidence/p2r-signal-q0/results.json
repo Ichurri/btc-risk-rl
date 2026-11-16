@@ -1,0 +1,29 @@
+{
+  "kind": "synthetic_artifact_checks",
+  "probes": [
+    {
+      "accepted_checkpoints": 0,
+      "heartbeats": 7,
+      "invocation_id": "38c31c62089643b78dc517b8a145adad",
+      "ledger_status": "failed",
+      "probe": "04",
+      "signal_utc": "2026-10-05T19:18:30.288424+00:00",
+      "supervisor_exit_utc": "2026-10-05T19:18:30.358666+00:00",
+      "systemd_result": "success",
+      "unit_failed_utc": "2026-10-05T19:18:30.353232+00:00",
+      "unit_started_utc": "2026-10-05T19:18:04.058151+00:00"
+    },
+    {
+      "accepted_checkpoints": 0,
+      "heartbeats": 6,
+      "invocation_id": "925cd90d9584425bac73d3612c7cb278",
+      "ledger_status": "failed",
+      "probe": "05",
+      "signal_utc": "2026-10-05T19:26:03.068285+00:00",
+      "supervisor_exit_utc": "2026-10-05T19:26:03.199927+00:00",
+      "systemd_result": "exit-code",
+      "unit_failed_utc": "2026-10-05T19:26:03.194249+00:00",
+      "unit_started_utc": "2026-10-05T19:25:41.041686+00:00"
+    }
+  ]
+}

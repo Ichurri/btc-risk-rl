@@ -1,0 +1,46 @@
+{
+  "active": true,
+  "scope": "cost_measurement_training_folds_only",
+  "authorization": "Santiago authorized the exclusive ...04 WF cost campaign from profile ce62fed. Preserve the two C10 runs, 2021/2022 folds, seeds, 22 ordered units and frozen time limits. Do not launch on 2026-10-29 America/La_Paz. On the next locally available day, run complete pytest and Ruff, then a fresh watched read-only preflight. Launch one systemd --user session with Restart=no only if every gate passes. Stop after the first accepted Q0 and share the ledger, checkpoint and budget audit before unit 1. No validation 2023, final test or out-of-sample v1.2 campaign.",
+  "approved_at_utc": "2026-10-29T19:46:32.847954+00:00",
+  "approved_base_commit": "ce62fed",
+  "campaign": "oos-v12-wf-cost-only-04",
+  "artifact_root": "artifacts/oos-v12-wf-cost-only-04",
+  "protocol_sha256": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+  "design_sha256": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+  "replacement_spec_sha256": "b188f93b0248d230dc4b122ed0e650be1c545dd7464184b744c69ef231772fbb",
+  "code_sha256": "e7f869525309946b6c87f33149501ef5f7bc306cf11ecb582b766d5f39440ed6",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "roster": [
+    [
+      "2021",
+      276696733,
+      "C10"
+    ],
+    [
+      "2022",
+      498614892,
+      "C10"
+    ]
+  ],
+  "total_units": 22,
+  "not_before_day_la_paz": "2026-10-30",
+  "stop_after_first_accepted_q0": true,
+  "limits": {
+    "global_daily_seconds": 10800,
+    "daily_closure_reserve_seconds": 2700,
+    "own_productive_daily_seconds": 3600,
+    "own_productive_cumulative_seconds": 5400,
+    "active_days_max": 2,
+    "timezone": "America/La_Paz"
+  },
+  "excluded": [
+    "validation 2023",
+    "final test 2024-2025",
+    "out-of-sample v1.2 campaign",
+    "reusing units or checkpoints from ...01, ...02 or ...03",
+    "unit 1 before Q0 audit is shared",
+    "selecting checkpoints by performance",
+    "repeating failed units or runs"
+  ]
+}

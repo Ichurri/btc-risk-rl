@@ -1,0 +1,44 @@
+{
+  "approval_sha256": "c72292883224c50f86f0ae6a27b2ee6e4aaeed3ee548751cd81f3ac7f7ce73d4",
+  "attempt_journal_exists": false,
+  "boot_utc": "2026-11-10 01:39:29",
+  "branch": "codex/oos-wf-2022-03",
+  "budget": {
+    "global_spent": 0.0,
+    "ok": true,
+    "remaining_before_reserve": 8100.0
+  },
+  "code_sha256": "89f9aae6490778170a50aa65596b836ab9dd507447bc526ca34be4adab61bf33",
+  "commit": "69aaf80366bd3b6f16824f2198ac302e11b68d2a",
+  "host": {
+    "disk_free_bytes": 126471790592,
+    "linger": "yes",
+    "memory_available_bytes": 8927092736,
+    "power": {
+      "ac": true,
+      "battery_percent": 100
+    },
+    "user_manager": "running"
+  },
+  "journal_lines": 0,
+  "launch_memory_min_bytes": 6026846208,
+  "memory_gap_bytes": -2900246528,
+  "observed_la_paz": "2026-11-10T01:43:24.536713-04:00",
+  "observed_utc": "2026-11-10T05:43:24.536713+00:00",
+  "root_exists": false,
+  "service": {
+    "ActiveState": "inactive",
+    "InvocationID": "",
+    "LoadState": "not-found",
+    "Result": "success",
+    "SubState": "dead"
+  },
+  "timer": {
+    "ActiveState": "inactive",
+    "InvocationID": "",
+    "LoadState": "not-found",
+    "NextElapseUSecRealtime": "",
+    "Result": "success",
+    "SubState": "dead"
+  }
+}

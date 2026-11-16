@@ -1,0 +1,21 @@
+E741 Ambiguous variable name: `l`
+   --> tests/test_p1.py:150:84
+    |
+149 |     now = datetime(2026, 9, 24, 12, tzinfo=timezone.utc).timestamp()
+150 |     with CampaignLedger(tmp_path, now=now, identity={}, external_seconds=10800) as l:
+    |                                                                                    ^
+151 |         assert l.day["hard_deadline"] == now
+152 |     with CampaignLedger(tmp_path, now=now + 86400, identity={}, external_seconds=0) as l:
+    |
+
+E741 Ambiguous variable name: `l`
+   --> tests/test_p1.py:152:88
+    |
+150 |     with CampaignLedger(tmp_path, now=now, identity={}, external_seconds=10800) as l:
+151 |         assert l.day["hard_deadline"] == now
+152 |     with CampaignLedger(tmp_path, now=now + 86400, identity={}, external_seconds=0) as l:
+    |                                                                                        ^
+153 |         assert l.day["hard_deadline"] == now + 86400 + 10800
+    |
+
+Found 2 errors.

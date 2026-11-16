@@ -1,0 +1,229 @@
+{
+  "blockers": [],
+  "budget": {
+    "active_campaigns": [],
+    "day_la_paz": "2026-11-11",
+    "global_spent": 10800.0,
+    "ok": true,
+    "remaining_before_reserve": 36900.0,
+    "sources": [
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+        "status": "ready"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "5e61ed0ee1b0503ba289fa8ab54c53f1c5bcc7a351e56c5ca02eed29bbbe8024",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+        "status": "ready"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-02/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "9206afe1cf7a833d236977d0a71b8168648294e3c0a49d9827471aac5fb0e745",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-2022-03/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "707a643073d21588cd7dab631bb3b7331946adf97714a576b5c8f0177dff7b1e",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p0-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-approved-v2/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p3-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-01-attempts.jsonl",
+        "reason": "precheck_attempt",
+        "sha256": "1ae8a7d967cca4d07974fb3f1743dc6c6222f28a54e8fb561e6709ccbdebfb1a",
+        "status": "precheck_attempt"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-02-attempts.jsonl",
+        "reason": "precheck_attempt",
+        "sha256": "4861a7ab5c884e0d782cf6f607aabb6372956ab4aff80a1f9d0b760e649ed17c",
+        "status": "precheck_attempt"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-03-attempts.jsonl",
+        "reason": "precheck_attempt",
+        "sha256": "965d9d36f98b210977edee4ded0c070b1b30c9f89efed88ee47446508bf5aa0b",
+        "status": "precheck_attempt"
+      },
+      {
+        "charged_today_seconds": 10800.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl",
+        "reason": "oos_precheck_gap",
+        "sha256": "f372dc56f36e41e8e3948ecccc4d45ebf8f251d32c4ff1f13d39034fed3a915d",
+        "status": "precheck_attempt"
+      }
+    ]
+  },
+  "files_opened": [
+    "artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-02/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-03/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-04/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-05/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-2022-02/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-2022-02/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-2022-03/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-2022-03/sessions.jsonl",
+    "artifacts/p0-approved-v1/ledger.jsonl",
+    "artifacts/p1-approved-v1/ledger.jsonl",
+    "artifacts/p1-preparation-approved-v1/ledger.jsonl",
+    "artifacts/p2-approved-v1/ledger.jsonl",
+    "artifacts/p2-preparation-approved-v1/ledger.jsonl",
+    "artifacts/p2r-approved-v2/ledger.jsonl",
+    "artifacts/p3-approved-v1/ledger.jsonl",
+    "artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl",
+    "artifacts/shared-pilot-budget/wf-2022-only-01-attempts.jsonl",
+    "artifacts/shared-pilot-budget/wf-2022-only-02-attempts.jsonl",
+    "artifacts/shared-pilot-budget/wf-2022-only-03-attempts.jsonl",
+    "configs/initial.toml",
+    "data/processed/p2r-training-h1/audit.json",
+    "data/processed/p2r-training-h1/bars.csv",
+    "data/processed/p2r-training-h1/episodes.csv",
+    "data/processed/p2r-training-h1/features.csv",
+    "data/processed/p2r-training-h1/manifest.json",
+    "data/processed/p2r-training-h1/observations.csv",
+    "data/processed/p2r-training-h1/scaler.json",
+    "data/processed/p2r-training-h1/transitions.csv",
+    "docs/decisions/ADR-002-risk-horizon.md",
+    "docs/evidence/pilot-closure-v1-2/results.json",
+    "docs/evidence/segmented-h1/manifest.json",
+    "docs/hitos/OOS-v1-2-costo-2022-03-cierre.md",
+    "docs/proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md",
+    "docs/protocols/OOS-v1-2-training-approval-20261111-v3.json",
+    "docs/protocols/OOS-v1-2-training-budget-amendment-20261111.json",
+    "docs/protocols/OOS-v1-2-training-freeze-20261110.json",
+    "docs/protocols/P2-infrastructure-v1.json",
+    "ops/systemd/oos-v12-training.service",
+    "ops/systemd/oos-v12-training.timer",
+    "pyproject.toml",
+    "scripts/audit_oos_v12_training_preflight.py",
+    "scripts/launch_oos_v12_nightly.py",
+    "scripts/launch_oos_v12_training_once.py",
+    "scripts/run_oos_v12_training.py",
+    "scripts/write_oos_v12_report.py",
+    "uv.lock"
+  ],
+  "host": {
+    "disk_free_bytes": 122115600384,
+    "linger": "yes",
+    "memory_available_bytes": 6868131840,
+    "power": {
+      "ac": true,
+      "battery_percent": 98
+    },
+    "user_manager": "running"
+  },
+  "optimizer_steps": 0,
+  "profile": "wf-2022",
+  "protected_or_shared_csv_opened": false,
+  "route_count": 4678,
+  "source_identity": {
+    "cutoff_exclusive_ms": 1638403200000,
+    "files": {
+      "bars.csv": "9ff4c73b891c36d5a5f261ce229f114144237bb4959e4443a34f7a17f00115b6",
+      "episodes.csv": "ace153209014447778bf5ed2a258dfe9e327987cee3c62e38476565e8913b7d3",
+      "features.csv": "78a6bf520b9b234508a112ca965592af9bf30e54539f9630897ae82735116fbd",
+      "observations.csv": "653d2b6fdfc90fbdefbd7b9d5541e0b1b4984b1ea2f8c369a70b4ee694202494",
+      "scaler.json": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+      "transitions.csv": "c3757892f1be891100e6815dcf2dfbf6d41cd1720bea2cbe1d2ab67614862bf1"
+    },
+    "fold": "2022",
+    "manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+    "parent_h1_files": {
+      "audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8",
+      "bars.csv": "dbf398582121ccee2cf3aea05fc6bbee7ecaa5cc0d73d26e9cd9d76d0ccc318b",
+      "coverage.json": "6eefcfdf68233c821f66758fe610a6c2b8e8c4d7e15b99fcb9163e18744e64d6",
+      "diagnosis_comparison.json": "d0ead77f7ab8c3eee0c3ae28a7a2d09ae2d7b95e2833c854ca7140c19e62dcb1",
+      "episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+      "features.csv": "86858fa626cbaceed452f7da180a015122cc45ba1d411e791febbb0416d5c816",
+      "fit_observations.csv": "84944d21aa909b4a08e0742b18aec8f021e06f7d23553bc4129e97bbc93544bc",
+      "mask.csv": "01432b21eb2e6535856c51b90ceb801a9942f6a5a118f71047afe106be3d97b9",
+      "observations.csv": "9a76f6a67e0bb5e034caa23c6503d24bfc9e8c2fa824a9efcb31975b0ebf1b93",
+      "quality-original.json": "03f7894cddd3b8bc437ab83ae9c9928340d6a345cf7fd11f8d27f8a9dad9d04a",
+      "scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+      "transitions.csv": "5e07c677e70578e4ea54badce41316d3f0a37dd5ef2ad51dc642287214f4cfc0"
+    },
+    "profile": "accepted_train_collection_only",
+    "scaler_sha256": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+    "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
+  },
+  "status": "ready",
+  "trajectories_generated": 0
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "oos_v12_final_evaluation_budget_v1",
+  "status": "prospective_final_2024_2025_only",
+  "authorized_by": "Santiago: avanzar al contraste final tras las puertas tecnicas y metodologicas, solicitud desde 57599b9",
+  "day_timezone": "America/La_Paz",
+  "global_daily_seconds": 50400,
+  "daily_closure_reserve_seconds": 2700,
+  "maximum_active_days": 20,
+  "first_unit_admission_seconds": 300,
+  "later_unit_admission_seconds": "max(300, 1.5 * maximum measured prior policy unit), bounded by 900",
+  "unit_supervisor_seconds_max": 900,
+  "unit_rss_bytes_max": 2147483648,
+  "minimum_mem_available_bytes": 4294967296,
+  "minimum_disk_free_bytes": 21474836480,
+  "minimum_battery_percent_with_ac": 50,
+  "session_journal": "artifacts/shared-pilot-budget/oos-v12-evaluation-sessions.jsonl",
+  "global_lock": "artifacts/shared-pilot-budget/global.lock",
+  "admission": "before raw-source acquisition and every complete policy; count shared charges, current session, unit estimate and closure reserve; pause only at ledger ready",
+  "failure": "an interrupted or failed unit invalidates its final evaluation campaign; no selective restart",
+  "scope": "one immutable 2024-2025 source and one confirmatory evaluation per fixed K10 policy; no model selection"
+}

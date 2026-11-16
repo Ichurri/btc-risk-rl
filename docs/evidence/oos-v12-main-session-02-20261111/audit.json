@@ -1,0 +1,27 @@
+{
+  "accepted_units": 215,
+  "block_unit_seconds": [
+    2258.868872,
+    2246.075356,
+    2266.41183,
+    2329.475407,
+    2258.194683,
+    2283.513013
+  ],
+  "chain_states": 653,
+  "complete_paired_blocks": 6,
+  "complete_runs": 19,
+  "last_checkpoint": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-19-C5-b0/checkpoint-5",
+  "last_checkpoint_sha256": "caf08ad45b9c1a9b57e6e38974cb79ff9dbaef90b49e30dffdbc9d41ab10b64c",
+  "ledger_prefix_sha256": "1245b4299103401bbc066f9044278ffeabd55606687ac3ddab0bfb5c712c5749",
+  "ledger_status_at_pause": "ready",
+  "mean_block_unit_seconds": 2273.756527,
+  "partial_run": "run-19-C5-b0",
+  "partial_run_accepted_units": 6,
+  "remaining_30_blocks_unit_seconds_extrapolated": 68212.695805,
+  "verified_files": {
+    "checkpoint": 215,
+    "report": 215,
+    "request": 215
+  }
+}

@@ -1,0 +1,92 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_terminal_provenance_is_retained_separately[collection_window] ______
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5d0ca48e30>
+reason = 'collection_window'
+
+    @pytest.mark.parametrize("reason",["collection_window","segment_boundary","partition_boundary"])
+    def test_terminal_provenance_is_retained_separately(config,monkeypatch,reason):
+        from btc_risk_rl.config import STEP_MS, utc_ms
+        from btc_risk_rl.env.trading import TradingEnv
+    
+        source,policy,c=fixture(config)
+        def environment(route):
+            p=source.path(route)
+            if reason=="partition_boundary":
+                p=replace(p,times=p.times+utc_ms(config.data.validation_start)-STEP_MS-p.times[-1])
+            return TradingEnv(replace(p,end_reason=reason),config)
+        monkeypatch.setattr(source,"environment",environment)
+        t=c.collect(policy,role="A",iteration=0,count=1,fragment_steps=37)[0]
+>       assert t.end_reason==reason and t.terminated[-1] and not t.truncated.any()
+               ^^^^^^^^^^^^
+E       AttributeError: 'Fragment' object has no attribute 'end_reason'
+
+tests/test_collector.py:159: AttributeError
+______ test_terminal_provenance_is_retained_separately[segment_boundary] _______
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5cf5246ed0>
+reason = 'segment_boundary'
+
+    @pytest.mark.parametrize("reason",["collection_window","segment_boundary","partition_boundary"])
+    def test_terminal_provenance_is_retained_separately(config,monkeypatch,reason):
+        from btc_risk_rl.config import STEP_MS, utc_ms
+        from btc_risk_rl.env.trading import TradingEnv
+    
+        source,policy,c=fixture(config)
+        def environment(route):
+            p=source.path(route)
+            if reason=="partition_boundary":
+                p=replace(p,times=p.times+utc_ms(config.data.validation_start)-STEP_MS-p.times[-1])
+            return TradingEnv(replace(p,end_reason=reason),config)
+        monkeypatch.setattr(source,"environment",environment)
+        t=c.collect(policy,role="A",iteration=0,count=1,fragment_steps=37)[0]
+>       assert t.end_reason==reason and t.terminated[-1] and not t.truncated.any()
+               ^^^^^^^^^^^^
+E       AttributeError: 'Fragment' object has no attribute 'end_reason'
+
+tests/test_collector.py:159: AttributeError
+_____ test_terminal_provenance_is_retained_separately[partition_boundary] ______
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5cf4cc9e50>
+reason = 'partition_boundary'
+
+    @pytest.mark.parametrize("reason",["collection_window","segment_boundary","partition_boundary"])
+    def test_terminal_provenance_is_retained_separately(config,monkeypatch,reason):
+        from btc_risk_rl.config import STEP_MS, utc_ms
+        from btc_risk_rl.env.trading import TradingEnv
+    
+        source,policy,c=fixture(config)
+        def environment(route):
+            p=source.path(route)
+            if reason=="partition_boundary":
+                p=replace(p,times=p.times+utc_ms(config.data.validation_start)-STEP_MS-p.times[-1])
+            return TradingEnv(replace(p,end_reason=reason),config)
+        monkeypatch.setattr(source,"environment",environment)
+        t=c.collect(policy,role="A",iteration=0,count=1,fragment_steps=37)[0]
+>       assert t.end_reason==reason and t.terminated[-1] and not t.truncated.any()
+               ^^^^^^^^^^^^
+E       AttributeError: 'Fragment' object has no attribute 'end_reason'
+
+tests/test_collector.py:159: AttributeError
+_________ test_versioned_serialization_roundtrip_and_schema_rejection __________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_versioned_serialization_r0')
+
+    def test_versioned_serialization_roundtrip_and_schema_rejection(config,tmp_path):
+        import json
+    
+>       from btc_risk_rl.agents.collector import load_trajectory, save_trajectory
+E       ImportError: cannot import name 'load_trajectory' from 'btc_risk_rl.agents.collector' (/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/agents/collector.py)
+
+tests/test_collector.py:165: ImportError
+=========================== short test summary info ============================
+FAILED tests/test_collector.py::test_terminal_provenance_is_retained_separately[collection_window]
+FAILED tests/test_collector.py::test_terminal_provenance_is_retained_separately[segment_boundary]
+FAILED tests/test_collector.py::test_terminal_provenance_is_retained_separately[partition_boundary]
+FAILED tests/test_collector.py::test_versioned_serialization_roundtrip_and_schema_rejection
+4 failed, 7 deselected in 1.19s

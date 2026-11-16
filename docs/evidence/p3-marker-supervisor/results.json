@@ -1,0 +1,29 @@
+{
+  "scope": "read_only_original_artifacts_no_market_data_loaded",
+  "ledgers": {
+    "p0-approved-v1": {
+      "status": "completed",
+      "units": 27,
+      "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c"
+    },
+    "p1-approved-v1": {
+      "status": "completed",
+      "units": 54,
+      "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755"
+    },
+    "p2-approved-v1": {
+      "status": "failed",
+      "units": 57,
+      "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8"
+    },
+    "p2r-approved-v2": {
+      "status": "completed",
+      "units": 99,
+      "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866"
+    }
+  },
+  "p2r_supervisor_sha256": "dc5d3901ab3ba2ce14dd7db3c4d80e6186b9a20291d27bd5d0b8b1300c091486",
+  "p2r_report_count": 99,
+  "p2r_report_marker_false_count": 99,
+  "p2r_report_path_hash_aggregate_sha256": "7483335e63568aa71b79d4951245dea696e3f5c861e863d35457e10728f70779"
+}

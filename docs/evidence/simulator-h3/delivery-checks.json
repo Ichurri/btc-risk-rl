@@ -1,0 +1,26 @@
+{
+  "time_utc": "2026-09-22T18:19:27.711141+00:00",
+  "base": "e4e2e8fada77f9b1116f3b265368e82c1e82cedd",
+  "source_commit": "ebb3914bfff4d59cc9ed0f8e8f7e0e5af96c90da",
+  "uv_version": "uv 0.11.18 (x86_64-unknown-linux-gnu)",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "preserved_paths": [
+    "docs/proposals",
+    "docs/evidence/adr002-proposal",
+    "docs/evidence/adr002-proposal-v2",
+    "docs/evidence/adr002-proposal-v2-1",
+    "uv.lock",
+    "src/btc_risk_rl/env/accounting.py",
+    "src/btc_risk_rl/env/market.py",
+    "src/btc_risk_rl/features/market.py"
+  ],
+  "prior_handoff_preserved_as_suffix": true,
+  "prior_python_version_deletion_preserved": true,
+  "data_acceptance": "H1_policy_B_preserved_after_full_audit",
+  "normalizer_refitted": false,
+  "fit_count": 10073,
+  "code_commit_matches_audit": true,
+  "proposed_documents_unchanged": true,
+  "training_executed": false,
+  "final_test_accessed": false
+}

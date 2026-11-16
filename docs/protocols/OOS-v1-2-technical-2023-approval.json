@@ -1,0 +1,18 @@
+{
+  "schema": "oos_v12_technical_2023_approval_v1",
+  "status": "approved",
+  "partition": "technical_2023",
+  "authorized_by": "Santiago: evaluar tecnicamente las 108 politicas K10 en 2023 tras las guardas; solicitud de continuidad desde 57599b9",
+  "scope": "comprobacion tecnica sin seleccion ni gradientes; ninguna autorizacion de prueba final",
+  "method_freeze_sha256": "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f2",
+  "training_freeze_sha256": "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0",
+  "training_ledger_sha256": "c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b",
+  "export_root": "data/processed/oos-v12-technical-2023-01",
+  "export_manifest_sha256": "59333b75248d7ae5f0e028c9d93d7bf7db941481370a34c97ece43970135ce0d",
+  "source_manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+  "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+  "code_sha256": "c4de7aedce1f6e2499853ebd75d7e258a0c8f0db7c24d0a49a71e949f12e8bd8",
+  "budget_sha256": "27e9ea9aaacd3d369a2efff1237e5b14cb95106da0f34d8bdf9a0f44e36305d3",
+  "adjudication_sha256": "83554a665bd55622e12482407e8cd15fb6a5408fb7806a098d97ecf026d7e0e0",
+  "final_2024_2025_access": false
+}

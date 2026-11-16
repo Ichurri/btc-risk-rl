@@ -1,0 +1,37 @@
+{
+  "approval_absent": true,
+  "approval_record": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json",
+  "blockers": [
+    "proposal_not_authorized",
+    "new_executor_profile_not_implemented"
+  ],
+  "historical_artifacts_verified": true,
+  "market_execution_enabled": false,
+  "opened": [
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-replacement-proposal-v1.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-executor-v1.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/evidence/oos-v1-2-wf-cost-reentry/frozen-artifacts.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/supervisor.jsonl",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/wf-2021/checkpoint-0/state.pt",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/wf-2021/unit-0.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-approval.json"
+  ],
+  "replacement_root": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-02",
+  "root_absent": true,
+  "sha256": {
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/supervisor.jsonl": "211ec9a948970de4e00dc59524d7da9aa39ac78017f31ad279415835acb21731",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/wf-2021/checkpoint-0/state.pt": "22f9f60484db6ae5a04b7b35f4ebe2149debb16ac357437536c24f571bf8bca7",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/wf-2021/unit-0.json": "1ba4d95998624d0f0c8a46cdc37ddb51b8a2e04a32c5a14d85eff4f6639a934f",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/evidence/oos-v1-2-wf-cost-reentry/frozen-artifacts.json": "6747b9865bb2a76f0beea1d45d1917ae306d146fb6f38d569c794132faa00b27",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-approval.json": "b36e32521f43af3f0b7b363f2555d1bee19fa5200c3cee30b5e8987068984369",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-executor-v1.json": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-v1-2-wf-cost-replacement-proposal-v1.json": "86f5fe1c77e842d276696338d44594ed738af84d5f6ef4e5163e6b3888039c36"
+  },
+  "status": "blocked"
+}

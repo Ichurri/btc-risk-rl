@@ -1,0 +1,79 @@
+{
+  "profile": "synthetic_lifecycle_only",
+  "services": {
+    "heartbeat": {
+      "accepted_units": 1,
+      "events": [
+        "unit_started",
+        "heartbeat",
+        "heartbeat",
+        "heartbeat",
+        "unit_completed"
+      ],
+      "failure_reason": null,
+      "heartbeat_gaps_monotonic_seconds": [
+        4.008,
+        4.008
+      ],
+      "journal_file_sha256": "5edb03e9b27900babc75a9a2b1b065d8e475b37af740450e4c26bdc0bef7b5c0",
+      "journal_final_chain_sha256": "5e883c0c213e0ccaeba7d9feddc9f0d6e9f6f71f65377d38b3da70b26355c56f",
+      "ledger_file_sha256": "c6ccd51bc95057f74c332608fa4e31caa2b416709bfa4f30467d58b36b928dba",
+      "signals": [],
+      "status": "completed"
+    },
+    "launcher_exit": {
+      "accepted_units": 1,
+      "events": [
+        "supervisor_started",
+        "unit_started",
+        "heartbeat",
+        "unit_completed",
+        "supervisor_exit"
+      ],
+      "failure_reason": null,
+      "heartbeat_gaps_monotonic_seconds": [],
+      "journal_file_sha256": "094cf55d23a82fbe46703bc03effefdf571bc78c5e75e60c262aaa521677361e",
+      "journal_final_chain_sha256": "f5222282309371fd62462a89780399cda2958302b66cccd0b8f2c4c8f27706ba",
+      "ledger_file_sha256": "b1e24e58837852d9ad7a80204dd6e68ab5c00cb647e97065fc60b201f9f99731",
+      "signals": [],
+      "status": "completed"
+    },
+    "real_daily_window": {
+      "accepted_units": 1,
+      "events": [
+        "supervisor_started",
+        "unit_started",
+        "heartbeat",
+        "unit_completed",
+        "supervisor_exit"
+      ],
+      "failure_reason": null,
+      "heartbeat_gaps_monotonic_seconds": [],
+      "journal_file_sha256": "a3240e670519b493fe8db18f164ebc5075c50c977ce5f6c129b635d3989bd9a1",
+      "journal_final_chain_sha256": "f299e56af2d45f1b7ae96376f17a66f850746d10148c3df2793c7be9c0932427",
+      "ledger_file_sha256": "c578e898e6de0e0c0b772a204b97e4a1a6e3c2b5d3b9166eb87b53b4ce8f96f3",
+      "signals": [],
+      "status": "completed"
+    },
+    "signal_in_unit": {
+      "accepted_units": 0,
+      "events": [
+        "supervisor_started",
+        "unit_started",
+        "heartbeat",
+        "signal",
+        "unit_failed",
+        "supervisor_exit"
+      ],
+      "failure_reason": "interrupted_supervisor_or_unit",
+      "heartbeat_gaps_monotonic_seconds": [],
+      "journal_file_sha256": "a56b452dbd430b0ebdd30dfe95d57d8a9b3302e64cd1047c61e7120f77c30f1d",
+      "journal_final_chain_sha256": "9be71efe183fd88b9aeaa845e05d2168dd2d2768500cc2c1f50a8ce46af8935f",
+      "ledger_file_sha256": "6b568a5e13544db30340f29aa9415fd65ab3f077e345b65f0d0d63daa419d3aa",
+      "signals": [
+        15
+      ],
+      "status": "failed"
+    }
+  }
+}

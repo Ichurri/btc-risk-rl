@@ -1,0 +1,7 @@
+Result=exit-code
+ExecMainStatus=1
+MemoryPeak=889610240
+Id=oos-wf-2022-03-suite-lockcheck.service
+ActiveState=failed
+SubState=failed
+InvocationID=ef50c117398046f280770863153f91bb

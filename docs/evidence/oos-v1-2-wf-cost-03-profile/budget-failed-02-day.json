@@ -1,0 +1,75 @@
+{
+  "budget": {
+    "active_campaigns": [],
+    "day_la_paz": "2026-10-27",
+    "global_spent": 10800.0,
+    "ok": true,
+    "remaining_before_reserve": 0.0,
+    "sources": [
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+        "status": "ready"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p0-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+        "status": "failed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-preparation-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-approved-v2/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 0.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p3-approved-v1/ledger.jsonl",
+        "reason": "measured",
+        "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+        "status": "completed"
+      },
+      {
+        "charged_today_seconds": 10800.0,
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-02/sessions.jsonl",
+        "reason": "failed_or_unclosed_session",
+        "sha256": "72e790c0daf96a8da188e47b3791d759de625d170813fdc98c60d6ae888cb276",
+        "status": "blocked"
+      }
+    ]
+  },
+  "requested_local": "2026-10-27 23:50 America/La_Paz"
+}

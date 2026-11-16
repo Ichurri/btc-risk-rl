@@ -1,0 +1,11 @@
+{
+  "accepted_units": 1,
+  "field": "identity.roster",
+  "json_normalized_identity_equal": true,
+  "other_fields_equal": true,
+  "reconstructed_type": "tuple",
+  "status": "reproduced_identity_type_mismatch_only",
+  "stored_type": "list",
+  "unit_1_checkpoint_exists": false,
+  "unit_1_report_exists": false
+}

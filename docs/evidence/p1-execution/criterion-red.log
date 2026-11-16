@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_primary_literal_zero_pair_keeps_reduction_undefined ___________
+
+    def test_primary_literal_zero_pair_keeps_reduction_undefined():
+        from btc_risk_rl.pilots.p1_reporting import primary
+        rows=[]
+        for seed in (510031,510047,510081):
+            for condition in ('C0','C5','C10'):
+                for epochs in (2,4):
+                    rows.append(dict(status='completed',seed=seed,condition=condition,critic_epochs=epochs,stability=[dict(phase='fixed_A',iteration=0,measurement='before_actor',batch_sha256=str(seed)),dict(phase='fixed_A',iteration=0,measurement='after_critic',actor_sha256=str(seed),mse=0.0)]))
+        result=primary(rows)
+>       assert result['criterion_met'] and all(r['reduction'] is None for r in result['seeds'])
+E       assert (False)
+
+tests/test_p1.py:286: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_p1.py::test_primary_literal_zero_pair_keeps_reduction_undefined
+1 failed in 0.05s

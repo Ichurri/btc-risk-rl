@@ -1,0 +1,7 @@
+NextElapseUSecRealtime=Mon 2026-11-16 09:05:00 -04
+Persistent=yes
+ActiveState=active
+FragmentPath=/home/ichurri/.config/systemd/user/oos-v12-restore-power.timer
+a43aada5cdd6cd44caf1ca34abff0c6bae0c23b31bdd9ec709fce733492fb170  /home/ichurri/.config/systemd/user/oos-v12-restore-power.service
+d0031b10291abe1c378dac02648cf8fad85397bd210a694a34f82f88dd5b4b0f  /home/ichurri/.config/systemd/user/oos-v12-restore-power.timer
+'nothing'

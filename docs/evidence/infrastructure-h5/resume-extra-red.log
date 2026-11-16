@@ -1,0 +1,26 @@
+......F.                                                                 [100%]
+=================================== FAILURES ===================================
+____ test_resume_budget_cannot_be_reset_and_interrupted_token_cannot_reload ____
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-4/test_resume_budget_cannot_be_r0')
+
+    def test_resume_budget_cannot_be_reset_and_interrupted_token_cannot_reload(config, tmp_path):
+        from btc_risk_rl.agents.checkpoint import load_checkpoint, save_checkpoint
+        from btc_risk_rl.agents.telemetry import TimeBudget
+    
+        run = make(config, tmp_path / "journal")
+        budget = TimeBudget(total=100, reserve=5, estimates={"q0": 1, "iteration": 2}, profile="synthetic")
+        run.run(pause_after=0, budget=budget)
+        save_checkpoint(run, tmp_path / "checkpoint")
+        restored = load_checkpoint(tmp_path / "checkpoint", run.collector.source, journal=tmp_path / "journal")
+        assert restored.budget.consumed >= budget.consumed
+        replacement = TimeBudget(total=100, reserve=5, estimates={"q0": 1, "iteration": 2}, profile="synthetic")
+>       with pytest.raises(ValueError, match="budget"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_h5_resume.py:148: Failed
+=========================== short test summary info ============================
+FAILED tests/test_h5_resume.py::test_resume_budget_cannot_be_reset_and_interrupted_token_cannot_reload
+1 failed, 7 passed in 5.85s

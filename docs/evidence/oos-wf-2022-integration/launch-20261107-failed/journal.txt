@@ -1,0 +1,42 @@
+2026-11-07T01:00:05.784420-04:00 debian systemd[1562]: Started oos-wf-cost-2022-01-session-01.service - [systemd-run] /usr/bin/systemd-inhibit --what=sleep:idle --mode=block "--why=WF 2022: conservar supervisor despierto" /usr/bin/bash -c "cd /home/ichurri/Desktop/personal_projects/btc-risk-rl && /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_2022.py --prepare && /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_2022.py --run".
+2026-11-07T01:07:26.828625-04:00 debian systemd-inhibit[8396]: Traceback (most recent call last):
+2026-11-07T01:07:26.828625-04:00 debian systemd-inhibit[8396]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 116, in <module>
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     main()
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 99, in main
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     prepare()
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 46, in prepare
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     checks["suite"] = attempt.run_check(
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:                       ^^^^^^^^^^^^^^^^^^
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_orchestrator.py", line 284, in run_check
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     return operation()
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:            ^^^^^^^^^^^
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 47, in <lambda>
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     "suite", lambda: _checked_command(
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:                      ^^^^^^^^^^^^^^^^^
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 24, in _checked_command
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     raise ValueError(f"WF 2022 {name} failed: {result.stderr[-2000:]}\n{result.stdout[-2000:]}")
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: ValueError: WF 2022 suite failed:
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: .......................................................... [ 42%]
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: ................................................................F....... [ 57%]
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: ........................................................................ [ 71%]
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: ........................................................................ [ 85%]
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: ........................................................................ [100%]
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: =================================== FAILURES ===================================
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: __ test_separate_historical_command_requires_user_service_before_data_access ___
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:     def test_separate_historical_command_requires_user_service_before_data_access():
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:         result = subprocess.run(
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:             [sys.executable, "scripts/run_p2r_market.py"], capture_output=True,
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:             text=True, check=False,
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:         )
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]:         assert result.returncode != 0
+2026-11-07T01:07:26.829494-04:00 debian systemd-inhibit[8396]: >       assert "requires a systemd user service" in result.stderr
+2026-11-07T01:07:26.830984-04:00 debian systemd-inhibit[8396]: E       assert 'requires a systemd user service' in 'Traceback (most recent call last):\n  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilot...ror("Another pilot holds the global daily budget") from exc\nValueError: Another pilot holds the global daily budget\n'
+2026-11-07T01:07:26.830984-04:00 debian systemd-inhibit[8396]: E        +  where 'Traceback (most recent call last):\n  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilot...ror("Another pilot holds the global daily budget") from exc\nValueError: Another pilot holds the global daily budget\n' = CompletedProcess(args=['/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python3', 'scripts/run_p2r_marke...or("Another pilot holds the global daily budget") from exc\nValueError: Another pilot holds the global daily budget\n').stderr
+2026-11-07T01:07:26.830984-04:00 debian systemd-inhibit[8396]: tests/test_p2r_historical_executor.py:76: AssertionError
+2026-11-07T01:07:26.830984-04:00 debian systemd-inhibit[8396]: =========================== short test summary info ============================
+2026-11-07T01:07:26.830984-04:00 debian systemd-inhibit[8396]: FAILED tests/test_p2r_historical_executor.py::test_separate_historical_command_requires_user_service_before_data_access
+2026-11-07T01:07:26.830984-04:00 debian systemd-inhibit[8396]: 1 failed, 503 passed in 439.41s (0:07:19)
+2026-11-07T01:07:26.915008-04:00 debian systemd-inhibit[8373]: /usr/bin/bash failed with exit status 1.
+2026-11-07T01:07:26.915701-04:00 debian systemd[1562]: oos-wf-cost-2022-01-session-01.service: Main process exited, code=exited, status=1/FAILURE
+2026-11-07T01:07:26.915772-04:00 debian systemd[1562]: oos-wf-cost-2022-01-session-01.service: Failed with result 'exit-code'.
+2026-11-07T01:07:26.915920-04:00 debian systemd[1562]: oos-wf-cost-2022-01-session-01.service: Consumed 8min 33.358s CPU time, 1.3G memory peak.

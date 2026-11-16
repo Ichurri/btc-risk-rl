@@ -1,0 +1,110 @@
+{
+  "scope": "synthetic_tests_plus_static_and_algebraic_only",
+  "utc": "2026-09-29T17:33:32.089382+00:00",
+  "head_before_delivery": "41fcef30c5b52fcd2f410f9195a473667b9fecd8",
+  "python": "3.12.13",
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "numpy": "2.5.3",
+    "pytest": "9.1.1",
+    "ruff": "0.16.8"
+  },
+  "configuration_unchanged_except_authorization_metadata": true,
+  "historical_files_verified": 282,
+  "historical_evidence_intact": true,
+  "planned_market_budget_not_executed": {
+    "learning_trajectories": 81360,
+    "diagnostic_trajectories": 5760,
+    "actor_updates": 720,
+    "critic_updates": 1440
+  },
+  "pooled_algebraic": {
+    "sse": 10.0,
+    "target_sq": 10.0,
+    "error_sum": -4.0,
+    "count": 4,
+    "mse": 2.5,
+    "z": 2.5,
+    "denominator": 2.500000000001,
+    "relative_mse": 0.9999999999996,
+    "bias": -1.0,
+    "normalized_bias": -0.6324555320335493,
+    "informative": true
+  },
+  "partial_overlap": {
+    "duplicates": {
+      "numerator": 1,
+      "denominator": 2
+    },
+    "exact_A": {
+      "numerator": 0,
+      "denominator": 2
+    },
+    "exact_learning": {
+      "numerator": 0,
+      "denominator": 2
+    },
+    "transition_occurrences": {
+      "numerator": 2,
+      "denominator": 4
+    },
+    "unique_transitions": {
+      "numerator": 1,
+      "denominator": 2
+    }
+  },
+  "pytest": {
+    "tests": "221",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "94.308"
+  },
+  "code_sha256": {
+    "src/btc_risk_rl/__init__.py": "bc16eaed03676dbb9fa92e5d2244a14b2e75ad6f6f784c6c6fdbfd7a5b26e92c",
+    "src/btc_risk_rl/agents/checkpoint.py": "150053fad8c7294232a17bc01dd066202c3c3d68c71274e77f15abed092f961b",
+    "src/btc_risk_rl/agents/collector.py": "d26dfe067b3bd452014b24b895fa374f0cbca2f393a58e34dd3d091040662b4c",
+    "src/btc_risk_rl/agents/fixed_diagnostics.py": "789dfbde31e4ab8c88b596692794de70089f227e7578e334bcd67857e7ebf633",
+    "src/btc_risk_rl/agents/journal.py": "63cf78daeee6d49c59fbee7c18d2c673cf2e21319857ee59c090ed144ec80d09",
+    "src/btc_risk_rl/agents/market_source.py": "4f664e0ab0751e29cbc670eb966551f8d71ede039a457597d6461c8f6ca8473e",
+    "src/btc_risk_rl/agents/models.py": "cb147acc49f2bf53abdd12ceb2f73268aa884e37ea98207cb1ba0a9dfd8a6a3f",
+    "src/btc_risk_rl/agents/risk.py": "1aaa2028a63eddf3d5d00bb31ce7f5cbabc1a7ba0b3f46af42ee1da42883ba9b",
+    "src/btc_risk_rl/agents/synthetic.py": "0e3e014cfb95c463ec6c69d7f43c525beb4ac0c127ddded6865a9d1d5d00a555",
+    "src/btc_risk_rl/agents/telemetry.py": "ac7658ae01cfe0551a01a87e1c4f771a86dacba9b0d5b4cc0b0fd4dc6defa53f",
+    "src/btc_risk_rl/agents/trainer.py": "842540386ec5cbedad4feb49337eefee8a0fc7f3c7b21fda7a4f4948e995dc63",
+    "src/btc_risk_rl/cli.py": "a94b4517139721d46ef03ee6834e2ef6d8074149f304f060d53e6d0596bb00af",
+    "src/btc_risk_rl/config.py": "355e01ff7ab4762e75d3488356e36680603d4afab35e112f0d36cd2a5b935322",
+    "src/btc_risk_rl/data/__init__.py": "1c07648155bef2de8cf11d780ccf0b62504a945ff84e42229d7c31d572605093",
+    "src/btc_risk_rl/data/binance.py": "55af8114fbfd9c4d432716458d19d806dd95f468bf3f89b5644986fdea39418a",
+    "src/btc_risk_rl/data/config_compatibility.py": "35738d33c8f79e648207f461c677af6811bc465a1084cd6d6232768533cb8d7e",
+    "src/btc_risk_rl/data/pipeline.py": "2e4bcc64f0c602130914df01543a9ed8fa996cd072043e18227e63b21e075074",
+    "src/btc_risk_rl/data/quality.py": "9465d6260d93de71d34940d84e3f4a4e14db0d9105fb52840c0558bbbbcfd880",
+    "src/btc_risk_rl/data/recheck.py": "c66009e45275df02beb6fa761df15c4e9d2fdd320a086f3767c99968c16281a0",
+    "src/btc_risk_rl/data/segmentation.py": "02aaf8714407a3eff9aa5db683a02c9b3655159fd1ee930e7d55819e93c955ae",
+    "src/btc_risk_rl/data/segmented_audit.py": "76ca747aa4a7d962e5b5e405b3cbb7125bdeb7f991f5d0ef00817c399419750f",
+    "src/btc_risk_rl/data/segmented_pipeline.py": "510b6af1471d253522cdd94e7529c3ccdfc85de15f5db6109d7c9cdbdb9ffc24",
+    "src/btc_risk_rl/env/accounting.py": "0d9ab57fd1ed218cdf32d271805e729444c1d846c38422cb641c071f2b254838",
+    "src/btc_risk_rl/env/market.py": "ceb917f55cca00d3cbe0718d3635a623b3653c174e223778b0b6b9f74ada4379",
+    "src/btc_risk_rl/env/trading.py": "3f8ce9a54bb6a609ddf536fb8ddb9bf70e49ddc2326d302a210eda5b9ee10c00",
+    "src/btc_risk_rl/env/training_view.py": "9558dcbd37272d09ee4876ffb4d3792555aaa10bc669402f7d1db13cbb340bfa",
+    "src/btc_risk_rl/features/__init__.py": "add17a9dded403a04100138b44afd74dd1091706f3a914f2168891cc86c73aea",
+    "src/btc_risk_rl/features/market.py": "9a3b34de6eab59cd5a098145533b033af1d1b581eb9eb02b8239bae991011008",
+    "src/btc_risk_rl/pilots/__init__.py": "49ad8619090eac35b7e9581ff2a4ecebf3e48d5ed5e8ccd3c53552cc13b540e2",
+    "src/btc_risk_rl/pilots/budget.py": "e19fe88ce8568082b903d50f2763d4add915cea8ea2c95c0afa11ba13760f687",
+    "src/btc_risk_rl/pilots/diagnostics.py": "57bb28f3c0239d2c3bb23900a0b97cca13cd3f1d779b4f6e1fd39d0d443b8c4b",
+    "src/btc_risk_rl/pilots/p1_protocol.py": "8e06dce43e7e4eab6d60beea5e257389f8566a551ca9785cf2bb1931a1998644",
+    "src/btc_risk_rl/pilots/p1_reporting.py": "9759f21ef8efffe07e663f2b26be828f781c0270a8340aa88962e92cdfab8da0",
+    "src/btc_risk_rl/pilots/p2.py": "08a6959e841bad9a06c7b53cbda2703eef4e53ba18dc0958236c08dcd750a59c",
+    "src/btc_risk_rl/pilots/p2_budget.py": "30e97d95360508a4a354f9b357bee623eb794eb021a6ed96e57f2ac0cd4b4ba0",
+    "src/btc_risk_rl/pilots/p2_metrics.py": "08e5458ec4e2a0c4b3fe59768a4054de9225f306b1ba6923a34826ac84902280",
+    "src/btc_risk_rl/pilots/p2_runner.py": "830376505c84e5779331c6c8f1eb89b0f52ec8677effe6450e9ae9a85b2d3f92",
+    "src/btc_risk_rl/pilots/protocol.py": "6d9187b978a22e333d6298cf0c035de8129aaaebc08a10fce1c9c789ed221820",
+    "src/btc_risk_rl/pilots/runner.py": "79880c55f11e49e59371588a8721100e024374ceaf50a068c0c449f1a7ad8f61",
+    "src/btc_risk_rl/pilots/shared_budget.py": "8e94fe1646c15d1b194a578ee88f1d92cb8dcef8957b607f48de615bdb13daff",
+    "src/btc_risk_rl/pilots/supervisor.py": "f7c951115365a6f5fbfc30eeabe49e066ba36fa781118059615c36ed405885ca",
+    "src/btc_risk_rl/pilots/worker.py": "5c1d4a22a44be5550a1cbf6f37733990019b350347cc8fd587058cc569bec5ed"
+  },
+  "market_execution": false,
+  "validation_access": false,
+  "final_access": false
+}

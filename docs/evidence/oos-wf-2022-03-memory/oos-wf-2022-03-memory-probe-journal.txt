@@ -1,0 +1,4 @@
+2026-11-09T01:53:18-04:00 debian systemd[1556]: Started oos-wf-2022-03-memory-probe.service - [systemd-run] /usr/bin/python3 /home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/evidence/oos-wf-2022-03-memory/probe.py.
+2026-11-09T01:54:07-04:00 debian systemd[1556]: Stopping oos-wf-2022-03-memory-probe.service - [systemd-run] /usr/bin/python3 /home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/evidence/oos-wf-2022-03-memory/probe.py...
+2026-11-09T01:54:07-04:00 debian systemd[1556]: Stopped oos-wf-2022-03-memory-probe.service - [systemd-run] /usr/bin/python3 /home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/evidence/oos-wf-2022-03-memory/probe.py.
+2026-11-09T01:54:07-04:00 debian systemd[1556]: oos-wf-2022-03-memory-probe.service: Consumed 112ms CPU time, 264.4M memory peak.

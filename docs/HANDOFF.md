@@ -1,3 +1,2482 @@
+# Estado vigente — 15/11/2026 15:28 America/La_Paz
+
+**Referencia descriptiva comprar y mantener BTC cerrada:** sobre la misma
+fuente final auditada y 4.386 transiciones, una compra inicial con costos y
+sin liquidación terminó en 20.697,609070 USDT desde 10.000 USDT. Retorno
+acumulado neto +106,976091 %; Sortino anualizado 1,421389. La auditoría
+independiente coincidió; el gate limitado está apagado y las 108 políticas,
+el ledger y el contraste principal conservan sus huellas. El cargo
+conservador propio fue 2.346,955736 s; gasto global del 15/11
+23.490,837403 s, saldo 24.209,162597 s antes de reserva. Ver
+[informe](hitos/OOS-v1-2-buy-hold-referencia-20261115.md) y
+[evidencia](evidence/oos-v12-buy-hold-20261115/). Siguiente tarea:
+trasladar a la tesis el párrafo descriptivo sin incluir esta referencia
+en el contraste principal ni atribuirle cumplimiento CVaR.
+
+---
+
+# Estado anterior — 15/11/2026 14:50 America/La_Paz
+
+**Evaluación final cerrada:** `main-2018-2022` aportó 108 checkpoints K10;
+el gate se cerró en `4f13aab` y el informe/evidencias se publicaron en
+`036919a`. La fuente y los reportes históricos no se modificaron.
+2023 superó la puerta técnica 108/108 y la evaluación 2024–2025 terminó
+108/108, 36/36 ternas y 4.386 transiciones por política. El ledger final
+está `completed`, `pending=null`, SHA-256
+`b035e1fef6d5e95b2b75df660cc178382081552207be30358f632f49a7e513ad`.
+El contraste original SHA-256
+`636ba000cf4b3f9820ea56828e99b7ae7b4f6a9d9d83185064c3fce67ac1cf1c`
+se reauditoró exactamente. C5−C0: diferencia media +0,000317, Holm
+`p=0,4588`; C10−C0: +0,000200, Holm `p=0,4588`. Ninguna nula de
+superioridad se rechaza ni alcanza el efecto mínimo +0,50. El resultado
+no demuestra cumplimiento CVaR. Ver [cierre final](hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md)
+y [material de capítulo 4](evidence/oos-v12-evaluation-20261115/chapter-4/).
+Los gates 2023 y final quedaron cerrados prospectivamente; permisos y
+artefactos originales permanecen auditables en solo lectura. La siguiente
+tarea es trasladar resultados y salvedades metodológicas a la tesis,
+manteniendo el matiz de `wf-2021` y el cargo conservador del 12/11.
+La suite estable posterior al cierre terminó **698 passed**, 2 advertencias
+de `fork` sintético; Ruff pasó. El cargo conservador de verificación y
+publicación llevó el gasto global del 15/11 a **21.143,881667 s**, con
+**26.556,118333 s** antes de la reserva de 2.700 s. No hubo otra unidad
+de mercado después de la evaluación final.
+
+---
+
+# Estado anterior — 15/11/2026 10:13 America/La_Paz
+
+**Fuente final 2024–2025 adquirida y auditada, cero políticas finales
+evaluadas.** Permiso de fuente independiente en `b1cb99b`, gate de fuente
+en `d3d0d35`. Cinco páginas crudas, 4.429 velas completas con 43 de
+contexto cotejadas con 2023; exportación SHA-256
+`db842235decd93fef2e04e49fbfb4f20752e9239f1c99eecb84f9e3e6e742436`.
+El servicio cerró `Result=success`; bitácora 134,826421 s. El saldo
+capturado tras la sesión fue 43.011,819114 s antes de reserva, con los
+gastos de preparación reconstruidos y cargados conservadoramente. Ver
+[informe de fuente final](hitos/OOS-v1-2-final-fuente-20261115.md).
+**Siguiente tarea:** fijar y activar otro permiso `final_2024_2025`
+vinculado a la fuente y al cierre técnico; repetir preflight vigilado y
+evaluar los 108 K10 en el orden congelado. No seleccionar por 2023 ni por
+resultados finales. Cerrar con el bootstrap pareado/Holm ya fijado o
+preservar fallo y declarar hipótesis inconclusas.
+
+## Antecedente inmediato: cierre técnico 2023
+
+**Comprobación técnica 2023 aprobada: 108/108 políticas, 36/36 ternas.**
+Ledger `completed`, `pending=null`; cierre técnico original SHA-256
+`a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3`.
+Una sola sesión supervisada terminó `Result=success` y cargó 984,338637 s.
+Ver [informe de cierre](hitos/OOS-v1-2-evaluacion-2023-cierre-20261115.md).
+**Siguiente tarea:** preparar permiso independiente para adquirir y auditar
+la fuente final 2024–2025; después, permiso final fijado a esa fuente y al
+cierre técnico. Mantener el conjunto final cerrado hasta verificar ambas
+puertas. La prueba técnica no constituye comparación financiera.
+
+## Antecedente inmediato: exportación de 2023
+
+**Fuente técnica de 2023 exportada y auditada; 0 políticas evaluadas.**
+El entrenamiento principal continúa cerrado con 108 K10 y 1.188 unidades
+verificadas. El supervisor histórico y la admisión compartida se integraron
+en `codex/oos-v12-expanded-budget`. Suite completa estable **684 passed**,
+dos advertencias de `fork` sintético, y Ruff pasó. Se documentó antes de
+abrir la fuente el alcance descriptivo de `wf-2021` y el exceso de cargo
+conservador del 12/11. La tesis de Drive, leída sin editar, ya describe los
+dos cortes cronológicos y 2023 como puerta técnica.
+
+Solo el gate de **exportación** `technical_2023_source` está activo. Su
+permiso v2 fija código, H1, normalizador, presupuesto y adjudicación.
+El preflight fue `ready`; `oos-v12-technical-source-20261115-01.service`
+cerró `Result=success`, `InvocationID=a24ab8da288c4df4ba5030c475099b59`.
+Producto local `data/processed/oos-v12-technical-2023-01/`: 2.233 filas,
+manifiesto SHA-256
+`59333b75248d7ae5f0e028c9d93d7bf7db941481370a34c97ece43970135ce0d`.
+El cargo medido fue 143,367646 s; presupuesto global del 15/11 tras la
+sesión: 143,367646 s gastados y 47.556,632354 s antes de la reserva de
+2.700 s. Evidencias e informe:
+[`OOS-v1-2-evaluacion-2023-fuente-20261115.md`](hitos/OOS-v1-2-evaluacion-2023-fuente-20261115.md).
+
+**Siguiente tarea:** fijar el permiso `technical_2023` al manifiesto
+exportado y ejecutar bajo `systemd --user` una evaluación continua de cada
+uno de los 108 K10, sin seleccionar por resultados. Repetir el preflight
+vigilado de recursos, permiso, exportación y presupuesto. Cerrar con las
+108 trazas reauditoradas o registrar fallo y detenerse. El gate final
+2024–2025 permanece cerrado y su fuente aún no se ha adquirido.
+
+---
+
+# Estado anterior — 14/11/2026 11:29 America/La_Paz
+
+**Entrenamiento principal cerrado:** ledger `completed`, 108/108 corridas,
+36/36 ternas C0/C5/C10, 1.188/1.188 unidades, `pending=null`. La auditoría
+en `docs/evidence/oos-v12-main-closure-20261114/closure.json` verificó
+3.622 filas encadenadas y las 1.188 huellas de checkpoints; SHA-256 del
+ledger `c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b`.
+Último checkpoint `run-107-C5-b0/checkpoint-10/state.pt`, SHA-256
+`e2c2b35e695251824574e32a4203545dca86f12bb36a681f652c3f2298009cce`.
+
+La sesión `oos-v12-training.service` del 14/11, `InvocationID`
+`8a7a764ba6b04acab12ca78a3d3ddbe3`, terminó el proceso principal con
+`nightly_result=completed` a las 11:14:56. `systemd` registró
+`Result=timeout` a las 11:16:27 **solo en `ExecStopPost`**, porque el generador
+del reporte agotó sus 90 s. El reporte se actualizó después por auditoría
+independiente; no repetir entrenamiento. Timer deshabilitado. El cargo
+global verificado del 14/11 fue 33.621,063 s y conservó 14.078,937 s antes
+de la reserva. Ver el informe del cierre para la distinción entre cargo
+conservador y admisión del 12/11.
+
+**Siguiente tarea:** preparar la verificación técnica y los permisos de
+evaluación de manera separada. La validación 2023 y prueba final 2024–2025
+no se han abierto; el cierre de entrenamiento no demuestra rentabilidad,
+superioridad entre condiciones ni cumplimiento CVaR. Conservar el cierre y
+los artefactos de WF05, P0–P3 y los checkpoints OOS sin selección por resultado.
+
+---
+
+# Estado anterior del worktree aislado — 11/11/2026, evaluación aún cerrada
+
+El cierre técnico interno de 2023 ya tiene una puerta de **108 políticas
+completas**, 36 bloques pareados, reauditoría y Sortino definido, con un
+archivo de cierre que no publica resultados financieros. Se verificó la
+estructura con un ledger sintético, no con 2023. El lector final valida
+ahora también la consulta temporal de cada página antes de abrirla. Faltan
+supervisor histórico, admisión de presupuesto, permisos separados activos
+y comprobación de fuentes reales. La sesión de entrenamiento principal
+continúa en el otro worktree; no fusionar este código mientras siga activa.
+Ver [informe de preparación](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
+
+---
+
+El trabajador interno de evaluación ya conecta checkpoint sintético,
+exportación inventada, traza continua y bitácora durable; vuelve a auditar
+reportes antes de aceptarlos y falla ante unidades huérfanas. La batería
+focal quedó en **71 passed** antes de la guarda adicional de host, y Ruff
+pasó. El descargador final interno solo se probó con transporte inventado;
+rechaza endpoints ajenos a Binance. Sigue faltando supervisor histórico,
+presupuesto/admisión, exportación final auditada y fuente real; ningún
+permiso está activo ni se hizo una solicitud de red.
+Se incorporaron puertas **independientes y apagadas** para 2023 y
+2024–2025: exigen aprobación con huella fijada, protocolo real íntegro y
+proveniencia concordante; el conjunto final exige además cierre técnico de
+108 políticas. La fuente final deberá cotejar exactamente 43 velas de
+contexto de 2023 contra H1 y rechaza tiempos fraccionarios. La batería
+focal de evaluación había quedado en **58 passed** antes de la integración
+del trabajador; todas las fuentes
+de esas pruebas son inventadas. Véase
+[informe de fuentes y límites](hitos/OOS-v1-2-fuentes-evaluador-20261111.md).
+El siguiente trabajo es conectar estas puertas con un ejecutor supervisado,
+fijar las fuentes y el código antes de cada acceso y auditar el cierre de
+las 108 corridas. Ningún permiso histórico de evaluación está activo.
+
+La rama `codex/oos-v12-evaluation-infrastructure` prepara el evaluador sin
+alterar el código fijado de la sesión histórica que corre en
+`codex/oos-v12-expanded-budget`. El [inventario permitido](hitos/OOS-v1-2-fuentes-evaluador-20261111.md)
+registra que H1 tiene 2.190/2.190 velas de 2023 sin exclusiones y que no se
+identificó archivo local final 2024–2025; no se leyeron esas filas. En
+`00863ae` se añadieron un exportador de filas suministradas, una unidad
+continua con checkpoint K10 y doble auditoría de la traza, y la tabla del
+contraste congelado. **43 pruebas focales sintéticas pasaron** y Ruff pasó.
+No existe comando histórico activo ni permiso 2023/final. Faltan adquisición
+y auditoría de fuentes, supervisor y cierre del roster de 108, permisos
+separados y armonización del texto académico. La guarda nueva de roster
+exige 108 corridas, 1.188 unidades, 36 ternas y todas las huellas antes
+de abrir evaluación; rechazó el ledger real aún activo. En total, la
+batería focal quedó en **51 passed** y Ruff pasó. Se añadieron adaptadores
+internos H1/2023 y páginas Binance/final probados solo con archivos
+inventados; falta descargador final autorizado y auditoría del origen.
+El entrenamiento principal
+continúa en la otra rama; no fusionar código en ella mientras su permiso
+fija la huella anterior. [Texto metodológico propuesto](proposals/OOS-v1-2-armonizacion-tesis-20261111.md).
+
+---
+
+# Estado anterior — 11/11/2026, presupuesto OOS ampliado prospectivamente
+
+
+# Estado anterior — 14/11/2026 09:17 America/La_Paz
+
+Entrenamiento principal `main-2018-2022`: ledger `ready`, cursor 103/108,
+**1.134/1.188 unidades** aceptadas, `pending=null`; las corridas 0–102
+están completas. La Q0 de `run-103-C10-b0` quedó aceptada con checkpoint
+`artifacts/oos-v12-training-main-01/run-103-C10-b0/checkpoint-0/state.pt`,
+SHA-256 `5f7447e8686976b7af87619a20ba5f1d3016840a519941e68124c9ff432664dc`.
+La sesión `d493e2011f414038abdf612bcf99e5b8` pausó después de Q0 en
+frontera completa por `availability_lost_after_unit` (`Insufficient P2R
+memory or disk`); el valor contemporáneo no quedó registrado. El servicio
+está `inactive/dead`, `Result=success`. El timer principal está deshabilitado
+para evitar duplicados.
+
+La pantalla GNOME tiene `idle-delay=0` y con CA la suspensión está en
+`nothing`; no se necesita Vivaldi para mantenerla encendida. Tras la pausa
+se observaron varios procesos Vivaldi, con consumo variable de memoria;
+esto es una hipótesis de presión de recursos, no prueba de la causa puntual.
+Esperar a que el usuario guarde y cierre Vivaldi; volver a medir CA, batería,
+`MemAvailable`, disco, presupuesto y estado del servicio antes de un único
+reingreso. La corrida 103 ya utilizó una sesión; no gastar reingresos con
+margen incierto. Ver `reporte-codex.md` y políticas operativas del 14/11.
+Validación 2023 y prueba final 2024–2025 siguen cerradas.
+
+---
+
+# Estado anterior — 13/11/2026 15:33 America/La_Paz
+
+El entrenamiento principal está `ready`, cursor 82/108, 907/1.188 unidades,
+`pending=null`; última frontera `run-82-C5-b0/checkpoint-4`, SHA-256
+`9ddf6f807b814fc5c1885d143353d5642e67e9be4a8f7544561fdd7f357fcde9`.
+Ledger SHA-256 `24a602293b16483010055a58f832acbd33cd41cabd0d31ef63627857fbb36323`.
+No hay servicio activo. El último corte fue `availability_lost_after_unit`;
+los registros no retuvieron el valor exacto de memoria/disco en ese instante.
+El presupuesto global 13/11 cargó 45.459,199 s y deja 2.240,801 s antes
+de la reserva de 2.700 s, inferior al mínimo de 2.700 s exigido para
+preparación y admisión. La frontera del ledger para trabajar el 13/11 fue
+14:01:53. No alterar cargos ni huellas para reingresar hoy. Una ampliación
+del JSON/código vigente rompería la identidad estricta del ledger y la
+procedencia de los checkpoints; no se ha preparado una migración verificada.
+
+Santiago aclaró que 01:00 era horario del timer, no límite metodológico.
+Para arrancar en la primera hora con saldo diario nuevo, se deshabilitó
+`oos-v12-training.timer` y se programó **una sola** unidad transitoria
+`oos-v12-training-midnight-20261114.timer` para el **14/11 a las 00:00**
+`America/La_Paz`; ejecuta `systemctl --user start --no-block
+oos-v12-training.service`. `Linger=yes`. El servicio existente repetirá
+suite formal, Ruff, preflight vigilado y admisión antes de entrenar, con
+`Restart=no`. Comprobar esa sesión y su ledger antes de cualquier otra;
+restablecer una programación posterior solo cuando no pueda duplicarla.
+Validación 2023 y final 2024–2025 siguen cerradas. Ver `reporte-codex.md`.
+
+---
+
+# Estado anterior — 11/11/2026 21:37 America/La_Paz
+
+La segunda sesión principal pausó en frontera completa, `Result=success`,
+sin proceso activo. Ledger `ready`, cursor 19/108, **215 unidades** y
+**6/36 ternas completas**, `pending=null`; última frontera
+`run-19-C5-b0/checkpoint-5`, SHA-256
+`caf08ad45b9c1a9b57e6e38974cb79ff9dbaef90b49e30dffdbc9d41ab10b64c`.
+La [auditoría](hitos/OOS-v1-2-sesion-02-20261111.md) verificó 653
+estados y 645 huellas. El cargo protocolario del 11/11 es 47.008,738 s,
+con 691,262 s antes de reserva: **no iniciar otra sesión hoy**. Incluye
+12.801,316 s de hueco inactivo entre sesiones, por la forma conservadora
+del ledger; la unión de sesiones realmente medida fue 30.349,585 s y
+además existía un ajuste conservador previo de 3.857,837 s. No modificar
+retroactivamente el ledger ni tratar el hueco como cómputo. La media de
+seis ternas es 2.273,757 s; las otras treinta equivalen a 68.212,696 s
+extrapolados de unidades, más gastos. El timer espera el 12/11 01:00 y
+deberá repetir suite, Ruff, preflight y admisión con recursos actuales.
+Evaluación 2023/final sigue cerrada: metadatos H1 identifican 2023, no
+hay archivo final local identificado. Ver [reporte local](../reporte-codex.md).
+
+---
+
+# Estado anterior — 11/11/2026 21:11 America/La_Paz
+
+La sesión supervisada `9d306358db424a7c87ac4abe8c2cacba` sigue activa;
+el ledger principal estaba `running`, cursor 17 y 196 unidades aceptadas,
+con la unidad 9 de `run-17-C5-b0` pendiente. Hay 5/36 ternas completas.
+No iniciar otra sesión. La [proyección separada](hitos/OOS-v1-2-proyeccion-20261111.md)
+usa cinco ternas medidas: 70.425,961 s extrapolados de unidades restantes,
+más comprobaciones/cierre. El inventario permitido identifica 2023 por
+metadatos H1 y no identifica fuente local final; 1.534,320 s para ambos
+conjuntos de 108 recorridos es extrapolación **sintética**, no costo
+histórico completo. Evaluación protegida hasta cierre y permisos separados.
+Al pausar/cerrar, auditar ledger, huellas y cargo antes de reingreso.
+
+---
+
+# Estado anterior — 11/11/2026 21:02 America/La_Paz
+
+Tras la pausa válida documentada abajo, una sola sesión nueva
+`oos-v12-training.service` arrancó a las 20:49 con `InvocationID`
+`9d306358db424a7c87ac4abe8c2cacba`. CA=1, batería=50 % cargando,
+MemAvailable=6.352.928.768 B y presupuesto `ok=true` antes de iniciar.
+Suite, Ruff y preflight vigilado quedaron `ready` dentro de esa sesión.
+A las 21:02 el ledger principal estaba `running`, cursor 17, 188 unidades
+aceptadas y `run-17-C5-b0/1` pendiente: **5/36 ternas completas**. No
+lanzar otra sesión ni tocar los pesos mientras esta siga activa. Al
+pausar/cerrar, auditar ledger, huellas y gasto; el timer del 12/11 01:00
+requiere guardas nuevas. Validación 2023 y final siguen cerradas.
+
+---
+
+# Estado anterior — 11/11/2026 20:44 America/La_Paz
+
+El servicio histórico terminó con pausa válida y está inactivo. `wf-2022`
+auxiliar cerró 99/99 unidades; el principal está `ready`, cursor 16,
+186 unidades, `pending=null`: **5/36 ternas completas**. Se verificaron
+la cadena y 558 huellas de archivos aceptados; último checkpoint válido
+`run-16-C0-b0/checkpoint-9`, SHA-256
+`c33ff5961c1cbff19e81bb159155d31bf59957e03e7faa66ef287417878153a8`.
+El ledger principal tiene SHA-256
+`d0d4562da56e585f081c8bc7558f9c8db8b66c78fbcf216290cd5cbab1bf0b44`.
+El cargo global reconciliado del 11/11 fue 31.675,357 s, con 16.024,643 s
+antes de reserva. La última unidad registró pérdida de CA; CA volvió a 1,
+pero la batería medida a las 20:44 era 44 % (<50 %), por lo que no se
+inició otra sesión. El timer espera el 12/11 01:00 y repite suite, Ruff,
+preflight y admisión. La media de cinco ternas fue 2.271,805 s de unidades;
+31 ternas restantes implican 70.425,961 s extrapolados, más gastos de
+preparación y cierre. Ver [reporte local](../reporte-codex.md).
+Validación 2023 y final 2024–2025 permanecen cerradas; el evaluador se
+prepara en el worktree aislado `codex/oos-v12-evaluation-infrastructure`.
+
+---
+
+# Estado anterior — 11/11/2026 15:35 America/La_Paz, tres ternas principales
+
+La sesión `oos-v12-training.service` continúa con el mismo `InvocationID`
+`097bd51bfa774984a3913721e364f67e`. La captura auditada confirmó
+**9/108 corridas y 3/36 ternas**, con 99 unidades completas de esas ternas;
+el bloque siguiente ya comenzó. La cadena y las 99 huellas de cada tipo
+coincidieron. Tiempos medidos por terna: 2.258,869 / 2.246,075 /
+2.266,412 s; media 2.257,119 s. A las 15:35:50 el cargo global
+instantáneo fue 25.650,515 s y el saldo antes de la reserva de 2.700 s
+fue 22.049,485 s. Restan 33 ternas: 74.484,917 s de unidades si
+repitieran la media, más verificaciones y cierre. Ver
+[informe](hitos/OOS-v1-2-tres-ternas-principales-20261111.md) y
+[reporte local](../reporte-codex.md). **Siguiente tarea:** dejar pausar o
+cerrar esta única sesión, auditar ledger, checkpoints y cargo final; solo
+entonces valorar otra sesión. La evaluación aislada aún no tiene permiso ni
+fuente final auditada. Validación 2023 y final 2024–2025 siguen cerrados.
+
+---
+
+# Estado anterior — 11/11/2026 14:20 America/La_Paz, primera terna principal
+
+La misma sesión `oos-v12-training.service` con
+`InvocationID=097bd51bfa774984a3913721e364f67e` sigue activa, sin otra
+sesión de entrenamiento. El perfil principal aceptó la primera terna
+C0/C5/C10 de semilla `1869792951`: **3/108 corridas, 1/36 ternas,
+33 unidades completas y tres checkpoints K10 verificados**. Tiempo medido de
+unidades: **2.258,869 s** en la terna. El auditor comprobó cadena, roster y
+huellas de 33 checkpoints, 33 reportes y 33 solicitudes; ver
+[informe](hitos/OOS-v1-2-primera-terna-principal-20261111.md) y
+[evidencia](evidence/oos-v12-main-first-triplet-20261111/audit.json).
+`wf-2022` permanece cerrado y auditado, 99/99 unidades.
+
+La captura de presupuesto a las 14:20:18 cargó **21.118,462 s** globales
+del 11/11 y dejó **26.581,538 s** antes de reservar 2.700 s. Es una
+instantánea, no cierre. Las 35 ternas restantes equivaldrían a
+**79.060,411 s de unidades** al ritmo de la primera, además de suite,
+preflight, cargas y cierre: estimación condicionada de entrenamiento hacia
+el **13/11**, sin garantía de evaluación para el 16/11. El evaluador aislado
+verificó sintéticamente su ruta y cargó en solo lectura los tres K10; aún no
+hay permiso ni resultados de validación/final. No se identificaron archivos
+finales 2024–2025 en la lista local. **Siguiente tarea:** supervisar la
+sesión actual hasta su pausa o cierre, conciliar cargo y checkpoints; solo
+entonces considerar otra sesión con suite, Ruff, preflight y admisión nuevos.
+No reanudar un ledger `failed` ni abrir 2023/final antes de sus puertas.
+
+---
+
+# Estado anterior — 11/11/2026 13:33 America/La_Paz, `wf-2022` cerrado
+
+La sesión original `oos-v12-training.service` continúa con el mismo `InvocationID=097bd51bfa774984a3913721e364f67e`. `wf-2022` terminó `completed`, 9/9 corridas, 3/3 ternas, 99/99 unidades y `pending=null`. La auditoría verificó 302 estados encadenados, 99 checkpoints, 99 reportes y 99 solicitudes; [evidencia](evidence/oos-v12-wf2022-closure-20261111/audit.json). El ledger SHA-256 es `01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082`; último checkpoint K10 SHA-256 `65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7`. Las unidades midieron 6.832,147 s y el cargo propio del corte fue 6.846,916 s. A las 13:33 el cargo global era 18.297,464 s, con 29.402,536 s antes de reservar 2.700 s. Son valores en curso. El perfil principal entró en la suite formal, aún sin ledger. **Siguiente tarea:** dejar terminar suite, Ruff y preflight; auditar la primera terna principal y recalcular el plazo del 16/11 con sus tiempos reales. [Reporte local](../reporte-codex.md). Validación y final permanecen cerradas.
+
+---
+
+# Estado anterior — 11/11/2026 12:15 America/La_Paz, sesión OOS activa
+
+La única sesión `oos-v12-training.service` (`InvocationID=097bd51bfa774984a3913721e364f67e`) sigue activa. Su suite formal interna, Ruff y preflight vigilado pasaron antes de Q0. En `wf-2022`, la primera terna auxiliar C0/C5/C10 terminó con 33/99 unidades y 3/9 corridas completas; los tres checkpoints K10 coinciden con sus huellas del ledger. Tiempos medidos de unidades: 725,139 s, 730,349 s y 761,859 s, respectivamente. A las 12:15 el cargo global era 13.655,430 s y quedaban 34.044,570 s antes de la reserva de 2.700 s; son **valores de una sesión en curso**, no un cierre. El supervisor ya comenzó `run-03-C5-b0`. [Reporte local actualizado](../reporte-codex.md). **Siguiente tarea:** dejar avanzar la sesión sin duplicarla y auditar ledger, checkpoint, recursos y presupuesto al cierre. La evaluación 2023/final continúa cerrada. En el worktree aislado `codex/oos-v12-evaluation-infrastructure`, `3ef406e` verifica con **32 pruebas sintéticas** la inferencia pareada, recorridos, características y exportación inventada; [informe](https://github.com/Ichurri/btc-risk-rl/blob/3ef406e/docs/hitos/OOS-v1-2-infraestructura-evaluacion-sintetica-20261111.md) y [texto propuesto para armonizar la tesis](https://github.com/Ichurri/btc-risk-rl/blob/f26a4cd/docs/proposals/OOS-v1-2-armonizacion-tesis-20261111.md). Ninguno de esos cambios se fusionó con el código fijado para la sesión histórica.
+
+---
+
+# Estado anterior — 11/11/2026, presupuesto OOS ampliado prospectivamente
+
+Santiago autorizó sustituir la ventana 01:00–09:00 por ejecución a cualquier hora y ampliar el cómputo en función de tiempos medidos, sin alterar roster ni topes por unidad. La [enmienda de presupuesto](protocols/OOS-v1-2-training-budget-amendment-20261111.json) se fijó **antes de aplicarse** en `b86ea47`: 50.400 s globales por fecha `America/La_Paz`, reserva de cierre 2.700 s, máximo 20 días, corte de presentación 16/11 a las 09:00. El gasto original del 11/11 de 6.942,163 s permanece medido; se añaden 3.857,837 s de débito conservador por verificaciones/trabajo posterior no cronometrado íntegramente. El trabajo nuevo se cobra encima. [Fundamento y adjudicación 2021](hitos/OOS-v1-2-presupuesto-ampliado-20261111.md). Las [reglas de evaluación](protocols/OOS-v1-2-evaluation-method-freeze-20261111.json) se fijaron en `5fcdf75` **sin abrir 2023/final**: checkpoint K10, acción determinista, 36 bloques, Sortino, bootstrap centrado y Holm. Faltan evaluador histórico y permisos de datos separados. La inferencia pura se prepara en un worktree de este mismo repositorio (`codex/oos-v12-evaluation-infrastructure`, `53e0acd`), aislado de la huella usada por el entrenamiento activo.
+
+El código revisado pasó la suite completa (587 passed en 570,02 s) y Ruff. El permiso v3 se fijó en `8860fb9`, SHA-256 `7b1f7dc62d01b6030b1b3a70b516b47d5207b612b25fd64607bf49a01194bed3`; el preflight manual vigilado de `wf-2022` dio `ready`, con CA, batería 98 %, 6.868.131.840 B de memoria, 4.678 inicios y ninguna apertura protegida. Las unidades `systemd --user` instaladas coinciden por SHA-256 con el repositorio. **Una sola sesión** `oos-v12-training.service` comenzó a las 11:28:14, `InvocationID=097bd51bfa774984a3913721e364f67e`; a las 11:28:54 estaba en suite previa, sin Q0. El timer diario espera el 12/11 a la 01:00 como reintento. **Siguiente tarea:** comprobar la suite, Ruff y preflight dentro de esa sesión, luego auditar ledger, presupuesto y checkpoints al cierre; no duplicar el servicio. Los 99 checkpoints 2021 quedan intactos; su integridad está comprobada, pero la exclusividad del bloqueo original no pudo demostrarse. Validación 2023 y prueba final siguen cerradas; el protocolo confirmatorio v1.2 aún requiere congelación y permiso separados.
+
+---
+
+# Estado anterior — 11/11/2026, `wf-2022` programado
+
+La corrección prospectiva eliminó el doble prefijo `artifacts/` en las
+tres raíces congeladas. La preparación y el supervisor de cada perfil
+usan ahora el mismo bloqueo y presupuesto global. Las pruebas de raíces
+y de contención entre dos procesos reprodujeron el fallo anterior y
+pasaron tras la corrección; la suite completa terminó **585 passed** y
+Ruff sin errores. El código quedó en `1dcff09`, y una aprobación nueva
+en `dbffdf6`, SHA-256
+`ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806`,
+sin editar la aprobación anterior. El protocolo congelado no cambió.
+El selector de solo lectura reconoce la raíz histórica completada de
+`wf-2021` sin moverla ni volver a entrenarla y selecciona `wf-2022`.
+
+La auditoría sobre la sesión original verificó la cadena de 302 estados,
+los 99 checkpoints, 99 reportes y 99 solicitudes. Con el presupuesto
+compartido reconstruido y cero cargos ajenos registrados, **99/99 unidades
+habrían cabido**; el menor margen al instante posterior de `begin()` fue
+1.128,211 s. **Integridad verificada; uso analítico como cumplimiento
+estricto del supervisor todavía pendiente de adjudicación.** El bloqueo
+equivocado no permite afirmar retrospectivamente exclusividad de acceso.
+`wf-2022` tiene fuente y estados propios, por lo que su ejecución no
+depende de aceptar científicamente 2021. Ver [informe y comandos](hitos/OOS-v1-2-entrenamiento-ruta-presupuesto-20261111.md)
+y [auditoría por unidad](evidence/oos-v12-training-root-fix-20261111/budget-audit.json).
+
+`oos-v12-training.timer` quedó activo para **12/11/2026 01:00
+America/La_Paz**, `Restart=no`; el servicio está inactivo. La captura
+está en [schedule.json](evidence/oos-v12-training-root-fix-20261111/schedule.json).
+La sesión nueva repetirá suite, Ruff, preflight vigilado y todas las
+guardas actuales de recursos, identidad y presupuesto antes de Q0;
+admitirá cada unidad solo con reserva. **Siguiente tarea:** auditar esa
+sesión y actualizar `reporte-codex.md` con ledger, checkpoints, tiempos
+y saldos. No usar el contador del 11/11 como saldo para más unidades hoy:
+la suite manual posterior de 539,80 s y trabajo de desarrollo adicional
+no están en la bitácora automática. Validación 2023, prueba final
+2024–2025 y contraste confirmatorio permanecen cerrados.
+
+---
+
+# Estado anterior — 11/11/2026, primera sesión OOS cerrada
+
+La sesión `oos-v12-training.service` del 11/11 (01:00–02:55:46
+`America/La_Paz`) cerró `Result=success`. Suite, Ruff y preflight vigilado
+pasaron. En `wf-2021`, el ledger terminó `completed`: **9/9 corridas,
+3/3 ternas C0/C5/C10 y 99/99 unidades**, sin `pending`. Se verificaron
+cadena y huellas de los 99 checkpoints, reportes y solicitudes. El último
+checkpoint íntegro es
+`artifacts/artifacts/oos-v12-training-wf-2021-01/run-08-C5-b0/checkpoint-10/state.pt`,
+SHA-256 `864ad767592ca4bf99a53e8c5cd696d3eab1968a226ace5fa74aae222a301774`.
+El cargo global medido fue **6.942,163 s**; quedaban **1.157,837 s antes
+de la reserva de 2.700 s**. `wf-2022` se bloqueó antes de suite/Q0 porque
+no cabía con reserva; tampoco inició el perfil principal. El servicio está
+inactivo y no hay una segunda sesión. Ver [auditoría de la sesión](hitos/OOS-v1-2-entrenamiento-sesion-20261111.md)
+y [reporte local](../reporte-codex.md).
+
+**Desviación pendiente:** el código antepuso `artifacts/` a las raíces
+que ya lo contenían en el protocolo congelado. El corte 2021 se escribió
+en `artifacts/artifacts/oos-v12-training-wf-2021-01`, y el supervisor
+usó un bloqueo/presupuesto de unidades anidado. La bitácora principal sí
+contabilizó toda la sesión y no hubo exceso global medido; aun así, la
+admisión de unidades no siguió literalmente la ruta congelada. Conservar
+el ledger y sus checkpoints originales; no repetir ni migrar 2021 para
+ocultar la desviación. Se deshabilitó `oos-v12-training.timer` antes del
+cierre, sin interrumpir el servicio. **Siguiente tarea:** adjudicar la
+desviación, corregir prospectivamente rutas/contabilidad, verificar y
+actualizar la huella del permiso antes de cualquier nueva sesión. El
+timer de restauración de suspensión sigue previsto para 16/11 09:05.
+Validación 2023 y prueba final 2024–2025 permanecen cerradas; no hay
+evaluación confirmatoria.
+
+---
+
+# Estado anterior — 10/11/2026, entrenamiento OOS v1.2 preparado
+
+Rama `codex/oos-v12-training-prep`. El cierre de WF 2022-03 permanece
+intacto; su gate se cerró prospectivamente en `ae5b591`. Santiago autorizó
+entrenar lo que quepa hasta el 16/11 sin reducir el plan de 36 ternas.
+La parte **solo de entrenamiento** quedó congelada en
+[`OOS-v1-2-training-freeze-20261110.json`](protocols/OOS-v1-2-training-freeze-20261110.json),
+SHA-256 `0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0`;
+el código y la evidencia se publican en `1ce1382`, y el permiso propio
+se fijó en `cbd11de`, JSON SHA-256
+`2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2`.
+El roster contiene 9 corridas 2021, 9 corridas 2022 y 108 principales
+en 36 ternas C0/C5/C10, sin reutilizar P3 ni las mediciones WF.
+
+**Estado operativo:** `oos-v12-training.timer` está habilitado y espera
+el **11/11/2026 01:00 La Paz**; `oos-v12-training.service` está inactivo,
+`Restart=no`, y las tres raíces OOS aún no existen. Se instalaron copias
+idénticas de los [unit files](../ops/systemd/oos-v12-training.service).
+La sesión hará suite formal, Ruff y preflight vigilado **nuevos** antes de
+leer la fuente de entrenamiento; admission antes de cada unidad y reserva
+para cierre antes de las 09:00. Una Q0 o actualización parcial invalida
+la campaña y no se reanuda. La suite local final pasó **576 pruebas** en
+573,22 s, Ruff pasó, y la verificación de fuentes de solo lectura confirmó
+3.639/4.678/7.048 inicios sin abrir CSV H1 compartidos ni conjuntos
+protegidos. [Informe y comandos](hitos/OOS-v1-2-entrenamiento-preparacion.md).
+
+La captura de recursos de las 10:57 mostró CA=1, batería 98 %, gestor
+`running`, `Linger=yes`, disco 125,79 GB y `MemAvailable=5.536.272.384 B`,
+inferior al mínimo inicial de 6.026.846.208 B. El preflight nocturno debe
+medir de nuevo; **con ese valor no arrancaría una unidad**. Con CA,
+la preferencia de suspensión automática se cambió de `suspend` a `nothing`
+para que la pantalla pueda apagarse; restaurar `suspend` al cerrar la campaña.
+El timer independiente `oos-v12-restore-power.timer` quedó programado
+para restaurarlo automáticamente el **16/11 a las 09:05**, con
+`Persistent=true`; verificar el resultado al cierre. Su
+[captura](evidence/oos-v12-training-prep-20261110/restore-timer.txt)
+fija unidad, horario y huellas.
+La [captura](evidence/oos-v12-training-prep-20261110/schedule.json) conserva
+timer, recursos, presupuesto y huellas. No hay entrenamiento OOS nuevo
+todavía.
+
+El 10/11 cargó 1.247,845 s globales por WF 2022-03. Desde la primera
+ventana admisible (11/11) hasta el 16/11 hay como máximo seis fechas y
+48.600 s productivos. Con tasas extrapoladas de WF/P3, el techo de ternas
+principales completas sería 16 sin gasto adicional o 14/13 con supuestos
+de 500/900 s diarios de preparación. Son escenarios, no resultado.
+**Siguiente tarea:** auditar el disparo nocturno, el preflight y cada
+checkpoint/ledger; actualizar `reporte-codex.md` con tiempos reales y
+preparar tabla/gráficos solo de unidades aceptadas. Validación 2023,
+prueba final 2024–2025 y el contraste confirmatorio siguen cerrados.
+
+---
+
+# Estado anterior — 10/11/2026, WF 2022-03 completado
+
+La medición independiente del corte 2022 terminó a las 02:04:46
+`America/La_Paz`: ledger `completed`, **11/11 unidades aceptadas** (Q0 y
+diez Q/A/B+D), `pending=null`, sin servicio activo. El timer transitorio
+de las 01:00 se perdió al reiniciar Debian; tras nuevas guardas y memoria
+restaurada se lanzó una sola sesión `oos-wf-cost-2022-03-session-02.service`,
+`InvocationID=367e1c7feaad4a268a3f31069f35bfe7`, `Restart=no`.
+La suite formal pasó (549), Ruff y preflight vigilado `ready`; no se abrieron
+CSV H1 compartidos, validación ni final. Los 11 checkpoints y reportes
+coinciden con sus SHA-256 del ledger. Último checkpoint:
+`artifacts/oos-v12-wf-cost-only-2022-03/wf-2022/checkpoint-10`, estado
+SHA-256 `5740732f226667d79ede579f4be96afc71705882cb68e53c1e6eb75c5fc2ea2e`.
+El cargo reconciliado de preparación y ejecución es **1.247,845 s** el 10/11;
+quedan **6.852,155 s antes de la reserva global**. Informe y evidencia:
+[hito 2022-03](hitos/OOS-v1-2-costo-2022-03-cierre.md),
+`docs/evidence/oos-wf-2022-03-relaunch-20261110/`.
+
+**Siguiente tarea:** usar este tiempo medido para recalcular el calendario
+v1.2 y resolver la armonización académica y prórroga antes de congelar y
+abrir evaluación confirmatoria. La medición completa no autoriza por sí
+sola entrenamiento adicional ni acceso a 2023/2024–2025. WF05 y
+`2022-01`/`2022-02` siguen cerrados; la eliminación local de
+`.python-version` permanece fuera de los commits.
+
+---
+
+# Estado anterior — 09/11/2026, preparación WF 2022-03
+
+Rama `codex/oos-wf-2022-03`, base `85a08b9`. `2022-02` permanece `failed`,
+8/11 unidades aceptadas, unidad 8 parcial y checkpoint 7 íntegro; no se
+reanuda. WF05 y `2022-01` mantienen sus cierres. El diagnóstico de memoria
+está en [el informe](hitos/OOS-v1-2-costo-2022-02-memoria-diagnostico.md):
+la caída histórica fue de 5.817.507.840 a 4.278.210.560 B entre preflight
+y unidad 8; no hay serie de los procesos externos que permita identificar
+la causa. La sonda controlada 04 cruzó 4 GiB durante la suite; la 05,
+sin carga de desarrollo concurrente, completó 1127,131 s y mantuvo un
+mínimo de 4.870.426.624 B, apenas 38.588.416 B sobre 4 GiB + 512 MiB.
+
+El [perfil independiente](hitos/OOS-v1-2-costo-2022-03-perfil.md) conserva
+C10, semilla 498614892, 11 unidades, diseño y límites originales. La
+puerta inicial de memoria exige 6.026.846.208 B, sin modificar la guarda
+de 4 GiB durante unidades. Primera fecha admisible: **10/11/2026**,
+01:00–09:00 `America/La_Paz`, con suite formal, Ruff, preflight vigilado y
+admisión con reservas nuevos. El primer permiso `d0f024c` quedó
+prospectivamente invalidado por la corrección de la contabilidad y ventana;
+el gate final se fijó en `3aa8aeb` con SHA-256
+`c72292883224c50f86f0ae6a27b2ee6e4aaeed3ee548751cd81f3ac7f7ce73d4`.
+El timer `oos-wf-cost-2022-03-session-01.timer` quedó `active/waiting`
+para **10/11 01:00 La Paz**, servicio `Restart=no`, sin raíz histórica ni
+proceso activo; ver [informe de perfil](hitos/OOS-v1-2-costo-2022-03-perfil.md).
+El 09/11 tiene saldo global **0 s** por el
+fallo `2022-02`. No abrir validación 2023 ni prueba final; evaluación v1.2
+no adoptada. El estado operativo de permiso, programación y pruebas finales
+se detalla en `reporte-codex.md` y el informe del perfil; verificar sus
+huellas antes de cualquier acción.
+
+---
+
+# Estado anterior — 09/11/2026, WF 2022-02 fallido y cerrado
+
+Rama `codex/oos-wf-2022-02`; perfil `7da17ad`, aprobación independiente
+`a118476`, cierre prospectivo del gate `dbadf34`. La suite formal bajo
+`systemd --user` pasó **505 pruebas**, Ruff y preflight vigilado `ready`.
+La sesión histórica aceptó **8/11 unidades** (Q0 e iteraciones 1–7) y
+falló durante la unidad 8 por `MemAvailable=4.278.210.560 B`, bajo el
+mínimo de 4 GiB. Ledger `failed`, unidad 8 pendiente, sin reporte ni
+checkpoint aceptado. Último checkpoint completo: unidad 7,
+`after_dual_and_D`, SHA-256 de estado
+`618f9b45c42cf7e0976c1b8d6caadde39fddcfe1586a1173f3a5506295c9b0e1`.
+**No reanudar ni repetir esta campaña**, aunque exista ese checkpoint.
+El 09/11 tiene un cargo global conservador de **10.800 s**, saldo **0**.
+El gate quedó cerrado; aprobación y evidencias históricas intactas.
+
+El [informe](hitos/OOS-v1-2-costo-2022-02-cierre-fallido.md) conserva
+comandos, tiempos, recursos, huellas y límites. El resumen operativo
+copiable está en `reporte-codex.md`. WF05 sigue `incomplete` cerrado y
+2022-01 permanece fallido con su cargo del 07/11. No hubo acceso a
+validación 2023 ni prueba final. La medición 2022 íntegra sigue pendiente;
+una nueva campaña requiere identidad y autorización independientes, además
+de memoria estable sin rebajar 4 GiB. La evaluación confirmatoria v1.2 no
+está adoptada: faltan armonización académica y fecha de prórroga para
+los 36 bloques.
+
+---
+
+# Estado anterior — 07/11/2026, intento WF 2022-01 detenido
+
+La ventana aprobada es **01:00–09:00 America/La_Paz** con los topes y
+reservas originales. El preflight vigilado previo de las 00:58 dio `ready`
+(CA conectada, batería 100 %, memoria y disco conformes, fuente exclusiva de
+entrenamiento); fue una captura del momento, no aceptación de una unidad.
+La sesión `oos-wf-cost-2022-01-session-01.service`, `InvocationID`
+`d1d9f440f25e4dfe98d610c96ac848da`, empezó a las 01:00:05 y terminó
+`Result=exit-code` a las 01:07:26. La suite formal dio **503 passed, 1 failed**:
+una prueba de P2R heredó el contexto de servicio y chocó con el bloqueo
+global que mantenía el intento. No hubo Ruff ni preflight formal, ledger,
+checkpoint ni unidad histórica. La raíz `2022-01` sigue ausente.
+
+La bitácora durable marca el intento `failed`; la conciliación carga
+**10.800 s globales conservadores para el 07/11**, frente a **440,610179 s
+medidos**. Por ello no se reutiliza esta raíz/intento ni se lanza otra
+campaña ese día. El gate se cerró prospectivamente en `0dbe214` y la
+aprobación histórica quedó intacta. La verificación posterior de desarrollo
+dio **504 passed en 434,88 s** y Ruff pasó; no convalida la suite formal
+fallida. La prueba se corrigió para ejecutar la
+comprobación de terminal sin heredar `INVOCATION_ID`; ver
+[diagnóstico](hitos/OOS-v1-2-costo-2022-primer-intento-fallido.md) y
+[evidencias](evidence/oos-wf-2022-integration/launch-20261107-failed/).
+La medición del costo 2022 sigue pendiente. Para continuar, preparar una
+**raíz y autorización independientes** con el mismo diseño científico,
+incluir la deuda del intento fallido en el presupuesto compartido y repetir
+suite, Ruff y preflight vigilado en una fecha nueva admisible. WF05 y los
+productos de validación/final permanecen cerrados; la evaluación v1.2 sigue
+pendiente de armonización académica.
+
+---
+
+# Estado anterior — 06/11/2026, integración del costo WF 2022
+
+Rama `codex/oos-wf-2022-confirmatory-prep`, base `21725f5`. La eliminación
+local previa de `.python-version` se conserva fuera de commits. Santiago
+autorizó una medición **nueva** del corte 2022 y avanzar hacia la evaluación
+confirmatoria, con las puertas del
+[registro de alcance](protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md).
+WF05 sigue cerrado `incomplete`, 11/22 unidades aceptadas, permiso apagado;
+no se reanuda. Los archivos de 2023 y 2024–2025 siguen protegidos.
+
+Se integró un perfil histórico aislado de una C10/11 unidades, lease
+exacto, checkpoint completo, preflight vigilado y bitácora previa al ledger.
+El permiso técnico exclusivo se fijó inicialmente en `61602a9` y se
+volvió a fijar en `b142d20` tras la corrección prospectiva de una pausa
+previa a unidad; el horario 01:00–09:00 exigió otro repin. La huella
+vigente es `43506140c41c349731fd0a5b4a6133b6cec6e9bf091c995ab65c1ed68260cc75`.
+La raíz histórica 2022 sigue ausente; el permiso no sustituye suite,
+Ruff, preflight `ready` ni admisión. La suite final dio **504 passed in
+433,71 s** y Ruff pasó. La prueba controlada de trabajador completó
+Q0 y unidad 1 con `after_q0` y `after_dual_and_D`; la prueba de supervisor
+recorrió dos sesiones y reingreso desde el checkpoint. El preflight de
+solo lectura verificó 4.678 inicios, 7.703 filas de ajuste, CA,
+`Linger=yes` y gestor `running`, y registró solo el derivado H1 de
+entrenamiento y metadatos. Su estado fue `blocked` por gate inactivo
+**y** memoria disponible inferior a 4 GiB en ese instante. Estas
+comprobaciones **no son unidades históricas** ni
+admisión de campaña. El preflight vigilado tras el permiso dio `blocked`
+a las 17:24 hora de La Paz por **CA desconectada**, con batería 81 %;
+memoria 5854142464 B, disco 128975572992 B, `Linger=yes`, gestor
+`running` y presupuesto externo 0 s. No se lanzó ninguna unidad. Ver
+[informe](hitos/OOS-v1-2-costo-2022-integracion-historica.md) y
+[captura](evidence/oos-wf-2022-integration/preflight-after-approval.json).
+Mientras el gate siga activo, conservar el código ejecutable fijado por
+`code_sha256()`; cualquier edición requeriría una nueva huella y registro.
+
+**Siguiente tarea:** reconectar CA y repetir suite/Ruff y preflight vigilado
+dentro de un intento medido,
+y solo con guardas `ready` iniciar bajo `systemd --user` en 01:00–09:00.
+Cada unidad conserva los topes 120/180 s, las reservas y el máximo de dos
+fechas activas; la ventana no amplía las tres horas globales por fecha.
+La propuesta v1.2 sigue sin adopción académica. Sus 17 fechas activas
+mínimas estimadas no caben entre el 06/11 y el 16/11 (11 fechas locales).
+Santiago eligió **prorrogar la evaluación confirmatoria** para mantener los
+36 bloques y los límites diarios. Falta fijar esa decisión en un protocolo
+académico armonizado con la tesis y precisar el calendario posterior; no
+abrir la prueba final antes de ese cierre. El [texto para revisión del tutor](proposals/OOS-v1-2-prorroga-y-armonizacion-tesis-20261106.md)
+identifica los cambios de §2.7.2, §2.7.3/Tabla 4 y §3.8.4 que aún requieren
+decisión expresa; la tesis de Drive permanece sin editar por este hito.
+
+---
+
+# Dashboard local de avance — solo lectura
+
+Dashboard comparativo disponible mediante `scripts/build_thesis_dashboard.py`;
+salida ignorada en `reports/avance-tesis/index.html`. Abre por defecto el cruce
+P3 sobre D fijo, con selectores de semilla, condición y política generadora.
+Incluye P1 y estados/recursos de P0/P2/P2R/WF05. Las tablas comparativas
+resumen seis pilotos y 61 corridas con configuración, recursos y métricas,
+filtros y exportación CSV. Ver [documentación](DASHBOARD.md).
+Este hito solo exporta evidencias: mantiene WF05 y los permisos cerrados,
+2022 histórico pendiente y evaluación v1.2 sin activar. La eliminación local
+de `.python-version` se conserva fuera de los commits.
+
+---
+
+# Estado vigente — orquestador WF 2022 verificado solo sintéticamente
+
+Se implementó la bitácora de intentos **anterior al ledger** y la admisión
+con presupuesto propio/global, días activos y reservas del
+[protocolo 2022](proposals/OOS-v1-2-costo-2022-exclusivo-v1.md). Las pruebas
+focales sintéticas dieron 17 passed; la suite completa 481 passed y Ruff
+pasó. La conciliación de intentos, sesiones y ledger evita doble cargo;
+el presupuesto compartido reconoce intentos incluso si no se abrió el
+ledger. Ver [informe](hitos/OOS-v1-2-costo-2022-orquestador-sintetico.md)
+y [comandos](evidence/oos-v12-wf-2022-orchestrator/COMMANDS.md).
+
+El nuevo gate está cerrado, no existen aprobación ni raíz histórica y el
+comando público rechaza `--run`. Falta integrar el trabajador/supervisor
+histórico 2022, probarlo con fuente controlada y efectuar preflight vigilado
+antes de solicitar autorización separada. WF05 conserva su cierre
+`incomplete` y su gate apagado. La verificación de infraestructura de este
+hito **no consume** el presupuesto de una futura campaña, cuyo reloj debe
+empezar desde su primera comprobación. Validación/final y v1.2 siguen
+cerradas. `.python-version` permanece eliminado solo localmente.
+
+---
+
+# Estado anterior — propuesta de costo exclusivo del corte 2022
+
+Tras el cierre WF05 en `977e852` se preparó
+[una propuesta nueva](proposals/OOS-v1-2-costo-2022-exclusivo-v1.md), **para
+revisión y sin autorización de ejecución**. Propone una sola C10 nueva con
+semilla 498614892, Q0 y diez iteraciones del corte 2022, raíz y aprobación
+independientes. Define límites diarios y acumulados, y exige una bitácora
+durable desde la primera comprobación para cargar suite, Ruff, preflight,
+supervisión, auditoría y cierre mediante intervalos sin doble conteo. La
+bitácora y el perfil ejecutor aún requieren implementación y pruebas antes
+de solicitar permiso. La comprobación actual es solo algebraica y sintética;
+no se inició ninguna campaña ni se habilitó v1.2. WF05 no se reanuda.
+
+---
+
+# Estado anterior — WF `...05` cerrada `incomplete`; gate apagado
+
+El 03/11/2026 se adjudicó conservadoramente el 02/11 como **segundo día
+activo** de WF05, pues hubo auditoría, suite, Ruff, preflight y cierre
+específicos de campaña. El máximo de dos días se agotó sin iniciar
+`wf-2022/Q0`. Resultado metodológico **`incomplete`, 11/22 unidades**;
+el ledger original conserva su último estado técnico `ready`,
+`pending=null`, sin reescritura. Los 11 checkpoints, raíces anteriores y
+registro de aprobación conservan sus huellas. El gate de WF05 está
+**cerrado prospectivamente** y tanto el comando público como el
+trabajador rechazan otra ejecución. No reanudar esta raíz.
+
+La conciliación sin doble cargo del 01/11 da **3.824,140403 s como mínimo
+distinto**: 3.484,510403 s ledger/bitácora más 339,63 s de la primera
+suite previa al ledger. Superó por al menos **224,140403 s** el tope propio
+diario de 3.600 s; las suites posteriores ya estaban dentro del intervalo
+del ledger. El 02/11, el contador automático 0 s no incluyó la suite de
+390,45 s ni otros tiempos de comprobación y cierre. Su envolvente
+conservadora fue 560 s. La suma de las dos envolventes fue 4.726 s, bajo
+5.400 s acumulados, sin subsanar la desviación diaria ni abrir un tercer
+día. Ver [informe](hitos/OOS-v1-2-costo-cortes-05-cierre-incomplete.md),
+[resumen académico](hitos/OOS-v1-2-costo-cortes-05-resumen-academico-cierre.md),
+[cálculo y huellas](evidence/oos-v1-2-wf-cost-05-closure-20261103/results.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-closure-20261103/COMMANDS.md).
+
+La medición completa del corte 2022 falta. La propuesta de evaluación
+v1.2 sigue sin adopción ni permiso; no se consultaron validación 2023 ni
+prueba final. `.python-version` permanece eliminado solo localmente y
+fuera de Git.
+
+---
+
+# Estado anterior — WF `...05` bloqueada antes de reingresar el 02/11
+
+WF05 sigue con ledger **`ready`, 11/22 unidades aceptadas y `pending=null`**.
+La auditoría de los 11 checkpoints se reprodujo exactamente y no había
+unidad WF activa. En el nuevo día local 02/11/2026, la suite completa dio
+**463 passed in 390,45s** y Ruff pasó. El preflight vigilado nuevo quedó
+`blocked` a las 17:29:52 en `America/La_Paz`: `MemAvailable=4.259.569.664 B`,
+**35.397.632 B por debajo de 4 GiB**. CA, batería 97 %, disco, gestor,
+`Linger`, presupuesto, huellas y vigilancia de aperturas fueron conformes.
+**No se inició `wf-2022/Q0` ni otra sesión.** La huella del ledger y del
+último checkpoint permanece intacta. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado-20261102.md),
+[preflight](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261102/preflight.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261102/COMMANDS.md).
+
+El contador automático indicó 0 s globales el 02/11 al no abrirse sesión,
+pero las pruebas gastaron 390,45 s fuera del ledger. Debe adjudicarse si
+ese trabajo consume el segundo día activo del máximo de dos; **no asumir
+un tercero** ni llamar completo al estudio. Un nuevo intento requiere
+guardas, suite, Ruff y preflight nuevos y presupuesto real, sin reutilizar
+esta captura `blocked`. La propuesta de evaluación v1.2 sigue sin permiso;
+validación 2023 y prueba final siguen protegidas. `.python-version` continúa
+eliminado solo localmente y fuera de Git.
+
+---
+
+# Estado anterior — WF `...05` pausada tras 11/22 unidades
+
+El 01/11/2026 (`America/La_Paz`) Santiago autorizó continuar desde Q0
+sin repetirla. La suite completa dio **463 passed**, Ruff pasó y el
+preflight vigilado **nuevo** dio `ready`. Se inició una sola sesión
+`oos-wf-cost-20261101-05-session-02.service` con `Restart=no`,
+`InvocationID=16d210a2098e4ab58f83cf8fbb7d0423`. Cerró
+`Result=success` tras aceptar `wf-2021/1`–`/10`. El ledger está **`ready`,
+11/22 unidades, `pending=null`**, sin fallo; la pausa presupuestaria ocurrió
+antes de `wf-2022/Q0`. El checkpoint completo `after_dual_and_D` de unidad
+10 tiene SHA-256
+`80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf`;
+Q0 conserva su huella. La sesión duró **718,484360 s** y D sumó
+**47,817987 s** de tiempos de fase. El cargo propio conservador del día
+es **3.484,510403 s**, pues el ledger incluye el intervalo entre sesiones:
+quedan **115,489597 s** del tope propio, menos que los 120 s necesarios
+para admitir la siguiente Q0. No iniciar otra unidad hoy.
+
+Ver [informe](hitos/OOS-v1-2-costo-cortes-05-session-02-pausa.md),
+[auditoría](evidence/oos-v1-2-wf-cost-05-session-02-20261101/audit.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-session-02-20261101/COMMANDS.md).
+La campaña sigue incompleta. Otro día local requiere guardas, suite, Ruff
+y preflight nuevos antes de cualquier reingreso. Un ledger `failed` sería
+irreversible. Las raíces `...01`–`...04` conservan sus huellas; no se
+abrieron validación 2023 ni prueba final. `.python-version` permanece
+eliminado solo localmente y fuera de Git.
+
+---
+
+# Estado anterior — reingreso WF `...05` bloqueado por memoria
+
+Santiago autorizó continuar desde Q0 sin repetirla. El 01/11/2026
+`America/La_Paz` se reprodujo exactamente la auditoría Q0 publicada:
+ledger `ready`, 1/22 unidades, `pending=null`, checkpoint `after_q0` con
+SHA-256 `8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185`.
+No había otra unidad WF activa. La suite completa dio **463 passed** y Ruff
+pasó. El preflight vigilado **nuevo** de las 18:13:38 quedó `blocked` por
+`MemAvailable=4.241.289.216 B`, **53.678.080 B por debajo de 4 GiB**.
+CA, batería 100 %, disco, `Linger`, gestor, huellas, integridad y saldo
+fueron conformes en esa medición. **No se lanzó la sesión 02 ni unidad 1.**
+El ledger y checkpoint conservan sus huellas; la campaña sigue `ready`,
+sin nuevo fallo ni pausa registrada en el ledger. Ver
+[diagnóstico](hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado.md),
+[captura](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/preflight.json),
+[comprobaciones](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/results.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/COMMANDS.md).
+
+Un intento posterior requiere suite, Ruff y preflight vigilado **nuevos**;
+esta captura bloqueada no se puede reutilizar. No bajar los umbrales ni
+reanudar un ledger `failed`. Validación 2023, prueba final y evaluación
+v1.2 siguen fuera de alcance. `.python-version` continúa eliminado solo
+localmente y fuera de Git.
+
+---
+
+# Estado anterior — WF `...05` Q0 aceptada; pausa para revisión
+
+La autorización específica de Santiago quedó fijada en `cacf6a9`. El
+01/11/2026 `America/La_Paz`, la suite completa dio **463 passed** y Ruff
+pasó. Un preflight vigilado nuevo dio `ready` y ninguna apertura protegida.
+Se lanzó una sola sesión `systemd --user` con `Restart=no`,
+`oos-wf-cost-20261101-05-session-01.service`,
+`InvocationID=d69d5d0157544abc96f3235ab9d339c3`. Cerró
+`Result=success` tras **solo Q0**. El ledger está `ready`, 1/22 unidades,
+`pending=null`; el checkpoint íntegro `after_q0` tiene SHA-256
+`8310507d87c7ea2020ed872bb74adcfb20615debe4de271a827a4011ba93f185`.
+El cargo global de la sesión, sin doble conteo, fue **30,721120 s**;
+la unidad Q0 aceptada duró **28,650246 s**. Las raíces `...01`–`...04`
+mantienen sus huellas. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-05-Q0-auditoria.md),
+[auditoría](evidence/oos-v1-2-wf-cost-05-q0-20261101/audit-q0.json),
+[preflight](evidence/oos-v1-2-wf-cost-05-q0-20261101/preflight-launch.json)
+y [comandos](evidence/oos-v1-2-wf-cost-05-q0-20261101/COMMANDS.md).
+
+**Esperar revisión antes de la unidad 1.** No abrir validación 2023 ni
+prueba final, ni activar la evaluación v1.2. `.python-version` sigue
+eliminado solo localmente y fuera de Git.
+
+---
+
+# Estado anterior — perfil WF `...05` preparado, sin permiso
+
+En `codex/oos-wf05-profile` se preparó una raíz y registro nuevos, ambos
+ausentes, para una eventual medición WF íntegra. El gate `...05` permanece
+cerrado en el comando y el trabajador. El perfil conserva por huella el
+diseño de dos C10 y 22 unidades, el presupuesto y las guardas; registra la
+muestra exacta de recursos que causa pausa o fallo. Las pruebas sintéticas
+cubrieron primer arranque, Q0→unidad 1 con dos trabajadores, reingreso del
+ledger, permisos y observabilidad. La suite completa dio 463 passed y Ruff
+pasó. El [preflight vigilado](evidence/oos-v1-2-wf-cost-05-profile/results.json)
+de 2026-11-01 fue `blocked` solo por ausencia deliberada de permiso; no
+abrió archivos protegidos ni generó trayectorias. Las cuatro raíces
+históricas conservaron sus huellas. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-05-perfil.md) y
+[comandos](evidence/oos-v1-2-wf-cost-05-profile/COMMANDS.md).
+
+Siguiente paso: revisar perfil e informe antes de considerar autorización
+separada; ninguna captura de preflight sustituye la comprobación inmediata
+de un día de ejecución. No iniciar `...05`, reanudar `...01`–`...04`, abrir
+validación ni prueba final. `.python-version` sigue eliminado solo localmente.
+
+---
+
+# Estado anterior — causa de recurso WF `...04` desconocida; observabilidad lista
+
+Se revisaron de forma **solo lectura** el ledger, los últimos heartbeats,
+el journal accesible de `systemd`, las fuentes de kernel y alimentación y
+las muestras de memoria y disco disponibles alrededor de las 02:13:15
+del 30/10/2026 local. Se confirmó la decisión fallida de la guarda, pero
+**no hay valores de CA, batería, `MemAvailable` ni disco de ese instante**;
+el recurso específico sigue desconocido. El journal de kernel completo no
+fue accesible sin contraseña y `sysstat` no tiene una muestra de ese día.
+
+La corrección prospectiva escribe un evento durable con los cuatro valores
+de la decisión antes de una pausa o fallo, sin cambiar umbrales ni el
+algoritmo. Las pruebas son sintéticas. Las cuatro raíces históricas
+conservan sus huellas, sus gates siguen cerrados y `...04` permanece
+`failed` sin permiso de reanudación. Ver
+[informe](hitos/OOS-WF-04-recursos-diagnostico-observabilidad.md),
+[comprobaciones](evidence/wf04-resource-diagnostic-20261030/results.json) y
+[comandos](evidence/wf04-resource-diagnostic-20261030/COMMANDS.md).
+Una nueva campaña requiere propuesta y autorización separadas. No abrir
+validación 2023 ni prueba final. La eliminación local de `.python-version`
+sigue fuera de Git.
+
+---
+
+# Estado anterior — WF `...04` falló en unidad 8; gate cerrado
+
+El 30/10/2026 `America/La_Paz`, tras revisar Q0, se repitieron la suite
+completa (447 passed), Ruff y un preflight vigilado nuevo `ready`. La segunda
+sesión `systemd --user` aceptó las unidades 1–7 y falló durante la unidad 8
+por `WF cost resources lost during unit`. El ledger está **`failed`, 8/22
+unidades aceptadas, unidad 8 pendiente**; no hay reporte ni checkpoint
+aceptado de ella. Q0 conserva su huella. La bitácora mide 479,692 s para
+esta sesión; el cargo de seguridad del día es 10.800 s por fallo con unidad
+pendiente. El gate `...04` se cerró prospectivamente y ambos comandos
+operativos rechazan nuevas ejecuciones. **No reanudar ni repetir `...04`**.
+
+Ver [informe](hitos/OOS-v1-2-costo-cortes-04-continuacion-fallo.md),
+[auditoría](evidence/oos-v1-2-wf-cost-04-session-02-20261030/audit.json),
+[preflight](evidence/oos-v1-2-wf-cost-04-session-02-20261030/preflight.json) y
+[comandos](evidence/oos-v1-2-wf-cost-04-session-02-20261030/COMMANDS.md).
+Siguiente paso: revisión metodológica de la campaña fallida y de la
+instrumentación de recursos; cualquier nueva campaña de costos requiere
+protocolo, raíz y permiso independientes. Validación 2023, prueba final y
+evaluación v1.2 siguen bloqueadas. `.python-version` continúa eliminado
+solo localmente, fuera de Git.
+
+---
+
+# Estado anterior — WF `...04` Q0 aceptada; pausa para auditoría
+
+El 30/10/2026 local la suite completa pasó (447 pruebas) y Ruff pasó. Un
+preflight vigilado **nuevo** dio `ready`, con CA, batería 97 %, memoria,
+disco, `Linger`, gestor, presupuesto y huellas conformes; no abrió archivos
+protegidos. Se lanzó una sola sesión `systemd --user` con `Restart=no`.
+Terminó `Result=success`, `InvocationID=9ea19b05c8584dcb8dc8cfccbcc2e032`.
+El ledger está `ready`, **1/22 unidades aceptadas**, `pending=null`;
+`checkpoint-0` es `after_q0` con SHA-256
+`0b37a844f6fef063ab07f792c61fc0a508cb43675f809e9c9ce885c45dcd1d28`.
+No existe unidad 1. El cargo global sin doble conteo de esta sesión fue
+**28,567081 s**. Las raíces `...01`–`...03` conservan sus huellas.
+
+Ver [informe](hitos/OOS-v1-2-costo-cortes-04-Q0-auditoria.md),
+[auditoría](evidence/oos-v1-2-wf-cost-04-q0-20261030/audit-q0.json),
+[preflight](evidence/oos-v1-2-wf-cost-04-q0-20261030/preflight.json) y
+[comandos](evidence/oos-v1-2-wf-cost-04-q0-20261030/COMMANDS.md). Detenerse
+para revisión: **no iniciar unidad 1** todavía. La campaña de 22 unidades
+no está terminada; validación, prueba final y evaluación v1.2 siguen fuera
+de alcance. `.python-version` permanece eliminado solo localmente y no se
+incorpora a Git.
+
+---
+
+# Estado anterior — WF `...04` bloqueado en preflight; ninguna unidad lanzada
+
+El 29/10/2026 a las 20:18 `America/La_Paz`, la suite completa pasó
+(447 pruebas) y Ruff pasó. El preflight vigilado nuevo dio `blocked`:
+memoria disponible 3.750.830.080 B (<4 GiB), presupuesto global del día
+agotado por el cargo conservador de `...03` y fecha anterior al inicio
+autorizado 30/10. CA, batería 98 %, disco, `Linger`, gestor, huellas e
+integridad de entradas pasaron en esa medición. El vigilante registró 57
+rutas y ninguna protegida. La raíz `...04` permanece ausente; no se inició
+`systemd`, Q0 ni unidad 1. Las raíces `...01`–`...03` coinciden con sus
+huellas. Ver [informe](hitos/OOS-v1-2-costo-cortes-04-preflight-bloqueado-20261029.md)
+y [captura](evidence/oos-v1-2-wf-cost-04-check-20261029/preflight.json).
+
+La aprobación `...04` sigue registrada y el gate continúa activo, pero
+esta captura **no habilita** un lanzamiento posterior. Para continuar otro
+día local debe repetirse suite completa, Ruff y un preflight vigilado
+inmediato con todas las puertas `ready`. La eliminación local de
+`.python-version` sigue fuera de Git.
+
+---
+
+# Estado anterior — WF `...04` autorizado; esperar al 30/10 local
+
+Santiago autorizó exclusivamente la campaña WF `...04` conforme al perfil
+`ce62fed`. El [registro independiente](protocols/OOS-v1-2-wf-cost-04-approval.json)
+y el gate `...04` se fijaron en `232e7dc`; la raíz histórica aún no existe.
+El registro impide ejecutar antes del **30/10/2026 America/La_Paz**. El
+29/10 el fallo `...03` agota los 10.800 s globales, de modo que no se lanza
+ninguna unidad ese día. Los gates `...01`–`...03` siguen cerrados y sus raíces
+congeladas. La eliminación local de `.python-version` no se incorpora.
+
+Siguiente acción ya autorizada: en el próximo día local admisible, suite
+completa y Ruff; inmediatamente, preflight vigilado nuevo y todas las guardas
+en `ready`. Solo entonces una sesión `systemd --user` con `Restart=no` hasta
+**Q0 aceptada**. Compartir ledger `ready` sin `pending`, checkpoint
+`after_q0` y SHA-256, `InvocationID`, bitácora, tiempos, cargos y huellas de
+las tres raíces previas. No iniciar unidad 1. Si alguna guarda falla, no
+lanzar; si la sesión falla, cerrar prospectivamente el gate `...04`.
+Ver [nota de autorización](hitos/OOS-v1-2-costo-cortes-04-autorizacion.md).
+
+---
+
+# Estado anterior — perfil WF `...04` preparado; permiso cerrado
+
+El perfil independiente `...04` conserva las dos C10, los cortes 2021/2022,
+semillas 276696733/498614892, 22 unidades y los límites científicos y
+temporales originales. La raíz histórica y el nuevo registro de aprobación
+siguen ausentes; el gate público y el del trabajador están cerrados. La prueba
+con fuente sintética ejecutó Q0 y la unidad 1 en trabajadores distintos,
+reabrió el ledger, verificó `after_q0` y `after_dual_and_D`, contadores y cadena
+de hashes. No acredita entrenamiento histórico ni una sesión `systemd`.
+
+El [preflight vigilado](evidence/oos-v1-2-wf-cost-04-profile/preflight.json)
+del 29/10/2026 dio `blocked`: el fallo histórico de `...03` carga 10.800 s
+globales ese día y falta el permiso independiente. Alimentación, memoria,
+disco, `Linger`, gestor, entradas y huellas pasaron en esa medición. Los
+archivos abiertos constan en la captura; no se abrieron CSV H1 compartidos,
+validación ni prueba final. Las raíces `...01`–`...03` coinciden con sus
+huellas fijadas. Ver [informe](hitos/OOS-v1-2-costo-cortes-04-perfil.md).
+No activar permiso, crear la raíz histórica ni iniciar unidades por este hito.
+
+---
+
+# Estado anterior — Q0→Q/A/B+D verificado con fuente controlada; gates cerrados
+
+Desde `b52f1a9`, la prueba `test_wf_permit_integration.py` llama dos veces
+al trabajador real en el mismo proceso de prueba. La primera llamada cierra
+Q0 y produce `after_q0`; una nueva solicitud y lease sintéticos permiten
+que la segunda cargue el checkpoint, ejecute Q/A/B+D y produzca
+`after_dual_and_D`. Se verifican el hash y contenido del checkpoint, los
+contadores, el verificador de cierre y la conservación del checkpoint Q0.
+Checkpoint alterado, token, PID, semilla, condición y ruta previa incoherentes
+se rechazan sin producir la unidad 1. No se sustituyeron las funciones de
+algoritmo o persistencia solicitadas. [Informe](hitos/OOS-WF-QABD-integracion-sintetica.md)
+y [evidencia](evidence/oos-wf-qabd-integration/verification.json).
+
+La prueba focal dio 14 passed, la suite completa 442 passed y Ruff pasó.
+Las raíces `...01`–`...03` conservan sus huellas (15/15, 2/2 y 10/10) y los
+tres gates están cerrados. La prueba usa precios fabricados; no acredita
+reingreso entre procesos, supervisión `systemd`, tiempos históricos ni
+aceptación de una campaña. La eliminación local de `.python-version`
+permanece fuera de los commits. **Detenerse aquí para revisión; no preparar
+`...04` ni activar permiso alguno.**
+
+---
+
+# Estado anterior — integración WF corregida prospectivamente; gates cerrados
+
+Se corrigieron las tres guardas de tipo exacto que rechazaban los permisos
+WF específicos en `complete_unit`, `SyntheticExperiment` y `Diagnostic.bind`.
+La lista autorizada contiene **solo** los tipos exactos de `...01`, `...02`
+y `...03`; cada lease conserva su comprobación de registro, ledger, token,
+identidad y fuente. `complete_unit` exige además que la raíz corresponda
+al perfil antes de crear archivos. Una prueba nueva recorre el trabajador
+real, Q0 y el verificador de checkpoint usando rutas y datos fabricados;
+prueba también permiso falso, raíz ajena, semilla/condición alteradas y gate
+cerrado. La suite completa dio 435 passed y Ruff pasó. Ver
+[informe](hitos/OOS-WF-permit-integration-prospectiva.md) y
+[evidencia](evidence/oos-wf-permit-integration/verification.json).
+
+Las raíces históricas `...01`, `...02` y `...03` coinciden con sus huellas
+congeladas (15/15, 2/2 y 10/10 archivos). Sus gates siguen cerrados y los
+trabajadores rechazan antes de leer solicitudes. Esta corrección no reabre
+`...03`, no crea una nueva campaña ni mide Q0 histórica. La eliminación
+local de `.python-version` permanece fuera de los commits. Siguiente
+decisión: revisar la prueba de integración y, solo mediante otro protocolo,
+raíz y autorización, considerar una medición nueva.
+
+---
+
+# Estado anterior — WF `...03` falló durante Q0; permiso cerrado
+
+La campaña íntegra `...03` fue autorizada en `7c74176` con registro
+independiente. Tras esperar a batería ≥50 % con CA, la suite completa pasó
+(428 pruebas) y Ruff pasó. El [preflight vigilado nuevo](evidence/oos-v1-2-wf-cost-03-campaign/preflight-launch.json)
+dio `ready`, sin aperturas protegidas. Se inició **una sola** sesión
+`systemd --user` con `Restart=no`. Su trabajador rechazó el permiso propio
+`...03` en una guarda de tipo exacto antes de completar Q0. El servicio
+terminó `Result=exit-code`, el ledger quedó `failed`, cero unidades aceptadas
+y ningún checkpoint. No se inició la unidad 1. Ver el
+[informe](hitos/OOS-v1-2-costo-cortes-03-fallo-Q0.md) y la
+[auditoría](evidence/oos-v1-2-wf-cost-03-campaign/audit-failure.json).
+
+El gate `...03` se cerró prospectivamente en `05adff0`. El registro de
+autorización y la raíz fallida son evidencia, no permiso para reingreso.
+El cargo conservador del fallo consume el presupuesto global del 29/10;
+las mediciones reales de sesión y ledger se informan por separado.
+Las raíces `...01` y `...02` conservan todas sus huellas. Antes de considerar
+otro estudio se requiere corregir la incompatibilidad del permiso, probar
+la ruta real del trabajador hasta `complete_unit`, y preparar otra raíz y
+autorización. No reanudar `...03`, activar evaluación v1.2 ni abrir
+validación/final. La eliminación local de `.python-version` sigue fuera de
+los commits.
+
+---
+
+# Estado anterior — perfil WF `...03` preparado, permiso cerrado
+
+Desde `9efe521`, la rama `codex/oos-wf-cost-only-03-profile` contiene un
+perfil exclusivo para una eventual campaña íntegra nueva: dos C10, cortes
+2021/2022, semillas originales, 22 unidades y límites científicos/temporales
+fijados por el diseño original. La raíz `artifacts/oos-v12-wf-cost-only-03/`
+y el registro de aprobación `OOS-v1-2-wf-cost-03-approval.json` **no existen**.
+El comando público y el trabajador tienen el gate cerrado. Las pruebas
+sintéticas cubren primer arranque, Q0 aceptada y pausa, reingreso en otro
+proceso, rechazo de raíz huérfana/identidad alterada y fallo preledger
+durable. Suite: 428 passed; Ruff pasó. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-03-perfil.md) y
+[preflight vigilado](evidence/oos-v1-2-wf-cost-03-profile/preflight.json).
+
+El preflight de solo lectura del 29/10/2026 15:04 UTC quedó `blocked`:
+batería 33 % (<50 %) y permiso ausente; CA, memoria, disco, `Linger`, gestor,
+huellas, cortes y presupuesto sí pasaron en esa captura. Saldo global del día
+0/10.800 s y 8.100 s antes de reserva. La sesión fallida de `...02` se carga
+como 10.800 s en **su día** 27/10, documentado por consulta histórica de
+solo lectura. `...01` y `...02` conservan todas sus huellas. No se creó una
+raíz histórica nueva ni hubo entrenamiento; 2023/final siguen cerrados.
+La eliminación local previa de `.python-version` permanece sin incorporar.
+
+---
+
+# Estado anterior — primer arranque WF corregido solo para raíces futuras
+
+En `codex/oos-wf-cost-first-start-fix` se corrigió el orden del supervisor:
+con el bloqueo global tomado comprueba la existencia previa de la raíz y su
+ledger **antes** de crear `sessions.jsonl`. Una raíz ausente llega a ledger y
+pausa sintética; una raíz previa sin ledger se rechaza sin escribirle; el
+reingreso con ledger y la bitácora de fallos anteriores al ledger siguen
+verificados. La suite terminó 419 passed y Ruff pasó. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-reemplazo-primer-arranque-correccion.md)
+y [evidencias](evidence/oos-v1-2-wf-first-start-fix/COMMANDS.md).
+
+**La campaña `...02` sigue fallida y su permiso cerrado.** La corrección no
+autoriza reanudarla ni tocar `...01`. No hubo entrenamiento ni lectura de
+validación/final. Una futura campaña necesita raíz y autorización nuevas.
+La eliminación local de `.python-version` permanece sin incorporar.
+
+---
+
+# Estado anterior — WF `...02` falló antes de Q0; permiso cerrado
+
+La campaña íntegra `...02` recibió autorización independiente en `743e51b`.
+La suite previa aprobó 415 pruebas (una omitida) y Ruff; el
+[preflight inmediato](evidence/oos-v1-2-wf-cost-replacement-campaign/preflight-launch.json)
+fue `ready`: huellas, CA, batería, memoria, disco, `Linger`, gestor y
+presupuesto pasaron, sin abrir datos protegidos. La primera sesión
+`systemd --user` falló **antes de Q0**: el supervisor creó la raíz para la
+bitácora y su guarda la rechazó por no tener todavía ledger. El
+[informe](hitos/OOS-v1-2-costo-cortes-reemplazo-fallo-inicial.md) y la
+[auditoría](evidence/oos-v1-2-wf-cost-replacement-campaign/audit-failure.json)
+conservan cronología, huellas, journal y recursos. En la raíz real `...02`
+solo hay una bitácora cerrada `failed` y su lock; no hay ledger, unidades,
+trayectorias ni checkpoints aceptados. **No reanudar ni repetir esta raíz.**
+
+El gate se cerró prospectivamente en `279e6ab`. La autorización JSON sigue
+intacta para auditoría, y `...01` mantiene su gate y artefactos congelados.
+Una corrección futura requeriría un diseño y una raíz nuevos, junto con
+pruebas de primer arranque que cubran el orden de bitácora y ledger. No se
+activó la evaluación v1.2 ni se abrió validación/final. La eliminación local
+de `.python-version` sigue sin incorporar.
+
+---
+
+# Estado anterior — ejecutor WF `...02` verificado sintéticamente; sin permiso
+
+En `codex/oos-wf-cost-replacement-executor` se implementó el perfil
+`artifacts/oos-v12-wf-cost-only-02/` separado de `...01`: puerta de aprobación
+y trabajador propios, supervisor con bitácora durable de sesiones, ledger de
+22 unidades y reingreso con roster normalizado. El [informe](hitos/OOS-v1-2-costo-cortes-reemplazo-ejecutor.md)
+y la [evidencia](evidence/oos-v1-2-wf-cost-replacement-executor/preflight.json)
+documentan el ciclo sintético Q0 → pausa → proceso nuevo → admisión de unidad
+1, los fallos antes del ledger y un preflight vigilado que solo abre el
+derivado H1 exclusivo de entrenamiento. El perfil nuevo sigue **desactivado**:
+no existe su registro de aprobación ni su raíz histórica; CLI y trabajador
+rechazan una ejecución. No hubo entrenamiento de mercado ni acceso a
+validación/final. La campaña parcial `...01` y su gate cerrado conservan sus
+huellas; la eliminación local de `.python-version` permanece ajena.
+
+Siguiente decisión: revisar ejecutor y evidencia. Una futura medición
+histórica requiere autorización independiente, registro fijado y preflight
+nuevo; este hito no la habilita.
+
+---
+
+# Estado anterior — reemplazo íntegro WF propuesto, sin permiso
+
+Desde `a5b6929` se preparó una
+[propuesta para revisión](proposals/OOS-v1-2-costo-cortes-reemplazo-v1.md)
+de **22 unidades nuevas** sobre dos C10, con raíz `...02` y aprobación
+distinta. El manifiesto candidato hereda por huella todo el protocolo y
+diseño original salvo esas dos identidades. La prueba sintética cubre raíz
+nueva, Q0 aceptada, pausa, reingreso en otro proceso y fallos anteriores al
+ledger. El [preflight estático](evidence/oos-v1-2-wf-cost-replacement/preflight.json)
+verifica las huellas de la campaña parcial y termina `blocked`: no existe
+permiso ni perfil ejecutor nuevo. **No se creó la raíz `...02`, no se activó
+ningún gate y no se ejecutó entrenamiento de mercado.** La campaña parcial
+`...01` conserva sus artefactos y su interpretación. La eliminación local
+de `.python-version` sigue sin incorporar.
+
+---
+
+# Estado anterior — bitácora WF de sesiones, solo sintética
+
+Desde `c59855b`, la infraestructura WF inicia una bitácora durable antes de
+preflight y carga de cortes, registra fallos anteriores al ledger y añade a
+la admisión solo el tiempo no cubierto por el ledger. La medición se divide
+por día `America/La_Paz`; un cierre ausente o fallido impide reingreso y
+produce un cargo conservador para el presupuesto compartido. El
+[informe](hitos/OOS-v1-2-costo-cortes-bitacora-sesiones.md) y las
+[evidencias](evidence/oos-v1-2-wf-session-journal/) documentan las pruebas
+sintéticas. **No se reanudó el estudio histórico.** Su permiso continúa
+desactivado y sus huellas permanecen iguales. La bitácora nueva no cambia
+la contabilidad ni el dictamen del estudio parcial. La eliminación local
+de `.python-version` sigue ajena a esta entrega.
+
+---
+
+# Estado anterior — reingreso WF corregido solo para estudios futuros
+
+Desde `7106fef` se corrigió prospectivamente la comparación del roster:
+`WFCostLedger` acepta equivalencia entre tuplas Python y listas JSON con los
+mismos valores, y mantiene el rechazo de cualquier roster alterado. Una
+prueba sintética en procesos separados cubre Q0 aceptada → cierre → nuevo
+proceso → admisión de unidad 1; otras cuatro variantes alteradas se rechazan
+sin cambiar el ledger. El [informe](hitos/OOS-v1-2-costo-cortes-reingreso-prospectivo.md)
+documenta pruebas y la brecha de tiempo cuando una sesión falla antes de
+abrir el ledger. El permiso operativo sigue **desactivado**. No se retomó
+ni repitió la campaña parcial, cuyo ledger, Q0, journal y registro de
+autorización conservan sus huellas. No se abrió validación ni prueba final;
+la eliminación local previa de `.python-version` permanece sin incorporar.
+
+---
+
+# Estado anterior — estudio de costos WF detenido tras Q0
+
+El estudio autorizado para 22 unidades en dos cortes llegó solo a
+`wf-2021/Q0`: primera sesión `systemd --user` exitosa, checkpoint
+`after_q0` íntegro, ledger `ready` con 1/22 aceptada y sin `pending`.
+La pausa de auditoría funcionó. Al iniciar una sesión nueva, el supervisor
+falló **antes de la unidad 1** por `Campaign identity mismatch`: la identidad
+persistida contiene una lista JSON y el código reconstruía una tupla Python;
+las demás entradas coincidieron. No se generó una trayectoria ni un paso de
+optimizador de la segunda unidad. Se conservan la unidad Q0, el ledger y los
+journals. El permiso operativo se cerró prospectivamente; el registro de
+autorización permanece inalterado. **No reanudar esta raíz aunque el ledger
+diga `ready`**. El gestor `systemd --user` está ahora `degraded` por la
+unidad 02 fallida; se conserva ese estado como evidencia. Ver
+[informe](hitos/OOS-v1-2-costo-cortes-ejecucion-parcial.md)
+y [evidencias](evidence/oos-v1-2-wf-cost-executor/). El estudio no midió
+Q/A/B+D y no resuelve el presupuesto v1.2. P0–P3 siguen intactos; no se
+abrió validación 2023 ni prueba final. La eliminación local previa de
+`.python-version` permanece sin versionar.
+
+---
+
+# Estado anterior — segundo preflight de costos, permiso cerrado
+
+El 26/10/2026 se versionó un [segundo preflight](evidence/oos-v1-2-wf-cost-executor/preflight-after-swaync.json)
+tras enmascarar `swaync.service` para el usuario. La nueva captura registra
+`systemd --user=running`; la comprobación directa confirmó `masked` y cero
+unidades fallidas. Entradas, huellas y presupuesto pasaron; el **único bloqueo
+restante** es la ausencia de permiso específico. La raíz de campaña no existe
+y no se lanzó entrenamiento. El [preflight previo](evidence/oos-v1-2-wf-cost-executor/preflight.json)
+con estado `degraded` se conserva sin cambios. Ver el
+[informe actualizado](hitos/OOS-v1-2-costo-cortes-ejecutor.md) para SHA-256,
+alcance y comandos. Estas comprobaciones son una foto del momento; cualquier
+ejecución futura requeriría autorización y un preflight nuevo. P0–P3 y la
+eliminación local de `.python-version` se conservan.
+
+---
+
+# Estado anterior — ejecutor aislado del estudio de costos, permiso cerrado
+
+En `codex/oos-wf-cost-executor` se añadió la infraestructura del estudio de
+costos de dos cortes: 22 unidades previstas, reconstrucción de fuente por
+corte desde H1 exclusivo de entrenamiento, admisión conservadora, ledger y
+supervisor separados. **No se ejecutó ninguna unidad**: el permiso específico
+permanece apagado, no existe registro de aprobación ni la raíz reservada.
+El [preflight auditado](hitos/OOS-v1-2-costo-cortes-ejecutor.md) fue de solo
+lectura; `systemd --user` está `degraded` en la medición de este momento y
+requiere corrección/recomprobación antes de cualquier solicitud de ejecución.
+El protocolo de 22 unidades y v1.2 siguen **sin adoptar ni activar**;
+validación 2023 y prueba final permanecen cerradas. Conservar la eliminación
+local previa de `.python-version`. Siguiente paso: revisión del ejecutor,
+sus límites y el protocolo; un lanzamiento necesitará autorización separada.
+
+---
+
+# Estado anterior — evaluador sintético completo v1.2; costo de cortes propuesto
+
+En `codex/oos-v1-2-synthetic-evaluator` se implementó una ruta **solo
+sintética** de evaluación continua: verifica checkpoint y normalizador H1
+de entrenamiento, calcula características fabricadas, usa `sigmoid(μ)`, una
+cartera, contabilidad H3, métricas, trazas, auditoría y cierre bajo supervisor.
+Cinco unidades nuevas `systemd --user` midieron pared externa, memoria y
+disco; tres recorridos de 2.190 pasos reprodujeron la misma huella.
+[Informe](hitos/OOS-v1-2-evaluador-sintetico.md),
+[resumen académico](hitos/OOS-v1-2-evaluador-sintetico-resumen-academico.md) y
+[evidencia](evidence/oos-v1-2-synthetic-evaluation/results.json).
+
+Se dejó **solo como propuesta, no autorizada**, una medición de entrenamiento
+en los cortes 2021/2022: dos semillas nuevas, C10, 22 unidades exactas, raíz
+aislada sin crear y tope acumulado de 5.400 s dentro del presupuesto diario
+global. Ver [protocolo](proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md).
+La propuesta fuera de muestra v1.2 sigue **sin adoptar**. La medición de
+procesos fabricados no certifica que 20 días basten para entrenamiento o
+evaluación histórica. No se activó permiso ni se abrió 2023/final. P0–P3
+siguen intactos y el permiso P3 cerrado. La eliminación local previa de
+`.python-version` permanece sin versionar. Siguiente paso: revisión del
+protocolo y de las mediciones, antes de solicitar cualquier ejecución.
+
+---
+
+# Estado anterior — calibración técnica de costos v1.2, sin adopción
+
+En `codex/oos-v1-2-cost-calibration` se midieron por separado los dos refits
+*walk-forward* con el derivado H1 exclusivo de entrenamiento, una carga fija
+de checkpoint P3 y recorridos de **datos sintéticos** equivalentes en longitud
+a los cuatro trayectos previstos. Se implementó y probó la acción determinista
+`sigmoid(μ)`, sin clipping ni RNG. [Informe](hitos/OOS-v1-2-calibracion-costos.md),
+[resumen académico](hitos/OOS-v1-2-calibracion-resumen-academico.md) y
+[costos reproducibles](evidence/oos-v1-2-cost-calibration/results.json).
+El presupuesto de 20 días conserva 27.206 s de margen **solo si** se cumplen
+las tasas extrapoladas P3 y los topes aún no medidos. La ruta completa de
+evaluación real y la duración de entrenamientos nuevos siguen pendientes;
+la propuesta v1.2 **no está adoptada**. No se abrió 2023/final, no se entrenó,
+no se creó permiso ni se alteraron P0–P3. La eliminación local previa de
+`.python-version` permanece sin versionar. Siguiente paso: revisión académica
+de las mediciones y de las brechas, no lanzamiento de campaña.
+
+---
+
+# Estado anterior — propuesta v1.2 de evaluación para revisión
+
+La [propuesta v1.2](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md)
+parte de la v1.1, **sin adoptarla**: 36 bloques nuevos C0/C5/C10 con
+β=0/crítico4/K10 como diseño candidato y `δ=+0,50` Sortino anualizado
+como efecto mínimo propuesto. El [presupuesto reproducible](evidence/pilot-closure-v1-2/results.json)
+usa duraciones P3 β0 medidas solo como base de extrapolación: 108
+corridas principales y 18 auxiliares en dos cortes purgados exigirían
+al menos 17 días activos de tres horas globales bajo topes no medidos;
+se propone revisar un máximo de 20 días. La variante de 36 semillas
+en cada corte necesitaría al menos 35 días y queda fuera de ese tope.
+El [texto exacto de armonización de tesis](proposals/cierre-pilotos-texto-tesis-v1-2.md)
+y el [resumen académico](proposals/cierre-pilotos-resumen-academico-v1-2.md)
+son propuestas, no cambios al Google Doc. CPCV y selección mediante
+2023 continúan escritos en la tesis vigente y requieren decisión
+académica expresa. No se entrenó, evaluó ni abrió 2023/final. P3
+permanece `completed`/`review` con permiso operativo cerrado. La
+eliminación local previa de `.python-version` sigue sin versionar.
+
+---
+
+# Estado anterior — permiso P3 cerrado prospectivamente
+
+Desde `842fdd1`, el permiso operativo P3 pasó a
+`MARKET_EXECUTION_ENABLED=False`. Los comandos histórico público y del
+trabajador rechazan otra ejecución **antes de leer una solicitud, cargar
+mercado o crear artefactos**; el registro de aprobación de 2026-10-08 y su
+huella siguen intactos para auditar la campaña cerrada. La auditoría de
+198 reportes/checkpoints reproduce el cierre y la huella agregada de los
+47.487 archivos P3 coincide antes y después. Ver
+[informe](hitos/P3-permiso-cierre-prospectivo.md) y
+[comandos/evidencia](evidence/p3-permit-closure/COMMANDS.md). Pruebas focales
+6/6, suite completa 347/347 y Ruff pasaron. P3 conserva `completed`/`review`
+como diagnóstico de desarrollo; ninguna nueva campaña queda autorizada.
+Validación 2023 y prueba final 2024–2025 siguen protegidas. La siguiente
+tarea metodológica es revisar la propuesta de cierre de pilotos y evaluación
+v1.1, no ejecutar P3. La eliminación local previa de `.python-version`
+permanece sin versionar.
+
+---
+
+# Estado anterior — propuesta v1.1 de cierre de pilotos y evaluación
+
+La [propuesta v1.1](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-1.md)
+preserva la v1 y propone **para revisión**, no como metodología adoptada,
+una configuración común β=0/crítico4/K10 fijada antes de 2023. El bloque
+2023 tendría una sola función de viabilidad predefinida, sin seleccionar
+hiperparámetros; el [texto exacto para armonizar la tesis](proposals/cierre-pilotos-texto-tesis-v1-1.md)
+no se aplicó al Google Doc. La [auditoría indexada](evidence/pilot-closure-v1-1/cpcv-index-results.json)
+calculó cobertura y escenarios de costo de CPCV solo con índices del
+entrenamiento. La alternativa walk-forward propuesta exige revisión
+académica expresa porque ofrece menos control que CPCV. El efecto mínimo
+`ΔSortino_anualizado=0,50`, número de réplicas, presupuesto y lista de
+semillas permanecen pendientes; **12 no queda fijado**. P3 sigue
+`completed`/`review`, P2 `failed`, P2R `review` descriptivo. No se abrió
+validación 2023 ni prueba final; no se entrenó ni se modificaron pilotos.
+La eliminación local previa de `.python-version` permanece fuera del commit.
+
+---
+
+# Estado anterior — propuesta documental de cierre de pilotos y evaluación
+
+Se preparó la [propuesta v1](proposals/cierre-pilotos-evaluacion-fuera-muestra-v1.md)
+y su [matriz de fundamentos](proposals/cierre-pilotos-fundamentos-v1.md)
+contrastando la tesis **vigente en Google Drive** (lectura 23/10/2026) con
+ADR-002 y los cierres P0–P3. Recomienda cerrar los pilotos y somete a revisión
+un candidato común β=0/crítico4/K10, 12 bloques nuevos de semilla, selección
+terminal fija de checkpoint, validación 2023 solo para desarrollo, inferencia
+pareada y controles CPCV/PBO/DSR con sus requisitos. **La propuesta no está
+adoptada ni autoriza entrenamiento o evaluación.** P3 permanece
+`completed`/`review`; P2 sigue `failed` y P2R conserva `review` numérico con
+alcance descriptivo. La siguiente tarea es confrontar el texto con la tesis
+y decidir los puntos abiertos antes de usar 2023. Prueba final 2024–2025
+protegida. La eliminación local previa de `.python-version` no se versionó.
+
+---
+
+# Estado anterior — diagnóstico cruzado de P3 para revisión
+
+Se completó **solo con lectura** el cruce fijado en
+[P3-diagnostico-pares.md](hitos/P3-diagnostico-pares.md): críticos
+posteriores β=0/1 sobre ambos D aceptados de `k=7,8,9`, en los nueve
+pares semilla–condición. El [informe](hitos/P3-diagnostico-cruzado-D.md)
+y los [resultados](evidence/p3-cross-diagnostic/results.json) conservan
+las matrices 2×2 y resumen por bloque. Las diagonales reproducen las
+mediciones aceptadas; el signo de la diferencia entre críticos se
+mantiene en ambos D de cada par: β=1 tiene menor MSE solo en el bloque
+710047, y por margen pequeño. El cruce es descriptivo y parcialmente
+fuera de política; **P3 sigue `completed`/`review`**. No se ha decidido
+cerrar los pilotos ni congelar un protocolo de evaluación. La siguiente
+tarea es revisar este diagnóstico en el chat académico, sin lanzar
+campañas, usar validación/final ni seleccionar checkpoints. La
+eliminación local previa de `.python-version` continúa sin versionar.
+
+---
+
+# Estado anterior — diagnóstico pareado de P3 para revisión
+
+La revisión de solo lectura desde `0142d4a` reprodujo las nueve
+comparaciones β=0/β=1 de D tardía con 3.456 trayectorias D originales y
+54 parejas de checkpoints pre/post. En las nueve, β=1 no cumple
+`MSE_D≤0,95 Z_D` ni `ΔD≤−0,05`; no apareció un defecto de cálculo o
+instrumentación en el camino auditado. El informe
+[P3-diagnostico-pares.md](hitos/P3-diagnostico-pares.md) distingue la
+contracción observada del crítico de las hipótesis causales y propone
+**para revisión**, sin ejecutarlo, un único diagnóstico cruzado de solo
+lectura sobre D ya aceptada. P3 permanece `completed`/`review` como
+diagnóstico de desarrollo; no reanudarla ni usar validación o final para
+diseñar otra intervención. La eliminación local previa de
+`.python-version` sigue sin versionar.
+
+---
+
+# Estado anterior — P3 v1.1 cerrada como diagnóstico de desarrollo
+
+El 13/10/2026 a las 15:54:10 UTC la campaña P3 v1.1 quedó
+`completed`: 18/18 corridas K10, 198/198 unidades aceptadas y ninguna
+pendiente. La sesión 02 de `systemd --user` cerró con código 0 después
+de continuar desde la unidad 6 de `run-10-C0-b1`. Dos días activos
+debitaron 8.016,088 s y 5.257,683 s, cada uno bajo el máximo global de
+10.800 s. El resultado predefinido fue **`review`** (0/3 bloques de
+semilla superaron la regla conjunta). Las nueve parejas tuvieron señal
+`Z` elegible, pero β=1 no cumplió la comparación exacta con el predictor
+cero en D tardía ni el umbral pareado de mejora D tardía.
+
+La [auditoría](evidence/p3-market-2026-10-13/final-closure.json)
+verificó las cadenas de ledger/journal y los 198 reportes y
+checkpoints; el [informe](hitos/P3-cierre-historico-v1.md) separa los
+tiempos, recursos, advertencias y límites de interpretación. P3 aporta
+solo diagnóstico de desarrollo sobre entrenamiento 2018–2022, no
+evidencia confirmatoria de generalización, rentabilidad o cumplimiento
+CVaR. **No reanudar ni repetir P3.** La siguiente tarea es la revisión
+académica del cierre y la definición separada de un eventual protocolo
+posterior; validación y conjunto final continúan protegidos. La
+eliminación local previa de `.python-version` no se incluyó.
+
+---
+
+# Estado anterior — P3 v1.1 en pausa; sesión 02 bloqueada por alimentación
+
+El usuario autorizó el 08/10/2026 la campaña P3 v1.1 como diagnóstico
+de desarrollo, limitada al derivado H1 exclusivo de entrenamiento. El
+permiso, huellas y raíz `artifacts/p3-approved-v1` quedaron fijados en
+`618a08f`. El preflight posterior pasó con CA conectada, memoria/disco,
+`Linger=yes`, gestor activo, 10.800 s de saldo y 7.048 inicios; no abrió
+CSV H1 compartidos. `p3-market-v1-session-01.service`, invocation ID
+`8b3d6b175bd34b78a655010d46cccf3d`, inició a las 15:53:47 UTC y
+cerró a las 18:07:25 UTC del 08/10/2026 por admisión presupuestaria.
+El ledger está `ready`, con 10/18 corridas completas, 116/198 unidades
+aceptadas, ninguna pendiente y ningún fallo. La undécima corrida
+`run-10-C0-b1` quedó en `after_dual_and_D` tras la unidad 5; sigue la 6.
+El débito del día fue 8.016,088 s. La cadena del ledger, la del journal
+y los hashes de los 116 reportes y checkpoints se comprobaron de forma
+solo lectura. **La campaña no está terminada.** El servicio está inactivo
+después de salir con `ready`; no confundir ese cierre de sesión con el
+cierre de P3. Consultar siempre el último ledger y el estado de systemd.
+Ver [informe](hitos/P3-ejecucion-historica-v1.md) y
+[cierre de sesión 01](evidence/p3-market-2026-10-08/session01-closure.json).
+
+El preflight de solo lectura del 09/10/2026 a las 00:04 La Paz verificó
+las huellas, 7.048 inicios, presupuesto nuevo de 10.800 s y ausencia de
+CSV compartidos abiertos, pero **bloqueó el inicio**: CA desconectada y
+batería 37 % (mínimo de inicio 50 %). `Linger=yes`, gestor activo,
+memoria y disco no fueron los bloqueos. No existe sesión 02 ni nuevas
+trayectorias o pasos; el ledger continúa `ready` en 10/18. Ver
+[preflight bloqueado](evidence/p3-market-2026-10-09/preflight-blocked.json).
+
+**Siguiente tarea:** conectar CA y alcanzar batería ≥50 %; entonces,
+durante el día 09/10 America/La_Paz, repetir preflight completo y
+verificar presupuesto compartido, recursos, Git y ausencia de
+otra campaña activa; solo entonces iniciar una sesión `systemd --user`
+nueva con la misma autorización, raíz y parámetros, desde `ready`.
+No lanzar con el resultado bloqueado. Si queda `failed`
+o `incomplete`, preservar evidencia y no reanudar. Máximo global 3 h/día
+America/La_Paz y tres días activos. P0/P1/P2/P2R intactos, sin
+validación ni prueba final. La eliminación local previa de
+`.python-version` sigue sin versionar.
+
+---
+
+# Estado anterior — infraestructura P3 verificada sin campaña histórica
+
+Desde `a1d9032`, la autorización permitió integrar el perfil P3
+independiente con el supervisor Q0/Q/A/B+D, 18 corridas K10, dos brazos
+β, presupuesto compartido, comprobación prospectiva del marcador y
+decisión exacta de P3 v1.1. Las pruebas de unidades y reportes usan
+datos sintéticos. El preflight de solo lectura verificó el derivado H1
+exclusivo de entrenamiento, 7.048 inicios, huellas y archivos abiertos:
+no abrió CSV H1 compartidos, validación ni final. En esa medición la
+memoria libre fue inferior al mínimo operativo de 4 GiB; una campaña
+quedaría bloqueada. Ver [informe](hitos/P3-ejecutor-historico-infraestructura.md),
+[evidencias](evidence/p3-historical-infrastructure/COMMANDS.md) y
+[resumen académico](hitos/P3-ejecutor-historico-resumen-academico.md).
+
+**Siguiente tarea:** revisión del ejecutor y preflight; una campaña
+histórica P3 requerirá autorización **separada**, registro y huellas en
+commit propio, recursos/servicio/budget medidos de nuevo y raíz nueva.
+`MARKET_EXECUTION_ENABLED=False` para P3, sin registro ni entrenamiento
+histórico. P2R conserva sus 99 reportes y `review` descriptivo; P2 sigue
+`failed`. La eliminación local previa de `.python-version` continúa
+sin versionar.
+
+---
+
+# Estado anterior — intervención β del crítico P3 verificada solo con sintéticos
+
+La autorización posterior a `eed4b74` permitió implementar la pérdida
+`MSE + β mean(V²)` de P3 v1.1 **solo** sobre rutas sintéticas. El perfil
+P3 tiene β=0/1 explícito; β=0 conserva exactamente parámetros y estados
+de ambos optimizadores frente a una referencia previa a la edición. β=1
+modifica únicamente los pasos del crítico sobre el mismo A y targets
+congelados; la primera actualización del actor coincide entre brazos.
+El checkpoint sintético conserva el brazo y los contadores. Consultar
+[informe](hitos/P3-critico-sintetico.md),
+[evidencias](evidence/p3-critic-synthetic/COMMANDS.md) y
+[resumen académico](hitos/P3-critico-resumen-academico.md).
+
+**Siguiente tarea:** revisar el hito y, solo con autorización posterior,
+integrar un ejecutor histórico P3 que identifique ambos brazos, aplique el
+protocolo y verifique preflight, permiso, presupuesto y checkpoints. No se
+habilitó una campaña; no se cargaron rutas de mercado ni validación/final.
+P2R conserva sus 99 reportes y `review` descriptivo; P2 sigue `failed`.
+La eliminación local previa de `.python-version` continúa sin versionar.
+
+---
+
+# Estado anterior — marcador P3 y guarda supervisor verificados sintéticamente
+
+Desde `699d8da`, el usuario autorizó solo la implementación prospectiva
+del marcador `market_training_executed` y su cotejo supervisor. El
+[informe del hito](hitos/P3-marcador-supervisor-sintetico.md), las
+[evidencias](evidence/p3-marker-supervisor/COMMANDS.md) y el
+[resumen académico](hitos/P3-marcador-resumen-academico.md) explican el
+alcance. La regla exige fuente aceptada exclusivamente de entrenamiento
+y pasos completados del actor **y** del crítico. Q0 informa `false`;
+la iteración sintética también informa `false`. El supervisor contrasta
+perfil, reporte, recursos y contadores del checkpoint antes de aceptar
+la frontera; un marcador manipulado falla con ledger `failed`, sin
+aceptación de la unidad y con el checkpoint Q0 anterior intacto.
+
+**Siguiente tarea:** revisar esta infraestructura y decidir por separado
+si se autoriza implementar la pérdida βV² y el resto de P3. Todavía no
+hay permiso de campaña histórica P3. Las pruebas del perfil de
+entrenamiento son sobres **sintéticos**, sin trayectorias históricas.
+P2R conserva sus 99 reportes y `review` solo descriptivo; P2 sigue
+`failed`. Validación y final no se abren. La eliminación local previa de
+`.python-version` se preservó sin versionar.
+
+---
+
+# Estado anterior — P3 v1.1 adoptado metodológicamente, sin implementación
+
+La [adopción metodológica](protocols/P3-adopcion-metodologica-v1-1.md) acepta el [protocolo v1.1](proposals/P3-protocolo-v1-1.md) tras la aclaración `e30708a`. Es únicamente un diagnóstico exploratorio de desarrollo: β=0/1, tres semillas nuevas, C0/C5/C10, 18 corridas K10 y comparación pareada con razones exactas, puertas de Z por brazo y presupuesto común. Los umbrales provienen de P2R y no constituyen evidencia confirmatoria. P2R mantiene `review` solo descriptivo y sus 99 reportes intactos; P2 permanece fallido.
+
+**Siguiente tarea:** solicitar y registrar por separado autorización para implementar y verificar sintéticamente el marcador `market_training_executed`, la guarda del supervisor y la infraestructura P3. Esta adopción **no autoriza implementar ni ejecutar P3**, lanzar unidades históricas, usar validación 2023 ni abrir la prueba final 2024–2025. Una campaña posterior necesitará permiso específico, huellas y preflight. La eliminación local previa de `.python-version` permanece ajena a este hito.
+
+---
+
+# Estado anterior — P3 v1.1 para revisión, sin permiso de campaña
+
+La [propuesta P3 v1.1](proposals/P3-protocolo-v1-1.md) corrige la regla
+que en v1 podía aprobar un predictor cero cuando `Z` era pequeño, aun
+superando `10⁻¹²`. El criterio usa `MSE≤0,95Z`, razones exactas por
+brazo para las diferencias pareadas y una comprobación adicional de `Z`
+para el último tercio de D tardía de **ambos** brazos. Las
+[diferencias frente a v1](proposals/P3-v1-1-cambios.md), el
+[resumen académico](hitos/P3-v1-1-resumen-academico.md) y las
+[comprobaciones algebraicas](evidence/p3-v1-1-algebra/COMMANDS.md)
+acompañan el documento completo. La v1 sigue disponible y P2R y sus
+99 reportes no se alteraron.
+
+**Siguiente tarea:** revisión académica de P3 v1.1. P3 sigue siendo
+diagnóstico exploratorio de desarrollo y **no está autorizado** para
+implementación ni ejecución. La corrección prospectiva de
+`market_training_executed` y el rechazo supervisor de reportes
+incoherentes son requisitos previos de una implementación futura.
+P2R conserva `review` solo descriptivo; P2 permanece fallido. No abrir
+validación 2023 ni prueba final 2024–2025. La eliminación local previa
+de `.python-version` permanece ajena a este hito.
+
+---
+
+# Estado anterior — P2R descriptivo adjudicado; P3 solo propuesto
+
+El usuario autorizó el 07/10/2026 la campaña P2R v2 como **diagnóstico de
+desarrollo** exclusivo de entrenamiento 2018–2022. El registro y permiso
+fijados están en `38fc54b`; se repitieron preflight, huellas, suite completa
+(289 pruebas) y Ruff antes de lanzar la raíz nueva
+`artifacts/p2r-approved-v2`. Tres sesiones `systemd --user` terminaron
+con `Result=success`: dos pausaron entre unidades completas por guarda de
+recursos, y la tercera cerró las nueve corridas. El ledger marca
+`completed`, cursor 9, **99 unidades aceptadas**, ninguna pendiente; cargó
+6.893,096 s de 10.800 s el 07/10/2026 La Paz. La primera Q/A/B+D midió
+66,285994 s de pared y 4,724537 s de D. El auditor releyó las cadenas,
+99 checkpoints y 5.760 archivos D; todas las huellas de código de
+checkpoints coinciden. Ver el
+[informe de cierre](hitos/P2R-ejecucion-historica-v2.md) y los
+[comandos/evidencias](evidence/p2r-market-2026-10-07/COMMANDS.md).
+
+La [revisión de solo lectura del metadato](hitos/P2R-metadato-entrenamiento-revision.md)
+demostró que el generador heredado excluye `authorized_p2r_only`: los 99
+reportes marcan `false`, aunque las 90 unidades Q/A/B+D tienen pasos de
+optimizador y cambios de pesos respaldados por checkpoints. El supervisor
+no verificaba ese campo. La
+[adjudicación](protocols/P2R-adjudicacion-metadato-v1.md) reconoce que
+faltó la verificación previa, mantiene el resultado numérico `review` y
+limita P2R a diagnóstico **descriptivo de desarrollo**. No declara
+cumplido retrospectivamente el preflight ni aceptación confirmatoria.
+El [análisis tardío](hitos/P2R-error-valor-tardio.md) y su evidencia
+fundamentan la [propuesta P3](proposals/P3-protocolo-v1.md), todavía
+**no autorizada para implementación ni ejecución**.
+
+**Siguiente tarea:** revisión académica del diseño P3, su intervención y
+criterio antes de autorizar implementación. La corrección prospectiva del
+marcador y su rechazo por el supervisor son condiciones de entrada de
+P3; no se implementaron aquí. No reabrir P2R ni repetir corridas o editar
+sus reportes. P2 permanece `failed` y separado; validación y final siguen
+protegidas. `.python-version` continúa eliminado solo localmente.
+
+---
+
+# Estado anterior — presupuesto P2R analizado, campaña bloqueada
+
+El [análisis temporal P0/P1/P2](hitos/P2R-analisis-presupuesto-P0-P1-P2.md)
+usa solo ledgers y JSON de unidades completas, con huellas verificadas.
+P2 midió 6 Q0 y 51 Q/A/B+D cerradas (medianas 29,038 y 69,067 s),
+incluidas 51 D por 248,335 s; no aporta tiempo global fiable después de
+la interrupción ni costo del nuevo supervisor P2R histórico. Los
+[escenarios](evidence/p2r-budget-analysis/results.json) contrastan 99
+unidades con 24.300 s máximos de trabajo en tres días, separando tiempos
+medidos de sobrecostos supuestos. El
+[resumen académico](hitos/P2R-presupuesto-resumen-academico.md) conserva
+los límites de interpretación.
+
+**Siguiente tarea:** revisión académica del análisis de factibilidad.
+No se activó `MARKET_EXECUTION_ENABLED`, no se creó raíz/registro P2R y
+no hubo entrenamiento. Una campaña posterior exige autorización separada;
+su regla de presupuesto sigue siendo admisión por unidad, pausa antes de
+abrir una que no cabe y fallo irreversible si se interrumpe una activa.
+P0/P1/P2 y las sondas permanecen intactos; `.python-version` continúa
+eliminado solo localmente.
+
+---
+
+# Estado anterior — preparación final P2R v2 revisada, campaña bloqueada
+
+La [revisión final](hitos/P2R-preparacion-final-v2.md) desde `dc6285c`
+ejecutó 288 pruebas y Ruff, cotejó el manifiesto derivado con el ancla
+`cd6b686`, verificó los 12 hashes H1 y las huellas P0/P1/P2, y repitió el
+[preflight vigilado](evidence/p2r-final-readiness/preflight-opens.json):
+cero aperturas de CSV H1 compartidos, cero trayectorias y cero
+actualizaciones. El hash H1 completo fue una lectura de integridad separada
+del preflight. Las lecturas de alimentación, recursos, Linger y presupuesto
+están fechadas y son instantáneas. El informe contiene el procedimiento de
+lanzamiento/parada **para revisión, no ejecutado** y los límites que pueden
+impedir completar nueve corridas.
+
+**Siguiente tarea:** revisión humana del informe y, solo si se decide
+autorizar la campaña, registrar permiso específico en un commit separado y
+repetir el preflight inmediatamente antes de cualquier unidad. Actualmente
+`MARKET_EXECUTION_ENABLED=False`, sin registro ni raíz P2R histórica. No
+reanudar P2; validación y prueba final protegidas. La eliminación local
+previa de `.python-version` permanece sin versionar.
+
+---
+
+# Estado anterior — derivado H1 exclusivo de entrenamiento P2R auditado
+
+La [exportación auditada](hitos/P2R-training-shard-export.md) creó
+`data/processed/p2r-training-h1` sin filas de 2023, conservando el
+calentamiento y las 7.048 rutas aceptadas. La lectura puntual de los CSV H1
+compartidos se limitó a hashes y cotejo byte/fila del prefijo, autorizados
+para este hito. La [segunda auditoría](evidence/p2r-training-shard-export/re-audit.json)
+confirmó recuentos, exclusiones, segmentos, rutas y normalizador sin refit.
+El manifiesto derivado quedó fijado en `cd6b686`; el
+[preflight con vigilancia de aperturas](evidence/p2r-training-shard-export/preflight-opens.json)
+registró cero aperturas de los cinco CSV H1 compartidos, cero trayectorias,
+cero actualizaciones y estado `read_only_ready_campaign_disabled`.
+
+**Siguiente tarea:** revisión del informe, código y evidencias del
+derivado. El permiso P2R sigue inactivo y la campaña requiere autorización
+y registro separados, más preflight repetido en ese momento. No reanudar
+P2 fallido ni ejecutar unidades por este hito. H1, P0/P1/P2 y sondas
+anteriores permanecen intactos. La eliminación local de `.python-version`
+sigue sin versionarse. Validación y prueba final permanecen protegidas.
+
+---
+
+# Estado anterior — preflight P2R aislado y sonda de optimizador sintética
+
+Desde `93515ef` se corrigió la ruta P2R que antes verificaba hashes de
+CSV H1 completos con filas de 2023. El ejecutor y su preflight exigen
+ahora un [derivado exclusivo de entrenamiento](protocols/P2R-training-shard-contract-v1.md)
+con hashes propios y ancla H1. **El derivado histórico no existe ni tiene
+huella registrada**: preflight falla cerrado antes de abrir los CSV
+compartidos. La vigilancia de aperturas y los rechazos de enlaces se
+verificaron solo con fixtures sintéticos. Una [sonda sintética de señal
+durante cálculo de gradientes](hitos/P2R-preflight-optimizer-signal.md)
+terminó `failed`, conservó Q0 por hash y no aceptó la unidad parcial.
+La raíz 07 muestra un error del envoltorio de prueba; la 08 verificó la
+salida 1. El [resumen académico](hitos/P2R-preflight-optimizer-resumen-academico.md)
+y las evidencias pequeñas están versionados.
+
+**Siguiente tarea:** revisar el contrato de exportación y la sonda.
+Una exportación auditada del prefijo H1, el registro de su hash y una
+autorización independiente de campaña son pasos pendientes; este hito
+no los concede. P0/P1/P2 y sondas 01–06 intactos. No reanudar campañas
+fallidas, no ejecutar P2R histórico ni consultar validación o prueba
+final. La eliminación local de `.python-version` sigue sin versionarse.
+
+---
+
+# Estado anterior — ejecutor P2R v2 integrado, campaña bloqueada
+
+La autorización posterior a la sonda 06 permitió **solo** implementar y
+verificar el ejecutor histórico P2R. El supervisor común enlaza nueve
+corridas de entrenamiento aceptado con Q0 y Q/A/B+D, roster, D64,
+preflight, presupuesto compartido, ledger/journal durables y checkpoints
+atómicos. El [informe](hitos/P2R-ejecutor-historico-v2.md),
+[resumen académico](hitos/P2R-ejecutor-resumen-academico.md) y
+[preflight de solo lectura](evidence/p2r-historical-executor/preflight.json)
+documentan la implementación y sus límites. No se ejecutó ninguna unidad
+histórica ni se generaron trayectorias de mercado. El permiso de campaña
+P2R permanece **inactivo en código**; no existe registro aprobado.
+El preflight no cargó observaciones de validación, pero el cargador H1
+calculó huellas de archivos completos que incluyen filas de 2023; revisar
+esta distinción antes de cualquier permiso histórico.
+
+**Siguiente tarea:** revisar ejecutor, huellas, pruebas y preflight. Solo
+una autorización posterior puede registrar/activar el permiso P2R en otro
+commit y considerar la primera unidad histórica. Antes de hacerlo se debe
+repetir el preflight vivo; el snapshot de este hito no concede presupuesto
+futuro. P2 y las sondas 01–06 permanecen intactos. La eliminación local de
+`.python-version` sigue sin versionarse. Validación y final bloqueados.
+
+---
+
+# Estado anterior — sonda sintética P2R 06 cerrada
+
+Desde `d840d6a`, una única unidad `systemd --user` nueva completó Q0 con
+checkpoint `after_q0`; recibió SIGTERM al proceso principal mientras estaba
+activa la primera unidad Q/A/B+D. [Informe](hitos/P2R-signal-QABD-06.md) y
+[evidencia](evidence/p2r-signal-qabd-06/results.json): ledger `failed`,
+systemd `Result=exit-code`, ninguna aceptación de la unidad interrumpida y
+SHA-256 de `checkpoint-0` exactamente igual antes y después. La señal cayó
+durante la espera sintética supervisada, antes de los cálculos Q/A/B+D; no
+prueba interrupción dentro de un optimizador ni apagado físico. El checkpoint
+se conserva como evidencia y **no autoriza reanudar** la campaña fallida.
+Las raíces 01–05, P0/P1 y P2 siguen intactas; `.python-version` permanece
+eliminado solo localmente, fuera de los commits.
+
+**Siguiente tarea:** revisión de esta evidencia y de las brechas restantes
+del P2R v2 adoptado. No implementar ni lanzar el ejecutor histórico por esta
+sonda; validación y conjunto final siguen bloqueados.
+
+---
+
+# Estado anterior — P2R v2 adoptado como diagnóstico de desarrollo
+
+La revisión académica adoptó metodológicamente P2R v2 tras la precisión
+registrada en `36ed24d`: `Z_D,temprana`, `Z_D,tardía` y `Z_A,tardía` deben
+superar `10⁻¹²` **cada uno** en la regla conjunta. El
+[registro de adopción](protocols/P2R-adopcion-metodologica-v2.md) delimita el
+alcance. Se conservan las nueve corridas nuevas, semillas y orden rotado,
+Q0/Q/A/B+D, fronteras, presupuesto global, datos solo de entrenamiento y
+separación absoluta de P2. Es diagnóstico de desarrollo, no evaluación
+confirmatoria.
+
+**No hay permiso para implementar el ejecutor histórico ni para lanzar P2R
+de mercado.** Validación y final continúan bloqueados. En ese momento
+seguían pendientes las comprobaciones de checkpoint previo ante fallo
+posterior y señal durante Q/A/B+D bajo systemd, además de identidad de
+datos/código/normalizador, preflight y permisos separados de implementación
+y campaña. La sonda 06 atiende parcialmente las dos primeras brechas, con el
+límite indicado arriba. Las sondas 01–05 y sus huellas permanecen intactas;
+`.python-version` sigue eliminado solo localmente, fuera del commit.
+
+**Siguiente tarea:** revisión de las brechas para una eventual autorización
+de implementación histórica, sin comenzar ese trabajo por esta adopción.
+
+---
+
+# Estado anterior — P2R v2 propuesta, sin permiso histórico
+
+Desde `af14af2` se consolidaron [P2R v1](proposals/P2R-protocolo-v1.md),
+su anexo y las sondas sintéticas 01–05 en la
+[propuesta P2R v2](proposals/P2R-protocolo-v2.md),
+**PROPUESTA PARA REVISIÓN, NO ADOPTADA**. Se conservaron v1, anexo y
+artefactos originales. La [síntesis académica](proposals/P2R-v2-resumen-academico.md)
+y las [diferencias](proposals/P2R-v2-cambios.md) separan lo verificado de lo
+pendiente. No se ejecutaron unidades ni entrenamientos en este hito.
+
+La repetición propuesta mantiene nueve corridas nuevas, semillas
+610031/610047/610081, C0/C5/C10, Q0 y Q/A/B+D, ambas fronteras, 3 h
+globales/día hasta tres días y solo entrenamiento H1. P2 sigue `failed` y
+absolutamente separado. La prueba 02 observó `Linger=yes` y Q0 tras logout
+completo sin suspensión hasta el reingreso; 03 corrigió la cadencia y 04/05
+probaron SIGTERM en Q0. Faltan señal bajo systemd durante Q/A/B+D,
+conservación por huellas de un checkpoint previo ante fallo posterior,
+ejecutor histórico train-only, permiso propio y preflight de campaña. Un
+servicio de usuario no resiste un apagado físico.
+
+**Siguiente tarea:** revisión académica de la v2. Solo después de una
+decisión expresa correspondería definir implementación histórica y
+autorización de ejecución **separadas**. No usar validación ni prueba final;
+no reanudar P2. La eliminación local previa de `.python-version` continúa
+fuera de los commits.
+
+---
+
+# Estado anterior — señal durante Q0 P2R sintética verificada
+
+En `codex/p2r-unit-integration`, las sondas nuevas 04/05 enviaron SIGTERM
+al proceso principal durante una Q0 sintética activa. El ledger quedó
+`failed` por `interrupted_supervisor_or_unit`, con cero unidades y cero
+checkpoints aceptados. La sonda 04 descubrió que la CLI terminaba con código
+0 pese al fallo; `08c0fda` corrigió esa salida y la repetición acotada 05
+terminó `Result=exit-code`, estado 1. El
+[informe](hitos/P2R-signal-Q0-sintetica.md) y las
+[evidencias](evidence/p2r-signal-q0/results.json) distinguen las dos
+ejecuciones y conservan las raíces 01–05 intactas. La suite dio 267 pruebas
+pasadas y Ruff pasó; hashes 01–03 revalidados. La eliminación local previa
+de `.python-version` no se versionó.
+
+**Siguiente tarea:** revisión metodológica del protocolo P2R y de los
+requisitos para un ejecutor histórico train-only, sus huellas, guardas y
+permiso explícito de campaña. Esta sonda no habilita P2R histórico ni la
+reanudación de P2. No se accedió a validación ni prueba final. La señal
+durante Q0 no demuestra conservación de un checkpoint anterior ni reacción
+ante apagado físico.
+
+---
+
+# Estado anterior — cadencia P2R corregida y verificada solo en sintético
+
+Desde `76757ed`, `run_synthetic_units` solicita heartbeats con margen de
+4 s y rechaza una unidad si el intervalo **registrado** supera 5 s. La
+[sonda 03](hitos/P2R-cadencia-heartbeat-03.md), una única Q0 sintética breve
+bajo `systemd --user`, terminó `ready`, `Result=success` y checkpoint
+`after_q0` íntegro. Sus seis intervalos entre siete heartbeats fueron
+≤5 s (máximo 4.143739 s UTC). La prueba con sondeo tardío provocó ledger
+`failed`, sin checkpoint aceptado. Ruff pasó; 28 pruebas P2R y 266 pruebas
+totales pasaron. Las huellas de los artefactos 01/02 siguen intactas; la
+raíz 03 es nueva. El cambio de reloj no modifica algoritmo ni datos.
+
+**Siguiente tarea:** revisar el informe y decidir por separado la sonda de
+señal durante unidad, la adopción del protocolo P2R, el ejecutor histórico
+train-only, sus huellas/preflight y una autorización de mercado propia. La
+sonda 03 no demuestra cumplimiento temporal bajo cualquier carga, no
+autoriza P2R histórico ni reanudar P2. Validación y prueba final siguen
+bloqueadas. La eliminación local previa de `.python-version` permanece
+fuera de los commits.
+
+---
+
+# Estado anterior — logout sintético Q0 02 aprobado; mercado P2R bloqueado
+
+La [sonda 02](hitos/P2R-logout-Q0-02-cierre.md) del 05/10/2026 terminó
+`ready`, `Result=success` y checkpoint `after_q0` íntegro. Desde la retirada
+de la sesión interactiva 40 (15:57:37.582970 UTC) hasta el ingreso de la 54
+(16:51:58.504184 UTC) hubo 139 heartbeats P2R del mismo `InvocationID`
+durante Q0 y **cero eventos de suspensión** en el journal de logind. Las
+raíces originales 01 y 02 permanecen intactas; sus hashes están versionados
+en los respectivos informes. El supervisor terminó antes del reingreso, por
+lo que los heartbeats no cubren todo el intervalo; la ausencia de suspensión
+se establece por logind.
+
+**Límite pendiente:** todos los 174 intervalos entre heartbeats de Q0 02
+superaron el tope ≤5 s de P2R (máximo 5.212391 s). Hay que corregir y
+verificar esa cadencia sintéticamente. También faltan una prueba separada de
+señal durante unidad, revisión/adopción del protocolo P2R, ejecutor histórico
+train-only, huellas y preflight completos, y autorización de mercado propia.
+La prueba sintética **no autoriza** campaña P2R ni reanudar P2. No usar
+validación/final. La eliminación local previa de `.python-version` continúa
+fuera de los commits.
+
+**Siguiente tarea:** revisar el [informe de cierre](hitos/P2R-logout-Q0-02-cierre.md)
+y decidir los trabajos de infraestructura pendientes. No lanzar otra sonda
+ni entrenamiento por este cierre documental.
+
+---
+
+# Estado anterior — logout sintético Q0: continuidad comprobada, suspensión detectada
+
+El 05/10/2026, `p2r-logout-q0-review-01.service` terminó Q0 sintética
+`ready`, con checkpoint `after_q0` y `Result=success` después de retirar la
+última sesión interactiva. Sus 156 heartbeats tras el logout acabaron antes
+de Q0. El equipo se suspendió a las 15:13:47 UTC, después de Q0 y antes del
+nuevo login: **la condición «sin suspensión» falló**. Los artefactos y el
+ledger 01 conservan sus hashes. El temporizador de 900 s del greeter GDM es
+la causa más probable, pero falta identificar el llamador con journal
+privilegiado. Ver [diagnóstico](hitos/P2R-logout-Q0-diagnostico.md).
+
+**Siguiente tarea:** revisar el contexto privilegiado del journal y la
+corrección propuesta para el greeter; no se modificó el host. Si se aplica
+la corrección, hacer preflight nuevo y considerar la [repetición 02, solo
+sintética](protocols/P2R-logout-Q0-synthetic-review-02.md), con unidad y
+raíz nuevas. Esta repetición está preparada, **no iniciada**. No ejecutar
+P2R histórico, no reanudar P2 ni acceder a validación/final.
+
+---
+
+# Estado anterior — prueba de logout P2R preparada, no iniciada
+
+En `codex/p2r-unit-integration` quedó preparado el
+[procedimiento exacto](protocols/P2R-logout-Q0-synthetic-review.md) para una
+unidad `systemd --user` exclusivamente sintética. Una espera acotada de 900 s
+dentro del child supervisado deja tiempo para logout y reingreso; después
+Q0 produce un checkpoint `after_q0`. La unidad **no se lanzó** y nadie cerró
+la sesión. `InvocationID` aún no existe: se captura inmediatamente después
+del lanzamiento manual y antes de salir. El journal P2R incluirá ese ID.
+
+El usuario informó `Linger=yes` y gestor `running`. La última lectura de
+solo recursos dio `MemAvailable=3981492224` bytes, por debajo de 4 GiB;
+la guarda bloqueó el preflight. No se bajaron umbrales ni se alteró systemd.
+Repetir el preflight al decidir la prueba. No hay permiso histórico P2R;
+P0/P1 y la campaña fallida P2 siguen intactos. La eliminación local previa
+de `.python-version` permanece fuera de los commits.
+
+**Siguiente tarea:** cuando el host cumpla recursos, ejecutar manualmente
+las secciones A y B del procedimiento, cerrar todas las sesiones y luego
+seguir C. Si no se identifica un intervalo sin sesiones con heartbeats de la
+misma invocation, declarar logout no verificado. No lanzar P2R histórico ni
+acceder a validación/final.
+
+---
+
+# Estado anterior — P2R Q0/Q/A/B+D integrado solo en sintético
+
+Base `e1e98dd`; rama `codex/p2r-unit-integration`. La autorización actual
+integra el supervisor independiente con el worker sintético existente de P2:
+Q0 y Q/A/B+D, contadores de trayectorias/transiciones/actualizaciones,
+checkpoints `after_q0` y `after_dual_and_D`, reanudación desde frontera
+completa y fallo permanente si se interrumpe una unidad. La CLI mantiene un
+rechazo temprano del perfil histórico. No hay permiso P2R de mercado ni se
+generaron trayectorias del histórico. P0/P1 y el ledger/unidad parcial de P2
+permanecen intactos. La eliminación local previa de `.python-version` se
+conserva fuera de los commits.
+
+Ver [informe de integración](hitos/P2R-unidades-sinteticas.md),
+[comprobaciones](evidence/p2r-unit-integration/COMMANDS.md) y
+[procedimiento separado para el host](protocols/P2R-host-preflight-review.md).
+La prueba automatizada de señal **no equivale** a logout completo; el último
+estado documentado fue `Linger=no`, y la lectura actual de `loginctl` quedó
+bloqueada por el entorno de herramientas. No se modificó systemd ni se
+rebajaron umbrales.
+
+**Siguiente tarea:** revisar las evidencias y verificar por separado
+`Linger=yes`, logout completo y recursos reales aptos. Una futura campaña
+histórica requeriría autorización específica, permiso y ejecutor train-only
+separados, huellas congeladas y nuevo preflight. No reanudar P2 ni iniciar P2R
+histórico, validación o final. No modificar la tesis.
+
+---
+
+# Estado anterior — infraestructura P2R sintética; mercado bloqueado
+
+Base `d7f253b`; rama `codex/p2r-infrastructure`. El usuario autorizó
+implementar y verificar **solo infraestructura sintética** de P2R. El servicio
+`systemd --user` probó separación del proceso lanzador y señal durante una
+unidad; el ledger y los artefactos de P2 conservan sus huellas. La CLI P2R
+rechaza mercado, validación y final antes de crear artefactos. No se generaron
+trayectorias históricas ni hubo actualizaciones de aprendizaje. La propuesta
+P2R v1 permanece sin autorización de ejecución.
+
+El gestor de usuario está activo pero `Linger=no`; no se efectuó logout
+completo. La memoria disponible observada fue menor que 4 GiB, de modo que
+un preflight de mercado tampoco pasaría en este estado. Las pruebas usan
+fixtures de recursos y una ventana de reloj ficticia solo para ensayar señales
+cerca de medianoche. Ver [informe](hitos/P2R-infraestructura.md),
+[ajustes para revisión](proposals/P2R-infraestructura-addendum-v1.md) y
+[comandos/evidencia](evidence/p2r-infrastructure/COMMANDS.md).
+
+**Siguiente tarea:** revisar el informe y decidir ajustes del protocolo.
+Antes de una eventual ejecución histórica se necesitan autorización separada,
+permiso nuevo, runner integrado con P2 Q/A/B+D, huellas y preflight, verificación
+de continuidad tras logout y recursos disponibles. No reanudar P2, no modificar
+la tesis, no acceder a validación ni final. La eliminación local previa de
+`.python-version` sigue fuera de los commits.
+
+---
+
+# Estado anterior — apagado identificado; propuesta P2R para revisión
+
+Base `a2014e4` verificada local/origin; rama documental
+`codex/p2-shutdown-diagnosis-proposal`. Una investigación posterior de solo
+lectura encontró cierre de GNOME y registro de apagado del equipo a las
+06:20:12 UTC del 30/09/2026, coincidente con el último progreso de la unidad
+2 de `run-05-C0`. La pérdida del supervisor se explica por la salida de la
+sesión/equipo; **no consta quién ni qué ordenó el apagado**. El ledger P2
+permanece `failed`, SHA256
+`e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8`,
+y la parcial se conserva fuera de Git. No hubo reanudación, entrenamientos
+nuevos ni acceso a validación/final.
+
+[Diagnóstico](hitos/P2-perdida-supervisor-diagnostico.md) y
+[evidencia de comandos](evidence/p2-shutdown-investigation/COMMANDS.md).
+La [propuesta P2R](proposals/P2R-protocolo-v1.md) recomienda repetir **las
+nueve corridas completas** en una raíz y permiso nuevos, con supervisor
+independiente del chat, controles de alimentación, mismo diseño científico y
+reglas de presupuesto/interrupción fijadas antes de ejecutar. Está
+**PROPUESTA PARA REVISIÓN, NO AUTORIZADA** para implementación o mercado.
+
+**Siguiente tarea:** revisión del diagnóstico y de P2R por el usuario. Una
+eventual implementación sintética y la ejecución histórica requerirán
+autorizaciones posteriores y separadas. No reutilizar resultados P2 como
+corridas P2R, no modificar la tesis ni tocar validación/final. La eliminación
+local previa de `.python-version` sigue sin incluirse en commits.
+
+---
+
+# Estado anterior — P2 histórico interrumpido, campaña cerrada por fallo
+
+Rama `codex/p2-execution`. La autorización y activación se publicaron en
+`18bc767`. El preflight activo y la integridad de P0/P1 pasaron. La campaña
+alcanzó cinco corridas K10 completas y una sexta (`run-05-C0`, semilla 610047)
+con Q0 e iteración 1 completas. Durante la iteración 2 se perdió la sesión del
+supervisor; el último progreso conservado está en fase B, sin checkpoint de esa
+unidad. El 30/09/2026 a las 16:32:06 UTC el ledger registró
+`interrupted_supervisor_or_unit` y estado **failed**. No se reanudó ni repitió
+ninguna unidad.
+
+El cierre de solo lectura verificó la cadena de 176 estados, 57 unidades
+completas, sus checkpoints y 3264 archivos D. La unidad parcial queda fuera de
+los contadores cerrados; su progreso se conserva localmente. La causa precisa
+de la desaparición del proceso no está demostrada. Los umbrales conjuntos de P2
+no son evaluables con nueve corridas incompletas. Las advertencias del crítico
+y la marca heredada `market_training_executed=false` se documentan sin cambiar
+el código operativo ni inferir ausencia de aprendizaje.
+
+**Siguiente tarea:** revisar [informe de cierre](hitos/P2-ejecucion-interrumpida.md),
+[resumen académico](hitos/P2-ejecucion-resumen-academico.md) y
+[evidencia](evidence/p2-execution/COMMANDS.md). Decidir un protocolo nuevo antes
+de cualquier ejecución adicional; no reparar ni relanzar esta campaña por
+resultado. Validación 2023, final 2024–2025 y tesis permanecen intactos. La
+eliminación local previa de `.python-version` sigue fuera de los commits.
+
+---
+
+# Estado anterior — P2 histórico autorizado, preflight previo a ejecución
+
+Base de integración `2f01d6c` comprobada contra origin el 30/09/2026. Rama
+`codex/p2-execution`. El usuario autorizó un permiso específico para las nueve
+corridas P2 sobre entrenamiento aceptado 2018–2022; el registro está en
+[P2-market-approval-2026-09-30.md](protocols/P2-market-approval-2026-09-30.md).
+Se conserva el diseño P2, d, ADR-002, Q/A/B, crítico4 provisional y D64.
+Validación 2023, final 2024–2025 y campañas posteriores siguen bloqueadas.
+
+Antes de iniciar: verificar permiso y commit separado, 108 huellas P0/P1,
+configuración/datos/scaler, ausencia de otra campaña y presupuesto diario La Paz.
+La campaña debe pausar en frontera completa si no cabe una unidad. Fallo de
+integridad invalida la corrida/campaña sin reintento selectivo. Checkpoints y
+evidencia se guardan localmente; los resultados pequeños se versionarán.
+La eliminación local previa de `.python-version` permanece fuera de commits.
+
+**Siguiente tarea:** ejecutar preflight activo; solo si pasa, iniciar el comando
+canónico P2 y medir D real dentro de sus topes. Al pausar o cerrar, comprobar
+ledger/checkpoints sin nuevas actualizaciones y publicar informe, resumen OE3
+y estado de integridad. No modificar la tesis.
+
+---
+
+# Estado vigente — P2: perfil histórico integrado, campaña bloqueada
+
+Base `5e81594` verificada contra `origin/codex/p2-infrastructure`; nueva rama
+`codex/p2-market-integration`. La autorización vigente cubre integración,
+fixtures sintéticos y preflight histórico de **solo lectura**. La campaña P2,
+trayectorias históricas nuevas y actualizaciones con mercado NO están autorizadas.
+
+El perfil conecta `TrainingMarket` con 7048 inicios H1, normalizador persistido y
+las particiones protegidas. Conserva nueve corridas K10, semillas y orden P2,
+crítico4 provisional, D64 y Q/A/B común. El registro de campaña está inactivo y
+anclado por hash; el comando público rechaza mercado antes de cargar datos o
+crear salidas. D exige un permiso de supervisor y generador propio. El preflight
+leyó únicamente entrenamiento y huellas, sin solicitar rutas/episodios. La
+suite final: 234 pruebas y Ruff aprobados. La
+eliminación local previa de `.python-version` sigue ajena a los commits.
+
+**Siguiente tarea:** revisar [informe](hitos/P2-integracion-historica.md),
+[resumen académico](hitos/P2-integracion-resumen-academico.md) y
+[evidencias/comandos](evidence/p2-market-integration/COMMANDS.md). Después se
+necesita autorización explícita y un commit de activación del permiso para medir
+el costo D y, solo entonces, ejecutar P2 dentro de los topes aprobados. Ni el
+JSON ni la CLI por sí solos activan la campaña. No repetir P0/P1, no acceder a
+validación/final, no modificar tesis. Cuatro épocas siguen provisionales.
+
+---
+
+# Estado vigente — P2: infraestructura sintética, mercado bloqueado
+
+Rama `codex/p2-infrastructure`, base `7357aa1` verificada local/origin. El usuario
+aceptó el diseño P2 (9 corridas, K10, semillas 610031/610047/610081, crítico4
+provisional, D64, umbrales §7, hasta3 días/3h globales por día). Autorizó únicamente
+implementación y pruebas sintéticas. **NO autoriza P2 histórico**, validación2023
+ni final2024–2025. P0/P1 cerrados y sus evidencias se conservan.
+
+Implementación: D independiente con pi_k de A y ambos críticos sobre los mismos
+MC; métricas/solapamientos/criterios conjuntos; fronteras after_q0 y
+**after_dual_and_D**; checkpoint, reanudación, contadores y presupuesto global
+persistentes. Q/A/B se conserva en una implementación común. Código `41fcef3`;
+221 pruebas pasadas (94.31 s), Ruff y 282 huellas históricas verificados.
+La CLI rechaza mercado
+antes de cargar datos. No hay P2Permit ni bandera que habilite campaña.
+
+**Siguiente tarea:** revisar [informe y límites](hitos/P2-infraestructura.md),
+[resumen académico/OE3](hitos/P2-resumen-academico.md),
+[contrato y permisos](protocols/P2-infrastructure-v1.md) y
+[pruebas ejecutadas](evidence/p2-infrastructure/COMMANDS.md).
+La ejecución histórica requiere autorización posterior y registrar/conectar el
+perfil de mercado al supervisor antes de la calibración acotada. No inferirla de
+la aceptación de infraestructura ni congelar cuatro épocas como confirmatorias.
+
+El comando futuro está documentado **NO EJECUTADO como campaña**; actualmente
+bloqueado. No repetir P0/P1 ni modificar la tesis. La eliminación local previa de
+`.python-version` sigue fuera de los commits. Sin ZIP.
+
+---
+
+# Estado vigente — propuesta P2 para revisión, NO autorizada
+
+Antecedente P1 cerrado 811d882, verificado local/origin; rama `codex/p2-proposal`.
+Solo diseño/documentación y comprobaciones estáticas/algebraicas. Sin cambios de
+src/scripts/configs, registros de permisos o ejecutores; sin nuevas trayectorias,
+entrenamiento, validación 2023 ni conjunto final. Evidencias P0/P1 conservadas.
+
+**Recomendación:** nueve corridas K=10, semillas 610031/610047/610081, cuatro épocas
+provisionales del crítico; D=64 por iteración con RNG separado y pi_k que generó A_k.
+Evaluar phi_k y phi_(k+1) sobre el mismo D_k, alineando el post con su política de
+ajuste. Mantener d, Q/A/B, normalizador y todos los demás parámetros P1.
+Tres semillas, no nueve réplicas independientes; no afirmar generalización temporal.
+
+**Siguiente tarea:** revisar K/D/semillas, umbrales técnicos y presupuesto máximo de
+tres días activos con 3h global/día; después decidir autorización explícita de
+implementación/pruebas y ejecución. Esta propuesta NO autoriza esos pasos ni
+congela cuatro épocas para confirmación. No usar la configuración candidata en
+un ejecutor ni registrar su hash como permiso.
+
+[Protocolo y decisiones pendientes](proposals/P2-protocolo-v1.md),
+[configuración NO ejecutable](proposals/P2-candidate-v1.json),
+[resumen académico](proposals/P2-resumen-academico-v1.md),
+[comprobaciones y límites](evidence/p2-proposal/COMMANDS.md).
+La eliminación local previa de .python-version sigue fuera de commits. Tesis intacta.
+
+---
+
+# Estado vigente — P1 cerrado, criterio cumplido
+
+Rama `codex/p1-critic-epochs`. Aprobación 7eb9738, ejecutor 7617d84;
+18 corridas K=2 completadas sin fallos/reintentos/pausas. Criterio primario
+cumplido en **3/3 semillas**: reducción MSE post-A con cuatro épocas de
+50.74%, 58.70% y 44.44%. A inicial/actor posterior idénticos en todos los pares;
+condiciones repetidas como controles, no nueve réplicas independientes.
+
+**Siguiente tarea:** revisión académica de P1 y definición explícita del próximo
+protocolo. No ejecutar P2, validación/final ni congelar automáticamente cuatro
+épocas como parámetro definitivo. La mejora es in-sample; sigue MSE relativo >1
+en todos los A completos. 465 alertas del crítico; no otras alertas predefinidas.
+
+Recursos: 38304 trayectorias, 6894720 transiciones, 288 pasos actor/432 crítico.
+Brazo2: 144 pasos crítico; brazo4: 288, con iguales trayectorias.
+P1: 2650.523 s (44m10.523s). Total diario P0+preparación+P1: 5424.038 s
+(1h30m24.038s), dentro de 3h. Día 24/09/2026 La Paz, timestamps UTC.
+
+198 pruebas sintéticas/Ruff aprobados antes de mercado. Cierre de solo lectura
+verifica 72 artefactos, 18 pares de hashes actor/crítico, presupuesto, recursos
+y P0 intacto. No se accedió a validación/final; tesis intacta.
+[Informe](hitos/P1-epocas-critico.md), [resumen académico](hitos/P1-resumen-academico.md),
+[resultados](evidence/p1-execution/campaign-results/results.json),
+[comandos](evidence/p1-execution/COMMANDS.md). Checkpoints completos locales.
+La eliminación local previa de .python-version sigue fuera de commits.
+
+---
+
+# Estado vigente — P1 aprobado, preparación de ejecución
+
+Autorización de usuario desde diagnóstico 42152c3; registro 7eb9738.
+Rama `codex/p1-critic-epochs`. [Protocolo aprobado](protocols/P1-approved-v1.md)
+y configuración JSON congelada: 18 corridas, K=2, semillas nuevas,
+crítico 2/4 épocas; demás parámetros P0 intactos, d=-ln(.90).
+
+Ejecutor Q/A/B común, métricas de A fijo antes/después, control de igualdad
+inicial de A/actor. Bloqueo GLOBAL compartido y débito de otras campañas del día.
+Conserva 3h/día La Paz/UTC, reserva, topes y 27 sesiones máximas de campaña.
+Solo entrenamiento 2018–2022; P0/diagnóstico conservados; sin validación/final.
+
+Siguiente paso autorizado: ejecutar P1 después de cerrar las pruebas sintéticas
+y registrar resultados en informe/evidencia P1. No modificar parámetros durante
+la campaña ni repetir fallos. No inferir generalización/CVaR del criterio primario.
+Se conserva la eliminación local previa de .python-version fuera de commits.
+
+---
+
+# Estado vigente — diagnóstico P0 cerrado
+
+Base P0 e0a2dfc verificada contra origin; rama `codex/p0-diagnosis`.
+**Comportamiento explicado; sin defecto operativo demostrado en lo examinado.**
+Reconstrucción congelada de los 18 A originales con hashes de cálculo exactos;
+sin pasos de optimizador, reejecución P0 ni acceso a validación/final.
+
+Las 162 alertas del crítico son 18 mediciones preactualización sobre A entero y
+144 sobre minibatches antes de su paso actual, aunque se escriben después.
+MSE post-A reconstruida disminuye en 18/18 casos, todavía peor que predictor cero.
+C0/C5 de semilla 410031 coinciden porque lambda=0 al inicio y el segundo A tiene
+cero shortfalls pese a lambda positivo. Las otras cinco corridas C5/C10 sí tienen
+penalización y gradiente de riesgo no nulos en la segunda iteración.
+
+**Siguiente paso:** revisión académica del diagnóstico y de la propuesta acotada
+P1 (2 frente a 4 épocas del crítico). P1 no autorizado ni ejecutado; no cambiar d,
+repetir P0 ni iniciar otras corridas. No se puede concluir generalización/CVaR.
+
+[Informe](hitos/P0-diagnostico.md),
+[resumen académico](hitos/P0-diagnostico-resumen-academico.md),
+[evidencias y comandos](evidence/p0-diagnosis/COMMANDS.md).
+16 pruebas analíticas sin aprendizaje y comprobaciones de correspondencia pasan;
+Ruff pasa. Todos los hashes de campaña/código operativo se conservan. La
+eliminación previa de `.python-version` sigue fuera de commits. Tesis intacta.
+
+---
+
+# Estado vigente — P0 completado con advertencias
+
+Campaña `artifacts/p0-approved-v1`: **completed**, nueve corridas K=2, sin fallos
+ni reintentos. Rama `codex/p0-approved-execution`; ejecutor publicado 0838ac8,
+aprobación e0e3495. El código ejecutado permanece intacto en este cierre documental.
+
+**Siguiente tarea:** revisar las advertencias del crítico y la señal de riesgo con
+las evidencias existentes antes de proponer seguimiento. P0 ya terminó: no volver
+a ejecutarlo. No se autoriza P1, validación, conjunto final ni evaluación confirmatoria.
+
+Tiempo global supervisado 1385.677 s (23 min 5.677 s), día 2026-09-24 La Paz.
+19152 trayectorias / 3447360 transiciones / 144 actualizaciones por red;
+pico RSS trabajador 358.44 MiB. Una sesión por corrida, límites conservados.
+186 pruebas y Ruff aprobados antes de mercado; comprobación posterior de registros,
+contadores, límites y hashes aprobada. 162 advertencias critic_relative_mse:
+cierre operativo completo, estabilidad pendiente de revisión. F_B y rho_B de C5/C10
+superaron d; dos iteraciones no demuestran convergencia ni cumplimiento CVaR.
+
+[Informe P0](hitos/P0-ejecucion.md), [resumen académico](hitos/P0-resumen-academico.md),
+[resultados](evidence/p0-execution/campaign-results/results.json),
+[comandos](evidence/p0-execution/COMMANDS.md). Checkpoints locales fuera de Git;
+hashes y evidencia pequeña versionados. Se conserva la eliminación local previa
+de `.python-version` fuera de commits. Tesis intacta.
+
+---
+
+# Historial conservado
+
+# Handoff — P0 aprobado, ejecutor verificado
+
+Base aprobada 7a379b7; aprobación registrada en e0e3495. Rama
+`codex/p0-approved-execution`. [Protocolo vigente](protocols/P0-approved-v1.md)
+y [configuración congelada](protocols/P0-approved-v1.json). Propuesta original
+conservada debajo y en docs/proposals.
+
+Autorización: ejecutar P0 en train 2018–2022 tras pruebas sintéticas, d=-ln(.90),
+K=2, tres semillas y orden rotado aprobado. Varias corridas secuenciales comparten
+3h GLOBAL/día America/La_Paz, timestamps UTC; no reiniciar límites ni escoger
+checkpoints por resultado. Validación/final/campañas posteriores bloqueados.
+
+Implementado: ledger canónico append-only con lock, deadlines diarios persistentes,
+contadores por corrida/campaña, subprocess por frontera completa, watchdog
+monotónico/RSS y terminación del hijo si muere el supervisor. Perfil P0 requiere
+protocolo registrado y lease del supervisor. Algoritmo Q/A/B único.
+Checkpoint v2 conserva actor/crítico/Adam/estado/RNG; ledger enlaza las fronteras
+y las sesiones. Un proceso interrumpido invalida campaña, sin reintento selectivo.
+
+Verificación nueva: 186 pruebas pasan, Ruff pasa; incluye C0/C5 reanudados exactos,
+dos corridas sintéticas en un día, presupuestos/reinicio/midnight, corrupción,
+watchdog tiempo/memoria y muerte de supervisor. La revisión encontró y corrigió
+rechazo del flag risk_enabled=False al reanudar C0; C5/C10 no pueden apagar riesgo.
+
+Comando canónico autorizado (sin overrides de parámetros/output):
+`uv run --frozen python scripts/run_pilot.py --protocol docs/protocols/P0-approved-v1.json`.
+Ledger y checkpoints: artifacts/p0-approved-v1. Repetir el mismo comando únicamente
+tras pausa planificada; campaña failed/incomplete requiere diagnóstico y nueva
+revisión, no borrar el ledger. Si no cabe unidad, continuar otro día con igual
+autorización. Conservar .python-version eliminado previamente fuera de commits.
+
+Estado/resultados de la ejecución se registrarán al finalizar o pausar la campaña.
+No atribuir a estas pruebas resultados de mercado.
+
+---
+
+# Handoff — propuesta P0 pendiente de decisión
+
+H5 revisado, base **1118129**. Se preparó el protocolo concreto
+[P0-technical-v1](proposals/P0-protocolo-v1.md) y su
+[configuración candidata NO AUTORIZADA](proposals/P0-candidate.json), en rama
+`codex/p0-protocol-proposal`. Se conserva debajo la entrega H5.
+
+Propuesta: tres bloques de semillas, orden C0/C5/C10 rotado, dos iteraciones
+Q/A/B completas por corrida, N_A=64 y N_Q=N_B=400; CPU float64/un hilo.
+Referencia d común de 5%, 10% o 20% convertida a pérdida logarítmica: selección
+pendiente; 10% se recomienda solo para discusión, sin adoptarla.
+
+Siguiente paso: respuesta del investigador sobre **d y aprobación/ajustes de P0**,
+incluidos topes de primera medición, supervisor y hasta tres sesiones de 3h por
+corrida. La medición inicial tiene límites propuestos, ninguna duración inventada.
+Antes de ejecutar se necesita una autorización explícita y adaptar/probar el
+ejecutor cerrado, watchdog y contadores diarios/acumulados. No resetear
+TimeBudget H5 ni inferir permiso desde un JSON.
+
+Ocho comprobaciones estáticas/algebraicas y Ruff dirigidos pasaron:
+[comandos y límites de evidencia](evidence/p0-proposal/COMMANDS.md). No se
+repitieron verificaciones H5, no se leyó mercado ni se ejecutó aprendizaje.
+Guardas, ADR, código operativo, configuración H3 y tesis intactos; la eliminación
+local previa de .python-version sigue fuera del commit.
+
+---
+
+# Handoff — entrega H5 conservada
+
+Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), origin.
+Rama [codex/h5-infrastructure](https://github.com/Ichurri/btc-risk-rl/tree/1118129b90d0760cf47f1538f1487dee9d7cd9e5).
+Base H4 local/remota verificada 19fa2e6; implementación H5 **3cbd342**.
+El commit documental posterior añade evidencias y este handoff. La eliminación
+local previa de .python-version se mantiene fuera de commits. Sin force push.
+
+**Vigente:** ADR-002 v2.1 adoptado, sin cambios metodológicos. H5 autoriza
+infraestructura, aprendizaje pequeño sintético e integración 2018–2022 sin
+optimización. Pilotos, entrenamientos de mercado y evaluación confirmatoria
+siguen bloqueados. PyTorch CPU existente; sin CUDA/drivers ni cambios de tesis.
+
+Entregado: adaptador AcceptedMarket de entrenamiento (7048 inicios), checkpoint
+completo after_q0/after_dual con journal contra rollback, reanudación exacta
+sintética, diagnósticos y control preventivo de tiempo con reserva. Q/A/B único.
+No se habilitó el ejecutor de mercado: run_pilot.py rechaza antes de abrir datos.
+
+Nueva verificación: **164 pruebas y Ruff aprobados**; integración real acotada
+de 3 episodios/540 transiciones con política congelada, **0 actualizaciones**.
+Normalizador/productos H1 invariantes; sin observaciones de validación cargadas
+ni acceso al conjunto final. Los hashes verifican archivos H1 compartidos en
+bytes completos; no equivale a evaluación de validación. No extrapolar tiempos
+de estas comprobaciones a entrenamiento.
+
+## Siguiente tarea
+
+Revisar H5 y [P0 instrumentado](proposals/H5-P0-instrumentado.md). Antes de cualquier
+piloto, el investigador debe fijar especialmente la **cota económica común d**,
+configuración/semillas/tamaños/tasas, criterios de precisión/parada, calibración
+temporal y protocolo autorizado de hasta 3h diarias. Habilitar pilotos requerirá
+un cambio revisado; no basta pasar un JSON con authorized=true. No convertir
+SyntheticSettings ni candidatos H4 en decisiones definitivas.
+
+Leer [informe H5](hitos/H5-infraestructura.md),
+[resumen académico](hitos/H5-resumen-academico.md) y
+[comandos/resultados](evidence/infrastructure-h5/COMMANDS.md).
+H1/H3, guardas, contabilidad y tesis intactos. No ZIP rutinario.
+
+---
+
+## Historial conservado: entrega H4
+
+# Handoff — entrega histórica H4
+
+Repositorio [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
+Rama de entrega: [codex/h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/19fa2e63d973a1ac6951a9d32cd3432113a4a5a3).
+Base H3 verificada local/remota 8f027c5; alcance/dependencias 31b4c87;
+implementación H4 a6c391a. La eliminación previa de .python-version sigue fuera
+de los commits. No hubo retroceso de ramas ni sobrescritura de cambios previos.
+
+**Vigente:** ADR-002 v2.1 adoptado. H4 autoriza agentes/recolector y actualizaciones
+pequeñas exclusivamente sintéticas; NO mercado, pilotos o evaluación confirmatoria.
+AGENTS refleja esta autorización. PyTorch 2.8.0+cpu instalado y fijado, sin CUDA.
+H3 y los productos H1 se conservan; no se leyeron datos reales en H4.
+
+Implementado: actor logística-normal y crítico separados, política congelada,
+identidades de realización/ruta/política, fragmentos completos de 180, MC,
+calendario Q/A/B, eta/masa fraccionaria, dual F_B y equivalencia exacta riesgo
+apagado/C0. Los fallos invalidan la corrida, sin reemplazo selectivo.
+NPZ de trayectorias versionado para auditoría; no checkpoint/reanudación de
+optimizadores. El ejecutor solo acepta rutas fabricadas en código.
+
+Verificación nueva: Ruff pasa; **149 pruebas aprobadas**, 32 nuevas H4.
+Evidencias y actualización sintética adicional en
+[COMMANDS](evidence/agents-h4/COMMANDS.md).
+Leer [informe](hitos/H4-agentes-recolector.md),
+[resumen académico](hitos/H4-resumen-academico.md) y
+[propuesta de pilotos](proposals/H4-pilotos-3h.md).
+
+## Siguiente tarea
+
+Revisar H4 y la propuesta de pilotos; autorizar alcance separado antes de mercado.
+Resolver adaptador de índices aceptados, checkpoint integral/reanudación
+determinista y diagnósticos; después calibrar tiempos con presupuesto máximo de
+3h/día. Cerrar cota económica común, tamaños, tasas, arquitectura y presupuesto
+antes de comparar condiciones. No extrapolar tiempos sintéticos ni seleccionar
+por B favorable. El conjunto final sigue bloqueado.
+
+Los valores SyntheticSettings NO son hiperparámetros de pilotos. La configuración
+initial.toml conserva el perfil histórico H3 y training_enabled=false para mercado.
+No tomar los antiguos «sin agentes» del historial como estado vigente.
+No modificar la tesis ni generar ZIP rutinario.
+
+---
+
+# Historial conservado anterior a H4
+
+# Handoff — estado vigente H3 (22-09-2026)
+
+Repositorio en [GitHub](https://github.com/Ichurri/btc-risk-rl), remoto origin.
+Rama de entrega: [codex/adopt-adr002-v2-1](https://github.com/Ichurri/btc-risk-rl/tree/8f027c53696976602260eb498698ef51ffd5d711).
+Base revisada e4e2e8f; adopción 10d92fa; código H3 ebb3914.
+Git local y remoto coincidían en la base; no había commits posteriores.
+La eliminación local previa de .python-version se conserva fuera de los commits.
+
+**Vigente:** ADR-002 v2.1 ADOPTADO por autorización explícita del usuario.
+Simulador H3: schema 2, observación 13 con reloj, H=180/gamma=1,
+terminalidad finita sin bootstrap en H; evaluación continua con cartera única
+y h=1. Cortes internos esperan completitud; rutas cortas se rechazan.
+H1 permanece aceptado bajo B; productos originales, scaler, cuentas H2,
+costos y recompensa conservados. Propuestas anteriores y evidencia intactas.
+
+Verificación local nueva: Ruff pasa, **117 pruebas aprobadas**.
+Auditor de desarrollo: **7048 índices, 31 recorridos y 7590 transiciones**,
+incluida validación continua de 2190 con un reset. Datos/scaler sin cambios.
+Regresión contable exacta frente a H2. Son acciones prefijadas y fixtures
+sintéticos, no resultados de agentes. Sin entrenamiento ni acceso final.
+
+Leer [ADR vigente](decisions/ADR-002-risk-horizon.md),
+[informe H3](hitos/H3-contrato-ADR002.md),
+[resumen académico](hitos/H3-resumen-academico.md) y
+[comandos/evidencia](evidence/simulator-h3/COMMANDS.md).
+
+## Siguiente tarea
+
+Solicitar autorización de alcance antes de implementar agentes y recolector:
+identidad y congelación de políticas, ensamblaje H completo, Monte Carlo,
+Q/A/B, eta/empates/masa fraccionaria, señal dual F_B y equivalencia exacta con C0.
+Cerrar protocolo de pilotos antes de ejecutarlos; congelar parámetros comunes
+antes de comparar condiciones y parámetros inferenciales antes de confirmación.
+La adopción actual NO autoriza agentes, entrenamientos o evaluación confirmatoria.
+
+No reabrir automáticamente las decisiones adoptadas ni interpretar los estados
+«abierto/no adoptada» del historial siguiente como vigentes. No modificar la tesis.
+Compartir rama/commit y evidencia desde GitHub; ya no se requieren ZIP por entrega.
+
+---
+
+# Historial conservado (estado anterior a H3)
+
 # Traspaso entre este chat y Codex local/remoto
 
 Leer AGENTS.md y los ADR. Consultar git status y git log antes de editar.

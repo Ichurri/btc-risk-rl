@@ -1,12 +1,763 @@
 # Reglas para Codex: tesis BTC
 
 ## Autoridad y alcance
+- **15/11/2026: referencia descriptiva comprar y mantener BTC cerrada.**
+  Con permiso propio limitado se calculó una única vez sobre las 4.386
+  transiciones finales auditadas: retorno acumulado neto +106,976091 % y
+  Sortino anualizado 1,421389. El gate se cerró en `9a7256e`; no repetir ni
+  alterar las 108 políticas o el contraste principal. La referencia no es
+  una tercera hipótesis ni demuestra CVaR. Ver
+  `docs/hitos/OOS-v1-2-buy-hold-referencia-20261115.md` y evidencia
+  `docs/evidence/oos-v12-buy-hold-20261115/`.
+- **15/11/2026: evaluación OOS final cerrada y permisos apagados.**
+  El ledger de evaluación 2024–2025 terminó `completed`, 108/108 políticas
+  K10, 36/36 bloques, sin pendiente; SHA-256
+  `b035e1fef6d5e95b2b75df660cc178382081552207be30358f632f49a7e513ad`.
+  Contraste SHA-256
+  `636ba000cf4b3f9820ea56828e99b7ae7b4f6a9d9d83185064c3fce67ac1cf1c`,
+  reauditorado exactamente. Holm `p=0,4588` para C5−C0 y C10−C0;
+  no se rechaza superioridad ni se demuestra CVaR. Ver
+  `docs/hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md`.
+  Los cuatro gates de fuente/evaluación 2023 y final se cerraron
+  prospectivamente; conservar permisos históricos, fuentes y trazas
+  originales solo para auditoría. No repetir evaluación ni entrenamiento.
+  Mantener la salvedad de bloqueo original de `wf-2021` y cargo conservador
+  del 12/11 al trasladar resultados a la tesis.
+- **15/11/2026: fuente final auditada, evaluación aún cerrada.** El
+  permiso de adquisición final se fijó en `b1cb99b` y se activó solo ese
+  gate en `d3d0d35`, después del cierre técnico 2023. Una sesión
+  `oos-v12-final-source-20261115-01.service` terminó `Result=success`:
+  cinco páginas Binance Spot BTCUSDT 4h, 4.429 velas, 43 de contexto
+  idénticas a 2023 y 4.386 transiciones finales. Exportación SHA-256
+  `db842235decd93fef2e04e49fbfb4f20752e9239f1c99e3e6e742436`.
+  Cargo medido 134,826421 s. Ver
+  `docs/hitos/OOS-v1-2-final-fuente-20261115.md`. El permiso de
+  **evaluación** final sigue cerrado y requiere un registro distinto que
+  fije esta fuente, el código y el cierre técnico; cero políticas finales
+  evaluadas hasta entonces. No presentar esta auditoría como resultado
+  financiero.
+- **15/11/2026: puerta técnica 2023 superada.** El permiso separado
+  `technical_2023` fue fijado en `77bb44e` y activado en `80d763a`.
+  `oos-v12-technical-eval-20261115-01.service` terminó `Result=success`:
+  ledger `completed`, 108/108 políticas K10, 36/36 ternas, sin pendiente;
+  cierre técnico SHA-256
+  `a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3`.
+  La bitácora cargó 984,338637 s. Ver
+  `docs/hitos/OOS-v1-2-evaluacion-2023-cierre-20261115.md`.
+  Es integridad técnica, sin selección de desempeño; no demuestra
+  rentabilidad ni riesgo. El gate final sigue cerrado y exige fuente
+  2024–2025 auditada, armonización de tesis y permiso propio fijado al
+  cierre técnico. No acceder al final antes de estas puertas.
+- **14/11/2026: entrenamiento principal OOS completado; evaluación aún cerrada.**
+  El ledger `artifacts/oos-v12-training-main-01/ledger.jsonl` cerró
+  `completed`, cursor 108, 1.188/1.188 unidades, `pending=null` y 36 ternas
+  C0/C5/C10. La auditoría posterior verificó la cadena completa de 3.622
+  estados y las 1.188 huellas de checkpoints; ver
+  `docs/hitos/OOS-v1-2-entrenamiento-principal-cierre-20261114.md` y
+  `docs/evidence/oos-v12-main-closure-20261114/`. El proceso principal
+  informó `nightly_result=completed`; `systemd` quedó `Result=timeout` porque
+  `ExecStopPost` agotó 90 s al generar `reporte-codex.md`. No confundir ese
+  fallo de reporte con una unidad de entrenamiento fallida ni lanzar otra
+  sesión. El timer está deshabilitado. Validación 2023 y final 2024–2025
+  continúan cerradas y requieren las puertas/permiso separados. El cargo
+  conservador del 12/11 excede 50.400 s, aunque no se aceptaron unidades
+  después del límite de admisión; documentar la distinción sin alterar el
+  ledger histórico.
+- **11/11/2026: ampliación prospectiva OOS autorizada.** Santiago sustituyó
+  la ventana fija 01:00–09:00 por ejecución a cualquier hora en Debian y
+  autorizó ampliar el presupuesto según mediciones, sin alterar las 36
+  ternas C0/C5/C10, los nueve bloques por corte ni los topes por unidad.
+  La enmienda nueva `docs/protocols/OOS-v1-2-training-budget-amendment-20261111.json`
+  se fijó antes de aplicar código en `b86ea47`: 50.400 s globales por fecha
+  `America/La_Paz`, reserva 2.700 s, máximo 20 días y corte de presentación
+  el 16/11 a las 09:00. Los 6.942,163 s medidos el 11/11 más 3.857,837 s
+  conservadores se cargan antes de trabajo nuevo; no son 10.800 s de tiempo
+  realmente medido. La suite completa pasó con 587 pruebas y Ruff pasó; el
+  permiso v3 quedó fijado en `8860fb9`, SHA-256
+  `7b1f7dc62d01b6030b1b3a70b516b47d5207b612b25fd64607bf49a01194bed3`.
+  El preflight manual vigilado de `wf-2022` dio `ready`. Una sola sesión
+  `oos-v12-training.service` comenzó a las 11:28:14, `InvocationID`
+  `097bd51bfa774984a3913721e364f67e`; comprobar ledger y cierre antes
+  de otra sesión. El timer diario apunta al 12/11 01:00. Conservar
+  las reglas metodológicas de evaluación congeladas en
+  `docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json`
+  (`5fcdf75`): el acceso 2023/final sigue cerrado hasta evaluador
+  histórico verificado, armonización de tesis y permisos independientes.
+  La inferencia pura se prepara aislada en otra rama del mismo repositorio,
+  sin cambiar la huella de código del servicio activo. Conservar
+  2021 íntegro solo como diagnóstico descriptivo; el bloqueo original no
+  demostró exclusividad. Siguiente perfil `wf-2022` independiente. Antes de
+  Q0 exigir suite formal, Ruff, preflight vigilado, recursos y admisión.
+  Validación 2023 y final 2024–2025 requieren congelación/permiso distintos.
+- **11/11/2026: corrección prospectiva y continuación OOS programada.**
+  Las tres raíces de campaña coinciden ahora con el protocolo congelado y
+  el supervisor comparte `artifacts/shared-pilot-budget/global.lock` con
+  la preparación. Pruebas de dos procesos, suite completa **585 passed**
+  y Ruff pasaron. La aprobación independiente v2 SHA-256
+  `ef601eb95df48e3f3376b11d61eb64328914b225c43927c7e8baa12142f5c806`
+  fija el nuevo código sin editar el permiso del 10/11. El timer está
+  activo para **12/11/2026 01:00 America/La_Paz**; servicio inactivo y
+  próximo perfil `wf-2022`. Cada sesión debe repetir suite formal, Ruff,
+  preflight vigilado y admisión con saldo/reserva antes de Q0. El ledger
+  original anidado de `wf-2021` permanece intacto: 99/99 unidades y
+  huellas verificadas, 99/99 habrían cabido en la reconstrucción de
+  presupuesto, margen mínimo 1.128,211 s. Su integridad técnica está
+  verificada, pero el uso como cumplimiento estricto del supervisor
+  queda pendiente de adjudicación por el bloqueo equivocado original.
+  No repetir ni migrar 2021. `wf-2022` es independiente de sus pesos y
+  checkpoints, por lo que puede avanzar sin adoptar ese uso analítico.
+  Ver `docs/hitos/OOS-v1-2-entrenamiento-ruta-presupuesto-20261111.md`
+  y `reporte-codex.md`. Validación 2023 y final siguen cerradas.
+- **11/11/2026: antecedente de primera sesión OOS y pausa del timer.**
+  `oos-v12-training.service` cerró `Result=success` tras suite, Ruff y
+  preflight `ready`; `wf-2021` tiene 9/9 corridas, 3/3 ternas y 99/99
+  unidades aceptadas, ledger `completed` sin `pending`. El cargo global
+  fue 6.942,163 s el 11/11, con 1.157,837 s antes de la reserva de
+  2.700 s. `wf-2022` se bloqueó antes de Q0 por saldo insuficiente;
+  el perfil principal no inició. **Desviación de ruta:** el código escribió
+  el ledger en `artifacts/artifacts/oos-v12-training-wf-2021-01`, aunque
+  la raíz congelada era `artifacts/oos-v12-training-wf-2021-01`. El
+  supervisor usó el bloqueo/presupuesto anidado; la bitácora principal
+  midió toda la sesión y no hubo exceso global observado. No alterar,
+  migrar ni repetir el corte 2021. Se deshabilitó el timer nocturno;
+  no lanzar otra sesión antes de adjudicar y corregir prospectivamente
+  rutas/contabilidad, verificar y actualizar las huellas del permiso.
+  El servicio está inactivo. Ver
+  `docs/hitos/OOS-v1-2-entrenamiento-sesion-20261111.md` y
+  `reporte-codex.md`. Validación 2023 y prueba final siguen cerradas.
+- **10/11/2026: antecedente de autorización y preparación OOS v1.2.**
+  Santiago autorizó preparar y ejecutar hasta el 16/11 el entrenamiento
+  que quepa en 01:00–09:00 `America/La_Paz`, manteniendo 36 bloques
+  principales C0/C5/C10 y límites de 10.800 s globales/día, reserva
+  de cierre de 2.700 s y máximo 20 días activos. La adopción es **solo
+  de entrenamiento**: [protocolo congelado](docs/protocols/OOS-v1-2-training-freeze-20261110.json),
+  SHA-256 `0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0`;
+  aprobación independiente en `cbd11de`, SHA-256
+  `2a54cf3084b366d11750790e907ae36b826778de47313de060b5a4ee6324dba2`.
+  El timer permanente `oos-v12-training.timer` está `active/waiting` para
+  11/11 a las 01:00; el servicio está inactivo y las tres raíces OOS nuevas
+  siguen ausentes. Cada sesión ejecuta suite, Ruff y preflight vigilado
+  antes de Q0; si falla una puerta, no iniciar unidades. La memoria inicial
+  exige 6.026.846.208 B y durante unidades se conservan 4 GiB. En la
+  captura de 10/11 a las 10:57 la memoria era 5.536.272.384 B: **medición
+  del momento, insuficiente para lanzar entonces**, no pronóstico nocturno.
+  Se cambió prospectivamente la preferencia de suspensión con CA de
+  `suspend` a `nothing` para pantalla apagada; restaurar `suspend` al cerrar
+  la campaña. El timer `oos-v12-restore-power.timer` está programado para
+  16/11 a las 09:05 con restauración persistente; verificar que se ejecutó.
+  Ver `docs/hitos/OOS-v1-2-entrenamiento-preparacion.md` y
+  `docs/evidence/oos-v12-training-prep-20261110/schedule.json`. WF05,
+  `2022-01`/`02` y el costo `2022-03` conservan sus cierres; no abrir
+  validación 2023 ni prueba final 2024–2025 con este permiso. Si al 16/11
+  faltan bloques, informar avance parcial sin contraste confirmatorio.
+- **09/11/2026, diagnóstico y preparación WF 2022-03.** Santiago autorizó
+  una medición nueva del corte 2022 desde el 10/11, 01:00–09:00 La Paz,
+  condicionada a margen sostenido de memoria, suite, Ruff, preflight y
+  admisión. El primer permiso `d0f024c` no se ejecutó y se invalidó al
+  cerrar dos guardas del lanzador; el gate final quedó fijado en `3aa8aeb`,
+  JSON SHA-256 `c72292883224c50f86f0ae6a27b2ee6e4aaeed3ee548751cd81f3ac7f7ce73d4`.
+  Una sola sesión `systemd --user` está **programada**, no ejecutada, para
+  el 10/11 a la 01:00; `Restart=no`. El preflight, suite, Ruff y admisión
+  del día deben pasar antes de mercado. `2022-01` y `2022-02` siguen `failed` y no se reanudan; WF05
+  sigue cerrado. La sonda 04 cayó bajo 4 GiB durante la suite; la sonda 05
+  sostuvo 4 GiB + 512 MiB durante una sesión equivalente, con solo 38,6 MB
+  de margen mínimo. El perfil `2022-03` tiene raíz y aprobación propias,
+  guarda inicial de 6.026.846.208 B de `MemAvailable` y conserva 4 GiB
+  como guarda operativa. Ver
+  `docs/hitos/OOS-v1-2-costo-2022-02-memoria-diagnostico.md` y
+  `docs/hitos/OOS-v1-2-costo-2022-03-perfil.md`. **No usar una captura del
+  09/11 para lanzar el 10/11**: nueva suite formal, Ruff, preflight vigilado
+  y admisión con reservas. Validación/final y v1.2 siguen cerradas.
+- **09/11/2026: WF 2022-02 falló dentro de la unidad 8 por memoria.**
+  Perfil y autorización independientes en `7da17ad`/`a118476`; suite formal
+  bajo `systemd --user`: 505 passed, Ruff y preflight vigilado `ready`.
+  Una sesión aceptó Q0 y actualizaciones 1–7 (8/11 unidades), pero la
+  guarda observó `MemAvailable=4.278.210.560 B`, inferior a 4 GiB por
+  16.756.736 B. Ledger `failed`, unidad 8 pendiente, sin checkpoint
+  aceptado de ella. El último checkpoint completo `after_dual_and_D` de
+  unidad 7 se conserva solo como evidencia. **No reanudar, repetir la
+  unidad ni iniciar otra campaña el 09/11**: el fallo carga 10.800 s
+  globales conservadores ese día. Gate `2022-02` cerrado prospectivamente
+  en `dbadf34`; aprobación, ledger, journals y checkpoints intactos. Ver
+  `docs/hitos/OOS-v1-2-costo-2022-02-cierre-fallido.md`. WF05 y 2022-01
+  mantienen sus cierres; validación, prueba final y v1.2 siguen cerradas.
+- **07/11/2026, primer intento WF 2022-01 fallido antes del ledger.** La
+  sesión `oos-wf-cost-2022-01-session-01.service` inició a las 01:00 y la
+  suite previa terminó con 503 pruebas correctas y una falla contextual;
+  no se ejecutó Ruff formal, preflight formal ni Q0. La raíz histórica
+  sigue ausente. El intento durable terminó `failed`, bloquea reingreso y
+  carga conservadoramente 10.800 s globales el 07/11, aunque el intervalo
+  medido fue 440,610179 s. El gate de `2022-01` se cerró en `0dbe214`;
+  conservar la aprobación y los journals originales. No reanudar ni
+  repetir este intento, ni lanzar otro estudio ese día. La prueba fue
+  corregida prospectivamente para no heredar el contexto del servicio;
+  ver `docs/hitos/OOS-v1-2-costo-2022-primer-intento-fallido.md`.
+- Nueva autorización del 06/11/2026: integrar y verificar el ejecutor de
+  costo **exclusivo 2022** y ejecutar una campaña nueva solo después de
+  suite, Ruff, preflight vigilado, permiso fijado por huella y admisión
+  presupuestaria. El permiso técnico independiente se fijó inicialmente en
+  `61602a9` y se volvió a fijar en `b142d20` tras corregir una pausa
+  previa a unidad. El cambio de ventana 01:00–09:00 exigió otro repin;
+  la huella vigente es
+  `43506140c41c349731fd0a5b4a6133b6cec6e9bf091c995ab65c1ed68260cc75`;
+  El gate de esta raíz ya está cerrado por el intento fallido; la huella se
+  conserva solo para auditoría. Ver
+  `docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md`.
+  La raíz nueva es `artifacts/oos-v12-wf-cost-only-2022-01/`; WF05 sigue
+  cerrado `incomplete` y no se reanuda. La ventana 01:00–09:00
+  `America/La_Paz` **no** aumenta los topes de 3 h globales por fecha ni
+  los dos días/4.800 s propios del estudio. Cada unidad debe caber con
+  reserva antes de las 09:00. Las comprobaciones de
+  implementación anteriores al permiso técnico no son una campaña.
+- El usuario autorizó avanzar hacia la evaluación confirmatoria, pero
+  la propuesta v1.2 aún no está adoptada y exige resolver cambios
+  académicos de la tesis antes de abrir 2024–2025. Su cálculo vigente
+  requiere al menos 17 fechas activas bajo tiempos extrapolados; del
+  06/11 al 16/11 solo hay 11 fechas. Santiago eligió **prorrogar** el
+  contraste confirmatorio para conservar 36 bloques y los límites; la
+  fecha concreta y la armonización académica aún faltan. No recortar
+  réplicas ni reservas para aparentar viabilidad. Preparar infraestructura y medir 2022 sin
+  consultar validación/final hasta congelar el protocolo y las puertas.
+- Antecedente anterior a la autorización del 06/11 — estudio WF
+  **exclusivo del corte 2022**: el usuario autorizó solo la
+  implementación y verificación **sintética** del orquestador propuesto en
+  `cb6aeb8`. La bitácora previa al ledger, conciliación de intervalos y
+  admisión con reservas están implementadas; ver
+  `docs/hitos/OOS-v1-2-costo-2022-orquestador-sintetico.md`. El gate nuevo
+  sigue `MARKET_EXECUTION_ENABLED=False`, sin registro de aprobación ni raíz
+  histórica. En ese hito faltaban trabajador/supervisor histórico,
+  integración de corte, preflight vigilado y autorización específica.
+  Sus restricciones de ejecución fueron sustituidas solo en el alcance
+  explícito del nuevo registro; WF05, validación/final y v1.2 conservan
+  las guardas indicadas arriba.
+- WF `...05` **cerrado metodológicamente `incomplete` el 03/11/2026**:
+  el 02/11 se adjudicó como segundo día activo por suite, auditoría, Ruff,
+  preflight y cierre, aunque no hubo sesión histórica. El máximo de dos
+  días está agotado: **no iniciar `wf-2022/Q0` ni reanudar esta raíz**.
+  Ledger original intacto `ready`, 11/22 unidades, `pending=null`; sus 11
+  checkpoints, raíz y aprobación conservan huellas. El gate WF05 se cerró
+  prospectivamente (`MARKET_EXECUTION_ENABLED=False`); comando público y
+  trabajador rechazan antes de leer solicitudes. La conciliación incluye
+  339,63 s de primera suite fuera del ledger el 01/11: mínimo propio
+  3.824,140403 s, **224,140403 s por encima** del límite diario de 3.600 s.
+  El 02/11, el contador 0 s omitió la suite de 390,45 s y más trabajo de
+  comprobación/cierre. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-05-cierre-incomplete.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-closure-20261103/`. No alterar el
+  ledger para reetiquetarlo, no abrir validación/final ni activar v1.2.
+- WF `...05`: intento de reingreso del 02/11/2026 local **bloqueado antes de
+  lanzar**. El ledger previo y posterior siguió `ready`, 11/22 unidades,
+  `pending=null`; los 11 checkpoints y huellas coincidieron con la auditoría
+  de la sesión 02 y no había unidad activa. Suite completa 463 passed y Ruff
+  pasaron. El preflight vigilado nuevo dio `blocked` por
+  `MemAvailable=4.259.569.664 B`, 35.397.632 B por debajo de 4 GiB; las
+  demás guardas fueron conformes. **No se lanzó `wf-2022/Q0` ni otra sesión.**
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado-20261102.md`
+  y `docs/evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261102/`. La suite
+  gastó 390,45 s fuera del ledger; no asumir que el contador automático 0 s
+  es todo el gasto global. No asumir un tercer día activo: adjudicar si este
+  intento consumió el segundo. No rebajar memoria, repetir unidades ni usar
+  este preflight para lanzar. Validación/final y v1.2 siguen protegidas.
+- WF `...05` reingresó desde Q0 el 01/11/2026 local tras suite (463 passed),
+  Ruff y preflight vigilado **nuevo** `ready`. Una sola sesión
+  `systemd --user`, `Restart=no`, aceptó `wf-2021/1`–`/10` y pausó en
+  frontera por presupuesto antes de `wf-2022/Q0`: ledger `ready`, **11/22**
+  unidades, `pending=null`, sin fallo. `InvocationID`
+  `16d210a2098e4ab58f83cf8fbb7d0423`, `Result=success`; última huella
+  completa `after_dual_and_D`:
+  `80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf`.
+  El cargo conservador propio deja 115,489597 s del tope diario, menos que
+  los 120 s exigidos para admitir Q0; **no iniciar otra unidad este día**.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-05-session-02-pausa.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-session-02-20261101/`. Un reingreso
+  posterior exige todas las guardas y preflight nuevos, sin repetir unidades
+  ni reanudar un ledger `failed`. Las raíces `...01`–`...04` siguen intactas;
+  no abrir validación ni prueba final ni activar evaluación v1.2.
+- WF `...05`: Santiago autorizó el reingreso tras Q0, pero el preflight
+  vigilado **nuevo** del 01/11/2026 18:13:38 `America/La_Paz` quedó
+  `blocked`: `MemAvailable=4.241.289.216 B`, por debajo de 4 GiB
+  (4.294.967.296 B). La suite completa (463 passed) y Ruff pasaron;
+  CA, batería, disco, gestor, huellas y presupuesto fueron conformes.
+  **No se lanzó la sesión 02 ni la unidad 1.** La auditoría Q0 antes/después
+  coincide byte por byte con la publicada: ledger `ready`, 1/22 unidades,
+  `pending=null`, checkpoint `after_q0` íntegro. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-05-reingreso-bloqueado.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-reentry-blocked-20261101/`.
+  No rebajar umbrales, repetir Q0, reanudar un ledger `failed` ni lanzar
+  una sesión usando este preflight bloqueado; cualquier intento posterior
+  requiere puertas y captura nuevas. Validación/final siguen protegidas.
+- WF `...05` recibió autorización específica y aprobó las puertas de
+  lanzamiento el 01/11/2026 `America/La_Paz`. El commit `cacf6a9` fija
+  aprobación, código, perfil, protocolo y derivado H1; solo el gate `...05`
+  está activo. Una sesión `systemd --user` con `Restart=no` aceptó únicamente
+  Q0 (`after_q0`) y terminó `Result=success`: ledger `ready`, 1/22 unidades,
+  `pending=null`, sin unidad 1. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-05-Q0-auditoria.md` y
+  `docs/evidence/oos-v1-2-wf-cost-05-q0-20261101/`.
+  **Detenerse tras Q0 para revisión; no iniciar unidad 1 ni otra sesión por
+  este hito.** `...01`–`...04` conservan huellas y gates cerrados. No abrir
+  validación 2023, prueba final ni activar evaluación v1.2.
+- WF `...05` queda preparado **prospectivamente, solo como infraestructura**
+  desde `dda554e`: raíz exclusiva
+  `artifacts/oos-v12-wf-cost-only-05/` y aprobación independiente
+  `docs/protocols/OOS-v1-2-wf-cost-05-approval.json`, ambas ausentes.
+  `MARKET_EXECUTION_ENABLED=False` y `REGISTRATION_SHA256=None`; el comando
+  público y el trabajador rechazan antes de abrir solicitudes o mercado.
+  Conserva dos C10, semillas/cortes/orden de 22 unidades y límites originales;
+  incluye observabilidad durable de las decisiones de recursos. Primer arranque,
+  reingreso Q0→unidad 1 y guardas se verificaron solo sintéticamente. Preflight
+  vigilado de solo lectura `blocked` exclusivamente por falta de permiso en la
+  captura de 2026-11-01; las cuatro raíces previas conservaron sus huellas.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-05-perfil.md`. **No crear aprobación
+  ni raíz histórica, activar gate, lanzar unidades ni abrir validación/final**
+  por este hito. `...01`–`...04` siguen cerradas e intactas.
+- Diagnóstico **de solo lectura** del fallo de recursos WF `...04`:
+  el supervisor falló el 30/10/2026 a las 02:13:15 local durante Q de la
+  unidad 8, pero no conservó CA, batería, `MemAvailable` ni disco de esa
+  decisión. El recurso concreto sigue **desconocido**. Se instrumentó
+  prospectivamente el journal para guardar esos valores en una pausa o
+  fallo, sin cambiar umbrales ni decisión; se verificó solo con datos
+  sintéticos. Ver `docs/hitos/OOS-WF-04-recursos-diagnostico-observabilidad.md`.
+  Las raíces `...01`–`...04` mantienen sus huellas y **todos los gates
+  permanecen cerrados**. No lanzar unidades, reanudar ninguna campaña,
+  preparar otra raíz, abrir validación ni prueba final por este hito.
+- WF `...04` **falló durante la unidad 8** el 30/10/2026 local. La segunda
+  sesión `systemd --user` partió de Q0 auditada, aceptó las unidades 1–7 y
+  terminó `Result=exit-code` por `WF cost resources lost during unit`.
+  Ledger `failed`, **8/22 unidades aceptadas** en total, unidad 8 pendiente
+  sin reporte/checkpoint aceptado. La guarda no registró cuál recurso cruzó
+  el umbral; no atribuir una causa específica. El gate `...04` se cerró
+  prospectivamente; conservar raíz, ledger, Q0, checkpoints, bitácora,
+  journals y aprobación histórica intactos. **No reanudar ni repetir esta
+  campaña**, aunque exista un checkpoint completo previo. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-04-continuacion-fallo.md`. La evaluación
+  v1.2, validación 2023 y prueba final siguen fuera de alcance.
+- WF `...04` aceptó **solo la primera Q0** el 30/10/2026 local: una sesión
+  `systemd --user` con `Restart=no` cerró `Result=success`; ledger `ready`,
+  1/22 unidades, `pending=null`, checkpoint íntegro `after_q0`. No se inició
+  unidad 1. Q0 consumió 28,567081 s globales contando ledger y tramo de
+  bitácora sin solapamiento. Las raíces `...01`–`...03` conservan sus huellas.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-04-Q0-auditoria.md` y evidencia
+  `docs/evidence/oos-v1-2-wf-cost-04-q0-20261030/`. **Detenerse tras Q0 para
+  revisión; no iniciar unidad 1, validación, final ni v1.2 por este hito.**
+  El gate `...04` queda activo para una continuación posterior conforme al
+  protocolo, pero este hito no ejecuta más unidades.
+- Nueva comprobación WF `...04` del **29/10/2026 local** desde `b386334`:
+  suite completa 447 passed y Ruff pasó; el preflight vigilado quedó
+  `blocked` por memoria disponible 3.750.830.080 B (<4 GiB), presupuesto
+  global del día agotado y fecha anterior al inicio autorizado 30/10.
+  **No se lanzó Q0 ni `systemd`**; raíz `...04` ausente, las tres raíces
+  previas intactas y gate `...04` activo solo para una futura admisión
+  conforme. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-04-preflight-bloqueado-20261029.md`.
+  No usar esta captura para lanzar otro día: repetir suite, Ruff y preflight
+  vigilado inmediatos con todas las puertas `ready`.
+- La campaña WF `...04` recibió autorización específica de Santiago en
+  `232e7dc`. El registro independiente fija el perfil `ce62fed`, código,
+  protocolo, diseño y derivado H1. Solo el gate `...04` está activo; `...01`–
+  `...03` siguen cerrados e intactos. El permiso contiene la guarda
+  `not_before_day_la_paz=2026-10-30`: **no iniciar el 29/10**, cuyo saldo
+  global es cero. En el siguiente día local disponible, ejecutar suite
+  completa y Ruff y luego preflight vigilado nuevo. Solo con todas las
+  puertas `ready` se permite una sesión `systemd --user`, `Restart=no`, que
+  se detiene tras la primera Q0 aceptada. Auditar y compartir Q0 antes de
+  unidad 1. Ante fallo, cerrar prospectivamente `...04` y conservar
+  artefactos. Ver `docs/protocols/OOS-v1-2-wf-cost-04-approval.json` y
+  `docs/hitos/OOS-v1-2-costo-cortes-04-autorizacion.md`. Validación/final y
+  evaluación v1.2 permanecen fuera del alcance.
+- Perfil WF `...04` preparado prospectivamente desde `2d3b6a4` con raíz
+  `artifacts/oos-v12-wf-cost-only-04/` y aprobación independiente
+  `docs/protocols/OOS-v1-2-wf-cost-04-approval.json`, **ambas ausentes**.
+  `MARKET_EXECUTION_ENABLED=False` y `REGISTRATION_SHA256=None`; el comando
+  público y el trabajador rechazan antes de leer mercado o crear la raíz.
+  Conserva exactamente las dos C10, semillas, cortes, 22 unidades y límites
+  del estudio WF. La integración Q0→unidad 1 con reingreso fue solo sintética.
+  El preflight vigilado del 29/10/2026 quedó `blocked`: la campaña fallida
+  `...03` consume conservadoramente los 10.800 s globales de ese día y falta
+  aprobación. Las raíces `...01`–`...03` conservan sus huellas y gates
+  cerrados. Ver `docs/hitos/OOS-v1-2-costo-cortes-04-perfil.md`.
+  **No activar `...04`, crear aprobación/raíz histórica, iniciar unidades,
+  reutilizar artefactos anteriores ni abrir validación/final** por este hito.
+- Extensión **solo sintética** de la integración WF desde `3ee6ebc`: la
+  prueba ahora ejecuta Q0, carga su checkpoint mediante el trabajador de
+  unidad 1, completa Q/A/B+D y verifica `after_dual_and_D`, contadores,
+  hashes y rechazos de lease/checkpoint alterados. Es el mismo proceso de
+  prueba, con una fuente controlada; no verifica reingreso `systemd`, costo
+  histórico ni aceptación de supervisor. Los gates `...01`–`...03` siguen
+  cerrados y sus raíces intactas. Ver
+  `docs/hitos/OOS-WF-QABD-integracion-sintetica.md`. **Detenerse antes de
+  preparar `...04`; no ejecutar entrenamiento histórico ni abrir 2023/final.**
+- Corrección **prospectiva y solo sintética** de la ruta de permisos WF tras
+  el fallo `...03`: `complete_unit`, `SyntheticExperiment` y
+  `Diagnostic.bind` admiten por tipo exacto únicamente los permisos WF de
+  `...01`, `...02` y `...03`, con sus validaciones de lease. `complete_unit`
+  exige además la raíz de campaña correspondiente antes de escribir. Una
+  prueba atraviesa el trabajador real y Q0 con fuente controlada hasta un
+  checkpoint `after_q0` verificable; no es entrenamiento histórico. Los tres
+  gates siguen cerrados; **no reanudar ninguna raíz fallida, crear permiso
+  nuevo ni abrir validación/final**. Ver
+  `docs/hitos/OOS-WF-permit-integration-prospectiva.md`.
+- Campaña WF `...03` autorizada en `7c74176` y **fallida durante la primera
+  Q0** el 29/10/2026: la sesión `oos-wf-cost-20261029-03-session-01.service`
+  terminó con código 1; ledger `failed`, cero unidades aceptadas, sin
+  checkpoint. El trabajador rechazó el permiso `...03` por la guarda de tipo
+  exacto de `complete_unit`. El gate `...03` se cerró prospectivamente en
+  `05adff0`; el JSON de autorización permanece solo como evidencia. Preservar
+  la raíz y journal `...03` intactos, **no reanudar ni reintentar**, no
+  iniciar unidad 1. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-03-fallo-Q0.md`. Las raíces y gates
+  `...01`/`...02` siguen congelados. Cualquier estudio nuevo necesita
+  corrección y prueba de integración, raíz y autorización nuevas.
+- Perfil WF nuevo `...03` preparado **solo como infraestructura sintética**
+  desde `9efe521`. Raíz prevista
+  `artifacts/oos-v12-wf-cost-only-03/` y registro independiente previsto
+  `docs/protocols/OOS-v1-2-wf-cost-03-approval.json`: ambos ausentes.
+  `MARKET_EXECUTION_ENABLED=False`, `REGISTRATION_SHA256=None`; comando público
+  y trabajador rechazan antes de cargar datos o crear artefactos. El perfil
+  conserva por huella las dos C10, semillas, cortes, 22 unidades y límites
+  originales. Ver `docs/hitos/OOS-v1-2-costo-cortes-03-perfil.md`.
+  `...01` y `...02` permanecen cerradas e intactas. La sesión fallida de
+  `...02` carga 10.800 s conservadores el 27/10/2026 en la contabilidad
+  compartida, no en días posteriores. **No activar `...03`, crear su raíz,
+  lanzar entrenamiento ni abrir validación/final** por este hito. Una
+  campaña requerirá autorización posterior, guardas y preflight nuevos.
+- Corrección prospectiva del primer arranque WF de reemplazo en
+  `codex/oos-wf-cost-first-start-fix`: `run_units()` comprueba bajo el bloqueo
+  global si la raíz ya existía **antes** de crear la bitácora. Rechaza raíces
+  previas sin ledger, incluida `...02`, sin escribirles; los fallos posteriores
+  al inicio de una raíz nueva siguen en `sessions.jsonl`. Pruebas solo
+  sintéticas; ver `docs/hitos/OOS-v1-2-costo-cortes-reemplazo-primer-arranque-correccion.md`.
+  El gate `MARKET_EXECUTION_ENABLED=False` y el permiso histórico `...02`
+  permanece cerrado. **No reingresar, reintentar ni modificar `...01` o
+  `...02`; una campaña nueva requiere otra raíz y autorización.**
+- Campaña WF de reemplazo `...02` autorizada en `743e51b` y **detenida antes
+  de Q0** el 27/10/2026 (America/La_Paz). El preflight previo fue `ready`,
+  pero la primera sesión `systemd --user` falló al comprobar su propia raíz:
+  la bitácora la había creado y aún no existía ledger. Solo hay
+  `sessions.jsonl` cerrado `failed` y su lock; **cero unidades, cero
+  checkpoints y ningún ledger**. Preservar intacta esta raíz y su journal.
+  El permiso `...02` quedó cerrado prospectivamente en `279e6ab`; el JSON
+  de aprobación y su huella siguen como evidencia histórica, no autorizan
+  reingreso. El cargo conservador de una sesión fallida se mantiene para el
+  día local. Ver `docs/hitos/OOS-v1-2-costo-cortes-reemplazo-fallo-inicial.md`.
+  No corregir y reintentar esta raíz, ni activar v1.2, abrir 2023/final o
+  tocar `...01`.
+- Perfil aislado WF `...02` implementado tras `37cc06e` **solo para
+  verificación sintética**. Su permiso de mercado sigue apagado en código,
+  `REGISTRATION_SHA256=None`, el registro independiente
+  `docs/protocols/OOS-v1-2-wf-cost-replacement-approval.json` y la raíz real
+  `artifacts/oos-v12-wf-cost-only-02/` permanecían ausentes en esa entrega. El comando público
+  y el trabajador rechazan antes de solicitudes, datos o artefactos. La
+  bitácora y el reingreso se probaron en `tmp_path`; el preflight vigilado
+  abre solo el derivado H1 exclusivo de entrenamiento y metadatos. Ver
+  `docs/hitos/OOS-v1-2-costo-cortes-reemplazo-ejecutor.md`. **No activar
+  permiso, crear raíz histórica, ejecutar entrenamiento ni abrir 2023/final.**
+  La campaña parcial `...01`, su gate cerrado, ledger, Q0 y autorización
+  original permanecen congelados.
+- Propuesta de reemplazo íntegro del estudio WF tras `a5b6929`:
+  `docs/proposals/OOS-v1-2-costo-cortes-reemplazo-v1.md` propone raíz
+  `artifacts/oos-v12-wf-cost-only-02/` y registro de autorización distinto,
+  ambos **ausentes**. Conserva las dos C10, semillas, cortes, 22 unidades,
+  orden y límites del diseño original. Solo se verificaron sintéticamente
+  Q0→pausa→reingreso y fallos previos al ledger; el preflight estático queda
+  `blocked`. En esa entrega **no había perfil ejecutor nuevo ni permiso de mercado**. El gate
+  original sigue `MARKET_EXECUTION_ENABLED=False`; no reanudar `...01`,
+  entrenar con mercado ni abrir validación/final por esta propuesta.
+- Bitácora WF **prospectiva y verificada solo sintéticamente** desde
+  `c59855b`: inicio durable antes de reconstruir cortes, cierre incluso ante
+  fallos previos al ledger, cargo de tiempo sin solaparlo con el ledger,
+  reparto por día `America/La_Paz` y bloqueo de sesiones sin cierre.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-bitacora-sesiones.md`.
+  El permiso continúa `MARKET_EXECUTION_ENABLED=False`; la campaña parcial
+  `artifacts/oos-v12-wf-cost-only-01/` no se reanuda ni repite. No ejecutar
+  entrenamiento de mercado, abrir validación ni prueba final por este hito.
+- Corrección **prospectiva y solo sintética** del reingreso WF desde
+  `7106fef`: `WFCostLedger` normaliza únicamente la representación del
+  roster (tuplas Python/listas JSON) antes de la comparación íntegra de
+  identidad; un roster con valores distintos sigue rechazado. Se probaron
+  Q0 aceptada, cierre del proceso y admisión de unidad 1 en otro proceso,
+  usando fixtures. El permiso sigue `MARKET_EXECUTION_ENABLED=False` y
+  **no se reanuda ni repite** `artifacts/oos-v12-wf-cost-only-01/`.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-reingreso-prospectivo.md`.
+  El tiempo perdido antes de abrir el ledger requiere una contabilidad
+  independiente en cualquier diseño futuro; esta corrección no la activa.
+- Estudio de costos WF autorizado el 26/10/2026 (America/La_Paz) mediante
+  registro específico `docs/protocols/OOS-v1-2-wf-cost-approval.json`, pero
+  **detenido tras Q0**. La primera sesión `systemd --user` aceptó exactamente
+  una unidad `wf-2021/Q0` y pausó para auditoría; la segunda sesión falló
+  **antes de iniciar la unidad 1** por representación distinta del roster
+  (`list` JSON frente a `tuple` Python) al reabrir el ledger. El ledger
+  persiste `ready`/1 unidad/sin `pending`, pero eso **no autoriza reanudar**:
+  el permiso operativo se cerró prospectivamente con
+  `MARKET_EXECUTION_ENABLED=False`. Preservar íntegros raíz, ledger,
+  checkpoint Q0 y journals. Ver `docs/hitos/OOS-v1-2-costo-cortes-ejecucion-parcial.md`.
+  No repetir selectivamente, corregir huellas para forzar continuación,
+  activar v1.2 ni abrir validación/final. El registro original conserva su
+  huella para auditoría.
+- Infraestructura aislada de **medición de costo de entrenamiento por cortes**
+  posterior a `6a01893`: roster fijo de dos C10 (2021/2022), 22 unidades,
+  cortes reconstruidos solo desde el derivado H1 exclusivo de entrenamiento,
+  ledger, admisión y guardas independientes. El permiso de mercado permanece
+  **desactivado**; el comando público y el trabajador rechazan antes de leer
+  solicitudes o crear la raíz reservada. El preflight es de solo lectura.
+  Ver `docs/hitos/OOS-v1-2-costo-cortes-ejecutor.md`. **No ejecutar unidades
+  de entrenamiento**, no habilitar v1.2, no abrir 2023 ni final. P0–P3
+  conservados. El protocolo de 22 unidades sigue siendo propuesta para revisión.
+- Ruta de evaluación continua **exclusivamente sintética** posterior a
+  `1d976d9`: checkpoint P3 fijo verificado, normalizador del derivado H1
+  exclusivo de entrenamiento, `sigmoid(μ)`, contabilidad y métricas, con
+  supervisor y cierre auditado. Ver
+  `docs/hitos/OOS-v1-2-evaluador-sintetico.md`. El protocolo de costo de
+  entrenamiento por cortes es **propuesta no autorizada**: no crear su raíz,
+  lanzar unidades, habilitar v1.2, abrir validación 2023 o prueba final.
+  La propuesta fuera de muestra v1.2 sigue sin adoptarse; P3 permanece
+  cerrado. Conservar P0–P3 y sus artefactos intactos.
+- El permiso operativo de P3 v1.1 quedó **cerrado prospectivamente** tras
+  la campaña completada: `MARKET_EXECUTION_ENABLED=False`. El registro de
+  aprobación de 2026-10-08 y su huella siguen intactos para auditoría;
+  ni el comando público ni el trabajador pueden iniciar otra unidad. Ver
+  `docs/hitos/P3-permiso-cierre-prospectivo.md`. Esta clausura no reinterpreta
+  el resultado `review`, ni autoriza validación, prueba final o nueva campaña.
+- P3 v1.1 histórico **cerró el 13/10/2026 como diagnóstico de desarrollo**:
+  ledger `completed`, 18/18 corridas y 198/198 unidades aceptadas en dos
+  días activos; resultado predefinido `review`. Ver
+  `docs/hitos/P3-cierre-historico-v1.md` y la auditoría en
+  `docs/evidence/p3-market-2026-10-13/`. No volver a lanzar P3 ni
+  seleccionar checkpoints por resultado. Validación 2023, prueba final
+  2024–2025 y evaluación confirmatoria continúan fuera de este permiso.
+- Registro anterior al cierre: campaña histórica P3 v1.1 autorizada el
+  08/10/2026 **solo como
+  diagnóstico de desarrollo** sobre el derivado H1 exclusivo de
+  entrenamiento 2018–2022. Permiso independiente fijado en
+  `docs/protocols/P3-market-approval.json` y commit `618a08f`; raíz nueva
+  `artifacts/p3-approved-v1`. La sesión inicial
+  `p3-market-v1-session-01.service` cerró en pausa presupuestaria válida:
+  ledger `ready`, 10/18 corridas completas, 116 unidades aceptadas y
+  ninguna unidad pendiente. La campaña seguía abierta en ese momento;
+  consultar el último
+  ledger y repetir preflight otro día antes de otra sesión `systemd --user`.
+  El preflight de las 00:04 America/La_Paz del 09/10 quedó bloqueado:
+  `ADP1/online=0`, batería 37 %; no se lanzó la sesión 02 ni se modificó
+  el ledger. Exigir CA y batería ≥50 % antes de volver a intentar.
+  Ver `docs/hitos/P3-ejecucion-historica-v1.md` y el último ledger antes
+  de actuar. Conservar 18 corridas K10, orden y brazos β, Q0/Q/A/B+D,
+  tres horas globales por día America/La_Paz, hasta tres días activos,
+  admisión y pausas solo en fronteras completas; un fallo dentro de
+  unidad es irreversible. **No usar validación 2023 ni prueba final
+  2024–2025, no reutilizar P2R y no repetir por resultados.** Esta
+  autorización sustituye las prohibiciones cronológicas de campaña
+  únicamente para P3 v1.1.
+- Hito P3 posterior a `a1d9032`: el usuario autorizó **solo implementar y
+  verificar sintéticamente la infraestructura del ejecutor histórico P3**.
+  Perfil, supervisor, presupuesto y métricas P3 quedan separados de P2R;
+  el preflight puede leer únicamente el derivado H1 exclusivo de
+  entrenamiento y metadatos para comprobar huellas. Ver
+  `docs/hitos/P3-ejecutor-historico-infraestructura.md`. La bandera P3
+  permanece desactivada y no hay registro de aprobación ni raíz histórica
+  P3. **No ejecutar entrenamiento de mercado, activar permiso, abrir
+  validación 2023 ni prueba final 2024–2025.** P0/P1/P2/P2R y sus
+  artefactos permanecen intactos. Esta autorización sustituye las
+  prohibiciones cronológicas de implementación solo para este hito.
+- Hito P3 posterior a `eed4b74`: el usuario autorizó únicamente implementar
+  y verificar **con datos sintéticos** la pérdida del crítico β=0/1 de P3
+  v1.1. β=0 conserva MSE; β=1 añade `mean(V²)` en los mismos minibatches A
+  y targets Monte Carlo congelados. Ver `docs/hitos/P3-critico-sintetico.md`.
+  No hay ejecutor ni permiso histórico P3; P0/P1/P2/P2R y sus artefactos
+  permanecen intactos. **No entrenar con mercado ni abrir validación/final.**
+  Esta autorización sustituye la prohibición cronológica de implementar
+  βV² solo para este hito sintético.
+- Hito prospectivo P3 posterior a `699d8da`: el usuario autorizó **solo**
+  corregir `market_training_executed` y verificar sintéticamente el rechazo
+  supervisor de reportes incoherentes antes de aceptar unidades. Ver
+  `docs/hitos/P3-marcador-supervisor-sintetico.md`. El marcador requiere
+  fuente `accepted_train_collection_only` y pasos completados de **ambos**
+  optimizadores; Q0 es `false`. La prueba de perfil histórico usa sobres
+  sintéticos, no datos de mercado. Los 99 reportes P2R y P0/P1/P2 siguen
+  intactos. **No activar P3 ni ejecutar entrenamiento histórico;
+  validación y final siguen protegidas.** La prohibición de
+  implementación del párrafo cronológico siguiente fue sustituida
+  únicamente para este hito acotado.
+- Adjudicación P2R posterior a `75b450c`: el usuario ordenó conservar
+  `review`, reconocer que faltó corregir/verificar
+  `market_training_executed` antes de congelar el ejecutor y clasificar
+  las nueve corridas **solo como diagnóstico descriptivo de desarrollo**.
+  Ver `docs/protocols/P2R-adjudicacion-metadato-v1.md`. No se convalida
+  retrospectivamente el preflight ni se editan los 99 reportes. El
+  análisis de MSE tardía motivó P3 v1.1, **adoptado solo como protocolo
+  metodológico exploratorio de desarrollo** en
+  `docs/protocols/P3-adopcion-metodologica-v1-1.md` tras la aclaración
+  `e30708a` (v1 preservada). **Esta adopción no autoriza implementar ni
+  ejecutar P3**. La v1.1 corrige la comparación con predictor cero y
+  define razones pareadas exactas; sus comprobaciones son algebraicas
+  sintéticas.
+  Corrección prospectiva del marcador pendiente, P2R cerrado,
+  P2 fallido intacto, sin validación ni prueba final.
+- P2R v2 histórico **ejecutado y cerrado operativamente el 07/10/2026 solo
+  como diagnóstico de desarrollo** sobre el derivado H1 exclusivo de
+  entrenamiento 2018–2022.
+  Registro fijado en `docs/protocols/P2R-market-approval.json` y commit
+  `38fc54b`; raíz `artifacts/p2r-approved-v2`, con tres sesiones de
+  `systemd --user` registradas en el informe. Nueve corridas nuevas y 99
+  unidades cerradas, sin incorporar P2,
+  sin cambiar protocolo ni seleccionar checkpoints. Ver
+  `docs/hitos/P2R-ejecucion-historica-v2.md`. El supervisor aplica
+  3 h globales/día America/La_Paz, hasta tres días activos, admisión por
+  unidad, pausas solo en frontera completa y fallo irreversible dentro de
+  unidad. El ledger está `completed`; no volver a lanzarlo. La regla
+  numérica da `review`, pero la aceptación formal queda pendiente por el
+  marcador heredado `market_training_executed=false` en los 99 reportes.
+  Ver HANDOFF. **No iniciar otra campaña, no reanudar una fallida ni acceder a
+  validación 2023 o prueba final 2024–2025.** Los párrafos históricos de abajo
+  describen autorizaciones anteriores y no revocan esta autorización
+  específica.
+- Exportación H1→P2R autorizada el 06/10/2026: derivado exclusivo de
+  entrenamiento creado y auditado fila por fila; huella del manifiesto
+  fijada en un commit independiente. La lectura puntual de CSV H1
+  compartidos, incluidos bytes 2023, fue solo para hash e igualdad del
+  prefijo. El preflight posterior vigilado no abre esos CSV. Ver
+  `docs/hitos/P2R-training-shard-export.md`. **Sigue sin permiso de campaña**:
+  `MARKET_EXECUTION_ENABLED=False`, sin registro aprobado; no lanzar
+  unidades, entrenamiento histórico, validación ni prueba final.
+- Revisión P2R posterior a `93515ef`: autorizado **solo** aislar físicamente
+  el preflight/cargador de los CSV H1 con filas 2023 y ejecutar una sonda
+  de señal **sintética** durante cálculo de gradientes en Q/A/B+D.
+  P2R ahora exige un derivado exclusivo de entrenamiento aún **no creado
+  ni registrado**; preflight histórico falla cerrado. Sondas nuevas 07/08:
+  conservar raíces y evidencias, sin reinterpretar 07 como éxito de su
+  controlador. Ver `docs/hitos/P2R-preflight-optimizer-signal.md` y
+  `docs/protocols/P2R-training-shard-contract-v1.md`. No exportar el
+  derivado histórico, activar permiso, entrenar mercado, acceder a
+  validación/final ni reanudar campañas fallidas por este hito.
+- Ejecutor histórico P2R v2: el usuario autorizó **solo implementarlo y
+  verificarlo** tras `ccb010a`. Rama `codex/p2r-historical-executor`.
+  `scripts/run_p2r_market.py` y el trabajador exigen un permiso de campaña
+  independiente, inactivo en código (`MARKET_EXECUTION_ENABLED=False` y sin
+  huella de registro). El preflight puede leer metadatos de entrenamiento
+  aceptado sin generar trayectorias; las pruebas de aprendizaje son solo
+  sintéticas. **No activar permiso, ejecutar unidades históricas, reanudar
+  P2 ni usar validación/final** por esta autorización. Ver HANDOFF e informe
+  del ejecutor.
+- Sonda 06 P2R **solo sintética** desde `d840d6a`: Q0 cerró `after_q0` y
+  SIGTERM al proceso principal durante la primera unidad Q/A/B+D produjo
+  ledger `failed`, `Result=exit-code`, ninguna aceptación de unidad 1 y
+  huella inalterada del checkpoint Q0. La señal llegó durante la espera
+  sintética supervisada, antes de cálculos Q/A/B+D; no prueba un corte de
+  optimizador ni apagado físico. Preservar raíces 01–06. El checkpoint
+  conservado es evidencia, **no permiso de reanudación**. Ver
+  `docs/hitos/P2R-signal-QABD-06.md`. Sigue bloqueado P2R histórico,
+  validación y final.
+- P2R v2 **ADOPTADO solo como protocolo metodológico de diagnóstico de
+  desarrollo** tras precisar `Z>10⁻¹²` por separado en D temprana, D tardía y
+  A tardía. Ver `docs/protocols/P2R-adopcion-metodologica-v2.md`. La adopción
+  **no autoriza** implementar el ejecutor histórico, activar permiso de
+  campaña, ejecutar P2R de mercado, usar validación/final ni reanudar P2.
+  Mantener separados P2 y P2R; conservar v1, anexo y sondas 01–05.
+- P2R v2 desde `af14af2`: consolidación documental inicialmente **para
+  revisión**, antes de la adopción metodológica indicada arriba. Conserva
+  v1, anexo, P2 fallido y sondas 01–05. El estado actualizado de `Linger`,
+  logout, heartbeat y señal
+  está en `docs/proposals/P2R-protocolo-v2.md`; los párrafos cronológicos de
+  abajo describen su momento y no revocan la lectura adoptada. No ejecutar
+  unidades ni entrenamientos por esta adopción.
+- Sonda de señal P2R Q0 **solo sintética** 04/05: SIGTERM al proceso
+  principal durante Q0 produjo ledger `failed`, cero unidades/checkpoints
+  aceptados y fallo irreversible. La sonda 04 reveló que la CLI devolvía 0;
+  `08c0fda` lo corrigió y la repetición 05 dio `Result=exit-code`, estado 1.
+  Preservar las cuatro raíces originales 04/05 y las sondas 01–03. Ver
+  `docs/hitos/P2R-signal-Q0-sintetica.md`. No hay autorización de P2R
+  histórico, validación ni final; la sonda no prueba una interrupción del host
+  ni conservación de un checkpoint previo en una unidad posterior.
+- Cadencia P2R sintética 03 desde `76757ed`: se corrigió el reloj de
+  `run_synthetic_units` para solicitar heartbeats con margen de 4 s y
+  rechazar intervalos registrados >5 s. Una sola Q0 sintética breve bajo
+  `systemd --user` completó `after_q0` con 6/6 intervalos ≤5 s (máximo
+  4.143739 s UTC). Es verificación de infraestructura sintética, **no
+  permiso de P2R histórico**. Ver `docs/hitos/P2R-cadencia-heartbeat-03.md`.
+  Conservar artefactos 01/02/03; no repetir la sonda ni hacer la prueba de
+  señal dentro de unidad con esta autorización.
+- Logout Q0 sintético 02 del 05/10/2026: `ready`, checkpoint `after_q0`
+  íntegro, `Result=success`, 139 heartbeats sin sesión interactiva y ningún
+  evento de suspensión durante 3260.921214 s hasta el reingreso. **Cierra
+  solo la sonda sintética de logout**, no habilita P2R histórico. Los 174
+  intervalos entre heartbeats superaron 5 s; la corrección posterior consta
+  en el hito 03 y no reescribe esta evidencia.
+  Conservar intactas raíces/journals 01 y 02. Ver
+  `docs/hitos/P2R-logout-Q0-02-cierre.md`.
+- Logout Q0 sintético del 05/10/2026: la unidad 01 llegó a `ready`,
+  `after_q0` y `Result=success` sin sesión interactiva, pero el host se
+  suspendió entre Q0 y el reingreso; por tanto **falló la condición sin
+  suspensión**. Conservar intactas las dos raíces de evidencia 01. La causa
+  principal inferida es el temporizador de 900 s del greeter GDM, aún sin
+  identidad de llamador privilegiada. Corrección del host y repetición 02
+  documentadas, **no aplicadas ni iniciadas**. No habilita P2R histórico.
+  Ver `docs/hitos/P2R-logout-Q0-diagnostico.md`.
+- En `codex/p2r-unit-integration` se preparó una prueba de logout completo
+  **solo sintética**: unidad `p2r-logout-q0-review-01.service`, espera de
+  900 s dentro del child supervisado y Q0 con checkpoint `after_q0`. Este
+  párrafo describe la preparación previa; el resultado posterior consta
+  arriba. Ver `docs/protocols/P2R-logout-Q0-synthetic-review.md`.
+- P2R desde `e1e98dd`: autorizado conectar y verificar **solo con datos
+  sintéticos** Q0 y Q/A/B+D, contadores reales, checkpoints completos y
+  fallo irreversible dentro de unidad. Rama `codex/p2r-unit-integration`.
+  `scripts/run_p2r.py --mode algorithm` acepta únicamente perfil sintético;
+  P2R histórico no tiene permiso ni entrada de campaña. No entrenar con mercado,
+  acceder a validación/final, alterar P0/P1/P2 o cambiar configuración del
+  sistema. Ver el nuevo informe P2R y el procedimiento de revisión del host.
+- P2R: el usuario autorizó desde `d7f253b` **solo infraestructura y pruebas
+  sintéticas** de supervisor, journal, guardas, presupuesto e interrupciones.
+  Rama `codex/p2r-infrastructure`. La propuesta P2R v1 sigue sin autorización
+  para campaña histórica: no hay permiso ni ejecutor de mercado P2R. El perfil
+  sintético `scripts/run_p2r.py` es una sonda de ciclo de vida; su ventana de
+  reloj ficticia no es admisión de campaña. `Linger=no` del gestor de usuario
+  impide verificar continuidad tras logout completo; no cambiar configuración
+  del sistema implícitamente. Ver HANDOFF e informe P2R antes de continuar.
+- Investigación posterior a `a2014e4`: los registros de sesión y wtmp sitúan
+  un apagado del equipo a las 02:20:12 America/La_Paz, coincidente con la
+  pérdida del supervisor P2; el iniciador del apagado sigue desconocido.
+  `docs/proposals/P2R-protocolo-v1.md` es **propuesta, NO autorización** de
+  implementación ni ejecución. Preservar ledger/unidad parcial P2 intactos.
+- P2 histórico quedó **detenido por interrupción del supervisor** el 30/09/2026:
+  cinco corridas K10 completas, una sexta con una iteración completa y la
+  siguiente parcial. El ledger registra `interrupted_supervisor_or_unit` y
+  prohíbe reanudar o repetir selectivamente esta campaña. Consultar
+  `docs/hitos/P2-ejecucion-interrumpida.md` y el HANDOFF antes de cualquier
+  otra acción. La autorización anterior no habilita una campaña de reemplazo.
+- P2 histórico autorizado el 30/09/2026 sobre entrenamiento aceptado 2018–2022,
+  desde integración `2f01d6c`. Registrar permiso en commit separado y ejecutar
+  solo después de preflight, pruebas sintéticas e integridad P0/P1. Son nueve
+  corridas K10, tres semillas, C0/C5/C10, crítico4 provisional, D64 y diseño
+  de `P2-infrastructure-v1.json` sin cambios. Máximo global 3h/día La Paz,
+  tres días activos; pausa solo en frontera completa, fallos sin reintento
+  selectivo. Ver `docs/protocols/P2-market-approval-2026-09-30.md`.
+  Validación 2023, final 2024–2025 y campañas posteriores siguen bloqueadas.
+- P2: diseño de 7357aa1 aceptado (9 corridas, K=10, semillas 610031/610047/610081,
+  crítico provisional de 4 épocas, D=64, umbrales §7, hasta 3 días activos).
+  La restricción previa de verificación exclusivamente sintética se sustituyó
+  **solo para P2 histórico** por la autorización anterior. No repetir P0/P1.
+  Conservar d, ADR-002 y Q/A/B. No modificar la tesis. Ver
+  docs/protocols/P2-infrastructure-v1.md.
+
+- P1 terminó: 18 corridas, criterio técnico cumplido en 3/3 semillas. La autorización
+  se consumió con esta campaña; no repetirla ni inferir autorización de P2.
+  Revisar docs/hitos/P1-epocas-critico.md antes de proponer otro piloto.
 - Leer README.md, docs/HANDOFF.md y configs/initial.toml antes de modificar código.
 - Este repositorio implementa la tesis de Santiago Andrés Iturri Vargas.
 - Preservar C0 (PPO), C5 y C10 (CVaR-PPO). Mismo entorno y recompensa.
-- No ejecutar entrenamientos en esta etapa. No instalar PyTorch/CUDA ni modificar drivers.
+- P1 aprobado desde 42152c3 autoriza implementar, verificar sintéticamente y ejecutar
+  18 corridas K=2: crítico 2/4 épocas, semillas 510031/510047/510081, orden aprobado.
+  Descontar consumo de otras campañas del día; P0 cerrado no se repite.
+  Rutas nuevas; mismo d, actor y Q/A/B. Validación/final siguen bloqueados.
+- P0-approved-v1 autoriza el piloto acotado sobre entrenamiento aceptado 2018–2022,
+  después de verificar sintéticamente ejecutor, supervisor y persistencia.
+- Presupuesto GLOBAL de campaña: 3h/día America/La_Paz, timestamps UTC; varias
+  corridas consecutivas sin concurrencia ni reinicio de contadores al cambiar proceso.
+- Configuración, semillas, orden y K=2 aprobados solo para P0; d=-ln(0.90) común.
+  Validación/final no accesibles al ejecutor. No repetir selectivamente fallos.
+- Se permite PyTorch CPU fijado en el lock. No instalar CUDA ni modificar drivers.
+- Fuera de P0/P1 ya cerrados y P2 aquí autorizado, siguen prohibidos otros
+  entrenamientos de mercado, pilotos y evaluación confirmatoria.
 - No modificar la tesis: entregar evidencia para el chat académico.
-- No implementar CVaR-PPO mientras la decisión ADR-002 siga pendiente.
+- ADR-002 v2.1 está adoptado; H4 autoriza su implementación, sin cambiar su metodología.
 
 ## Datos y evaluación
 - Prueba final reservada: [2024-01-01, 2026-01-01) UTC. No descargarla,

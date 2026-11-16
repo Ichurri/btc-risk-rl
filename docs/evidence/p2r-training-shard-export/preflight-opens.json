@@ -1,0 +1,35 @@
+{
+  "accepted_starts": 7048,
+  "checked_utc": "2026-10-06T17:40:12.856441+00:00",
+  "market_execution_enabled": false,
+  "market_trajectories_generated": 0,
+  "opened_product_files": [
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/audit.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/bars.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/episodes.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/features.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/observations.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/scaler.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/transitions.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/segmented-B-h1/manifest.json"
+  ],
+  "optimizer_updates": 0,
+  "resources": {
+    "disk_free_bytes": 182394978304,
+    "memory_available_bytes": 7828475904
+  },
+  "shared_budget": {
+    "day_local": "2026-10-06",
+    "excluded_day": false,
+    "external_seconds": 0.0,
+    "lock_acquired": false,
+    "remaining_seconds": 10800.0,
+    "sampled_utc": "2026-10-06T17:40:12.561050+00:00",
+    "sources": []
+  },
+  "shared_csv_open_count": 0,
+  "status": "read_only_ready_campaign_disabled",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "validation_observations_loaded": false
+}

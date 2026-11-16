@@ -1,0 +1,18 @@
+{
+  "schema": "oos_v12_technical_2023_source_approval_v1",
+  "status": "approved",
+  "partition": "technical_2023_source",
+  "authorized_by": "Santiago: continuar desde 57599b9, completar procedencia, supervisor y permiso tecnico de 2023; abrir 2023 solo tras las condiciones",
+  "scope": "exportacion exacta de 2023 y 43 velas de contexto desde H1; sin acciones, seleccion ni evaluacion financiera",
+  "method_freeze_sha256": "906570c6bad573ac399dd92155910fbc38c46e60e325685c07033fc88e7cf2f2",
+  "training_freeze_sha256": "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0",
+  "training_ledger_sha256": "c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b",
+  "h1_manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+  "raw_manifest_sha256": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807",
+  "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+  "code_sha256": "a8349c62a9cfeb4f494983441ffb1fa66f7de27e02e1c974fa93e34463983874",
+  "budget_sha256": "27e9ea9aaacd3d369a2efff1237e5b14cb95106da0f34d8bdf9a0f44e36305d3",
+  "adjudication_sha256": "83554a665bd55622e12482407e8cd15fb6a5408fb7806a098d97ecf026d7e0e0",
+  "export_root": "data/processed/oos-v12-technical-2023-01",
+  "final_2024_2025_access": false
+}

@@ -1,0 +1,48 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_c0_checkpoint_risk_flag_allowed_but_c5_c10_cannot_disable ________
+
+accepted_synthetic = (Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', ...ulator-synthetic-accepted0/out'), PosixPath('/tmp/pytest-of-ichurri/pytest-0/simulator-synthetic-accepted0/diagnosis'))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fb5287a26f0>
+
+    def test_c0_checkpoint_risk_flag_allowed_but_c5_c10_cannot_disable(accepted_synthetic, monkeypatch):
+        from btc_risk_rl.agents.checkpoint import digest
+        from btc_risk_rl.agents.market_source import TrainingMarket
+        from btc_risk_rl.agents.trainer import SyntheticExperiment
+        from btc_risk_rl.pilots.protocol import P0Settings, Permit
+    
+        config, _, out, _ = accepted_synthetic
+        source = TrainingMarket(config, out, expected_manifest=digest(out / "manifest.json"))
+        calls = []
+        monkeypatch.setattr(Permit, "validate", lambda self, *args: calls.append(args))
+        # False is exactly the flag serialized by a C0 checkpoint. No learning occurs.
+>       run = SyntheticExperiment(source, P0Settings(), condition="C0", risk_enabled=False,
+                                  run_id="synthetic-authorized-guard", permit=Permit("test"))
+
+tests/test_p0_integration.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <btc_risk_rl.agents.trainer.SyntheticExperiment object at 0x7fb5282b3f50>
+source = <btc_risk_rl.agents.market_source.TrainingMarket object at 0x7fb5289d0da0>
+settings = P0Settings(purpose='authorized_p0_only', hidden=32, iterations=2, n_a=64, n_q=400, n_b=400, actor_epochs=2, critic_epo...16, actor_lr=0.0001, critic_lr=0.001, dual_lr=0.1, clip=0.2, bound=0.10536051565782628, seed=410031, fragment_steps=60)
+condition = 'C0', risk_enabled = False, run_id = 'synthetic-authorized-guard'
+journal = None
+permit = <btc_risk_rl.pilots.protocol.Permit object at 0x7fb527d3efc0>
+
+    def __init__(
+        self, source, settings, *, condition, risk_enabled=True, run_id, journal=None, permit=None
+    ):
+        from btc_risk_rl.agents.market_source import TrainingMarket
+        from btc_risk_rl.pilots.protocol import P0Settings, Permit
+    
+        if condition not in {"C0", "C5", "C10"}:
+            raise ValueError("Known condition required")
+        if type(source) is TrainingMarket:
+            if type(settings) is not P0Settings or type(permit) is not Permit or not risk_enabled:
+>               raise PermissionError("Market optimization requires authorized P0 supervisor lease")
+E               PermissionError: Market optimization requires authorized P0 supervisor lease
+
+src/btc_risk_rl/agents/trainer.py:47: PermissionError
+=========================== short test summary info ============================
+FAILED tests/test_p0_integration.py::test_c0_checkpoint_risk_flag_allowed_but_c5_c10_cannot_disable
+1 failed in 3.30s

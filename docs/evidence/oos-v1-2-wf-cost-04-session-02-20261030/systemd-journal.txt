@@ -1,0 +1,25 @@
+2026-10-30T02:05:14.025144-04:00 debian systemd[1547]: Starting oos-wf-cost-20261030-04-session-02.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_04.py --run...
+2026-10-30T02:05:14.062804-04:00 debian systemd[1547]: Started oos-wf-cost-20261030-04-session-02.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_04.py --run.
+2026-10-30T02:13:15.095770-04:00 debian uv[32531]: Traceback (most recent call last):
+2026-10-30T02:13:15.095770-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_04.py", line 28, in <module>
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     main()
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_04.py", line 19, in main
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     state = run_historical_units()
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:             ^^^^^^^^^^^^^^^^^^^^^^
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_exec.py", line 221, in run_historical_units
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     return run_units()
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:            ^^^^^^^^^^^
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_units.py", line 126, in run_units
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     state = _run_locked_session(inputs, budget, shared, sessions, token)
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_units.py", line 247, in _run_locked_session
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     result = supervise(
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:              ^^^^^^^^^^
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/supervisor.py", line 74, in supervise
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     on_poll(child.pid, elapsed, peak)
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_units.py", line 236, in tick
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]:     raise ValueError("WF cost resources lost during unit")
+2026-10-30T02:13:15.097025-04:00 debian uv[32531]: ValueError: WF cost resources lost during unit
+2026-10-30T02:13:15.454652-04:00 debian systemd[1547]: oos-wf-cost-20261030-04-session-02.service: Main process exited, code=exited, status=1/FAILURE
+2026-10-30T02:13:15.454738-04:00 debian systemd[1547]: oos-wf-cost-20261030-04-session-02.service: Failed with result 'exit-code'.
+2026-10-30T02:13:15.454916-04:00 debian systemd[1547]: oos-wf-cost-20261030-04-session-02.service: Consumed 7min 58.035s CPU time, 807.3M memory peak.

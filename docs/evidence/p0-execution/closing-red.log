@@ -1,0 +1,123 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+________ test_checkpoint_can_use_closing_reserve_without_extending_work ________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-3/test_checkpoint_can_use_closin0')
+
+    def test_checkpoint_can_use_closing_reserve_without_extending_work(tmp_path):
+        from btc_risk_rl.pilots.budget import CampaignLedger
+    
+        t = 1790222400
+        with CampaignLedger(tmp_path, now=t, identity="synthetic") as ledger:
+            ledger.preflight_done(t + 10)
+            stop = ledger.day["work_deadline"]
+            ledger.begin("r0", "iteration", stop - 100)
+>           ledger.finish(stop + 60, resources={}, condition="C0", work_ended=stop - 1, work_seconds=99)
+
+tests/test_p0_budget.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <btc_risk_rl.pilots.budget.CampaignLedger object at 0x7f83a3205a30>
+now = 1790230570, resources = {}, condition = 'C0'
+evidence = {'work_ended': 1790230509, 'work_seconds': 99}
+
+    def finish(self, now, *, resources, condition, **evidence):
+        if self.state["status"] != "running":
+            raise ValueError("No active unit")
+        pending = self.state["pending"]
+        elapsed = now - pending["start"]
+        if elapsed <= 0 or elapsed > CAPS[pending["kind"]] or now > self.day["work_deadline"]:
+            self.fail(now, "unit_time_limit")
+>           raise ValueError("Unit time limit exceeded")
+E           ValueError: Unit time limit exceeded
+
+src/btc_risk_rl/pilots/budget.py:139: ValueError
+______________ test_supervisor_separates_work_and_save_deadlines _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-3/test_supervisor_separates_work0')
+
+    def test_supervisor_separates_work_and_save_deadlines(tmp_path):
+        from btc_risk_rl.pilots.supervisor import supervise
+    
+        marker = tmp_path / "closing.json"
+        code = ("import time,json; "
+                f"open({str(marker)!r}, 'w').write(json.dumps(dict(work_done_monotonic=time.monotonic(),work_done_utc=time.time()))); "
+                "time.sleep(.35)")
+>       result = supervise([sys.executable, "-c", code], output=tmp_path / "log", seconds=.2,
+                           rss_limit=10**10, poll=.01, closing_marker=marker, closing_seconds=2)
+E       TypeError: supervise() got an unexpected keyword argument 'closing_marker'
+
+tests/test_p0_budget.py:186: TypeError
+______ test_late_invocation_preserves_paused_or_completed_campaign[ready] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-3/test_late_invocation_preserves0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f83a2f6ec00>
+status = 'ready'
+
+    @pytest.mark.parametrize("status", ["ready", "completed"])
+    def test_late_invocation_preserves_paused_or_completed_campaign(tmp_path, monkeypatch, status):
+        from types import SimpleNamespace
+        import time
+        from btc_risk_rl.pilots import runner
+        from btc_risk_rl.pilots.budget import CampaignLedger
+    
+        t = 1790222400
+        with CampaignLedger(tmp_path, now=t, identity="synthetic-late") as ledger:
+            ledger.preflight_done(t + 10)
+            ledger.state["status"] = status
+            ledger.persist(t + 20)
+        monkeypatch.setattr(runner, "CAMPAIGN", tmp_path)
+        monkeypatch.setattr(runner, "fingerprint", lambda: "synthetic-late")
+        monkeypatch.setattr(runner, "time", SimpleNamespace(time=lambda: t+14400, monotonic=time.monotonic))
+        monkeypatch.setattr(runner, "preflight", lambda: pytest.fail("Late invocation must not load"))
+>       state = runner.run_campaign()
+                ^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_p0_integration.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/btc_risk_rl/pilots/runner.py:92: in run_campaign
+    checks = preflight()
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   monkeypatch.setattr(runner, "preflight", lambda: pytest.fail("Late invocation must not load"))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: Late invocation must not load
+
+tests/test_p0_integration.py:225: Failed
+____ test_late_invocation_preserves_paused_or_completed_campaign[completed] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-3/test_late_invocation_preserves1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f83a2763050>
+status = 'completed'
+
+    @pytest.mark.parametrize("status", ["ready", "completed"])
+    def test_late_invocation_preserves_paused_or_completed_campaign(tmp_path, monkeypatch, status):
+        from types import SimpleNamespace
+        import time
+        from btc_risk_rl.pilots import runner
+        from btc_risk_rl.pilots.budget import CampaignLedger
+    
+        t = 1790222400
+        with CampaignLedger(tmp_path, now=t, identity="synthetic-late") as ledger:
+            ledger.preflight_done(t + 10)
+            ledger.state["status"] = status
+            ledger.persist(t + 20)
+        monkeypatch.setattr(runner, "CAMPAIGN", tmp_path)
+        monkeypatch.setattr(runner, "fingerprint", lambda: "synthetic-late")
+        monkeypatch.setattr(runner, "time", SimpleNamespace(time=lambda: t+14400, monotonic=time.monotonic))
+        monkeypatch.setattr(runner, "preflight", lambda: pytest.fail("Late invocation must not load"))
+        state = runner.run_campaign()
+>       assert state["status"] == status and not state.get("deadline_violation")
+E       AssertionError: assert ('failed' == 'completed'
+E         
+E         - completed
+E         + failed)
+
+tests/test_p0_integration.py:227: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_p0_budget.py::test_checkpoint_can_use_closing_reserve_without_extending_work
+FAILED tests/test_p0_budget.py::test_supervisor_separates_work_and_save_deadlines
+FAILED tests/test_p0_integration.py::test_late_invocation_preserves_paused_or_completed_campaign[ready]
+FAILED tests/test_p0_integration.py::test_late_invocation_preserves_paused_or_completed_campaign[completed]
+4 failed in 1.00s

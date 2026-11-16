@@ -1,0 +1,28 @@
+{
+  "accepted_units": 1188,
+  "audited_utc": "2026-11-14T15:25:29.568139+00:00",
+  "charged_wall_seconds_by_day": {
+    "2026-11-11": 28198.680930376053,
+    "2026-11-12": 51223.82981109619,
+    "2026-11-13": 44639.6603615284,
+    "2026-11-14": 32729.20257115364
+  },
+  "checkpoint_bytes_verified": 26091150220,
+  "checkpoint_files_verified": 1188,
+  "complete_triplets": 36,
+  "conditions": {
+    "C0": 36,
+    "C10": 36,
+    "C5": 36
+  },
+  "cursor": 108,
+  "final_state_hash": "1952d8e4b8a056937d1ac8adb83f4e81e8de987297ad78b7fecc42d55bc14c5d",
+  "last_checkpoint": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-main-01/run-107-C5-b0/checkpoint-10",
+  "last_checkpoint_sha256": "e2c2b35e695251824574e32a4203545dca86f12bb36a681f652c3f2298009cce",
+  "ledger": "artifacts/oos-v12-training-main-01/ledger.jsonl",
+  "ledger_rows": 3622,
+  "ledger_sha256": "c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b",
+  "pending": null,
+  "runs": 108,
+  "status": "completed"
+}

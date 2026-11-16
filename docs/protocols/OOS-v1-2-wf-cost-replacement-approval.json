@@ -1,0 +1,32 @@
+{
+  "active": true,
+  "scope": "cost_measurement_training_folds_only",
+  "authorization": "User-approved complete replacement WF cost measurement: two new C10 runs, 2021 and 2022 cutoffs, 22 units in fixed order, at most two active days, 5400 own productive seconds and 10800 global seconds per La Paz day with the adopted reserve. Stop after the first accepted Q0 for audit before continuing. This does not authorize out-of-sample v1.2, validation 2023 or final test 2024-2025.",
+  "approved_at_utc": "2026-10-28T03:36:28Z",
+  "approved_base_commit": "c93c09b",
+  "campaign": "oos-v12-wf-cost-only-02",
+  "artifact_root": "artifacts/oos-v12-wf-cost-only-02",
+  "protocol_sha256": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+  "design_sha256": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+  "replacement_spec_sha256": "86f5fe1c77e842d276696338d44594ed738af84d5f6ef4e5163e6b3888039c36",
+  "code_sha256": "1688fa70e26ddb761c52ac7d84af15e91738dae0e36fcf44ec147de313d89391",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "roster": [["2021", 276696733, "C10"], ["2022", 498614892, "C10"]],
+  "total_units": 22,
+  "limits": {
+    "global_daily_seconds": 10800,
+    "daily_closure_reserve_seconds": 2700,
+    "own_productive_daily_seconds": 3600,
+    "own_productive_cumulative_seconds": 5400,
+    "active_days_max": 2,
+    "timezone": "America/La_Paz"
+  },
+  "excluded": [
+    "out-of-sample v1.2 campaign",
+    "validation 2023",
+    "final test 2024-2025",
+    "selecting checkpoints by performance",
+    "repeating failed units or runs",
+    "resuming the stopped ...01 campaign"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "accepted_runs_at_snapshot": 3,
+  "accepted_units_at_snapshot": 34,
+  "files_hashed": {
+    "checkpoint": 33,
+    "report": 33,
+    "request": 33
+  },
+  "first_triplet": [
+    {
+      "condition": "C0",
+      "k10_state_sha256": "1ecc4be37436f2db928511a1346e0f08383b145c5342f7fc44f95ff3d3a5c4fd",
+      "peak_worker_rss_bytes": 660107264,
+      "run_id": "run-00-C0-b0",
+      "seed": 1869792951,
+      "unit_seconds": 772.220237
+    },
+    {
+      "condition": "C5",
+      "k10_state_sha256": "638113d2df49d70613daf4f950553fd13de75e0117c88b43ebe5324114004de4",
+      "peak_worker_rss_bytes": 669958144,
+      "run_id": "run-01-C5-b0",
+      "seed": 1869792951,
+      "unit_seconds": 748.02268
+    },
+    {
+      "condition": "C10",
+      "k10_state_sha256": "2aaee9fe8610635ca14e8e39e136a7e427f33d01e782aecebddb2de841ad0c4f",
+      "peak_worker_rss_bytes": 627732480,
+      "run_id": "run-02-C10-b0",
+      "seed": 1869792951,
+      "unit_seconds": 738.625955
+    }
+  ],
+  "first_triplet_unit_seconds": 2258.868872,
+  "ledger_snapshot_sha256": "854f99aa962d662740cb5553bebae5eb5e6aa3c8bf6fcbaca6d83e505c651a6c",
+  "ledger_status": "running",
+  "state_count": 107
+}

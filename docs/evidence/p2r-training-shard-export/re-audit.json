@@ -1,0 +1,27 @@
+{
+  "accepted_starts": 7048,
+  "all_train_segments": 21,
+  "audited_rows": {
+    "bars.csv": 11086,
+    "episodes.csv": 7048,
+    "features.csv": 10217,
+    "observations.csv": 10217,
+    "transitions.csv": 10054
+  },
+  "checked_utc": "2026-10-06T17:39:45.681659+00:00",
+  "exclusions": {
+    "early_close": 20,
+    "missing": 16,
+    "reopening": 20
+  },
+  "fit_count": 10073,
+  "normalizer_refitted": false,
+  "parent_manifest_sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+  "prefix_equal_row_by_row": true,
+  "status": "passed",
+  "train_transitions": 10054,
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "usable_segments": 15,
+  "validated_paths": 7048,
+  "validation_rows_exported": 0
+}

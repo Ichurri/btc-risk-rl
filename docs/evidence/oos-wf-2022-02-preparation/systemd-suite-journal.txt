@@ -1,0 +1,4 @@
+2026-11-09T01:02:28.458149-04:00 debian systemd[1556]: Started oos-wf-cost-2022-02-suite-synthetic.service - [systemd-run] /usr/bin/bash -c "cd /home/ichurri/Desktop/personal_projects/btc-risk-rl && /usr/bin/flock -n artifacts/shared-pilot-budget/global.lock /home/ichurri/.local/bin/uv run --frozen pytest -q > /tmp/oos-wf-2022-02-systemd-suite.txt 2>&1".
+2026-11-09T01:10:29.980258-04:00 debian systemd[1556]: oos-wf-cost-2022-02-suite-synthetic.service: Main process exited, code=exited, status=1/FAILURE
+2026-11-09T01:10:29.980462-04:00 debian systemd[1556]: oos-wf-cost-2022-02-suite-synthetic.service: Failed with result 'exit-code'.
+2026-11-09T01:10:29.980818-04:00 debian systemd[1556]: oos-wf-cost-2022-02-suite-synthetic.service: Consumed 9min 6.873s CPU time, 1.3G memory peak.

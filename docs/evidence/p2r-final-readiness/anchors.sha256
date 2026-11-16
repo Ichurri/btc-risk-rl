@@ -1,0 +1,6 @@
+62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9  data/processed/p2r-training-h1/manifest.json
+62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9  docs/evidence/p2r-training-shard-export/manifest.json
+d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998  data/processed/segmented-B-h1/manifest.json
+1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c  artifacts/p0-approved-v1/ledger.jsonl
+926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755  artifacts/p1-approved-v1/ledger.jsonl
+e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8  artifacts/p2-approved-v1/ledger.jsonl

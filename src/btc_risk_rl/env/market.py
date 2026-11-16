@@ -81,6 +81,20 @@ class AcceptedMarket:
             for r in self._transitions.itertuples()
         }
 
+    @classmethod
+    def training_only(cls, config, prepared, *, expected_manifest):
+        from btc_risk_rl.env.training_view import load_training_view
+
+        return load_training_view(cls, config, prepared, expected_manifest)
+
+    @classmethod
+    def training_only_shard(cls, config, prepared, *, expected_manifest,
+                            shard, expected_shard_manifest):
+        from btc_risk_rl.env.training_view import load_training_shard_view
+
+        return load_training_shard_view(cls, config, prepared, expected_manifest,
+                                        shard, expected_shard_manifest)
+
     def _path(self, first, last, partition, segment_id):
         from btc_risk_rl.config import utc_ms
         from btc_risk_rl.features.market import FEATURES
@@ -128,6 +142,8 @@ class AcceptedMarket:
         )
 
     def validation_path(self):
+        if getattr(self, "_training_only", False):
+            raise ValueError("Validation is inaccessible in the training view")
         rows = self._transitions.loc[self._transitions.partition == "validation"]
         return self._path(
             int(rows.iloc[0].target_ms),

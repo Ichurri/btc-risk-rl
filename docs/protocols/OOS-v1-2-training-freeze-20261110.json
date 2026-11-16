@@ -1,0 +1,946 @@
+{
+  "protocol_id": "oos-v1.2-training-freeze-20261110",
+  "status": "training_authorized_evaluation_closed",
+  "campaign_roots": {
+    "wf-2021": "artifacts/oos-v12-training-wf-2021-01",
+    "wf-2022": "artifacts/oos-v12-training-wf-2022-01",
+    "main-2018-2022": "artifacts/oos-v12-training-main-01"
+  },
+  "source_roster_sha256": "74785abcea1f1517818d92f7402dd21035f720a0efa8540d482d9e48e7a8523d",
+  "roster": [
+    {
+      "source": "wf-2021",
+      "block": 0,
+      "seed": 57739409,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 0,
+      "seed": 57739409,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 0,
+      "seed": 57739409,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 1,
+      "seed": 803999499,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 1,
+      "seed": 803999499,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 1,
+      "seed": 803999499,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 2,
+      "seed": 76375890,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 2,
+      "seed": 76375890,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "wf-2021",
+      "block": 2,
+      "seed": 76375890,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 0,
+      "seed": 57739409,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 0,
+      "seed": 57739409,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 0,
+      "seed": 57739409,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 1,
+      "seed": 803999499,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 1,
+      "seed": 803999499,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 1,
+      "seed": 803999499,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 2,
+      "seed": 76375890,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 2,
+      "seed": 76375890,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "wf-2022",
+      "block": 2,
+      "seed": 76375890,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 0,
+      "seed": 1869792951,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 0,
+      "seed": 1869792951,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 0,
+      "seed": 1869792951,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 1,
+      "seed": 309092095,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 1,
+      "seed": 309092095,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 1,
+      "seed": 309092095,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 2,
+      "seed": 391604748,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 2,
+      "seed": 391604748,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 2,
+      "seed": 391604748,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 3,
+      "seed": 133987343,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 3,
+      "seed": 133987343,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 3,
+      "seed": 133987343,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 4,
+      "seed": 495937704,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 4,
+      "seed": 495937704,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 4,
+      "seed": 495937704,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 5,
+      "seed": 724586703,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 5,
+      "seed": 724586703,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 5,
+      "seed": 724586703,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 6,
+      "seed": 387175587,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 6,
+      "seed": 387175587,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 6,
+      "seed": 387175587,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 7,
+      "seed": 1774167087,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 7,
+      "seed": 1774167087,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 7,
+      "seed": 1774167087,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 8,
+      "seed": 1690097816,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 8,
+      "seed": 1690097816,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 8,
+      "seed": 1690097816,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 9,
+      "seed": 1729494401,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 9,
+      "seed": 1729494401,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 9,
+      "seed": 1729494401,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 10,
+      "seed": 231698938,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 10,
+      "seed": 231698938,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 10,
+      "seed": 231698938,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 11,
+      "seed": 1611567703,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 11,
+      "seed": 1611567703,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 11,
+      "seed": 1611567703,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 12,
+      "seed": 1242945320,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 12,
+      "seed": 1242945320,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 12,
+      "seed": 1242945320,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 13,
+      "seed": 23212930,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 13,
+      "seed": 23212930,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 13,
+      "seed": 23212930,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 14,
+      "seed": 284523009,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 14,
+      "seed": 284523009,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 14,
+      "seed": 284523009,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 15,
+      "seed": 2140196661,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 15,
+      "seed": 2140196661,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 15,
+      "seed": 2140196661,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 16,
+      "seed": 1396509094,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 16,
+      "seed": 1396509094,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 16,
+      "seed": 1396509094,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 17,
+      "seed": 1867765494,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 17,
+      "seed": 1867765494,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 17,
+      "seed": 1867765494,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 18,
+      "seed": 1530794315,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 18,
+      "seed": 1530794315,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 18,
+      "seed": 1530794315,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 19,
+      "seed": 921165808,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 19,
+      "seed": 921165808,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 19,
+      "seed": 921165808,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 20,
+      "seed": 1487609938,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 20,
+      "seed": 1487609938,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 20,
+      "seed": 1487609938,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 21,
+      "seed": 1012643073,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 21,
+      "seed": 1012643073,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 21,
+      "seed": 1012643073,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 22,
+      "seed": 1842084790,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 22,
+      "seed": 1842084790,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 22,
+      "seed": 1842084790,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 23,
+      "seed": 427449744,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 23,
+      "seed": 427449744,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 23,
+      "seed": 427449744,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 24,
+      "seed": 757392890,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 24,
+      "seed": 757392890,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 24,
+      "seed": 757392890,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 25,
+      "seed": 1539084889,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 25,
+      "seed": 1539084889,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 25,
+      "seed": 1539084889,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 26,
+      "seed": 350377454,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 26,
+      "seed": 350377454,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 26,
+      "seed": 350377454,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 27,
+      "seed": 1578271449,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 27,
+      "seed": 1578271449,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 27,
+      "seed": 1578271449,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 28,
+      "seed": 1652468181,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 28,
+      "seed": 1652468181,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 28,
+      "seed": 1652468181,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 29,
+      "seed": 102607842,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 29,
+      "seed": 102607842,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 29,
+      "seed": 102607842,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 30,
+      "seed": 1244457579,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 30,
+      "seed": 1244457579,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 30,
+      "seed": 1244457579,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 31,
+      "seed": 678576921,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 31,
+      "seed": 678576921,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 31,
+      "seed": 678576921,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 32,
+      "seed": 401042505,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 32,
+      "seed": 401042505,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 32,
+      "seed": 401042505,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 33,
+      "seed": 1119198356,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 33,
+      "seed": 1119198356,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 33,
+      "seed": 1119198356,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 34,
+      "seed": 2128408608,
+      "condition": "C5",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 34,
+      "seed": 2128408608,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 34,
+      "seed": 2128408608,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 35,
+      "seed": 838357238,
+      "condition": "C10",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 35,
+      "seed": 838357238,
+      "condition": "C0",
+      "beta": 0
+    },
+    {
+      "source": "main-2018-2022",
+      "block": 35,
+      "seed": 838357238,
+      "condition": "C5",
+      "beta": 0
+    }
+  ],
+  "design": {
+    "conditions": [
+      "C0",
+      "C5",
+      "C10"
+    ],
+    "beta": 0,
+    "critic_epochs": 4,
+    "iterations": 10,
+    "diagnostic_trajectories": 64,
+    "horizon": 180,
+    "gamma": 1,
+    "risk_bound": 0.10536051565782628,
+    "training_source": "accepted H1 training-only derivative",
+    "folds": {
+      "wf-2021": "2018–2020 with 180-bar purge",
+      "wf-2022": "2018–2021 with 180-bar purge",
+      "main-2018-2022": "2018–2022"
+    },
+    "checkpoint": "unit 10 after_dual_and_D; no performance selection"
+  },
+  "analysis": {
+    "minimum_effect_sortino_annualized": 0.5,
+    "block_unit": "same seed triplet C0/C5/C10",
+    "inference": "19999 paired centered one-sided bootstrap, seed 910031; Holm family 0.05 only after all 36 blocks and final evaluation",
+    "undefined": "no imputation or selective replacement; no primary contrast if any triplet missing or Sortino undefined",
+    "walk_forward": "development integrity and coverage only; no financial selection",
+    "evaluation_2023": "technical gate only, separate permission, currently closed",
+    "final_2024_2025": "separate permission, currently closed",
+    "pbo_dsr": "not estimable without real inputs"
+  },
+  "budget": {
+    "timezone": "America/La_Paz",
+    "window_local": "01:00–09:00",
+    "daily_global_seconds": 10800,
+    "daily_closure_reserve_seconds": 2700,
+    "active_days_max": 20,
+    "presentation_cutoff_local": "2026-11-16T09:00:00-04:00",
+    "q0_cap_seconds": 1800,
+    "iteration_cap_seconds": 2700,
+    "preflight_seconds_max": 900
+  },
+  "inputs_sha256": {
+    "docs/proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md": "a1294725443eeb88f98c6cb4b659e1b244ddb54ce694dd7c550796e40c4d1a15",
+    "docs/evidence/pilot-closure-v1-2/results.json": "28d014e92ac050d7e66070c1839bb6f37b2dee2969ca201b6a11afa28d27a5b5",
+    "docs/evidence/segmented-h1/manifest.json": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998",
+    "data/processed/p2r-training-h1/manifest.json": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+    "configs/initial.toml": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+    "docs/hitos/OOS-v1-2-costo-2022-03-cierre.md": "04a858dab2a2ab64058fdd6754b3e9cc9c74d824b3e54088c5c838fb867f6a13",
+    "docs/protocols/P2-infrastructure-v1.json": "d5fa2f2726cd6458df3c290e7b58c591f11310c7a9b645c47a5fb6bd419e5238",
+    "docs/decisions/ADR-002-risk-horizon.md": "b86c9af633072064350aaa9feb7b06c55622fbe6aafd74bc56dd76c28ce01297"
+  }
+}

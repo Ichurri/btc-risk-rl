@@ -1,0 +1,11 @@
+{
+  "accepted_units": 1,
+  "checkpoint0_boundary": "after_q0",
+  "checkpoint0_manifest_sha256": "b80d404a94b744f2fc680367476d51d4a67e0c314ff644dd7b63f775d954e96a",
+  "checkpoint0_state_sha256": "1de2699ae55e1f1d1e8686adada3d9b05fda2193b52adfeb24b2403a511aa157",
+  "invocation_id": "797f0e422bac4b138c13a0829261a752",
+  "ledger_status": "running",
+  "pending_unit": 1,
+  "read_utc": "2026-10-06T05:05:15.523865+00:00",
+  "unit1_started_utc": "2026-10-06T05:04:43.671064+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "kind": "P1_preparation_no_market",
+  "days": {
+    "2026-09-24": {
+      "charged_wall_seconds": 1387.8377449512482,
+      "started_utc": "2026-09-24T20:34:23+00:00",
+      "ended_utc": "2026-09-24T20:57:30.837745+00:00"
+    }
+  },
+  "basis": "Conservative wall interval since P1 branch creation: includes development, synthetic checks, commits and publication",
+  "p0_original_hashes_verified": true
+}

@@ -1,0 +1,18 @@
+{
+  "01": {
+    "files": 15,
+    "mapping_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a"
+  },
+  "02": {
+    "files": 2,
+    "mapping_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd"
+  },
+  "03": {
+    "files": 10,
+    "mapping_sha256": "34270a3a26901de2472d203662e1717827cc93d8073a7f996b01f0b8174bbb57"
+  },
+  "04": {
+    "files": 1860,
+    "mapping_sha256": "3c22543a9238b07f84ae790e92fcd8b627d53483898e15204d9a8a5fb6a859da"
+  }
+}

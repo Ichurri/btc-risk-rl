@@ -1,0 +1,28 @@
+{
+  "schema": "oos_preunit_timeout_recovery_v1",
+  "status": "prospective_technical_adjudication_training_only",
+  "authorized_by": "Santiago: resolver bloqueos recuperables y continuar el entrenamiento principal sin repetir unidades",
+  "failed_end_sha256": "b6d5ac562e8761221147993963901e4c1068e0573b171ccbd8c4096a3bfa2386",
+  "failed_journal_sha256_at_adjudication": "786c2f0c3fe7fffcd75027ff09fb096c5571c01d029c6506e7761d3ac526f5eb",
+  "checks_end_sha256": "c05dd60cdb7a66c93443a8b824fcc4a4ed4d0858c731a13c9eb658438ccfc19f",
+  "checks_journal_sha256_at_adjudication": "39c05d395cc71b3818fb492ee536d848c3786d1121231e05e7d6060a9b77d957",
+  "token": "049a49d774ed4da797c0ef4348c3b464",
+  "reason": "OOS formal preparation exceeded 900 seconds",
+  "measured_preparation_seconds": 988.7164827989982,
+  "suite_seconds": 867.3427987098694,
+  "ruff_seconds": 0.09845256805419922,
+  "preflight_seconds": 44.072800397872925,
+  "ledger_sha256_at_adjudication": "f2b8a639273f3fbdb2a3c7afa5d21d7a30dca6a16178b9748e87b47038b93215",
+  "ledger_state_hash_at_adjudication": "2bbffd1de87892c2c0050ca5e1b47cc30d9fd3526e1ee58fe2a6824b1ba7ce2f",
+  "last_accepted_checkpoint_sha256": "dff17b3504b95cf30ad16ab93df571e856397486c25d5b73ad59b484219097c1",
+  "accepted_units_before_and_after_failed_precheck": 1133,
+  "diagnostic_debit": {
+    "start_epoch": 1794657608.5735683,
+    "end_epoch": 1794658354,
+    "seconds": 745.4264317,
+    "basis": "Intervalo completo desde el fin del intento fallido hasta fijar esta adjudicación; cargo conservador de diagnóstico, pruebas focales y código, sin solapar ledger ni bitácora previa."
+  },
+  "preparation_seconds_max": 1200,
+  "unchanged": "original failed rows, full measured debit, daily global cap 50400 s, closure reserve 2700 s, Q0 1800 s, iteration 2700 s, roster, data, RNG, checkpoints, 2023/final closed",
+  "scope": "Only the pinned preunit timeout may be followed by a new formal preparation; all other failed or open sessions remain blocking."
+}

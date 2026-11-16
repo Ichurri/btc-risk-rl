@@ -1,0 +1,146 @@
+{
+  "protocol_id": "P0-approved-v1",
+  "status": "AUTHORIZED_P0_ONLY",
+  "authorized": true,
+  "executable": true,
+  "base_commit": "7a379b75e30dcfcc893063e2dc2c141ab6dd84e1",
+  "data": {
+    "partition": "train",
+    "start": "2018-01-01T00:00:00Z",
+    "end_exclusive": "2023-01-01T00:00:00Z",
+    "accepted_starts": 7048,
+    "sampling": "uniform_with_replacement",
+    "normalizer_refit": false,
+    "validation_access": false,
+    "final_access": false
+  },
+  "conditions": {
+    "C0": 0.0,
+    "C5": 0.05,
+    "C10": 0.1
+  },
+  "risk": {
+    "loss": "negative_sum_net_log_rewards",
+    "bound_selected": 0.10536051565782628,
+    "bound_candidates_simple_reference": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "bound_conversion": "-log(1-simple_reference)",
+    "discussion_recommendation_simple_reference": 0.1,
+    "initial_multiplier": 0.0,
+    "selection": "user_approved_before_results_10_percent_log_reference_not_individual_loss_or_drawdown_cap"
+  },
+  "training_candidate": {
+    "horizon": 180,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "bootstrap_after_horizon": false,
+    "iterations": 2,
+    "n_a": 64,
+    "n_q": 400,
+    "n_b": 400,
+    "hidden": 32,
+    "hidden_layers": 1,
+    "activation": "tanh",
+    "separate_actor_critic": true,
+    "action_distribution": "H4_logistic_normal_unchanged",
+    "actor_lr": 0.0001,
+    "critic_lr": 0.001,
+    "dual_lr": 0.1,
+    "clip": 0.2,
+    "actor_epochs": 2,
+    "critic_epochs": 2,
+    "minibatch_trajectories": 16,
+    "fragment_steps": 60,
+    "optimizer": "Adam",
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "weight_decay": 0.0,
+    "entropy_coefficient": 0.0,
+    "advantage_normalization": false,
+    "gradient_clipping": false
+  },
+  "runtime": {
+    "device": "cpu",
+    "dtype": "float64",
+    "torch_threads": 1,
+    "torch_interop_threads": 1,
+    "blas_threads": 1,
+    "deterministic_algorithms": true,
+    "concurrent_runs": 1
+  },
+  "blocks": [
+    {
+      "seed": 410031,
+      "order": [
+        "C0",
+        "C5",
+        "C10"
+      ]
+    },
+    {
+      "seed": 410047,
+      "order": [
+        "C5",
+        "C10",
+        "C0"
+      ]
+    },
+    {
+      "seed": 410081,
+      "order": [
+        "C10",
+        "C0",
+        "C5"
+      ]
+    }
+  ],
+  "budget_proposal": {
+    "daily_seconds": 10800,
+    "preflight_limit_seconds": 900,
+    "work_limit_seconds": 8100,
+    "closing_reserve_seconds": 1800,
+    "unknown_q0_cap_seconds": 1800,
+    "unknown_iteration_cap_seconds": 2700,
+    "empirical_margin_multiplier": 1.5,
+    "estimate_monotone": true,
+    "estimate_source": "same_market_configuration_completed_units_only",
+    "max_sessions_per_run": 3,
+    "max_campaign_sessions": 27,
+    "rss_stop_bytes": 10737418240,
+    "min_available_memory_bytes": 2147483648,
+    "min_free_disk_bytes": 5368709120
+  },
+  "diagnostics": {
+    "old_logprob_abs_tolerance": 1e-10,
+    "reward_identity_abs_tolerance": 1e-10,
+    "ratio_warning_range": [
+      0.5,
+      2.0
+    ],
+    "active_clip_fraction_warning_above": 0.5,
+    "gradient_l2_warning_above": 100.0,
+    "critic_relative_mse_warning_above": 1.0,
+    "critic_relative_mse_epsilon": 1e-12,
+    "q_b_empirical_cvar_gap_warning_above": 0.05,
+    "effective_tail_mass_warning_below": 20.0,
+    "multiplier_warning_above": 1.0,
+    "near_endpoint_action_threshold": 1e-06,
+    "near_endpoint_fraction_warning_above": 0.01,
+    "warnings_stop_run": false,
+    "favorable_risk_stop": false
+  },
+  "calendar": {
+    "timezone": "America/La_Paz",
+    "timestamps": "UTC",
+    "daily_scope": "global_campaign",
+    "sequential_runs_same_day": true,
+    "concurrency": 1,
+    "restart_resets_budget": false
+  }
+}

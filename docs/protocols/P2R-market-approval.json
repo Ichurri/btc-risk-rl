@@ -1,0 +1,17 @@
+{
+  "active": true,
+  "adoption_sha256": "7b420e180620d5512aac0f7cf696ec38b075b4d4a56ac2a33540b6debb3dfe0b",
+  "approved_at_utc": "2026-10-07T05:28:22Z",
+  "approved_base_commit": "c5a66ba2bf62775ec38fca1dbe9d551baf27229f",
+  "authorization": "User-approved P2R v2 historical campaign solely as a development diagnostic; nine new runs under the adopted immutable protocol and shared budget.",
+  "campaign": "p2r-approved-v2",
+  "excluded": [
+    "P2 continuation or reuse",
+    "validation 2023",
+    "final test 2024-2025",
+    "confirmatory evaluation"
+  ],
+  "protocol_sha256": "3372045783747399290cf2baa1e48c82f59c3e917d49f1e9f6ef8e1d08677f79",
+  "scope": "accepted_training_2018_2022_only",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
+}

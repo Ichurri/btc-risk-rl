@@ -1,0 +1,19 @@
+{
+  "active": true,
+  "scope": "cost_measurement_training_folds_only",
+  "authorization": "User-approved isolated measurement of training cost for the two C10 development folds, 22 units in the fixed order and within the adopted cost-study limits. This does not authorize out-of-sample v1.2, validation 2023, or final test 2024-2025.",
+  "approved_at_utc": "2026-10-27T02:32:14Z",
+  "approved_base_commit": "0cdd264394e43f353cee6f880fdf5b137288cf8f",
+  "campaign": "oos-v12-wf-cost-only-01",
+  "artifact_root": "artifacts/oos-v12-wf-cost-only-01",
+  "protocol_sha256": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+  "design_sha256": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+  "excluded": [
+    "out-of-sample v1.2 campaign",
+    "validation 2023",
+    "final test 2024-2025",
+    "selecting checkpoints by performance",
+    "repeating failed units or runs"
+  ]
+}

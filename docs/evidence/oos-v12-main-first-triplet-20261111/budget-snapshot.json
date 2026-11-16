@@ -1,0 +1,16 @@
+{
+  "active_preflight_token": "f896e4a84e084e898c3be42d85d6d1b5",
+  "blocked_for_other_session": true,
+  "campaign_ledger_charges": {
+    "oos-v12-training-main-01": {
+      "2026-11-11": 0.0
+    },
+    "oos-v12-training-wf-2022-01": {
+      "2026-11-11": 6846.916214227676
+    }
+  },
+  "captured_utc": "2026-11-11T18:20:18.339239+00:00",
+  "day_la_paz": "2026-11-11",
+  "global_spent_observed_union_seconds": 21118.46242594719,
+  "remaining_before_2700_second_reserve": 26581.53757405281
+}

@@ -142,7 +142,7 @@ def test_observation_next_open_and_gap_accounting(config):
     features[0], features[1] = np.arange(10), np.arange(10) + 10
     env = TradingEnv(synthetic_path(config, opens=opens, closes=closes, features=features), config)
     obs, info = env.reset(seed=3)
-    np.testing.assert_array_equal(obs, np.r_[np.arange(10), 0.0, 0.0])
+    np.testing.assert_array_equal(obs, np.r_[np.arange(10), 0.0, 0.0, 1.0])
     assert obs.dtype == np.float64 and info["equity"] == 10000
     obs1, r1, terminated, truncated, trade1 = env.step(np.array([1.0], dtype=np.float64))
     q = 10000 / (110 * 1.0005 * 1.001)
@@ -175,7 +175,7 @@ def test_no_lookahead_in_observation_or_order_sizing(config):
     assert i1["equity"] != i2["equity"]  # next close affects valuation only
 
 
-def test_full_episode_truncates_without_liquidation_and_reward_telescopes(config):
+def test_full_episode_terminates_without_liquidation_and_reward_telescopes(config):
     from btc_risk_rl.env.trading import TradingEnv
 
     env = TradingEnv(synthetic_path(config), config)
@@ -184,18 +184,18 @@ def test_full_episode_truncates_without_liquidation_and_reward_telescopes(config
     for i in range(180):
         obs, r, terminal, cut, info = env.step(1.0)
         rewards.append(r)
-        assert not terminal and cut == (i == 179)
+        assert terminal == (i == 179) and not cut
     assert info["btc"] > 0 and info["cash"] == 0
     assert info["commission"] == 0 and info["delta_btc"] == 0
     assert info["end_reason"] == "collection_window"
     assert sum(rewards) == pytest.approx(np.log(info["equity"] / 10000), abs=1e-13)
-    assert obs[-1] == pytest.approx(sum(rewards))
-    assert info["adr_002_status"] == "pending_discount_and_bootstrap"
+    assert obs[11] == pytest.approx(sum(rewards))
+    assert info["adr_002_status"] == "adopted_v2_1"
     with pytest.raises(RuntimeError):
         env.step(0.0)
     reset, reset_info = env.reset()
     assert reset_info["equity"] == 10000 and reset_info["btc"] == 0
-    assert reset[-1] == 0
+    assert reset[11] == 0 and reset[12] == 1
 
 
 @pytest.mark.parametrize("action", [-0.01, 1.01, float("nan"), float("inf"), [0, 1], [[0.5]]])
@@ -295,8 +295,8 @@ def test_accepted_loader_all_indices_and_continuous_validation(accepted_syntheti
     assert len(seen) == 15
     assert data.validation_path().times.shape == (2191,)
     env = TradingEnv(data.training_path(0), c)
-    assert env.observation_space.high[-2] == 1
-    assert env.reset()[0].shape == (12,)
+    assert env.observation_space.high[10] == 1
+    assert env.reset()[0].shape == (13,)
     for wrong in [-1, 7048, 0.5, True]:
         with pytest.raises(ValueError):
             data.training_path(wrong)
@@ -407,10 +407,10 @@ def test_environments_sharing_a_path_have_independent_balances(config):
     b.reset()
     a.step(1.0)
     for i in range(180):
-        obs, reward, _, cut, info = b.step(0.0)
+        obs, reward, terminal, cut, info = b.step(0.0)
         assert info["cash"] == 10000 and info["btc"] == 0
-        assert reward == 0 and obs[-1] == 0
-        assert cut == (i == 179)
+        assert reward == 0 and obs[11] == 0
+        assert terminal == (i == 179) and not cut
     assert a.step(1.0)[-1]["btc"] > 0
 
 
@@ -427,7 +427,7 @@ def test_segment_cut_keeps_position_and_terminal_observation(accepted_synthetic)
     env.reset()
     for _ in range(180):
         obs, _, terminal, cut, info = env.step(1.0)
-    assert not terminal and cut
+    assert terminal and not cut
     assert info["end_reason"] == "segment_boundary"
     assert info["btc"] > 0 and info["delta_btc"] == 0 and info["commission"] == 0
     np.testing.assert_array_equal(obs[:10], path.features[-1])

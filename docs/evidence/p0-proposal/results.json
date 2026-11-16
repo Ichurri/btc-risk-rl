@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "kind": "static_and_algebraic_proposal_only",
+  "groups": [
+    "proposal_closed_train_only",
+    "adopted_contract_not_modified",
+    "three_paired_blocks_rotated_order",
+    "complete_calendar_resource_arithmetic",
+    "bound_conversion_only_not_cvar_certificate",
+    "fictional_clock_admission_and_daily_reserve",
+    "fictional_cumulative_ledger_no_performance_stop",
+    "operational_files_unchanged_and_document_totals_match"
+  ],
+  "bounds": [
+    {
+      "reference_simple_loss": 0.05,
+      "d": 0.051293294387550536
+    },
+    {
+      "reference_simple_loss": 0.1,
+      "d": 0.10536051565782631
+    },
+    {
+      "reference_simple_loss": 0.2,
+      "d": 0.22314355131420976
+    }
+  ],
+  "per_run": {
+    "trajectories": 2128,
+    "transitions": 383040,
+    "adam_steps_per_network": 16
+  },
+  "fictional_clock_scenarios": [
+    [
+      8100,
+      [],
+      "start"
+    ],
+    [
+      2699,
+      [],
+      "planned_pause"
+    ],
+    [
+      2700,
+      [],
+      "start"
+    ],
+    [
+      2100,
+      [
+        1000,
+        1400
+      ],
+      "start"
+    ],
+    [
+      2099,
+      [
+        1000,
+        1400
+      ],
+      "planned_pause"
+    ],
+    [
+      8100,
+      [
+        1900
+      ],
+      "design_infeasible"
+    ]
+  ],
+  "fictional_ledger": [
+    {
+      "day": 1,
+      "trajectories": 1264,
+      "seconds": 1360
+    },
+    {
+      "day": 2,
+      "trajectories": 2128,
+      "seconds": 2620
+    }
+  ],
+  "source_sha256": {
+    "docs/proposals/P0-candidate.json": "cbeb4751998257f6b332392764a2d022f39011c4c3f45ea50a5e9595572724a1",
+    "docs/proposals/P0-protocolo-v1.md": "411893e85f78cc42c1d603ddab8da20bef4ab9ecd577633049490c1846baa646",
+    "docs/evidence/p0-proposal/checks.py": "286508634d235c50d6247b745f3830dde17fc1e52bb9ee440eed64f4ca542e67"
+  },
+  "market_accessed": false,
+  "learning_executed": false,
+  "h5_verification_repeated": false
+}

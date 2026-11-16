@@ -1,0 +1,7 @@
+Result=exit-code
+ExecMainStatus=1
+MemoryPeak=1195008000
+Id=oos-wf-cost-2022-02-session-01.service
+ActiveState=failed
+SubState=failed
+InvocationID=df1313adea4e400996fa4982229099ca

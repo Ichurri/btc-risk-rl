@@ -1,0 +1,7 @@
+Result=exit-code
+ExecMainStatus=1
+MemoryPeak=1195008000
+ActiveState=failed
+ActiveEnterTimestamp=Mon 2026-11-09 01:23:10 -04
+InactiveEnterTimestamp=Mon 2026-11-09 01:41:54 -04
+InvocationID=df1313adea4e400996fa4982229099ca

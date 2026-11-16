@@ -8,6 +8,7 @@ import pandas as pd
 
 from btc_risk_rl.config import STEP_MS, Config, utc_ms
 from btc_risk_rl.data.binance import sha256
+from btc_risk_rl.data.config_compatibility import audit_config_compatibility
 from btc_risk_rl.data.segmentation import (
     EPISODE_COLUMNS,
     HISTORY,
@@ -50,7 +51,7 @@ def same_table(actual: pd.DataFrame, expected: pd.DataFrame, name: str):
 def verify_segmented(config: Config, raw: Path, output: Path, diagnosis: Path = DIAGNOSIS) -> dict:
     manifest = json.loads((output / "manifest.json").read_text())
     require(manifest["status"] in {"pending_verification", "accepted"}, "Dataset not verifiable")
-    require(manifest["config"] == config.model_dump(mode="json"), "Configuration mismatch")
+    compatibility = audit_config_compatibility(manifest["config"], config)
     require(
         manifest["policy"] == "B_ADR_004" and manifest["fit_rule"] == FIT_RULE, "Policy mismatch"
     )
@@ -204,6 +205,7 @@ def verify_segmented(config: Config, raw: Path, output: Path, diagnosis: Path = 
     return {
         "status": "passed",
         "policy": "B_ADR_004",
+        "config_compatibility": compatibility,
         "source_hashes_verified": sources,
         "persisted_tables_verified": sorted(tables),
         "normalizer_refitted": False,

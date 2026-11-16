@@ -1,94 +1,76 @@
-# BTC Risk RL — primera iteración
+# Aprendizaje por refuerzo sensible al riesgo para trading en Bitcoin
 
-Tesis: Agente de aprendizaje por refuerzo sensible al riesgo para la toma de
-decisiones de trading en Bitcoin. Santiago Andrés Iturri Vargas.
+Repositorio de la tesis de **Santiago Andrés Iturri Vargas**. El estudio
+compara PPO neutral al riesgo con dos variantes que incorporan una restricción
+de valor en riesgo condicional (CVaR), en un simulador de BTC/USDT con velas de
+cuatro horas, comisiones y deslizamiento.
 
-Repositorio de infraestructura experimental; no hay entrenamientos autorizados.
-Leer AGENTS.md, docs/HANDOFF.md y docs/decisions/ antes de continuar con Codex.
+## Resultados de la evaluación final
 
-## Debian local / entorno remoto
-Requisitos: Git, Python 3.11–3.13 y uv disponible. Dentro de esta carpeta:
+Se evaluaron **108 políticas** sobre el período 2024–2025, en **36 bloques
+pareados** por semilla. Cada política recorrió las mismas **4.386
+transiciones**. Los checkpoints K10 se fijaron antes de consultar el
+período final y la evaluación técnica de 2023 comprobó el funcionamiento
+de la ruta sin seleccionar políticas por desempeño.
+
+| Condición | Objetivo de entrenamiento | Sortino anualizado medio | Diferencia frente a C0 | p ajustado por Holm |
+| --- | --- | ---: | ---: | ---: |
+| C0 | PPO neutral al riesgo | 0,979688 | — | — |
+| C5 | PPO con CVaR sobre el 5 % de cola | 0,980005 | +0,000317 | 0,4588 |
+| C10 | PPO con CVaR sobre el 10 % de cola | 0,979888 | +0,000200 | 0,4588 |
+
+Ninguna diferencia alcanzó el efecto mínimo de interés predefinido
+(+0,50 unidades de Sortino) y la prueba no aportó evidencia de superioridad
+de C5 o C10 frente a C0. La evaluación se limita a este período y diseño.
+El Sortino no mide el cumplimiento poblacional de la restricción CVaR.
+
+Comprar y mantener BTC, como referencia descriptiva sobre el mismo período,
+obtuvo **1,421389** de Sortino anualizado y **+106,98 %** de retorno acumulado
+neto. La inferencia pareada incluye únicamente los contrastes C5−C0 y C10−C0.
+
+- [Informe final y contraste estadístico](docs/hitos/OOS-v1-2-final-evaluacion-cierre-20261115.md)
+- [Resultados por bloque y figuras](docs/evidence/oos-v12-evaluation-20261115/chapter-4/)
+- [Auditoría de comprar y mantener BTC](docs/hitos/OOS-v1-2-buy-hold-referencia-20261115.md)
+
+## Metodología y evidencias
+
+| Componente | Documentación |
+| --- | --- |
+| Datos, exclusiones y preparación segmentada | [H1](docs/hitos/H1-preparacion-segmentada.md) |
+| Simulador, ejecución y valoración | [H3](docs/hitos/H3-contrato-ADR002.md) |
+| Formulación del riesgo y horizonte de aprendizaje | [ADR-002](docs/decisions/ADR-002-risk-horizon.md) |
+| Agentes, recolección y checkpoints | [H4](docs/hitos/H4-agentes-recolector.md) · [H5](docs/hitos/H5-infraestructura.md) |
+| Pilotos de desarrollo | [Informes de los hitos](docs/hitos/) · [Evidencias](docs/evidence/) |
+| Evaluación fuera de muestra | [Protocolo fijado antes de la evaluación](docs/protocols/OOS-v1-2-evaluation-method-freeze-20261111.json) |
+
+El repositorio contiene el código, las pruebas, los protocolos y los
+resultados resumidos. Las fuentes históricas, los checkpoints y las trazas
+completas se conservan localmente. Sus manifiestos y huellas están
+documentados en las evidencias. Los permisos históricos de evaluación
+están cerrados.
+
+## Instalación y comprobaciones
+
+Requisitos para Debian o un entorno Linux equivalente. Git, uv y Python
+3.11–3.13. El archivo `uv.lock` fija las dependencias, incluido PyTorch
+para CPU.
 
 ```bash
+git clone https://github.com/Ichurri/btc-risk-rl.git
+cd btc-risk-rl
 uv sync --frozen
+uv run --frozen btc-risk config-check
 uv run --frozen ruff check .
 uv run --frozen pytest
 ```
 
-No requiere GPU para datos ni pruebas. No modifica drivers. El lock fija las
-dependencias; registrar Python/SO/dispositivo en cada ejecución. Los 6 GiB de
-VRAM son estimación del usuario, pendientes de medir localmente.
+Consulte [la guía de Debian](docs/DEBIAN.md) y, si dispone de las evidencias
+locales, [el dashboard de avances](docs/DASHBOARD.md) o [el informe de
+pilotos](docs/hitos/visualizacion-experimentos-local.md).
 
-## Coordinación
-El repositorio incluye historial Git local; no hay proveedor remoto creado.
-Tras elegirlo, añadirlo como origin y sincronizar las ramas. Compartir commit
-y docs/HANDOFF.md entre este chat y Codex. No compartir únicamente cambios
-descritos en una conversación sin archivos y evidencia.
+## Referencias del repositorio
 
-## Protección
-La configuración reserva 2024–2025 como prueba final. Los comandos de desarrollo
-no pueden descargar ni preparar ese intervalo. No existe un flag para desbloquearlo.
-No es una barrera de seguridad contra quien edita el código: es una guarda de
-protocolo con pruebas. Una futura campaña final necesita un flujo separado y revisión.
-
-## Estado
-Consultar docs/hitos/ y docs/evidence/ para resultados reales, limitaciones y commits.
-Las carpetas agents/, experiments/ y reporting/ están reservadas; no representan
-funciones ya implementadas. ADR-002 bloquea CVaR-PPO hasta cerrar sus definiciones.
-
-## Módulo de datos implementado
-
-```bash
-uv run --frozen btc-risk config-check
-uv run --frozen btc-risk fetch-development
-uv run --frozen btc-risk prepare-development
-uv run --frozen btc-risk recheck-anomalies
-```
-
-Cada comando que escribe exige una carpeta de destino nueva; no sobrescribe
-evidencia previa. Para otra ejecución usar --output con una ruta diferente.
-prepare-development falla deliberadamente si detecta huecos o datos inválidos;
-el detalle queda en quality.json y no se emiten características aceptadas.
-
-La descarga real inicial contiene 16 aperturas ausentes y 20 cierres abreviados.
-La ruta estricta sigue rechazando esos datos, como documenta ADR-003. La preparación
-segmentada aprobada en ADR-004 dispone ahora de una ruta separada y aceptación
-técnica de desarrollo. El simulador H2 consume esos índices auditados.
-No retirar las validaciones estrictas.
-
-## Preparación segmentada B (sin red)
-
-```bash
-uv run --frozen btc-risk prepare-segmented-development --output data/processed/segmented-B
-uv run --frozen btc-risk verify-segmented-development --prepared data/processed/segmented-B
-```
-
-La preparación exige un destino nuevo y el histórico original identificado por
-el diagnóstico; no descarga datos ni acepta anomalías nuevas automáticamente.
-El verificador es de solo lectura. Emite máscara auditable, barras retenidas,
-características, parámetros del normalizador, observaciones e índices temporales.
-El ajuste usa cada observación finita de entrenamiento una sola vez; validación
-reutiliza parámetros. Los episodios de 180 transiciones son solo de entrenamiento;
-validación mantiene un único recorrido continuo. Consulte criterios, cobertura,
-evidencias y límites en [H1 segmentado](docs/hitos/H1-preparacion-segmentada.md).
-
-La configuración/CLI no exponen comandos de entrenamiento o prueba final.
-Las pruebas usan fixtures sintéticos, salvo la auditoría real documentada.
-Los datos de desarrollo originales acompañan el paquete en data/raw/ con sus
-huellas; están excluidos de Git. Para reutilizarlos verificar el manifiesto.
-
-## Simulador causal H2
-
-Implementa exposición BTC posterior a costos, ejecución en apertura siguiente,
-comisiones y deslizamiento adverso, contabilidad float64 y recompensa logarítmica
-neta. Entrenamiento usa índices de 180 transiciones; validación es un recorrido
-continuo. Los cortes truncan sin liquidar. No hay agente ni entrenamiento habilitado.
-
-```bash
-uv run --frozen python scripts/verify_simulator.py --context local --output artifacts/simulator-h2/real
-```
-
-El destino debe ser nuevo. Es una comprobación contable con acciones prefijadas,
-no selección de estrategias. Uso, ecuaciones, límites y evidencia en
-[H2 simulador](docs/hitos/H2-simulador.md). ADR-002 mantiene pendientes descuento,
-horizonte y bootstrap antes de implementar PPO/CVaR-PPO.
+Para citar código o evidencia, use el enlace de GitHub al commit concreto
+que contiene el archivo. El [inventario de consolidación](docs/REPOSITORY-HISTORY.md)
+identifica los commits de las antiguas ramas. Las instrucciones operativas
+y los antecedentes se conservan en el [registro de continuidad](docs/HANDOFF.md).

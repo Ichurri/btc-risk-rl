@@ -1,0 +1,29 @@
+{
+  "schema": "oos_preunit_code_transition_v1",
+  "status": "prospective_technical_adjudication_training_only",
+  "reason": "Campaign identity mismatch",
+  "failed_end_sha256": "8696a9d624633b8a7bf2113d0a8c99a18d5d366fdf2790d881b51958dd3c84d6",
+  "checks_end_sha256": "dddc63de848e30550067c4385f9ed358e10a7d400f603d057ce305837b1c2d44",
+  "token": "94d54f6af0294e7494bc349d725c6299",
+  "failed_journal_sha256_at_adjudication": "c9a54d09a9385a772389985a7a89317c7c16ceed47b35c2c80818d042c40ef07",
+  "checks_journal_sha256_at_adjudication": "dd09f0a09a15956ee93e89bc3aa83f5922ecc7c78997d2dd1c832426ba82bd51",
+  "ledger_sha256_at_adjudication": "f2b8a639273f3fbdb2a3c7afa5d21d7a30dca6a16178b9748e87b47038b93215",
+  "ledger_state_hash_at_adjudication": "2bbffd1de87892c2c0050ca5e1b47cc30d9fd3526e1ee58fe2a6824b1ba7ce2f",
+  "cursor_at_transition": 103,
+  "accepted_units_at_transition": 1133,
+  "last_checkpoint_sha256": "dff17b3504b95cf30ad16ab93df571e856397486c25d5b73ad59b484219097c1",
+  "diagnostic_debit": {
+    "start_epoch": 1794659801.921664,
+    "end_epoch": 1794660314,
+    "seconds": 512.078336,
+    "basis": "Intervalo completo desde el cierre del segundo fallo previo a unidad hasta esta adjudicación; cargo conservador sin solapar la bitácora de la sesión fallida."
+  },
+  "allowed_changed_code_paths": [
+    "src/btc_risk_rl/pilots/oos_v12_budget.py",
+    "src/btc_risk_rl/pilots/oos_v12_launch.py",
+    "src/btc_risk_rl/pilots/oos_v12_training.py",
+    "src/btc_risk_rl/pilots/wf_cost_session.py"
+  ],
+  "unchanged": "source identity, code of actor/critic/collector/environment, settings, roster, diagnostic N, runner, Q/A/B+D, data, normalizer, unit caps, global daily limit and closing reserve",
+  "scope": "Only the pinned preunit identity failure may be followed by a new complete preflight. The ledger keeps its original identity and appends an explicit operational code transition at cursor 103 before any new unit. No old checkpoint is loaded by run 103 Q0."
+}

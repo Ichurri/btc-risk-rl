@@ -1,0 +1,35 @@
+{
+  "diagnosis": "Python tuple in reconstructed identity.roster differs from JSON list persisted in ledger; all other identity fields equal",
+  "ledger_status": "ready",
+  "accepted_units": 1,
+  "pending": null,
+  "first_checkpoint_sha256": "22f9f60484db6ae5a04b7b35f4ebe2149debb16ac357437536c24f571bf8bca7",
+  "ledger_sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+  "stored_roster": [
+    [
+      "2021",
+      276696733,
+      "C10"
+    ],
+    [
+      "2022",
+      498614892,
+      "C10"
+    ]
+  ],
+  "reconstructed_roster": [
+    [
+      "2021",
+      276696733,
+      "C10"
+    ],
+    [
+      "2022",
+      498614892,
+      "C10"
+    ]
+  ],
+  "json_normalized_identity_equal": true,
+  "unit_1_checkpoint_exists": false,
+  "unit_1_report_exists": false
+}

@@ -1,0 +1,68 @@
+{
+  "assumptions": {
+    "daily_closing_reserve_seconds": 2700,
+    "days_10_to_16_inclusive": 7,
+    "global_daily_seconds": 10800,
+    "overhead_scenarios_seconds_per_day": [
+      0,
+      500,
+      900
+    ],
+    "productive_seconds_next_six_days": 48600,
+    "productive_seconds_today_after_wf2022_03": 6852.154837369919
+  },
+  "block_sensitivity": [
+    {
+      "assumed_daily_overhead_seconds": 0,
+      "complete_main_triplets_upper_bound": 19,
+      "main_runs_continuous_equivalent": 58.27925451438183
+    },
+    {
+      "assumed_daily_overhead_seconds": 500,
+      "complete_main_triplets_upper_bound": 17,
+      "main_runs_continuous_equivalent": 53.464522236009415
+    },
+    {
+      "assumed_daily_overhead_seconds": 900,
+      "complete_main_triplets_upper_bound": 16,
+      "main_runs_continuous_equivalent": 49.61273641331149
+    }
+  ],
+  "extrapolated_seconds": {
+    "auxiliary_18_runs": 13086.893591880798,
+    "main_108_runs": 78509.03812408447,
+    "total_126_runs": 91595.93171596527
+  },
+  "first_admissible_night_20261111": {
+    "block_sensitivity": [
+      {
+        "assumed_daily_overhead_seconds": 0,
+        "complete_main_triplets_upper_bound": 16
+      },
+      {
+        "assumed_daily_overhead_seconds": 500,
+        "complete_main_triplets_upper_bound": 14
+      },
+      {
+        "assumed_daily_overhead_seconds": 900,
+        "complete_main_triplets_upper_bound": 13
+      }
+    ],
+    "note": "11\u201316 November only; all rates extrapolated from prior campaigns",
+    "productive_capacity_seconds": 48600
+  },
+  "measured_seconds": {
+    "p3_beta0_mean_run": 726.9355381859673,
+    "wf2021_11_units": 743.4083831310272,
+    "wf2022_03_global_charge": 1247.8451626300812,
+    "wf2022_11_units": 710.6909048557281
+  },
+  "productive_capacity_seconds": 55452.15483736992,
+  "source_sha256": {
+    "artifacts/oos-v12-wf-cost-only-05/ledger.jsonl": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+    "artifacts/oos-v12-wf-cost-only-2022-03/ledger.jsonl": "707a643073d21588cd7dab631bb3b7331946adf97714a576b5c8f0177dff7b1e",
+    "docs/evidence/oos-wf-2022-03-relaunch-20261110/closure-summary.json": "b9b16ecbea0d5a1cce88a7f403163d5cfbcd0c614591bc4ae99c3ae904b76b81",
+    "docs/evidence/pilot-closure-v1-2/results.json": "28d014e92ac050d7e66070c1839bb6f37b2dee2969ca201b6a11afa28d27a5b5"
+  },
+  "status": "capacity_sensitivity_not_campaign_result"
+}

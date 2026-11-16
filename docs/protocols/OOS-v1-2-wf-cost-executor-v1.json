@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "infrastructure_only_not_authorized",
+  "protocol": "docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md",
+  "training_source": "data/processed/p2r-training-h1",
+  "training_end_exclusive": "2023-01-01T00:00:00Z",
+  "roster": [
+    ["2021", 276696733, "C10"],
+    ["2022", 498614892, "C10"]
+  ],
+  "iterations_per_run": 10,
+  "diagnostic_trajectories_per_iteration": 64,
+  "critic_beta": 0,
+  "critic_epochs": 4,
+  "total_units": 22,
+  "unit_boundaries": ["after_q0", "after_dual_and_D"],
+  "unit_cap_seconds": {"q0": 120, "iteration": 180},
+  "budget": {
+    "global_daily_seconds": 10800,
+    "daily_closure_reserve_seconds": 2700,
+    "own_productive_daily_seconds": 3600,
+    "own_productive_cumulative_seconds": 5400,
+    "active_days_max": 2,
+    "timezone": "America/La_Paz"
+  },
+  "campaign_root_reserved_not_created": "artifacts/oos-v12-wf-cost-only-01",
+  "market_execution_authorized": false
+}

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 590" role="img" aria-label="Diferencias pareadas de Sortino anualizado">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="70" y="45" font-size="26" font-family="sans-serif" fill="#13243a">Diferencia pareada de Sortino anualizado</text>
+<text x="70" y="75" font-size="16" font-family="sans-serif" fill="#34445a">36 bloques de semillas · período 2024–2025 · evaluación final fuera de muestra</text>
+<line x1="105" x2="1030" y1="275.00" y2="275.00" stroke="#4b5563" stroke-width="2"/>
+<text x="110" y="268.00" font-size="14" font-family="sans-serif">Referencia: 0</text>
+<text x="15" y="114" font-size="14" font-family="sans-serif">+0.0094</text>
+<text x="15" y="440" font-size="14" font-family="sans-serif">−0.0094</text>
+<circle cx="113.85" cy="322.87" r="4" fill="#126782"/>
+<circle cx="121.85" cy="310.64" r="4" fill="#b35b28"/>
+<circle cx="139.54" cy="245.97" r="4" fill="#126782"/>
+<circle cx="147.54" cy="253.95" r="4" fill="#b35b28"/>
+<circle cx="165.24" cy="262.48" r="4" fill="#126782"/>
+<circle cx="173.24" cy="271.31" r="4" fill="#b35b28"/>
+<circle cx="190.93" cy="259.63" r="4" fill="#126782"/>
+<circle cx="198.93" cy="254.23" r="4" fill="#b35b28"/>
+<circle cx="216.62" cy="193.95" r="4" fill="#126782"/>
+<circle cx="224.62" cy="278.35" r="4" fill="#b35b28"/>
+<circle cx="242.32" cy="290.93" r="4" fill="#126782"/>
+<circle cx="250.32" cy="282.02" r="4" fill="#b35b28"/>
+<circle cx="268.01" cy="272.06" r="4" fill="#126782"/>
+<circle cx="276.01" cy="277.26" r="4" fill="#b35b28"/>
+<circle cx="293.71" cy="307.57" r="4" fill="#126782"/>
+<circle cx="301.71" cy="288.51" r="4" fill="#b35b28"/>
+<circle cx="319.40" cy="296.98" r="4" fill="#126782"/>
+<circle cx="327.40" cy="286.86" r="4" fill="#b35b28"/>
+<circle cx="345.10" cy="266.92" r="4" fill="#126782"/>
+<circle cx="353.10" cy="265.90" r="4" fill="#b35b28"/>
+<circle cx="370.79" cy="230.27" r="4" fill="#126782"/>
+<circle cx="378.79" cy="250.57" r="4" fill="#b35b28"/>
+<circle cx="396.49" cy="278.09" r="4" fill="#126782"/>
+<circle cx="404.49" cy="288.19" r="4" fill="#b35b28"/>
+<circle cx="422.18" cy="305.22" r="4" fill="#126782"/>
+<circle cx="430.18" cy="267.19" r="4" fill="#b35b28"/>
+<circle cx="447.88" cy="279.80" r="4" fill="#126782"/>
+<circle cx="455.88" cy="286.64" r="4" fill="#b35b28"/>
+<circle cx="473.57" cy="381.04" r="4" fill="#126782"/>
+<circle cx="481.57" cy="292.32" r="4" fill="#b35b28"/>
+<circle cx="499.26" cy="282.23" r="4" fill="#126782"/>
+<circle cx="507.26" cy="268.04" r="4" fill="#b35b28"/>
+<circle cx="524.96" cy="340.86" r="4" fill="#126782"/>
+<circle cx="532.96" cy="315.10" r="4" fill="#b35b28"/>
+<circle cx="550.65" cy="131.52" r="4" fill="#126782"/>
+<circle cx="558.65" cy="198.88" r="4" fill="#b35b28"/>
+<circle cx="576.35" cy="250.83" r="4" fill="#126782"/>
+<circle cx="584.35" cy="244.05" r="4" fill="#b35b28"/>
+<circle cx="602.04" cy="186.28" r="4" fill="#126782"/>
+<circle cx="610.04" cy="237.06" r="4" fill="#b35b28"/>
+<circle cx="627.74" cy="147.58" r="4" fill="#126782"/>
+<circle cx="635.74" cy="220.25" r="4" fill="#b35b28"/>
+<circle cx="653.43" cy="350.08" r="4" fill="#126782"/>
+<circle cx="661.43" cy="332.45" r="4" fill="#b35b28"/>
+<circle cx="679.12" cy="310.15" r="4" fill="#126782"/>
+<circle cx="687.12" cy="307.76" r="4" fill="#b35b28"/>
+<circle cx="704.82" cy="290.42" r="4" fill="#126782"/>
+<circle cx="712.82" cy="275.14" r="4" fill="#b35b28"/>
+<circle cx="730.51" cy="325.32" r="4" fill="#126782"/>
+<circle cx="738.51" cy="315.74" r="4" fill="#b35b28"/>
+<circle cx="756.21" cy="297.22" r="4" fill="#126782"/>
+<circle cx="764.21" cy="285.53" r="4" fill="#b35b28"/>
+<circle cx="781.90" cy="211.04" r="4" fill="#126782"/>
+<circle cx="789.90" cy="239.63" r="4" fill="#b35b28"/>
+<circle cx="807.60" cy="233.13" r="4" fill="#126782"/>
+<circle cx="815.60" cy="253.70" r="4" fill="#b35b28"/>
+<circle cx="833.29" cy="294.66" r="4" fill="#126782"/>
+<circle cx="841.29" cy="296.77" r="4" fill="#b35b28"/>
+<circle cx="858.99" cy="357.48" r="4" fill="#126782"/>
+<circle cx="866.99" cy="291.59" r="4" fill="#b35b28"/>
+<circle cx="884.68" cy="273.67" r="4" fill="#126782"/>
+<circle cx="892.68" cy="272.12" r="4" fill="#b35b28"/>
+<circle cx="910.38" cy="228.06" r="4" fill="#126782"/>
+<circle cx="918.38" cy="261.18" r="4" fill="#b35b28"/>
+<circle cx="936.07" cy="267.75" r="4" fill="#126782"/>
+<circle cx="944.07" cy="277.09" r="4" fill="#b35b28"/>
+<circle cx="961.76" cy="280.20" r="4" fill="#126782"/>
+<circle cx="969.76" cy="279.33" r="4" fill="#b35b28"/>
+<circle cx="987.46" cy="221.38" r="4" fill="#126782"/>
+<circle cx="995.46" cy="204.70" r="4" fill="#b35b28"/>
+<circle cx="1013.15" cy="225.09" r="4" fill="#126782"/>
+<circle cx="1021.15" cy="242.86" r="4" fill="#b35b28"/>
+<text x="105" y="475" font-size="15" font-family="sans-serif">Bloques 1–36; cada punto es una semilla, no una fecha</text>
+<circle cx="110" cy="505" r="6" fill="#126782"/><text x="125" y="510" font-size="16" font-family="sans-serif">C5 − C0</text>
+<circle cx="290" cy="505" r="6" fill="#b35b28"/><text x="305" y="510" font-size="16" font-family="sans-serif">C10 − C0</text>
+<text x="70" y="550" font-size="13" font-family="sans-serif" fill="#34445a">Fuente: artifacts/oos-v12-final-2024-2025-01/final-contrast.json · unidad: puntos de Sortino anualizado</text>
+</svg>

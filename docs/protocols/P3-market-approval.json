@@ -1,0 +1,19 @@
+{
+  "active": true,
+  "adoption_sha256": "53755060b93faaa8f8646b7efdea87df407572c41686824a340ea178aa75ebc9",
+  "approved_at_utc": "2026-10-08T15:48:39Z",
+  "approved_base_commit": "51280c0a6b18cf84f55cfd735459a41fafbd0cb8",
+  "authorization": "User-approved P3 v1.1 historical campaign solely as a development diagnostic: eighteen new runs under the adopted order, separate beta arms, shared budget and fail-closed supervision.",
+  "campaign": "p3-approved-v1",
+  "artifact_root": "artifacts/p3-approved-v1",
+  "design_sha256": "4f2c0861609e096966632734adc28a6e75092295e65d9d9ec464b9a61f0962a7",
+  "excluded": [
+    "P2R continuation or reuse",
+    "validation 2023",
+    "final test 2024-2025",
+    "confirmatory evaluation"
+  ],
+  "protocol_sha256": "24bfc835650353dc6709db0de36de246b83045541d7103b11361a14ecd73ce21",
+  "scope": "accepted_training_2018_2022_only",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
+}

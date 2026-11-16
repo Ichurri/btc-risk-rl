@@ -1,0 +1,6 @@
+2026-10-29T11:23:52.115685-04:00 debian systemd[1539]: Starting oos-wf-cost-20261029-03-session-01.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_03.py --run...
+2026-10-29T11:23:52.160979-04:00 debian systemd[1539]: Started oos-wf-cost-20261029-03-session-01.service - [systemd-run] /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_03.py --run.
+2026-10-29T11:23:56.721241-04:00 debian uv[36219]: {"status": "failed", "units": 0}
+2026-10-29T11:23:57.143760-04:00 debian systemd[1539]: oos-wf-cost-20261029-03-session-01.service: Main process exited, code=exited, status=1/FAILURE
+2026-10-29T11:23:57.143839-04:00 debian systemd[1539]: oos-wf-cost-20261029-03-session-01.service: Failed with result 'exit-code'.
+2026-10-29T11:23:57.144043-04:00 debian systemd[1539]: oos-wf-cost-20261029-03-session-01.service: Consumed 6.179s CPU time, 451M memory peak.

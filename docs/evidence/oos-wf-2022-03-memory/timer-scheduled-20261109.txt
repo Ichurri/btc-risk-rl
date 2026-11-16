@@ -1,0 +1,17 @@
+local=2026-11-09 13:04:46 -04
+utc=2026-11-09 17:04:46 UTC
+Unit=oos-wf-cost-2022-03-session-01.service
+NextElapseUSecRealtime=Tue 2026-11-10 01:00:00 -04
+AccuracyUSec=1s
+Persistent=no
+ActiveState=active
+SubState=waiting
+Restart=no
+ExecStart={ path=/usr/bin/systemd-inhibit ; argv[]=/usr/bin/systemd-inhibit --what=sleep:idle --mode=block --why=WF 2022-03 supervised cost study /usr/bin/bash -c cd /home/ichurri/Desktop/personal_projects/btc-risk-rl && /home/ichurri/.local/bin/uv run --frozen python scripts/launch_oos_wf_cost_2022_03_once.py ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+ActiveState=inactive
+running
+Linger=yes
+ac=1
+battery=94
+MemAvailable:    4936232 kB
+126937419776

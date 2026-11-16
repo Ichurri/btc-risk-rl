@@ -1,0 +1,62 @@
+"""Controlled host-memory observation: synthetic suite, then bounded anonymous load."""
+import datetime
+import json
+import os
+import pathlib
+import subprocess
+import threading
+import time
+
+OUT = pathlib.Path(__file__).with_name('probe-03.jsonl')
+THRESHOLD = 4 * 1024**3
+GUARD = 128 * 1024**2
+TARGET = 256 * 1024**2
+DURATION = 1124
+START = time.monotonic()
+stage = 'suite'
+stop = False
+cg_rel = pathlib.Path('/proc/self/cgroup').read_text().split('::', 1)[-1].strip()
+cg_mem = pathlib.Path('/sys/fs/cgroup') / cg_rel.lstrip('/') / 'memory.current'
+
+
+def available():
+    for line in pathlib.Path('/proc/meminfo').read_text().splitlines():
+        if line.startswith('MemAvailable:'):
+            return int(line.split()[1]) * 1024
+    raise RuntimeError('MemAvailable absent')
+
+
+def record(kind, **extra):
+    row = dict(kind=kind, stage=stage, utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               elapsed=time.monotonic()-START, mem_available_bytes=available(),
+               cgroup_memory_bytes=int(cg_mem.read_text()), **extra)
+    with OUT.open('a') as f:
+        f.write(json.dumps(row, sort_keys=True)+'\n')
+        f.flush(); os.fsync(f.fileno())
+
+
+def sample():
+    while not stop:
+        record('sample')
+        time.sleep(2)
+
+record('start', target_load_bytes=TARGET, threshold_bytes=THRESHOLD, guard_bytes=GUARD)
+t = threading.Thread(target=sample, daemon=True); t.start()
+suite = subprocess.run(['/home/ichurri/.local/bin/uv', 'run', '--frozen', 'pytest', '-q', '--ignore=tests/test_oos_wf_2022_03_profile.py'],
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                       cwd='/home/ichurri/Desktop/personal_projects/btc-risk-rl')
+record('suite_end', exit_code=suite.returncode, suite_tail=suite.stdout[-1000:])
+stage = 'bounded_load'
+chunks = []
+for _ in range(TARGET // (16 * 1024**2)):
+    if available() < THRESHOLD + GUARD + 16 * 1024**2:
+        record('load_admission_blocked', allocated_bytes=len(chunks)*16*1024**2)
+        break
+    chunk = bytearray(16 * 1024**2)
+    for i in range(0, len(chunk), 4096): chunk[i] = 1
+    chunks.append(chunk)
+    record('load_chunk', allocated_bytes=len(chunks)*16*1024**2)
+while time.monotonic()-START < DURATION:
+    time.sleep(2)
+stop = True; t.join(timeout=3)
+record('end', allocated_bytes=len(chunks)*16*1024**2, suite_exit_code=suite.returncode)

@@ -1,0 +1,25 @@
+{
+  "approval_04_absent": true,
+  "profile_root_absent": true,
+  "roots": {
+    "01": {
+      "files": 15,
+      "mapping_sha256": "b93caafafd20b7a61f86214b5cbecba3ff7942d3862a467e1748d636b74a010a",
+      "matches_pinned_files": true,
+      "root": "artifacts/oos-v12-wf-cost-only-01"
+    },
+    "02": {
+      "files": 2,
+      "mapping_sha256": "e11a6cfa872ed91ed5f9d0b30f429071b884846125c4df2a4a9d694a664257fd",
+      "matches_pinned_files": true,
+      "root": "artifacts/oos-v12-wf-cost-only-02"
+    },
+    "03": {
+      "files": 10,
+      "mapping_sha256": "34270a3a26901de2472d203662e1717827cc93d8073a7f996b01f0b8174bbb57",
+      "matches_pinned_files": true,
+      "root": "artifacts/oos-v12-wf-cost-only-03"
+    }
+  },
+  "schema_version": 1
+}

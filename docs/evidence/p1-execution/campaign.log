@@ -1,0 +1,109 @@
+{"status": "running", "run": "run-00-C0-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-00-C0-e2", "unit": 0, "seconds": 30.0161354210004, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-00-C0-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-00-C0-e2", "unit": 1, "seconds": 60.02993066699992, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-00-C0-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-00-C0-e2", "unit": 2, "seconds": 60.0316850600002, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-01-C0-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-01-C0-e4", "unit": 0, "seconds": 29.01889131300004, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-01-C0-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-01-C0-e4", "unit": 1, "seconds": 59.03186097900016, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-01-C0-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-01-C0-e4", "unit": 2, "seconds": 59.03246295500003, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 33}
+{"status": "running", "run": "run-02-C5-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-02-C5-e2", "unit": 0, "seconds": 29.01813274799997, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-02-C5-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-02-C5-e2", "unit": 1, "seconds": 60.03276274300015, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-02-C5-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-02-C5-e2", "unit": 2, "seconds": 60.032605001999855, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-03-C5-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-03-C5-e4", "unit": 0, "seconds": 29.018818079000084, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-03-C5-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-03-C5-e4", "unit": 1, "seconds": 59.0320408890002, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-03-C5-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-03-C5-e4", "unit": 2, "seconds": 59.03162090199976, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 33}
+{"status": "running", "run": "run-04-C10-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-04-C10-e2", "unit": 0, "seconds": 29.01853967199986, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-04-C10-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-04-C10-e2", "unit": 1, "seconds": 60.03113155700021, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-04-C10-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-04-C10-e2", "unit": 2, "seconds": 59.03139304699971, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-05-C10-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-05-C10-e4", "unit": 0, "seconds": 29.018810521999967, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-05-C10-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-05-C10-e4", "unit": 1, "seconds": 59.03306340999961, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-05-C10-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-05-C10-e4", "unit": 2, "seconds": 60.03273836000017, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 33}
+{"status": "running", "run": "run-06-C5-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-06-C5-e4", "unit": 0, "seconds": 29.019580742000016, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-06-C5-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-06-C5-e4", "unit": 1, "seconds": 59.03285036999978, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-06-C5-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-06-C5-e4", "unit": 2, "seconds": 59.03074727400008, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 34}
+{"status": "running", "run": "run-07-C5-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-07-C5-e2", "unit": 0, "seconds": 29.0190289520001, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-07-C5-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-07-C5-e2", "unit": 1, "seconds": 59.03313346599998, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-07-C5-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-07-C5-e2", "unit": 2, "seconds": 57.0302593790002, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-08-C10-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-08-C10-e4", "unit": 0, "seconds": 29.019290618000014, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-08-C10-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-08-C10-e4", "unit": 1, "seconds": 60.03349683899978, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-08-C10-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-08-C10-e4", "unit": 2, "seconds": 59.03018858199994, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 34}
+{"status": "running", "run": "run-09-C10-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-09-C10-e2", "unit": 0, "seconds": 29.019438982999873, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-09-C10-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-09-C10-e2", "unit": 1, "seconds": 59.03248426999971, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-09-C10-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-09-C10-e2", "unit": 2, "seconds": 59.03136704899998, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-10-C0-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-10-C0-e4", "unit": 0, "seconds": 29.018335535000006, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-10-C0-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-10-C0-e4", "unit": 1, "seconds": 56.031522048999705, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-10-C0-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-10-C0-e4", "unit": 2, "seconds": 58.03018449000001, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 34}
+{"status": "running", "run": "run-11-C0-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-11-C0-e2", "unit": 0, "seconds": 29.018858249000004, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-11-C0-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-11-C0-e2", "unit": 1, "seconds": 59.030999879999854, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-11-C0-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-11-C0-e2", "unit": 2, "seconds": 60.03196327700016, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-12-C10-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-12-C10-e2", "unit": 0, "seconds": 29.01912160899974, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-12-C10-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-12-C10-e2", "unit": 1, "seconds": 59.032150047000414, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-12-C10-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-12-C10-e2", "unit": 2, "seconds": 56.02906168899972, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-13-C10-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-13-C10-e4", "unit": 0, "seconds": 29.019468059000246, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-13-C10-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-13-C10-e4", "unit": 1, "seconds": 60.03161762499985, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-13-C10-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-13-C10-e4", "unit": 2, "seconds": 59.031596949999766, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 34}
+{"status": "running", "run": "run-14-C0-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-14-C0-e2", "unit": 0, "seconds": 29.018321845999708, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-14-C0-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-14-C0-e2", "unit": 1, "seconds": 59.032750231000136, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-14-C0-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-14-C0-e2", "unit": 2, "seconds": 57.03073811500053, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-15-C0-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-15-C0-e4", "unit": 0, "seconds": 29.01938981100011, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-15-C0-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-15-C0-e4", "unit": 1, "seconds": 60.03205260699997, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-15-C0-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-15-C0-e4", "unit": 2, "seconds": 59.02884082900073, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 34}
+{"status": "running", "run": "run-16-C5-e2", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-16-C5-e2", "unit": 0, "seconds": 27.018061472000227, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-16-C5-e2", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-16-C5-e2", "unit": 1, "seconds": 59.03265935200034, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 9}
+{"status": "running", "run": "run-16-C5-e2", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-16-C5-e2", "unit": 2, "seconds": 61.03020081900013, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 8}, "cumulative_warning_entries": 18}
+{"status": "running", "run": "run-17-C5-e4", "unit": 0, "cap_seconds": 1800}
+{"status": "unit_completed", "run": "run-17-C5-e4", "unit": 0, "seconds": 29.0186642030003, "resources": {"trajectories": 400, "transitions": 72000, "actor_updates": 0, "critic_updates": 0}, "cumulative_warning_entries": 0}
+{"status": "running", "run": "run-17-C5-e4", "unit": 1, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-17-C5-e4", "unit": 1, "seconds": 59.0326445339997, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 17}
+{"status": "running", "run": "run-17-C5-e4", "unit": 2, "cap_seconds": 2700}
+{"status": "unit_completed", "run": "run-17-C5-e4", "unit": 2, "seconds": 60.0316198190003, "resources": {"trajectories": 864, "transitions": 155520, "actor_updates": 8, "critic_updates": 16}, "cumulative_warning_entries": 34}
+{"status": "completed", "cursor": 18, "resources": {"trajectories": 38304, "transitions": 6894720, "actor_updates": 288, "critic_updates": 432}}

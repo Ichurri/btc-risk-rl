@@ -1,0 +1,44 @@
+2026-11-09T02:14:13-04:00 debian systemd[1556]: Started oos-wf-2022-03-suite-lockcheck.service - [systemd-run] /usr/bin/bash -c "cd /home/ichurri/Desktop/personal_projects/btc-risk-rl && flock -n artifacts/shared-pilot-budget/global.lock /home/ichurri/.local/bin/uv run --frozen python -m pytest -q".
+2026-11-09T02:14:44-04:00 debian bash[43182]: ........................................................................ [ 13%]
+2026-11-09T02:18:09-04:00 debian bash[43182]: ........................................................................ [ 26%]
+2026-11-09T02:18:56-04:00 debian bash[43182]: ........................................................................ [ 39%]
+2026-11-09T02:19:28-04:00 debian bash[43182]: ........................................................................ [ 53%]
+2026-11-09T07:55:08-04:00 debian bash[43182]: ........................................................................ [ 66%]
+2026-11-09T07:56:59-04:00 debian bash[43182]: ........................................................................ [ 79%]
+2026-11-09T07:57:26-04:00 debian bash[43182]: ........................................................................ [ 92%]
+2026-11-09T07:57:40-04:00 debian bash[43182]: ...............................F.......                                  [100%]
+2026-11-09T07:57:40-04:00 debian bash[43182]: =================================== FAILURES ===================================
+2026-11-09T07:57:40-04:00 debian bash[43182]: __________________ test_only_named_wf_permit_types_are_listed __________________
+2026-11-09T07:57:40-04:00 debian bash[43182]: tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-17/test_only_named_wf_permit_type0')
+2026-11-09T07:57:40-04:00 debian bash[43182]: monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf01782a50>
+2026-11-09T07:57:40-04:00 debian bash[43182]:     def test_only_named_wf_permit_types_are_listed(tmp_path, monkeypatch):
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.agents.trainer import SyntheticExperiment
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots import wf_cost
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots import wf_cost_2022_exec as single_2022
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots import wf_cost_replacement_03_exec as third
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots import wf_cost_replacement_04_exec as fourth
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots import wf_cost_replacement_05_exec as fifth
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots import wf_cost_replacement_exec as replacement
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots.p2 import Diagnostic
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots.p2_runner import complete_unit
+2026-11-09T07:57:40-04:00 debian bash[43182]:         from btc_risk_rl.pilots.wf_permits import authorized_wf_permits
+2026-11-09T07:57:40-04:00 debian bash[43182]:     
+2026-11-09T07:57:40-04:00 debian bash[43182]:         case = _worker_case(tmp_path, monkeypatch)
+2026-11-09T07:57:40-04:00 debian bash[43182]: >       assert set(authorized_wf_permits()) == {
+2026-11-09T07:57:40-04:00 debian bash[43182]:             wf_cost.WFCostPermit, replacement.WFCostPermit, third.WFCostPermit,
+2026-11-09T07:57:40-04:00 debian bash[43182]:             fourth.WFCostPermit,
+2026-11-09T07:57:40-04:00 debian bash[43182]:             fifth.WFCostPermit,
+2026-11-09T07:57:40-04:00 debian bash[43182]:             single_2022.WF2022Permit,
+2026-11-09T07:57:40-04:00 debian bash[43182]:         }
+2026-11-09T07:57:40-04:00 debian bash[43182]: E       AssertionError: assert {<class 'btc_...Permit'>, ...} == {<class 'btc_...FCostPermit'>}
+2026-11-09T07:57:40-04:00 debian bash[43182]: E
+2026-11-09T07:57:40-04:00 debian bash[43182]: E         Extra items in the left set:
+2026-11-09T07:57:40-04:00 debian bash[43182]: E         <class 'btc_risk_rl.pilots.wf_cost_2022_03_exec.WF2022Permit'>
+2026-11-09T07:57:40-04:00 debian bash[43182]: E         Use -v to get more diff
+2026-11-09T07:57:40-04:00 debian bash[43182]: tests/test_wf_permit_integration.py:227: AssertionError
+2026-11-09T07:57:40-04:00 debian bash[43182]: =========================== short test summary info ============================
+2026-11-09T07:57:40-04:00 debian bash[43182]: FAILED tests/test_wf_permit_integration.py::test_only_named_wf_permit_types_are_listed
+2026-11-09T07:57:40-04:00 debian bash[43182]: 1 failed, 542 passed in 543.58s (0:09:03)
+2026-11-09T07:57:40-04:00 debian systemd[1556]: oos-wf-2022-03-suite-lockcheck.service: Main process exited, code=exited, status=1/FAILURE
+2026-11-09T07:57:40-04:00 debian systemd[1556]: oos-wf-2022-03-suite-lockcheck.service: Failed with result 'exit-code'.
+2026-11-09T07:57:40-04:00 debian systemd[1556]: oos-wf-2022-03-suite-lockcheck.service: Consumed 10min 21.683s CPU time, 848.3M memory peak.

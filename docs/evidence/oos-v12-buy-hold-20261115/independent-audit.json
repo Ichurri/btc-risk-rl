@@ -1,0 +1,21 @@
+{
+  "all_fields_match": true,
+  "final_liquidation": false,
+  "first_execution_ms": 1704067200000,
+  "last_valuation_ms": 1767211200000,
+  "recomputed": {
+    "btc_purchased": 0.23614408905937856,
+    "commission_total": 9.990009990009993,
+    "cumulative_net_return_fraction": 1.0697609069576006,
+    "downside_deviation_4h": 0.007205449909682892,
+    "final_equity": 20697.609069576007,
+    "mean_simple_return_4h": 0.00021885267272092447,
+    "slippage_total": 4.99250874063468,
+    "sortino_annualized": 1.421388537238099
+  },
+  "result_sha256": "177745bf76a575ba8c9bbd8c1e24f4386dbd8cb3686c7ac78977cc7ce9b905a7",
+  "source_bars_sha256": "d123935a385001082a0c7915071980d5d85706970e509ff856ff1f024775759d",
+  "status": "verified_independently",
+  "steps": 4386,
+  "trade_count": 1
+}

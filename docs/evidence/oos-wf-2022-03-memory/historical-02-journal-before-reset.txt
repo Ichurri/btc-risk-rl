@@ -1,0 +1,284 @@
+2026-11-09T01:23:10.947712-04:00 debian systemd[1556]: Started oos-wf-cost-2022-02-session-01.service - [systemd-run] /usr/bin/systemd-inhibit --what=sleep:idle --mode=block "--why=WF 2022-02: conservar supervisor despierto" /usr/bin/bash -c "cd /home/ichurri/Desktop/personal_projects/btc-risk-rl && /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_2022.py --prepare && /home/ichurri/.local/bin/uv run --frozen python scripts/run_oos_wf_cost_2022.py --run".
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]: {
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:   "checks": {
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:     "fold": {
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "cutoff_ms": 1638403200000,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "episodes": 4678,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "fit_rows": 7703,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "fold": "2022",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "latest_target_ms": 1638388800000,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "product_sha256": {
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "bars.csv": "9ff4c73b891c36d5a5f261ce229f114144237bb4959e4443a34f7a17f00115b6",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "episodes.csv": "ace153209014447778bf5ed2a258dfe9e327987cee3c62e38476565e8913b7d3",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "features.csv": "78a6bf520b9b234508a112ca965592af9bf30e54539f9630897ae82735116fbd",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "observations.csv": "653d2b6fdfc90fbdefbd7b9d5541e0b1b4984b1ea2f8c369a70b4ee694202494",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "scaler.json": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "transitions.csv": "c3757892f1be891100e6815dcf2dfbf6d41cd1720bea2cbe1d2ab67614862bf1"
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       },
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "scaler_sha256": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "source_profile": "accepted_train_collection_only",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "trajectories_generated": 0,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "transition_count": 7684,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "validation_observations_loaded": false,
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "warmup_bars": 186
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:     },
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:     "preflight": {
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:       "files_opened": [
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-02/sessions.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-03/sessions.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-04/sessions.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/oos-v12-wf-cost-only-05/sessions.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p0-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p1-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p1-preparation-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p2-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p2-preparation-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p2r-approved-v2/ledger.jsonl",
+2026-11-09T01:31:40.234663-04:00 debian systemd-inhibit[21800]:         "artifacts/p3-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "artifacts/shared-pilot-budget/wf-2022-only-01-attempts.jsonl",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "configs/initial.toml",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/audit.json",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/bars.csv",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/episodes.csv",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/features.csv",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/manifest.json",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/observations.csv",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/scaler.json",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "data/processed/p2r-training-h1/transitions.csv",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "docs/proposals/OOS-v1-2-costo-2022-reemplazo-02-v1.md",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "docs/protocols/OOS-2022-02-autorizacion-20261109.md",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "docs/protocols/OOS-v1-2-wf-cost-2022-only-02-approval.json",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "pyproject.toml",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "scripts/audit_oos_wf_cost_2022_preflight.py",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "scripts/run_oos_wf_cost_2022.py",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "uv.lock"
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:       ],
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:       "fold_metadata": {
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "cutoff_ms": 1638403200000,
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "episodes": 4678,
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "fit_rows": 7703,
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "fold": "2022",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "latest_target_ms": 1638388800000,
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "product_sha256": {
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:           "bars.csv": "9ff4c73b891c36d5a5f261ce229f114144237bb4959e4443a34f7a17f00115b6",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:           "episodes.csv": "ace153209014447778bf5ed2a258dfe9e327987cee3c62e38476565e8913b7d3",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:           "features.csv": "78a6bf520b9b234508a112ca965592af9bf30e54539f9630897ae82735116fbd",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:           "observations.csv": "653d2b6fdfc90fbdefbd7b9d5541e0b1b4984b1ea2f8c369a70b4ee694202494",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:           "scaler.json": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:           "transitions.csv": "c3757892f1be891100e6815dcf2dfbf6d41cd1720bea2cbe1d2ab67614862bf1"
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         },
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "scaler_sha256": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "source_profile": "accepted_train_collection_only",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "trajectories_generated": 0,
+2026-11-09T01:31:40.237330-04:00 debian systemd-inhibit[21800]:         "transition_count": 7684,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:         "validation_observations_loaded": false,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:         "warmup_bars": 186
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:       },
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:       "git_commit": "a11847605fe89a0a3a54f3d97cb017a2b685f24a",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:       "market_trajectories_generated": 0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:       "optimizer_steps": 0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:       "preflight": {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:         "blockers": [],
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:         "budget": {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:           "active_campaigns": [],
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:           "day_la_paz": "2026-11-09",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:           "global_spent": 0.0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:           "ok": true,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:           "remaining_before_reserve": 8100.0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:           "sources": [
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "status": "ready"
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "sha256": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "status": "failed"
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "sha256": "5e61ed0ee1b0503ba289fa8ab54c53f1c5bcc7a351e56c5ca02eed29bbbe8024",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "status": "failed"
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "sha256": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "status": "ready"
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.238781-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p0-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "status": "completed"
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "status": "completed"
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-preparation-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "status": "completed"
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "status": "failed"
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-preparation-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "status": "completed"
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-approved-v2/ledger.jsonl",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.240726-04:00 debian systemd-inhibit[21800]:               "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "status": "completed"
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p3-approved-v1/ledger.jsonl",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "reason": "measured",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "status": "completed"
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             },
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             {
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "charged_today_seconds": 0.0,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/wf-2022-only-01-attempts.jsonl",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "reason": "precheck_attempt",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "sha256": "1ae8a7d967cca4d07974fb3f1743dc6c6222f28a54e8fb561e6709ccbdebfb1a",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:               "status": "precheck_attempt"
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             }
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           ]
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:         },
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:         "code_sha256": "ddd05279ff9b0df17128fb36e46f0c66874ea04f56a9b0fc385c4cce673c1dab",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:         "host": {
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "disk_free_bytes": 128164417536,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "linger": "yes",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "memory_available_bytes": 5695152128,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "power": {
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "ac": true,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "battery_percent": 100
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           },
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "user_manager": "running"
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:         },
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:         "inputs": {
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "accepted_training_end_exclusive_ms": 1672531200000,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "ok": true,
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:           "opened": [
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-2022-reemplazo-02-v1.md",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-2022-02-autorizacion-20261109.md",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/configs/initial.toml",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/audit.json",
+2026-11-09T01:31:40.241987-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/bars.csv",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/episodes.csv",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/features.csv",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/observations.csv",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/scaler.json",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/transitions.csv"
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:           ],
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:           "sha256": {
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/configs/initial.toml": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/bars.csv": "c12d098b5d0d5b27a29da1cd8a955c7a26783e6677034a102a9939b4baa8e690",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/features.csv": "7ec2c031eb712303cd300fdd74ebe62eba9bb0b8dd6e8936ebbf313874314194",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/observations.csv": "d5014b99cf0367ea77169c933f51761c0d2e7b8874789ec3a4991cb878c1b0a7",
+2026-11-09T01:31:40.243332-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/transitions.csv": "f7827e0a742e9126f747e340640cb23e570a98c616caa8df330d21a2c4530fb9",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-2022-reemplazo-02-v1.md": "ecac815b7b48d9163b7e1ddb99506efc7d3f993dbc9cba883d699f00469aff63",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:             "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-2022-02-autorizacion-20261109.md": "12e345a8004186714a135ca5591f301b3e6196378f6bdb1e43c7618cc1917f14"
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:           }
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         },
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "market_execution_enabled": true,
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "observed_utc": "2026-11-09T05:31:38.916785+00:00",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "root_exists": false,
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "status": "ready"
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       },
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "protected_or_shared_csv_opened": false
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:     },
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:     "ruff": {
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "command": [
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python3",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "-m",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "ruff",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "check",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "/home/ichurri/Desktop/personal_projects/btc-risk-rl"
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       ],
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "stderr": "",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "stdout": "All checks passed!\n"
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:     },
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:     "suite": {
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "command": [
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "/home/ichurri/Desktop/personal_projects/btc-risk-rl/.venv/bin/python3",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "-m",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "pytest",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:         "-q"
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       ],
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "stderr": "",
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:       "stdout": "........................................................................ [ 14%]\n........................................................................ [ 28%]\n........................................................................ [ 42%]\n........................................................................ [ 57%]\n........................................................................ [ 71%]\n........................................................................ [ 85%]\n........................................................................ [ 99%]\n.                                                                        [100%]\n505 passed in 503.45s (0:08:23)\n"
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:     }
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:   },
+2026-11-09T01:31:40.243862-04:00 debian systemd-inhibit[21800]:   "metered_attempt": "04166be7e13a44e5b1dccc8471df64e3",
+2026-11-09T01:31:40.245074-04:00 debian systemd-inhibit[21800]:   "observed_epoch": 1794202300.2343707,
+2026-11-09T01:31:40.245074-04:00 debian systemd-inhibit[21800]:   "status": "ready"
+2026-11-09T01:31:40.247878-04:00 debian systemd-inhibit[21800]: }
+2026-11-09T01:41:54.052136-04:00 debian systemd-inhibit[25824]: Traceback (most recent call last):
+2026-11-09T01:41:54.052136-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 116, in <module>
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:     main()
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/scripts/run_oos_wf_cost_2022.py", line 109, in main
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:     state = run_units(stop_after_q0=args.stop_after_q0)
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_units.py", line 123, in run_units
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:     state = _run_locked(attempt, sessions, session_token, source, host, inputs, budget,
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_units.py", line 262, in _run_locked
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:     completed = attempt.run_unit(ledger.state, unit=unit,
+2026-11-09T01:41:54.052645-04:00 debian systemd-inhibit[25824]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_orchestrator.py", line 375, in run_unit
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:     result = self.run_check(f"unit-{unit}", operation)
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_orchestrator.py", line 293, in run_check
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:     return operation()
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:            ^^^^^^^^^^^
+2026-11-09T01:41:54.052906-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_units.py", line 243, in execute
+2026-11-09T01:41:54.053132-04:00 debian systemd-inhibit[25824]:     result = supervise(
+2026-11-09T01:41:54.053132-04:00 debian systemd-inhibit[25824]:              ^^^^^^^^^^
+2026-11-09T01:41:54.053132-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/supervisor.py", line 74, in supervise
+2026-11-09T01:41:54.053132-04:00 debian systemd-inhibit[25824]:     on_poll(child.pid, elapsed, peak)
+2026-11-09T01:41:54.053132-04:00 debian systemd-inhibit[25824]:   File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_2022_units.py", line 233, in tick
+2026-11-09T01:41:54.053132-04:00 debian systemd-inhibit[25824]:     raise ValueError("WF 2022 resources lost during unit")
+2026-11-09T01:41:54.053330-04:00 debian systemd-inhibit[25824]: ValueError: WF 2022 resources lost during unit
+2026-11-09T01:41:54.766400-04:00 debian systemd-inhibit[21793]: /usr/bin/bash failed with exit status 1.
+2026-11-09T01:41:54.768549-04:00 debian systemd[1556]: oos-wf-cost-2022-02-session-01.service: Main process exited, code=exited, status=1/FAILURE
+2026-11-09T01:41:54.768798-04:00 debian systemd[1556]: oos-wf-cost-2022-02-session-01.service: Failed with result 'exit-code'.
+2026-11-09T01:41:54.769164-04:00 debian systemd[1556]: oos-wf-cost-2022-02-session-01.service: Consumed 19min 48.596s CPU time, 1.1G memory peak.

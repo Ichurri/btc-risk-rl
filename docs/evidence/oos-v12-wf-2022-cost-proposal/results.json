@@ -1,0 +1,52 @@
+{
+  "all_units_at_cap_planning_total_seconds": 3210.45,
+  "approval_absent": true,
+  "assumed_other_seconds": 300.0,
+  "budget_journal_absent": true,
+  "historical_wf05_unchanged_sha256": {
+    "last_checkpoint": "80626e96b6294492ca2ce116327f8ae32611f6419bede0219622cdb442f386cf",
+    "ledger": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+    "root_mapping": "0d034efccb2138c4fb975c86e504763ff69ce331f2a5fdbb9919f4e1d06931eb"
+  },
+  "measured_2021": {
+    "d_seconds_included": 47.817987100998835,
+    "iteration_ledger_seconds": 714.7581367492676,
+    "q0_ledger_seconds": 28.650246381759644,
+    "sessions_wall_seconds": 749.2054805755615
+  },
+  "measured_other_day_suite_proxy_seconds": 390.45,
+  "new_root_absent": true,
+  "projected_2022_scenarios": {
+    "1": {
+      "margin_daily_seconds": 1560.3445194244384,
+      "service_seconds": 749.2054805755615,
+      "total_seconds": 2039.6554805755616
+    },
+    "1.5": {
+      "margin_daily_seconds": 1185.741779136658,
+      "service_seconds": 1123.8082208633423,
+      "total_seconds": 2414.258220863342
+    },
+    "2": {
+      "margin_daily_seconds": 811.1390388488771,
+      "service_seconds": 1498.410961151123,
+      "total_seconds": 2788.860961151123
+    }
+  },
+  "proposed_own_close_reserve_seconds": 600.0,
+  "proposed_unit_caps_sum_seconds": 1920,
+  "source_sha256": {
+    "docs/evidence/oos-v1-2-wf-cost-05-closure-20261103/results.json": "6c917610e10375a639ed67be3ae41d23beb80d1f34d5b064cad590f0165b0d0d",
+    "docs/evidence/oos-v1-2-wf-cost-05-session-02-20261101/audit.json": "9b5426f58d065feae02ea8e00c05e77dd3665ff6773ef8d908dfcc5d76b9275a",
+    "docs/proposals/OOS-v1-2-costo-2022-exclusivo-v1.md": "4b877ee99ea1c91ead2802c7dd10ae4f361675d2e587177a01322c79ac5152fa"
+  },
+  "status": "algebraic_and_synthetic_checks_only",
+  "synthetic_local_midnight_split": {
+    "2026-11-03": 30.0,
+    "2026-11-04": 30.0
+  },
+  "synthetic_naive_sum_seconds": 810,
+  "synthetic_union_seconds": 700.0,
+  "two_days_at_cap_planning_total_seconds": 4500.9,
+  "two_days_cumulative_margin_seconds": 299.1
+}

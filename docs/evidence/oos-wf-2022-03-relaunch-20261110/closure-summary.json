@@ -1,0 +1,137 @@
+{
+  "campaign": "wf-2022-only-03",
+  "day_la_paz": "2026-11-10",
+  "service": "oos-wf-cost-2022-03-session-02.service",
+  "invocation_id": "367e1c7feaad4a268a3f31069f35bfe7",
+  "ledger_status": "completed",
+  "accepted_units": 11,
+  "pending": null,
+  "checks": [
+    {
+      "unit": 0,
+      "seconds": 29.120319604873657,
+      "checkpoint_state_sha256": "a2eaeb4ff355fec3f2c307233c3571595832222083b749188cdbd9515bf7da7f",
+      "report_sha256": "32bdad9884f68a289a732b787c1b2412c89eedc36d31015ca624cdcca1b933da",
+      "matches_ledger": true,
+      "boundary": "after_q0"
+    },
+    {
+      "unit": 1,
+      "seconds": 61.9984176158905,
+      "checkpoint_state_sha256": "82dfa021b6a79f3ad066a4fd0176f62f18315ce584584eb564b13d993c98ba14",
+      "report_sha256": "f912c9496addde3095fdfe10eecb73b5138e7c46b79ae19162434442f5459daf",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 2,
+      "seconds": 63.97151184082031,
+      "checkpoint_state_sha256": "28e9120dc5afe5645acff55f082a37be8e38acbbe4190e6b44c33b491ab8a518",
+      "report_sha256": "5afd72381fd9852cb035f7d6f8de0b5a2363b73382c57c9b0d60d7ee0bc5f598",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 3,
+      "seconds": 64.83186292648315,
+      "checkpoint_state_sha256": "e039cff73ef7d56ad39e4c497c375d81a1c9b9bfaf9d28dc02100137a294c07a",
+      "report_sha256": "92ad04aca1fa7ee36fa8dd19fe9c7406dd5a7619d3f4fea24187c2e276ff3b4c",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 4,
+      "seconds": 63.47868371009827,
+      "checkpoint_state_sha256": "91e018cae9da15ec06540bad90aa5a9aeb26f88acc6feccd486edf88e2b1a95d",
+      "report_sha256": "22b24ab9f8712f084936bb67f7c098e9ea73c78f871f478a9dd9458d4124acd0",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 5,
+      "seconds": 66.39453029632568,
+      "checkpoint_state_sha256": "586ca4f4733a9784c2ed441679275a7b2cc4babd8142e1935555c1b7d88556dd",
+      "report_sha256": "c12701df32ab75a2331181b0779e89985e1897e1098a5f4128166e31cf0ff03b",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 6,
+      "seconds": 71.90377998352051,
+      "checkpoint_state_sha256": "53a964c54e7e8094b4be0892cf3e6798952db090cdad193ddc425fa89183d46c",
+      "report_sha256": "b0d467aa4b3c111bfa5555c93e55660c814b2689bb4e69ded60f4eaa61bec472",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 7,
+      "seconds": 70.97604370117188,
+      "checkpoint_state_sha256": "01a8d66ca43672446ff8fa84dbdc5631d709670b2a47032f3b5c492532c535f0",
+      "report_sha256": "a8e5842c4f4c43a549f8b9fc308d6077965da64c18c450a862f9fbe62abb79d5",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 8,
+      "seconds": 68.75137090682983,
+      "checkpoint_state_sha256": "2f4c8908007a1f2aeef0535607ec5ff322973bcc68ea546c421f8e30ba7a77ba",
+      "report_sha256": "d14906efe84053616eb43ea5e2a880b67b5b146dcc7be4085d9c9f5afcaa780b",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 9,
+      "seconds": 73.54604148864746,
+      "checkpoint_state_sha256": "dc034c6e009dc99b5c591d94e55bc12dae007e44dc76a841a35501cd3db8aa44",
+      "report_sha256": "55d1de7cdf768fc13a6ba6473002afa35bf746a10b1aece32372ea259f174a64",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    },
+    {
+      "unit": 10,
+      "seconds": 75.7183427810669,
+      "checkpoint_state_sha256": "5740732f226667d79ede579f4be96afc71705882cb68e53c1e6eb75c5fc2ea2e",
+      "report_sha256": "3e44dde70a2202d4d99dbe8d5c66bb003cfc5b0c54e37e35bce5acf88893b3d0",
+      "matches_ledger": true,
+      "boundary": "after_dual_and_D"
+    }
+  ],
+  "all_hashes_match": true,
+  "prepare_wall_seconds": 531.642664194107,
+  "run_wall_seconds": 716.2024984359741,
+  "own_total_union_seconds": 1247.8451626300812,
+  "global_remaining_before_2700s_reserve": 6852.154837369919,
+  "host_preflight": {
+    "power": {
+      "ac": true,
+      "battery_percent": 100
+    },
+    "memory_available_bytes": 9362132992,
+    "disk_free_bytes": 126456844288,
+    "linger": "yes",
+    "user_manager": "running"
+  },
+  "protected_or_shared_csv_opened": false,
+  "preflight_opened": [
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-2022-reemplazo-03-v1.md",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-2022-03-autorizacion-20261109.md",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/configs/initial.toml",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/audit.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/bars.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/episodes.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/features.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/observations.csv",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/scaler.json",
+    "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/transitions.csv"
+  ],
+  "sha256": {
+    "artifacts/oos-v12-wf-cost-only-2022-03/ledger.jsonl": "707a643073d21588cd7dab631bb3b7331946adf97714a576b5c8f0177dff7b1e",
+    "artifacts/oos-v12-wf-cost-only-2022-03/sessions.jsonl": "ff5df2d5305044c358d0968404e1a0ad4300d7faf49f2ed0fe6a49ec37b0188d",
+    "artifacts/oos-v12-wf-cost-only-2022-03/supervisor.jsonl": "2ea7f5cfc77163d565cd8ef014b905b9020dfca677c3fa688617d408cdbc8948",
+    "artifacts/shared-pilot-budget/wf-2022-only-03-attempts.jsonl": "965d9d36f98b210977edee4ded0c070b1b30c9f89efed88ee47446508bf5aa0b",
+    "artifacts/shared-pilot-budget/wf-2022-only-03-checks.jsonl": "31f0c74759d73fa0b35ff91bc1b0b2c3499d3384bc4b52c0ba6b87330d763c18",
+    "artifacts/oos-v12-wf-cost-only-2022-03/preflight-8435de3a3f8244bc8938f4aac437ee7d.json": "00382b562aa15790b6ea418b846ecbe42196e55da63c5cd5e87ed5bd501d2482",
+    "docs/evidence/oos-wf-2022-03-relaunch-20261110/session-02-journal.txt": "f838f727a03dd73a6d8b92a4d63642d1ed588ae9b7853a179da92ca60706f105"
+  }
+}

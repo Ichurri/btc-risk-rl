@@ -1,0 +1,57 @@
+{
+  "captured_utc": "2026-11-11T18:33:39.953832+00:00",
+  "development_raw": {
+    "end_exclusive_ms": 1704067200000,
+    "interval": "4h",
+    "page_count": 14,
+    "source": "Binance spot API",
+    "start_inclusive_ms": 1512086400000,
+    "status": "download_complete_not_quality_accepted",
+    "symbol": "BTCUSDT"
+  },
+  "final_named_data_files": [],
+  "h1": {
+    "status": "accepted",
+    "validation_exclusions": {
+      "early_close": 0,
+      "missing": 0,
+      "reopening": 0
+    },
+    "validation_expected_bars": 2190,
+    "validation_mode": "one_continuous_path_no_forced_liquidation",
+    "validation_received_bars": 2190
+  },
+  "manifests": {
+    "h1_coverage": {
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/segmented-B-h1/coverage.json",
+      "sha256": "6eefcfdf68233c821f66758fe610a6c2b8e8c4d7e15b99fcb9163e18744e64d6"
+    },
+    "h1_segmented_manifest": {
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/segmented-B-h1/manifest.json",
+      "sha256": "d7cd59b7cda003a0f69883a83a0bacf06a65c37f3653a2f466c249ddf41a6998"
+    },
+    "raw_development_manifest": {
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/raw/development/manifest.json",
+      "sha256": "5608f59ca77d73c2afe564f94a0eddc50d26a477f73b6d3e38a47d930a9fb807"
+    },
+    "training_shard_manifest": {
+      "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json",
+      "sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
+    }
+  },
+  "period_requirements": {
+    "final_2024_2025": {
+      "first_required_bar_utc": "2023-12-24T20:00:00+00:00",
+      "last_required_bar_utc": "2025-12-31T20:00:00+00:00",
+      "required_bars_with_context": 4429,
+      "steps": 4386
+    },
+    "technical_2023": {
+      "first_required_bar_utc": "2022-12-24T20:00:00+00:00",
+      "last_required_bar_utc": "2023-12-31T20:00:00+00:00",
+      "required_bars_with_context": 2233,
+      "steps": 2190
+    }
+  },
+  "scope": "metadata_and_file_names_only_no_market_rows_opened"
+}

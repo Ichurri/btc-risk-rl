@@ -1,0 +1,182 @@
+{
+  "budget_assumptions": {
+    "admissible_productive_seconds_per_day": 8100,
+    "daily_closure_reserve_seconds": 2700,
+    "evaluation_caps_are_allowances_not_timings": true,
+    "global_day_seconds_America_La_Paz": 10800,
+    "walk_forward_same_full_run_rate_is_unverified": true
+  },
+  "budgets": {
+    "candidate_36_main_3_forward": {
+      "aggregate_reserved_seconds": 45900,
+      "audit_refit_inference_planning_cap_seconds_not_measured": 21600,
+      "components_plus_reserved_seconds": 180693.87781143188,
+      "daily_reserve_seconds": 2700,
+      "evaluation_2023_planning_cap_seconds_not_measured": 10800,
+      "final_evaluation_planning_cap_seconds_not_measured": 10800,
+      "main_blocks": 36,
+      "main_training_runs": 108,
+      "main_training_scaled_seconds_not_measured": 78509.03812408447,
+      "minimum_active_days_if_every_cap_and_scaled_rate_hold": 17,
+      "productive_seconds_planned_or_scaled": 134793.87781143188,
+      "total_daily_windows_seconds": 183600,
+      "unallocated_work_seconds_in_windows": 2906.1221885681152,
+      "walk_forward_blocks_per_cut": 3,
+      "walk_forward_scaled_seconds_not_measured": 13084.839687347412,
+      "walk_forward_training_runs": 18
+    },
+    "exploratory_12_main_3_forward": {
+      "aggregate_reserved_seconds": 29700,
+      "audit_refit_inference_planning_cap_seconds_not_measured": 21600,
+      "components_plus_reserved_seconds": 112154.51906204224,
+      "daily_reserve_seconds": 2700,
+      "evaluation_2023_planning_cap_seconds_not_measured": 10800,
+      "final_evaluation_planning_cap_seconds_not_measured": 10800,
+      "main_blocks": 12,
+      "main_training_runs": 36,
+      "main_training_scaled_seconds_not_measured": 26169.679374694824,
+      "minimum_active_days_if_every_cap_and_scaled_rate_hold": 11,
+      "productive_seconds_planned_or_scaled": 82454.51906204224,
+      "total_daily_windows_seconds": 118800,
+      "unallocated_work_seconds_in_windows": 6645.480937957764,
+      "walk_forward_blocks_per_cut": 3,
+      "walk_forward_scaled_seconds_not_measured": 13084.839687347412,
+      "walk_forward_training_runs": 18
+    },
+    "stress_36_main_36_forward": {
+      "aggregate_reserved_seconds": 94500,
+      "audit_refit_inference_planning_cap_seconds_not_measured": 21600,
+      "components_plus_reserved_seconds": 373227.1143722534,
+      "daily_reserve_seconds": 2700,
+      "evaluation_2023_planning_cap_seconds_not_measured": 10800,
+      "final_evaluation_planning_cap_seconds_not_measured": 10800,
+      "main_blocks": 36,
+      "main_training_runs": 108,
+      "main_training_scaled_seconds_not_measured": 78509.03812408447,
+      "minimum_active_days_if_every_cap_and_scaled_rate_hold": 35,
+      "productive_seconds_planned_or_scaled": 278727.1143722534,
+      "total_daily_windows_seconds": 378000,
+      "unallocated_work_seconds_in_windows": 4772.885627746582,
+      "walk_forward_blocks_per_cut": 36,
+      "walk_forward_scaled_seconds_not_measured": 157018.07624816895,
+      "walk_forward_training_runs": 216
+    }
+  },
+  "forward_index_coverage_from_v1_1": [
+    {
+      "eligible_scaler_fit_timestamps": 5764,
+      "eligible_training_episode_starts": 3639,
+      "heldout_year_transitions": 1979,
+      "test_year": 2021,
+      "train_end_before_gap_utc": "2020-12-02T00:00:00+00:00"
+    },
+    {
+      "eligible_scaler_fit_timestamps": 7703,
+      "eligible_training_episode_starts": 4678,
+      "heldout_year_transitions": 2190,
+      "test_year": 2022,
+      "train_end_before_gap_utc": "2021-12-02T00:00:00+00:00"
+    }
+  ],
+  "inputs_sha256": {
+    "docs/evidence/p3-market-2026-10-13/final-closure.json": "1d96dd5ed2cb4af27a0f3993501ea7c40ece67ccc5862fe0f9d7b0049c033c6d",
+    "docs/evidence/pilot-closure-v1-1/cpcv-index-results.json": "30c793e4765b6615169123117dfb6719b07b8ed662d4617df864a225acb6ff2c"
+  },
+  "observed_p3_beta0": {
+    "D_wall_seconds_inside_unit_wall": 429.32906838300187,
+    "campaign_charged_seconds_both_betas": 13273.771578073502,
+    "campaign_unit_wall_seconds_both_betas": 13235.325340270996,
+    "mean_unit_wall_seconds_per_run": 726.9355381859673,
+    "run_count": 9,
+    "unit_wall_seconds": 6542.419843673706
+  },
+  "roster": {
+    "main_36": [
+      1869792951,
+      309092095,
+      391604748,
+      133987343,
+      495937704,
+      724586703,
+      387175587,
+      1774167087,
+      1690097816,
+      1729494401,
+      231698938,
+      1611567703,
+      1242945320,
+      23212930,
+      284523009,
+      2140196661,
+      1396509094,
+      1867765494,
+      1530794315,
+      921165808,
+      1487609938,
+      1012643073,
+      1842084790,
+      427449744,
+      757392890,
+      1539084889,
+      350377454,
+      1578271449,
+      1652468181,
+      102607842,
+      1244457579,
+      678576921,
+      401042505,
+      1119198356,
+      2128408608,
+      838357238
+    ],
+    "walk_forward_3": [
+      57739409,
+      803999499,
+      76375890
+    ]
+  },
+  "roster_canonical_json_sha256": "74785abcea1f1517818d92f7402dd21035f720a0efa8540d482d9e48e7a8523d",
+  "sortino_delta_0_5_normal_only": {
+    "12_blocks": {
+      "0.5": {
+        "assumed_paired_sortino_sd": 0.5,
+        "blocks_for_80pct_normal_approx_power": 8,
+        "normal_approx_95pct_half_width": 0.28289643351904287,
+        "normal_approx_power_for_effect_0_5_first_Holm_threshold": 0.933727033606381
+      },
+      "1.0": {
+        "assumed_paired_sortino_sd": 1.0,
+        "blocks_for_80pct_normal_approx_power": 32,
+        "normal_approx_95pct_half_width": 0.5657928670380857,
+        "normal_approx_power_for_effect_0_5_first_Holm_threshold": 0.40985686927688314
+      },
+      "1.5": {
+        "assumed_paired_sortino_sd": 1.5,
+        "blocks_for_80pct_normal_approx_power": 71,
+        "normal_approx_95pct_half_width": 0.8486893005571287,
+        "normal_approx_power_for_effect_0_5_first_Holm_threshold": 0.2103338354395664
+      }
+    },
+    "36_blocks": {
+      "0.5": {
+        "assumed_paired_sortino_sd": 0.5,
+        "blocks_for_80pct_normal_approx_power": 8,
+        "normal_approx_95pct_half_width": 0.16333033204500447,
+        "normal_approx_power_for_effect_0_5_first_Holm_threshold": 0.999973278502994
+      },
+      "1.0": {
+        "assumed_paired_sortino_sd": 1.0,
+        "blocks_for_80pct_normal_approx_power": 32,
+        "normal_approx_95pct_half_width": 0.32666066409000893,
+        "normal_approx_power_for_effect_0_5_first_Holm_threshold": 0.8508384157958047
+      },
+      "1.5": {
+        "assumed_paired_sortino_sd": 1.5,
+        "blocks_for_80pct_normal_approx_power": 71,
+        "normal_approx_95pct_half_width": 0.48999099613501346,
+        "normal_approx_power_for_effect_0_5_first_Holm_threshold": 0.515967793442332
+      }
+    }
+  },
+  "status": "proposal_not_authorized_no_execution"
+}

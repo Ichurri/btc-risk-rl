@@ -1,0 +1,20 @@
+{
+  "bars_with_context": 4429,
+  "context_rows_matched": 43,
+  "evaluation_transitions_available": 4386,
+  "export_bars_sha256": "d123935a385001082a0c7915071980d5d85706970e509ff856ff1f024775759d",
+  "export_manifest_sha256": "db842235decd93fef2e04e49fbfb4f20752e9239f1c99eecb84f9e3e6e742436",
+  "policy_evaluations": 0,
+  "raw_manifest_sha256": "85ab10e5d189e3bec0508bfd29f8da2d64ff8a6139c4d4363040c1e0a5232dbe",
+  "raw_page_sha256": {
+    "page-0000.json": "b008c19d5f2a3e536918fda188ccf055442e8eff5b0e4f0ccd32468edda3ae76",
+    "page-0001.json": "a45fc951332792fa143ab3b52ebc4fa9c67968f21ef8daa6abeb94d667ba30b8",
+    "page-0002.json": "45df2a5523bb5bf7ef67a0ca0b9d6e2e8ed5535b7bcef57ec081202404bb720e",
+    "page-0003.json": "20816acb37bdfba4035d29df11de82302801c7b2fd5a13c63d3ee30ed5973e50",
+    "page-0004.json": "b5595a533668a1aa97102a07637b92a127af4190e9f49e5596ba1ac9b6c75efa"
+  },
+  "raw_pages": 5,
+  "scaler_sha256": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+  "status": "accepted_source_only",
+  "technical_closure_sha256": "a2e33b16dc8f6e56e25ca0975afc080ca16348b9c2ee9b1dcfef42afdbd3d5e3"
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "oos_v12_evaluation_method_freeze_v1",
+  "status": "method_adopted_data_access_closed",
+  "authorized_by": "Santiago, instrucción del 11/11/2026 de fijar criterios y avanzar sin confirmaciones rutinarias",
+  "training_freeze_sha256": "0651f396f3157eaa5abd6bb7faf7ec1c6463210d255fa2fbd8a932e2999870a0",
+  "training_budget_amendment_sha256": "ebd4856b3658fac31f10baeb1688a58dbab61ac80e3655f99f8228604a16c036",
+  "scientific_scope": "36 bloques principales nuevos C0/C5/C10; tres semillas auxiliares por corte solo diagnósticas; P0-P3 no se mezclan",
+  "walk_forward": {
+    "training_folds": ["2018-2020", "2018-2021"],
+    "observed_development_years": [2021, 2022],
+    "purge_bars_4h": 180,
+    "role": "integrity_and_development_diagnosis_only",
+    "cpcv_claim": "not_performed; two chronological cuts replace the proposed CPCV"
+  },
+  "checkpoint": {
+    "unit": 10,
+    "boundary": "after_dual_and_D",
+    "selection": "last_complete_fixed_checkpoint_only",
+    "forbidden": ["market_performance", "critic_MSE", "B_audit", "Sortino", "CVaR"]
+  },
+  "policy": {
+    "action": "deterministic_sigmoid_of_actor_mu",
+    "portfolio": "one_continuous_portfolio_per_policy",
+    "clock": "h_equals_1_throughout_operational_transfer",
+    "scaler": "training_fit_frozen_no_refit",
+    "optimizer_steps": 0
+  },
+  "primary_metric": {
+    "name": "annualized_sortino",
+    "returns": "net_simple_4h",
+    "mar": 0,
+    "downside_deviation": "sqrt(mean(min(return,0)^2)) over every 4h period",
+    "annualization_factor": "sqrt(2190)",
+    "annualization_is_reporting_convention_not_independence_claim": true,
+    "zero_downside_deviation": "undefined_no_imputation"
+  },
+  "inference": {
+    "unit": "paired_seed_block",
+    "blocks": 36,
+    "contrasts": ["C5_minus_C0", "C10_minus_C0"],
+    "minimum_effect_of_interest_annualized_sortino": 0.5,
+    "null": "mean_paired_difference_at_most_zero",
+    "bootstrap": "19999 paired resamples of centered block differences under the null",
+    "bootstrap_seed": 910031,
+    "same_resample_indices_for_both_contrasts": true,
+    "p_value": "(1+count(null_resampled_mean >= observed_mean))/20000",
+    "multiple_testing": "Holm_step_down_one_sided_family_alpha_0.05",
+    "effect_size": "paired_Cohen_dz_equals_mean_difference_divided_by_sample_SD_of_36_block_differences; undefined_if_SD_zero",
+    "descriptive_interval": "2.5_and_97.5_percentiles_of_uncentered_paired_bootstrap_means",
+    "report": ["all_36_triplets", "mean_difference", "effect_size", "interval", "raw_p", "Holm_adjusted_p", "decision"]
+  },
+  "undefined_or_failed": "preserve_all_evidence; no_selective_replacement; no_primary_confirmatory_contrast_if_any_triplet_missing_or_primary_metric_undefined",
+  "validation_2023": {
+    "access": "closed_until_separate_technical_permit_and_verified_historical_evaluator",
+    "role": "single_predefined_technical_gate_for_all_108_final_policies_only",
+    "pass": "continuous_complete_paths; finite_actions_returns_and_equity; accounting_and_costs_valid; frozen_scaler_and_hashes; defined_sortino_for_every_run",
+    "failure": "stop_before_final; document_all_observed_2023_data; redesign_cannot_call_2023_independent_again",
+    "not_selection": ["seed", "checkpoint", "hyperparameters", "financial_sign_or_size"]
+  },
+  "final_2024_2025": {
+    "access": "closed_until_all_36_complete_triplets_2023_gate_thesis_harmonization_and_separate_final_permit",
+    "role": "one_confirmatory_continuous_evaluation_per_policy",
+    "no_repeat_or_selection_by_result": true
+  },
+  "risk_claim": "higher_sortino_does_not_establish_population_CVaR_compliance",
+  "risk_diagnostics": "report_max_drawdown_and_return_tail_by_condition_as_descriptive; no_population_CVaR_claim_without_independent_risk_design",
+  "pbo_dsr": "report_not_estimable_if_required_real_inputs_are_absent; do_not_fabricate_CPCV_or_a_Sortino_correction",
+  "thesis_harmonization_required": ["section_2.7.2", "section_2.7.3_and_table_4", "section_3.8.4"],
+  "execution_code_sha256": null,
+  "evaluation_approval_sha256": null
+}

@@ -1,0 +1,310 @@
+{
+  "accepted_units": 116,
+  "campaign_status": "ready",
+  "closed_utc": "2026-10-08T18:07:25.129063+00:00",
+  "completed_runs": 10,
+  "day": {
+    "active_seconds": 8016.088366513999,
+    "charged_wall_seconds": 8016.088370800018,
+    "external_seconds": 0.0,
+    "hard_deadline_epoch": 1791485629.04069,
+    "work_deadline_epoch": 1791482929.0955226
+  },
+  "invocation_id": "8b3d6b175bd34b78a655010d46cccf3d",
+  "latest_journal_event": {
+    "event": "supervisor_exit",
+    "sha256": "6772d67a19bfed8b83f111502cef48336bed3dc20a3ea79315cac422a4b776c4",
+    "status": "ready",
+    "utc": "2026-10-08T18:07:25.134622+00:00"
+  },
+  "ledger": {
+    "bytes_at_session_close": 30414121,
+    "chain_head": "3dd62d29fe50064b32fdde04f071067ad7c8db6792d136ee8b53e8a6a7cde23a",
+    "events": {},
+    "records": 351,
+    "sha256_at_session_close": "cff406928d2ff5655599c5fb1c99465c3a13bbb8aeb505fa39e1291724c446ce"
+  },
+  "next_run_id": "run-10-C0-b1",
+  "next_unit": 6,
+  "planned_runs": 18,
+  "planned_units": 198,
+  "resources": {
+    "actor_updates": 840,
+    "critic_updates": 1680,
+    "diagnostic_trajectories": 6720,
+    "diagnostic_transitions": 1209600,
+    "trajectories": 95120,
+    "transitions": 17121600
+  },
+  "runs": [
+    {
+      "D_wall_seconds": 45.85853541100005,
+      "accepted_units": 11,
+      "beta": 0,
+      "complete": true,
+      "condition": "C0",
+      "cumulative_warning_count": 128,
+      "latest_checkpoint_sha256": "0ca4fe4ea0943d05da1eb6d9e3b12ae8639c41466c6a98273b5505674e2b931c",
+      "latest_report_sha256": "cdc7ba090d2818ce2f8730b624f42b8e5cdce4399be8ea49c59dbee2c46e6e10",
+      "ledger_wall_seconds": 702.3483650684357,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-00-C0-b0",
+      "seed": 710031,
+      "worker_rss_peak_bytes": 671547392
+    },
+    {
+      "D_wall_seconds": 48.020343058000435,
+      "accepted_units": 11,
+      "beta": 1,
+      "complete": true,
+      "condition": "C0",
+      "cumulative_warning_count": 143,
+      "latest_checkpoint_sha256": "a4b0f5f1ea049b419ad21239225110859eb1e6acdac4053b620965739bab3cef",
+      "latest_report_sha256": "1d63aadf7760f85925ae1d8952cb6c77595012319c41c4722643d06542033682",
+      "ledger_wall_seconds": 732.0868675708771,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-01-C0-b1",
+      "seed": 710031,
+      "worker_rss_peak_bytes": 642400256
+    },
+    {
+      "D_wall_seconds": 50.01711168799966,
+      "accepted_units": 11,
+      "beta": 1,
+      "complete": true,
+      "condition": "C5",
+      "cumulative_warning_count": 143,
+      "latest_checkpoint_sha256": "169416da1dba34e7ba7da841ba1fde5874413ae6ae2347d0c1788bf3bc3e65e4",
+      "latest_report_sha256": "fb2a4c94bdf53847a1b0aa7a93290bcbb58b6165d678d54ecd17d25751d99e4b",
+      "ledger_wall_seconds": 763.3075742721558,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-02-C5-b1",
+      "seed": 710031,
+      "worker_rss_peak_bytes": 671354880
+    },
+    {
+      "D_wall_seconds": 47.7969063799992,
+      "accepted_units": 11,
+      "beta": 0,
+      "complete": true,
+      "condition": "C5",
+      "cumulative_warning_count": 128,
+      "latest_checkpoint_sha256": "2a37d6ae7e4bdbb44ba631a113497bf1dc4411cf12b48335b37d1d8825362133",
+      "latest_report_sha256": "7a43d8faf349591462b3a497c36820a1c5539428fa81cd87b184a15c0a75ee75",
+      "ledger_wall_seconds": 733.364848613739,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-03-C5-b0",
+      "seed": 710031,
+      "worker_rss_peak_bytes": 671551488
+    },
+    {
+      "D_wall_seconds": 49.71841668599973,
+      "accepted_units": 11,
+      "beta": 0,
+      "complete": true,
+      "condition": "C10",
+      "cumulative_warning_count": 128,
+      "latest_checkpoint_sha256": "cff88e8655c918d6e9781fec88e0aa3bdc214799bd3cc1d450fecdff0a5b5a18",
+      "latest_report_sha256": "88a07d413a2ae3cea2c7c61d08cbdf0dc46b098cb0930f526b31dd336006479d",
+      "ledger_wall_seconds": 750.975536108017,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-04-C10-b0",
+      "seed": 710031,
+      "worker_rss_peak_bytes": 638259200
+    },
+    {
+      "D_wall_seconds": 50.51750688999982,
+      "accepted_units": 11,
+      "beta": 1,
+      "complete": true,
+      "condition": "C10",
+      "cumulative_warning_count": 143,
+      "latest_checkpoint_sha256": "926aff6a2dd9cc17307dc983573f6405e46cbcf130f4b8d1f56ad91fd7743d01",
+      "latest_report_sha256": "f196e251d740a1e2a74cfd834d7d98ad3cd5fe501d841551f41877e882c6e4bd",
+      "ledger_wall_seconds": 769.1798958778381,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-05-C10-b1",
+      "seed": 710031,
+      "worker_rss_peak_bytes": 641990656
+    },
+    {
+      "D_wall_seconds": 50.213685891999376,
+      "accepted_units": 11,
+      "beta": 1,
+      "complete": true,
+      "condition": "C5",
+      "cumulative_warning_count": 147,
+      "latest_checkpoint_sha256": "13b03adb54c0a81d3bb7582d6577643455d3f93d36f5fc46524a0081da98b16f",
+      "latest_report_sha256": "f412dcc3ff1c9aa50ecd202015b9032157858f39c87cc7000ba4cda3609deb1b",
+      "ledger_wall_seconds": 771.0807445049286,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-06-C5-b1",
+      "seed": 710047,
+      "worker_rss_peak_bytes": 638074880
+    },
+    {
+      "D_wall_seconds": 51.64158801800295,
+      "accepted_units": 11,
+      "beta": 0,
+      "complete": true,
+      "condition": "C5",
+      "cumulative_warning_count": 129,
+      "latest_checkpoint_sha256": "b10abf942b5700d1fc6f91eb04699316311dce7c9b1be9e4f849977311ac48d4",
+      "latest_report_sha256": "f99cc27a52769a69486aac2cca11149d5792b7329713111b5580d7460a83b264",
+      "ledger_wall_seconds": 781.6820776462555,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-07-C5-b0",
+      "seed": 710047,
+      "worker_rss_peak_bytes": 641720320
+    },
+    {
+      "D_wall_seconds": 51.28005021300032,
+      "accepted_units": 11,
+      "beta": 0,
+      "complete": true,
+      "condition": "C10",
+      "cumulative_warning_count": 129,
+      "latest_checkpoint_sha256": "31be36e0a0ffba37c0f800bcd28ec51fa0ade4decd0b853e611b6246853b71ba",
+      "latest_report_sha256": "7d2f768a39c2d77afd982cbbb2ba2aa40d7bd40613523bbcd8daebaf5e6a0936",
+      "ledger_wall_seconds": 783.3684267997742,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-08-C10-b0",
+      "seed": 710047,
+      "worker_rss_peak_bytes": 642035712
+    },
+    {
+      "D_wall_seconds": 52.22776023599545,
+      "accepted_units": 11,
+      "beta": 1,
+      "complete": true,
+      "condition": "C10",
+      "cumulative_warning_count": 147,
+      "latest_checkpoint_sha256": "aa30deded006260a6e6932af75f1109671f1d3e05796f7596bfc63328fd67bf6",
+      "latest_report_sha256": "22171af9fc3ba8ba3432e2fda4f84711f7ba20be74407e98277712ed0ca84126",
+      "ledger_wall_seconds": 797.4558234214783,
+      "next_unit": 11,
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-09-C10-b1",
+      "seed": 710047,
+      "worker_rss_peak_bytes": 680103936
+    },
+    {
+      "D_wall_seconds": 26.86474032300248,
+      "accepted_units": 6,
+      "beta": 1,
+      "complete": false,
+      "condition": "C0",
+      "cumulative_warning_count": 84,
+      "latest_checkpoint_sha256": "bc7923edbab273b8d90dfccf4d4a6ef2b9025e5addf6569a219dd0dca6f30596",
+      "latest_report_sha256": "ce2332729549a464ce13385d006507b682ccdc9bd07a5fbe2f1136df99daf1ef",
+      "ledger_wall_seconds": 415.0084261894226,
+      "next_unit": 6,
+      "resources": {
+        "actor_updates": 40,
+        "critic_updates": 80,
+        "diagnostic_trajectories": 320,
+        "diagnostic_transitions": 57600,
+        "trajectories": 4720,
+        "transitions": 849600
+      },
+      "run_id": "run-10-C0-b1",
+      "seed": 710047,
+      "worker_rss_peak_bytes": 501915648
+    }
+  ],
+  "scope": "session_01_integrity_and_cost_only_no_P3_outcome_decision",
+  "service": "p3-market-v1-session-01.service",
+  "supervisor_journal": {
+    "bytes_at_session_close": 1698157,
+    "chain_head": "6772d67a19bfed8b83f111502cef48336bed3dc20a3ea79315cac422a4b776c4",
+    "events": {
+      "heartbeat": 1936,
+      "paused": 1,
+      "supervisor_exit": 1,
+      "supervisor_started": 1,
+      "unit_completed": 116,
+      "unit_started": 116
+    },
+    "records": 2171,
+    "sha256_at_session_close": "5b4e2a51bd11ba4d10d7e2a6f39ae1b575177890204d3dedb17d7c5aa611e85b"
+  }
+}

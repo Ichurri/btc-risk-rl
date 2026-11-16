@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "commit": "ebb3914bfff4d59cc9ed0f8e8f7e0e5af96c90da",
+  "script_sha256": "1093303e0d16d2609370d315cbc540ea3f3a21277dc47a1a52ea4212173350de",
+  "synthetic": {
+    "kind": "fresh_synthetic_execution_of_both_versions",
+    "h2_source_commit": "cc913b629694641543e2b54375dbda5d55130544",
+    "h2_trading_sha256": "4bd333e3c8588f87120bcde2e02b86adb6981eed382717d0b5e0c31cbcb19af5",
+    "unchanged_modules": {
+      "src/btc_risk_rl/env/accounting.py": "0d9ab57fd1ed218cdf32d271805e729444c1d846c38422cb641c071f2b254838",
+      "src/btc_risk_rl/env/market.py": "1f48e55bb81084a9484f762398ee4184950c1ab9e33bbb7e4b805433ba120f32",
+      "src/btc_risk_rl/features/market.py": "9a3b34de6eab59cd5a098145533b033af1d1b581eb9eb02b8239bae991011008"
+    },
+    "runs": [
+      {
+        "partition": "train",
+        "transitions": 180,
+        "observations_12_and_rewards_and_accounting": "exactly_equal"
+      },
+      {
+        "partition": "validation",
+        "transitions": 2190,
+        "observations_12_and_rewards_and_accounting": "exactly_equal"
+      }
+    ]
+  },
+  "development": {
+    "kind": "new_H3_development_run_compared_to_historical_H2_ledger",
+    "historical_results_not_claimed_as_new": true,
+    "rows_exactly_equal": 7590,
+    "compared_columns": [
+      "probe",
+      "step",
+      "execution_open_time_ms",
+      "target_weight",
+      "delta_btc",
+      "reference_price",
+      "execution_price",
+      "commission",
+      "slippage_cost",
+      "cash",
+      "btc",
+      "equity_previous_close",
+      "equity_open_before",
+      "equity_open_after",
+      "equity",
+      "reward",
+      "end_reason"
+    ],
+    "old_ledger_sha256": "4db8d5c8f17f53e26871f8ebaf8783b33419e92dd35de42d464075408b23fd62",
+    "new_ledger_sha256": "6780ae000a478b21505c89ddd9e0602c74fa8aa46acd601bf5beaccdea2eb968"
+  },
+  "training_executed": false,
+  "final_test_accessed": false
+}

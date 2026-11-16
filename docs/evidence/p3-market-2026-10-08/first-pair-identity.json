@@ -1,0 +1,19 @@
+{
+  "a0_route_ids_equal": true,
+  "arms": [
+    0,
+    1
+  ],
+  "condition": "C0",
+  "different_realization_labels": true,
+  "first_actor_sha256": "701182caae925d211b1e91f51acfea0241d9a464279e93ccb4b2eff471303a7f",
+  "first_actor_sha256_equal": true,
+  "first_critic_sha256_equal": false,
+  "market_training_executed": [
+    true,
+    true
+  ],
+  "q0_eta_equal": true,
+  "scope": "predefined_initial_pair_identity_check_not_outcome_selection",
+  "seed": 710031
+}

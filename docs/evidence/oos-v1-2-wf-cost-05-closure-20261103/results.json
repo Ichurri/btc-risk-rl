@@ -1,0 +1,52 @@
+{
+  "accepted_units": 11,
+  "cumulative_margin_after_envelopes_seconds": 674.0,
+  "days": {
+    "2026-11-01": {
+      "automated_charge_seconds": 3484.510402687977,
+      "distinct_measured_minimum_seconds": 3824.1404026879773,
+      "global_productive_allowance_after_reserve_seconds": 8100,
+      "ledger_span_seconds": 3482.644556760788,
+      "minimum_own_daily_excess_seconds": 224.14040268797726,
+      "own_daily_limit_seconds": 3600,
+      "session_gap_uncovered_seconds": 1.8658459271891843,
+      "suite_before_ledger_seconds": 339.63,
+      "suites_inside_ledger_span_seconds_not_added": [
+        338.85,
+        349.96
+      ],
+      "wall_envelope_approval_to_report_seconds": 4166.0
+    },
+    "2026-11-02": {
+      "closure_commit_local": "2026-11-02T17:31:59-04:00",
+      "first_observed_local_one_second_resolution": "2026-11-02T17:22:39-04:00",
+      "global_productive_allowance_after_reserve_seconds": 8100,
+      "own_daily_limit_seconds": 3600,
+      "preflight_observed_utc": "2026-11-02T21:29:52.915844+00:00",
+      "suite_seconds": 390.45,
+      "wall_envelope_after_preflight_seconds": 126.084156,
+      "wall_envelope_before_preflight_seconds": 433.915844,
+      "wall_envelope_total_seconds": 560.0,
+      "within_before_preflight_not_suite_seconds": 43.465844000000004
+    }
+  },
+  "historical_approval_sha256": "c2b287ec646a6d6a85c849474f1411f5be28fabb1f1c5701b65005e3374a3c59",
+  "historical_root_file_count": 2647,
+  "historical_root_mapping_sha256": "0d034efccb2138c4fb975c86e504763ff69ce331f2a5fdbb9919f4e1d06931eb",
+  "ledger_sha256": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+  "ledger_status_unchanged": "ready",
+  "methodological_status": "incomplete_two_active_days_exhausted",
+  "not_recoverable_exactly": [
+    "individual duration of Q0 and reentry audits outside ledger",
+    "individual duration of Ruff and watched preflight outside ledger",
+    "individual duration of documentation and closure",
+    "any unrecorded idle inside wall envelopes"
+  ],
+  "own_cumulative_limit_seconds": 5400,
+  "pending": null,
+  "session_journal_sha256": "70595af7a182dcece5d90db6bd3db27e370073d488b328fc2cbc30b41bd6763f",
+  "supervisor_journal_sha256": "b832229b98c4c7dad13c8c77428265a8acbe4aee5061fabd65ea3e2a083195a3",
+  "two_day_conservative_envelope_seconds": 4726.0,
+  "two_day_distinct_minimum_seconds": 4214.590402687977,
+  "unaccepted_next": "wf-2022/Q0"
+}

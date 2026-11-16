@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_worker.py", line 39, in <module>
+    main()
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_worker.py", line 11, in main
+    require_campaign()  # Must precede request read, torch import, and source construction.
+    ^^^^^^^^^^^^^^^^^^
+  File "/home/ichurri/Desktop/personal_projects/btc-risk-rl/src/btc_risk_rl/pilots/wf_cost_replacement_04_exec.py", line 87, in require_campaign
+    raise PermissionError("WF replacement market study NOT AUTHORIZED")
+PermissionError: WF replacement market study NOT AUTHORIZED

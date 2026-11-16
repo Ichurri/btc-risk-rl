@@ -1,0 +1,128 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_______________ test_exact_QAB_order_policy_versions_and_budget ________________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_exact_QAB_order_policy_versions_and_budget(config):
+        from btc_risk_rl.agents.risk import dual_update, variational
+    
+>       run = make(config)
+              ^^^^^^^^^^^^
+
+tests/test_agent_schedule.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C5', risk_enabled = True, overrides = {}
+
+    def make(config, condition="C5", risk_enabled=True, **overrides):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+>       from btc_risk_rl.agents.trainer import SyntheticExperiment
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.trainer'
+
+tests/test_agent_schedule.py:11: ModuleNotFoundError
+___________ test_fixed_coefficients_old_baseline_and_separate_critic ___________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_fixed_coefficients_old_baseline_and_separate_critic(config):
+        from btc_risk_rl.agents.models import fingerprint
+    
+>       run = make(config, iterations=1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_schedule.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C5', risk_enabled = True, overrides = {'iterations': 1}
+
+    def make(config, condition="C5", risk_enabled=True, **overrides):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+>       from btc_risk_rl.agents.trainer import SyntheticExperiment
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.trainer'
+
+tests/test_agent_schedule.py:11: ModuleNotFoundError
+_______ test_risk_off_reproduces_C0_parameters_and_optimizer_exactly[C5] _______
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C5'
+
+    @pytest.mark.parametrize("condition", ["C5","C10"])
+    def test_risk_off_reproduces_C0_parameters_and_optimizer_exactly(config, condition):
+>       baseline, off = make(config,"C0"), make(config,condition,risk_enabled=False)
+                        ^^^^^^^^^^^^^^^^^
+
+tests/test_agent_schedule.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C0', risk_enabled = True, overrides = {}
+
+    def make(config, condition="C5", risk_enabled=True, **overrides):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+>       from btc_risk_rl.agents.trainer import SyntheticExperiment
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.trainer'
+
+tests/test_agent_schedule.py:11: ModuleNotFoundError
+______ test_risk_off_reproduces_C0_parameters_and_optimizer_exactly[C10] _______
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C10'
+
+    @pytest.mark.parametrize("condition", ["C5","C10"])
+    def test_risk_off_reproduces_C0_parameters_and_optimizer_exactly(config, condition):
+>       baseline, off = make(config,"C0"), make(config,condition,risk_enabled=False)
+                        ^^^^^^^^^^^^^^^^^
+
+tests/test_agent_schedule.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C0', risk_enabled = True, overrides = {}
+
+    def make(config, condition="C5", risk_enabled=True, **overrides):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+>       from btc_risk_rl.agents.trainer import SyntheticExperiment
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.trainer'
+
+tests/test_agent_schedule.py:11: ModuleNotFoundError
+_________ test_C0_auxiliary_counts_do_not_change_learning_or_stopping __________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_C0_auxiliary_counts_do_not_change_learning_or_stopping(config):
+>       a = make(config,"C0")
+            ^^^^^^^^^^^^^^^^^
+
+tests/test_agent_schedule.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+condition = 'C0', risk_enabled = True, overrides = {}
+
+    def make(config, condition="C5", risk_enabled=True, **overrides):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket, SyntheticSettings
+>       from btc_risk_rl.agents.trainer import SyntheticExperiment
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.trainer'
+
+tests/test_agent_schedule.py:11: ModuleNotFoundError
+______________ test_failed_audit_invalidates_run_and_cannot_retry ______________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f26e585a090>
+
+    def test_failed_audit_invalidates_run_and_cannot_retry(config, monkeypatch):
+>       from btc_risk_rl.agents.trainer import RunAbort
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.trainer'
+
+tests/test_agent_schedule.py:101: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_agent_schedule.py::test_exact_QAB_order_policy_versions_and_budget
+FAILED tests/test_agent_schedule.py::test_fixed_coefficients_old_baseline_and_separate_critic
+FAILED tests/test_agent_schedule.py::test_risk_off_reproduces_C0_parameters_and_optimizer_exactly[C5]
+FAILED tests/test_agent_schedule.py::test_risk_off_reproduces_C0_parameters_and_optimizer_exactly[C10]
+FAILED tests/test_agent_schedule.py::test_C0_auxiliary_counts_do_not_change_learning_or_stopping
+FAILED tests/test_agent_schedule.py::test_failed_audit_invalidates_run_and_cannot_retry
+6 failed in 1.02s

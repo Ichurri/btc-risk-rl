@@ -1,0 +1,195 @@
+{
+  "files_opened": [
+    "artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-02/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-03/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-04/sessions.jsonl",
+    "artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+    "artifacts/oos-v12-wf-cost-only-05/sessions.jsonl",
+    "artifacts/p0-approved-v1/ledger.jsonl",
+    "artifacts/p1-approved-v1/ledger.jsonl",
+    "artifacts/p1-preparation-approved-v1/ledger.jsonl",
+    "artifacts/p2-approved-v1/ledger.jsonl",
+    "artifacts/p2-preparation-approved-v1/ledger.jsonl",
+    "artifacts/p2r-approved-v2/ledger.jsonl",
+    "artifacts/p3-approved-v1/ledger.jsonl",
+    "configs/initial.toml",
+    "data/processed/p2r-training-h1/audit.json",
+    "data/processed/p2r-training-h1/bars.csv",
+    "data/processed/p2r-training-h1/episodes.csv",
+    "data/processed/p2r-training-h1/features.csv",
+    "data/processed/p2r-training-h1/manifest.json",
+    "data/processed/p2r-training-h1/observations.csv",
+    "data/processed/p2r-training-h1/scaler.json",
+    "data/processed/p2r-training-h1/transitions.csv",
+    "docs/proposals/OOS-v1-2-costo-2022-exclusivo-v1.md",
+    "docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md",
+    "docs/protocols/OOS-v1-2-wf-cost-2022-only-approval.json",
+    "pyproject.toml",
+    "scripts/audit_oos_wf_cost_2022_preflight.py",
+    "scripts/run_oos_wf_cost_2022.py",
+    "uv.lock"
+  ],
+  "fold_metadata": {
+    "cutoff_ms": 1638403200000,
+    "episodes": 4678,
+    "fit_rows": 7703,
+    "fold": "2022",
+    "latest_target_ms": 1638388800000,
+    "product_sha256": {
+      "bars.csv": "9ff4c73b891c36d5a5f261ce229f114144237bb4959e4443a34f7a17f00115b6",
+      "episodes.csv": "ace153209014447778bf5ed2a258dfe9e327987cee3c62e38476565e8913b7d3",
+      "features.csv": "78a6bf520b9b234508a112ca965592af9bf30e54539f9630897ae82735116fbd",
+      "observations.csv": "653d2b6fdfc90fbdefbd7b9d5541e0b1b4984b1ea2f8c369a70b4ee694202494",
+      "scaler.json": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+      "transitions.csv": "c3757892f1be891100e6815dcf2dfbf6d41cd1720bea2cbe1d2ab67614862bf1"
+    },
+    "scaler_sha256": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+    "source_profile": "accepted_train_collection_only",
+    "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+    "trajectories_generated": 0,
+    "transition_count": 7684,
+    "validation_observations_loaded": false,
+    "warmup_bars": 186
+  },
+  "git_commit": "9afad3e335115599510214b193a718b990754f65",
+  "market_trajectories_generated": 0,
+  "optimizer_steps": 0,
+  "preflight": {
+    "blockers": [],
+    "budget": {
+      "active_campaigns": [],
+      "day_la_paz": "2026-11-07",
+      "global_spent": 0.0,
+      "ok": true,
+      "remaining_before_reserve": 8100.0,
+      "sources": [
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-01/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+          "status": "ready"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-03/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+          "status": "failed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-04/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "5e61ed0ee1b0503ba289fa8ab54c53f1c5bcc7a351e56c5ca02eed29bbbe8024",
+          "status": "failed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-wf-cost-only-05/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "218ae4d4efad8f3440bb898a1f30f6ca33a09a26045c2b0bff0fe15c0303c1ba",
+          "status": "ready"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p0-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p1-preparation-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+          "status": "failed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2-preparation-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p2r-approved-v2/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/p3-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+          "status": "completed"
+        }
+      ]
+    },
+    "code_sha256": "abbf656fe24b78bb2197640761acc9cdcfef17596416a57de7a75b5261b11605",
+    "host": {
+      "disk_free_bytes": 129157259264,
+      "linger": "yes",
+      "memory_available_bytes": 9094168576,
+      "power": {
+        "ac": true,
+        "battery_percent": 100
+      },
+      "user_manager": "running"
+    },
+    "inputs": {
+      "accepted_training_end_exclusive_ms": 1672531200000,
+      "ok": true,
+      "opened": [
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-2022-exclusivo-v1.md",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/configs/initial.toml",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/audit.json",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/bars.csv",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/episodes.csv",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/features.csv",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/observations.csv",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/scaler.json",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/transitions.csv"
+      ],
+      "sha256": {
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/configs/initial.toml": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/bars.csv": "c12d098b5d0d5b27a29da1cd8a955c7a26783e6677034a102a9939b4baa8e690",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/features.csv": "7ec2c031eb712303cd300fdd74ebe62eba9bb0b8dd6e8936ebbf313874314194",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/manifest.json": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/observations.csv": "d5014b99cf0367ea77169c933f51761c0d2e7b8874789ec3a4991cb878c1b0a7",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/data/processed/p2r-training-h1/transitions.csv": "f7827e0a742e9126f747e340640cb23e570a98c616caa8df330d21a2c4530fb9",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/proposals/OOS-v1-2-costo-2022-exclusivo-v1.md": "4b877ee99ea1c91ead2802c7dd10ae4f361675d2e587177a01322c79ac5152fa",
+        "/home/ichurri/Desktop/personal_projects/btc-risk-rl/docs/protocols/OOS-2022-y-evaluacion-autorizacion-20261106.md": "3da1b5ee84759fb5d7f8abd9b8807499e01a55a17fd7ae6374824aee59a5d6e8"
+      }
+    },
+    "market_execution_enabled": true,
+    "observed_utc": "2026-11-07T04:58:07.135375+00:00",
+    "root_exists": false,
+    "status": "ready"
+  },
+  "protected_or_shared_csv_opened": false
+}

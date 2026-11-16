@@ -1,0 +1,46 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/ichurri/Desktop/personal_projects/btc-risk-rl
+configfile: pyproject.toml
+testpaths: tests
+collected 419 items
+
+tests/test_agent_math.py ..............                                  [  3%]
+tests/test_agent_schedule.py .......                                     [  5%]
+tests/test_collector.py ............                                     [  7%]
+tests/test_config.py ....                                                [  8%]
+tests/test_data.py ................                                      [ 12%]
+tests/test_diagnosis.py ....                                             [ 13%]
+tests/test_features.py ......                                            [ 15%]
+tests/test_h5_market.py ....                                             [ 15%]
+tests/test_h5_resume.py ...........                                      [ 18%]
+tests/test_oos_cost_calibration.py ...                                   [ 19%]
+tests/test_oos_synthetic_evaluation.py .........                         [ 21%]
+tests/test_oos_wf_cost_executor.py .......................               [ 26%]
+tests/test_oos_wf_cost_replacement_executor.py .............             [ 30%]
+tests/test_oos_wf_cost_replacement_proposal.py .....                     [ 31%]
+tests/test_oos_wf_session_journal.py ..................                  [ 35%]
+tests/test_p0_budget.py ............                                     [ 38%]
+tests/test_p0_integration.py ..........                                  [ 40%]
+tests/test_p1.py ............                                            [ 43%]
+tests/test_p2.py .......................                                 [ 49%]
+tests/test_p2_market_integration.py .............                        [ 52%]
+tests/test_p2r_historical_executor.py .............                      [ 55%]
+tests/test_p2r_infrastructure.py ..................                      [ 59%]
+tests/test_p2r_logout_preparation.py ....                                [ 60%]
+tests/test_p2r_training_shard.py ......                                  [ 62%]
+tests/test_p2r_training_shard_export.py ...                              [ 62%]
+tests/test_p2r_units.py ...........                                      [ 65%]
+tests/test_p3_critic_synthetic.py ........                               [ 67%]
+tests/test_p3_cross_diagnostic.py .....                                  [ 68%]
+tests/test_p3_marker_supervisor.py .......................               [ 73%]
+tests/test_p3_market_guard.py ......                                     [ 75%]
+tests/test_p3_protocol_metrics.py .....                                  [ 76%]
+tests/test_p3_supervisor.py .........                                    [ 78%]
+tests/test_p3_unit_algorithm.py ..                                       [ 79%]
+tests/test_recheck.py ..                                                 [ 79%]
+tests/test_segmentation.py ...........................                   [ 86%]
+tests/test_simulator.py .........................................        [ 95%]
+tests/test_temporal_contract.py .................                        [100%]
+
+======================= 419 passed in 283.16s (0:04:43) ========================

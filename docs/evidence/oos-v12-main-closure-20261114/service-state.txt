@@ -1,0 +1,9 @@
+TimeoutStartUSec=15h
+Result=timeout
+ExecMainExitTimestamp=Sat 2026-11-14 11:14:56 -04
+ExecMainCode=1
+ExecMainStatus=0
+ExecStopPost={ path=/home/ichurri/.local/bin/uv ; argv[]=/home/ichurri/.local/bin/uv run --frozen python scripts/write_oos_v12_report.py ; ignore_errors=no ; start_time=[Sat 2026-11-14 11:14:56 -04] ; stop_time=[Sat 2026-11-14 11:16:27 -04] ; pid=158649 ; code=exited ; status=143 }
+ActiveState=failed
+SubState=failed
+StateChangeTimestamp=Sat 2026-11-14 11:16:27 -04

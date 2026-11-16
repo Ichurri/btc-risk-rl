@@ -1,0 +1,186 @@
+{
+  "accepted_units": 99,
+  "captured_utc": "2026-11-11T17:33:18.108058+00:00",
+  "cursor": 9,
+  "global_budget_snapshot": {
+    "active_campaigns": [],
+    "active_prep_token": "f896e4a84e084e898c3be42d85d6d1b5",
+    "closure_reserve_seconds": 2700,
+    "global_spent_seconds": 18297.463891506195,
+    "remaining_before_reserve_seconds": 29402.536108493805,
+    "sources_with_debit": [
+      {
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01/ledger.jsonl",
+        "reason": "measured",
+        "seconds": 6846.916214227676
+      },
+      {
+        "path": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/shared-pilot-budget/oos-v12-training-preflight.jsonl",
+        "reason": "oos_precheck_gap",
+        "seconds": 11450.547677278519
+      }
+    ]
+  },
+  "hashes_checked": {
+    "checkpoint": 99,
+    "report": 99,
+    "request": 99
+  },
+  "last_checkpoint_sha256": "65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7",
+  "last_unit_end_utc": "2026-11-11T17:31:41.431231+00:00",
+  "ledger_charged_wall_seconds": 6846.916214227676,
+  "ledger_sha256": "01b9da874d41cd22dac89e7976c7f0fe644094bfe687236536eb02d5cae85082",
+  "ledger_state_count": 302,
+  "measured_unit_seconds": 6832.146675,
+  "pending": null,
+  "profile": "wf-2022",
+  "root": "/home/ichurri/Desktop/personal_projects/btc-risk-rl/artifacts/oos-v12-training-wf-2022-01",
+  "runs": [
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "ce1d9760b42e8b863d7deef83b9557097f724747a9111fffa4e18a3782f84091",
+      "condition": "C0",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-00-C0-b0",
+      "seed": 57739409,
+      "unit_seconds": 725.139356
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "fc690584dcde2d0a36fe7388c44036a4ebe92a3fbe8e7f9d3e37e7e29c8d0c29",
+      "condition": "C5",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-01-C5-b0",
+      "seed": 57739409,
+      "unit_seconds": 730.34868
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "a746d15ac1d6d82949ea2ad524453e46efc231b5e014e72bce1cd70edd2d8545",
+      "condition": "C10",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-02-C10-b0",
+      "seed": 57739409,
+      "unit_seconds": 761.858824
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "124f57687de8a5cbf756ab3d6b21da523997d8e621685eca034f67f8d3cf7170",
+      "condition": "C5",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-03-C5-b0",
+      "seed": 803999499,
+      "unit_seconds": 781.188725
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "7e59219395faf5d5674beb04130593cdc41d5172eca461b21532847f98bb4044",
+      "condition": "C10",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-04-C10-b0",
+      "seed": 803999499,
+      "unit_seconds": 748.604306
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "4e23537d3c812b5b295bb3571c25169fa7ca3ecbbe232ec90e0a158cee63e74b",
+      "condition": "C0",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-05-C0-b0",
+      "seed": 803999499,
+      "unit_seconds": 760.658987
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "6a99184481930a1fdfb7f0500dcb7188649a5913437d97160a803c5f54ce1545",
+      "condition": "C10",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-06-C10-b0",
+      "seed": 76375890,
+      "unit_seconds": 753.61584
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "3506d77c02eceb713651860c642f8cb7b5ed04779fa151c972350a4f064cdd82",
+      "condition": "C0",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-07-C0-b0",
+      "seed": 76375890,
+      "unit_seconds": 785.712536
+    },
+    {
+      "accepted_units": 11,
+      "checkpoint_k10_sha256": "65f1d14d83800702fc3be627b463c1b1a020d35187a8af47bc56b6733171c1e7",
+      "condition": "C5",
+      "resources": {
+        "actor_updates": 80,
+        "critic_updates": 160,
+        "diagnostic_trajectories": 640,
+        "diagnostic_transitions": 115200,
+        "trajectories": 9040,
+        "transitions": 1627200
+      },
+      "run_id": "run-08-C5-b0",
+      "seed": 76375890,
+      "unit_seconds": 785.019421
+    }
+  ],
+  "schema": "oos_v12_wf2022_closure_audit_v1",
+  "status": "completed"
+}

@@ -1,0 +1,204 @@
+{
+  "code_sha256": {
+    "scripts/audit_oos_wf_cost_preflight.py": "b78f9ba637de0346c6929dd73d0170e1c6759adc67300175612449b4560e96cf",
+    "scripts/run_oos_wf_cost.py": "3540e00b3d005094604c5f3c8a81aab067359b0af77edf91143b87faf72f10fa",
+    "src/btc_risk_rl/pilots/wf_cost.py": "f54c53cea291554b19a2968f914b0c6c01a5c65aec47768dac2b85f36b7ce2b4",
+    "src/btc_risk_rl/pilots/wf_cost_source.py": "5c3053df12b6eacb63195be4e82d397d80f2eb6746e778d8cf410286cad604a0",
+    "src/btc_risk_rl/pilots/wf_cost_units.py": "9c3f565e3be451c58b28fb5b32cb20e961cba46eda8c8703cf23f4bdfd6e5890",
+    "src/btc_risk_rl/pilots/wf_cost_worker.py": "45d77e54bb96e32223bc8d96adb18807e249ce17437be72ce368490596f55307",
+    "uv.lock": "4227214338aa773eafe365bfb3ead2ec2737ad3b5ff24824a027fa53b57dd32e"
+  },
+  "files_opened": [
+    ".venv/lib/python3.12/site-packages/numpy/rec/__pycache__/__init__.cpython-312.pyc",
+    ".venv/lib/python3.12/site-packages/pandas/io/formats/__pycache__/csvs.cpython-312.pyc",
+    ".venv/lib/python3.12/site-packages/tzdata/__pycache__/__init__.cpython-312.pyc",
+    "artifacts/p0-approved-v1/ledger.jsonl",
+    "artifacts/p1-approved-v1/ledger.jsonl",
+    "artifacts/p1-preparation-approved-v1/ledger.jsonl",
+    "artifacts/p2-approved-v1/ledger.jsonl",
+    "artifacts/p2-preparation-approved-v1/ledger.jsonl",
+    "artifacts/p2r-approved-v2/ledger.jsonl",
+    "artifacts/p3-approved-v1/ledger.jsonl",
+    "configs/initial.toml",
+    "data/processed/p2r-training-h1/audit.json",
+    "data/processed/p2r-training-h1/bars.csv",
+    "data/processed/p2r-training-h1/episodes.csv",
+    "data/processed/p2r-training-h1/features.csv",
+    "data/processed/p2r-training-h1/manifest.json",
+    "data/processed/p2r-training-h1/observations.csv",
+    "data/processed/p2r-training-h1/scaler.json",
+    "data/processed/p2r-training-h1/transitions.csv",
+    "docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md",
+    "docs/proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md",
+    "docs/protocols/OOS-v1-2-wf-cost-approval.json",
+    "docs/protocols/OOS-v1-2-wf-cost-executor-v1.json",
+    "src/btc_risk_rl/agents/__pycache__/market_source.cpython-312.pyc",
+    "src/btc_risk_rl/pilots/__pycache__/budget.cpython-312.pyc",
+    "src/btc_risk_rl/pilots/__pycache__/p2_budget.cpython-312.pyc",
+    "src/btc_risk_rl/pilots/__pycache__/p2r.cpython-312.pyc",
+    "src/btc_risk_rl/pilots/__pycache__/supervisor.cpython-312.pyc",
+    "src/btc_risk_rl/pilots/__pycache__/wf_cost.cpython-312.pyc",
+    "src/btc_risk_rl/pilots/__pycache__/wf_cost_source.cpython-312.pyc"
+  ],
+  "fold_metadata": {
+    "2021": {
+      "cutoff_ms": 1606867200000,
+      "episodes": 3639,
+      "fit_rows": 5764,
+      "fold": "2021",
+      "latest_target_ms": 1606852800000,
+      "product_sha256": {
+        "bars.csv": "a8e57410de8d920a199d515b8ac7ba6404f61b942d94e8ea232ca06a2788e34c",
+        "episodes.csv": "ca56390a09a4eeab3213e9455bc4d8da842855d253756588b8448cd458851454",
+        "features.csv": "fcb3c9b02167b670fe479e48d24a29654816a5897dd6b757ae1fc016afe86d1f",
+        "observations.csv": "b487ea432bc35e9831b6d8a2be970689faa2e1ca30275b68663001eb2f280b8b",
+        "scaler.json": "c463181f0c933cc07cbe99d34076e7f1cd2044483b949ef6a55eb80916459151",
+        "transitions.csv": "3a4b06804a7b0a503984f000c6a4218f1d4dbd4408abe2e171cce863d1aaa8a2"
+      },
+      "scaler_sha256": "c463181f0c933cc07cbe99d34076e7f1cd2044483b949ef6a55eb80916459151",
+      "source_profile": "accepted_train_collection_only",
+      "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+      "trajectories_generated": 0,
+      "transition_count": 5750,
+      "validation_observations_loaded": false,
+      "warmup_bars": 186
+    },
+    "2022": {
+      "cutoff_ms": 1638403200000,
+      "episodes": 4678,
+      "fit_rows": 7703,
+      "fold": "2022",
+      "latest_target_ms": 1638388800000,
+      "product_sha256": {
+        "bars.csv": "9ff4c73b891c36d5a5f261ce229f114144237bb4959e4443a34f7a17f00115b6",
+        "episodes.csv": "ace153209014447778bf5ed2a258dfe9e327987cee3c62e38476565e8913b7d3",
+        "features.csv": "78a6bf520b9b234508a112ca965592af9bf30e54539f9630897ae82735116fbd",
+        "observations.csv": "653d2b6fdfc90fbdefbd7b9d5541e0b1b4984b1ea2f8c369a70b4ee694202494",
+        "scaler.json": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+        "transitions.csv": "c3757892f1be891100e6815dcf2dfbf6d41cd1720bea2cbe1d2ab67614862bf1"
+      },
+      "scaler_sha256": "19bb5ae91ea2e5301679e1f2dfb95761d47085b483f4985237685e3ab2c07a7c",
+      "source_profile": "accepted_train_collection_only",
+      "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+      "trajectories_generated": 0,
+      "transition_count": 7684,
+      "validation_observations_loaded": false,
+      "warmup_bars": 186
+    }
+  },
+  "git_commit": "d34fc74fe27733013be09f344c83def7068b719b",
+  "market_trajectories_generated": 0,
+  "optimizer_steps": 0,
+  "preflight": {
+    "blockers": [],
+    "budget": {
+      "active_campaigns": [],
+      "day_la_paz": "2026-10-26",
+      "global_spent": 0.0,
+      "ok": true,
+      "remaining_before_reserve": 8100.0,
+      "sources": [
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p0-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "1d1ee72ca0ac49529f205b30942a68f381d86037e336091c490c624098339b8c",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p1-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "926eab40bc764e1cae88a74e6718ba70b50e2df0626e8e34964078cc4ba55755",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p1-preparation-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "db4ffacfaa4f150c778c5f51335851a80a9c9a7aadba3a875615414d4fa118c5",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p2-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "e6dedc6b0de39d71ca842fe60e7fb398495c3de88a0fcdfdd02a72752721c7b8",
+          "status": "failed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p2-preparation-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "825ccf31b019ccbaab6d54a4bdfa8d1bc919428f38569861811101f6d5af550b",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p2r-approved-v2/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+          "status": "completed"
+        },
+        {
+          "charged_today_seconds": 0.0,
+          "path": "artifacts/p3-approved-v1/ledger.jsonl",
+          "reason": "measured",
+          "sha256": "86b111b5365cda1760441d2f73d42e0463a4b4b2a7ddbc6e0e41f2a78751fcfe",
+          "status": "completed"
+        }
+      ]
+    },
+    "host": {
+      "disk_free_bytes": 152827473920,
+      "linger": "yes",
+      "memory_available_bytes": 8437854208,
+      "power": {
+        "ac": true,
+        "battery_percent": 72
+      },
+      "user_manager": "running"
+    },
+    "inputs": {
+      "accepted_training_end_exclusive_ms": 1672531200000,
+      "missing_fold_manifests": [
+        "artifacts/oos-v12-wf-cost-only-01/folds/wf-2021/manifest.json",
+        "artifacts/oos-v12-wf-cost-only-01/folds/wf-2022/manifest.json"
+      ],
+      "ok": true,
+      "opened": [
+        "docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md",
+        "docs/proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md",
+        "docs/protocols/OOS-v1-2-wf-cost-executor-v1.json",
+        "configs/initial.toml",
+        "data/processed/p2r-training-h1/manifest.json",
+        "data/processed/p2r-training-h1/audit.json",
+        "data/processed/p2r-training-h1/bars.csv",
+        "data/processed/p2r-training-h1/episodes.csv",
+        "data/processed/p2r-training-h1/features.csv",
+        "data/processed/p2r-training-h1/observations.csv",
+        "data/processed/p2r-training-h1/scaler.json",
+        "data/processed/p2r-training-h1/transitions.csv"
+      ],
+      "sha256": {
+        "configs/initial.toml": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+        "data/processed/p2r-training-h1/audit.json": "5a9a1fa5bbff3d52d321ade46877a568fe6f32c69390ddd67941c3e391071af8",
+        "data/processed/p2r-training-h1/bars.csv": "c12d098b5d0d5b27a29da1cd8a955c7a26783e6677034a102a9939b4baa8e690",
+        "data/processed/p2r-training-h1/episodes.csv": "b57f19452711f0b97882bb21420d22f4c23d3132fc44adf58ee7e71ae991254d",
+        "data/processed/p2r-training-h1/features.csv": "7ec2c031eb712303cd300fdd74ebe62eba9bb0b8dd6e8936ebbf313874314194",
+        "data/processed/p2r-training-h1/manifest.json": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9",
+        "data/processed/p2r-training-h1/observations.csv": "d5014b99cf0367ea77169c933f51761c0d2e7b8874789ec3a4991cb878c1b0a7",
+        "data/processed/p2r-training-h1/scaler.json": "a598a99c368f1d50bba9f78fca2f803e46d77702d05547ccc12d076771e57479",
+        "data/processed/p2r-training-h1/transitions.csv": "f7827e0a742e9126f747e340640cb23e570a98c616caa8df330d21a2c4530fb9",
+        "docs/proposals/OOS-v1-2-costo-entrenamiento-cortes-v1.md": "f6d81fd9f10938aee29480c701a1a52c0b84eba1db0ea42a21d2d84c3004cbe4",
+        "docs/proposals/cierre-pilotos-evaluacion-fuera-muestra-v1-2.md": "a1294725443eeb88f98c6cb4b659e1b244ddb54ce694dd7c550796e40c4d1a15",
+        "docs/protocols/OOS-v1-2-wf-cost-executor-v1.json": "66109d4400e04440c9450d1f1c0c7cc4332b66b9079703e3a1e62596032b5ad0"
+      }
+    },
+    "market_execution_enabled": true,
+    "observed_utc": "2026-10-27T02:38:19.761626+00:00",
+    "root_exists": false,
+    "status": "ready"
+  },
+  "shared_h1_csv_opened": false
+}

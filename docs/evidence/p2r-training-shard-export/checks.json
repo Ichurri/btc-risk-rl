@@ -1,0 +1,26 @@
+{
+  "exporter_code_commit": "a7cd7e7",
+  "export_evidence_commit": "fa70ddd",
+  "shard_pin_commit": "cd6b686",
+  "synthetic_targeted_initial": {
+    "command": "UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen pytest -q tests/test_p2r_training_shard_export.py tests/test_p2r_training_shard.py",
+    "result": "8 passed in 21.48s"
+  },
+  "full_suite": {
+    "command": "UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen pytest -q",
+    "result": "287 passed in 209.88s (0:03:29)",
+    "note": "Collected before the subsequent explicit synthetic open-rejection test was added."
+  },
+  "synthetic_targeted_final": {
+    "command": "UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen pytest -q tests/test_p2r_training_shard_export.py tests/test_p2r_training_shard.py",
+    "result": "9 passed in 22.74s"
+  },
+  "ruff": {
+    "command": "UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen ruff check .",
+    "result": "All checks passed!"
+  },
+  "preflight": {
+    "command": "UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache uv run --frozen python scripts/audit_p2r_preflight_opens.py > docs/evidence/p2r-training-shard-export/preflight-opens.json",
+    "result": "read_only_ready_campaign_disabled; zero shared CSV opens; zero trajectories; zero optimizer updates"
+  }
+}

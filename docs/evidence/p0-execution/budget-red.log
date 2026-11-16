@@ -1,0 +1,80 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+________________ test_global_day_shared_across_runs_and_restart ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_global_day_shared_across_0')
+
+    def test_global_day_shared_across_runs_and_restart(tmp_path):
+>       from btc_risk_rl.pilots.budget import CampaignLedger
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:9: ModuleNotFoundError
+_________ test_interrupted_unit_invalidates_campaign_and_blocks_resume _________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_interrupted_unit_invalida0')
+
+    def test_interrupted_unit_invalidates_campaign_and_blocks_resume(tmp_path):
+>       from btc_risk_rl.pilots.budget import CampaignLedger
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:28: ModuleNotFoundError
+_____________ test_lapaz_midnight_global_window_and_session_limit ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_lapaz_midnight_global_win0')
+
+    def test_lapaz_midnight_global_window_and_session_limit(tmp_path):
+        from datetime import datetime
+    
+>       from btc_risk_rl.pilots.budget import CampaignLedger
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:44: ModuleNotFoundError
+_______ test_measured_estimate_monotone_and_not_synthetic_cross_profile ________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_measured_estimate_monoton0')
+
+    def test_measured_estimate_monotone_and_not_synthetic_cross_profile(tmp_path):
+>       from btc_risk_rl.pilots.budget import CampaignLedger
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:64: ModuleNotFoundError
+__________________ test_campaign_lock_excludes_second_writer ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_campaign_lock_excludes_se0')
+
+    def test_campaign_lock_excludes_second_writer(tmp_path):
+>       from btc_risk_rl.pilots.budget import CampaignLedger
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:78: ModuleNotFoundError
+______________ test_real_supervisor_kills_synthetic_process[time] ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_real_supervisor_kills_syn0')
+kind = 'time'
+
+    @pytest.mark.parametrize("kind", ["time", "memory"])
+    def test_real_supervisor_kills_synthetic_process(tmp_path, kind):
+>       from btc_risk_rl.pilots.supervisor import supervise
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:88: ModuleNotFoundError
+_____________ test_real_supervisor_kills_synthetic_process[memory] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_real_supervisor_kills_syn1')
+kind = 'memory'
+
+    @pytest.mark.parametrize("kind", ["time", "memory"])
+    def test_real_supervisor_kills_synthetic_process(tmp_path, kind):
+>       from btc_risk_rl.pilots.supervisor import supervise
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots'
+
+tests/test_p0_budget.py:88: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_p0_budget.py::test_global_day_shared_across_runs_and_restart
+FAILED tests/test_p0_budget.py::test_interrupted_unit_invalidates_campaign_and_blocks_resume
+FAILED tests/test_p0_budget.py::test_lapaz_midnight_global_window_and_session_limit
+FAILED tests/test_p0_budget.py::test_measured_estimate_monotone_and_not_synthetic_cross_profile
+FAILED tests/test_p0_budget.py::test_campaign_lock_excludes_second_writer - M...
+FAILED tests/test_p0_budget.py::test_real_supervisor_kills_synthetic_process[time]
+FAILED tests/test_p0_budget.py::test_real_supervisor_kills_synthetic_process[memory]
+7 failed in 0.09s

@@ -1,0 +1,66 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+______________ test_mc_is_full_undiscounted_and_rejects_fragment _______________
+
+    def test_mc_is_full_undiscounted_and_rejects_fragment():
+>       from btc_risk_rl.agents.risk import monte_carlo
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.risk'
+
+tests/test_agent_math.py:9: ModuleNotFoundError
+_____________ test_fractional_tied_tail_and_fixed_eta_are_distinct _____________
+
+    def test_fractional_tied_tail_and_fixed_eta_are_distinct():
+>       from btc_risk_rl.agents.risk import empirical_tail, variational
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.risk'
+
+tests/test_agent_math.py:22: ModuleNotFoundError
+____________ test_quantile_uses_lower_endpoint_and_no_rounded_ties _____________
+
+    def test_quantile_uses_lower_endpoint_and_no_rounded_ties():
+>       from btc_risk_rl.agents.risk import empirical_tail
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.risk'
+
+tests/test_agent_math.py:36: ModuleNotFoundError
+________________________ test_dual_projection_and_sign _________________________
+
+    def test_dual_projection_and_sign():
+>       from btc_risk_rl.agents.risk import dual_update
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.risk'
+
+tests/test_agent_math.py:45: ModuleNotFoundError
+__________________ test_logistic_normal_density_and_gradient ___________________
+
+    def test_logistic_normal_density_and_gradient():
+        import torch
+    
+>       from btc_risk_rl.agents.models import Actor
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.models'
+
+tests/test_agent_math.py:55: ModuleNotFoundError
+__________ test_snapshot_and_initialization_do_not_change_global_rng ___________
+
+    def test_snapshot_and_initialization_do_not_change_global_rng():
+        import torch
+    
+>       from btc_risk_rl.agents.models import Actor, Critic, FrozenPolicy, fingerprint
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.models'
+
+tests/test_agent_math.py:83: ModuleNotFoundError
+___________ test_ppo_surrogate_uses_trajectory_mean_and_temporal_sum ___________
+
+    def test_ppo_surrogate_uses_trajectory_mean_and_temporal_sum():
+        import torch
+    
+>       from btc_risk_rl.agents.models import clipped_objective
+E       ModuleNotFoundError: No module named 'btc_risk_rl.agents.models'
+
+tests/test_agent_math.py:100: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_agent_math.py::test_mc_is_full_undiscounted_and_rejects_fragment
+FAILED tests/test_agent_math.py::test_fractional_tied_tail_and_fixed_eta_are_distinct
+FAILED tests/test_agent_math.py::test_quantile_uses_lower_endpoint_and_no_rounded_ties
+FAILED tests/test_agent_math.py::test_dual_projection_and_sign - ModuleNotFou...
+FAILED tests/test_agent_math.py::test_logistic_normal_density_and_gradient - ...
+FAILED tests/test_agent_math.py::test_snapshot_and_initialization_do_not_change_global_rng
+FAILED tests/test_agent_math.py::test_ppo_surrogate_uses_trajectory_mean_and_temporal_sum
+7 failed in 2.05s

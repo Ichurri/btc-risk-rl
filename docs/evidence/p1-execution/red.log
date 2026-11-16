@@ -1,0 +1,47 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+____________________________ test_p1_frozen_roster _____________________________
+
+    def test_p1_frozen_roster():
+>       from btc_risk_rl.pilots.p1_protocol import P1Settings, entries
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.p1_protocol'
+
+tests/test_p1.py:11: ModuleNotFoundError
+___________________ test_daily_other_campaign_debit_and_lock ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ichurri/pytest-0/test_daily_other_campaign_debi0')
+
+    def test_daily_other_campaign_debit_and_lock(tmp_path):
+>       from btc_risk_rl.pilots.shared_budget import SharedBudget
+E       ModuleNotFoundError: No module named 'btc_risk_rl.pilots.shared_budget'
+
+tests/test_p1.py:23: ModuleNotFoundError
+______________ test_paired_critic_diagnostics_do_not_change_actor ______________
+
+config = Config(schema_version=2, status='initial_working_not_confirmatory', data=DataConfig(symbol='BTCUSDT', interval='4h', t.../ Max-Q', 'vram_gib_estimate': 6, 'vram_verified': False, 'compute_hours_per_day': 3, 'execution': 'local_and_remote'})
+
+    def test_paired_critic_diagnostics_do_not_change_actor(config):
+        from btc_risk_rl.agents.synthetic import SyntheticMarket,SyntheticSettings
+        from btc_risk_rl.agents.trainer import SyntheticExperiment
+        runs=[]
+        for epochs in (2,4):
+            settings=replace(SyntheticSettings(),iterations=1,critic_epochs=epochs)
+            run=SyntheticExperiment(SyntheticMarket(config),settings,condition='C5',run_id='paired')
+            report=run.run();runs.append((run,report))
+        a,b=(r[1] for r in runs)
+        assert a['actor_sha256']==b['actor_sha256']
+        assert a['critic_updates']*2==b['critic_updates']
+        for run,report in runs:
+            records=[x for x in report['stability'] if x['phase']=='fixed_A']
+>           assert [x['measurement'] for x in records]==['before_actor','after_actor_before_critic','after_critic']
+E           AssertionError: assert [] == ['before_acto...after_critic']
+E             
+E             Right contains 3 more items, first extra item: 'before_actor'
+E             Use -v to get more diff
+
+tests/test_p1.py:52: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_p1.py::test_p1_frozen_roster - ModuleNotFoundError: No modu...
+FAILED tests/test_p1.py::test_daily_other_campaign_debit_and_lock - ModuleNot...
+FAILED tests/test_p1.py::test_paired_critic_diagnostics_do_not_change_actor
+3 failed in 3.52s

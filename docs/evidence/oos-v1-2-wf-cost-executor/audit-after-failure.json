@@ -1,0 +1,15 @@
+{
+  "accepted_units": 1,
+  "checkpoint_sha256": "22f9f60484db6ae5a04b7b35f4ebe2149debb16ac357437536c24f571bf8bca7",
+  "invocation_ids": [
+    "5c405d0855a14923bd4c9481fa73130e",
+    "6513bcb4dbf34444a38d8acc712cdafb"
+  ],
+  "journal_sha256": "211ec9a948970de4e00dc59524d7da9aa39ac78017f31ad279415835acb21731",
+  "ledger_sha256": "b6bc9a30d25387813d664708edfa07347c21174d2df216fc6f6be2d844ec6af6",
+  "ledger_status": "ready",
+  "q0_wall_seconds": 26.372599124908447,
+  "q0_worker_rss_peak_bytes": 358670336,
+  "report_sha256": "1ba4d95998624d0f0c8a46cdc37ddb51b8a2e04a32c5a14d85eff4f6639a934f",
+  "status": "q0_complete_second_service_failed_before_unit_1"
+}

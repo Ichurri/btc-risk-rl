@@ -1,0 +1,38 @@
+{
+  "audit_kind": "read_only_existing_artifacts",
+  "boundaries": {
+    "after_dual_and_D": 90,
+    "after_q0": 9
+  },
+  "campaign_status": "completed",
+  "checkpoint_profiles": {
+    "authorized_p2r_only": 99
+  },
+  "cumulative_learning_route_id_occurrences_inspected": 467280,
+  "iteration_units_with_actor_hash_change": 90,
+  "iteration_units_with_critic_hash_change": 90,
+  "iteration_units_with_optimizer_steps": 90,
+  "ledger_actor_updates": 720,
+  "ledger_critic_updates": 1440,
+  "ledger_sha256": "fe443e5e32d26a7de075fa6e34771c8f20651bbe566f9097bfdb367d17d0b866",
+  "numerical_gate_unchanged": "review",
+  "p2r_purpose_in_true_set": false,
+  "q0_units_without_optimizer_updates": 9,
+  "report_flags": {
+    "False": 99
+  },
+  "report_profiles": {
+    "authorized_p2r_only": 99
+  },
+  "reporter_true_purposes": [
+    "authorized_p0_only",
+    "authorized_p1_only"
+  ],
+  "route_id_count_interpretation": "cumulative_per_unit_reports_not_unique_trajectories",
+  "source_profiles": {
+    "accepted_train_collection_only": 99
+  },
+  "supervisor_sha256": "dc5d3901ab3ba2ce14dd7db3c4d80e6186b9a20291d27bd5d0b8b1300c091486",
+  "trainer_sha256": "7a0f46a98a55fae9142a2caeaf87635d75a01e216e646d443c6311115be150e2",
+  "training_shard_manifest_sha256": "62ad23a6bea365e376c80ecc5be9fd68dfc65a82b3b160e3f763b1e04771e3b9"
+}

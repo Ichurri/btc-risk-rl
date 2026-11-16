@@ -1,0 +1,1 @@
+{"status": "completed", "resources": {"actor_updates": 144, "critic_updates": 144, "trajectories": 19152, "transitions": 3447360}, "output": "docs/evidence/p0-execution/campaign-results"}

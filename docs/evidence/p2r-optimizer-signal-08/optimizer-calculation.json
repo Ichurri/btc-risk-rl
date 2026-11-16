@@ -1,0 +1,1 @@
+{"phase": "optimizer_gradient_norm_after_backward_before_adam_step", "iterations": 1351, "norm": 17.969986349671235, "pid": 39, "utc_epoch": 1791305132.6024108}

@@ -1,0 +1,53 @@
+{
+  "approval_sha256": "6f877eaf18663f0427ef9f5ad9e412eeec6da761d7355bbc110563e784c6c4b4",
+  "campaign": "oos-v12-wf-cost-only-03",
+  "evidence_sha256": {
+    "preflight-launch.json": "370b2904d79f26191082e28fc8c8158baa11ade3d01ccada0111488221de94db",
+    "pytest-before-launch.log": "7c66ace82d1b086447cda6399d0711daa1dbaf425b88bf69f151db9e74311f96",
+    "ruff-before-launch.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "session-01-events.jsonl": "8188fa36c51efe369a9e15f71c9afa0e9475d02f51ed3ab4df808ea44e0432d5",
+    "supervisor-events.jsonl": "65dbd26c1ee7571c27885db530ea21d3b1465f66fa5cbf6864e74aaedbd10b0f",
+    "systemd-journal.txt": "0b357c471fb218a23ce6dc3ab0092c23b142dd8a14114de7ae31341f54263833",
+    "systemd-show.txt": "5cf58fec40e11d21bbd1bd7a42e6c1c406662ad56c6a5e6798c1fe6e2ecc9332",
+    "worker-0-error.log": "5515e671a11ca0841ffcd3a16b14af77c63b4c7d390bdfae38450b9b2165490f"
+  },
+  "invocation_id": "d763be02a01a49b7b4ef2c88069009ca",
+  "ledger": {
+    "accepted_units": 0,
+    "pending": {
+      "kind": "q0",
+      "request_sha256": "b4706951e8b0ec46839edc073fcf0ccae89d3b58d24af7502891d8e0cf775423",
+      "run_id": "wf-2021",
+      "start": 1793287434.872179,
+      "supervisor_pid": 36219,
+      "token": "eaff6abbb6774a1c873e9e2e6474aa78",
+      "unit": 0
+    },
+    "sha256": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+    "state_hash": "b42e65ac2aa7e11e78a4ca0a8b464476e99f1f62b5d5eb8ae5394079ec6e5cfa",
+    "status": "failed"
+  },
+  "prior_roots_reference": "docs/evidence/oos-v1-2-wf-first-start-fix/hashes-before.json",
+  "prior_roots_reference_sha256": "4c722aa3308cef493132d7d157cbc38d8f52f8f270ae07b84a3cfa1f1e313830",
+  "root_files_sha256": {
+    "campaign.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "folds/wf-2021/manifest.json": "b6bc792891cc66ff6bbedbe190c6860347d8aca1eb6a94e41debafb6cf98bcf3",
+    "folds/wf-2022/manifest.json": "e938e641d8a186c9561680c16e6ce9987634b8725c2f2c672c04ca3b17e1d551",
+    "ledger.jsonl": "e03fc4d2b54b2d5d9513d42d59c9a845156e7e76a350b145271a5c75087bb1f3",
+    "preflight-d4bcf60a787d44029cbd4bc28a3b7f6c.json": "6522c31c5ab6a26cb5673260facc9079c7313d84e07ec76ea57db8e9e7030e6c",
+    "sessions.jsonl": "8188fa36c51efe369a9e15f71c9afa0e9475d02f51ed3ab4df808ea44e0432d5",
+    "sessions.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "supervisor.jsonl": "65dbd26c1ee7571c27885db530ea21d3b1465f66fa5cbf6864e74aaedbd10b0f",
+    "wf-2021/request-0.json": "b4706951e8b0ec46839edc073fcf0ccae89d3b58d24af7502891d8e0cf775423",
+    "wf-2021/worker-0.log": "5515e671a11ca0841ffcd3a16b14af77c63b4c7d390bdfae38450b9b2165490f"
+  },
+  "session": {
+    "end_utc": "2026-10-29T15:23:56.716545+00:00",
+    "measured_wall_seconds": 3.3104445934295654,
+    "reason": "interrupted_supervisor_or_unit",
+    "sha256": "8188fa36c51efe369a9e15f71c9afa0e9475d02f51ed3ab4df808ea44e0432d5",
+    "start_utc": "2026-10-29T15:23:53.406101+00:00",
+    "status": "failed"
+  },
+  "unit_service": "oos-wf-cost-20261029-03-session-01.service"
+}

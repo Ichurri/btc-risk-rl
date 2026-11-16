@@ -1,0 +1,49 @@
+{
+  "protocol_id": "P3-executor-infrastructure-v1",
+  "status": "INFRAESTRUCTURA AUTORIZADA; CAMPAÑA HISTÓRICA NO AUTORIZADA",
+  "market_execution_authorized": false,
+  "protocol": "docs/proposals/P3-protocolo-v1-1.md",
+  "adoption": "docs/protocols/P3-adopcion-metodologica-v1-1.md",
+  "training_candidate_source": "docs/protocols/P2-infrastructure-v1.json",
+  "training_partition": "2018-01-01T00:00:00Z/2023-01-01T00:00:00Z",
+  "accepted_starts": 7048,
+  "horizon": 180,
+  "gamma": 1.0,
+  "iterations": 10,
+  "diagnostic_trajectories_per_iteration": 64,
+  "critic_epochs": 4,
+  "risk_bound": 0.10536051565782628,
+  "blocks": [
+    {"seed": 710031, "conditions": [
+      {"name": "C0", "arms": [0, 1]},
+      {"name": "C5", "arms": [1, 0]},
+      {"name": "C10", "arms": [0, 1]}
+    ]},
+    {"seed": 710047, "conditions": [
+      {"name": "C5", "arms": [1, 0]},
+      {"name": "C10", "arms": [0, 1]},
+      {"name": "C0", "arms": [1, 0]}
+    ]},
+    {"seed": 710081, "conditions": [
+      {"name": "C10", "arms": [0, 1]},
+      {"name": "C0", "arms": [1, 0]},
+      {"name": "C5", "arms": [0, 1]}
+    ]}
+  ],
+  "total_runs": 18,
+  "total_units": 198,
+  "budget": {
+    "daily_global_seconds": 10800,
+    "active_days_max": 3,
+    "preflight_seconds_max": 900,
+    "work_seconds_max": 8100,
+    "closing_reserve_seconds": 1800,
+    "q0_cap_seconds": 1800,
+    "iteration_cap_seconds": 2700,
+    "diagnostic_subcap_seconds": 900,
+    "admission_multiplier": 1.5,
+    "sessions_per_run_max": 3,
+    "campaign_sessions_max": 54,
+    "timezone": "America/La_Paz"
+  }
+}
