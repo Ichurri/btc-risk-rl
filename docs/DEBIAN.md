@@ -61,7 +61,7 @@ No volver a descargar datos para ejecutar las pruebas ni para reproducir el hito
 Si la caché habitual no es escribible en un entorno restringido, puede usarse
 `UV_CACHE_DIR=/tmp/btc-risk-rl-uv-cache` como en la evidencia local.
 
-Para continuar, leer AGENTS.md, docs/HANDOFF.md y ADR-004. B está aprobada;
+Para continuar, leer docs/HANDOFF.md y ADR-004. B está aprobada;
 la aceptación técnica no habilita entrenamiento ni acceso al test. Para compartir
 cambios entre entornos se requiere el paquete actualizado o un remoto Git;
 no se sincronizan conversaciones automáticamente.

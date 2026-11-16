@@ -7,7 +7,7 @@ de los cortes ni una selección de políticas.
 
 ## Entrenamiento principal y checkpoints
 
-La auditoría del cierre [`57599b9`](../../reporte-codex.md) verificó 108/108
+La auditoría del cierre [`57599b9`](OOS-v1-2-entrenamiento-principal-cierre-20261114.md) verificó 108/108
 corridas, 36/36 ternas y 1.188/1.188 unidades aceptadas, sin pendiente.
 El ledger principal tiene SHA-256
 `c3e1d793997e6379739d01223876962260d988c892ed44c7b161878adfc81e6b`.

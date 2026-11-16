@@ -1,7 +1,7 @@
 # H4 — agentes PPO/CVaR-PPO y recolector
 
 Base H3: 8f027c53696976602260eb498698ef51ffd5d711, verificada local y remotamente.
-Rama: [codex/h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/19fa2e63d973a1ac6951a9d32cd3432113a4a5a3).
+Rama: [h4-agents-collector](https://github.com/Ichurri/btc-risk-rl/tree/19fa2e63d973a1ac6951a9d32cd3432113a4a5a3).
 El usuario autorizó implementación y actualizaciones pequeñas sobre datos sintéticos.
 No autorizó entrenamiento de mercado, pilotos, evaluación confirmatoria ni test final.
 

@@ -11,7 +11,7 @@ Valores definitivos de pilotos pendientes en campos explícitos, sin defaults de
 
 ## Implementación y comprobaciones realmente realizadas
 - Git main inicializado; sin remoto.
-- AGENTS.md y handoff para coordinación local/remota.
+- Registro de continuidad en docs/HANDOFF.md.
 - Pydantic rechaza desbloqueo de test y habilitación de entrenamiento.
 - uv sync: dependencias instaladas y uv.lock generado.
 - uv run --frozen pytest -q tests/test_config.py: 4 passed, 0.17 s.

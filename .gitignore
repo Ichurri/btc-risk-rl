@@ -9,3 +9,9 @@ __pycache__/
 dist/
 
 /reports/
+
+# Notas y configuración locales
+/.workspace/
+*.local.md
+/.env.*
+!/.env.example

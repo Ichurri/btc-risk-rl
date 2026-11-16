@@ -2,7 +2,7 @@
 
 Fecha: 22-09-2026. Base revisada: e4e2e8fada77f9b1116f3b265368e82c1e82cedd.
 Registro de adopción: 10d92fa. Código verificado: ebb3914.
-Rama: [codex/adopt-adr002-v2-1](https://github.com/Ichurri/btc-risk-rl/tree/8f027c53696976602260eb498698ef51ffd5d711).
+Rama: [adopt-adr002-v2-1](https://github.com/Ichurri/btc-risk-rl/tree/8f027c53696976602260eb498698ef51ffd5d711).
 
 ## Alcance y decisión
 
