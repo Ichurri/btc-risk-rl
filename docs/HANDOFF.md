@@ -1,4 +1,19 @@
-# Estado vigente — 15/11/2026 15:28 America/La_Paz
+# Estado vigente — 16/11/2026 America/La_Paz
+
+**Análisis descriptivo posterior al cierre de la prueba confirmatoria.**
+Las 108 trazas y los 108 reportes finales coincidieron con sus SHA-256
+en el ledger. Los 108 Sortino recalculados coincidieron exactamente
+con el CSV auditado. Se produjeron las métricas secundarias, los
+intervalos descriptivos por bloque, cuatro figuras y un HTML autónomo.
+La referencia de comprar y mantener se reconstruyó con los precios
+guardados en las trazas y coincidió con la auditoría previa.
+Consultar el [informe](hitos/OOS-v1-2-metricas-secundarias-20261116.md)
+y el [material para el apartado 4.4.1](tesis/insertar-en-tesis.md).
+Los resultados confirmatorios y los permisos cerrados se conservan.
+
+---
+
+# Estado anterior — 15/11/2026 15:28 America/La_Paz
 
 **Referencia descriptiva comprar y mantener BTC cerrada:** sobre la misma
 fuente final auditada y 4.386 transiciones, una compra inicial con costos y

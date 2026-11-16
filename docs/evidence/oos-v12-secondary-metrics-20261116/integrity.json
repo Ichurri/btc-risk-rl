@@ -1,0 +1,18 @@
+{
+  "scope": "Análisis descriptivo posterior al cierre de la prueba confirmatoria.",
+  "ledger_sha256": "b035e1fef6d5e95b2b75df660cc178382081552207be30358f632f49a7e513ad",
+  "paired_blocks_sha256": "31b95677b68b0ccdef3584f78b2c7755c12d3c91c804fce90e111cd6cafec44e",
+  "buy_hold_result_sha256": "177745bf76a575ba8c9bbd8c1e24f4386dbd8cb3686c7ac78977cc7ce9b905a7",
+  "config_sha256": "1a6b5b401f20c9e4a11835cf4575b70c73d72bb4e844aca7552e3f934d911269",
+  "verified_traces": 108,
+  "verified_reports": 108,
+  "steps_per_policy": 4386,
+  "blocks": 36,
+  "max_policy_sortino_abs_error": 0,
+  "buy_hold_sortino_abs_error": 2.886579864025407e-15,
+  "sortino_abs_tolerance": 1e-12,
+  "export_manifest_sha256": "db842235decd93fef2e04e49fbfb4f20752e9239f1c99eecb84f9e3e6e742436",
+  "bootstrap_seed": 912016,
+  "bootstrap_resamples": 20000,
+  "numpy_version": "2.5.3"
+}
